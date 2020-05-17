@@ -1,5 +1,7 @@
 # Aulas do Prof. Fernando Passold
 
+![initial_image.jpg](initial_image.jpg)
+
 Prof. Eng. Elétrica - Universidade de Passo Fundo
 
 # Disciplinas:
