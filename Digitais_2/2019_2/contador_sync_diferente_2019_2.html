@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>contador_sync_diferente_2019_2</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Contador Síncrono Diferente [2019/2]</h1>
+
+<p><strong>Circuitos Digitais II/Lab. de Circuitos Digitais II</strong></p>
+
+<p>Engenharia Elétrica / Universidade de Passo Fundo</p>
+
+<h2 id="toc_1">Objetivos</h2>
+
+<p>A ideia deste experimento é comprovar na prática o funcionamento de um circuito contador diferente cuja proposta foi iniciada na disciplina teórica de <code>Circuitos Digitais II</code>.</p>
+
+<h2 id="toc_2">Descrição do contador</h2>
+
+<p>A figura à seguir demostra os diferentes estados que este contador pode assumir:</p>
+
+<p><img src="digitais2_contadores_sincronos_2019_2_4b.jpg" alt="digitais2_contadores_sincronos_2019_2_4b.jpg" width=400 /> </p>
+
+<p>Este contador inicia em 0 e conforme o nível lógico da entrada externa <code>MODE</code> (ou simplesmente <code>M</code>, ele modifica seu comportamento. </p>
+
+<p>Basicamente ele conta apenas números ímpares de maneira crescente ou decrescente (parte em azul ressaltada no diagrama de estados anterior; ou parte do diagrama de estados concentrado no lado direito) ou fica preso num ciclo de contagem crescente ou decrescente de números pares (parte em vermelho ressaltado no diagrama de estados anterior; parte do diagrama de estados concentrado no lado esquerdo). A entrada <code>M</code> permite definir o sentido da contagem.</p>
+
+<p>Note pela figura do diagrama, que é possível forçar o contador sair da sequencia de contagem de números ímpares, se no momento em que o mesmo se encontrar no número 7, o usuário manter a entrada <code>MODE</code> em <code>M=0</code> (nível lógico baixo). Isto força o circuito à voltar para o nó 0 (ou contagem igual à 0) e caso a entrada externa <code>MODE</code> seja mantida em nível lógico baixo, o circuito assume uma sequencia de contagem crescente de números pares. Em resumo: se o contador atingiu o estado 7 e a entrada <code>MODE=0</code>, o circuito evolui para os próximos estados:</p>
+
+<div><pre><code class="language-none">       M=0 (daqui para frente)
+--&gt; 7 -----&gt; 0 --&gt; 2 --&gt; 4 --&gt; 6 --+
+                   ^               |
+                   |               |
+                   +---------------+</code></pre></div>
+
+<p>Naturalmente que outras sequencias de contagens podem ser obtidas, dentro das possibilidades do circuito resumidas pelo diagrama de estados apresentado na primeira figura.</p>
+
+<h2 id="toc_3">Sugestão de Montagem (<u>Interface de Saída</u>)</h2>
+
+<p>Este circuito possui 8 estados diferentes (de 0 à 7); portanto, serão necessários 3 flip-flops para possibilitar esta combinação de 8 estados (2<sup>3=8).</sup> </p>
+
+<p>Poderíamos conectar um display de 7-segmentos às saídas \(Q_i\) dos flip-flops, mas provavelmente seja mais interessante criar uma <strong>interface visual</strong> cuja configuração física coincida com a forma como conta este circuito ou são executadas as sequencias de estados. <strong>Especificamente</strong> sugere-se o uso de 8 leds ao invés de um display de 7-segmentos, dispondo fisicamente os 8 leds na forma indicada na próxima figura:</p>
+
+<div><pre><code class="language-none">   +-- Led_1 --- Led_3 --- Led_5 --- Led_7 
+   |
+   | M=1
+ Led_0
+   | M=0
+   | 
+   +-- Led_2 --- Led_4 --- Led_6</code></pre></div>
+
+<p>A disposição física dos leds mostrada na figura anterior, facilita compreender e confirmar visualmente se o circuito projetado (e montado) atende ao diagrama de estados apresentado na primeira figura deste roteiro.</p>
+
+<p>O único porém é que necessitaremos acrescentar um DEC de 3/8 conectado às saídas dos Flip_Flop necessários ao circuito para concretizar esta interface, ou seja, irá nos &quot;custar&quot; 1 CI &quot;extra&quot;.</p>
+
+<h2 id="toc_4">Projeto do circuito</h2>
+
+<p>De forma a concretizar o projeto deste contador se faz necessário montar uma tabela de transição de estados para o circuito como um todo. Esta tabela considera a sequencia (diagrama) de estados previstos para este circuito além do flip-flip que será adotado para realização deste contador.</p>
+
+<p>A princípio poderíamos usar FF tipo JK ou tipo D. A adoção de FF&#39;s do tipo JK implica a realização (posterior ao levantamento da tabela) de 2 entradas x 3 FF&#39;s = 6 Mapas de Karnaugh. Se optarmos por trabalhar com flip-flops tipo D, a quantidade de mapas de Karnaugh necessários baixa para apenas 3 (uma para cada flip-flop, já que o FF tipo D apresenta apenas 1 entrada para seu controle).</p>
+
+<p>A próxima figura revisa o diagrama de estados e a tabela de transição para flip-flop tipo D. Será necessário para completar a tabela de transição de estados do circuito completo.</p>
+
+<p><img src="digitais2_contadores_sincronos_2019_2_5.jpg" alt="digitais2_contadores_sincronos_2019_2_5.jpg" width=250 /></p>
+
+<p>A próxima tabela relaciona os estados que o circuito deve assumir e a forma como os flip-flops tipo D deveriam ser &quot;programados&quot;:</p>
+
+<p><img src="digitais2_contadores_sincronos_2019_2_6.jpg" alt="digitais2_contadores_sincronos_2019_2_6.jpg" width=400 /></p>
+
+<p>De posse da tabela de transição de estados completa do circuito é possível através de mapas de karnaugh estabelecer a lógica combinacional que deve estar presente nas entradas de controle D dos flip-flop selecionados, o que é mostrado nas próximas 2 figuras.</p>
+
+<p><img src="digitais2_contadores_sincronos_2019_2_7.jpg" alt="digitais2_contadores_sincronos_2019_2_7.jpg" width=400 /></p>
+
+<p><img src="digitais2_contadores_sincronos_2019_2_8a.jpg" alt="digitais2_contadores_sincronos_2019_2_8a.jpg" width=400 /></p>
+
+<p>Notamos pelos agrupamentos ressaltados nos Mapas de Karnaugh que as simplificações que podem ser obtidas não são significativas. Se fará necessário empregar muitas portas AND&#39;s de 4 entradas (principalmente para controle do FF-1, entrada D1), umas poucas portas AND&#39;s de 3 entradas e muitas AND&#39;s de 2 entradas, além das portas OR. Notamos ainda (pelos mapas de Karnaugh) que não é possível compartilhar agrupamentos entre os mapas (e sua correspondente equação e circuito lógico para as entradas dos diferentes flip-flops D), o que significa que a lógica combinacional para controle das entradas D usando simples portas lógicas básicas implica um circuito significativamente volumoso, exigindo  muitas pastilhas diferentes.</p>
+
+<p>Devemos lembrar que para sintetizar um circuito lógico combinacional, além de portas lógicas básicas, podemos usar:</p>
+
+<ul>
+<li>DEC, ou;</li>
+<li>MUX.</li>
+</ul>
+
+<h3 id="toc_5">Solução usando DEC</h3>
+
+<p>Se adotarmos o uso de DEC, apenas uma pastilha DEC será necessária para sintetizar as 3 funções combinacionais lógicas (D3, D2 e D1). Será necessário um DEC de 4 para 16 linhas ou a pastilha 74LS/F154. </p>
+
+<p>A próxima figura mostra parte de DEC de 4 para 16 linhas (CI 74LS154 -- um CI de 24 pinos!), lembrando apenas que suas saídas normalmente são ativo baixo -- ver próxima figura:</p>
+
+<p><img src="75_154.gif" alt="75_154.gif" width=400 /></p>
+
+<p>Observando algumas equações obtidas para os FF&#39;s D, notamos que necessitaremos ainda de portas NAND de largura de entradas, variável. Uma opção seria &quot;padronizar&quot; o uso de um mesmo tipo de porta NAND ou AND e neste caso, estamos optando por usar apenas portas NAND ou AND de 8 entradas. Resta confirmar se no Almoxarifado do curso estão disponíveis estas portas, antes de avançar nesta opção de solução.</p>
+
+<p>Uma verificação de CIs necessários e presentes no Almoxarifado do curso nos leva aos seguintes fatos:</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">Portas</th>
+<th style="text-align: center">Portas</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">4 x AND(2) = 7408 (40+)</td>
+<td style="text-align: center">4 x NAND(2) = 7400 (45)</td>
+</tr>
+<tr>
+<td style="text-align: center">3 x AND(3) = 7411 (40)</td>
+<td style="text-align: center">3 x NAND(3) = 7410 (66)</td>
+</tr>
+<tr>
+<td style="text-align: center">2 x AND(4) = 7421 (40)</td>
+<td style="text-align: center">2 x NAND(4) = 7420 (26)</td>
+</tr>
+<tr>
+<td style="text-align: center">1 x AND(8) = ??</td>
+<td style="text-align: center">1 x NAND(8) = 7430 (34)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Obs.: O valor entre parêntesis indica a quantidade disponível no Almoxarifado em 18/09/2019.</p>
+
+<p><strong>Detalhe</strong> a equação para o FF-2 rende inicialmente 9 mini termos:</p>
+
+<p>\[
+D_2= \sum_m \left\{ 0, 1, 4, 5, 6, 9, 10, 12, 13\right\} \qquad \text{(9 termos)}
+\]
+isso, se usado lógica &quot;direta&quot;. Se for usado lógica inversa, podemos reduzir a  quantidade de entradas necessárias na porta de saída do DEC para:
+\[D_2=\overline{\sum_m \left\{2,3,7,8,11,14,15 \right\}} \qquad \text{(7 termos)}\]
+ou:</p>
+
+<p>\[
+D_2=\overline{ O_2 + O_3 + O_7 + O_8 + O_{11} + O_{14} + O_{15}}
+\]</p>
+
+<p>considerando que vamos usar uma porta AND ou NAND de 8 entradas, <em>D2</em> fica:
+\[
+D_2=\overline{ O_2 + O_3 + O_7 + O_8 + O_{11} + O_{14} + O_{15} + 0}
+\]</p>
+
+<p>\[
+D_2=\overline{O_2} \cdot \overline{O_3} \cdot \overline{O_7} \cdot \overline{O_8} \cdot \overline{O_{11}} \cdot \overline{O_{14}} \cdot \overline{O_{15}} \cdot \overline{0}
+\]</p>
+
+<p>\[
+D_2=\overline{O_2} \cdot \overline{O_3} \cdot \overline{O_7} \cdot \overline{O_8} \cdot \overline{O_{11}} \cdot \overline{O_{14}} \cdot \overline{O_{15}} \cdot 1
+\]</p>
+
+<p>A princípio este resultado nos leva ao uso de uma porta AND(8) que não existe comercialmente na versão TTL, o que significa que será necessário o uso do CI 7430 (1 x NAND(8)) + 1 CI 7404) (6 x NOT).</p>
+
+<p>Uma rápida aferição nos permite concluir que para realizar o circuito deste contador usando DEC serão necessárias as seguintes pastilhas:</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Lista por tipo de porta</th>
+<th style="text-align: left">Lista por Bancada</th>
+<th style="text-align: right">Total</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">3 x FF&#39;s tipo D</td>
+<td style="text-align: left">2 x CIs 74LS74</td>
+<td style="text-align: right">16 x CIs 74LS74</td>
+</tr>
+<tr>
+<td style="text-align: left">1 x DEC 4/10</td>
+<td style="text-align: left">1 x CI 74LS154</td>
+<td style="text-align: right">8 x CIs 74LS154</td>
+</tr>
+<tr>
+<td style="text-align: left">3 x NAND(8)</td>
+<td style="text-align: left">3 x CIs 74LS30</td>
+<td style="text-align: right">24 x CIs 74LS30</td>
+</tr>
+<tr>
+<td style="text-align: left">1 x OR(2)</td>
+<td style="text-align: left">1 x CI 74LS04</td>
+<td style="text-align: right">8 x CIs 74LS04</td>
+</tr>
+<tr>
+<td style="text-align: left">1 x DEC 3/8</td>
+<td style="text-align: left">1 x CI 74LS138</td>
+<td style="text-align: right">8 x CIs 74LS138</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: left"><strong>8 pastilhas</strong></td>
+<td style="text-align: right">64 pastilhas</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: left">por bancada</td>
+<td style="text-align: right">no total</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_6">Solução usando MUXes</h3>
+
+<p>O problema de usar MUX é que será necessário um MUX de 16 linhas de entrada para cada um dos FF&#39;s (CI 74LS150; de 24 pinos!):</p>
+
+<p><img src="74150_symbol.png" width="500" /></p>
+
+<p>Notar que o CI 74LS150 contempla apenas uma única saída em ATIVO BAIXO.</p>
+
+<p>Podemos simplificar o uso do MUX de 16 canais para outro de 8 canais de entrada (CI 74LS151 -- que é menor: 16 pinos):</p>
+
+<p><img src="74LS151_pins-3.png" width="250" /></p>
+
+<p>A opção pela adoção de MUXes leva ao seguinte consumo de pastilhas:</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Lista por tipo de porta</th>
+<th style="text-align: left">Lista por Bancada</th>
+<th style="text-align: right">Total</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">3 x FF&#39;s tipo D</td>
+<td style="text-align: left">2 x CIs 74LS74</td>
+<td style="text-align: right">16 x CIs 74LS74</td>
+</tr>
+<tr>
+<td style="text-align: left">3 x MUX(8)</td>
+<td style="text-align: left">3 x CI 74LS151</td>
+<td style="text-align: right">24 x CIs 74LS151</td>
+</tr>
+<tr>
+<td style="text-align: left">1 x DEC 3/8</td>
+<td style="text-align: left">1 x CI 74LS138</td>
+<td style="text-align: right">8 x CIs 74LS138</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: left"><strong>6 pastilhas</strong></td>
+<td style="text-align: right">48 pastilhas</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: left">por bancada</td>
+<td style="text-align: right">no total</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_7">Solução final</h3>
+
+<p>A opção pelo uso de MUXes (de 8 canais de entrada), apesar de exigir 3 pastilhas por bancada, ainda leva a um circuito consideravelmente menor (6 pastilhas contra 8 no total).</p>
+
+<p>Resta só adaptar os MUXes de 8 canais para uso no lugar dos MUXes de 16 canais. Levantando a tabela verdade de &quot;programação&quot; dos MUXes teremos:</p>
+
+<p>Lógica combinacional para D2:</p>
+
+<div><pre><code class="language-none">                 |    Entradas   | Saída |
+Ref&#39;   | Ref     |   M  q2 q1 q0 |  FF-2 | Conexões 
+MUX(8) | MUX(16) | [S3] S2 S1 S0 |  D2   | no MUX(8) | Pino
+------------------------------------------------------------------
+  0    |   0     |   0   0 0 0   |       |     0     | X0 (Pin 4)
+  1    |   1     |   0   0 0 1   |   1   |    /M     | X1 (Pin 3)
+  2    |   2     |   0   0 1 0   |   1   |     1     | X2 (Pin 2)
+  3    |   3     |   0   0 1 1   |       |     M     | X3 (Pin 1)
+  4    |   4     |   0   1 0 0   |   1   |    /M     | X4 (Pin 15)
+  5    |   5     |   0   1 0 1   |       |     M     | X5 (Pin 14)
+  6    |   6     |   0   1 1 0   |       |     M     | X6 (Pin 13)
+  7    |   7     |   0   1 1 1   |       |     0     | X7 (Pin 12) 
+------------------------------------------------------------------
+  0    |   8     |   1   0 0 0   |       |
+  1    |   9     |   1   0 0 1   |       |
+  2    |  10     |   1   0 1 0   |   1   |
+  3    |  11     |   1   0 1 1   |   1   |
+  4    |  12     |   1   1 0 0   |       |
+  5    |  13     |   1   1 0 1   |   1   |
+  6    |  14     |   1   1 1 0   |   1   |
+  7    |  15     |   1   1 1 1   |       |
+------------------------------------------------------------------</code></pre></div>
+
+<p>Lógica combinacional para D1:</p>
+
+<div><pre><code class="language-none">                 |    Entradas   | Saída |
+Ref&#39;   | Ref     |   M  q2 q1 q0 |  FF-1 | Conexões 
+MUX(8) | MUX(16) | [S3] S2 S1 S0 |  D1   | no MUX(8)
+------------------------------------------------------------------
+ 0     |   0     |   0   0 0 0   |   1   |    /M     | X0 (Pin 4)
+ 1     |   1     |   0   0 0 1   |   1   |     1     | X1 (Pin 3)
+ 2     |   2     |   0   0 1 0   |       |     M     | X2 (Pin 2)
+ 3     |   3     |   0   0 1 1   |       |     0     | X3 (Pin 1)
+ 4     |   4     |   0   1 0 0   |   1   |     1     | X4 (Pin 15)
+ 5     |   5     |   0   1 0 1   |   1   |     1     | X5 (Pin 14)
+ 6     |   6     |   0   1 1 0   |   1   |    /M     | X6 (Pin 13)
+ 7     |   7     |   0   1 1 1   |       |     0     | X7 (Pin 12) 
+------------------------------------------------------------------
+ 0     |   8     |   1   0 0 0   |       |
+ 1     |   9     |   1   0 0 1   |   1   |
+ 2     |  10     |   1   0 1 0   |   1   |
+ 3     |  11     |   1   0 1 1   |       |
+ 4     |  12     |   1   1 0 0   |   1   |
+ 5     |  13     |   1   1 0 1   |   1   |
+ 6     |  14     |   1   1 1 0   |       |
+ 7     |  15     |   1   1 1 1   |       |
+------------------------------------------------------------------</code></pre></div>
+
+<p>Lógica combinacional para D0:</p>
+
+<div><pre><code class="language-none">                 |    Entradas   | Saída |
+Ref&#39;   | Ref     |   M  q2 q1 q0 |  FF-0 | Conexões 
+MUX(8) | MUX(16) | [S3] S2 S1 S0 |  D0   | no MUX(8)
+------------------------------------------------------------------
+ 0     |   0     |   0   0 0 0   |       |     M     | X0 (Pin 4)
+ 1     |   1     |   0   0 0 1   |   1   |     1     | X1 (Pin 3)
+ 2     |   2     |   0   0 1 0   |       |     0     | X2 (Pin 2)
+ 3     |   3     |   0   0 1 1   |   1   |     1     | X3 (Pin 1)
+ 4     |   4     |   0   1 0 0   |       |     0     | X4 (Pin 15)
+ 5     |   5     |   0   1 0 1   |   1   |     1     | X5 (Pin 14)
+ 6     |   6     |   0   1 1 0   |       |     0     | X6 (Pin 13)
+ 7     |   7     |   0   1 1 1   |       |     M     | X7 (Pin 12) 
+------------------------------------------------------------------
+ 0     |   8     |   1   0 0 0   |   1   |
+ 1     |   9     |   1   0 0 1   |   1   |
+ 2     |  10     |   1   0 1 0   |       |
+ 3     |  11     |   1   0 1 1   |   1   |
+ 4     |  12     |   1   1 0 0   |       |
+ 5     |  13     |   1   1 0 1   |   1   |
+ 6     |  14     |   1   1 1 0   |       |
+ 7     |  15     |   1   1 1 1   |   1   |
+------------------------------------------------------------------</code></pre></div>
+
+<h3 id="toc_8">Reduzindo ainda mais</h3>
+
+<p>E ao invés de usar 3 x FF&#39;s tipo D integrados em 2 pastilhas do tipo 74LS74, o melhor é adaptar um Registrador de Deslocamente de Entrada Paralela e Saída Paralela para uso neste contador.</p>
+
+<p>O CI 74LS175 possui 4 x FF’s-D encapsulados no seu interior, seus FF’s já se encontram com seus sinais internos de Clock interligados num único ponto comum (Clock ativado por borda de subida) e ainda uma entrada assíncrona de Master Reset (pino \(\overline{\text{MR}}\), ativo baixo). A próxima figura mostra sua pinagem, e a seguinte seu diagrama lógico interno.</p>
+
+<p><img src="74ls175_pinos-2.png" width="250" /></p>
+
+<p><img src="74LS175_Quad_FF-D_interno.png" width="500" /></p>
+
+<h3 id="toc_9">Circuito final</h3>
+
+<p>A próxima figura mostra o diagrama lógico final do contador completo:</p>
+
+<p><strong>Primeira parte:</strong> bloco dos Flip-Flops (ou Registrador de Deslocamento) + DEC 3/8 (interface de saída: 8 leds):</p>
+
+<p><img src="contador_sincrono_diferente_2019_2_74LS175_parte_a.png" alt="contador_sincrono_diferente_2019_2_74LS175_parte_a.png"></p>
+
+<p><strong>Segunda parte:</strong> bloco da lógica combinacional que traz &quot;programado&quot; a sequencia de estados que deve ser executada:</p>
+
+<p><img src="contador_sincrono_diferente_2019_2_74LS175_parte_b.png" alt="contador_sincrono_diferente_2019_2_74LS175_parte_b.png"></p>
+
+<p>Pinos de Alimentação:</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">_</th>
+<th style="text-align: center">U1, U2, U3</th>
+<th style="text-align: center">U4</th>
+<th style="text-align: center">U5</th>
+<th style="text-align: center">U6</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">Pino</td>
+<td style="text-align: center">74LS151</td>
+<td style="text-align: center">CI 74LS175</td>
+<td style="text-align: center">CI 74LS04</td>
+<td style="text-align: center">CI 74LS138</td>
+</tr>
+<tr>
+<td style="text-align: center">Vcc</td>
+<td style="text-align: center">Pin 16</td>
+<td style="text-align: center">Pin 16</td>
+<td style="text-align: center">Pin 14</td>
+<td style="text-align: center">Pin 16</td>
+</tr>
+<tr>
+<td style="text-align: center">Gnd</td>
+<td style="text-align: center">Pin 8</td>
+<td style="text-align: center">Pin 8</td>
+<td style="text-align: center">Pin 7</td>
+<td style="text-align: center">Pin 8</td>
+</tr>
+</tbody>
+</table>
+
+<p>Pinagem do Led:</p>
+
+<p><img src="Red-Led.svg.png" width="150" /></p>
+
+<h3 id="toc_10">Lista de Componentes:</h3>
+
+<ul>
+<li>U1, U2, U3 = 3 x CI 74LS151 (MUX de 8 canais);</li>
+<li>U4 = 1 x CI 74LS75 (Reg. Desloc. EP/SP);</li>
+<li>U5 = 1 x CI 74LS04 (6 x NOTs);</li>
+<li>U6 = 2 x 74LS138 (DEC 3/8);</li>
+<li>D0, D1, D2, D3, D4, D5, D6, D7 = 8 x leds mini (alto contraste);</li>
+<li>R1, R2, R3, R4, R5, R6, R7, R8 = 8 x Resistores de 330\(\Omega\);</li>
+<li>Gerados de sinais (onda quadrada);</li>
+<li>Fonte de Alimentação (TTL).</li>
+</ul>
+
+<h3 id="toc_11">Circuito completo</h3>
+
+<p>Arquivo Proteus 7.8: <a href="contador_sincrono_diferente_2019_2_74LS175.DSN">contador<u>sincrono</u>diferente<u>2019</u>2_74LS175.DSN</a>.</p>
+
+<p><em>Fim</em>.</p>
+
+<hr>
+
+<h4 id="toc_12">Observações finais quanto a edição deste arquivo</h4>
+
+<p>Este material foi confeccionado em editor texto compatível com <strong><code>MarkDown</code></strong>. Neste formato (ou &quot;linguagem&quot;), figuras e equações podem ser exportadas para um arquivo final formato <code>.html</code> ou <code>.pdf</code> se no arquivo <code>.md</code> (arquivo texto compatível com Markdown) forem incorporados comandos como:</p>
+
+<div><pre><code class="language-none">![alt text](detexify.png)</code></pre></div>
+
+<p>que gera algo do tipo:</p>
+
+<p><img src="detexify.png" alt="alt text"></p>
+
+<p>Pode-se incluir <strong>figuras</strong> nos formatos: <code>.jpg</code>, <code>.png</code> e até <code>.gif</code> (animados).</p>
+
+<p>As figuras podem eventualmente ser &quot;escalonadas&quot;:</p>
+
+<ul>
+<li><p>Antes a inclusão de figuras era feita na forma:</p>
+
+<div><pre><code class="language-none">![figura](figura.jpg)</code></pre></div></li>
+<li><p>a idéia é substituir esta linha por:</p>
+
+<div><pre><code class="language-none">&lt;img src=&quot;figura.jpg&quot; alt=&quot;figura&quot; width=&quot;500&quot;/&gt;</code></pre></div>
+
+<ul>
+<li><p>ou (mais explicitamente):</p>
+
+<div><pre><code class="language-none">&lt;img src=&quot;figura.jpg&quot; width=&quot;200&quot; height=&quot;200&quot; /&gt;</code></pre></div></li>
+</ul>
+
+<p>mas normalemten apenas o atributo <code>width</code> já permite escalonar a figura de forma conveniente.
+Note que o atributo <code>alt</code> é opcional (não necessário).</p></li>
+</ul>
+
+<p>E <strong>equações matemáticas</strong> são incluída usando formato <code>LaTeX</code>. Pr exemplo:</p>
+
+<div><pre><code class="language-none">$$ \zeta = \dfrac{ -\log(OS/100) }{\sqrt{pi^2 + \log(OS/100)^2} }$$</code></pre></div>
+
+<p>gera:
+\[ \zeta = \dfrac{ -\log(OS/100) }{\sqrt{pi^2 + \log(OS/100)^2} }\]</p>
+
+<p>No caso deste documenti, o arquivo texto <code>contador_sync_diferente_2019_2.md</code> pode ser editado em qualquer editor de textos comum como o <code>Notepad</code> (no Windows) ou <code>TextEditor</code> (no Mac) ou <code>gedit</code> (num sistema Linux). Sugere-se o uso de editores de texto mais poderosos como o <a href="https://www.sublimetext.com">Sublime Text</a> (multiplataforma) ou adotar diretamente algum editor de arquivos texto compatível com <code>Markdown</code> [ <a href="https://www.markdownguide.org/getting-started">O que é Markdown</a>, <a href="https://en.wikipedia.org/wiki/Markdown">Página Wikipedia sobre Markdown</a>], como por exemplo o editor <a href="http://pad.haroopress.com">Haroopad</a> (free e multiplataforma) usado para editar/interpretar arquivos texto compatíveis com Markdown. Este editor além de interpretar comandos Markdowns, interpreta equações incorporadas no arquivo texto (<code>.md</code>) usando formato <strong>LaTeX</strong>. Veja exemplos nas próximas figuras (se editor além de compatível com Markdown, estiver preparado para lidar com <code>MathJax</code> (rendering support library):</p>
+
+<p><img src="Haroopad_uso_1.png" alt="Haroopad_uso_1.png" width=800 /></p>
+
+<h3 id="toc_13">Mais Referências sobre Markdown</h3>
+
+<ul>
+<li><a href="https://www.markdownguide.org/cheat-sheet">Markdown Cheat Sheet</a></li>
+<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheat Sheet (github)</a></li>
+<li><a href="https://www.markdownguide.org/getting-started">Markdown Getting Started</a></li>
+<li><a href="https://dillinger.io">Dilinger: editor web online de Markdown</a></li>
+<li><a href="http://csrgxtu.github.io/2015/03/20/Writing-Mathematic-Fomulars-in-Markdown/">Writing Mathematic Fomulars in Markdown</a></li>
+<li><a href="https://www.codecogs.com/eqnedit.php">Editor online de equações no formato LaTeX: CodeCogs</a></li>
+<li><a href="https://www.latex4technics.com">Editor online de equações no formato LaTeX: LaTeX4technics</a></li>
+<li><a href="https://www.overleaf.com/learn/latex/Mathematical_expressions">Introdução à expressões matemáticas formato LaTeX do Overleaf</a></li>
+<li><a href="https://www.overleaf.com">Overleaf: Editor online para documentos formato LaTeX</a></li>
+</ul>
+
+<hr>
+
+<p>(c) Fernando Passold, 25/09/2019.</p>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
