@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>PI_angular_Lag</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Controle Automático II</h1>
+
+<p><img src="PI_angular_Lag/jan-bolz-MScX6XdvxWw.jpg" alt="jan-bolz-MScX6XdvxWw.jpg">
+<a href="https://unsplash.com/photos/MScX6XdvxWw?utm_source=unsplash&amp;utm_campaign=wallpapers-macos&amp;utm_medium=referral&amp;content=view-photo-on-unsplash">(c) Jan Bolz, Ostseebad Rerik, Rerik, Germany, November 23, 2017</a></p>
+
+<h2 id="toc_1">Projeto de Controladores usando RL</h2>
+
+<p>Continuando Projeto de Controladores usando RL...</p>
+
+<p><strong>Recuperando</strong> o trabalho já realizado no <code>Matlab</code>:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; % Verificando diretório atual de trabalho:
+&gt;&gt; pwd
+ans =
+    &#39;/Users/fernandopassold/Documents/UPF/Controle_II/6_Usando_RL_Projetos&#39;
+&gt;&gt; % verificando arquivos presentes compatíveis com Matlab:
+&gt;&gt; what
+
+MAT-files in the current folder /Users/fernandopassold/Documents/UPF/Controle_II/6_Usando_RL_Projetos
+
+planta  
+
+&gt;&gt; % carregando dados da aula anterior
+&gt;&gt; load planta
+&gt;&gt; % Verificando parte dos dados recuperados:
+&gt;&gt; zpk(G)
+ans =
+          1
+  ------------------
+  (s+10) (s+2) (s+1)
+
+Continuous-time zero/pole/gain model.</code></pre></div>
+
+<p>Ok, acabamos de ajustar o <code>Matlab</code> para continuar os trabalhos (projetos de outros controladores).</p>
+
+<h1 id="toc_2">Projeto de PI usando contribuição angular</h1>
+
+<p><strong>PROBLEMA</strong>: definir a posição do seu zero usando contribuição angular no diagrama do lugar das raízes.</p>
+
+<p><strong>OBJETIVO</strong>: usar contribuição angular para definir a posição desejada para o zero do controlador em função de requisitos de controle temporais.</p>
+
+<p>A questão aqui é definir se existe uma posição mais adequada para o zero do controlador PI. A principio, analisando a equação da planta e considerando que já sabemos que o pólo do controlador está no origem (integrador), algumas opções nos ocorrem:</p>
+
+<p>\(
+\begin{array}{rcl}
+FTMA(s) &amp;=&amp; C(s) \cdot G(s)\\
+&amp;=&amp; \dfrac{K(s+z_1)}{s} \cdot \dfrac{1}{(s+1)(s+2)(s+10)}
+\end{array}
+\)</p>
+
+<p>problema: - onde posicionar \(z_1\) ?</p>
+
+<p>Analisando o RL <strong>sem</strong> o zero:</p>
+
+<p><img src="PI_angular_Lag/opcoes_zero_PI.png" alt="opcoes_zero_PI.png"></p>
+
+<h3 id="toc_3">Opção 0:</h3>
+
+<p>O zero do controlador foi determinado através do cálculo da relação entre \(K_i\) e \(K_p\): zero em:</p>
+
+<p>\(s=-\frac{K_i}{K_p}\) </p>
+
+<p>Foi observado que não foi possível estabelecer um controlador com tempo de assentamento razoável. Na verdade, seu \(t_s\) ficou maior que o próprio controlador de ação integral pura.</p>
+
+<h3 id="toc_4">Opção 1:</h3>
+
+<p>Posicionar o zero do controlador entre o pólo integador (\(s=0\)) e o pólo mais lento da planta (em \(s=-1\)).</p>
+
+<p><img src="PI_angular_Lag/RL_PI1a.png" alt="RL_PI1a.png"></p>
+
+<p>Feito na aula anterior...</p>
+
+<h3 id="toc_5">Opção 2:</h3>
+
+<p>Já que localizar o zero do controlador entre o pólo do controlador (em s= 0) e o pólo mais lento da planta (em s= -1) parece não ter funcionado, podemos testar o caso de zero (do controlador) posicionado entre os 2 pólos mais lentos da planta. Esta nova localização vai afetar (alterar) o RL levantando para a opção 1, mas resta saber onde ficarão localizados os pólos de MF para raciocinarmos se esta ooção vale a pena.</p>
+
+<p>Neste caso, com o zero entre s= -2 e s= -1, obteremos o seguinte RL:</p>
+
+<p><img src="PI_angular_Lag/RL_ftma_PI2b.jpg" alt="RL_ftma_PI2b.jpg"></p>
+
+<p>Percebemos que teremos um par de pólos complexos (de malha fechada) cuja parte real vai estar mais próxima do eixo \(j\omega\) do que o obtido anteriormente com a opção 1, o que implica num tempo de asentamento ainda maior que o obtido com o controlador da primeira opção.</p>
+
+<p><strong>Conclusão</strong>: esta opção resultará num controlador PI ainda mais lento que o da Opçãp 1.</p>
+
+<h3 id="toc_6">Opção 3</h3>
+
+<p>Podemos localizar o zero do PI entre os pólos em s= -10 e s= -2 da planta. Neste caso, o RL será moficado para:</p>
+
+<p><img src="PI_angular_Lag/RL_ftma3b.jpg" alt="RL_ftma3b.jpg"></p>
+
+<p>Neste RL se percebe que parte real do par de pólos (de MF) complexos conjugados ainda continua muito próximo da origem do plano-s o que implica num tempo de assentamento muito elevado, mais que o obtido com a opção 1.</p>
+
+<p><strong>Conclusão</strong>: esta opção também não parece interessante.</p>
+
+<h3 id="toc_7">Opção 4</h3>
+
+<p>Localizar o zero depois do pólo mais lento da planta, fazendo \(\text{zero} &lt; -10\).</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; % Testando opção 4 para um PI
+PI4=tf([1 12],[1  0])
+
+PI4 =
+  s + 12
+  ------
+    s
+
+Continuous-time transfer function.
+
+&gt;&gt; Determinando a FTMA(s) com este controlador:
+&gt;&gt; ftma_PI4 = PI4*G;
+&gt;&gt; zpk(ftma_PI4) % apenas verificando
+
+ans =
+         (s+12)
+  --------------------
+  s (s+10) (s+2) (s+1)
+
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; % Traçando o RL para este controlador
+&gt;&gt; rlocus(ftma_PI4)
+&gt;&gt; % RL salvo como RL_PI4.jpg</code></pre></div>
+
+<p>O RL para este controlador resultou em:
+<img src="PI_angular_Lag/RL_PI4.png" alt="RL_PI4.jpg"></p>
+
+<p><strong>Conclusão</strong>: este PI gera um resultado pior que os anteriores porque o par de polos complexos dominantes está muito próximo do eixo jw.</p>
+
+<p><strong>PROBLEMA: -- Como proceder então?</strong></p>
+
+<hr>
+
+<h3 id="toc_8">Respostas de Sistemas Subamortecidos</h3>
+
+<p>Lembrando de respostas de sistemas de 2a-ordem em MF, subamortecidos (\(0&lt;\zeta &lt;1\)):</p>
+
+<p>\(FTMF(s)=\dfrac{\omega_n^2}{s^2+2\zeta\omega_n\;s+\omega_n^2}=\dfrac{b}{s^2+as+b}\)</p>
+
+<p>Este sistema terá pólos de MF localizados em:</p>
+
+<p>\(s=\sigma\pm j\omega_d\), ou</p>
+
+<p>\(s=\zeta\;\omega_n\;\pm\;j\;\omega_n\;\sqrt{1-\zeta^2}\).</p>
+
+<p>Ou graficamente:</p>
+
+<p><img src="figuras_acao_integral/polos_sistema_2a_ordem.png" alt="polos_sistema_2a_ordem.png"></p>
+
+<p>onde:</p>
+
+<p>\(\sigma = \omega_n \cos{(\alpha)}=\omega_n \zeta \quad \textsf{,}\)</p>
+
+<p>\(\omega_d = \omega_n \sin{(\alpha)}=\omega_n \sqrt{1-\zeta^2} \quad \textsf{,}\)</p>
+
+<p>\(\zeta = \cos{(\alpha)} \quad \textsf{e}\)</p>
+
+<p>\(\sin{(\alpha)} = \sqrt{1-\zeta^2}.\)</p>
+
+<p>Note que já temos \(\zeta\), mas não temos \(\omega_n\). Mas \(\omega_n\) pode ser definido se estipularmos um valor desejado para o tempo de tipo, ou tempo de subida ou para o tempo de assentamento.</p>
+
+<p>Para isto também necessitamos definir algum parâmetro temporal desejado para resposta do sistema: </p>
+
+<p>Quando \(0&lt;\zeta&lt;1\):</p>
+
+<p>\(t_s=\dfrac{4}{\zeta \cdot \omega_n} \qquad\)(1)</p>
+
+<p>\(t_p=\dfrac{\pi}{\omega_n\sqrt{1-\zeta^2}} \qquad\) (2)</p>
+
+<p>\(t_r=\dfrac{0,6+2,16\zeta}{\omega_n} \qquad\)(3)</p>
+
+<hr>
+
+<h2 id="toc_9">Projeto de PI usando contribuição angular</h2>
+
+<p>Neste caso, a idéia é tentar fazer o RL passar sobre determinado ponto desejado no plano-s.</p>
+
+<p>Até o momento, não temos como determinar a localização desejada para os pólos de malha-fechada porque apenas definimos como requisito de controle o sobressinal máximo (e consequentemente pudemos calcular o fator de amortecimento que só depende deste valor). Mas para determinar um posição para os pólos de MF necessitamos estabeleer mais requisitos de controle.</p>
+
+<p>Note que conseguimos determinar esta localização se além do \(\zeta\) (fator de amortecimento) também já tivermos definido algum tempo de resposta (tempo de subida, de pico ou de assentamento). Se for especificado o tempo de assentamento, determinar o local no plano-s onde deveriam estar localizados os pólos de MF fica fácil de determinar, basta realizar os cálculos:</p>
+
+<p>Os pólos de MF de um sistema de 2a-ordem ficam localizados em:
+\[
+s = \sigma \pm j \omega_d
+\]
+onde:
+\(\quad \sigma = \omega_n \zeta \quad\) e  \(\quad \omega_d = \omega_n \sqrt{1 - \zeta^2}\)</p>
+
+<p>Se:
+\[
+t_s=\dfrac{4}{\zeta \cdot \omega_n}
+\]
+então:
+\[
+\omega_n = \dfrac{4}{\zeta \cdot t_s}
+\]</p>
+
+<p>Vamos supor então um tempo de tempo de assentamento, \(t_s \le 4\) (um valor intermediário entre o obtido entre o controlador proporcional e o integrador puro).</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; % Usando contribuição angular...
+&gt;&gt; % Especificando t_s_d=4 segundos
+&gt;&gt; t_s_d=4;
+&gt;&gt; % encontrando a posição para o par de pólos complexos...
+&gt;&gt; wn = 4 / (zeta*t_s_d)
+wn =
+    1.6916
+&gt;&gt; wd = wn*sqrt(1-zeta^2)
+wd =
+    1.3644
+&gt;&gt; sigma = wn*zeta
+&gt;&gt; sigma =
+    1.0000
+&gt;&gt; polos_mf=[-sigma+i*wd -sigma-i*wd]
+&gt;&gt; polos_mf =
+  -1.0000 + 1.3644i  -1.0000 - 1.3644i
+&gt;&gt; % criando um RL de referência para cálculo dos angulos
+&gt;&gt; PI5_aux=tf([1], [1 0])
+
+PI5_aux =
+
+  1
+  -
+  s
+
+Continuous-time transfer function.
+
+&gt;&gt; ftma_PI5_aux=PI5_aux*G;
+&gt;&gt; zpk(ftma_PI5_aux)
+
+ans =
+
+           1
+  --------------------
+  s (s+10) (s+2) (s+1)
+
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; % plotando o RL temporário...
+&gt;&gt; figure; pzmap(ftma_PI5_aux)
+&gt;&gt; hold on
+&gt;&gt; % acrescentando os pólos de MF desejados
+&gt;&gt; plot(polos_mf, &#39;r+&#39;)
+&gt;&gt; polos_mf
+polos_mf =
+  -1.0000 + 1.3644i  -1.0000 - 1.3644i
+&gt;&gt; axis([-12 1 -2 2])
+&gt;&gt; Figura salva como: RL_PI5_aux.jpg</code></pre></div>
+
+<p>O RL seguinte mostra onde estão os pólos e zeros já conhecidos:</p>
+
+<p><img src="PI_angular_Lag/RL_PI5b_aux1.jpg" alt="RL_PI5b_aux1"></p>
+
+<p>Note na figura anterior, que os pontos ressaltados em vermelho com marcador <code>+</code> estão relacionados com os pólos desejados para MF.</p>
+
+<p>Baseado na figura anterior, determinamos os ângulos associados com a contribuição angular:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; theta1=atan2(wd,-1)
+theta1 =
+    2.2033
+&gt;&gt; % em graus:
+&gt;&gt; theta1_deg=theta1*180/pi
+theta1_deg =
+  126.2390
+&gt;&gt; theta2=pi/2;
+&gt;&gt; theta2_deg=theta2*180/pi
+theta2_deg =
+    90
+&gt;&gt; theta3=atan2(wd,1)
+theta3 =
+    0.9383
+&gt;&gt; theta3_deg=theta3*180/pi
+theta3_deg =
+   53.7610
+&gt;&gt; theta4=atan2(wd,9)
+theta4 =
+    0.1505
+&gt;&gt; theta4_deg=theta4*180/pi
+theta4_deg =
+    8.6203
+&gt;&gt; sum_theta=theta1+theta2+theta3+theta4
+sum_theta =
+    4.8628
+&gt;&gt; sum_theta_deg=sum_theta*180/pi
+sum_theta_deg =
+  278.6203
+&gt;&gt; theta_zera=360-sum_theta_deg
+theta_zera =
+   81.3797
+&gt;&gt; theta_zero=2*pi-sum_theta
+theta_zero =
+    1.4203
+&gt;&gt; delta_x=wd/tan(theta_zero)
+delta_x =
+    0.2068
+&gt;&gt; zero_PI5b=-1+delta_x
+zero_PI5b =
+   -0.7932
+&gt;&gt; PI5b=tf([1 -zero_PI5b],[1 0])
+
+PI5b =
+ 
+  s + 0.7932
+  ----------
+      s
+ 
+Continuous-time transfer function.
+
+&gt;&gt; save planta   % para garantir que não perderemos dados...</code></pre></div>
+
+<p>Resta testar esta versão do controlador:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; ftma_PI5b=PI5b*G;
+&gt;&gt; zpk(ftma_PI5b)
+
+ans =
+ 
+       (s+0.7932)
+  --------------------
+  s (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; % Traçando o RL:
+&gt;&gt; figure; rlocus(ftma_PI5b)
+&gt;&gt; % Acrescentando a linha guia para zeta e até para wn:
+&gt;&gt; hold on;
+&gt;&gt; sgrid(zeta, wn)
+&gt;&gt; plot(polos_mf, &#39;m+&#39;,&#39;MarkerSize&#39;,14)   % sobrepondo os pólos de MF desejados
+&gt;&gt; % RL salvo como: RL_PI5b.jpg</code></pre></div>
+
+<p>Isto resulta no seguinte RL:</p>
+
+<p><img src="PI_angular_Lag/RL_PI5b.jpg" alt="RL_PI5b.jpg"></p>
+
+<p>Resta fechar a malha:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; [K_PI5b,polosMF_PI5b]=rlocfind(ftma_PI5b)
+Select a point in the graphics window
+selected_point =
+  -0.9919 + 1.3689i
+K_PI5b =
+   25.9149
+polosMF_PI5b =
+ -10.3092 + 0.0000i
+  -0.9987 + 1.3704i
+  -0.9987 - 1.3704i
+  -0.6934 + 0.0000i
+&gt;&gt;  polos_mf     % comparando com a localização desejada para os pólos de MF
+polos_mf =
+  -1.0000 + 1.3644i  -1.0000 - 1.3644i
+&gt;&gt; % fechando a malha...
+&gt;&gt; ftmf_PI5b=feedback(K_PI5b*ftma_PI5b, 1);
+&gt;&gt; figure; step(ftmf_PI5b)
+&gt;&gt; % resposta ao degrau salvo como: step_PI5b.jpg</code></pre></div>
+
+<p>A próxima figura mostra o resultado obtido quando o sistema é submetido a uma entrada degrau:</p>
+
+<p><img src="PI_angular_Lag/step_PI5b.jpg" alt="step_PI5b.jpg"></p>
+
+<p><strong>Conclusão:</strong> Estabelecendo mais requisitos de controle é possivel determinar com precisão a posição exata do zero do PI se realizarmos os cálculos correspondentes à contribuição angular dos pólos e zeros presentes no sistema.</p>
+
+<h2 id="toc_10">Projeto de Controlador por Atraso de Transporte (ou Lag)</h2>
+
+<p>A idéia deste controlador é propor uma estrutura e comportamento/desempenho semelhante ao controlador PI, tentando minimizar o problema do elevado tempo de assentamento. Para tanto, o par pólo-zero do controlador PI é afastado da origem. O afastamento do pólo que antes estava na origem, implica em desfazer a ação integral, o que significa que este novo controlador não garante mais erro nulo em regime permanente para entrada degrau em sistemas do tipo 0. Este erro aumenta à medida que o pólo se afasta da origem. A possível vantagem é que se pode obter tempos de assentamento menores que o PI porém com algum erro em regime permanente. Se os requisitos de controle especificados para este sistema permitem algum erro, este controlador pode ser uma opção.</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; save planta      % guardando os dados anteriores
+&gt;&gt; %
+&gt;&gt; % passando para controladores de atraso de fase (Lag)
+&gt;&gt; Lag1=tf([1 0.9],[1 0.1])
+
+Lag1 =
+
+  s + 0.9
+  -------
+  s + 0.1
+
+Continuous-time transfer function.
+
+&gt;&gt; ftma_Lag1=Lag1*G;
+&gt;&gt; zpk(ftma_Lag1)   % verificando...
+
+ans =
+
+           (s+0.9)
+  --------------------------
+  (s+10) (s+2) (s+1) (s+0.1)
+
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; figure; rlocus(ftma_Lag1)
+&gt;&gt; hold on; sgrid(zeta,wn)    % sobrepondo as linhas guias...
+&gt;&gt; % Sintonizando o controlador:
+&gt;&gt; [K_Lag1,polosMF_Lag1]=rlocfind(ftma_Lag1)
+Select a point in the graphics window
+selected_point =
+  -0.9788 + 1.3358i
+K_Lag1 =
+   24.4787
+polosMF_Lag1 =
+ -10.2927 + 0.0000i
+  -0.9775 + 1.3356i
+  -0.9775 - 1.3356i
+  -0.8524 + 0.0000i
+&gt;&gt; % RL salvo como: RL_Lag1.jpg</code></pre></div>
+
+<p>A próxima figura mostra o RL para controlador Lag1:</p>
+
+<p><img src="PI_angular_Lag/RL_Lag1.jpg" alt="RL_Lag1.jpg"></p>
+
+<p>Continuando...</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; % fechando a malha
+&gt;&gt; ftmf_Lag1=feedback(K_Lag1*ftma_Lag1, 1);
+&gt;&gt; figure; step(ftmf_Lag1)
+&gt;&gt; % figura salva como: step_Lag1.jpg</code></pre></div>
+
+<p>Na próxima figura podemos avaliar os resultados obtidos:</p>
+
+<p><img src="PI_angular_Lag/step_Lag1.jpg" alt="step_Lag1.jpg"></p>
+
+<p>e podemos determinar o erro em regime permanente:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; erro_lag1=(1-dcgain(ftmf_Lag1))/1*100
+erro_lag1 =
+    8.3226
+&gt;&gt; save planta      % salvando dados para próxima seção de trabalho</code></pre></div>
+
+<h4 id="toc_11">- Mas O que acontece quando o pólo do Lag se afasta mais da origem do plano-s?</h4>
+
+<div><pre><code class="language-matlab">&gt;&gt; % Ingressando com 2a-versão do Lag:
+&gt;&gt; Lag2=tf([1 0.9],[1 0.3])
+
+Lag2 =
+
+  s + 0.9
+  -------
+  s + 0.3
+
+Continuous-time transfer function.
+
+&gt;&gt; % determinando a FTMA(s) para este controlador:
+&gt;&gt; ftma_Lag2=Lag2*G;
+&gt;&gt; % Levantando o RL para este novo sistema:
+&gt;&gt; figure; rlocus(ftma_Lag2)
+&gt;&gt; hold on
+&gt;&gt; sgrid(zeta,wn);    % sobrepondo as linhas guias
+&gt;&gt; % Sintonizando o controlador:
+&gt;&gt; [K_Lag2,polosMF_Lag2]=rlocfind(ftma_Lag2)
+Select a point in the graphics window
+selected_point =
+  -1.0452 + 1.3892i
+K_Lag2 =
+   23.9637
+polosMF_Lag2 =
+ -10.2923 + 0.0000i
+  -1.0701 + 1.3937i
+  -1.0701 - 1.3937i
+  -0.8676 + 0.0000i
+&gt;&gt; % RL salvo como: step_Lag2.jpg
+&gt;&gt; % ![step_Lag2.jpg](step_Lag2.jpg)
+&gt;&gt; % Fechando a malha com o valor encontrado para o ganho:
+&gt;&gt; ftmf_Lag2=feedback(K_Lag2*ftma_Lag2, 1);
+&gt;&gt; % Verificando resposta ao degrau:
+&gt;&gt; figure; step(ftmf_Lag2)
+&gt;&gt; % Determinando o erro para esta 2a-versão do Lag:
+&gt;&gt; erro_lag2=(1-dcgain(ftmf_Lag2))/1*100
+erro_lag2 =
+   21.7649
+&gt;&gt; save planta    % salvando dados para próxima aula.
+&gt;&gt; diary off      % fim da aula, fechando arquivo texto de &quot;log&quot;</code></pre></div>
+
+<p>A próxima figura mostra o RL para o Lag2:</p>
+
+<p><img src="PI_angular_Lag/RL_Lag2.jpg" alt="RL_Lag2.jpg"></p>
+
+<p>E a próxima figira mostra a resposta ao degrau para o Lag2:</p>
+
+<p><img src="PI_angular_Lag/step_Lag2b.jpg" alt="step_Lag2b.jpg"></p>
+
+<p>Note como o erro aumentou consideravelmente apenas por deslocar o pólo do Lag1 mais para dentro da parte negativa do plano-s.</p>
+
+<hr>
+
+<p>Material criado em 19/09/2019 e atualizado em 19/05/2020 (c) <a href="mailto:fpassold@upf.br">fpassold@upf.br</a></p>
+
+<blockquote>
+<p>Usado formato <a href="https://www.writethedocs.org/guide/writing/markdown/">MarkDown</a> no arquivo texto: <a href="aula_19_09_2019.md">aula_19_09_2019.md</a>, editado no <a href="https://macdown.uranusjr.com">MacDown</a> e exportado para página <code>html</code> acompanhado de API <a href="https://www.mathjax.org">MathJax</a> (incorpora interpretador de <a href="http://www.sciweavers.org/free-online-latex-equation-editor">equações LaTeX</a> ao código MarkDown).</p>
+</blockquote>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.matlab={string:/\B'(?:''|[^'\n])*'/,comment:[/%\{[\s\S]*?\}%/,/%.+/],number:/\b-?(?:\d*\.?\d+(?:[eE][+-]?\d+)?(?:[ij])?|[ij])\b/,keyword:/\b(?:break|case|catch|continue|else|elseif|end|for|function|if|inf|NaN|otherwise|parfor|pause|pi|return|switch|try|while)\b/,"function":/(?!\d)\w+(?=\s*\()/,operator:/\.?[*^\/\\']|[+\-:@]|[<>=~]=?|&&?|\|\|?/,punctuation:/\.{3}|[.,;\[\](){}!]/};
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
