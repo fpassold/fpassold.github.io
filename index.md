@@ -1,27 +1,17 @@
-# Curso de Controle Automático II
+# Cursos Prof. Fernando Passold
 
-![tunafish-mayonnaise-pSIt7op-mds-unsplash.jpg](tunafish-mayonnaise-pSIt7op-mds-unsplash.jpg)
-Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](https://unsplash.com/photos/pSIt7op-mds)
+![initial_image.jpg](initial_image.jpg)
 
-## Cap 4) Estabilidade
+> Fernando Passold ([Academia.edu](https://marcianazambillo.academia.edu/FernandoPassold), [Publons](https://publons.com/researcher/J-3070-2015/), [Research gate](https://www.researchgate.net/profile/Fernando\_Passold/info), [ORCID](https://orcid.org/0000-0002-9599-5914), [Slideshare](http://pt.slideshare.net/fpassold) ) - Prof. Eng. Elétrica - Universidade de Passo Fundo
 
-* [Parte 1](estabilidade.html);
-* [Parte 2](estabilidade2.html);
+# Cursos/Disciplinas:
 
-## Projeto de Controladores usando Root Locus
-
-* [Projeto de Controladores usando Root Locus (Parte I): Controlador Proporcional](projeto_usando_root_locus_parte_1.html);
-* [Projeto de Controladores Prooporcional e com Ação Integral]()
-
-* [Projeto de PI (por contribuição angular) + Lag](PI_angular_Lag.html);
-
-   >  [Projeto de PI usando contribuição angular (versão antiga, de 2019/2)](projeto_controladores_acao_integral_extendido.html);
-
-## Sugestões
-
-* [Sugestões para uso do MATLAB nas aulas de Controle](sugestao_uso_matlab_em_controle.html);
+* Circuitos Digitais I (Eletrônica Digital Combinacional);
+* Lab. de Circuitos Digitais I;
+* [Circuitos Digitais II (Eletrônica Digital Sequencial)](Digitais_2/digitais_2.html);
+* Lab. de Circuitos Digitais II;
+* [Controle Automático 2 (Controle Automático Clássico)](Controle_2/index.html);
+* [Controle Automático 3 (Controle Clássico Discreto ou Digital)](Controle_3/controle_3.html).
 
 ---
-[🎵 Paul McCartney Wings - Live And Let Die](https://soundcloud.com/paolitachan/paul-mccartney-wings-live-and)
-
-Prof. Fernando Passold, criado em 19/05/2020.
+*Página criada em 16/05/2020*
