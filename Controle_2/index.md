@@ -11,7 +11,7 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 ## Projeto de Controladores usando Root Locus
 
 * [Projeto de Controladores usando Root Locus (Parte I): Controlador Proporcional](projeto_usando_root_locus_parte_1.html);
-* [Projeto de Controladores Prooporcional e com Ação Integral]()
+* [Projeto de Controladores Prooporcional e com Ação Integral](PI_parte1.html)
 
 * [Projeto de PI (por contribuição angular) + Lag](PI_angular_Lag.html);
 
