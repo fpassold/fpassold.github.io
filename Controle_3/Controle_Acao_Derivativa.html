@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Controle_Acao_Derivativa</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<p><img src="figs_acao_derivativa/shifaaz-shamoon-9K9ipjhDdks-unsplash.jpg" alt="shifaaz-shamoon-9K9ipjhDdks-unsplash.jpg"></p>
+
+<h1 id="toc_0">Controle com Ação Derivativa</h1>
+
+<p><font size="1px"></p>
+
+<blockquote>
+<p>Arquivo fonte: /Volumes/Macintosh_HD/Users/fernandopassold/Documents/UPF/Controle_Auto_3/Derivador/Controle_Acao_Derivativa.md (24/04/2018)<br>
+</font></p>
+</blockquote>
+
+<h2 id="toc_1">Derivador &quot;Puro&quot;</h2>
+
+<p>Seja: \(y(t)=\dfrac{du(t)}{dt}\), sua aproximação numérica pode ser realizada simplesmente como:</p>
+
+<p>\(<br>
+y(t)=\dfrac{du(t)}{dt} \cong \dfrac{u[k]-u[k-1]}{\Delta t}<br>
+\)</p>
+
+<p>no nosso caso, \(\Delta t=T\) (período de amostragem).</p>
+
+<p>A equação acima leva à:</p>
+
+<p>\(<br>
+Y(z)=\dfrac{U(z)-z^{-1} \cdot U(z)}{T} \cdot \dfrac{z^1}{z^1} = \dfrac{U(z)(\cdot z -1)}{T \cdot z}<br>
+\)</p>
+
+<p>ou:</p>
+
+<p>\(<br>
+\dfrac{Y(z)}{U(z)} = \dfrac{1}{T} \cdot \dfrac{(z-1)}{z}<br>
+\)</p>
+
+<p>que rende: <strong>zero em \(z=1\)</strong>  (e um pólo na origem em \(z=0\)).</p>
+
+<p>Note que o Derivador Puro possui alguma similaridade com o controlador por avanço de fase :</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">No plano-s:</th>
+<th style="text-align: center">No plano-z:</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center"><img src="figs_acao_derivativa/lead-plano-s.png" alt="ex-lead-plano-s"></td>
+<td style="text-align: center"><img src="figs_acao_derivativa/lead-plano-z.png" alt="lead-plano-z"></td>
+</tr>
+</tbody>
+</table>
+
+<p>O problema é que um ação derivativa pura leva à:</p>
+
+<p>\(<br>
+D(s)=s<br>
+\)</p>
+
+<p>que resulta no seguinte diagrama de Bode:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; bode([1 0], 1)</code></pre></div>
+
+<p><img src="figs_acao_derivativa/bode_derivador_puro.png" alt="bode_derivador_puro.png"></p>
+
+<p>Ou seja, repare que o ganho só aumenta (e tende à \(\infty\)) à medidade que a frequência aumenta (ou seja, onde está o ruído). Note também que esta última função transferência é irealizável. </p>
+
+<hr>
+
+<h2 id="toc_2">Amplificador Derivador</h2>
+
+<p>Na prática, um circuito derivador puro se poderia tentar realizar através do seguinte circuito usando amplificador operacional:</p>
+
+<p><img src="figs_acao_derivativa/The_op_amp_Differentiator.png" alt="The_op_amp_Differentiator.png"></p>
+
+<p>Fonte: <a href="http://slideplayer.com/slide/2521182/">The op-amp Differentiator - ppt video online download</a>, <a href="https://wikivisually.com/wiki/Operational_amplifier_applications#Differential_amplifier_(difference_amplifier)">Operational amplifier applications - WikiVisually</a></p>
+
+<p>Em frequencias baixas a impedância do capacitor é praticametne \(\infty\) e então o ganho é mínimo (\(-\infty\)). Mas à medida que a frequencia aumenta, \(X_c \approx 0\) e então o ganho tende à \(+\infty\) e neste caso o amp.op. não funciona mais porque atura e entra em oscilação.</p>
+
+<p>Já um circuito realizável seria algo como:</p>
+
+<p><img src="figs_acao_derivativa/partial_differentiator.png" alt="partial_differentiator.png"></p>
+
+<blockquote>
+<p>Ref.: <a href="https://www.electronics-tutorials.ws/opamp/opamp_7.html">Differentiator Amplifier - The Op-amp Differentiator</a></p>
+</blockquote>
+
+<hr>
+
+<h2 id="toc_3">Efeito de Derivada sobre Sinal Ruidoso</h2>
+
+<p>Suponha que o seguinte sinal está sendo amostrado:</p>
+
+<p>\(<br>
+x(t) = \underbrace{1 \cdot \sin (2 \pi \; 1 \; t)}_{\text{Sinal esperado (1 Hz)}} + \underbrace{ \frac{1}{100} \cdot \sin (2 \pi \; 60 \; t) }_{ \text{Ruído sobreposto} }<br>
+\)</p>
+
+<p>Note na eq. anteriror que o ruído ocorre na frequência da rede elétrica e corresponde à apenas 1% da amplitude do sinal esperado -- o que significa que a princípio ele é praticamente negligenciável (imperceptível) -- veja gráfico à seguir:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; ezplot( &#39;sin(2*pi*t)+(1/100)*sin(2*pi*100*t)&#39;,[0 2] ) % 2 ciclos do sinal esperado
+&gt;&gt; grid</code></pre></div>
+
+<p><img src="figs_acao_derivativa/sinal_plus_noise.png" alt="sinal_plus_noise.png"></p>
+
+<p>Um &quot;zoom&quot; sobre o sinal anterior permite visualizar o erro:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; ezplot( &#39;sin(2*pi*t)+(1/100)*sin(2*pi*100*t)&#39;,[0.2 0.4] ) % zoom sobre o sinal anterior
+&gt;&gt; grid</code></pre></div>
+
+<p><img src="figs_acao_derivativa/sinal_plus_noise_zoom.png" alt="sinal_plus_noise_zoom.png"></p>
+
+<p>Note porém que derivada deste sinal rende:</p>
+
+<p>\(<br>
+y(t)=\dfrac{\text{d}x(t)}{\text{d}t} = \cos(2\pi \;t) + \underbrace{ \dfrac{1}{100} \cdot 60 \cdot \cos (2\pi \; 60 \; t) }_{\text{Derivada do Ruído}}<br>
+\)</p>
+
+<p>Note agora que a amplitude do sinal derivado, amplificou (<strong>ressaltou</strong>) o ruído presente no sinal. A amplitudade do ruído que antes estava na faixa de 0,01 Vp agora passou para 0,6 Vp (ou seja, aumentou \(60 \times\)).</p>
+
+<p>Um gráfico do sinal deraivado \(y(t)\) rende:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; ezplot( &#39;cos(2*pi*t)+(60/100)*cos(2*pi*100*t)&#39;,[0 2] )
+&gt;&gt; grid</code></pre></div>
+
+<p><img src="figs_acao_derivativa/derivada_sinal_ruidoso.png" alt="derivada_sinal_ruidoso.png"></p>
+
+<p>Um &quot;zoom&quot; sobre a figura anterior permite &quot;contemplar&quot; melhor o efeito da derivada sobre um sinal ruidoso:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; t=0.4:0.001:0.6; % zoom sobre a parte interessada
+&gt;&gt; x=sin(2*pi.*t)+(1/100)*sin(2*pi*100.*t); % sinal + ruido
+&gt;&gt; y=cos(2*pi.*t)+(60/100)*cos(2*pi*100.*t);  % derivada do sinal com ruido 
+&gt;&gt; y2=cos(2*pi.*t); % derivada apenas do sinal esperado
+&gt;&gt; figure;
+&gt;&gt; plot(t,y,&#39;b-&#39;, t,y2,&#39;m--&#39;)
+&gt;&gt; legend(&#39;d\dt Sinal com ruído&#39;, &#39;d/dt Sinal sem ruído&#39;)</code></pre></div>
+
+<p><img src="figs_acao_derivativa/derivada_sinal_ruidoso_zoom.png" alt="derivada_sinal_ruidoso_zoom.png"></p>
+
+<p>Conforme esperado, o próprio diagrama de Bode um um derivador puro indica que a amplitude de sinais de alta frequência será elevada proporcionalmente à sua frequência.</p>
+
+<h3 id="toc_4">Derivador Puro Numérico</h3>
+
+<p>Mesmo usando um algoritmo digital para implementar a derivada, resulta em:</p>
+
+<p>\(<br>
+y[k] \approx K_d \cdot \dfrac{x[k]-x[k-1]}{T}<br>
+\)</p>
+
+<p>onde \(K_d\) corresponderia ao ganho derivativo.</p>
+
+<p>Simulando sobre o sinal anterior, resulta em:</p>
+
+<div><pre><code class="language-matlab">T=8E-4; % período de amostragem - Note que 1/(20*60) = 0.0008333
+t=0:T:1; % zoom sobre a parte interessada
+x=sin(2*pi.*t)+(1/100)*sin(2*pi*100.*t); % sinal + ruido
+y=cos(2*pi.*t)+(60/100)*cos(2*pi*100.*t);  % derivada do sinal com ruido 
+y2=cos(2*pi.*t); % derivada apenas do sinal esperado
+% Simulando uma derivada numerica no vetor y3
+u=length(t);    % retorna qtdade de pontos do vetor t (amostras)
+y3=zeros(1,u);  % inicializando vetor da derivada numerica
+for i = 2:u
+    y3(i) = ( x(i) - x(i-1) ) / T;
+end
+figure;
+plot(t,y,&#39;b-&#39;, t,y2,&#39;m--&#39;, t,y3,&#39;go-&#39;)
+legend(&#39;d\dt Sinal com ruído&#39;, &#39;d/dt Sinal sem ruído&#39;,...
+    &#39;Derivada Numerica&#39;)
+</code></pre></div>
+
+<p><img src="figs_acao_derivativa/derivada_numerica_sinal_ruidoso.png" alt="derivada_numerica_sinal_ruidoso.png"></p>
+
+<p>Um &quot;zoom&quot; sobre a figura anterior rende:</p>
+
+<p><img src="figs_acao_derivativa/derivada_numerica_sinal_ruidoso_zoom.png" alt="derivada_numerica_sinal_ruidoso_zoom.png"></p>
+
+<p>O resultado está londe do esperado. E piora se considerarmos que sobre o resutlado do gráfico falta aplicar o ganho Derivativo \(\mathbf{K_d}\).Note a baixa precisão nesta aproximação numérica para uma derivada.</p>
+
+<p><strong>Solução: ?</strong></p>
+
+<hr>
+
+<h2 id="toc_5">Uso de Filtro Passa Baixas</h2>
+
+<p>Notamos que não é interessante derivar a parte de frequencias elevadas (ruído) de um sinal. Então a solução é aplicar um Filtro Passa Baixas, <strong>antes</strong> de derivar o sinal desejado.</p>
+
+<p><img src="figs_acao_derivativa/filtro_passa_baixas.png" alt="filtro_passa_baixas.png"></p>
+
+<p>A equação diferencial de um filtro passa-baixas (FPB) de 1a-ordem é dada por:</p>
+
+<p>\(<br>
+\tau_F \cdot \dfrac{\text{d}y(t)}{\text{d}t} + y(t) = x(t)<br>
+\)</p>
+
+<p>onde \(\tau_F\) corresponde à constante de tempo do filtro. Então:</p>
+
+<p>\(<br>
+f_c = \dfrac{1}{2\pi \; \tau_F} \quad \text{(Hz)}<br>
+\)</p>
+
+<p>Para \(\tau_F &lt; 3\) segundos, o filtro pode ser passivo, constituído por um simples circuito RC.</p>
+
+<p>Na prática sugere-se \(\tau_F &lt; 0,1 \cdot \tau_{\text{máx}}\) (ou seja, com frequencia de corte uma década abaixo); \(\tau_\text{máx}\) corresponde à constante de tempo dominante (maior) do sistema.</p>
+
+<blockquote>
+<p>Note que o emprego de FPB numa malha de controle, inevitavelmente implica na introdução de um significativo atraso dinâmico (no tempo).</p>
+</blockquote>
+
+<p>A função transferência do filtro seria:</p>
+
+<p>\(<br>
+G(j\omega) = \dfrac{1}{\tau_F \; j \omega + 1}<br>
+\)</p>
+
+<p>ou como \(s=j\omega\):</p>
+
+<p>\(<br>
+G(s)=\dfrac{1}{\tau_F \; s + 1}<br>
+\)</p>
+
+<p>A amplitude fica caracterizada por:</p>
+
+<p>\(<br>
+|G(j\omega)|=\sqrt{ \left( \frac{1}{\omega^2 \; \tau_F^2 +1} \right)^2 + \left( \frac{-\omega \; \tau_F}{\omega^2 \; \tau_F^2+1}\right)^2}<br>
+\)</p>
+
+<p>\(<br>
+|G(j\omega)|=\sqrt{ \frac{( 1+\omega^2\; \tau_F^2)}{(\omega^2 \; \tau_F^2+1 )} }<br>
+\)</p>
+
+<p>\(<br>
+|G(j\omega)|=\dfrac{1}{ \sqrt{\omega^2 \; \tau_F^2 + 1} }<br>
+\)</p>
+
+<p>e a fase é caracterizada por:</p>
+
+<p>\(<br>
+\phi=\angle{G(j\omega)}=\tan^{-1}{(-\omega \; \tau_F)} = - \tan^{-1}{(\omega \; \tau_F)}<br>
+\)</p>
+
+<p>Se \(\tau_F=1,0\) (segundo), então: \(\omega_F = 1 / \tau_F = 1,0\) (rad/s). A função transferência deste filtro ficaria como:</p>
+
+<p>\(<br>
+G(s)=\dfrac{1}{s+1}<br>
+\)</p>
+
+<p>O que rende os seguintes diagramas de Bode:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; figure; bode(1, [1 1]); grid</code></pre></div>
+
+<p><img src="figs_acao_derivativa/bode_FPB.png" alt="bode_FPB.png"></p>
+
+<p>Por exemplo:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; 20*log10(0.1)
+ans =
+   -20
+&gt;&gt; </code></pre></div>
+
+<h3 id="toc_6">Filtro Passa-Baixas RC</h3>
+
+<p>Um simples filtro passa-baixas RC é mostrado na próxima figura:</p>
+
+<p><img src="figs_acao_derivativa/Low_pass_filter.png" alt="Low_pass_filter.png"></p>
+
+<p>Para este circuito:</p>
+
+<p>\(<br>
+f_c = \dfrac{1}{2\pi \; R \; C}<br>
+\)</p>
+
+<p>A frequência do filtro deveria esta na faixa: \(\omega_{\text{máx}} &lt; \omega_F &lt; \omega_N\); onde: \(\omega_F=1 / \tau_F\), \(\omega_{\text{máx}}=1/\tau_{\text{máx}}\) e onde \(\tau_{\text{máx}}\) corresponde a mair constante de tempo (a dominante) do processo e \(\omega_N\) corresponde à frequência do ruído (rad/s). É esperado que \(\omega_F &lt; \omega_N\).</p>
+
+<hr>
+
+<h3 id="toc_7">Filtro Exponencial Digital</h3>
+
+<p>Seja um filtro do tipo:</p>
+
+<p><img src="figs_acao_derivativa/filtro_passa_baixas_digital.png" alt="filtro_passa_baixas_digital.png"></p>
+
+<p>Uma derivada numérica simples se consegue através de:</p>
+
+<p>\(<br>
+\dfrac{\text{d}y(t)}{\text{d}t} \approx \dfrac{y[n]-y[n-1]}{\Delta t}<br>
+\)</p>
+
+<p>Note que se aproxima da equação do filtro analógico de 1a-ordem:</p>
+
+<p>\(<br>
+\tau_F \cdot \dfrac{\text{d}y(t)}{\text{d}t} + y(t) = x(t)<br>
+\)</p>
+
+<p>que resultaria neste caso em:</p>
+
+<p>\(<br>
+\tau_F \cdot \dfrac{(y[n]-y[n-1])}{\Delta t} + y[n] = x[n]<br>
+\)</p>
+
+<p>trabalhando a equação anterior à fim de isolar \(y[n]\) (FPB sobre o sinal \(x[k]\)), teremos:</p>
+
+<p>\(<br>
+\begin{array}{rcl}<br>
+\dfrac{\tau_F \; y[n]}{\Delta t} - \dfrac{\tau_F \; y[n-1]}{\Delta t} + y[n] &amp; = &amp; x[n] \\<br>
+&amp; &amp; \\<br>
+y[n] \left( 1+\dfrac{\tau_F}{\Delta t} \right) &amp;=&amp; x[n] + \dfrac{\tau_F \; y[n-1]}{\Delta t} \\<br>
+&amp; &amp; \\<br>
+y[n] &amp; = &amp; \dfrac{ \dfrac{x[n]}{1} }{ 1 + \dfrac{\tau_f}{\Delta t} } + \dfrac{ \dfrac{\tau_F \; y[n-1]}{\Delta t} }{ 1 + \dfrac{\tau_F}{\Delta t} }\\<br>
+&amp; &amp; \\<br>
+y[n] &amp; = &amp; \dfrac{ \dfrac{x[n]}{1} }{ 1 + \dfrac{\Delta t + \tau_F}{\Delta t} } + \dfrac{ \dfrac{\tau_F \; y[n-1]}{\Delta t} }{ \dfrac{\Delta t + \tau_F}{\Delta t}} \\<br>
+&amp; &amp; \\<br>
+y[n] &amp; = &amp; \left( \dfrac{\Delta t}{\tau_F + \Delta t} \right) \cdot x[n] + \left( \dfrac{\tau_F}{\tau_F + \Delta t} \right) \cdot y[n-1] \\<br>
+\end{array}<br>
+\)</p>
+
+<p>Podemos criar a variável \(\alpha\) tal que:</p>
+
+<p>\(<br>
+\alpha = \dfrac{1}{ \dfrac{\tau_F}{\Delta t} + 1}<br>
+\)</p>
+
+<p>e então:</p>
+
+<p>\(<br>
+(1-\alpha) = 1 - \dfrac{1}{ \dfrac{\tau_F}{\Delta t} + 1 } = \dfrac{\tau_F}{\tau_F + \Delta t}<br>
+\)</p>
+
+<p>e assim chegamos a um formato mais simples de equação para o filtro digital exponencial de 1a-ordem:</p>
+
+<p>\(<br>
+y[n] = \alpha \; x[n] + (1 - \alpha) \; y[n-1]<br>
+\)</p>
+
+<p>onde: \(0 &lt; \alpha &lt; 1\). Tipicamente é empregado o valor \(\alpha = 0,1\).</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>Note que:</strong></th>
+<th style="text-align: left"></th>
+<th style="text-align: left"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">Se \(\alpha = 1\)</td>
+<td style="text-align: left">\(\rightarrow\) <strong>não existe filtragem</strong></td>
+<td style="text-align: left">\(\rightarrow \quad y[n] = x[n]\).</td>
+</tr>
+<tr>
+<td style="text-align: left">Se \(\alpha = 0\)</td>
+<td style="text-align: left">\(\rightarrow\) <strong>Sinal original é ignorado</strong></td>
+<td style="text-align: left">\(\rightarrow \quad y[n] = 0\).</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h3 id="toc_8">Filtro exponencial duplo (ou de 2a-ordem)</h3>
+
+<p>Pode ser formado pelo cascateamento de 2 filtros de 1a-ordem:</p>
+
+<p><img src="figs_acao_derivativa/filtro_passa_baixas_2a-ordem_cascata.png" alt="filtro_passa_baixas_2a-ordem_cascata.png"></p>
+
+<p>Derivando as equações, teremos:</p>
+
+<p>\(<br>
+\begin{array}{rcl}<br>
+\bar{y}[n] &amp; = &amp; \gamma \; y[n] + (1 - \gamma) \; \bar{y}[n-1] \\<br>
+&amp; &amp; \\<br>
+\bar{y}[n] &amp; = &amp; \gamma \; \alpha \; x[n] + \gamma (1 - \alpha) y[n-1] + (1 - \gamma) \; \bar{y}[n-1] \\<br>
+&amp; &amp; \\<br>
+\bar{y}[n-1] &amp; = &amp; \gamma \; y[n-1] + (1 - \gamma) \; y[n-2] \\<br>
+&amp; &amp; \\<br>
+y[n-1] &amp; = &amp; \dfrac{1}{\gamma} \; \bar{y}[n-1] - \dfrac{(1 - \gamma)}{\gamma} \; \bar{y}[n-2]\\<br>
+&amp; &amp; \\<br>
+\bar{y}[n] &amp; = &amp; \gamma \; \alpha \; x[n] + (2 - \gamma - \alpha) \; \bar{y}[n-1] - (1-\alpha)(1-\gamma)\; \bar{y}[n-2]<br>
+\end{array}<br>
+\)</p>
+
+<p>Se \(\gamma = \alpha\), este filtro resulta em:</p>
+
+<p>\(<br>
+\bar{y}[n] = \alpha^2 \; x[n] + 2(1-\alpha)\; \bar{y}[n-1] - (1-\alpha)^2 \; \bar{y}[n-2]<br>
+\)</p>
+
+<p>Note que existe uma vantagem deste filtro sobre o anterior de 1a-ordem: este filtro atenua mais fortemente ruídos de alta frequencia, especialmetne se \(\gamma = \alpha\).</p>
+
+<p>Este filtro resulta em algo semelhante à:</p>
+
+<p>\(<br>
+G(s) = \dfrac{1}{(s+1)^2}<br>
+\)</p>
+
+<p>Cujo diagrama de Bode resulta:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; figure; bode(1, conv( [1 1], [1 1] ) ); grid</code></pre></div>
+
+<p><img src="figs_acao_derivativa/bode_FPB_2a_ordem.png" alt="bode_FPB_2a_ordem.png"></p>
+
+<p>Note: corte de 40 db/déc!</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; 20*log10(0.01/1)
+ans =
+   -40
+</code></pre></div>
+
+<hr>
+
+<h3 id="toc_9">Filtro de Média Móvel</h3>
+
+<p>Neste caso se aplica simplesmente a equação:</p>
+
+<p>\(<br>
+y[n] = \dfrac{1}{J} \; \sum_{i=n-J+1}^{n}{x[i]}<br>
+\)</p>
+
+<p>que representa a média dos últimos \(J\) pontos soobre o sinal de entrada \(x[n]\)</p>
+
+<p>Esta equação pode ser reescrita como:</p>
+
+<p>\(<br>
+y[n-1] = \dfrac{1}{J} \; \sum_{i=n-J}^{n-1}{}x[i]<br>
+\)</p>
+
+<p>mesclando as 2 últimas equações obtemos:</p>
+
+<p>\(<br>
+y[n] = y[n-1] + \dfrac{1}{J} \; \left( x[n] - x[n-J] \right)<br>
+\)<br>
+que resulta num comportamento semelhante à um filtro passa-baixas, servindo também para eliminar componentes (ruídos) de alto frequência.</p>
+
+<hr>
+
+<h3 id="toc_10">Problema Sugerido</h3>
+
+<p>Os 3 filtros anteriores poderiam ser aplicados sobre este tipo de sinal:</p>
+
+<p><img src="figs_acao_derivativa/square_with_noise.png" alt="square_with_noise.png"></p>
+
+<ul>
+<li>uma onda quadrada (sinal esperado) oscilando entre 0,0 e 1,0 Volts à frequência de \(f=1/3\), acompanhado de um ruído (senoide) oscilando na frequência de 9 Hz com amplitude de 0,25 Vp.
+Simular alguns casos:</li>
+<li>Filtro analógico de 1a-ordem com \(\tau_F = 0,1\) minutos;</li>
+<li>Filtro analógico de 1a-ordem com \(\tau_F = 0,4\) minutos;</li>
+<li>Filtro digital exponencial de 1a-ordem com \(\tau_F = 0,1\) minutos; e usando período de amostragem \(T = 0,05\) minutos;</li>
+<li>Filtro digital exponencial de 1a-ordem com \(\tau_F = 0,1\) minutos; e usando período de amostragem \(T = 0,1\) minutos;</li>
+<li>Filtro de média móvel com \(J=3\) (ainda se deve perceber ruído);</li>
+<li>Filtro de média móvel com \(J=7\) (o ruído praticamente some).</li>
+</ul>
+
+<p>Script adotado no MATLAB para gerar figura anterior:</p>
+
+<div><pre><code class="language-matlab">% Problema sugerido - controladores ação derivativa
+% Fernando Passold, 24/04/2018
+T1=1/(0.05*60) % 1o-periodo de amostragem
+T2=1/(0.1*60)   % 2o-periodo de amostragem
+% Simulando os primeiros 2 ciclos de uma onda
+% quadrada, f = 1/3 (Hz)
+% amostrar este sinal 20 x f
+disp(&#39;Onda quadrada oscilando à:&#39;)
+f = 1/3
+fs = 20*20;
+T_square = 1/f;
+T = 1/fs;
+k=0:T:2*T_square;
+u=length(k); % qtadade de amostras geradas
+square=zeros(1, u);
+for i=1:u
+    t = k( i );    % calculando tempo real em segundos
+    if ( t &gt; T_square/2 )&amp;&amp;( t &lt; T_square)
+        square(1, i) = 1;
+    end
+    if ( t &gt; (T_square + T_square/2) )&amp;&amp;( t &lt; 2*T_square)
+        square(1, i) = 1;
+    end
+end
+% Sobrepondo a senoide (ruido) de 0,25 Vp, freq = 9 Hz
+f_N = 9;
+T_N = 1/f_N;
+for i=1:u
+    t = k( i );
+    noise( i ) = 0.25*sin(2*pi*f_N*t);
+    signal( i ) = square( i ) + noise( i );
+end
+plot(k, signal,&#39;m-&#39;, k, square)
+legend(&#39;Sinal com ruido&#39;,&#39;Sinal sem ruido&#39;)
+grid</code></pre></div>
+
+<hr>
+
+<h4 id="toc_11">Observações finais:</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center"><img src="figs_acao_derivativa/markdown_48x48.png" alt="markdown_48x48.png"></th>
+<th style="text-align: left">Documento gerado usando metalinguagem <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"><strong>markdown</strong></a> usando editor <a href="https://boostnote.io"><strong>BoostNote</strong></a>, free, multiplataforma (Windwos, Mac, Linux, iOS, Android).</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table>
+
+<p>O que é MarkDown? <a href="https://hackernoon.com/boost-your-productivity-using-markdown-b8a84fc2a089">Boost your productivity using Markdown. – Hacker Noon</a></p>
+
+<p>&quot;Cheat Sheet&quot; desta linguagem clicle aqui: <a href="https://www.markdownguide.org/cheat-sheet">Cheat Sheet | Markdown Guide</a>.</p>
+
+<p>Esta linguagem permite criar rapidamente documentos texto que podem ser salvos como arquivos .txt ou .md ou .html e permite incluir rapidamente e com facilidade, equações, figuras e partes de código.</p>
+
+<p>Para a edição das equações entre novatos do \(\LaTeX\) se recomendam os seguintes editores on-line:<br>
+* <a href="https://www.latex4technics.com">Online LaTeX Equation Editor - LaTeX4technics</a><br>
+* <a href="http://www.sciweavers.org/free-online-latex-equation-editor">Online Latex Equation Editor - Sciweavers</a><br>
+* <a href="https://www.codecogs.com/latex/eqneditor.php?lang=pt-br">Editor Online de Equações LaTeX - crie, integre e baixe</a><br>
+* <a href="http://equalx.sourceforge.net">EqualX - LaTeX Equation Editor</a></p>
+
+<p>Para &quot;descobrir&quot; o código para caracteres especiais ou caracteres gregos no padrão \(\LaTeX\) existe a ferramenta on-line: <a href="http://detexify.kirelabs.org/classify.html">Detexify LaTeX handwritten symbol recognition</a> , que é capaz de reconhecer o desenho do caracter desejado e convertê-lo para o correspondente código \(\LaTeX\).</p>
+
+<p>Para editar tabelas no formato \(\LaTeX\) podem ser usadas as ferramentas on-line:<br>
+* <a href="http://www.latex-tables.com">LaTeX Tables Editor</a><br>
+* <a href="https://www.tablesgenerator.com">Create LaTeX tables online</a><br>
+* <a href="http://truben.no/table/">Table Editor - BETA</a> (Este parece ser mais interessante para converter uma tabela entre HTML &lt;--&gt; LaTeX &lt;--&gt; Comma Separated Values &lt;--&gt; Markdown &lt;--&gt; reStructuredText &lt;--&gt; SQL) </p>
+
+<p>Desenhos criados usando software:</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center"><img src="https://about.draw.io/wp-content/uploads/2017/07/drawio_logo_50px.png" alt="Draw.io"></th>
+<th style="text-align: left"><a href="https://www.draw.io">Flowchart Maker &amp; Online Diagram Software</a> do Google -- ferramenta on-line.</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center"><img src="https://damassets.autodesk.net/content/dam/autodesk/www/products/responsive-imagery/responsive-badges-free-trial/sketchbook-pro-for-enterprise-2016-badge-150x150.png" alt="SketchBook"></td>
+<td style="text-align: left"><a href="https://www.autodesk.com/education/free-software/sketchbook">Free Software for Students &amp; Educators | SketchBook | Autodesk</a>. Versão educacional (livre) --&gt; Você deve se registrar usando sua conta de email da UPF!</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<p><font size="1px"></p>
+
+<blockquote>
+<p>Arquivo fonte: /Volumes/Macintosh_HD/Users/fernandopassold/Documents/UPF/Controle_Auto_3/Derivador/Controle_Acao_Derivativa.md (Abril/2018) <br>
+</font></p>
+</blockquote>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.matlab={string:/\B'(?:''|[^'\n])*'/,comment:[/%\{[\s\S]*?\}%/,/%.+/],number:/\b-?(?:\d*\.?\d+(?:[eE][+-]?\d+)?(?:[ij])?|[ij])\b/,keyword:/\b(?:break|case|catch|continue|else|elseif|end|for|function|if|inf|NaN|otherwise|parfor|pause|pi|return|switch|try|while)\b/,"function":/(?!\d)\w+(?=\s*\()/,operator:/\.?[*^\/\\']|[+\-:@]|[<>=~]=?|&&?|\|\|?/,punctuation:/\.{3}|[.,;\[\](){}!]/};
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
