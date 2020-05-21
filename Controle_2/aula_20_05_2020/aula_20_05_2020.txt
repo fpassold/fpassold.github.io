@@ -1,0 +1,292 @@
+
+Lembrando resposta ao degrau para Controlador Proporcional:
+
+![step_Kp.png](step_Kp.png)
+
+
+
+zpk(G)
+
+ans =
+ 
+          1
+  ------------------
+  (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+step(ftmf_Kp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ts_d=4;
+zeta
+zeta =
+    0.4559
+OS
+OS =
+    20
+wn=4/(zeta*ts_d)
+wn =
+    2.1932
+wd=wn*sqrt(1-zeta^2)
+wd =
+    1.9520
+sigma=wn*zeta
+sigma =
+    1.0000
+polos_MFd=[-sigma+i*wd  -sigma-i*wd]
+polos_MFd =
+  -1.0000 + 1.9520i  -1.0000 - 1.9520i
+PI_aux=tf( [1], poly[ 0 -1 -2 -10] )
+ PI_aux=tf( [1], poly[ 0 -1 -2 -10] )
+                     
+{Error: Invalid expression. When calling a function or
+indexing a variable, use parentheses. Otherwise, check for
+mismatched delimiters.
+} 
+PI_aux=tf( [1], poly( [ 0 -1 -2 -10] ) )
+
+PI_aux =
+ 
+               1
+  ----------------------------
+  s^4 + 13 s^3 + 32 s^2 + 20 s
+ 
+Continuous-time transfer function.
+
+zpk(PI_aux)
+
+ans =
+ 
+           1
+  --------------------
+  s (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+figure; pzmap(PI_aux)
+hold on
+plot(polos_MFd, 'm+')
+
+
+Gráfico do pzmap:
+![pzmap_PI_aux.png](pzmap_PI_aux.png)
+
+Gráfico com ângulos:
+pzmap_PI_aux2.fig
+
+
+
+polos_MFd
+polos_MFd =
+  -1.0000 + 1.9520i  -1.0000 - 1.9520i
+axis( [ -12 1 -2.52.5]  )
+ axis( [ -12 1 -2.52.5]  )
+                    
+{Error: Invalid expression. Check for missing multiplication
+operator, missing or unbalanced delimiters, or other syntax
+error. To construct matrices, use brackets instead of
+parentheses.
+} 
+axis( [ -12 1 -2.52*.5]  )
+{Index exceeds array bounds.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrluis.axesgroup/addbypass>localAxis', '/Applications/MATLAB_R2018a.app/toolbox/shared/controllib/graphics/@ctrluis/@axesgroup/addbypass.m', 100)" style="font-weight:bold">ctrluis.axesgroup/addbypass>localAxis</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2018a.app/toolbox/shared/controllib/graphics/@ctrluis/@axesgroup/addbypass.m',100,0)">line 100</a>)
+      set(ax,'Xlim',newlims(1:2),'YLim',newlims(3:4))
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mwbypass', '/Applications/MATLAB_R2018a.app/toolbox/matlab/graph2d/private/mwbypass.m', 23)" style="font-weight:bold">mwbypass</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2018a.app/toolbox/matlab/graph2d/private/mwbypass.m',23,0)">line 23</a>)
+      feval(fcn{:},varargin{:});
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('axis', '/Applications/MATLAB_R2018a.app/toolbox/matlab/graph2d/axis.p', 80)" style="font-weight:bold">axis</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2018a.app/toolbox/matlab/graph2d/axis.p',80,0)">line 80</a>)
+        mwbypass(ax,'MWBYPASS_axis',varargin{:});} 
+axis( [ -12 1 -2.52 -2.5]  )
+axis( [ -12 1 -2.52 2.5]  )
+th1=atan2(wd, -sigma)
+th1 =
+    2.0442
+th1_deg=th1*180/pi
+th1_deg =
+  117.1261
+th2=pi/2
+th2 =
+    1.5708
+th3=atan2(wd, 1);
+th3_deg=th3*180/pi
+th3_deg =
+   62.8739
+th4=atan2(wd, 9)
+th4 =
+    0.2136
+th4_deg=th4*180/pi
+th4_deg =
+   12.2372
+sum_th_polos=th1+th2+th3+th4
+sum_th_polos =
+    4.9260
+sum_th_polos_deg=sum_th_polos*180/pi
+sum_th_polos_deg =
+  282.2372
+180*3
+ans =
+   540
+th_zero=pi*3-sum_th_polos
+th_zero =
+    4.4988
+th_zero_deg=th_zero*180/pi
+th_zero_deg =
+  257.7628
+delta_x=wd/tan(th_zero)
+delta_x =
+    0.4234
+zero_PI=-sigma+delta_x
+zero_PI =
+   -0.5766
+
+PI_ang=tf(  [1 -zero_PI], [1 0 ] )
+
+PI_ang =
+ 
+  s + 0.5766
+  ----------
+      s
+ 
+Continuous-time transfer function.
+
+ftma_PI_ang=PI_ang*G;
+zpk(ftma_PI_ang)
+
+ans =
+ 
+       (s+0.5766)
+  --------------------
+  s (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+figure; rlocus(ftma_PI_ang)
+axis( [ -12 1 -2.5 2.5]  )
+hold on
+plot(polos_MFd, 'm+')
+sgrid(zeta, wn)
+wn
+wn =
+    2.1932
+[K_PI_ang, polos_MF]=rlocfind(ftma_PI_ang)
+Select a point in the graphics window
+selected_point =
+  -0.9793 + 1.9690i
+K_PI_ang =
+   44.1212
+polos_MF =
+ -10.5147 + 0.0000i
+  -0.9948 + 1.9729i
+  -0.9948 - 1.9729i
+  -0.4956 + 0.0000i
+
+% ![RL_PI_ang.png](RL_PI_ang.png)
+% RL_PI_ang.fig
+
+ftmf_PI_ang=feedback(K_PI_ang*ftma_PI_ang, 1);
+figure; step(ftmf_PI_ang)
+
+![step_PI_ang.png](step_PI_ang.png)
+
+zpk(ftma_PI_ang)
+
+ans =
+ 
+       (s+0.5766)
+  --------------------
+  s (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+K_PI_ang2=55;
+ftmf_PI_ang2=feedback(K_PI_ang2*ftma_PI_ang, 1);
+figure; step(ftmf_PI_ang2)
+% ![step_PI_ang2.png](step_PI_ang2.png)
+% Comparando controladores...
+
+step(ftmf_Kp, ftmf_PI, ftmf_PI_ang2)
+! ## projeto do Controlador Lag
+
+Lag1=tf( [1  0.9],  [1 0.1] )
+
+Lag1 =
+ 
+  s + 0.9
+  -------
+  s + 0.1
+ 
+Continuous-time transfer function.
+
+ftma_Lag1=Lag1*G;
+zpk(ftma_Lag1)
+
+ans =
+ 
+           (s+0.9)
+  --------------------------
+  (s+10) (s+2) (s+1) (s+0.1)
+ 
+Continuous-time zero/pole/gain model.
+
+figure; rlocus(ftma_Lag1)
+hold on;
+sgrid(zeta,0)
+plot(polos_MFd, 'm+')
+[K_Lag1,polosMF]=rlocfind(ftma_Lag1)
+Select a point in the graphics window
+selected_point =
+  -0.8916 + 1.7843i
+K_Lag1 =
+   38.1273
+polosMF =
+ -10.4414 + 0.0000i
+  -0.8925 + 1.7845i
+  -0.8925 - 1.7845i
+  -0.8736 + 0.0000i
+
+![RL_Lag1.png](RL_Lag1.png)
+
+ftmf_Lag1=feedback(K_Lag1*ftma_Lag1, 1);
+figure; step(ftmf_Lag1)
+
+![step_Lag1.png](step_Lag1.png)
+
+zpk(ftma_Lag1)
+
+ans =
+ 
+           (s+0.9)
+  --------------------------
+  (s+10) (s+2) (s+1) (s+0.1)
+ 
+Continuous-time zero/pole/gain model.
+
+zpk(Lag1)
+
+ans =
+ 
+  (s+0.9)
+  -------
+  (s+0.1)
+ 
+Continuous-time zero/pole/gain model.
+
+save dados
+save planta
+diary off
+
+Mais figuras:
+
+
