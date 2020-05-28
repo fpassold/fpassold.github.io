@@ -6,11 +6,14 @@ Aulas ministradas:
 
 Estudo de Caso:
 
-* [Aula de 07/05/2020](aula_07_05_2020.html) (Projeto de Controlador Proporcional;)
-* [Aula de 14/05/2020](aula_14_05_2020.html) (Projeto de Controladores Digitais com Ação Integral);
-* [Controle com Ação Derivativa (teoria)](Controle_Acao_Derivativa.html);
-* [Deduzindo Equações de Controladores com Ação Derivativa](pd_plus_filtro.pdf); 
+1. [Projeto de Controlador Proporcional;](aula_07_05_2020.html) (Aula de 07/05/2020);
+* [Projeto de Controladores Digitais com Ação Integral (PI)](aula_14_05_2020.html) (Aula de 14/05/2020);
+* [Projeto de Controlador por Atraso de Fase (Lag)](controlador_Lag.html) (Aula de 21/05/2020);
+* [Controle com Ação Derivativa (teoria)] (Controle_Acao_Derivativa.html) (Aula de 21/05/2020);
+* [Deduzindo Equações de Controladores com Ação Derivativa](pd_plus_filtro.pdf) (Aula de 21/05/2020);
+* [Projetos de Controlador PD e Lead](projeto_PD_lead_2020.html) (Aula de 28/05/2020);
+
 
 ---
 
-*Página criada em 16/05/2020*
+<font size="1"> (c) Fernando Passold, página atualiza em 28/05/2020 </font>
