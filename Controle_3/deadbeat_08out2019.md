@@ -1,3 +1,6 @@
+![austin-schmid-5Dga0T0x6GY-unsplash.jpg](austin-schmid-5Dga0T0x6GY-unsplash.jpg)
+Photo by Tim Marshall on Unsplash
+
 # Controlador Deadbeat
 
 > Aula originalmente administrada em 08/10/2019.
