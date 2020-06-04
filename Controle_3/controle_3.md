@@ -12,8 +12,9 @@ Estudo de Caso:
 * [Controle com Ação Derivativa (teoria)] (Controle_Acao_Derivativa.html) (Aula de 21/05/2020);
 * [Deduzindo Equações de Controladores com Ação Derivativa](pd_plus_filtro.pdf) (Aula de 21/05/2020);
 * [Projetos de Controlador PD e Lead](projeto_PD_lead_2020.html) (Aula de 28/05/2020);
+* [Controlador Deadbeat -- projeto(s)](deadbeat_08out2019.html) (Aula de 04/06/2020);
 
 
 ---
 
-<font size="1"> (c) Fernando Passold, página atualiza em 28/05/2020 </font>
+<font size="1"> (c) Fernando Passold, página atualiza em 28/05/2020, 04/06/2020 </font>
