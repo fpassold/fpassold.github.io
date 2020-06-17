@@ -15,7 +15,17 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 
 * [Projeto de PI (por contribuição angular) + Lag](PI_angular_Lag.html);
 
-   >  [Projeto de PI usando contribuição angular (versão antiga, de 2019/2)](projeto_controladores_acao_integral_extendido.html);
+   > [Projeto de PI usando contribuição angular (versão antiga, de 2019/2)](projeto_controladores_acao_integral_extendido.html);
+   
+   > [Eng. Elétrica: Aula de 20/05/2020](aula_20_05_2020/aula_20_05_2020.html) 
+
+## Projeto de Controladores no Domínio Frequência
+
+* [Ajuste de Ganho](projeto_bode_01.html) (ou Projeto de Conbtrolador Proporcional);
+* [Projeto de Controlador por Atraso de Fase (Lag)](lag_bode.html);
+* [Projeto de Controlador por Avanço de Fase (Lead)](lead_bode.html);
+* Projeto de Compensador Lead-Lag
+
 
 ## Sugestões
 
