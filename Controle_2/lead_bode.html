@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>lead_bode</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<p><img src="lead/paul-gilmore-dBtEt-K7bZc-unsplash.jpg" alt="paul-gilmore-dBtEt-K7bZc-unsplash.jpg"></p>
+
+<h1 id="toc_0">Projeto de Controlador Lead no domínio frequência</h1>
+
+<blockquote>
+<p>Aula de 14.11.2019</p>
+</blockquote>
+
+<h2 id="toc_1">Embasamento teórico</h2>
+
+<h3 id="toc_2">Controladores do tipo Lead/Lag</h3>
+
+<p>Equação genérica:</p>
+
+<p>\[
+C(s)=K \; \dfrac{s+a}{s+b}
+\]</p>
+
+<p><img src="lead/resumo_lead_lag_opcao_1.png" alt="resumo_lead_lag_opcao_1.png"></p>
+
+<blockquote>
+<p>Baseado em: Karl Johan Aström, Richard M. Murray; Feedback Systems: An Introduction for Scientists and Engineers, Princeton University Press, Princeton, New Jersey, 2008.</p>
+</blockquote>
+
+<h2 id="toc_3">Controlador Lead (por Avanço de Fase)</h2>
+
+<p>Uma equação genérica para este controlador pode ser:</p>
+
+<p>\[
+C(s)= \overbrace{\left( \dfrac{\omega_p}{\omega_z} \right)}^{K} \cdot \dfrac{(s+\omega_z)}{(s+\omega_p)}
+\]</p>
+
+<p>que leva ao diagrama de Bode mostrado à seguir:</p>
+
+<p><img src="lead/lead_resumo_1.png" alt="lead_resumo_1.png"></p>
+
+<p>O gráfico anterior foi obtido via <code>matlab</code>:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; G_lead=tf(100*[1 1],[1 100]);
+&gt;&gt; zpk(G_lead)
+ans =
+ 
+  100 (s+1)
+  ---------
+   (s+100)
+ 
+Continuous-time zero/pole/gain model.
+&gt;&gt; figure; bode(G_lead)</code></pre></div>
+
+<p><strong>Detalhes</strong>:</p>
+
+<ul>
+<li>Zero \(\Rightarrow\)￼próximo da origem (do plano-s).</li>
+</ul>
+
+<p><strong>Vantagens</strong> deste controlador (ou objetivos pretendidos com adoção do mesmo):</p>
+
+<ul>
+<li>aumentar margem de fase, \(\Phi_m \Rightarrow \propto \%OS, \zeta \downarrow\);</li>
+<li>\(\downarrow t_r \;, \downarrow t_s\);</li>
+<li>atua na faixa &quot;alta&quot; de frequências.</li>
+</ul>
+
+<p>O problema é que esta eq. genérica não permite um estudo mais aprofundado ou facilita o projeto e aplicação deste controlador numa planta. A fim de melhorar a contribuição causada pela adoção deste controlador, modificaremos a eq. genérica do mesmo para:</p>
+
+<p>\[
+C(s)=K_c \; \alpha \; \dfrac{(\tau s+1)}{(\alpha \tau s +1)} = K_c \; \dfrac{ \left( s+\dfrac{1}{\tau} \right) }{ \left( s+\dfrac{1}{\alpha \tau} \right) } \quad (0 &lt; \alpha &lt; 1)
+\]</p>
+
+<blockquote>
+<p>Ref.: Katsuhiko Ogata, Engenharia de controle moderno, 5a. ed., p. 822. São Paulo: Pearson Prentice Hall, 2010; In [Capítulo 7 – Análise e projeto de sistemas de controle pelo método de resposta em frequência]; </p>
+</blockquote>
+
+<p><strong>Detalhes</strong>:</p>
+
+<ul>
+<li>Note que \(alpha\) define a &quot;distância&quot; entre o zero e pólo deste controlador. O pólo fica localizado numa frequência \(alpha\) vezes superior à do zero.</li>
+<li>O valor mínimo de \(\alpha\)￼ é limitado pela construção física do compensador por avanço de fase. Esse valor mínimo de \(\alpha\) é geralmente adotado em torno de 0,05. Isso significa que o valor de avanço de fase máximo que pode ser conseguido é de aproximadamente \(65^o\).</li>
+</ul>
+
+<p>A eq. anterior rende o mesmo tipo de diagrama de bode que o já mostrado inicialmente, mas permite inferir informações mais interessantes para realização de um projeto adotando este tipo de controlador:</p>
+
+<p><img src="lead/ogata_avanco_fase_fig_7_92.png" alt="ogata_avanco_fase_fig_7_92.png"></p>
+
+<p>Esta figura foi obtida usando-se <code>matlab</code>:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; lead=tf(10,[1 1],[1 10])
+&gt;&gt; zpk(lead)
+
+ans =
+ 
+  10 (s+1)
+  --------
+   (s+10)
+ 
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; figure; bode(lead)</code></pre></div>
+
+<p>A próxima figura ressalta detalhes envolvendo o controlador por avanço de fase:</p>
+
+<p><img src="lead/resumo_lead_2.png" alt="resumo_lead_2.png"></p>
+
+<p>Esta figura ressalta as contribuições e alterações que serão provocadas no diagrana de Bode quando um controlador por Avanço de Fase for introduzido num sistema. </p>
+
+<p><strong>Notar</strong>:</p>
+
+<ul>
+<li>A contribuição máxima (avanço de fase máximo) ocorre na frequenacia \(\omega_m\):
+\[
+\omega_m=\dfrac{1}{\sqrt{\alpha} \; \tau}
+\]</li>
+<li><p>Nesta frequencia, a contribuição máxima trazida corresponde à relação:
+\[
+\sin{\phi_m}=\dfrac{\left( \dfrac{1-\alpha}{2} \right)}{\left( \dfrac{1+\alpha}{2} \right)}=\dfrac{1-\alpha}{1+\alpha}
+\]
+de onde podemos isolar \(\alpha\):
+\[
+\alpha=\dfrac{1 - \sin{ \phi_m }}{1 + \sin{ \phi_m } }
+\]</p></li>
+<li><p>Note que na frequencia \(\omega_m\) o controlador por avanço de fase, vai acrescentar um ganho ao sistema no valor de:
+\[
+= \dfrac{1}{\sqrt{ \alpha} } \quad \text{(em valores absolutos)}
+\] 
+ou
+\[
+= 20 \log_{10} \left( \dfrac{1}{ \sqrt{\alpha} } \right) \quad \text{(dB)}
+\]</p></li>
+</ul>
+
+<h3 id="toc_4">Procedimento para inclusão/projeto do controlador Lead</h3>
+
+<ol>
+<li><p>Primeiramente defina o ganho \(K\) que deve ser incorporado ao sistema em MF para que o mesmo atenda aos requisitos de erro em regime permanente especificados para o mesmo. Na prática, fazemos:</p>
+
+<p>\[
+K_c \; \alpha = K
+\]</p>
+
+<p>\[
+C(s)=K \; \dfrac{(\tau s + 1)}{(\alpha \tau s + 1)}
+\]</p>
+
+<p>A \(FTMA(s)\) fica:
+\[
+FTMA(s)=C(s) \cdot \underbrace{G(s)}_{\text{planta}} = K \cdot \dfrac{(\tau s + 1)}{(\alpha \tau s + 1)} \cdot G(s) = \dfrac{(\tau s + 1)}{(\alpha \tau s + 1)} \cdot KG(s) = \dfrac{(\tau s + 1)}{(\alpha \tau s + 1)} \cdot G_1(s)
+\]
+onde: \(G_1(s)=K \cdot G(s)\).</p>
+
+<p>Então, determine o ganho \(K\) a fim de satisfazer o requisito de erro estático desejado.</p></li>
+<li><p>Construir o Diagrama de Bode, com \(K\) ajustado. Avaliar a margem de fase.</p></li>
+<li><p>Determinar o avanço de fase necessário (que deve ser acrescentado ao sistema). Adicionar \(5^o\)￼à \(12^o\)￼ao ângulo assim determinado porque a adição do compensador, desloca um pouco a frequência de cruzamento de ganho (\(\omega_c\)) para a direita, diminuindo margem de fase.</p></li>
+<li><p>Determinar fator de atenuação \(\alpha\). Definir a freq. na qual o bloco não compensado passa pelo ponto \(G_1(j \omega)=-20\log { \left( 1/\sqrt{\alpha} \right) }\). Selecionar esta freq. como nova freq. de cruzamento de ganho (\(\omega_c\)), que corresponde à \(\omega_m=1/(\sqrt{\alpha} \; \tau)\). </p></li>
+<li><p>Determinar as frequências do controlador:
+\[
+\text{zero } \rightarrow \omega_z=\dfrac{1}{\tau} 
+\]
+\[
+\text{polo } \rightarrow \omega_z=\dfrac{1}{\alpha \; \tau}
+\]</p></li>
+<li><p>Usando o valor de \(K\) determinado no item (1) e o de \(\alpha\)￼ na etapa (4), calcular a constante \(K_c = \dfrac{K}{\alpha}\).</p></li>
+<li><p>Verificar a margem de ganho para se certificar de que ela é satisfatória. Se não for, repita todo o processo modificando a localização do pólo e zero do controlador até alcançar o resultado desejado.</p></li>
+</ol>
+
+<hr>
+
+<p><strong>Exemplo\(_1\):</strong>
+Considere uma planta caracterizada pela equação:
+\[
+G(s)=\dfrac{4}{s(s+2)}
+\]
+deseja-se projetar un compensador para o sistema, de modo que a constante de erro estático de velocidade, \(K_v\), seja \(20 \; (s^{-1})\), a margem de fase seja pelo menos \(50^o\) e a margem de ganho seja pelo menos 10 db.</p>
+
+<blockquote>
+<p>Exemplo 7.26 extraido de Ogata, pag. 455</p>
+</blockquote>
+
+<p><em>Solução</em></p>
+
+<p>1) Primeiramente temos que ajustar o ganho \(K\) do sistema em MF para atender às especificações do projeto em regime permanente ou seja, propiciar a constante de erro estático de velocidade requerida:</p>
+
+<p>\[
+K_v=\lim_{s \to 0} s \; FTMA(s) = \lim_{s \to 0} s \cdot \dfrac{(\tau s + 1)}{(\alpha \tau s + 1)} \cdot G_1(s)
+\]
+\[
+K_v=\lim_{s \to 0} \dfrac{ s \; 4 \; K}{ s \; (s+2)} = 2K = 20 \quad \therefore \quad K=10
+\]</p>
+
+<p>2) Traçamos o diagrama de Bode já considerando \(K=10\):</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; G1=tf(40, poly([ 0 -2]));
+&gt;&gt; zpk(G1)
+
+ans =
+ 
+    40
+  -------
+  s (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; bode(G1)</code></pre></div>
+
+<p>Diagrama de Bode para \(G_1(s)\):</p>
+
+<p><img src="lead/exemplo_1_bode.png" alt="exemplo_1_bode.png"></p>
+
+<p>3)  Analisando o diagrama de Bode anterior percebemos que a margem de fase &quot;original&quot; do sistema, realmente é muito baixa, apenas \(18^o\) (o que implica <em>overshoots</em> elevados, fortes oscilações e \(t_s\) bastante alongado). Como é desejado margem de fase mínima de \(50^o\) podemos inicialmente considerar o quanto é necessário aumentar esta margem de fase:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; 50-18
+ans =
+    32</code></pre></div>
+
+<p>Mas também temos que considerar que o acréscimo do controlador de avanço na planta, afeta um pouco tanto o diagrama de fase quanto o de ganho do sistema original. Para compensar esta ligeira distorção se costuma acrescentar de \(5^o\) à \(12^o\) na fase:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; 32+5
+ans =
+    37</code></pre></div>
+
+<p>Então, necessitamos que nosso controlador avance a fase em \(37^o\).</p>
+
+<p>4) Determinamos o fator \(\alpha\), com base em:</p>
+
+<p>\[
+sen{\Phi_m}=\dfrac{\left( \dfrac{1-\alpha}{2} \right)}{\left( \dfrac{1+\alpha}{2} \right)}=\dfrac{1-\alpha}{1+\alpha}
+\]</p>
+
+<p>de onde podemos isolar \(\alpha\):</p>
+
+<p>\[
+\alpha=\dfrac{1 - \sin{ \phi_m }}{1 + \sin{ \phi_m } }
+\]</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; aux=sin(37*pi/180)   % lembrar que Matlab trabalha com radianos e não graus
+aux =
+    0.6018
+&gt;&gt; alpha=(1-aux)/(1+aux)
+alpha =
+    0.2486</code></pre></div>
+
+<p>Agora falta considerar (e compensar) o ganho extra adicionado pelo controlador na frequencia \(\omega_m\), que é igual à \(=20\log { \left( 1/\sqrt{\alpha} \right) }\). Note que a nova frequencia da margem de fase (onde o diagrama de Bode passar po 0 dB) será ligeiramenta deslocada para a direita. Alguns autores chamam este novo ponto de frequencia, de <strong>frequência de &quot;cruzamento de ganho&quot;</strong> ou \(\omega_c\). O que se quer dizer é que, se queremos manter a margem de fase requerida, o ganho do sistema nesta frequencia, deveria ser de 0 dB, o que não ocorre porque a introdução do compensador de avanço de fase faz &quot;subir&quot; o ganho do sistema compensado. A idéia então é compensar esta subida, identificando a nova frequencia onde o diagrama de Bode de \(G_1(s)\) &quot;caia&quot; o mesmo tanto que o compensaador fará &quot;subir&quot; o ganho. </p>
+
+<p>Primeiramente temos que calcular o impacto no gannho causado pelo acréscimo do compensandor de Avanço:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; atenuacao_ganho=1/sqrt(alpha)
+atenuacao_ganho =
+    2.0057
+&gt;&gt; 20*log10(atenuacao_ganho)
+ans =
+    6.0453</code></pre></div>
+
+<p>Temos então que &quot;caçar&quot; este valor de ganho no diagrama de Bode. No caso, notar que obteremos um valor aproximado já que o <code>matlab</code> não calcula todos os valores possíveis de ganho para compor o diagrama de Bode. O <code>matlab</code> varia a frequencia do diagrama de forma não linear, logarítmica quando se usa a função <code>bode(.)</code>. Neste caso, percebemos, via <em>Datatips</em> que temos acesso a 2 dados próximos da atenução desejada de 6,04 dB:</p>
+
+<ul>
+<li>\(\omega_c=8,18\) (rad/s) com \(|G_1(j \omega)|_{\text{dB}}=-4,72 \text{ (dB)}\), e;</li>
+<li>\(\omega_c=9,56\) (rad/s) com \(|G_1(j \omega)|_{\text{dB}}=-7,36 \text{ (dB)}\), e;</li>
+</ul>
+
+<p>A frequencia na qual \(|G_1(j \omega)|_{\text{dB}} \approx -6.0453 \text{ (dB)}\), é aproximadamente \(\omega_c \approx 9\) (rad/s).</p>
+
+<p>5) De posse de \(\omega_c\) e \(\alpha\), agora podemos determinar as frequencias para o zero e para o polo do controlador:</p>
+
+<p>\[
+\text{zero } \rightarrow \omega_z=\dfrac{1}{\tau} 
+\]
+\[
+\text{polo } \rightarrow \omega_z=\dfrac{1}{\alpha \; \tau}
+\]</p>
+
+<p>Notar que não necessitamos calcular \(\tau\), já que:</p>
+
+<p>\[
+\omega_c = \omega_m&#39; = \dfrac{1}{\sqrt{\alpha} \; \tau}
+\]</p>
+
+<p>então:</p>
+
+<p>\[
+\text{zero } \rightarrow \omega_z=\dfrac{1}{\tau} = \sqrt{\alpha} \cdot \omega_c 
+\]
+\[
+\text{pólo } \rightarrow \omega_z=\dfrac{1}{\alpha \; \tau} = \dfrac{\omega_c}{\sqrt{\alpha}}
+\]  </p>
+
+<div><pre><code class="language-matlab">&gt;&gt; % wm (ou wc) final considerando Pm desejado fica em
+&gt;&gt; wm=9 % rad/s
+wm =
+     9
+&gt;&gt; zero=sqrt(alpha)*wm
+zero =
+    4.4872
+&gt;&gt; polo=wm/sqrt(alpha)
+polo =
+   18.0512
+&gt;&gt; % Construindo a eq. do Controlador de Avanço
+&gt;&gt; C=tf( [1  zero], [1  polo] );
+&gt;&gt; zpk(C)
+
+ans =
+ 
+  (s+4.487)
+  ---------
+  (s+18.05)
+ 
+Continuous-time zero/pole/gain model.</code></pre></div>
+
+<p>6) Notar que falta definir o ganho do controlador. Para tanto, lembrar que o ganho final da \(FTMA(s)=10\) (\(K=10\)) então:</p>
+
+<p>\[
+C(s)=K \cdot \dfrac{\left( s+ \frac{1}{\tau} \right)}{\left( s+ \frac{1}{\alpha \; \tau} \right)} = K_c \cdot \alpha \cdot \dfrac{(\tau s +1)}{(\alpha \tau s +1)}
+\]
+\[
+G_1(s)=K \cdot G(s)
+\]
+então:
+\[
+K_c = \dfrac{K}{\alpha}
+\]</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; K=10;
+&gt;&gt; Kc=K/alpha
+Kc =
+   40.2279
+&gt;&gt; % Montando eq. final do Compensador, incluindo seu ganho:
+&gt;&gt; C=tf( Kc*[1  zero], [1  polo] );
+&gt;&gt; zpk(C) % eq. final do Lead com seu ganho
+
+ans =
+ 
+  40.228 (s+4.487)
+  ----------------
+     (s+18.05)
+ 
+Continuous-time zero/pole/gain model.</code></pre></div>
+
+<p>7) Avaliando o resultado final obtido:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; G=tf(4, poly( [0  -2] ) );
+&gt;&gt; zpk(G) % eq. original da planta
+
+ans =
+ 
+     4
+  -------
+  s (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; ftma=C*G;
+&gt;&gt; figure; bode(G, G1, C, ftma)
+&gt;&gt; legend(&#39;G(s)&#39;, &#39;G1(s)&#39;, &#39;C(s)&#39;, &#39;ftma(s)&#39;)
+&gt;&gt; </code></pre></div>
+
+<p>O que gera o Diagrama de Bode final:</p>
+
+<p><img src="lead/exemplo_1_bode_final_compensado.png" alt="exemplo_1_bode_final_compensado.png"></p>
+
+<p>No diagrama de Bode anterior é possível se observar:</p>
+
+<ul>
+<li>A margem da fase original do sistema em \(18^o\);</li>
+<li>A contribuição causada pelo compensador, maior no diagrama de fase e algo no diagrama de ganho;</li>
+<li>A margem final de fase: \(\Phi_m=\text{Pm}=49,8^o\).</li>
+</ul>
+
+<hr>
+
+<p><strong>Exemplo\(_2\)</strong>: Lead para controle posição de um motor CC.</p>
+
+<p>O circuito elétrico da armadura e o diagrama do corpo livre do rotor são mostrados na figura a seguir.</p>
+
+<p><img src="lead/motor1.gif" alt="motor1.gif"></p>
+
+<p>Neste exemplo, assumiremos os seguintes valores para os parâmetros físicos. Esses valores foram obtidos por experimento de um motor real no laboratório de controle de graduação de Carnegie Mellon.</p>
+
+<ul>
+<li>momento de inércia do rotor, J = 3,22284E-6 kg.m^ 2 / s^2</li>
+<li>relação de amortecimento do sistema mecânico, b = 3.5077E-6 Nms</li>
+<li>constante de força eletromotriz (K = Ke = Kt) = 0,0274 Nm / Amp</li>
+<li>resistência elétrica, R = 4 ohm</li>
+<li>indutância elétrica, L = 2,75E-6 H</li>
+<li>entrada (V) = tensão da fonte</li>
+<li>output (theta) = posição do eixo</li>
+<li>Obs.: Supõe-se que o rotor e o eixo sejam rígidos</li>
+</ul>
+
+<h3 id="toc_5">Equações do sistema:</h3>
+
+<p>O torque do motor, \(T\), está relacionado à corrente da armadura, \(i\), por um fator constante \(K_t\). A f.e.m. contra, \(e\), está relacionada à velocidade de rotação, \(\dot{\theta}\) pelas seguintes equações:</p>
+
+<p>\[
+T = K_t \cdot i
+\]</p>
+
+<p>\[
+e = K_t \cdot \dot{\theta}
+\]</p>
+
+<p>No sistema internacional de unidades, \(K_t\) (constante da armadura) é igual a \(K_e\) (constante do motor).</p>
+
+<p>A partir da figura anterior, podemos escrever as seguintes equações baseadas na lei de Newton combinada com a lei de Kirchhoff:</p>
+
+<p>\[
+J \ddot{\theta} + b \dot{\theta} = K \; i
+\]</p>
+
+<p>\[
+K \dfrac{\partial i}{\partial t} + R \; i = V - K \; \dot{\theta}
+\]</p>
+
+<p>Usando transformadas de Laplace, as equações acima podem ser expressas em termos de \(s\):</p>
+
+<p>\[
+s(Js+b)\Theta(s)=KI(s)
+\]</p>
+
+<p>\[
+(Ls+R)I(s)=V-Ks\Theta(s)
+\]</p>
+
+<p>Ao eliminar \(I(s)\), podemos obter a seguinte função de transferência, onde a velocidade de rotação é a saída e a tensão é uma entrada:</p>
+
+<p>\[
+\dfrac{\Theta(s)}{V(s)}=\dfrac{K}{(Js+b)(Ls+R)+K^2}
+\]</p>
+
+<p>No entanto, neste exemplo, veremos a posição como sendo a saída. Podemos obter a posição integrando a velocidade, \(\dot{\theta}\), portanto, apenas precisamos dividir a função de transferência por \(s\):</p>
+
+<p>\[
+\dfrac{\Theta(s)}{V(s)}=\dfrac{K}{ s[(Js+b)(Ls+R)+K^2] }
+\]</p>
+
+<p>e o diagrama de blocos do sistema se parece com:</p>
+
+<p><img src="lead/motor3.gif" alt="motor3.gif"></p>
+
+<p>Com uma referência degrau de 1 rad/s, os critérios de projeto são:</p>
+
+<ul>
+<li>Tempo de assentamento inferior a 40 milissegundos;</li>
+<li>Ultrapassageam menor de 16%</li>
+<li>Nenhum erro de estado estacionário</li>
+<li>Nenhum erro de estado estacionário devido a um distúrbio na entrada</li>
+</ul>
+
+<p><strong>Obtendo o diagrama de Bode original</strong>:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; J=3.2284E-6;
+&gt;&gt; b=3.5077E-6;
+&gt;&gt; K=0.0274;
+&gt;&gt; R=4;
+&gt;&gt; L=2.75E-6;
+&gt;&gt; num=K;
+&gt;&gt; den=[(J*L) ((J*R)+(L*b)) ((b*R)+K^2) 0];
+&gt;&gt; G=tf(num,den)
+&gt;&gt; zpk(G)
+
+ans =
+ 
+         3.0862e+09
+  ------------------------
+  s (s+1.454e06) (s+59.23)
+ 
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; % Falta acrescentar o integrador para controle de posição
+&gt;&gt; I=tf(1,[1 0])
+
+I =
+ 
+  1
+  -
+  s
+ 
+Continuous-time transfer function.
+
+&gt;&gt; % incorporando ao modelo:
+&gt;&gt; G=I*G;
+&gt;&gt; zpk(G)
+
+ans =
+ 
+          3.0862e+09
+  --------------------------
+  s^2 (s+1.454e06) (s+59.23)
+ 
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; % Calculando alguns valores para algum &quot;feeling&quot; à respeito deste sistema...
+&gt;&gt; % contante de tempo elétrica:
+&gt;&gt; 1/1.454E6
+ans =
+   6.8776e-07   % segundos
+&gt;&gt; % = 0.6878 micro-segundos!
+&gt;&gt; % constante de tempo mecânica:
+&gt;&gt; 1/59.23
+ans =
+    0.0169
+&gt;&gt; ans*1000
+ans =
+   16.8833  % mili-segundos
+&gt;&gt; % conclusão: trata-se de um pequeno motor CC
+&gt;&gt;
+&gt;&gt; % Aproveitamos para levantar dados numéricos de Bode usando o próprio Matlab:
+&gt;&gt; [Gm,Pm,Wcg,Wcp] = margin(G) 
+Warning: The closed-loop system is unstable. 
+&gt; In ctrlMsgUtils.warning (line 25)
+  In DynamicSystem/margin (line 65) 
+Gm =
+     0
+Pm =
+   -5.7565
+Wcg =
+     0
+Wcp =
+    5.9703
+&gt;&gt; </code></pre></div>
+
+<p>O diagrama de Bode para esta função transferência rende:</p>
+
+<p><img src="lead/motor_posicao_bode.png" alt="motor_posicao_bode.png"></p>
+
+<p>Perecebe-se uma margem de fase (original) muito baixa. Apenas \(\phi_m=5,76^o\).</p>
+
+<p>Atendendo à especificações de ganho e margem de fase e design do controlador, temos:</p>
+
+<ul>
+<li>\(\%OS &lt; 16\%\);</li>
+<li>\(t_s &lt; 0,04\);</li>
+<li>A partir do requisito de tempo de assentamento, podemos calcular a frequência de largura de banda desejada, \(\omega_{BW}\).</li>
+</ul>
+
+<p>Lembrando das equações:</p>
+
+<p>\[
+\zeta=\dfrac{ -\ln( \%OS/100 ) }{ \sqrt{ \pi^2 + \ln^2( \%OS/100 ) } }
+\]
+e
+\[
+\phi_m = \tan^{-1} \dfrac{2 \zeta}{ \sqrt{ -2\zeta^2 + \sqrt{ 1 + 1\zeta^4} } }
+\]
+e
+\[
+\omega_{BW}=\omega_n \sqrt{ (1 - 2 \zeta^2) + \sqrt{ 4 \zeta^4 - 4 \zeta^2 + 2}}
+\]
+ou:
+\[
+\omega_{BW}=\dfrac{4}{t_s \; \zeta} \sqrt{(1-2\zeta^2)+\sqrt{4\zeta^4-4\zeta^2+2}}
+\]</p>
+
+<p>Usando <code>matlab</code> para levantar estes valores, teremos:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; OS=16;
+&gt;&gt; zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+zeta =
+    0.5039
+&gt;&gt; Pm_d=atan2(2*zeta, sqrt(-2*zeta^2 + sqrt( 1+4*zeta^4) ) )
+Pm_d =
+    0.9100
+&gt;&gt; Pm_d_deg=Pm_d*180/pi % para obter valor em graus (e não em radianos)
+Pm_d_deg =
+   52.1379
+&gt;&gt; % O diagrama de Bode deveria cair 3dB à partir de w_BW:
+&gt;&gt; w_BW=(4/(0.04*zeta))*sqrt((1-2*zeta^2)+sqrt(4*zeta^4-4*zeta^2+2))
+w_BW =
+  251.5743
+&gt;&gt; % Realizando alguns cálcuos preliminares
+&gt;&gt; % respeito ao avanço de fase necessário:
+&gt;&gt; Pm_d_deg-Pm
+ans =
+   57.8945
+&gt;&gt; ans+5
+ans =
+   62.8945
+&gt;&gt; % Prevendo ajuste de ganho eem G(s) para respeitar -6,2 dB em w_BW=251 rad/s
+&gt;&gt; (79.1+75.1)/2
+ans =
+   77.1000
+&gt;&gt; ans-6.02 % considerando + 6,02 dB do Lead
+ans =
+   71.0800
+&gt;&gt;   </code></pre></div>
+
+<p>Comparando os requisitos exigidos com o diagrama de Bode original do sistema percebemos que:</p>
+
+<ul>
+<li>Necessitamos ter pelo menos 58 graus de margem de fase (\(52,1^o-(-5,8^o)=57,9^o\)); </li>
+<li>O ganho deve cair entre -6 e -7,5 dB em alguma frequência após 250 rad/s (já considerando o acréscimo de ganho causado por um compensador de avanço de fase). Devemos acrescentar aproximadamente 71 dB de ganho na frequência de 251,57 rad/s:</li>
+</ul>
+
+<p><img src="lead/motor_posicao_bode3.png" alt="motor_posicao_bode3.png"></p>
+
+<ul>
+<li>O gráfico de ganho ficará entre -6 e -7,5 dB e após 244 rad/s. A partir da plotagem da fase Bode, podemos ver que existe um polo próximo a 60 rad/s. Usaremos um controlador PI para colocar um zero em s = 60 para &quot;achatar&quot; a curva de fase.</li>
+</ul>
+
+<p><strong><em>Observações pessoais</em></strong>:</p>
+
+<p>Exemplo abandonado: acrescentaram ação integral no modelo do controle de velocidade do motor, acrescentando arbitrariamente um zero em \(s=60\) (rad/s).</p>
+
+<p>Ao final no Exemplo da Carnegie Mellon, estão complicando o controlador, alcançando um sistema de 2a-ordem, muito provavelmente desnecessário. Últimas anotações:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; zpk(G)
+
+ans =
+ 
+          3.0862e+09
+  --------------------------
+  s^2 (s+1.454e06) (s+59.23)
+ 
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; % Até aqui Ok com exemplo da Carnegie Mellon
+&gt;&gt;
+&gt;&gt; PM=80;
+&gt;&gt; OS=16;
+&gt;&gt; zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+zeta =
+    0.5039
+&gt;&gt; Pm_d=atan2(2*zeta, sqrt(-2*zeta^2 + sqrt( 1+4*zeta^4) ) )
+Pm_d =
+    0.9100
+&gt;&gt; Pm_d_deg=Pm_d*180/pi
+Pm_d_deg =
+   52.1379
+&gt;&gt; 
+&gt;&gt; wbw=(4/(0.04*zeta))*sqrt((1-2*zeta^2)+sqrt(4*zeta^4-4*zeta^2+2))
+wbw =
+  251.5743
+&gt;&gt; a=(1 - sin(PM*pi/180))/(1 + sin(PM*pi/180));
+&gt;&gt; a
+a =
+    0.0077
+&gt;&gt; T=1/(wbw*sqrt(a))
+T =
+    0.0454
+&gt;&gt; numpil = conv([1 60],[T 1]);
+&gt;&gt; denpil = [a*T 1];
+&gt;&gt; pil=tf(numpil,denpil);
+&gt;&gt; zpk(pil)
+
+ans =
+ 
+  130.65 (s+60) (s+22.01)
+  -----------------------
+         (s+2876)
+ 
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; ftma_pil=pil*G;
+&gt;&gt; zpk(ftma_pil)
+
+ans =
+ 
+      4.0321e11 (s+60) (s+22.01)
+  -----------------------------------
+  s^2 (s+1.454e06) (s+2876) (s+59.23)
+ 
+Continuous-time zero/pole/gain model.
+
+&gt;&gt; figure; bode(ftma_pil)
+&gt;&gt; grid
+&gt;&gt; save motor_position_carnegie_mellon
+&gt;&gt; </code></pre></div>
+
+<p>O diagrama de Bode deste &quot;pil&quot; rende:</p>
+
+<p><img src="lead/motor_posicao_bode_pil.png" alt="motor_posicao_bode_pil.png"></p>
+
+<hr>
+
+<p>Prof. Fernando Passold, em 15.11.2019</p>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.matlab={string:/\B'(?:''|[^'\n])*'/,comment:[/%\{[\s\S]*?\}%/,/%.+/],number:/\b-?(?:\d*\.?\d+(?:[eE][+-]?\d+)?(?:[ij])?|[ij])\b/,keyword:/\b(?:break|case|catch|continue|else|elseif|end|for|function|if|inf|NaN|otherwise|parfor|pause|pi|return|switch|try|while)\b/,"function":/(?!\d)\w+(?=\s*\()/,operator:/\.?[*^\/\\']|[+\-:@]|[<>=~]=?|&&?|\|\|?/,punctuation:/\.{3}|[.,;\[\](){}!]/};
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
