@@ -1,0 +1,184 @@
+% Diretório de trabalho
+pwd
+
+ans =
+
+    '/Volumes/Data/Users/fernandopassold/Documents/UPF/Controle_2/6_Usando_RL_Projetos/exercicios'
+
+% Ingressando dados da planta 1
+%
+% $$
+conv( [0 1 10], [1 2 2] )
+
+ans =
+
+     0     1    12    22    20
+
+den1 = conv( [0 1 10], [1 2 2] );
+G1 = tf ( 40*[1 6], 3*den1);
+zpk(G1)
+
+ans =
+ 
+      13.333 (s+6)
+  ---------------------
+  (s+10) (s^2 + 2s + 2)
+ 
+Continuous-time zero/pole/gain model.
+
+40/3
+
+ans =
+
+   13.3333
+
+format compact
+OS=10;
+zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+zeta =
+    0.5912
+% sintonizando controlador proporcional
+rlocus(G1)
+hold on;
+sgrid(zeta,0)
+[K, polosMF]=rlocfind(G1)
+Select a point in the graphics window
+selected_point =
+  -1.0434 + 1.4125i
+K =
+    0.1321
+polosMF =
+  -9.9143 + 0.0000i
+  -1.0428 + 1.4126i
+  -1.0428 - 1.4126i
+% fechando malha...
+ftmf_Kp=feedback(K*G1, 1);
+% verificando resposta
+figure; % abrindo outra janela gráfica
+step(ftmf)
+{Undefined function or variable 'ftmf'.} 
+step(ftmf_Kp)
+help step
+ <strong>step</strong>  Step response of dynamic systems.
+ 
+    [Y,T] = <strong>step</strong>(SYS) computes the step response Y of the dynamic system SYS. 
+    The time vector T is expressed in the time units of SYS and the time 
+    step and final time are chosen automatically. For multi-input systems,
+    independent step commands are applied to each input channel. If SYS has 
+    NY outputs and NU inputs, Y is an array of size [LENGTH(T) NY NU] where 
+    Y(:,:,j) contains the step response of the j-th input channel.
+ 
+    For state-space models, 
+       [Y,T,X] = <strong>step</strong>(SYS) 
+    also returns the state trajectory X, an array of size [LENGTH(T) NX NU] 
+    for a system with NX states and NU inputs.
+ 
+    For identified models (see IDMODEL),
+       [Y,T,X,YSD] = <strong>step</strong>(SYS) 
+    also computes the standard deviation YSD of the response Y (YSD is empty 
+    if SYS does not contain parameter covariance information).
+ 
+    [Y,...] = <strong>step</strong>(SYS,TFINAL) simulates the step response from t=0 to the 
+    final time t=TFINAL (expressed in the time units of SYS). For discrete-
+    time models with unspecified sample time, TFINAL is interpreted as  
+    the number of sampling periods.
+ 
+    [Y,...] = <strong>step</strong>(SYS,T) specifies the time vector T for simulation (in 
+    the time units of SYS). For discrete-time models, T should be of the  
+    form 0:Ts:Tf where Ts is the sample time. For continuous-time models, 
+    T should be of the form 0:dt:Tf where dt is the sampling period for the 
+    discrete approximation of SYS. 
+ 
+    [Y,...] = <strong>step</strong>(SYS,...,OPTIONS) specifies additional options such as the
+    step amplitude or input offset. Use stepDataOptions to create the option
+    set OPTIONS.
+ 
+    When called without output arguments, <strong>step</strong>(SYS,...) plots the step 
+    response of SYS and is equivalent to STEPPLOT(SYS,...). See STEPPLOT 
+    for additional graphical options for step response plots.
+ 
+    See also <a href="matlab:help DynamicSystem/stepplot">stepplot</a>, <a href="matlab:help stepDataOptions">stepDataOptions</a>, <a href="matlab:help impulse">impulse</a>, <a href="matlab:help initial">initial</a>, <a href="matlab:help lsim">lsim</a>, <a href="matlab:help ltiview">ltiview</a>, 
+    <a href="matlab:help DynamicSystem">DynamicSystem</a>, <a href="matlab:help idlti">idlti</a>.
+
+    <a href="matlab:doc control/step">Reference page for control/step</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('step')">Other functions named step</a>
+
+dcgain(ftmf_Kp)
+ans =
+    0.3456
+erro_Kp=(1-decgain(ftmf_Kp))*100
+{Undefined function or variable 'decgain'.} 
+erro_Kp=(1-dcgain(ftmf_Kp))*100
+erro_Kp =
+   65.4361
+% incorporando controlador integrador puro
+C_I=tf( 1, [1 0]);
+zpk(C_I)
+
+ans =
+ 
+  1
+  -
+  s
+ 
+Continuous-time zero/pole/gain model.
+
+% fechando malha com Integrador Puro
+ftma_I=C_I*G1;
+% confirmando a FTMA(s):
+zpk(ftma_I)
+
+ans =
+ 
+       13.333 (s+6)
+  -----------------------
+  s (s+10) (s^2 + 2s + 2)
+ 
+Continuous-time zero/pole/gain model.
+
+% traçando o lugar das raízes
+figure; rlocus(ftma_I)
+hold on; zgrid(zeta,0);
+% realizando o zoom na área de interesse
+figure; step(K*G1)
+[K_I, polosMF]=rlocfind(ftma_I)
+Select a point in the graphics window
+selected_point =
+  -0.6261 + 0.8493i
+K_I =
+    0.1041
+polosMF =
+ -10.0068 + 0.0000i
+  -0.6275 + 0.8567i
+  -0.6275 - 0.8567i
+  -0.7382 + 0.0000i
+% figura salva como: G1_rlocus_I_puro.png
+
+ftmf_I=feedback(K_I*ftma_I, 1);
+figure; step(ftmf_I)
+% figura salva como: G1_step_C_I_puro.png
+pole(ftma_I)
+ans =
+   0.0000 + 0.0000i
+ -10.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+zero(ftma_I)
+ans =
+    -6
+axis([-7 1 -2 2])
+K_I2=290;
+ftmf_I2=feedback(K_I2*ftma_I, 1);
+figure; step(ftmf_I1, ftmf_I2)
+{Undefined function or variable 'ftmf_I1'.} 
+figure; step(ftmf_I, ftmf_I2)
+KI2=0.290;
+ftmf_I2=feedback(K_I2*ftma_I, 1);
+figure; step(ftmf_I, ftmf_I2)
+clear KI2
+K_I2=0.290;
+ftmf_I2=feedback(K_I2*ftma_I, 1);
+figure; step(ftmf_I, ftmf_I2)
+legend('Int. Puro (K=0,1041', 'Int. Puro (K=0.290)')
+% figura esportada como: G1_step_I_puro_details.png
+diary off
