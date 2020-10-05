@@ -11,13 +11,6 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 ## Projeto de Controladores usando Root Locus
 
 * [Projeto de Controladores usando Root Locus (Parte I): Controlador Proporcional](projeto_usando_root_locus_parte_1.html);
-<<<<<<< HEAD
-* [Projeto de Controladores Prooporcional e com Ação Integral]()
-
-* [Projeto de PI (por contribuição angular) + Lag](PI_angular_Lag.html);
-
-   >  [Projeto de PI usando contribuição angular (versão antiga, de 2019/2)](projeto_controladores_acao_integral_extendido.html);
-=======
 * [Projeto de Controladores Prooporcional e com Ação Integral](PI_parte1.html)
 
 * [Projeto de PI (por contribuição angular) + Lag](PI_angular_Lag.html);
@@ -33,7 +26,6 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 * [Projeto de Controlador por Avanço de Fase (Lead)](lead_bode.html);
 * Projeto de Compensador Lead-Lag
 
->>>>>>> 941eeea82966c27083e0106e9ebd8940abb92efa
 
 ## Sugestões
 
@@ -42,8 +34,4 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 ---
 [🎵 Paul McCartney Wings - Live And Let Die](https://soundcloud.com/paolitachan/paul-mccartney-wings-live-and)
 
-<<<<<<< HEAD
 Prof. Fernando Passold, criado em 19/05/2020.
-=======
-Prof. Fernando Passold, criado em 19/05/2020.
->>>>>>> 941eeea82966c27083e0106e9ebd8940abb92efa
