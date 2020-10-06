@@ -385,7 +385,7 @@ mas normalmente apenas o atributo `width` ou `zoom` já permite escalonar a figu
     <img src="Writing Mathematic Fomulars in Markdown -csrgxtu.github.io.png" alt="Writing Mathematic Fomulars in Markdown -csrgxtu.github.io.png" width="700" />
 
 - [Editor online de equações no formato LaTeX: CodeCogs](https://www.codecogs.com/eqnedit.php):<br/>
-  <img src="Editor_Online_de_Equações_LaTeX.png" width="700" />
+  <img src="Editor_Online_de_Equações_LaTeX_png.png" width="700" />
 
 - [Editor online de equações no formato LaTeX: LaTeX4technics](https://www.latex4technics.com)
 
