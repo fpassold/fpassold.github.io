@@ -159,7 +159,7 @@ ao invés de usar:
 
 O editor Typora permite usar a opção com escalonamento depois que foi realizada a seleção do arquivo da figura deseja. Basta depois do momento de selecionar o arquivo, clicar no botão direito do mouse para abrir propriedades, o que faz surgir uma caixa de diálogo flutuante com algumas opções de escalonamento. O próprio Typora passa do formato originalmente previsto para markdown para o formato HTML (acima). Por exemplo:
 
-<img src="exemplo_incluir_escalonar_figura_typora.gif" alt="exemplo_incluir_escalonar_figura_typora.gif" style="zoom:67%;" />
+<img src="exemplo_incluir_escalonar_figura_typora.mp4" alt="exemplo_incluir_escalonar_figura_typora.mp4" style="zoom:67%;" />
 
 <a name="matlab_save"></a>
 ==**IMPORTANTE**==
