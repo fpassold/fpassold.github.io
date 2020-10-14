@@ -1,0 +1,483 @@
+% ## Projeto de Controlador PI
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+PI_aux=tf(1 , [1 0]); % PI sem o zero!
+ftma_aux=PI_aux*BoG;
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('InputOutputModel/mtimes', '/Applications/MATLAB_R2017b.app/toolbox/control/ctrlmodels/@InputOutputModel/mtimes.m', 80)" style="font-weight:bold"> * </a> (<a href="matlab: opentoline('/Applications/MATLAB_R2017b.app/toolbox/control/ctrlmodels/@InputOutputModel/mtimes.m',80,0)">line 80</a>)
+Sampling times must agree.} 
+PI_aux=tf(1 , [1 0], T); % PI sem o zero!
+ftma_aux=PI_aux*BoG;
+figure; pzmap(ftma_aux)
+zpk(PI_aux)
+
+ans =
+ 
+  1
+  -
+  z
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+PI_aux=tf(1 , [1 -1], T); % PI sem o zero!
+zpk(PI_aux)
+
+ans =
+ 
+    1
+  -----
+  (z-1)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_aux=PI_aux*BoG;
+pzmap(aux)
+{Undefined function or variable 'aux'.} 
+zpk(PI_aux)
+
+ans =
+ 
+    1
+  -----
+  (z-1)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+pzmap(PI_aux)
+pzmap(ftma_aux)
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Onde colocar zero do PI ?
+
+% Opção 2) Colocar o  0,8187 < zero_PI < 0,9048:
+
+% RL resultante (raciocínio):
+
+% ![Opcao_2_zero_PI.png](Opcao_2_zero_PI.png)
+
+% Opção 1) Colocar  0,9048 < zero_PI < 1 (integrador)
+
+% RL resultante:
+
+% ![Opcao_1_zero_PI.png](Opcao_1_zero_PI.png)
+
+% Optando pela opção 1, porque o RL com pólos complexos fica mais afastado do círculo unitário (resposta + rápida).
+
+PI=tf( [1 -0.93], [1 -1], T)
+
+PI =
+ 
+  z - 0.93
+  --------
+   z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_PI=PI*BoG;
+figure; rlocus(ftma_PI)
+hold on;
+zgrid(zeta,0)
+[K_PI, polosMF] = rlocfind(ftma_PI)
+Select a point in the graphics window
+selected_point =
+   0.8938 + 0.0992i
+K_PI =
+   18.8690
+polosMF =
+   0.9472 + 0.0000i
+   0.8938 + 0.0992i
+   0.8938 - 0.0992i
+   0.3543 + 0.0000i
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% RL resultante:
+
+% ![RL_PI.png](RL_PI.png)
+
+% Fechando a malha:
+
+ftmf_PI = feedback(K_PI*ftma_PI, 1);
+figure; step(ftmf_PI)
+
+% Resultado da resposta ao degrau:
+
+% ![step_PI.png](step_PI.png)
+
+% Comparando com controladores anteriores:
+
+figure; step(ftmf, ftmf_I, ftmf_PI);
+[Warning: Cannot set Position while WindowStyle is 'docked'] 
+[> In restoreExport
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('exportsetupdlg>doRestore', '/Applications/MATLAB_R2017b.app/toolbox/matlab/graphics/exportsetupdlg.m', 819)" style="font-weight:bold">exportsetupdlg>doRestore</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2017b.app/toolbox/matlab/graphics/exportsetupdlg.m',819,0)">line 819</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('exportsetupdlg>doCancel', '/Applications/MATLAB_R2017b.app/toolbox/matlab/graphics/exportsetupdlg.m', 967)" style="font-weight:bold">exportsetupdlg>doCancel</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2017b.app/toolbox/matlab/graphics/exportsetupdlg.m',967,0)">line 967</a>)] 
+
+% ![comparando_KP_I_PI.png](comparando_KP_I_PI.png)
+
+% ## Projeto do Controlador por Atraso de Fase (Lag)
+
+% Comparativo do Lag com PI:
+
+% ![RL_Lag_PI.png](RL_Lag_PI.png)
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+Lag=tf( [1 -0.91] , [0 -0.98 ] , T)
+
+Lag =
+ 
+  -z + 0.91
+  ---------
+    0.98
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+Lag=tf( [1 -0.91] , [1 -0.98 ] , T)
+
+Lag =
+ 
+  z - 0.91
+  --------
+  z - 0.98
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_Lag=Lag*BoG;
+figure; rlocus(ftma_Lag)
+hold on
+zgrid(zeta,0)
+[K_Lag, polosMF] = rlocfind(ftma_Lag)
+Select a point in the graphics window
+selected_point =
+   0.9009 + 0.0952i
+K_Lag =
+   17.1887
+polosMF =
+   0.9135 + 0.0000i
+   0.9002 + 0.0953i
+   0.9002 - 0.0953i
+   0.3555 + 0.0000i
+
+% RL resultante para o Lag:
+
+% ![RL_Lag.png](RL_Lag.png)
+
+% Fechando a malha...
+
+ftmf_Lag = feedback(K_Lag*ftma_Lag, 1);
+figure; step(ftmf_Lag)
+axis([0 6 0 1])
+
+% Resposta ao degrau para controlador Lag:
+
+% ![step_Lag.png](step_Lag.png)
+
+% Note, agora existe erro em regime permanente é diferente de zero.
+
+dcgain(ftmf_Lag)
+ans =
+    0.7946
+erro_Lag=(1-dcgain(ftmf_Lag))/1*100
+erro_Lag =
+   20.5446
+
+% Será que este controlador é mais rápido que o PI?
+
+% Comparando Lag com PI
+
+figure; step(ftmf_PI, ftmf_Lag)
+[Warning: Cannot set Position while WindowStyle is 'docked'] 
+[> In restoreExport
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('exportsetupdlg>doRestore', '/Applications/MATLAB_R2017b.app/toolbox/matlab/graphics/exportsetupdlg.m', 819)" style="font-weight:bold">exportsetupdlg>doRestore</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2017b.app/toolbox/matlab/graphics/exportsetupdlg.m',819,0)">line 819</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('exportsetupdlg>doCancel', '/Applications/MATLAB_R2017b.app/toolbox/matlab/graphics/exportsetupdlg.m', 967)" style="font-weight:bold">exportsetupdlg>doCancel</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2017b.app/toolbox/matlab/graphics/exportsetupdlg.m',967,0)">line 967</a>)] 
+
+% ![step_Lag_PI.png](step_Lag_PI.png)
+
+save planta
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+
+% ##Projeto do PI cancelando pólo + lento
+
+polos_planta=pole(BoG)
+polos_planta =
+    0.9048
+    0.8187
+    0.3679
+polos_planta(1)
+ans =
+    0.9048
+PI2=tf( [1 -polos_planta(1)], [1 -1], T)
+
+PI2 =
+ 
+  z - 0.9048
+  ----------
+    z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_PI2=PI2*BoG;
+zpk(ftma_PI2)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z-0.9048) (z+0.1903)
+  ------------------------------------------
+    (z-1) (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+figure; rlocus(ftma_PI2)
+hold on;
+zgrid(zeta,0)
+[K_PI2,polosMF] = rlocfind(ftma_PI2)
+Select a point in the graphics window
+selected_point =
+   0.9158 + 0.0845i
+K_PI2 =
+   17.1359
+polosMF =
+   0.9143 + 0.0846i
+   0.9143 - 0.0846i
+   0.9048 + 0.0000i
+   0.3560 + 0.0000i
+K_PI2 =
+ K_PI2 =
+        
+{Error: Expression or statement is incomplete or incorrect.
+} 
+
+% RL resultante:
+
+% ![RL_PI2.png](RL_PI2.png)
+
+% Fechando a malha...
+
+ftmf_PI2=feedback(K_PI2*ftma_PI2, 1);
+figure; step(ftmf_PI, ftmf_PI2)
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+
+% Resposta ao degrau unitário:
+
+% ![step_PI_PI2.png](step_PI_PI2.png)
+
+% ## Comparando esforços de controle
+
+save planta
+aux_PI2=K_PI2*PI2/(1+K_PI2*ftma_PI2);
+aux_PI=K_PI*PI/(1+K_PI*ftma_PI);
+
+% Comparando $u[kT]$ do PI com PI2:
+
+figure; step(aux_PI, aux_PI2)
+
+% ![step_PI_PI2.png](step_PI_PI2.png)
+
+% Comparando com controlador proporcional
+
+aux_Kp=K/(1+K*BoG);
+
+figure; step(aux, Kp, aux_PI, aux_PI2)
+{Undefined function or variable 'aux'.} 
+figure; step(aux_Kp, aux_PI, aux_PI2)
+
+% ![u_kT_Kp_PI_PI2.png](u_kT_Kp_PI_PI2.png)
+
+save planta
+diary off
