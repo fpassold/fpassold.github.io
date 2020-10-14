@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>controle_3</title>
+<title>aula_14_10_2020</title>
 
 
 <style type="text/css">
@@ -701,49 +701,347 @@ div.mermaidTooltip {
 
 <body>
 
-<h1 id="toc_0">Curso de Controle Automático III</h1>
+<h2 id="toc_0">Projeto de Controlador PI</h2>
 
-<p><img src="cason-asher-Ur7Efx8lBjs-unsplash.jpg" alt="cason-asher-Ur7Efx8lBjs-unsplash.jpg"></p>
+<blockquote>
+<p>Aula de 14/10/2020</p>
+</blockquote>
 
-<p>Aulas ministradas:</p>
+<p>Relembrando a planta usada para estudo de caso:</p>
 
-<p>Estudo de Caso:</p>
+<div><pre><code class="language-matlab">» zpk(BoG)
 
-<ol>
-<li><p>Projeto de Controlador Proporcional:</p>
+ans =
+
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.</code></pre></div>
+
+<p>Equação do PI:</p>
+
+<p>\[
+C(z)=K_p+\dfrac{K_i}{(z-1)}=\frac{K_p z - K_p + K_i}{(z-1)}
+\]
+\[
+C(z)=\dfrac{ K_p \left[ z - \left( 1 - \dfrac{K_i}{K_p}\right) \right]  }{(z-1)}
+\]</p>
+
+<p>O problema aqui é definir a posição do zero.</p>
+
+<p>Usando Matlab para levantar o RL de \(BoG(z)\) e parte do controlador PI sem o zero, para avaliar posições para seu zero:</p>
+
+<div><pre><code class="language-matlab">» PI_aux=tf(1 , [1 -1], T); % PI sem o zero!
+» zpk(PI_aux) % conferindo expressão do PI_aux sem o zero ainda
+
+ans =
+
+    1
+  -----
+  (z-1)
+
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+» ftma_aux=PI_aux*BoG;
+» pzmap(ftma_aux)
+» % Lembrando dos pólos e zeros da planta:
+» zpk(BoG)
+
+ans =
+
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.</code></pre></div>
 
 <ul>
-<li><a href="aula_07_05_2020.html">Aula de 07/05/2020</a>;</li>
-<li>Projeto de Controlador Proporcional + Integral Puro (<a href="2020_2/aula_07_10_2020.html">aula de 07/10/2020</a>);<br/>
-<br/></li>
-</ul></li>
-<li><p>Projeto de Controladores com Ação Integral (PI):</p>
+<li>Onde colocar zero do PI ?</li>
+</ul>
+
+<p>Raciocínio usando RL como ferramenta de decisão:</p>
+
+<p><strong>Opção 1)</strong> Colocar  0,9048 &lt; zero_PI &lt; 1 (integrador) (entre o integrador e o pólo + lento)</p>
+
+<p><strong>Opção 2)</strong> Colocar o  0,8187 &lt; zero_PI &lt; 0,9048 (entre os 2 pólos mais lentos da planta)</p>
+
+<table>
+<thead>
+<tr>
+<th><img src="Opcao_1_zero_PI.png" alt="Opcao_1_zero_PI.png" style="zoom:50%;" /></th>
+<th><img src="Opcao_2_zero_PI.png" alt="Opcao_2_zero_PI.png" style="zoom:50%;" /></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Opção 1:</td>
+<td>Opção 2:</td>
+</tr>
+<tr>
+<td>0,9048 &lt; zero_PI &lt; 1</td>
+<td>0,8187 &lt; zero_PI &lt; 0,9048</td>
+</tr>
+</tbody>
+</table>
+
+<p>Observe certas sutilezas nos gráficos anteriores:
+* A distância (raio) de um pólo complexo no RL para a opção 1 está um pouco mais próxima da origem do plano-z em comparação com a opção 2. A diferença pode parecer pequena nas figuras, mas as 2 opções implicam resultados bem diferentes.</p>
+
+<p><strong>Conclusão:</strong> Optando pela opção 1, porque o RL com pólos complexos fica ligeiramente mais afastado do círculo unitário (resposta + rápida).</p>
+
+<p>Continuando com projeto do PI:</p>
+
+<div><pre><code class="language-matlab">» PI=tf( [1 -0.93], [1 -1], T)
+
+PI =
+
+  z - 0.93
+  --------
+   z - 1
+
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+» ftma_PI=PI*BoG;
+» figure; rlocus(ftma_PI)
+» hold on;
+» zgrid(zeta,0)
+» % Sintonizando PI:
+» [K_PI, polosMF] = rlocfind(ftma_PI)
+Select a point in the graphics window
+selected_point =
+   0.8938 + 0.0992i
+K_PI =
+   18.8690
+polosMF =
+   0.9472 + 0.0000i
+   0.8938 + 0.0992i
+   0.8938 - 0.0992i
+   0.3543 + 0.0000i
+zpk(BoG)
+
+ans =
+
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.</code></pre></div>
+
+<p>RL resultante:</p>
+
+<p><img src="RL_PI.png" alt="RL_PI.png" style="zoom:50%;" /></p>
+
+<p>Fechando a malha:</p>
+
+<div><pre><code class="language-matlab">» ftmf_PI = feedback(K_PI*ftma_PI, 1);
+» figure; step(ftmf_PI)</code></pre></div>
+
+<p>Resultado da resposta ao degrau:</p>
+
+<p><img src="step_PI.png" alt="step_PI.png" style="zoom:50%;" /></p>
+
+<p>Comparando com controladores anteriores:</p>
+
+<div><pre><code class="language-matlab">» figure; step(ftmf, ftmf_I, ftmf_PI);</code></pre></div>
+
+<p><img src="comparando_KP_I_PI.png" alt="comparando_KP_I_PI.png" style="zoom:50%;" /></p>
+
+<h2 id="toc_1">Projeto do Controlador por Atraso de Fase (Lag)</h2>
+
+<p>Comparativo do Lag com PI (teoria):</p>
+
+<p><img src="RL_Lag_PI.png" alt="RL_Lag_PI.png" style="zoom:50%;" /></p>
+
+<div><pre><code class="language-matlab">» % Lembrando de BoG(z)
+» zpk(BoG)
+
+ans =
+
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+» Lag=tf( [1 -0.91] , [1 -0.98 ] , T)
+
+Lag =
+
+  z - 0.91
+  --------
+  z - 0.98
+
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+» ftma_Lag=Lag*BoG;
+» figure; rlocus(ftma_Lag)
+» hold on
+» zgrid(zeta,0)
+» % Sintonizando Lag:
+» [K_Lag, polosMF] = rlocfind(ftma_Lag)
+Select a point in the graphics window
+selected_point =
+   0.9009 + 0.0952i
+K_Lag =
+   17.1887
+polosMF =
+   0.9135 + 0.0000i
+   0.9002 + 0.0953i
+   0.9002 - 0.0953i
+   0.3555 + 0.0000i</code></pre></div>
+
+<p>RL resultante para o Lag:</p>
+
+<p><img src="RL_Lag.png" alt="RL_Lag.png" style="zoom:50%;" /></p>
+
+<p>Fechando a malha...</p>
+
+<div><pre><code class="language-matlab">» ftmf_Lag = feedback(K_Lag*ftma_Lag, 1);
+» figure; step(ftmf_Lag)
+» axis([0 6 0 1])</code></pre></div>
+
+<p>Resposta ao degrau para controlador Lag:</p>
+
+<p><img src="step_Lag.png" alt="step_Lag.png" style="zoom:50%;" /></p>
+
+<p>Note, agora existe erro em regime permanente: \(e[kT] \neq 0\).</p>
+
+<div><pre><code class="language-matlab">» % Verificando erro
+» dcgain(ftmf_Lag) % valor de y[\infty]
+ans =
+    0.7946
+» erro_Lag=(1-dcgain(ftmf_Lag))/1*100
+» erro_Lag =
+   20.5446</code></pre></div>
 
 <ul>
-<li><a href="aula_14_05_2020.html">Aula de 14/05/2020</a>;<br/>
-<br/></li>
-</ul></li>
-<li><p>Projeto de Controlador por Atraso de Fase (Lag):</p>
+<li>Será que este controlador é mais rápido que o PI?</li>
+</ul>
 
-<ul>
-<li><a href="controlador_Lag.html">Aula de 21/05/2020</a>;</li>
-<li>Projeto de Controlador PI + Lag (<a href="2020_2/aula_14_10_2020.html">aula de 14/10/2020</a>)<br/>
-</br></li>
-</ul></li>
-<li><p><a href="Controle_Acao_Derivativa.html">Controle com Ação Derivativa (teoria)</a> (Aula de 21/05/2020);</p></li>
-<li><p><a href="pd_plus_filtro.pdf">Deduzindo Equações de Controladores com Ação Derivativa</a> (Aula de 21/05/2020);</p></li>
-<li><p><a href="projeto_PD_lead_2020.html">Projetos de Controlador PD e Lead</a> (Aula de 28/05/2020);</p></li>
-<li><p><a href="deadbeat_08out2019.html">Controlador Deadbeat -- projeto(s)</a> (Aula de 04/06/2020);</p></li>
-</ol>
+<p>Comparando Lag com PI:</p>
+
+<div><pre><code class="language-matlab">» figure; step(ftmf_PI, ftmf_Lag)</code></pre></div>
+
+<p><img src="step_Lag_PI.png" alt="step_Lag_PI.png" style="zoom:50%;" /></p>
+
+<h2 id="toc_2">Projeto do PI cancelando pólo + lento</h2>
+
+<p>A ideia aqui é avaliar se ao invés de atribuir um local para o zero entre pólos dominantes da \(FTMA(z)\), o que ocorre se o zero do controlador cancelar propositalmente o pólo mais lento da planta?</p>
+
+<div><pre><code class="language-matlab">» polos_planta=pole(BoG)
+    0.9048
+    0.8187
+    0.3679
+» polos_planta(1) % isolando apenas o pólo + lento
+ans =
+    0.9048
+» % Montando o PI com zero igual ao pólo + lento da planta:
+» PI2=tf( [1 -polos_planta(1)], [1 -1], T)
+
+PI2 =
+
+  z - 0.9048
+  ----------
+    z - 1
+
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+» ftma_PI2=PI2*BoG;
+» zpk(ftma_PI2) % comprovando cancelamento pólo-zero
+
+ans =
+
+  0.00012224 (z+2.747) (z-0.9048) (z+0.1903)
+  ------------------------------------------
+    (z-1) (z-0.9048) (z-0.8187) (z-0.3679)
+
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+» figure; rlocus(ftma_PI2)
+» hold on;
+» zgrid(zeta,0)
+» % Sintonizando este PI:
+» [K_PI2,polosMF] = rlocfind(ftma_PI2)
+Select a point in the graphics window
+selected_point =
+   0.9158 + 0.0845i
+K_PI2 =
+   17.1359
+polosMF =
+   0.9143 + 0.0846i
+   0.9143 - 0.0846i
+   0.9048 + 0.0000i
+   0.3560 + 0.0000i</code></pre></div>
+
+<p>RL resultante:</p>
+
+<p><img src="RL_PI2.png" alt="RL_PI2.png" style="zoom:50%;" /></p>
+
+<p>Fechando a malha...</p>
+
+<div><pre><code class="language-matlab">» ftmf_PI2=feedback(K_PI2*ftma_PI2, 1);
+» figure; step(ftmf_PI, ftmf_PI2)</code></pre></div>
+
+<p>Resposta ao degrau unitário:</p>
+
+<p><img src="step_PI_PI2.png" alt="step_PI_PI2.png" style="zoom:50%;" /></p>
+
+<h2 id="toc_3">Comparando esforços de controle</h2>
+
+<p>A ideia aqui é avaliar as amplitudes desenvolvidas por cada ação de controle, \(u[kT]\):</p>
+
+<p>Baseado na <strong>apostila.pdf</strong> (Apêndice G.1 Gráfico de \(u[kT]\)), percebemos que a função <strong>step(FTMF)</strong> do Matlab realiza:
+\[
+\text{step(FTMF)}=\text{&quot;plot&quot;} \left( \mathcal{Z}^{-1}\left\{ \underbrace{U(z)}_{\mathcal{Z}\left\{ \text{Degrau} \right\}} \cdot \text{FTMF}(z) \right\} \right)
+\]
+E lembrando que:
+\[
+U(z)=\left[ \dfrac{C(z)}{1+C(z)\cdot BoG(z)} \right]
+\]
+Então:</p>
+
+<div><pre><code class="language-matlab">» aux_PI2=K_PI2*PI2/(1+K_PI2*ftma_PI2);
+» aux_PI=K_PI*PI/(1+K_PI*ftma_PI);
+» % Comparando $u[kT]$ do PI com PI2:
+» figure; step(aux_PI, aux_PI2)</code></pre></div>
+
+<p><img src="step_PI_PI2.png" alt="step_PI_PI2.png" style="zoom:50%;" /></p>
+
+<p>Comparando com controlador proporcional</p>
+
+<div><pre><code class="language-matlab">» aux_Kp=K/(1+K*BoG);
+» figure; step(aux_Kp, aux_PI, aux_PI2)</code></pre></div>
+
+<p><img src="u_kT_Kp_PI_PI2.png" alt="u_kT_Kp_PI_PI2.png" style="zoom:50%;" /></p>
+
+<p><strong>Finalizando atividades desta aula:</strong></p>
+
+<div><pre><code class="language-matlab">» save planta
+» diary off</code></pre></div>
 
 <hr>
 
-<p><font size="1"> (c) Fernando Passold, página atualiza em 28/05/2020, 04/06/2020, 14/10/2020 </font></p>
+<p>Fernando Passold, em 14/10/2020</p>
 
 
 
 <script type="text/javascript">
 var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.matlab={string:/\B'(?:''|[^'\n])*'/,comment:[/%\{[\s\S]*?\}%/,/%.+/],number:/\b-?(?:\d*\.?\d+(?:[eE][+-]?\d+)?(?:[ij])?|[ij])\b/,keyword:/\b(?:break|case|catch|continue|else|elseif|end|for|function|if|inf|NaN|otherwise|parfor|pause|pi|return|switch|try|while)\b/,"function":/(?!\d)\w+(?=\s*\()/,operator:/\.?[*^\/\\']|[+\-:@]|[<>=~]=?|&&?|\|\|?/,punctuation:/\.{3}|[.,;\[\](){}!]/};
 </script>
 
 <script type="text/javascript">
