@@ -5,13 +5,15 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 
 ## Cronogramas
 
-* :boom: [**Calendário final previsto para 2020/2**](Aulas_Controle_II_2020_2.html) :exclamation:
+* 🔔 [**Calendário final previsto para 2020/2**](Aulas_Controle_II_2020_2.html) 📣
 
-<br/>
+<br>
 ## 4) Estabilidade
 
 * [Parte 1](estabilidade.html);
 * [Parte 2](estabilidade2.html);
+
+<br>
 
 ## 5) Projeto de Controladores usando Root Locus
 
@@ -21,9 +23,10 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 * [Projeto de PI (por contribuição angular) + Lag](PI_angular_Lag.html);
 
     * [Projeto de PI usando contribuição angular (versão antiga, de 2019/2)](projeto_controladores_acao_integral_extendido.html);
-   * [Eng. Elétrica: Aula de 20/05/2020](aula_20_05_2020/aula_20_05_2020.html) 
+   * [Aula de 20/05/2020](aula_20_05_2020/aula_20_05_2020.html) 
+   * [Aula de 26/10/2020](2020_2/PI_Lag_aula_26_10_2020.html)
 
-<br/>
+<br>
 
 * [Teoria Ação Derivativa (Cuidados/Atenção)](Acao_Derivativa.html)
 * [Projeto de PD](aula_PD_03out2019.html)
@@ -32,7 +35,7 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 
 * [Exemplos de projetos de controladores usando RL](exercicios/exercicios.html)
 
-<br/>
+<br>
 ## 6) Projeto de Controladores no Domínio Frequência
 
 * [Projeto de Controlador Proporcional (Ajuste de Ganho)](projeto_bode_01.html);
@@ -40,7 +43,7 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 * [Projeto de Controlador por Avanço de Fase (Lead)](lead_bode.html);
 * Projeto de Compensador Lead-Lag
 
-<br/>
+<br>
 ## Anexos
 
 * [Como obter gráficos de $u(t)$ e $e(t)$](Acoes_Controle_Erro/acoes_controle_erro.html)
@@ -49,4 +52,7 @@ Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](ht
 ---
 [🎵 Paul McCartney Wings - Live And Let Die](https://soundcloud.com/paolitachan/paul-mccartney-wings-live-and)
 
-Prof. Fernando Passold, criado em 19/05/2020.
+Prof. [Fernando Passold](mailto:fpassold@upf.br) -- 
+<script>
+document.write("Last modified " + document.lastModified)
+</script>
