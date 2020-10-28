@@ -10,7 +10,7 @@ Este controlador pode ser implementado da seguinte forma:
 
 O mesmo se encontra dentro de uma malha como:
 
-![malha_fechada_digital.png](malha_fechada_digital.png)
+<img src="malha_fechada_digital.png" alt="malha_fechada_digital.png" style="zoom:50%;" />
 
 Extraíndo equações, obtemos:
 
@@ -262,7 +262,7 @@ void cont1(void) interrupt 3
 
 O código anteior (parte dele) foi incorporado no kit "Processo da Bola no Tubo": 
 
-![Processo_Bola_Tubo.png](Processo_Bola_Tubo.png)
+<img src="Processo_Bola_Tubo.png" alt="Processo_Bola_Tubo.png" style="zoom:33%;" />
 
 Este processo consiste em definir uma altura desejada para a bola dentro de um tubo (referência), cuja altura é mantida pelo "colchão de ar" criado por um ventilador localizado na base inferior do tubo. O controle desse ventilador acaba definindo a altura alcançada pela bola dentro do tubo.
 
@@ -284,7 +284,7 @@ Note que existem teclas reservadas para alteração de alguns parâmetros com o 
 
 A próxima figura mostra como ficava o display com o algoritmo de controle sendo executado:
 
-![tela_processo_funcionamento.png](tela_processo_funcionamento.png)
+<img src="tela_processo_funcionamento.png" alt="tela_processo_funcionamento.png" style="zoom: 25%;" />
 
 Este processo permitia alterar seu algoritmo de controle via upload de novo firmware mas já trazia implementado e sintonizado um controlador PID no formato de velocidade:
 

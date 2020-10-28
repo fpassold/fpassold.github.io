@@ -32,6 +32,7 @@ Estudo de Caso:
 EXTRAs:
 
 * [Implementações de algoritmos de controle digitais](implementacao_controlador_digital.html)
+* [Processo da Bola no Tubo: implementação real](implementacao_controle_digital.html) (TCC de 2006).
 
 ---
 
