@@ -20,7 +20,8 @@ Estudo de Caso:
     * Projeto de Controlador PI + Lag ([aula de 14/10/2020](2020_2/aula_14_10_2020.html))<br/>
 </br>
 
-4. [Controle com Ação Derivativa (teoria)] (Controle_Acao_Derivativa.html) (Aula de 21/05/2020);
+4. [Controle com Ação Derivativa (teoria)] (Controle_Acao_Derivativa.html) (Aula de 21/05/2020);<br>
+    [Projeto de PD (sem contribuição angular)](2020_2/aula_28_10_2020.html) (Aula de 28/10/2020)
 
 5.  [Deduzindo Equações de Controladores com Ação Derivativa](pd_plus_filtro.pdf) (Aula de 21/05/2020);
 
@@ -28,6 +29,9 @@ Estudo de Caso:
 
 7. [Controlador Deadbeat -- projeto(s)](deadbeat_08out2019.html) (Aula de 04/06/2020);
 
+EXTRAs:
+
+* [Implementações de algoritmos de controle digitais](implementacao_controlador_digital.html)
 
 ---
 

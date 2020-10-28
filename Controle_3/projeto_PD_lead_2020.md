@@ -252,11 +252,11 @@ Note que o resultado da contribuição angular para o ângulo deo zero resultou 
 O somatório dos ângulos dos pólos resultou: $\sum{\theta_{\text{pólos}}}=294.36^o$. Pela regra de um ponto pertencente ao RL teremos:
 
 $$
-\underbrace{\theta_{z=-2,747}+\theta_{z=-0,1903}}_{21,24^o}+\theta_{\text{zero_PD}}-\sum {\theta_{\text{pólos}}}= (2k+1)\cdot 180^o
+\underbrace{\theta_{z=-2,747}+\theta_{z=-0,1903}}_{21,24^o}+\theta_{\text{zero\_PD}}-\sum {\theta_{\text{pólos}}}= (2k+1)\cdot 180^o
 $$
 
 $$
-\theta_{\text{zero_PD}}=180^o + 294,36^o - 21.24^o = 453,12^o = 93.1152^o
+\theta_{\text{zero\_PD}}=180^o + 294,36^o - 21.24^o = 453,12^o = 93.1152^o
 $$
 
 Resultado do RL obtido:

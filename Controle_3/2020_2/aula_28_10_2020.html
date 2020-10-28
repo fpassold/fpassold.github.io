@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>controle_3</title>
+<title>aula_28_10_2020</title>
 
 
 <style type="text/css">
@@ -856,56 +856,158 @@ div.mermaidTooltip {
 
 <body>
 
-<h1 id="toc_0">Curso de Controle Automático III</h1>
+<h1 id="toc_0">Projeto de PD</h1>
 
-<p><img src="cason-asher-Ur7Efx8lBjs-unsplash.jpg" alt="cason-asher-Ur7Efx8lBjs-unsplash.jpg"></p>
+<blockquote>
+<p>Aula de 28/10/2020.</p>
+</blockquote>
 
-<p>Aulas ministradas:</p>
+<p>Conforme discussão prévia em sala, analisando o plano-s com os pólos e zeros da planta + o pólo na origem do PD, faltava definir uma posição para o zero do PD. Pela análise do Root Locus, percebe-se que o PD deve gerar respostas mais rápidas (pólos de MF mais rápidos), se o seu zero estiver localizado entre os 2 pólos mais lentos desta planta:  \(0.8187 \le \text{zero}_{\text{PD}} \le 0.9048\).</p>
 
-<p>Estudo de Caso:</p>
+<p>Retomando seção de trabalho anterior no Matlab:</p>
 
-<ol>
-<li><p>Projeto de Controlador Proporcional:</p>
+<div><pre><code class="language-matlab">&gt;&gt; load planta % carrega dados das seções anteriores
+&gt;&gt; zpk(BoG)    % verificando
 
-<ul>
-<li><a href="aula_07_05_2020.html">Aula de 07/05/2020</a>;</li>
-<li>Projeto de Controlador Proporcional + Integral Puro (<a href="2020_2/aula_07_10_2020.html">aula de 07/10/2020</a>);<br/>
-<br/></li>
-</ul></li>
-<li><p>Projeto de Controladores com Ação Integral (PI):</p>
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
 
-<ul>
-<li><a href="aula_14_05_2020.html">Aula de 14/05/2020</a>;<br/>
-<br/></li>
-</ul></li>
-<li><p>Projeto de Controlador por Atraso de Fase (Lag):</p>
+&gt;&gt; pzmap(BoG)  % mostrando no plano-z os pólos e zeros de BoG(z)
+&gt;&gt; % implementando o PD
+&gt;&gt; PD=tf(poly(0.82), poly(0),T);
+&gt;&gt; zpk(PD)  % confirmando ingresso correto de dados
 
-<ul>
-<li><a href="controlador_Lag.html">Aula de 21/05/2020</a>;</li>
-<li>Projeto de Controlador PI + Lag (<a href="2020_2/aula_14_10_2020.html">aula de 14/10/2020</a>)<br/>
-</br></li>
-</ul></li>
-<li><p><a href="Controle_Acao_Derivativa.html">Controle com Ação Derivativa (teoria)</a> (Aula de 21/05/2020);<br>
-<a href="2020_2/aula_28_10_2020.html">Projeto de PD (sem contribuição angular)</a> (Aula de 28/10/2020)</p></li>
-<li><p><a href="pd_plus_filtro.pdf">Deduzindo Equações de Controladores com Ação Derivativa</a> (Aula de 21/05/2020);</p></li>
-<li><p><a href="projeto_PD_lead_2020.html">Projetos de Controlador PD e Lead</a> (Aula de 28/05/2020);</p></li>
-<li><p><a href="deadbeat_08out2019.html">Controlador Deadbeat -- projeto(s)</a> (Aula de 04/06/2020);</p></li>
-</ol>
+ans =
+ 
+  (z-0.82)
+  --------
+     z
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
 
-<p>EXTRAs:</p>
+&gt;&gt; ftma_PD=PD*BoG;
+&gt;&gt; figure; rlocus(ftma_PD)
+&gt;&gt; hold on;
+&gt;&gt; OS
+OS =
+     5
+&gt;&gt; zgrid(zeta,0)
+&gt;&gt; [K_PD,poloMF]=rlocfind(ftma_PD)
+Select a point in the graphics window
+selected_point =
+   0.6375 + 0.2619i
+K_PD =
+  268.4868
+poloMF =
+   0.8205 + 0.0000i
+   0.6372 + 0.2619i
+   0.6372 - 0.2619i
+  -0.0361 + 0.0000i
 
-<ul>
-<li><a href="implementacao_controlador_digital.html">Implementações de algoritmos de controle digitais</a></li>
-</ul>
+% GRáfico do RL para este PD
+% ![RL_PD.png](RL_PD.png)</code></pre></div>
+
+<p>Gráfico do RL gerado para este PD:</p>
+
+<p><img src="RL_PD.png" alt="RL_PD.png"></p>
+
+<p>Fechando a malha:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; ftmf_PD=feedback(K_PD*ftma_PD, 1);
+&gt;&gt; figure; step(ftmf, ftmf_PD)
+&gt;&gt; % Gráfico da resposta ao degrau 
+&gt;&gt; % ![step_PD.png](step_PD.png)</code></pre></div>
+
+<p>Gráfico da resposta ao degrau (comparando com controlador Proporcional):</p>
+
+<p><img src="step_KP_PD.png" alt="step_KP_PD.png"></p>
+
+<p>Alguns dados:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; stepinfo(ftmf_PD)
+        RiseTime: 0.4000
+    SettlingTime: 1.2000
+     SettlingMin: 0.6862
+     SettlingMax: 0.7404
+       Overshoot: 4.6764
+      Undershoot: 0
+            Peak: 0.7404
+        PeakTime: 0.9000
+&gt;&gt; dcgain(ftmf_PD)
+ans =
+    0.7073</code></pre></div>
+
+<p>Repare nos erros:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; erro_PD=(1-dcgain(ftmf_PD))/1*100
+&gt;&gt; erro_PD =
+   29.2707
+&gt;&gt;
+&gt;&gt; erro_Kp=(1-dcgain(ftmf))/1*100
+&gt;&gt; erro_Kp =
+   52.4061
+&gt;&gt; % comparando tempos de assentamento
+&gt;&gt; 3.23/1.15
+ans =
+    2.8087</code></pre></div>
+
+<p>Nota-se que o PD acelerou um sistema em 2,8 vezes e reduziu (mas não cancelou) erro em regime permanente, em comparação com controlador Proporcional.</p>
+
+<p>Verificando agora as amplitudes das ações de controle</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; % levantando equações auxiliares para uso de step e gráficos de u[kT&#39;]
+&gt;&gt; u=K/(1+K*BoG); % cont. Proporcional
+&gt;&gt; uPD=K_PD*PD/(1+K_PD*PD*BoG); % PD
+&gt;&gt; figure; step(u, uPD)
+&gt;&gt; title(&#39;Ações de Controle&#39;);</code></pre></div>
+
+<p>Gráfico das ações de controle:</p>
+
+<p><img src="acao_controle_Kp_PD.png" alt="acao_controle_Kp_PD.png"></p>
+
+<p>Note as amplitudes iniciais geradas pelos controladores:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; K_PD
+K_PD =
+  268.4868
+&gt;&gt; K
+K =
+   18.1635
+&gt;&gt; % relação entre valor inicial de u[kT] gerado pelo PD x Proporcional   
+&gt;&gt; K_PD/K
+ans =
+   14.7817</code></pre></div>
+
+<p>Mas em compensação o PD reduziu tempo de assentamento pela metade ou menos:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; 3.23/2
+ans =
+    1.6150</code></pre></div>
+
+<p>Encerrando atvidades desta aula:</p>
+
+<div><pre><code class="language-matlab">&gt;&gt; save planta
+&gt;&gt; diary off</code></pre></div>
 
 <hr>
 
-<p><font size="1"> (c) Fernando Passold, página atualiza em 28/05/2020, 04/06/2020, 14/10/2020 </font></p>
+<p>Fernando Passold, em 28/10/2020.</p>
 
 
 
 <script type="text/javascript">
 var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.matlab={string:/\B'(?:''|[^'\n])*'/,comment:[/%\{[\s\S]*?\}%/,/%.+/],number:/\b-?(?:\d*\.?\d+(?:[eE][+-]?\d+)?(?:[ij])?|[ij])\b/,keyword:/\b(?:break|case|catch|continue|else|elseif|end|for|function|if|inf|NaN|otherwise|parfor|pause|pi|return|switch|try|while)\b/,"function":/(?!\d)\w+(?=\s*\()/,operator:/\.?[*^\/\\']|[+\-:@]|[<>=~]=?|&&?|\|\|?/,punctuation:/\.{3}|[.,;\[\](){}!]/};
 </script>
 
 <script type="text/javascript">
