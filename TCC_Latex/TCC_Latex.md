@@ -48,9 +48,11 @@ Minhas recomendações para usar LaTeX:
 
 3. Recomendável instalar um editor de equações (principalmente) para novatos em LaTeX:
 
-   * [[LaTeXiT]](https://www.chachatelier.fr/latexit/) - infelizmente este está só disponível para MacOS;
+   * [[LaTeXiT]](https://www.chachatelier.fr/latexit/) - infelizmente só disponível para MacOS;
    * [[LKatexFormula]](https://klatexformula.sourceforge.io) - para Mac e Windows (similar ao LaTeXiT) e talvez para Linux;
    * [[TexMaths]](http://roland65.free.fr/texmaths/) - multiplataforma 
+   * [**[Detexify]**](https://detexify.kirelabs.org/classify.html) - você desenha símbolos e ele tenta retornar o código LaTeX (online):
+     <img src="figuras/detexify.png" alt="detexify.png" style="zoom:70%;" />
 
 
 
@@ -195,7 +197,7 @@ Se você necessitar escrever algo em inglês, o preambulo do arquivo ficaria:
 
 ## Exemplo para TCC
 
-Segue abaixo um simples exemplo de arquivo "relatório_tcc.tex" que pode ser usado para iniciar sua edição do arquivo .tex referente ao relatório do TCC.
+Segue abaixo um simples exemplo de arquivo "exemplo_tcc.tex" que pode ser usado para iniciar sua edição do arquivo .tex referente ao relatório do TCC.
 
 Sugere-se a criação de um arquivo "main.tex" que "inclui" vários arquivos .tex diferentes, onde a ideia pricipal neste arranjo é que cada capitulo do documento seja um arquivo .tex separado, que pode ser editado independente do "main.tex". Lembrar apenas que no momento de compilar o arquivo, a compilação deve ser feita sobre o "main.tex".
 
@@ -270,10 +272,9 @@ No exemplo disponibulizado aqui, o arquivo principal possui o nome "**exemplo_tc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%E
 % Para incluir referências bibliográficas:
-% Atenção: usado: bibLatex ==> para compilar (incluir) as referências bibliográficas
-% corretamente, você deve, depois de compilado ao menos 1x o aruivo .tex,
-% optar pela opção Biber no momento de compilar Ref. Bib e depois novamente
-% compilar o arquivo .tex como fez antes.
+% Atenção: usado: biber ==> para compilar (incluir) as referências bibliográficas
+% corretamente, você deve, depois de compilado ao menos 1x o arquivo .tex,
+% optar pela opção Biber no momento de compilar Ref. Bib.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[backend=biber, style=abnt, justify, giveninits, extrayear, repeatfields]{biblatex}
 % Ref.: http://ctan.math.washington.edu/tex-archive/macros/latex/contrib/biblatex-contrib/biblatex-abnt/doc/biblatex-abnt.pdf
@@ -453,7 +454,7 @@ E segue como exemplo, parte do arquivo "learning.bib" que contêm os dados das r
 
 
 
-Note que não será demonstrado nesta página o conteúdo de todos os arquivos chamados por "exemplo_tcc.tex". Notar que **todos os arquivos** forma disponibilizados de forma compactada no arquivo: [**[TCC_Latex.zip]**](TCC_Latex.zip).
+Note que não será demonstrado nesta página o conteúdo de todos os arquivos chamados por "exemplo_tcc.tex". Notar que **todos os arquivos** foram disponibilizados de forma compactada no arquivo: [**[TCC_Latex.zip]**](TCC_Latex.zip).
 
 Note que uma árvore de arquivos é criada para gerar o documento final:
 
