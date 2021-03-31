@@ -4,6 +4,8 @@
 
 Aulas ministradas:
 
+* Introdução à Sistemas Amostrados, incorporando Z.O.H, cálculo de $BoG(z)$ $\rightarrow$ [deduções e simulações](exemplo_1_BoG/intro_exemplo_1a_ordem.html).
+
 * Estudo de Caso:
 
   1. Projeto de **Controlador Proporcional**:
