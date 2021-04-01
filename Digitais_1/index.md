@@ -8,6 +8,8 @@ Opções disponíveis:
 
 * [Tutorial para uso do LogiSim](Uso_LogiSim.html);
 
+* [Exercícios](exe_mapas_K_2021_1/exemplos_mapas_K3.html) iniciais usando Mapas de Karnaugh envolvendo 3 variáveis:
+
 
 
 ---
