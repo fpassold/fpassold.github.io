@@ -5,7 +5,7 @@
 Aulas ministradas:
 
 * Introdução à Sistemas Amostrados, incorporando Z.O.H, cálculo de $BoG(z)$ $\rightarrow$ [deduções e simulações](exemplo_1_BoG/intro_exemplo_1a_ordem.html).
-
+* [Teoria do Erro](4_teoria_erros/resumo_teoria_erro.html) (papel do integrador);
 * Estudo de Caso:
 
   1. Projeto de **Controlador Proporcional**:
@@ -33,4 +33,4 @@ EXTRAs:
 
 ---
 
-<font size="1"> (c) Fernando Passold, página atualiza em 28/05/2020, 04/06/2020, 11/11/2020 </font>
+<font size="1"> (c) Fernando Passold, página atualiza em 28/05/2020, 04/06/2020, 11/11/2020, 07.04.2021 </font>
