@@ -2,15 +2,13 @@
 
 ![tunafish-mayonnaise-pSIt7op-mds-unsplash.jpg](tunafish-mayonnaise-pSIt7op-mds-unsplash.jpg)Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](https://unsplash.com/photos/pSIt7op-mds)
 
-## Cronogramas
-
-- 🔔 [**Calendário final previsto para 2020/2**](Aulas_Controle_II_2020_2.html) 📣
-
-
-
 ## 2) Ações de Controle
 
-* Exemplo de Controle de Velocidade de motor CC (diferentes controladores), incluindo sua modelagem, [aqui](Testes_Velocidade_Motor_CC/modelagem_motor_cc.html)
+* Exemplo de Controle de Velocidade de motor CC (diferentes controladores), incluindo sua modelagem, [[aqui]](Testes_Velocidade_Motor_CC/modelagem_motor_cc.html).
+
+## 3) Teoria do Erro
+
+* [Exemplos de sistemas à serem simulados](Simulink_Erros/Readme.html) (Matlab/Simulink: arquivos disponibilizados)
 
 ## 4) Estabilidade
 
@@ -47,7 +45,7 @@
 
 ## Anexos
 
-- [Como obter gráficos de u(t)u(t) e e(t)e(t)](Acoes_Controle_Erro/acoes_controle_erro.html)
+- [Como obter gráficos de $u(t)$ e $e(t)$](Acoes_Controle_Erro/acoes_controle_erro.html)
 - [Uso do MATLAB nas aulas de Controle + documentação **Markdown**](sugestao_uso_matlab_em_controle.html);
 
 ------
