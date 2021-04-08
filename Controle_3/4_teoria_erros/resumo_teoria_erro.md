@@ -199,8 +199,203 @@ Ou seja:
   
   
 
-Fim
+---
+
+## Exemplo
+
+Seja uma planta definida no mundo contínuo como:
+
+$G(s)=\dfrac{10}{s(s+1)}$
+
+Suponha que queremos verificar como este sistema se comporta em MF para entradas degrau e rampa, fechando a malha com um simples controlador proporcional (com ganho unitário).
+
+Ingressando estes dados no Matlab para calcular $BoG(z)$:
+
+```matlab
+>> G=tf(10, poly([0 -1]) );
+>> zpk(G)
+
+    10
+-------
+  s (s+1)
+
+Continuous-time zero/pole/gain model.
+
+>> % Digitalizando sistema, calculando $BoG(z)$:
+>> 
+>> T=0.1; % informando periodo de amostragem na varivel T
+>> BoG = c2d( G, T);
+>> zpk(BoG)
+
+  0.048374 (z+0.9672)
+  -------------------
+   (z-1) (z-0.9048)
+
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+```
+
+### Calculando erros:
+
+Usando o Matlab… Note que a função `dcgain()` do Matlab é capaz de trabalhar com argumentos de entrada sendo *transfer functions* tanto no plano-s quanto no plano-z. Ela realiza:
+
+| Plano-s                                                      | Plano-z                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `dcgain(FTMA(s))`=<br/>$=\mathop {\lim }\limits_{s \to 0} FTMA(s)$ | `dcgain(FTMA(z))`=<br/>$=\mathop {\lim }\limits_{z \to 1} FTMA(z)$ |
+
+Então podemos usar esta função para calcular os ganhos (dos erros estáticos) de erro:
+
+```matlab
+>> Kp= dcgain(BoG)
+>> Kp =
+   Inf
+>> BoGKv= BoG*tf([1 -1], 1, T); % acrescentando numerador (z-1)
+>> zpk(BoGKv)
+
+  0.048374 (z-1) (z+0.9672)
+  -------------------------
+      (z-1) (z-0.9048)
+
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+>> Kv=dcgain(BoGKv)
+>> Kv =
+    1.0000
+>> erro_degrau=1/(1+Kp)
+>> erro_degrau =
+     0
+>> erro_rampa=T/Kv
+>> erro_rampa =
+    0.1000
+```
+
+### Simulando resposta em  MF para entrada degrau
+
+Fechando a malha e verificando resposta do sitema:
+
+No Matlab:
+
+```matlab
+ftmf=feedback(1*BoG, 1);
+figure; step(ftmf)
+```
+
+Obtendo a figura:
+
+<img src="item_4_7_step_ftmf_K1.png" alt="item_4_7_step_ftmf_K1.png" style="zoom: 25%;" />
+
+Conforme esperado, nota-se que a saída converge para o mesmo valor da referência, ou seja, o erro em regime permanente é nulo. Mas também se percebe que a resposta é um tanto oscilatória e com *overshoot* elevado, o que significa que mesmo adotar gannho unitário é algo elevado para este sistema.
+
+### Simulando MF com entrada rampa
+
+Usando Matlab:
+
+```matlab
+>> t=0:T:20; % cria vetor tempo com amostras espaçadas de T segundos
+>> r=0.1*t;  % cria o vetor rampa (ou referência)
+>> figure; plot(t, r) % pode ser usado para comprovar o gráfico da rampa
+>> % Mas queremos "trucar" rampa a partir de t=10 segundos
+>> 10/T
+ans =
+   100
+>> % Isto ocorre na amostra de número 100
+>> r(100) % verificando amplitude da rampa para indice=100
+ans =
+    0.9900
+>> r(101) % indice=101 corresponde a amostra k=100
+ans =
+     1
+>> size(r) % comprovando tamanho do vetor r
+ans =
+     1   201
+>> r(101:201)=1; % truncando rampa a partir de t=10 segundos, em amplitude=1
+>> plot(t,r) % pode ser usado para comprovar o gráfico da rampa truncada
+```
+
+Fechando a malha, mas para versão contínua do sistema (à título de comparação)
+
+```matlab
+>> ftmf_c=feedback(1*G, 1); % note que variável 'ftmf'= MF versão digital!
+>> zpk(ftmf_c)
+
+        10
+--------------
+  (s^2 + s + 10)
+
+Continuous-time zero/pole/gain model.
+
+>> % comparando com versão digital da FTMF:
+>> zpk(ftmf) 
+
+    0.048374 (z+0.9672)
+-----------------------
+  (z^2 - 1.856z + 0.9516)
+
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+>> figure; lsim(ftmf_c, r, t); % simulando sistema para referencia r customizada
+```
+
+A próxima figura mostra a resposta para entrada rampa truncada para sistema $G(s)$ em malha-fechado usando simples controlador Proporcional com ganho unitário:
+
+<img src="item_4_7_rampa_ftmf_cont_K1.png" alt="item_4_7_rampa_ftmf_cont_K1.png" style="zoom:25%;" />
+
+Simulando a resposta mas a versão “digitalizada do sistema”… Neste caso, usando a variante "discreta" da função `lsim()`. Note que a função `dlsim()` ao contrário de `lsim`, não admite que argumento de entrada seja uma *transfer function*. Então necessitamos, "expandir" a *transfer function* digital para uma versão que contenha o polinômio (coeficientes) do numerador e denominador em variáveis separadas, usando a função `tfdata(<transfer_function>, ‘v’)` - note que o segundo argumento de entrada desta função deve ser `’v’` (de “verbouse”).
+
+```matlab
+>> help dlsim
+ <strong>dlsim</strong>  Simulation of discrete-time linear systems.
+    <strong>dlsim</strong>(A,B,C,D,U)  plots the time response of the discrete system:
+
+        x[n+1] = Ax[n] + Bu[n]
+        y[n]   = Cx[n] + Du[n]
+     
+    to input sequence U.  Matrix U must have as many columns as there
+    are inputs, u.  Each row of U corresponds to a new time point.
+    <strong>dlsim</strong>(A,B,C,D,U,X0) can be used if initial conditions exist.
+     
+    <strong>dlsim</strong>(NUM,DEN,U) plots the time response of the transfer function
+    description  G(z) = NUM(z)/DEN(z)  where NUM and DEN contain the 
+    polynomial coefficients in descending powers of z.  If 
+    LENGTH(NUM)=LENGTH(DEN) then <strong>dlsim</strong>(NUM,DEN,U) is equivalent to 
+    FILTER(NUM,DEN,U).  When invoked with left hand arguments,
+        [Y,X] = <strong>dlsim</strong>(A,B,C,D,U)
+        [Y,X] = <strong>dlsim</strong>(NUM,DEN,U)
+    returns the output and state time history in the matrices Y and X.
+    No plot is drawn on the screen.  Y has as many columns as there 
+    are outputs and LENGTH(U) rows.  X has as many columns as there 
+    are states and LENGTH(U) rows. 
+     
+    See also:  <a href="matlab:help lsim">lsim</a>, <a href="matlab:help step">step</a>, <a href="matlab:help impulse">impulse</a>, <a href="matlab:help initial">initial</a>.
+```
+
+Obtendo o numerador e denominador de $FTMF(z)$ em variáveis separadas:
+
+```matlab
+>> [numd,dend]=tfdata(ftmf,'v')
+numd =
+         0    0.0484    0.0468
+dend =
+    1.0000   -1.8565    0.9516
+>> figure; dlsim(numd, dend, r)
+```
+
+E então finalmente se obtêm a resposta do sitema digitalizado, em malha fechada, usando controlador proporcional (ganho unitário):
+
+<img src="item_4_7_rampa_ftmf_disc_K1.png" alt="item_4_7_rampa_ftmf_disc_K1.png" style="zoom:25%;" />
+
+Note que este gráfico é semelhante ao obtido para a $FTMF(s)$.
+
+| Resposta $FTMF(s)$                                           | Resposta $FTMF(z)$                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![item_4_7_rampa_ftmf_cont_K1.png](item_4_7_rampa_ftmf_cont_K1.png) | ![item_4_7_rampa_ftmf_disc_K1_zoom.png](item_4_7_rampa_ftmf_disc_K1_zoom.png) |
+
+
+
+Fim.
 
 ---
 
-Prof. Fernando Passold
+Fernando Passold, em 07.04.2021
