@@ -7,7 +7,7 @@
 # Cursos/Disciplinas:
 
 * [Circuitos Digitais I](Digitais_1/index.html) (Eletrônica Digital Combinacional);
-* Lab. de Circuitos Digitais I;
+* [Lab. de Circuitos Digitais I](Digitais_1/lab_dig1.html);
 * [Circuitos Digitais II (Eletrônica Digital Sequencial)](Digitais_2/digitais_2.html);
 * Lab. de Circuitos Digitais II;
 * [Controle Automático 2 (Controle Automático Clássico)](Controle_2/index.html);
