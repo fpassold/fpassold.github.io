@@ -6,6 +6,7 @@ Aulas ministradas:
 
 * Introdução à Sistemas Amostrados, incorporando Z.O.H, cálculo de $BoG(z)$ $\rightarrow$ [deduções e simulações](exemplo_1_BoG/intro_exemplo_1a_ordem.html).
 * [Teoria do Erro](4_teoria_erros/resumo_teoria_erro.html) (papel do integrador);
+* Estabilidade $\Rightarrow$ Método de Jury: [Aplicação](Exemplo_Jury/problema_1.html)
 * Estudo de Caso:
 
   1. Projeto de **Controlador Proporcional**:
