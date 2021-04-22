@@ -164,316 +164,448 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 .md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
 
 
-import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+/**
+ * NexT for Typora
+ * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
+ *
+ * - Want code ligatures for JetBrains Mono?
+ * - Search for `font-variant-ligatures: none;` and comment that line.
+ *
+ * - Want to change the font size in exported pdf?
+ * - Change the variable `--export-font-size` below.
+ **/
+
 :root {
-    --code-block-bg-color: inherit;//#f8f8f8;
-
-    --item-hover-bg-color: #0a0d16;
-    --control-text-color: #b7b7b7;
-    --control-text-hover-color: #eee;
-    --window-border: 1px dashed #9b9b9b;
-
-    --active-file-bg-color: #0070E0;
-    --active-file-border-color: #8d8df0;
-
-    --primary-color: #a3d5fe;
-
-    --active-file-text-color: #0070e0;
-    --item-hover-bg-color: #70717d;
-    --item-hover-text-color: white;
-    --primary-color: #6dc1e7;
+    --base-font-size: 16px;
+    --highlight-color: rgb(0, 160, 160);
+    --text-color: #333;
+    --headings-color: #262a30;
+    --export-font-size: 13px;
+    --select-text-bg-color: #262a30;
+    --select-text-font-color: #eee;
 }
+
+* {
+    /* Disable ligatures */
+    font-variant-ligatures: none;
+}
+
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
 
 html,
 body,
-#write{
-	color: #5e676d;
-	font-family: "Open Sans", "Clear Sans", sans-serif;
+#write {
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    background: #fcfcfc;
+    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    /* letter-spacing: -0.5px; */
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-	/*font-weight: lighter;*/
-	font-weight: 100;
-	color: #5e676d;
-	font-family: "Open Sans", sans-serif;
-	margin: 0.5rem 0;
+    color: var(--headings-color);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 20px 0 15px
 }
 
-html {
-	font-size:16px;
+.CodeMirror pre {
+    font-family: 'JetBrains Mono';
+    font-size: 0.95em;
+    line-height: 1.65em;
 }
 
 #write {
-	max-width: 914px;
-	text-align: justify;
+    max-width: 914px;
+    text-align: justify;
 }
 
 #write>h1:first-child {
-	margin-top: 2.75rem;
+    margin-top: 1.75rem;
 }
+
 #write>h2:first-child {
-	margin-top: 1.75rem;
+    margin-top: 1.5rem;
 }
+
 #write>h3:first-child {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
+
 #write>h4:first-child {
-	margin-top: 0.5rem;
+    margin-top: 0.5rem;
 }
+
 h1 {
-	margin: 1rem 0;
-	/*line-height: 4rem;
-	padding: 5px 30px;
-	text-align: center;
-	margin-top: 4rem;*/
+    font-size: 2.5em
 }
+
 h2 {
-	margin: 0.8rem 0;
-	/*
-	line-height: 3rem;
-	padding: 0 30px;
-	text-align: center;
-	margin-top: 3rem
-	*/
+    font-size: 1.75 em
 }
+
 h3 {
+    font-size: 1.45em
 }
+
 h4 {
+    font-size: 1.25em
 }
+
 h5 {
-	font-size: 1.125rem;
+    font-size: 1.1em
 }
+
 h6 {
-	font-size: 1.1rem;
+    font-size: 1em;
+    font-weight: bold
 }
+
+#write code {
+    color: var(--highlight-color);
+}
+
 p {
-	color: #5e676d;
-	font-size: 1rem;
-	line-height: 1.5rem;
-	margin: 0 0 1.25rem;
+    color: var(--text-color);
+    line-height: 1.7rem;
+    margin: 0 0 8px;
 }
+
+#write ul {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+#write ol li {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid #999;
+}
+
 #write>h3.md-focus:before {
-	left: -1.875rem;
-	top: 0.5rem;
-	padding: 2px;
+    left: -1.875rem;
+    top: 0.5rem;
+    padding: 2px;
 }
+
 #write>h4.md-focus:before {
-	left: -1.875rem;
-	top: 0.3125rem;
-	padding: 2px;
+    left: -1.875rem;
+    top: 0.3125rem;
+    padding: 2px;
 }
+
 #write>h5.md-focus:before {
-	left: -1.875rem;
-	top: 0.25rem;
-	padding: 2px;
+    left: -1.875rem;
+    top: 0.25rem;
+    padding: 2px;
 }
+
 #write>h6.md-focus:before {
-	left: -1.875rem;
-	top: .125rem;
-	padding: 2px;
+    left: -1.875rem;
+    top: .125rem;
+    padding: 2px;
 }
-/*@media screen and (min-width: 48em) {
-	.h1,
-	h1 {
-		font-size: 3.250rem;
-	}
-	.h2,
-	h2 {
-		font-size: 2.298rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.625rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-	#write>h4.md-focus:before,
-	#write>h5.md-focus:before,
-	#write>h6.md-focus:before {
-		top: 1px;
-	}
-	p {
-		font-size: 1.25rem;
-		line-height: 1.8;
-	}
-	table {
-		font-size: 1.25rem;
-	}
-}*/
+
 @media screen and (max-width: 48em) {
-	blockquote {
-		margin-left: 1rem;
-		margin-right: 0;
-		padding: 0.5em;
-	}
-	.h1,
-	h1 {
-		font-size: 2.827rem;
-	}
-	.h2,
-	h2 {
-		font-size: 1.999rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.413rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+    /* .h1,
+    h1 {
+        font-size: 2.827rem;
+    }
+    .h2,
+    h2 {
+        font-size: 1.999rem;
+    }
+    .h3,
+    h3 {
+        font-size: 1.413rem;
+    }
+    .h4,
+    h4 {
+        font-size: 1.250rem;
+    }
+    .h5,
+    h5 {
+        font-size: 1.150rem;
+    }
+    .h6,
+    h6 {
+        font-size: 1rem;
+    } */
 }
-a,
-.md-def-url {
-	color: #007ee5;
-	text-decoration: none;
+
+a .md-def-url {
+    color: #262a30;
 }
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
 a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
+
 table {
-	border: 1px solid #e2e2e2;
-	margin-bottom: 20px
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    margin: 0 0 20px;
+    width: 100%;
 }
-table th,
-table td {
-	padding: 8px;
-	line-height: 1.5rem;
-	vertical-align: top;
-	border: 1px solid #e2e2e2;
+
+table tr:nth-child(2n),
+thead {
+    background-color: #f9f9f9;
 }
-table th {
-	font-weight: normal;
-	background-color: #f0f7fd;
+
+tbody tr:hover {
+    background: #f5f5f5
 }
-table thead th {
-	vertical-align: bottom
+
+caption,
+td,
+th {
+    font-weight: 400;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle
 }
-table caption+thead tr:first-child th,
-table caption+thead tr:first-child td,
-table colgroup+thead tr:first-child th,
-table colgroup+thead tr:first-child td,
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-	border-top: 0
+
+table tr th {
+    border-bottom: 3px solid #ddd;
+    font-weight: 700;
+    padding-bottom: 10px;
+    background-color: var(--bg-color);
 }
-table tbody+tbody {
-	border-top: 2px solid #ddd
+
+td,
+th {
+    border: 1px solid #ddd;
 }
-code, .md-fences {
-	padding: .5em;
-	background: #f6f9fc;
-	border: 1px solid #d0d4d9;
-	border-radius: 3px;
-	padding: .1em;
-	font-size: 0.9rem !important;
-	margin-left: 0.2em;
-	margin-right: 0.2em;
+
+th {
+    font-weight: 700;
+    padding-bottom: 10px
 }
+
+td {
+    border-bottom-width: 1px
+}
+
+
+/* Inline Code */
+
+code,
 .md-fences {
-	margin: 0 0 20px;
-	font-size: 1em;
-	padding: 0.3em 1em;
-  	padding-top: 0.4em;
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-family: 'JetBrains Mono';
+    font-size: 0.935em;
 }
-.task-list{
-	padding-left: 0;
+
+
+/* Code Blocks */
+
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.4em 1em;
+    padding-top: 0.4em;
+}
+
+.task-list {
+    padding-left: 0;
 }
 
 .task-list-item {
-	padding-left:2.125rem;
+    padding-left: 2rem;
 }
 
-/* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  and (min-resolution:.001dpcm) {
-    .task-list-item input:before {
-    	margin-top: -0.2rem;
-    }
+.task-list-item input {
+    top: 3px;
+}
 
+.task-list-item input {
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.9rem;
+}
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    /*◘*/
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    margin-top: -0.9rem;
+}
+
+
+/* Chrome 29+ */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+        margin-top: -0.2rem;
+    }
     .task-list-item input:checked:before,
-	.task-list-item input[checked]:before {
-		margin-top: -0.2rem;
-	}
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
 }
 
 blockquote {
-	margin: 0 0 1.11111rem;
-	padding: 0.5rem 1.11111rem 0 1.05556rem;
-	border-left: 2px solid rgba(0, 112, 224, 0.32);
+    border-left: 4px solid #ddd;
+    color: #666;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0 15px
 }
-blockquote,
+
 blockquote p {
-	line-height: 1.6;
-	color: #8f8f8f;
+    color: #666
 }
-#write pre.md-meta-block {
-	min-height: 30px;
-	background: #f8f8f8;
-	padding: 1.5em;
-	font-weight: 300;
-	font-size: 1em;
-	padding-bottom: 1.5em;
-	padding-top: 3em;
+
+blockquote cite::before {
+    content: '-';
+    padding: 0 5px
+}
+
+
+/* #write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    padding: 1.5em;
+    font-weight: 300;
+    font-size: 1em;
+    padding-bottom: 1.5em;
+    padding-top: 3em;
     margin-top: -1.5em;
-	color: #999;
-	border-left: 1000px #f8f8f8 solid;
-	margin-left: -1000px;
-	border-right: 1000px #f8f8f8 solid;
-	margin-right: -1000px;
-	margin-bottom: 2em;
+    color: #999;
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+} */
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f1f1f1;
+    border: 0;
+    border-radius: 3px;
+    color: hsl(0, 0%, 53%);
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
 }
+
 .MathJax_Display {
-	font-size: 0.9em;
-	margin-top: 0.5em;
-	margin-bottom: 0;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
 }
+
 p.mathjax-block,
 .mathjax-block {
-	padding-bottom: 0;
+    padding-bottom: 0;
 }
+
 .mathjax-block>.code-tooltip {
-	bottom: 5px;
-	box-shadow: none;
+    bottom: 5px;
+    box-shadow: none;
 }
+
 .md-image>.md-meta {
-	padding-left: 0.5em;
-	padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
+
 .md-image>img {
-	margin-top: 2px;
+    margin-top: 2px;
 }
+
 .md-image>.md-meta:first-of-type:before {
-	padding-left: 4px;
+    padding-left: 4px;
 }
 
 #typora-source {
-	color: #555;
+    color: #555;
 }
 
+
 /** ui for windows **/
+
 #md-searchpanel {
     border-bottom: 1px solid #ccc;
 }
@@ -483,65 +615,270 @@ p.mathjax-block,
 }
 
 #md-notification:before {
-	top: 14px;
+    top: 14px;
 }
 
 #md-notification {
-	background: #eee;
+    background: #eee;
 }
 
 .megamenu-menu-panel .btn {
-	border: 1px solid #ccc;
+    border: 1px solid #ccc;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
 }
 
 .mac-seamless-mode #typora-sidebar {
-  background-color: #f7f9fa;
+    background-color: #efefef;
 }
 
-.pin-outline .outline-active {
-  color: #0070E0; 
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
 }
 
-.file-list-item {
-  border-bottom: 1px solid;
-  border-color: #E6E8EB;
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
 }
 
-.file-list-item-summary {
-  font-weight: 400;
-  color: #637282; 
+#md-notification:before {
+    top: 10px;
 }
 
-.file-list-item.active {
-  color: #0070E0;
-  background-color: #E6E8EB;
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
 }
 
-.file-tree-node.active>.file-node-background {
-  background-color: #E6E8EB;
-} 
-
-.file-tree-node.active>.file-node-content {
-  color: #0070E0;
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
 }
 
-.file-node-content {
-  color: #5e676d;
+.md-lang {
+    color: #b4654d;
 }
 
-.sidebar-tab.active {
-  font-weight: 400;
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
 }
 
-code, kbd, pre, samp {
-  font-family: "Roboto Mono", Menlo, monospace;
+.file-tree-node {
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
+.file-node-title {
+    padding-top: 2px;
+}
+
+.outline-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/* 
+.modal-footer .btn-default,
+.modal-footer .btn-primary {
+    border: 2px solid #222;
+}
+
+
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    background: #fff;
+    border-color: #222;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn:not(.close-btn) {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition-duration: .2s;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 0px;
+    border: 1px solid #222;
+} */
+
+/* Search panel & UI */
+
+#md-searchpanel .btn {
+    border: none;
+}
+
+#md-searchpanel input {
+    box-shadow: none;
+}
+
+.searchpanel-search-option-btn {
+    border-color: #aaa;
+    border-radius: 0;
+}
+
+.modal-dialog .btn {
+    background: #222;
+    border-width: 2px;
+    border-color: #222;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-size: .875em;
+    line-height: 2rem;
+    padding: 0 20px;
+    margin: 5px;
+    text-decoration: none;
+    transition-delay: 0s;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out
+}
+
+.modal-dialog .btn:hover {
+    background: #eee;
+    border-color: #222;
+    color: #222;
+}
+
+
+/* Printing issue */
+
+.typora-export * {
+    -webkit-print-color-adjust: exact;
+}
+
+.typora-export p {
+    font-size: var(--export-font-size) !important;
+}
+
+.typora-export li {
+    font-size: var(--export-font-size);
+    line-height: 2rem;
+}
+
+.typora-export #write {
+    font-size: var(--export-font-size) !important;
+}
+
+table,
+pre {
+    page-break-inside: avoid;
+}
+
+pre {
+    word-wrap: break-word;
+}
+
+hr {
+    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
+    border: 0;
+    height: 3px;
+    margin: 40px 0
+}/**
+ * NexT for Typora
+ * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
+ *
+ * - Want code ligatures for JetBrains Mono?
+ * - Search for `font-variant-ligatures: none;` and comment that line.
+ **/
+
+@import "";
+* {
+    /* Disable ligatures */
+    font-variant-ligatures: none;
+}
+
+
+/* Helvetica Neue */
+
+html,
+body,
+#write {
+    font-family: HelveticaN, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+}
+
+p {
+    color: var(--text-color);
+    line-height: 1.55rem;
+    margin: 0 0 12.5px;
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.9rem;
+}
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    /*◘*/
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    margin-top: -0.5rem;
+}
 
 
 </style>
 </head>
 <body class='typora-export'>
-<div id='write'  class=''><p><img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80" referrerpolicy="no-referrer" alt="circuito digital"></p><h1><a name="laboratório-de-circuitos-digitais-i" class="md-header-anchor"></a><span>Laboratório de Circuitos Digitais I</span></h1><p><span>Semestre 2020.1</span></p><p><span>Opções disponíveis:</span></p><ul><li><a href='Uso_LogiSim.html'><span>Tutorial para uso do LogiSim</span></a><span>;</span></li><li><a href='exe_mapas_K_2021_1/exemplos_mapas_K3.html'><span>Exercícios</span></a><span> iniciais usando Mapas de Karnaugh envolvendo 3 variáveis;</span></li><li><span>Projeto No 1: Síntese de Decodificador Especial para Display de 7-Sementos [</span><a href='exemplo_projeto_1/Projeto_no_7_exemplo.html'><span>exemplo</span></a><span>].</span></li></ul><p>&nbsp;</p><hr /><p><span>Fernando Passold, atualizado em 09.04.2011</span></p><p>&nbsp;</p></div>
+<div id='write'  class=''><p><img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80" referrerpolicy="no-referrer" alt="circuito digital"></p><h1><a name="laboratório-de-circuitos-digitais-i" class="md-header-anchor"></a><span>Laboratório de Circuitos Digitais I</span></h1><p><span>Semestre 2020.1</span></p><p><span>Opções disponíveis:</span></p><ul><li><a href='Uso_LogiSim.html'><span>Tutorial para uso do LogiSim</span></a><span>;</span></li><li><a href='exe_mapas_K_2021_1/exemplos_mapas_K3.html'><span>Exercícios</span></a><span> iniciais usando Mapas de Karnaugh envolvendo 3 variáveis;</span></li><li><span>Projeto No 1: Síntese de Decodificador Especial para Display de 7-Sementos [</span><a href='exemplo_projeto_1/Projeto_no_7_exemplo.html'><span>exemplo</span></a><span>].</span></li><li><a href='MSI_exemplos/exercicios_01.html'><span>Exemplos de circuitos digitais usando pastilhas MSI: MUX e Comparador Magnitude</span></a><span> (ou exemplos de uso de funções lógicas);</span></li><li><a href='Lab_9_Efeito_Visual/Lab_9_Efeito_Visual_Usando_DEC.html'><span>Exemplo de efeito visual usando DEC 3/8</span></a><span>;</span></li></ul><p>&nbsp;</p><hr /><p><span>Fernando Passold, atualizado em 09.04.2011</span></p><p>&nbsp;</p></div>
 </body>
 </html>
