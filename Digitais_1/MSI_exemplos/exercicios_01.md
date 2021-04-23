@@ -27,8 +27,13 @@ Note que os resistores no circuto acima estão na configuração “pull-up”.
 **Perguntas**:
 
 * Você sabe justificar porque os resistores neste circuito são de apenas 100 Ohms?
-
 * Que chaves você acionaria para fazer aparecer o número “5” no display?
+
+
+
+> Se você ainda possui dificuldades para entender resistores em configuração “pull-up” e “pull-down” se sugere uma consuta à página: [Gadgetronicx: Guide to Pull up / Pull down resistors and its usage](https://www.gadgetronicx.com/guide-pull-up-down-resistors-usage/) (acessado em 20.04.2021; disponibilizado em 29.03.2018.
+>
+> E se ainda houver questionamentos a respeito de como acionar um Led em circuitos digitais se aconselha a página: [Electronics Tutorials: The Light Emitting Diode](https://www.electronics-tutorials.ws/diode/diode_8.html) (acessado em 20.04.2021) - esta página ainda ensina a calcular os valores dos resistores usados em série com os leds.
 
 
 
