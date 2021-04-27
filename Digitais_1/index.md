@@ -14,6 +14,8 @@ Opções disponíveis:
 
 * [Exemplo de efeito visual usando DEC 3/8](Lab_9_Efeito_Visual/Lab_9_Efeito_Visual_Usando_DEC.html);
 
+* [Exemplo de uso de DEC com Pastilhas de Memória](resumo_MSI/exemplo_uso_DEC.html);
+
   
 
 ---
