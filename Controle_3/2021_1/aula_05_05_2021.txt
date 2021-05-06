@@ -1,0 +1,493 @@
+% Recuperando dados da aula passada
+load planta
+
+% # Projeto do Controlador Ao Integral
+
+C = tf ( 1 , poly(1) , T )
+
+C =
+ 
+    1
+  -----
+  z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_I = C*BoG;
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+zpk(ftma_I)
+
+ans =
+ 
+     0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------------
+  (z-1) (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+rlocus(ftma_I)
+axis equal
+% axis([xmim xmax ymin ymax])
+axis ([-3 3 -3 -3])
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.axis.Axes/set')" style="font-weight:bold">matlab.graphics.axis.Axes/set</a>
+Value must be a 1x2 vector of numeric type in which the second
+element is larger than the first and may be Inf
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrluis.axesgroup/addbypass>localAxis', '/Applications/MATLAB_R2016b.app/toolbox/shared/controllib/graphics/@ctrluis/@axesgroup/addbypass.m', 100)" style="font-weight:bold">ctrluis.axesgroup/addbypass>localAxis</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2016b.app/toolbox/shared/controllib/graphics/@ctrluis/@axesgroup/addbypass.m',100,0)">line 100</a>)
+      set(ax,'Xlim',newlims(1:2),'YLim',newlims(3:4))
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mwbypass', '/Applications/MATLAB_R2016b.app/toolbox/matlab/graph2d/private/mwbypass.m', 23)" style="font-weight:bold">mwbypass</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2016b.app/toolbox/matlab/graph2d/private/mwbypass.m',23,0)">line 23</a>)
+      feval(fcn{:},varargin{:});
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('axis', '/Applications/MATLAB_R2016b.app/toolbox/matlab/graph2d/axis.p', 73)" style="font-weight:bold">axis</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2016b.app/toolbox/matlab/graph2d/axis.p',73,0)">line 73</a>)
+        mwbypass(ax,'MWBYPASS_axis',varargin{:});} 
+axis ([-3 3 -3 3])
+
+% Grfico do RL (sem zoom):
+
+% ![rlocus_1_cont_I.png](rlocus_1_cont_I.png)
+% ![rlocus_1_cont_I.png](rlocus_1_cont_I.png)
+
+% Realizando um zoom no grfico do RL anterior
+
+figure; rlocus(ftma_I); axis equal
+axis([ 0.5 1.5 -1.5 1.5])
+axis([ 0.5 1.5 -1.0 1.0])
+axis([ 0.5 1.5 -0.5 0.5])
+zpk(ftma_I)
+
+ans =
+ 
+     0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------------
+  (z-1) (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+axis([ 0.7 1.2 -0.25 0.25])
+axis([ 0.7 1.2 -0.2 0.2])
+holf on;
+{Undefined function or variable 'holf'.} 
+hold on;
+OS
+OS =
+     5
+zeta
+zeta =
+    0.6901
+zgrid(zeta, 0)
+
+% RL com Zoom:
+
+% ![rlocus_cont_I_zoom.png](rlocus_cont_I_zoom.png)
+
+K_I=0.55;
+
+% Fechando a malha
+
+ftmf_I=feedback( K_I*ftma_I, 1);
+
+% Observando resposta  entrada degrau:
+
+figure; step(ftmf_I)
+
+% Gr'afico da resposta ao degrau
+
+% ![step_cont_I.png](step_cont_I.png)
+
+% Mantive o $/%OS<5\%$ e o erro  nulo em regime permanente como seria esperado para uma FTMA(z) com ao interal (sistema tipo 1)
+% **Mas** o tempo de assentamento, $t_s$ aumentou consideravelmente
+
+figure; step(ftmf, ftmf_I)
+grid
+legend('Cont. Proporcional', 'Ao Integral Pura')
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback for event
+WindowMouseMotion defined for class matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+
+% Grfico comparativo da resposta entre Controlador Proporcional e de Ao Integral Pura:
+
+% ![step_Cont_P_I.png](step_Cont_P_I.png)
+
+% **Concluses**: Ao integral: permitiu zerar o erro em regime permanente
+
+% mas o tesmpo de assentamento aumentou quase 4 vezes ($12,5/3,26=3,83$).
+
+save planta
+diary off
+
+% ---
+
+% # Projeto de Controlador P+I = PI
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Testando diferentes posies para o zero...
+
+C_PI1=tf([1 0.95], [1 1]) % opo 1) plo mais lento da planta < zero <  plo integrador
+
+C_PI1 =
+ 
+  s + 0.95
+  --------
+   s + 1
+ 
+Continuous-time transfer function.
+
+C_PI1=tf([1 0.95], [1 1], T)
+
+C_PI1 =
+ 
+  z + 0.95
+  --------
+   z + 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+% Opo 2) Colocar o 0,8187 < zero_PI < 0,9048 (entre os 2 plos mais lentos da planta)
+
+C_PI2=tf( [1 0.85] , [1 1] , T)
+
+C_PI2 =
+ 
+  z + 0.85
+  --------
+   z + 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_PI1=C_PI1*BoG;
+ftma_PI2=C_PI2*BoG;
+figure; rlocus(ftma_PI1)
+figure; rlocus(ftma_PI2)
+figure(5); hold on; zgrid(zeta, 0);
+figure(6); hold on; zgrid(zeta, 0);
+
+% Corrigindo equaes dos PI's
+
+C_PI1=tf([1 -0.95], [1 -1], T)
+
+C_PI1 =
+ 
+  z - 0.95
+  --------
+   z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+C_PI2=tf( [1 -0.85] , [1 -1] , T)
+
+C_PI2 =
+ 
+  z - 0.85
+  --------
+   z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_PI1=C_PI1*BoG;
+ftma_PI2=C_PI2*BoG;
+figure; rlocus(ftma_PI1)
+hold on; zgrid(zera, 0)
+{Undefined function or variable 'zera'.} 
+hold on; zgrid(zeta, 0)
+figure; rlocus(ftma_PI2)
+hold on; zgrid(zeta, 0)
+
+% Comparando os RL para os 2 PI's:
+
+% Grfico do RL para o PI1:
+
+% ![rlocus_C_PI1.png](rlocus_C_PI1.png)
+
+% Grfico do RL para o PI2:
+
+% ![rlocus_C_PI2.png](rlocus_C_PI2.png)
+
+% Comparando os 2 RL's se perecebe que os plos dominantes complexos do RL do PI1 esto mais afastados do crculo unitrio, portanto resultaro num tempo de assentamento menor (resposta mais rpida).
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+
+% Colocando o zero do PI o mais prximo possvel do plo dominante da planta.
+
+C_PI=tf( [1 -0.91] , [1 -1] , T)
+
+C_PI =
+ 
+  z - 0.91
+  --------
+   z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_PI=C_PI*BoG;
+figure; rlocus(ftma_PI)
+hold on; zgrid(zeta, 0);
+axis([0.6 1.2 -0.4 0.4])
+[K_PI, polos_MF]=rlocus(ftma_PI)
+K_PI =
+   1.0e+02 *
+  Columns 1 through 4
+   0.0100 + 0.0000i   0.0100 + 0.0000i   0.0099 + 0.0000i   0.0099 + 0.0000i
+   0.0090 + 0.0000i   0.0090 + 0.0000i   0.0090 + 0.0000i   0.0090 + 0.0000i
+   0.0082 + 0.0000i   0.0082 + 0.0000i   0.0083 + 0.0000i   0.0083 + 0.0000i
+   0.0037 + 0.0000i   0.0037 + 0.0000i   0.0037 + 0.0000i   0.0037 + 0.0000i
+  Columns 5 through 8
+   0.0099 + 0.0000i   0.0099 + 0.0000i   0.0098 + 0.0000i   0.0097 + 0.0000i
+   0.0090 + 0.0000i   0.0090 + 0.0000i   0.0090 + 0.0000i   0.0090 + 0.0000i
+   0.0083 + 0.0000i   0.0084 + 0.0000i   0.0084 + 0.0000i   0.0085 + 0.0000i
+   0.0037 + 0.0000i   0.0037 + 0.0000i   0.0037 + 0.0000i   0.0036 + 0.0000i
+  Columns 9 through 12
+   0.0096 + 0.0000i   0.0096 + 0.0000i   0.0096 + 0.0000i   0.0096 + 0.0000i
+   0.0089 + 0.0000i   0.0088 + 0.0000i   0.0088 + 0.0000i   0.0088 + 0.0000i
+   0.0087 + 0.0000i   0.0088 + 0.0000i   0.0088 + 0.0000i   0.0088 - 0.0000i
+   0.0036 + 0.0000i   0.0036 + 0.0000i   0.0036 + 0.0000i   0.0036 + 0.0000i
+  Columns 13 through 16
+   0.0096 + 0.0000i   0.0096 + 0.0000i   0.0095 + 0.0000i   0.0093 + 0.0000i
+   0.0088 + 0.0001i   0.0089 + 0.0002i   0.0089 + 0.0003i   0.0090 + 0.0004i
+   0.0088 - 0.0001i   0.0089 - 0.0002i   0.0089 - 0.0003i   0.0090 - 0.0004i
+   0.0036 + 0.0000i   0.0036 + 0.0000i   0.0036 + 0.0000i   0.0036 + 0.0000i
+  Columns 17 through 20
+   0.0093 + 0.0000i   0.0092 + 0.0000i   0.0092 + 0.0000i   0.0091 + 0.0000i
+   0.0090 + 0.0005i   0.0090 + 0.0006i   0.0091 + 0.0007i   0.0091 + 0.0009i
+   0.0090 - 0.0005i   0.0090 - 0.0006i   0.0091 - 0.0007i   0.0091 - 0.0009i
+   0.0036 + 0.0000i   0.0036 + 0.0000i   0.0036 + 0.0000i   0.0035 + 0.0000i
+  Columns 21 through 24
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+   0.0091 + 0.0012i   0.0091 + 0.0014i   0.0092 + 0.0017i   0.0092 + 0.0019i
+   0.0091 - 0.0012i   0.0091 - 0.0014i   0.0092 - 0.0017i   0.0092 - 0.0019i
+   0.0035 + 0.0000i   0.0035 + 0.0000i   0.0034 + 0.0000i   0.0033 + 0.0000i
+  Columns 25 through 28
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+   0.0092 + 0.0023i   0.0093 + 0.0026i   0.0093 + 0.0030i   0.0093 + 0.0034i
+   0.0092 - 0.0023i   0.0093 - 0.0026i   0.0093 - 0.0030i   0.0093 - 0.0034i
+   0.0033 + 0.0000i   0.0032 + 0.0000i   0.0031 + 0.0000i   0.0029 + 0.0000i
+  Columns 29 through 32
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+   0.0094 + 0.0038i   0.0094 + 0.0043i   0.0095 + 0.0049i   0.0095 + 0.0055i
+   0.0094 - 0.0038i   0.0094 - 0.0043i   0.0095 - 0.0049i   0.0095 - 0.0055i
+   0.0028 + 0.0000i   0.0026 + 0.0000i   0.0024 + 0.0000i   0.0022 + 0.0000i
+  Columns 33 through 36
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+   0.0095 + 0.0062i   0.0096 + 0.0070i   0.0095 + 0.0079i   0.0095 + 0.0089i
+   0.0095 - 0.0062i   0.0096 - 0.0070i   0.0095 - 0.0079i   0.0095 - 0.0089i
+   0.0020 + 0.0000i   0.0018 + 0.0000i   0.0015 + 0.0000i   0.0013 + 0.0000i
+  Columns 37 through 40
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+   0.0094 + 0.0100i   0.0092 + 0.0112i   0.0089 + 0.0126i   0.0086 + 0.0142i
+   0.0094 - 0.0100i   0.0092 - 0.0112i   0.0089 - 0.0126i   0.0086 - 0.0142i
+   0.0010 + 0.0000i   0.0008 + 0.0000i   0.0005 + 0.0000i   0.0002 + 0.0000i
+  Columns 41 through 44
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+   0.0080 + 0.0160i   0.0073 + 0.0179i   0.0062 + 0.0201i   0.0048 + 0.0225i
+   0.0080 - 0.0160i   0.0073 - 0.0179i   0.0062 - 0.0201i   0.0048 - 0.0225i
+  -0.0000 + 0.0000i  -0.0003 + 0.0000i  -0.0005 + 0.0000i  -0.0007 + 0.0000i
+  Columns 45 through 48
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+   0.0030 + 0.0252i   0.0006 + 0.0281i  -0.0026 + 0.0311i  -0.0068 + 0.0341i
+   0.0030 - 0.0252i   0.0006 - 0.0281i  -0.0026 - 0.0311i  -0.0068 - 0.0341i
+  -0.0009 + 0.0000i  -0.0011 + 0.0000i  -0.0012 + 0.0000i  -0.0013 + 0.0000i
+  Columns 49 through 52
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+  -0.0124 + 0.0370i  -0.0160 + 0.0383i  -0.0196 + 0.0392i  -0.0290 + 0.0401i
+  -0.0124 - 0.0370i  -0.0160 - 0.0383i  -0.0196 - 0.0392i  -0.0290 - 0.0401i
+  -0.0015 + 0.0000i  -0.0015 + 0.0000i  -0.0015 + 0.0000i  -0.0016 + 0.0000i
+  Columns 53 through 56
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+  -0.0320 + 0.0398i  -0.0351 + 0.0394i  -0.0412 + 0.0377i  -0.0452 + 0.0360i
+  -0.0320 - 0.0398i  -0.0351 - 0.0394i  -0.0412 - 0.0377i  -0.0452 - 0.0360i
+  -0.0016 + 0.0000i  -0.0017 + 0.0000i  -0.0017 + 0.0000i  -0.0017 + 0.0000i
+  Columns 57 through 60
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+  -0.0492 + 0.0338i  -0.0532 + 0.0308i  -0.0572 + 0.0270i  -0.0598 + 0.0238i
+  -0.0492 - 0.0338i  -0.0532 - 0.0308i  -0.0572 - 0.0270i  -0.0598 - 0.0238i
+  -0.0017 + 0.0000i  -0.0017 + 0.0000i  -0.0017 + 0.0000i  -0.0017 + 0.0000i
+  Columns 61 through 64
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+  -0.0624 + 0.0199i  -0.0650 + 0.0144i  -0.0663 + 0.0104i  -0.0676 + 0.0025i
+  -0.0624 - 0.0199i  -0.0650 - 0.0144i  -0.0663 - 0.0104i  -0.0676 - 0.0025i
+  -0.0017 + 0.0000i  -0.0017 + 0.0000i  -0.0017 + 0.0000i  -0.0017 + 0.0000i
+  Columns 65 through 68
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+  -0.0677 + 0.0000i  -0.0652 + 0.0000i  -0.0473 + 0.0000i  -0.0387 + 0.0000i
+  -0.0677 + 0.0000i  -0.0703 + 0.0000i  -0.1088 + 0.0000i  -0.1718 + 0.0000i
+  -0.0017 + 0.0000i  -0.0017 + 0.0000i  -0.0018 + 0.0000i  -0.0018 + 0.0000i
+  Columns 69 through 72
+   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i   0.0091 + 0.0000i
+  -0.0349 + 0.0000i  -0.0326 + 0.0000i  -0.0312 + 0.0000i  -0.0276 + 0.0000i
+  -0.2463 + 0.0000i  -0.3407 + 0.0000i  -0.4621 + 0.0000i  -9.1905 + 0.0000i
+  -0.0018 + 0.0000i  -0.0018 + 0.0000i  -0.0019 + 0.0000i  -0.0019 + 0.0000i
+  Column 73
+   0.0091 + 0.0000i
+  -0.0275 + 0.0000i
+      Inf + 0.0000i
+  -0.0019 + 0.0000i
+polos_MF =
+   1.0e+06 *
+  Columns 1 through 8
+         0    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000
+  Columns 9 through 16
+    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000
+  Columns 17 through 24
+    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000    0.0001
+  Columns 25 through 32
+    0.0001    0.0001    0.0001    0.0002    0.0002    0.0003    0.0003    0.0004
+  Columns 33 through 40
+    0.0006    0.0007    0.0010    0.0013    0.0017    0.0021    0.0028    0.0036
+  Columns 41 through 48
+    0.0047    0.0062    0.0080    0.0105    0.0137    0.0178    0.0231    0.0301
+  Columns 49 through 56
+    0.0393    0.0452    0.0511    0.0666    0.0716    0.0766    0.0867    0.0933
+  Columns 57 through 64
+    0.0998    0.1064    0.1129    0.1172    0.1214    0.1256    0.1277    0.1299
+  Columns 65 through 72
+    0.1300    0.1301    0.1470    0.1915    0.2494    0.3248    0.4229    7.5606
+  Column 73
+       Inf
+[K_PI, polos_MF]=rlocfind(ftma_PI)
+Select a point in the graphics window
+selected_point =
+   0.9092 + 0.0842i
+K_PI =
+   17.0320
+polos_MF =
+   0.9158 + 0.0000i
+   0.9088 + 0.0843i
+   0.9088 - 0.0843i
+   0.3559 + 0.0000i
+
+% Grfico do RL:
+
+% ![rlocus_C_PI.png](rlocus_C_PI.png)
+
+% Fechando a malha...
+
+ftmf_PI=feedback(K_PI*ftma_PI, 1);
+figure; step(ftmf_PI)
+
+% Grfico:
+
+% ![step_PI.png](step_PI.png)
+
+% Comparando o Kp + I + PI
+
+figure; step(ftmf, ftmf_I, ftmf_PI);
+legend('Cont. Proporcional', 'Ao Integral Pura', 'PI')
+
+% Grfico comparativo
+
+% ![step_P_I_PI.png](step_P_I_PI.png)
+
+save planta
+diary of

@@ -11,8 +11,9 @@ Aulas ministradas:
 
   1. Projeto de **Controlador Proporcional**:
      * [Aula de 07/05/2020](aula_07_05_2020.html);
-     * Projeto de **Controlador Proporcional + Integral Puro** ([aula de 07/10/2020](2020_2/aula_07_10_2020.html));
+     * Projeto de **PI = Controlador Proporcional + Integral Puro** ([aula de 07/10/2020](2020_2/aula_07_10_2020.html));
   2. Projeto de **PI**: [Aula de 14/05/2020](aula_14_05_2020.html);
+     Outro projeto de [Controlador Ação Integral Pura e PI](2021_1/aula_05_05_2021.html), incluindo comparações (05/05/2021).
   3. Projeto de Controlador por **Atraso de Fase (Lag)**:
      * [Aula de 21/05/2020](controlador_Lag.html);
      * Projeto de Controlador PI + Lag ([aula de 14/10/2020](2020_2/aula_14_10_2020.html))
