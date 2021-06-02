@@ -1,10 +1,23 @@
 % programa para determinar contribui??o de ?ngulos
 % Fernando Passold, em 16/out/2015
 % Baseado em "example_9_4.m" de /UCV/Control/ (2009)
-% Lead Compensator Desing (NISE)
+% PD or Lead Compensator Desing (NISE)
+% 
+% Vari?veis que devem existir no Worspace
+%    (ou par?metros de entrada):
+% G <-- G(s): eq. planta no mundo cont?nuo
+% T <-- per?odo de amostragem ? ser adotado.
 %
+% Obs.: SCript vai pedir posi??o do p?lo do controlador
+%
+% Sa?das:
+% real(polo_MFz) --> parte real do p?lo de MF no plano-z
+% imag(polo_MFz) --> parte imagin?ria do p?lo de MF no plano-z
+% C --> transfer function do controlador (sem o ganho)
+% zc --> posi??o do zero encontrado para o controlador
+
 clc
-fprintf('Lead Controller Design\n');
+fprintf('PD/Lead Controller Design\n');
 fprintf('In this version you should arbitrate the initial position of the pole of C(z)\n\n');
 % entrando com dados da planta, no plano-s (transformada de Laplace):
 % num=1;
