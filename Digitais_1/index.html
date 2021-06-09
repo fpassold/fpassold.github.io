@@ -92,6 +92,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
   .typora-export #write { break-after: avoid-page; }
   .typora-export #write::after { height: 0px; }
   .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
@@ -142,7 +143,8 @@ a.md-print-anchor { white-space: pre !important; border: none !important; displa
 .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
 .MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
 .MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; zoom: 90%; }
+#math-inline-preview-content { zoom: 1.1; }
 .MathJax_SVG * { transition: none; }
 .MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
@@ -210,352 +212,377 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
 
 
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
 :root {
-    --monospace: Courier, monospace;
-    --bg-color: #f9f9f9;
-    --text-color: #303030;
-    --active-file-bg-color: #E6E8EA;
-    --side-bar-bg-color: #f9f9f9;
-    /*--text-color: #223c61;*/
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
 }
 
-/*forked from https://github.com/chloerei/scribble*/
-
-#write {
-    --bg-color: #fff;
-}
-
-#write div ,
-#write p {
-    width: auto;
-}
-
-html {
-    font-size: 15px;
-}
-
-body {
-    background: #f9f9f9;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-weight: 400;
-    line-height: 19px;
-    padding: 0;
-    margin: 0;
-}
-
-#footer-word-count-info {
-    background: var(--bg-color);
-}
-
-header,
-.dropmenu {
-    --text-color: #223c61;
-}
-
-header {
-    color: #333;
-}
-
-#typora-sidebar {
-    font-size: 14px;
-    /*background: transparent;
-    background-color: transparent;*/
-}
-
-.file-list-item {
-    border: 0;
-}
-
-.file-list-item:hover,
-.file-tree-node[data-is-directory='false']:hover>.file-node-background {
-    transition: background-color 0.6s ease;
-    background: var(--active-file-bg-color);
-}
-
-.file-node-content {
-    cursor: default;
-}
-
-.file-list-item-summary {
-    height: 34px;
- }
-
- .show-folder-name .file-list-item {
-    padding-top: 16px;
-    padding-bottom: 24px;
-}
-
-.file-list-item {
-    padding-top: 18px;
-    padding-bottom: 18px;
-}
-
-.file-list-item-file-name {
-    line-height: 20px;
-    font-size: 14px;
-    margin-bottom: 4px;
-}
-
-#sidebar-files-menu,
-#ty-sidebar-footer {
-    background: var(--bg-color);
-}
-
+html,
 body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
 html {
-    background-color: rgba(255, 255, 255, 0);
-    background: url(file:///Volumes/Macintosh_HD/Users/fernandopassold/Library/Application%20Support/abnerworks.Typora/themes/scribble/light_wool.png);
-    background-repeat: repeat;
+	font-size:16px;
 }
 
 #write {
-    width: 100%;
-    max-width: 768px;
-    background: #fff;
-    margin: 40px auto 20px;
-    border-radius: 7px;
-    border: 1px solid #eee;
-    min-height: calc(100vh - 6em);
-    margin-bottom: 120px;
-    padding: 60px;
-    line-height: 1.6em;
+	max-width: 914px;
+	text-align: justify;
 }
 
-
-@media screen and (max-width: 820px) {
-    body,
-    html {
-        --side-bar-bg-color: #fff;;
-        background: #fff;
-    }
-
-    #write {
-        border: none;
-        margin-top: 0;
-    }
+#write>h1:first-child {
+	margin-top: 2.75rem;
 }
-
-@media screen and (max-width: 1160px) {
-    body.pin-outline {
-        --side-bar-bg-color: #fff;;
-        background: #fff;
-    }
-
-    body.pin-outline #write{ 
-        border: none;
-        margin-top: 0;
-    }
+#write>h2:first-child {
+	margin-top: 1.75rem;
 }
-
-.typora-node #write {
-  min-height: calc(100% - 6em);
+#write>h3:first-child {
+	margin-top: 1rem;
 }
-
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
 h1 {
-    text-align: center;
-    line-height: 1.5em;
-    margin-bottom: 60px;
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
 }
 
-h2, h3, h4, h5 {
-  margin: 2em 0 1em; }
+.task-list-item {
+	padding-left:2.125rem;
+}
 
-ul, ol {
-    padding: 0 0 0 30px;
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
 }
 
 blockquote {
-    padding: 0 1em;
-    margin: 14px 0;
-    border: 2px dashed #d0dfda;
-    border-radius: 5px;
-    color: #606060;
-    background: #f9f9f9;
-    -webkit-transition: all, 0.3s;
-    -moz-transition: all, 0.3s;
-    -ms-transition: all, 0.3s;
-    -o-transition: all, 0.3s;
-    transition: all, 0.3s;
-    font-style: normal !important;
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
 }
 
- #write .md-toc {
-    margin: 2em -60px;
-    border-bottom: 1px dotted #CCC;
-    border-top: 1px dotted #CCC;
-    /*background: #f4f4f4;*/
-    width: calc(100% + 120px);
-    border-radius: 0;
-    padding-left: 60px;
-    padding-right: 60px;
+#typora-source {
+	color: #555;
 }
 
-#write>.md-toc:first-child {
-    margin-top: 0;
-    border-top: 0;
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
 }
 
-#write>.md-meta-block:first-child {
-    margin: 2em -60px;
-    margin-top: -60px;
-    width: calc(100% + 120px);
-    border-bottom: 1px dotted #CCC;
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    background: #fdfdfd;
-    font-size: 14px;
-    border-radius: 0;
-    color: var(--text-color);
-
-    /*margin-top: -24px;
-    margin-bottom: 64px;
-    padding: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    font-size: 14px;*/
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
 }
 
-.md-toc:focus .md-toc-content {
-    border: none;
-    border-color: inherit;
-    margin: auto;
-    margin-top: auto;
-    margin: 20px 0px;
+#md-notification:before {
+	top: 14px;
 }
 
-.md-toc-content {
-    padding-left: 0;
-    padding-right: 0;
+#md-notification {
+	background: #eee;
 }
 
-#write div.md-toc-tooltip {
-    left: 0;
-    padding-left: 60px;
-    padding-right: 20px;
-    top: -24px;
-    border-top: 1px dotted #CCC;
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
 }
 
-pre[mdtype] {
-    word-wrap: break-word;
-    background: #f8f8f8;
-    padding: 1em;
-    border-radius: 5px;
-    width: 100%;
-    line-height: 1.2em;
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
 }
 
-code {
-    background: #f8f8f8;
-    padding: 0.05rem;
-    font-size: 0.9rem;
-    border-radius: 3px;
-    color: #009688;
-    color: #8a0004;;
+.pin-outline .outline-active {
+  color: #0070E0; 
 }
 
-p {
-    margin-top: 1em;
-    margin-bottom: 1em;
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
 }
 
-blockquote >:first-child {
-    margin-top: 1em;
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
 }
 
-blockquote >:last-child {
-    margin-bottom: inherit;
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
 }
 
-.md-fences {
-    font-size: 1rem;
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
 }
 
-a {
-  text-decoration: none;
-  color: #269;
-  line-height: 1.4em;
-  display: inline-block;
-  vertical-align: baseline;
-  zoom: 1;
-  *display: inline;
-  *vertical-align: auto;
-  -webkit-transition: color 0.3s;
-  -moz-transition: color 0.3s;
-  -ms-transition: color 0.3s;
-  -o-transition: color 0.3s;
-  transition: color 0.3s; 
-}
-  
-[md-inline] a:hover {
-    color: #1d5884;
-    background-image: url(file:///Volumes/Macintosh_HD/Users/fernandopassold/Library/Application%20Support/abnerworks.Typora/themes/scribble/line.png);
-    background-repeat: repeat-x;
-    background-position: left bottom; 
+.file-node-content {
+  color: #5e676d;
 }
 
-#write .code-tooltip {
-    width: auto;
+.sidebar-tab.active {
+  font-weight: 400;
 }
 
-#write > hr {
-    margin: 2em -60px;
-    border: 0;
-    border-bottom: 1px dotted #CCC;
-}
-
-#write [cid]>table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid #CCCACC;
-}
-
-#write table th {
-    padding:10px 15px;
-    border-right:1px solid #CCCACC;
-    background:#E9E7E9;
-    text-shadow: 1px 1px 1px #f3f3f3;
-    font-weight: inherit;
-}
-
-#write table [cid]>td{
-    padding:10px;
-    border-right:1px solid #CCCACC;
-    border-top:1px solid #CCCACC;
-}
-
-.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property {
-    color: #223c61;
-}
-
-.CodeMirror.cm-s-typora-default div.CodeMirror-cursor{
-    border-left: 3px solid #223c61;
-}
-
-.outline-content li, .outline-content ul {
-    line-height: 1.4rem;
-}
-
-.dropdown-menu {
-    background-color:  #f9f9f9;;
-}
-
-.cm-s-inner .cm-header, .cm-s-inner.cm-header {color: #566ada;}
-.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color:#75787b; }
-.cm-s-inner .cm-keyword, .cm-s-inner .cm-property, .cm-s-inner.cm-keyword, .cm-s-inner.cm-property { color:#1d75b3; }
-.cm-s-inner .cm-atom,.cm-s-inner .cm-number, .cm-s-inner.cm-atom,.cm-s-inner.cm-number { color:#75438a; }
-.cm-s-inner .cm-node,.cm-s-inner .cm-tag, .cm-s-inner.cm-node,.cm-s-inner.cm-tag { color:#9c3328; }
-.cm-s-inner .cm-string, .cm-s-inner.cm-string { color:#b35e14; }
-.cm-s-inner .cm-variable, .cm-s-inner .cm-qualifier, .cm-s-inner.cm-variable, .cm-s-inner.cm-qualifier { color:#047d65; }
-
-.file-node-open-state, .file-node-icon {
-    color: #9E9E9E;
-}
-
-.code-tooltip.md-hover-tip {
-    background: #000;
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
 }
 
 
@@ -563,6 +590,6 @@ a {
 </style><title>index</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><p><img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80" referrerpolicy="no-referrer" alt="circuito digital"></p><h1 id='circuitos-digitais-i'><span>Circuitos Digitais I</span></h1><p><span>Semestre 2021.1</span></p><p><span>Opções disponíveis:</span></p><ul><li><p><a href='Uso_LogiSim.html'><span>Tutorial para uso do LogiSim</span></a><span>;</span></p></li><li><p><a href='exe_mapas_K_2021_1/exemplos_mapas_K3.html'><span>Exercícios</span></a><span> iniciais usando Mapas de Karnaugh envolvendo 3 variáveis:</span></p></li><li><p><a href='MSI_exemplos/exercicios_01.html'><span>Exemplos de circuitos digitais usando pastilhas MSI: MUX e Comparador Magnitude</span></a><span> (ou exemplos de uso de funções lógicas);</span></p></li><li><p><a href='Lab_9_Efeito_Visual/Lab_9_Efeito_Visual_Usando_DEC.html'><span>Exemplo de efeito visual usando DEC 3/8</span></a><span>;</span></p></li><li><p><a href='resumo_MSI/exemplo_uso_DEC.html'><span>Exemplo de uso de </span><strong><span>DEC</span></strong><span> com Pastilhas de Memória</span></a><span>;</span></p></li><li><p><a href='Funcionamento_MUX/funcionamento_MUX_4.html'><span>Funcionamento de </span><strong><span>MUX</span></strong><span> de 4 canais de entrada (com animação)</span></a></p><p>&nbsp;</p></li></ul><hr /><p><span>Fernando Passold, atualizado em 17.03.2011</span></p><p>&nbsp;</p></div></div>
+<div id='write'  class=''><p><img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80" referrerpolicy="no-referrer" alt="circuito digital"></p><h1 id='circuitos-digitais-i'><span>Circuitos Digitais I</span></h1><p><span>Semestre 2021.1</span></p><p><span>Opções disponíveis:</span></p><ul><li><p><a href='Uso_LogiSim.html'><span>Tutorial para uso do LogiSim</span></a><span>;</span></p></li><li><p><a href='exe_mapas_K_2021_1/exemplos_mapas_K3.html'><span>Exercícios</span></a><span> iniciais usando Mapas de Karnaugh envolvendo 3 variáveis:</span></p></li><li><p><a href='MSI_exemplos/exercicios_01.html'><span>Exemplos de circuitos digitais usando pastilhas MSI: MUX e Comparador Magnitude</span></a><span> (ou exemplos de uso de funções lógicas);</span></p></li><li><p><a href='Lab_9_Efeito_Visual/Lab_9_Efeito_Visual_Usando_DEC.html'><span>Exemplo de efeito visual usando DEC 3/8</span></a><span>;</span></p></li><li><p><a href='resumo_MSI/exemplo_uso_DEC.html'><span>Exemplo de uso de </span><strong><span>DEC</span></strong><span> com Pastilhas de Memória</span></a><span>;</span></p></li><li><p><a href='Funcionamento_MUX/funcionamento_MUX_4.html'><span>Funcionamento de </span><strong><span>MUX</span></strong><span> de 4 canais de entrada (com animação)</span></a><span>;</span></p><p>&nbsp;</p></li><li><p><a href='exemplos_operacoes_sinais/exemplos_operacoes.html'><span>Exemplos de Operações Aritméticas Binárias</span></a><span>;</span></p><p>&nbsp;</p></li></ul><hr /><p><span>Fernando Passold, atualizado em 17.03.2011</span></p><p>&nbsp;</p></div></div>
 </body>
 </html>

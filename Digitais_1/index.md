@@ -16,7 +16,11 @@ Opções disponíveis:
 
 * [Exemplo de uso de **DEC** com Pastilhas de Memória](resumo_MSI/exemplo_uso_DEC.html);
 
-* [Funcionamento de **MUX** de 4 canais de entrada (com animação)](Funcionamento_MUX/funcionamento_MUX_4.html)
+* [Funcionamento de **MUX** de 4 canais de entrada (com animação)](Funcionamento_MUX/funcionamento_MUX_4.html);
+
+  
+  
+* [Exemplos de Operações Aritméticas Binárias](exemplos_operacoes_sinais/exemplos_operacoes.html);
 
   
 
