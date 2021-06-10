@@ -25,6 +25,7 @@ Aulas ministradas:
   6. Controlador **Deadbeat** -- projeto(s): 
      * [Aula de 04/06/2020](deadbeat_08out2019.html) ;
      * [Aula de 11/11/2020](deadbeat/deadbeat_exemplo_1.html);
+     * [Aula de 09/06/2021](deadbeat_09062021/aula_deadbeat_09_06_2021.html).
   7. Projeto de PID (com ajuste por Ziegler-Nichols)
      * (..aguardar..)
 
