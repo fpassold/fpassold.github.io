@@ -38,7 +38,7 @@
 - [Projeto de PD](aula_PD_03out2019.html) (Usando Contribuição angular; Aula de 03/10/2019)
 - [Teoria à respeito de Compensador por Avanço de Fase (Lead)](Teoria_PD_Lead/acoes_derivativas.html) (Aula de 02/06/2021)
 - [Projeto de Compensador por Avanço de Fase (Lead)](projeto_Lead/exemplo_lead.html) (Aula de 09/06/2021)
-- Projeto de PID
+- [Projeto de PID](PID/examplo_9_5_PID.html) (*example_9_5* do NISE).
 - [Projeto de Lead-Lag](Aula_28_05_2019_lead_lag.html)
 - [Outros exemplos de projetos de controladores usando RL](exercicios/exercicios.html) (exercícios aleatórios).
 - [Sintonia de PID](8_Ajuste_PID/Sintonia_PIDs_usando_ZN.html) (usando Ziegler-Nichols e Método do Relé)
