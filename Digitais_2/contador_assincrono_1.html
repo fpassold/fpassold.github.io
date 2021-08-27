@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>contador_assincrono_1</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Contadores Assíncronos</h1>
+
+<p>A figura abaixo mostra um contador <strong>assíncrono</strong> crescente de módulo 8 (MOD-8), que conta de 0 à 7:</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK.png" alt="cont_assincrono_3_FFs-JK.png"></p>
+
+<p><em>Video no Youtube:</em>
+<iframe  width="1080" height="382" src="https://www.youtube.com/embed/cOVaZfB9k2E" frameborder="0" allowfullscreen>
+</iframe></p>
+
+<p><em>Arquivo original:</em> <a href="figuras/cont_assincrono_3_FFs-JK_1Hz.mp4">cont_assincrono_3_FFs-JK_1Hz.mp4</a></p>
+
+<p>Note que neste tipo de circuito (de contador assíncrono), os seus FF&#39;s estão na <strong>configuração toggle</strong> (que alternam estado cada vez que recebem um pulso de clock).</p>
+
+<p>Para entender o funcionamento deste circuito se faz necessário deduzir as formas de onda desenvolvidas nas saídas dos FF&#39;s.</p>
+
+<p>Notar que os FF&#39;s estão numa estrutura &quot;serial&quot;:</p>
+
+<ul>
+<li>apenas o primeiro FF recebe um sinal de clock externo. Que dá a cadência (velocidade) ao contador;</li>
+<li>os próximos FF&#39;s possuem sua entrada de clock dependendo da saída do FF anterior (saída \(Q\) ou \(\overline{Q}\)). Neste exemplo, os FF&#39;s seguintes estão conectados às saídas Q&#39;s dos FF&#39;s anteriores.</li>
+</ul>
+
+<p>Deduzindo a forma de onda para Clock x Q0:</p>
+
+<p><img src="figuras/formas_onda_q0.png" alt="formas_onda_q0.png"></p>
+
+<p>Podem ser considerados os atrasos de propagação dos FF&#39;s:</p>
+
+<p><img src="figuras/formas_onda_q0_b.png" alt="formas_onda_q0_b.png"></p>
+
+<p>Note que as saídas do primeiro FF, saída Q0 está dividindo a frequência de entrada (do sinal de Clock) por 2.</p>
+
+<p>Completando as formas de onda para a saída Q1 (note que FF-1 depende da saída de Q0 (FF anterior):</p>
+
+<p><img src="figuras/formas_onda_q1.png" alt="formas_onda_q1.png"></p>
+
+<p>Completando as formas de onda para a saída Q1 (note que FF-1 depende da saída de Q0 (FF anterior):</p>
+
+<p><img src="figuras/formas_onda_q2.png" alt="formas_onda_q2.png"></p>
+
+<p>Podemos então confirmar que é realizada uma sequência de contagem crescente:</p>
+
+<p><img src="figuras/formas_onda_contagem.png" alt="formas_onda_contagem.png"></p>
+
+<p>Note que ao final da contagem, o circuito naturalmente “recicla”, isto é, recomeça a contagem do 0 (zero) - enquanto o sinal de clock não for pausado.</p>
+
+<p><strong>Se os atrasos de propagação forem desprezados</strong> ou se o circuito foi simulado com uma baixa frequência para o sinal de Clock os atrasos não são perceptíveis:</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_ondas_1Hz.png" alt="cont_assincrono_3_FFs-JK_ondas_1Hz.png"></p>
+
+<p>Podemos representar a contagem realizada na forma de uma tabela verdade para este contador (ou tabela de sequência de contagem):</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_tabela_contagem.png" alt="cont_assincrono_3_FFs-JK_tabela_contagem.png"></p>
+
+<p><em>Obs.: O pulso de Clock 0 se refere ao instante inicial (quando o circuito é iniciado/energizado).</em></p>
+
+<p>E também podemos representar o funcionamento deste contador na forma de um diagrama (de sequência) de estados:</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_estados.png" alt="cont_assincrono_3_FFs-JK_estados.png"></p>
+
+<h2 id="toc_1">Exercício Proposto</h2>
+
+<p>Desenhe as formas de onda para um circuito semelhante ao mostrado no início deste texto, mas em vez de usar FF&#39;s-JK ativados por borda de descida, use FF&#39;s por <strong>borda de subida</strong>.</p>
+
+<ul>
+<li>Pergunta-se o que acontece com a contagem?</li>
+<li>Mostre as formas de onda nas saídas dos FF&#39;s.</li>
+</ul>
+
+<h2 id="toc_2">Detalhes no funcionamento de um contador assíncrono</h2>
+
+<p>Analisando em maiores detalhes como é realizada a contagem, percebemos que:</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_atrasos.png" alt="cont_assincrono_3_FFs-JK_atrasos.png"></p>
+
+<p>Se percebe que a contagem não segue uma sequência perfeita. Ocorrem &quot;<em>glitches</em>&quot;:</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_glitches.png" alt="cont_assincrono_3_FFs-JK_glitches.png"></p>
+
+<p>Repare na figura anterior, que algumas transições não são seguem a sequência numérica esperada, assumindo estados transitórios, que duram por um período de tempo equivalente ao atraso de propagação de um FF.</p>
+
+<p>Uma consulta nas especificações do FF adotado: 74LS76 rende:</p>
+
+<p><img src="figuras/pdf_74ls76_1.png" alt="pdf_74ls76_1.png"></p>
+
+<p><img src="figuras/pdf_74ls76_AC-2.png" alt="pdf_74ls76_AC-2.png"></p>
+
+<p>Num simulador, os atrasos de propagação podem se tornar perceptíveis se o período do sinal de clock for pouco maior que os atrasos de propagação presentes no circuito. Se o circuito anterior for simulador com:</p>
+
+<p>\(f_{Clock}=10\) Mhz,</p>
+
+<p>o período do sinal de Clock será de: </p>
+
+<p>\(T=\dfrac{1}{f_{Clock}}=\dfrac{1}{10 \times 10^{6}}=\dfrac{1000}{10 \times 10^{9}}=100 \times 10^{-9}\) segundos ou \(T=100\) ns.</p>
+
+<p>Isto implica que o atraso de propagação de um FF, em torno de \(t_{P}=20\) ns corresponde à \(=\frac{20}{100}\times100\%=0,2 \times 100\%=20\%\) de um ciclo do sinal de Clock. </p>
+
+<p>De fato, uma simulação usando \(f_{Clock}=10\) MHz, envolvendo 12 pulsos de clock (período da simulação \(=12 \text{ pulsos de Clock } \times 100\)ns \(=1,2 \, \mu\)s) rende as seguintes formas de onda:</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_ondas_10MHz.PNG" alt="cont_assincrono_3_FFs-JK_ondas_10MHz.PNG"></p>
+
+<p>Nesta figura é até possível se perceber o \(t_{PLH}\) adotado por este simulador para os FF&#39;s 76LS76: \(t_{PLH}=15\)ns (notar cursor na posição TIME=115n=115 ns, então: \(t_{PLH}=115-100=15\) ns). Do modo semelhante pode ser inferido que este simular adota \(t_PHL=21\) ns para estas pastilhas.</p>
+
+<p>Na última figura podem ser percebidos os &quot;<em>glitches</em>&quot;. Cujo efeito fica mais ressaltado se tivermos que <strong>decodificar as saídas do contador</strong> para detectar a passagem por determinado estado (instante). de contagem, ver próximo circuito:</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_com_DEC.png" alt="cont_assincrono_3_FFs-JK_com_DEC.png"></p>
+
+<p>Notar que as saídas \(O_i\) correspondem às saídas decodificadas em ATIVO ALTO do contador síncrono MOD-8. Isto significa que a saída \(O_6\) só deveria comutar para nível lógico ALTO uma única vez durante todo o ciclo de contagem deste contador (total de 2^3=8 pulsos de clock), quando a saída do contador atingir o número 6 (\(Q_2Q_1Q_0=110_{(2)}\)). Mas...</p>
+
+<p>Se este circuito for simulado com \(f_{Clock}=10\) MHz, perceberemos as seguintes formas de onda:</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_com_DEC_ondas_10MHz_glitches.png" alt="cont_assincrono_3_FFs-JK_com_DEC_ondas_10MHz_glitches.png"></p>
+
+<p>Este mesmo circuito simulado com \(f_{Clock}=1\) Hz, rende as formas de onda mostradas à seguir:</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_com_DEC_ondas_1Hz.png" alt="cont_assincrono_3_FFs-JK_com_DEC_ondas_1Hz.png"></p>
+
+<p>A saída decodificada se aproxima do que era desejado, porém note que os glithces continuam acontecendo (ressaltados pelos pequenos picos de sinais, &quot;<em>spikes</em>&quot;).</p>
+
+<p>Nota-se que os <em>glitches</em> comprometeram a decodificação das saídas deste contador. </p>
+
+<p>A próxima figura, mostra o que era desejado:</p>
+
+<p><img src="figuras/contador_saida_decodificada.jpg" alt="contador_saida_decodificada.jpg"></p>
+
+<h2 id="toc_3">Frequência máxima de operação</h2>
+
+<p>Com base nos diagramas de forma de onda mostrando os atrasos de propagação, se percebe que o que compromete o funcionamento de um contador síncrono é quando os atrasos acumulados incluindo seu penúltimo FF, coincide com a próxima borda ativa do sinal de Clock; neste ponto \(f_{Clock}=f_{Max}\). </p>
+
+<p>Podemos reproduzir em formas de onda o que acontece quanto \(f_{Clock}=f_{Max}\), na pior situação, quando os 3 FF&#39;s são obrigados a mudar de estado, ou seja, a contagem passa de 7 para 0, ou ocorre a reciclagem; ver figura à seguir:</p>
+
+<p><img src="figuras/freq_max_002.png" alt="freq_max_002.png"></p>
+
+<p>Note no lado esquerdo da figura anterior (\(f_{Clock}=f_{Max}\)) que não existe uma “folga” entre o atraso de comutação de Q1 e a próxima borda ativa do sinal de clock (pulso de clock de No. 8 para 9). Neste caso, note que o contador nem produz a saída \(Q_2Q_1Q_0=000_{(2)}\) (o número 0 foi “saltado”) como se o mesmo tivesse continuado a contagem diretamente para o número 1. Perceba nesta figura que o contador também salta a contagem do número 3 para o número 5 (sem exibir nas suas saídas o número 4). </p>
+
+<p>Já a mesma figura, lado direito, mostra o que acontece mesmo em frequências altas mas ainda com \(f_{Clock}&lt;f_{Max}\). Pode ser percebido que o instante em que a contagem passa por zero pode ser bastante curta, equivalendo ao período de tempo de um <em>glitch</em> deste contador.</p>
+
+<p>Perceba que o atraso de propagação do último FF (\(Q_2\)) não interfere na contagem, apenas impacta num atraso na apresentação dos resultados da contagem. Desde que a frequência máxima não tenha sido atingida, o contador (assíncrono) continua apresentando nas suas saídas, a sequência esperada (apesar dos <em>gliches</em>).</p>
+
+<p>A frequência máxima de operação depende então de \(n-1\) FF&#39;s presentes na estrutura do contador assíncrono, ou neste caso em particular:</p>
+
+<p>\(f_{Max}=\dfrac{1}{2 \times t_P}=\dfrac{1}{2 \times 20 \times 10^9}=\dfrac{1000}{40 \times 10^{-6}}=25 \times 10^6\) Hz ou \(f_{Max}=25\) MHz.</p>
+
+<p>As próximas figuras mostras as formas de onda no circuito do contador assíncrono crescente MOD-8 para 3, com saídas decodificadas, para diferentes condições de simulação:</p>
+
+<p>a) \(f_{Clok}&lt;f_{Max}\), (\(f_{Clock}=10\) Mhz):</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_com_DEC_ondas_10MHz.PNG" alt="cont_assincrono_3_FFs-JK_com_DEC_ondas_10MHz.PNG"></p>
+
+<p>b) \(f_{Clock}=f_{Max}\), (\(f_{Clock}=25\) Mhz):</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_com_DEC_ondas_25MHz.PNG" alt="cont_assincrono_3_FFs-JK_com_DEC_ondas_25MHz.PNG"></p>
+
+<p>c) \(f_{Clock}&gt;f_{Max}\), (\(f_{Clock}=40\) Mhz):</p>
+
+<p><img src="figuras/cont_assincrono_3_FFs-JK_com_DEC_ondas_40MHz.PNG" alt="cont_assincrono_3_FFs-JK_com_DEC_ondas_40MHz.PNG"></p>
+
+<p>Perceba também que a frequência máxima de um circuito contador não está diretamente associado com a frequência máxima do FF adotado (que no caso é de \(f_{Max/\text{74LS75}}=30\) MHz no mínimo - ver especificações mostradas anteriormente).</p>
+
+<hr>
+
+<p>Fim da Parte I &gt;&gt; Seguindo para <a href="contador_assincrono_2.html">Parte II</a></p>
+
+<hr>
+
+<p>Circuitos Digitais II / Prof. Fernando Passold (atualizado em 27/03/2020).</p>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>

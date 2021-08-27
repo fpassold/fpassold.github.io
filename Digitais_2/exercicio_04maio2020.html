@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>exercicio_04maio2020</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<p>Aula de revisão de 04/05/2020.</p>
+
+<h1 id="toc_0">Problemas:</h1>
+
+<p><strong>Exercício_1</strong>: Projetar um divisor de frequencia por 37...</p>
+
+<p>Note: 37/2=18,5; 37/4=9,25; 37/5=7,4 \(\leftarrow\) parece ser um número primo (indivisível)</p>
+
+<p><strong>Soluções</strong>: 2 opções: usando CI 7490 (Contador Decimal) ou  7493 (Contador Binário)...</p>
+
+<p><strong>a) opção pelo 7490:</strong></p>
+
+<p>\(37_{(10)}=?_{{2,BCD}}\)</p>
+
+<p>\(3_{(10)}=0011_{(2)} \leftarrow \text{Dezenas}\)</p>
+
+<p>\(7_{(10)}=0111_{(2)} \leftarrow \text{Unidades}\)</p>
+
+<p>Desenhando circuito: 2 x CI&#39;s 7490, em cascata, inicialmente contando de 0 à 99:</p>
+
+<p><img src="contador_0_99.png" alt=""></p>
+
+<p>Este circuito deve ser adaptado para contar de 0 até 36, com recycle (&quot;reset&quot;) ocorrendo quando atinge o número 37. Então é estabelecido um &quot;barramento&quot; de reset entre as pastilhas para forçar um reset conjunto ou simultâneo das 2 pastilhas apenas quando a contagem atinge o número 37.</p>
+
+<p>O sobre o ponto de saídan, \(F_{OUT}\), normalmente é o bit + significativo associado com o limite de contagem realizado. Neste caso:</p>
+
+<p>Saída \(F_{OUT}\): saída \(Q_1\) do contador de dezenas.</p>
+
+<p>O circuito final fica então:</p>
+
+<p><img src="contador_7490_div_37.png" alt=""></p>
+
+<p>Note o ponto da frequencia de entrada: \(F_{IN}\) e o ponto de saída (frequência de entrada dividida por 37), \(F_{OUT}\). \(F_{IN}\) está conectado ao sinal de clock ajustado para 37000 Hz ou 37 KHz. Sendo assim, o frequencímetro que está conectado ao ponto \(F_{OUT}\) está mostando como esperado: 1000 Hz.</p>
+
+<p><strong>Cálculo do Duty-cycle</strong>:</p>
+
+<p>Segue tabela resumida da sequencia de contagem:</p>
+
+<div><pre><code class="language-none"> Dezenas | Unidades
+Q3Q2Q1Q0 | Q3Q2Q1Q0 | Obs
+ 0 0 0 0 | 0 0 0 0  | Pulso inicial (reset ou inicialização)
+ 0 0 0 0 | 1 0 0 1  | final contagem Unidades &lt;-- 10 pulsos de clock (F_IN)
+ 0 0 0 1 | 0 0 0 0  | inicio da contagem em 10
+ 0 0 0 1 | 1 0 0 1  | contagem atinge No. 19; passam-se + 10 pulsos de clock
+ 0 0 1 0 | 0 0 0 0  | contagem atinge No. 20
+ 0 0 1 0 | 1 0 0 1  | congagem atinge No. 29 &lt;-- + 10 pulsos de clock
+ 0 0 1 1 | 0 0 0 0  | Começa a aparecer o número 30 no display
+ 0 0 1 1 | 0 1 1 0  | Contagem normal até número 36
+ 0 0 1 1 | 0/0 1/0 1/0 1/0 | alcança o 37 e ocorre recycle (reset)</code></pre></div>
+
+<p>Analisando a tabela anterior e considerando que \(F_{OUT}\) é &quot;coletado&quot; em Q1 do CI de Dezenas:</p>
+
+<p>Q1=&#39;1&#39; durante o tempo em que display de dezenas mostra &quot;2&quot;: 10 pulsos de F_IN;</p>
+
+<p>Q1=&#39;1&#39; durante + 7 pulsos de cock de F_IN (display): 30 ~ 36 (7 estados)</p>
+
+<p>total: Q1=&#39;1&#39; durante 10+7=17 pulsos de clock (F_IN)</p>
+
+<p>\(\text{Duty-cycle}=\dfrac{17}{37}\times 100\%=45,96\%\) </p>
+
+<p><strong>b) Solução usando 7493</strong> </p>
+
+<p>O 7493: contador binário, então temos que converter o número \(37_{(10)}\) para base binária ou hexadecimal. Mais prático (e rápido) converter para hexadecimal e depois para binário (lembrando que cada algarismo hexadecimal = 4 bits):</p>
+
+<div><pre><code class="language-none"> 37  / 16
+-32     2
+---
+  5</code></pre></div>
+
+<p>\(37_{(10)}=25_{(16)}=0010:0101_{(2)}\).</p>
+
+<p>1a-parte: diagrama elétrico do contador binário usando 2 x 74<strong>93</strong>: conta de 0 até 255 ou de 0 até FFh.</p>
+
+<p><img src="contador_0_FF.png" alt=""></p>
+
+<p>O circuito divisor por 37 usando 7493 fica então:</p>
+
+<ul>
+<li>prevendo reset (recycle) quando contagem atinge o número 37 em binário:</li>
+</ul>
+
+<p><img src="contador_div_37_7493.png" alt=""></p>
+
+<p>Note que a figura já mostra o resultado da simulação para \(F_{IN}=\) 37000 Hz, e então: \(F_{OUT}=\) 1000 Hz como mostra a figura.</p>
+
+<p><strong>Calculando Duty-cycle</strong>:</p>
+
+<div><pre><code class="language-none">      U2 | U1.          &lt;-- CIs responsáveis pela contagem (cascateados)
+Q3Q2Q1Q0 | Q3Q2Q1Q0
+ 0 0 0 0 |  0 0 0 0 = 0 &lt;-- instante inicial
+ 0 0 0 0 |  1 1 1 1 = F &lt;-- passaram-se 16 pulsos de F_IN
+ 0 0 0 1 |  0 0 0 0 = 0 &lt;-- contagem: 10h
+ 0 0 0 1 |  1 1 1 1 = F &lt;-- congagem: 1Fh (+ 16 pulsos de F_IN)
+ 0 0 1 0 |  0 0 0 0 = 0 &lt;-- congagem: 20h (1)
+ 0 0 1 0 |  0 0 0 1 = 1 &lt;-- contagem: 21h (2)
+ 0 0 1 0 |  0 0 1 0 = 2 &lt;-- contagem: 22h (3)
+ 0 0 1 0 |  0 0 1 1 = 3 &lt;-- contagem: 23h (4)
+ 0 0 1 0 |  0 1 0 0 = 4 &lt;-- contagem: 24h (+ 5 pulsos de F_IN)
+ 0 0 1 0 |  0 1/0 0/0 1/0 &lt;-- contagem: 25h/Recycle           </code></pre></div>
+
+<p>Como \(F_{OUT}\) é coletada na saída mais sgnificativa da contagem: \(Q_1\) (Proteus: \(Q_B\)) de U2, percebemos (pela tabela anterior) que \(Q_{1|\text{U2}}=\)&#39;1&#39; durante apenas 5 pulsos de \(F_{IN}\), então: </p>
+
+<p>\(Duty-cycle=\dfrac{5}{37}\times 100\%=13,51\%\)</p>
+
+<hr>
+
+<p><strong>Exercício_2</strong>: Projetar um contador (assíncrono) capaz de realiar a seguinte sequencia de contagem: \(5 \rightarrow 6 \rightarrow 7 \rightarrow 8 \rightarrow 9 \rightarrow 10 \rightarrow 11 \rightarrow 12 \rightarrow 5 \rightarrow 6 \rightarrow etc..\).</p>
+
+<p><strong>Solução</strong>:</p>
+
+<p>Notamos que:</p>
+
+<ul>
+<li><p>\(5_{(10)}=0101_{(2)}\)</p></li>
+<li><p>\(12_{10}=1100_{(2)}\)</p></li>
+<li><p>São necessários 4 bits para representar as contagens \(\Rightarrow\) 4 FF&#39;s</p></li>
+</ul>
+
+<p><strong>Circuito</strong>:</p>
+
+<p>Resumo: </p>
+
+<ul>
+<li><p>Detectar quando contagem alcança: \(13_{(10)}\) e realizar um <strong>preset</strong>. </p>
+
+<p>O Recycle ocorre quando a estrutura alcança número \(Q_3Q_2Q_1Q_0=13_{(10)}=1101_{(2)}\), isto implicar usar uma porta AND(3) ou NAND(3), detectando quando Q3=&#39;1&#39;, Q2=&#39;1&#39; e Q0=&#39;1&#39;, ou seja:</p>
+
+<p>\(\text{Preset}=Q_3 \cdot Q_2 \cdot Q_0\)</p></li>
+<li><p>Quando circuito alcança o No. 13 não é o reset o desejado, mas um &quot;<strong>preset</strong>&quot; em \(Q3Q2Q1Q0=5_{(10)}=0101_{(2)}\).</p></li>
+<li><p>&quot;Deduzir&quot; circuito de contador crescente assíncrono conforme o FF à ser adotado: borda de subida ou de descida. Algumas opções de FF&#39;s:</p></li>
+</ul>
+
+<p>  <img src="opcoes_FFs.png" alt=""></p>
+
+<p>Supondo que se adote o CI 74LS74 (FF-D / Borda subida),  e supondo que o circuito abaixo conta crescente... necessidade de verificar por formas de onda:</p>
+
+<p><img src="cont_assinc_decrescente_1.jpg" alt=""></p>
+
+<p>O &quot;chute&quot; de conectar \(q \rightarrow CK\), neste caso, forma um contador decrescente, então:</p>
+
+<p>Circuito final:</p>
+
+<p><img src="contador_5_to_12.png" alt=""></p>
+
+<hr>
+
+<p><strong>Exercício_3</strong>:  Projete um contador assíncrono que realize esta outra sequencia de contagem: \(12 \rightarrow 11 \rightarrow 10 \rightarrow 9 \rightarrow 8 \rightarrow 7 \rightarrow 6 \rightarrow 5 \rightarrow 12 \rightarrow 11  \rightarrow etc...\) </p>
+
+<p><strong>Solução</strong>:</p>
+
+<p>Necessários 4 x FF&#39;s e estrutura contador assíncrono <strong>decrescente</strong>.</p>
+
+<p>O <strong>preset</strong> ocorre quando \(Q3Q2Q1Q0=4_{(10)}=0100_{(2)}\):</p>
+
+<p>\(\text{Preset}=AND(\overline{Q_3}, Q_2, \overline{Q_1}, \overline{Q_0}))\).</p>
+
+<p>\(\text{Preset}=\overline{Q_3} \cdot Q_2 \cdot \overline{Q_1} \cdot \overline{Q_0}\)</p>
+
+<p>Note: aqui não basta apenas detectar Q2=&#39;1&#39; porque como a contagem é decrescente, este bit permanece em &#39;1&#39; durante a parte intermidiária da contagem e desta forma, o preset seria realizado no momento incorreto. </p>
+
+<p>Note a sequencia de contagem assumida neste caso:</p>
+
+<div><pre><code class="language-none">Binário  |
+Q3Q2Q1Q0 | Dec
+ 0 0 0 0 |  0 &lt;-- supondo que circuito inicia com FF&#39;s resetados.
+ 1 1 1 1 | 15 
+ 1 1 1 0 | 14
+ 1 1 0 1 | 13
+ 1 1 0 0 | 12 &lt;-- início da faixa desejada
+ 1 0 1 1 | 11
+ 1 0 1 0 | 10
+ 1 0 0 1 |  9
+ 1 0 0 0 |  8
+ 0 1 1 1 |  7
+ 0 1 1 0 |  6
+ 0 1 0 1 |  5 &lt;-- fim da faixa desejada
+ 0 1 0 0 |  4 &lt;-- ponto para gerar sinal de PRESET</code></pre></div>
+
+<p>Também não podemos apenas detectar \(Q2Q1Q0=100_{(2)}=4_{(10)}\), porque esta mesma sequencia binária é assumida quando o circuito é forçado para o número 12 (\(=Q3Q2Q1Q0=1100_{(2)}\)); note que apenas Q3 é diferente entre a combinação binária para 4 e 12. Se esta condição (preset quando contagem atinge \(Q2Q1Q0=100_{(2)}\)) fosse adotada, o circuito ficaria estacionado no ponto de contagem \(=12_{(10)}=1100_{(2)}\) -- no PROTEUS gera um erro de &quot;race condition&quot;.  Então <strong>necessariamente</strong> neste caso precisamos de uma porta AND ou NAND de 4 entradas!</p>
+
+<p>Então devemos ficar atentos à sequencia de contagem e ao &quot;padrão&quot; de bits à serem detectados.</p>
+
+<p>Neste caso o <strong>preset</strong> força os FF&#39;s em \(Q3Q2Q1Q0=12_{(10)}=1100_{(2)}\).</p>
+
+<p>Supondo que se use os mesmos FF&#39;s do exemplo anterior, teremos o seguiinte circuito:</p>
+
+<p><img src="contador_12_to_5.png" alt=""></p>
+
+<hr>
+
+<p><a href="https://youtu.be/eFaXaJHGpFY">https://youtu.be/eFaXaJHGpFY</a></p>
+
+<p>Prof. Fernando Passold, em 04/05/2020</p>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
