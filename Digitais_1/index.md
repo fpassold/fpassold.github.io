@@ -2,9 +2,9 @@
 
 # Circuitos Digitais I
 
-Semestre 2021.1
-
 Opções disponíveis:
+
+* Exercícios sobre conversões entre bases numéricas [[aula de 14.09.2021](codigos/exe_sist_numeracao.html)];
 
 * [Tutorial para uso do LogiSim](Uso_LogiSim.html);
 
