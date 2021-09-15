@@ -4,7 +4,7 @@
 
 * **Contadores Assíncronos**:
   * [Teoria básica contadores assíncronos](contador_assincrono_1.html);
-  * [Uso de frequencímetro no Proteus, PDF](como_usar_um_simulador.pdf);
+  * Uso de **frequencímetro no Proteus**: [HTML](frequencimetro_proteus.html), ou [PDF](como_usar_um_simulador.pdf);
   * [Exemplos de projetos de contadores assíncronos](Exemplos_Prpjetos_Contadores_Assincronos.html): Contador Decimal crescente (de 0 --> 9), Contador de 5 --> 2 (cíclico), Circuito Divisor de Freqüência por 42 [Aula de 12/04/2020; 27/08/2021];
   * [Exemplos de divisores de frequencia usando CIs 7490, 7493](exercicio_04maio2020.html): Divisor de Freqüência por 37, Contador de 5 --> 12 (cíclico), Contador de 12 --> 5 (cíclico) [aula de 04/05/2020];
   * Exercícios: [Ex_1: Contador de 3 --> 6 (cíclico); Ex_2: Contador de 5 --> 2 (cíclico)](contadores_assync/exercicio_03set2021.html) [Aula de 03/09/2021];
