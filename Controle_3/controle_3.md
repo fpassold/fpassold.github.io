@@ -2,7 +2,7 @@
 
 ![cason-asher-Ur7Efx8lBjs-unsplash.jpg](cason-asher-Ur7Efx8lBjs-unsplash.jpg)
 
-Aulas ministradas:
+**Tópicos ministrados:**
 
 * Introdução à Sistemas Amostrados, incorporando Z.O.H, cálculo de $BoG(z)$ $\rightarrow$ [deduções e simulações](exemplo_1_BoG/intro_exemplo_1a_ordem.html).
 * [Teoria do Erro](4_teoria_erros/resumo_teoria_erro.html) (papel do integrador);
@@ -14,6 +14,7 @@ Aulas ministradas:
      * Projeto de **PI = Controlador Proporcional + Integral Puro** ([aula de 07/10/2020](2020_2/aula_07_10_2020.html));
   2. Projeto de **PI**: [Aula de 14/05/2020](aula_14_05_2020.html);
      Outro projeto de [Controlador Ação Integral Pura e PI](2021_1/aula_05_05_2021.html), incluindo comparações (05/05/2021).
+     [Aula de 23/09/2021](Controle3_2021_2/aula_1.html) >> Projeto de P, I e PI (início);
   3. Projeto de Controlador por **Atraso de Fase (Lag)**:
      * [Aula de 21/05/2020](controlador_Lag.html);
      * Projeto de Controlador PI + Lag ([aula de 14/10/2020](2020_2/aula_14_10_2020.html))
