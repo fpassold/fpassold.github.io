@@ -15,19 +15,20 @@
   2. Projeto de **PI**: [Aula de 14/05/2020](aula_14_05_2020.html);
      Outro projeto de [Controlador Ação Integral Pura e PI](2021_1/aula_05_05_2021.html), incluindo comparações (05/05/2021).
      [Aula de 23/09/2021](Controle3_2021_2/aula_1.html) >> Projeto de P, I e PI (início);
-  3. Projeto de Controlador por **Atraso de Fase (Lag)**:
+  3. O que acontece quando se tenta acrescentar **+Integração em Sistema tipo 1** [[aula de 07/10/2021](sis_tipo1/sis1_mais_integradores.html)];
+  4. Projeto de Controlador por **Atraso de Fase (Lag)**:
      * [Aula de 21/05/2020](controlador_Lag.html);
      * Projeto de Controlador PI + Lag ([aula de 14/10/2020](2020_2/aula_14_10_2020.html))
-  4. Deduzindo [Equações de **Controladores com Ação Derivativa** (arquivo PDF)](pd_plus_filtro.pdf) (Aula de 21/05/2020);
-  5. Projeto de Controladores **PD e Lead**:
+  5. Deduzindo [Equações de **Controladores com Ação Derivativa** (arquivo PDF)](pd_plus_filtro.pdf) (Aula de 21/05/2020);
+  6. Projeto de Controladores **PD e Lead**:
      1. [Projeto de PD (sem contribuição angular)](2020_2/aula_28_10_2020.html) (Aula de 28/10/2020)
      2. [Projeto de Controlador PD](projeto_PD_lead_2020.html) (Aula de 28/05/2020);
      3. [Projeto de Lead](lead/lead_ex1.html) (Aula de 11/11/2020);
-  6. Controlador **Deadbeat** -- projeto(s): 
+  7. Controlador **Deadbeat** -- projeto(s): 
      * [Aula de 04/06/2020](deadbeat_08out2019.html) ;
      * [Aula de 11/11/2020](deadbeat/deadbeat_exemplo_1.html);
      * [Aula de 09/06/2021](deadbeat_09062021/aula_deadbeat_09_06_2021.html).
-  7. Projeto de PID (com ajuste por Ziegler-Nichols)
+  8. Projeto de PID (com ajuste por Ziegler-Nichols)
      * (..aguardar..)
 
 EXTRAs:

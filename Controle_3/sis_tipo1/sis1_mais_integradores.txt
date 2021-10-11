@@ -1,0 +1,168 @@
+>> diary aula_07out2021.txt
+>> 
+>> % # Exemplo de Controladores para Sistema do tipo 1
+>> 
+>> G = tf (14.5, poly([0 1.45 6.78]));
+>> zpk(G)
+
+ans =
+ 
+         14.5
+  -------------------
+  s (s-6.78) (s-1.45)
+ 
+Continuous-time zero/pole/gain model.
+
+>> G = tf (14.5, poly([0 -1.45 -6.78]));
+>> zpk(G)
+
+ans =
+ 
+         14.5
+  -------------------
+  s (s+6.78) (s+1.45)
+ 
+Continuous-time zero/pole/gain model.
+
+>> rlocus(G)
+>> OS=10;
+>> zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+zeta =
+      0.59116
+>> hold on; sgrid(zeta,0)
+>> Kp=0.53;
+>> ftmf=feedback(Kp*G, 1);
+>> figure; step(ftmf)
+
+>> 4/10
+ans =
+          0.4
+>> T=0.4;
+>> fs=1/T
+fs =
+          2.5
+>> BoG=c2d(G, T);
+>> zpk(BoG)
+
+ans =
+ 
+  0.075769 (z+1.896) (z+0.1048)
+  -----------------------------
+   (z-1) (z-0.5599) (z-0.0664)
+ 
+Sample time: 0.4 seconds
+Discrete-time zero/pole/gain model.
+
+>> figure; rlocus(BoG)
+>> hold on; zgrid(zeta, 0)
+>> Kp_d=0.411;
+>> ftmf_d=feedback(Kp_d*BoG, 1);
+>> figure; step(ftmf, ftmf_d)
+>> 4/0.3
+ans =
+       13.333
+>> 4/20
+ans =
+          0.2
+>> 1/0.2
+ans =
+     5
+>> zpk(G)
+
+ans =
+ 
+         14.5
+  -------------------
+  s (s+6.78) (s+1.45)
+ 
+Continuous-time zero/pole/gain model.
+
+>> zpk(BoG)
+
+ans =
+ 
+  0.075769 (z+1.896) (z+0.1048)
+  -----------------------------
+   (z-1) (z-0.5599) (z-0.0664)
+ 
+Sample time: 0.4 seconds
+Discrete-time zero/pole/gain model.
+
+>> C_I=tf(1,[1 -1])
+
+C_I =
+ 
+    1
+  -----
+  s - 1
+ 
+Continuous-time transfer function.
+
+>> C_I=tf(1,[1 -1], T)
+
+C_I =
+ 
+    1
+  -----
+  z - 1
+ 
+Sample time: 0.4 seconds
+Discrete-time transfer function.
+
+>> ftma_I=C_I*BoG;
+>> zpk(ftma_I)
+
+ans =
+ 
+  0.075769 (z+1.896) (z+0.1048)
+  -----------------------------
+  (z-1)^2 (z-0.5599) (z-0.0664)
+ 
+Sample time: 0.4 seconds
+Discrete-time zero/pole/gain model.
+
+>> figure; rlocus(ftma_I)
+>> axis equal
+>> K_I=1E-5;
+>> ftmf_I=feedback(K_I*ftma_I, 1);
+>> figure; step(ftmf_I)
+>> t=4E4
+t =
+       40000
+>> t/60
+ans =
+       666.67
+>> ans/60
+ans =
+       11.111
+>> K_I
+K_I =
+        1e-05
+>> zpk(BoG)
+
+ans =
+ 
+  0.075769 (z+1.896) (z+0.1048)
+  -----------------------------
+   (z-1) (z-0.5599) (z-0.0664)
+ 
+Sample time: 0.4 seconds
+Discrete-time zero/pole/gain model.
+
+>> C_PI=tf( [1 -0.7 ], [1 -1], T)
+
+C_PI =
+ 
+  z - 0.7
+  -------
+   z - 1
+ 
+Sample time: 0.4 seconds
+Discrete-time transfer function.
+
+>> ftma_PI=C_PI*BoG;
+>> figure; rlocus(ftma_PI)
+>> diary off
+>> legend('Kp Analogic', 'Kp Discrete')
+>> save sis1
+>> quit
