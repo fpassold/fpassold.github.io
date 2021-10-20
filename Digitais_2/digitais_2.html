@@ -220,40 +220,41 @@ mark .md-meta { color: rgb(0, 0, 0); }
      font-weight: 400;
      src: local('Source Code Pro'), local('SourceCodePro-Regular'),
      url('file:///Volumes/Macintosh_HD/Users/fernandopassold/Library/Application%20Support/abnerworks.Typora/themes/gitbook/SourceCodePro-Regular.ttf') format('truetype');
-}
-/*by h16nning*/
+}@import "";
+
+/*by 16soundsofsilence, yes this code is an absolute mess*/
 
 :root {
-    --bg-color: hsl(217, 18%, 9%);
-    --side-bar-bg-color: hsl(217, 17%, 13%);
-    --control-text-color: #e6ecf1;
+    --bg-color: white;
+    --side-bar-bg-color: #f5f7f9;
+    --control-text-color: #3b454e;
     --primary-color: #3884ff;
     --primary-btn-border-color: #3884ff;
-    --active-file-bg-color: hsl(217, 17%, 13%);
+    --active-file-bg-color: #e6ecf1;
     --active-file-text-color: inherit;
     --active-file-border-color: #3884ff;
-    --item-hover-text-color: #8092af;
-    --item-hover-bg-color: #1c2026;
-    --window-border: 1px solid #272c35;
-    --select-text-font-color: #e6e7eb;
+    --item-hover-text-color: #242a31;
+    --item-hover-bg-color: #f5f7f9;
+    --window-border: 1px solid #e6ecf1;
+    --select-text-font-color: white;
     --select-text-bg-color: #1968e6;
 
-    --md-char-color: #8092af;
-    --heading-char-color: #8092af;
-    --meta-content-color: #3783ff;
+    --md-char-color: #9daab6;
+    --heading-char-color: #9daab6;
+    --meta-content-color: #3884ff;
 
-    --borders: #272c35;
-    --table-border-color: #272c35;
-    --boxes: #1c2027;
-    --boxes-darker: #353b46;
-    --boxes-darker2: #3e4551;
-    --boxes-darkest: #4f5764;
-    --drag-placeholder-color: #3e4551;
+    --borders: #e6ecf1;
+    --table-border-color: #e6ecf1;
+    --boxes: #f5f7f9;
+    --boxes-darker: #d8e0e7;
+    --boxes-darker2: #bac2c9;
+    --boxes-darkest: #9daab6;
+    --drag-placeholder-color: #d8e0e7;
 
-    --text-color: #e6e7eb;
-    --heading-text-color: white;
-    --light-text-color: #8a92a3;
-    --light-text-color-brighter: #9aa2b1;
+    --text-color: #3b454e;
+    --heading-text-color: #242a31;
+    --light-text-color: #9daab6;
+    --light-text-color-darker: #74818d;
     --codeboxes: #183055;
     --codeboxes-lighter: #1c375f;
     --rawblock-edit-panel-bd: transparent;
@@ -261,12 +262,12 @@ mark .md-meta { color: rgb(0, 0, 0); }
     --primary-color-darkest: #001f50;
     --primary-color-darker2: #00307c;
     --primary-color-darker: #1968e6;
-    --focus-ring-color: #3783ff;
+    --focus-ring-color: #3884ff;
 
     --danger-color: rgb(255, 70, 66);
 
-    --node-fill: #5252ad;
-    --node-border: #3f3fb8;
+    --node-fill: #ececff;
+    --node-border: #ccccff;
     --cluster-fill: #ffffde;
     --cluster-border: #aaaa33;
     --note-fill: #fff5ad;
@@ -278,10 +279,6 @@ mark .md-meta { color: rgb(0, 0, 0); }
     --code-font-family: "Source Code Pro";
     --monospace: "Source Code Pro";
 }
-@import "";
-@import "";
-
-/*by 16soundsofsilence, yes this code is an absolute mess*/
 
 html,
 .form-control,
@@ -289,11 +286,15 @@ html,
     font-size: 16px;
 }
 
+kbd {
+    font-family: var(--font-family);
+}
+
 body {
     background: var(--bg-color);
     font-family: var(--font-family);
     font-weight: 400;
-    color: white;
+    color: #3b454e;
     line-height: 1.6rem;
     height: 100%;
 }
@@ -565,7 +566,7 @@ blockquote {
     width: 100%;
     background-color: var(--boxes);
     border-left: 4px solid var(--primary-color);
-    border-radius: 0.3em;
+    border-radius: 0.3rem;
     padding: 1rem;
 }
 
@@ -573,14 +574,14 @@ blockquote blockquote {
     padding-right: 0;
 }
 
+/*TABLE*/
+
 table {
     font-size: 0.875rem;
     padding: 0;
     margin: 1.5rem 0;
     word-break: initial;
 }
-
-/*TABLE*/
 
 table tr {
     border-top: 1px solid var(--borders);
@@ -603,7 +604,7 @@ table tr th {
     border-bottom: solid 2px var(--borders);
     margin: 0;
     padding: 10px 16px;
-    transition-duration: 0.1s;
+    transition-duration: 0.3s;
     transition-property: background-color;
 }
 
@@ -611,7 +612,7 @@ table tr td {
     border: none;
     margin: 0;
     padding: 10px 16px;
-    transition-duration: 0.1s;
+    transition-duration: 0.3s;
     transition-property: background-color;
 }
 
@@ -655,7 +656,7 @@ table tr td:last-child {
 .popover:active,
 .popover:focus {
     border: solid 1px var(--borders);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
     border-radius: 0.3rem;
 }
 
@@ -738,7 +739,7 @@ table tr td:last-child {
 }
 
 .CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
-    border-left: solid 2px var(--light-text-color-brighter);
+    border-left: solid 2px var(--light-text-color-darker);
 }
 
 .CodeMirror.cm-s-typora-default .CodeMirror-activeline-background {
@@ -751,7 +752,7 @@ table tr td:last-child {
 }
 
 .CodeMirror-linenumber {
-    color: white;
+    color: var(--bg-color);
     opacity: 0.6;
     width: 1.9532rem !important /*required*/;
 }
@@ -853,7 +854,7 @@ table tr td:last-child {
 }
 
 .md-fences .code-tooltip {
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.08) 0px 2px 6px 0px;
     border: solid 1px var(--borders);
     border-radius: 0.3rem;
     background-color: var(--bg-color);
@@ -903,7 +904,7 @@ table tr td:last-child {
 .md-fences,
 tt {
     border-radius: 0.3rem;
-    color: #ffffff;
+    color: white;
     padding: 1.5rem;
     font-size: 0.8rem;
 }
@@ -917,8 +918,7 @@ code {
     -webkit-box-decoration-break: clone;
 }
 
-.md-fences .CodeMirror div.CodeMirror-cursor,
-.md-htmlblock-panel .CodeMirror div.CodeMirror-cursor,
+.md-fences div.CodeMirror-cursor,
 #typora-source div.CodeMirror-cursor {
     border-left: solid 1px white;
 }
@@ -957,6 +957,7 @@ code {
 .md-diagram-panel-error {
     color: var(--danger-color);
 }
+
 /*CHECKBOXES*/
 
 .md-task-list-item > input:before,
@@ -1179,14 +1180,14 @@ input[type="checkbox"]:checked:after {
     color: #156db6;
 }
 
-.md-mathblock-input span.cm-bracket {
+.md-rawblock-input span.cm-bracket {
     color: var(--light-text-color);
 }
 
-.code-tooltip.md-hover-tip {
+#math-inline-preview.code-tooltip {
     border-radius: 0.3rem;
     background-color: var(--bg-color);
-    box-shadow: (0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
     color: var(--text-color);
     opacity: 1;
 }
@@ -1203,19 +1204,22 @@ input[type="checkbox"]:checked:after {
 
 /*FOOTER*/
 
+footer.ty-footer {
+    border: none;
+}
+
 .footer-item {
     opacity: 1 !important;
     color: var(--light-text-color);
     transition: 0.3s;
-    background: none !important;
 }
 
 .footer-item:hover {
-    color: var(--light-text-color-brighter) !important;
+    color: var(--light-text-color-darker) !important;
 }
 
 #outline-btn:hover {
-    color: var(--light-text-color-brighter) !important;
+    color: var(--light-text-color-darker) !important;
 }
 
 /*SIDEBAR*/
@@ -1228,14 +1232,14 @@ input[type="checkbox"]:checked:after {
     opacity: 1;
 }
 
-.sidebar-tab {
-    text-transform: capitalize;
-    color: var(--light-text-color);
-}
-
 .info-panel-tab-border {
     color: var(--primary-color);
     border-radius: 2px;
+}
+
+.sidebar-tab {
+    text-transform: capitalize;
+    color: var(--light-text-color);
 }
 
 #ty-sidebar-search-back-btn {
@@ -1399,7 +1403,7 @@ body.html-for-mac .ty-search-item {
     margin-left: 24px;
 }
 
-body.html-for-mac #typora-sidebar .ty-search-item-line {
+body.o #typora-sidebar .ty-search-item-line {
     transition-duration: 0.2s;
 }
 
@@ -1423,31 +1427,21 @@ body.html-for-mac #typora-sidebar .ty-search-item-line {
 
 #typora-sidebar .file-list-item-file-ext-part {
     font-weight: 800;
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 #typora-sidebar .file-list-item-parent-loc,
 #typora-sidebar .file-list-item-time {
     font-family: var(--font-family);
     font-weight: 400;
-    opacity: 0.7;
+    opacity: 0.5;
     display: block;
 }
 
 #typora-sidebar .file-list-item-summary {
     float: left;
     font-size: 0.8rem;
-    opacity: 1;
-}
-
-#typora-sidebar input.file-list-item-file-name {
-    margin: 0.5rem 0rem 0.5rem 0.7rem;
-    padding: 0.4rem !important;
-    line-height: 1rem;
-    float: right;
-    border-radius: 0.3rem;
-    font-weight: 500;
-    background-color: var(--boxes) !important;
+    opacity: 0.9;
 }
 
 #typora-sidebar .file-list-item-count {
@@ -1463,6 +1457,16 @@ body.html-for-mac #typora-sidebar .ty-search-item-line {
     top: 0.3rem;
 }
 
+#typora-sidebar input.file-list-item-file-name {
+    margin: 0.5rem 0rem 0.5rem 0.7rem;
+    padding: 0.4rem !important;
+    line-height: 1rem;
+    float: right;
+    border-radius: 0.3rem;
+    font-weight: 500;
+    background-color: white !important;
+}
+
 #typora-sidebar .file-list-item.file-library-file-node {
     border: none;
 }
@@ -1470,8 +1474,8 @@ body.html-for-mac #typora-sidebar .ty-search-item-line {
 #typora-sidebar .file-tree-node.active .file-node-background,
 #typora-sidebar .file-list-item.active,
 #typora-sidebar .ty-search-item.active {
-    background-color: var(--borders);
-    outline: 1px solid var(--boxes-darker);
+    background-color: white;
+    outline: 1px solid var(--borders);
     border: none;
     color: var(--primary-color) !important;
 }
@@ -1528,6 +1532,10 @@ body.html-for-mac #typora-sidebar .ty-search-item-line {
     padding-left: 0rem;
 }
 
+#typora-sidebar .ty-search-item-collapse-icon {
+    top: 9px;
+}
+
 /*no left border*/
 #typora-sidebar .file-tree-node.active > .file-node-background {
     border: none;
@@ -1541,12 +1549,12 @@ body.html-for-mac #typora-sidebar .ty-search-item-line {
 #typora-sidebar #sidebar-files-menu {
     border: solid 1px var(--borders);
     border-radius: 0.3rem;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
 }
 
 #typora-sidebar #ty-sidebar-footer {
-    border-top: solid 1px var(--borders);
     background-color: var(--bg-color);
+    border-top: solid 1px var(--borders);
     font-weight: 500;
 }
 
@@ -1569,10 +1577,6 @@ body.html-for-mac #typora-sidebar .ty-search-item-line {
     line-height: 2rem;
 }
 
-#typora-sidebar .ty-search-item-collapse-icon {
-    top: 9px;
-}
-
 /*cursor*/
 .file-node-content:hover {
     cursor: pointer;
@@ -1590,7 +1594,6 @@ body.html-for-mac
     background-color: var(--borders);
 }
 
-/*sidebar footer*/
 #typora-sidebar .sidebar-footer-item {
     transition-duration: 0.2s;
     transition-property: background-color, color;
@@ -1603,11 +1606,11 @@ body.html-for-mac
 }
 
 #typora-quick-open {
-    background-color: var(--bg-color);
+    background-color: white;
     border: 1px solid var(--borders);
     border-radius: 0.3rem;
     padding: 0rem;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 16px 0px;
+    box-shadow: rgba(116, 129, 141, 0.15) 0px 3px 16px 0px;
     overflow: hidden;
 }
 
@@ -1624,7 +1627,7 @@ body.html-for-mac
 }
 
 .typora-quick-open-item {
-    background-color: var(--bg-color);
+    background-color: white;
     border: none;
     font-weight: 500;
     transition-duration: 0.2s;
@@ -1676,7 +1679,7 @@ body.html-for-mac
 
 #md-notification {
     border-bottom: solid 1px var(--borders);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
 }
 
 #md-notifcation .btn {
@@ -1691,12 +1694,12 @@ body.html-for-mac
 
 .ty-preferences .window-header {
     justify-content: space-between;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
     border-bottom: solid 1px var(--borders);
 }
 
 .ty-preferences .window-header-content {
-    background-color: var(--bg-color);
+    background-color: white;
     margin: 0rem;
 }
 
@@ -1721,7 +1724,7 @@ body.html-for-mac
 
 /*preferences sidebar*/
 .ty-preferences .window-content {
-    background-color: var(--bg-color);
+    background-color: white;
 }
 
 .ty-preferences .nav-group-item {
@@ -1744,7 +1747,7 @@ body.html-for-mac
     border-radius: 0rem;
     border: none;
     outline: 1px solid var(--borders);
-    background-color: var(--bg-color);
+    background-color: white;
     color: var(--primary-color);
 }
 
@@ -1851,7 +1854,7 @@ body.html-for-mac
 .auto-suggest-container {
     background-color: var(--bg-color);
     border: solid 1px var(--borders) !important;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
     user-select: none;
 }
 
@@ -1866,10 +1869,10 @@ body.html-for-mac
 .dropdown-menu > .active > a,
 .dropdown-menu > li > a:hover,
 .menu-style-btn.active,
-.auto-suggest-container li:hover,
-.auto-suggest-container li.active,
 .context-menu.dropdown-menu > .active > a,
-.context-menu.dropdown-menu > li > a:hover {
+.context-menu.dropdown-menu > li > a:hover,
+.auto-suggest-container li:hover,
+.auto-suggest-container li.active {
     color: var(--primary-color);
     background-color: var(--boxes);
 }
@@ -1908,8 +1911,7 @@ header .menu-style-btn:hover {
 /*BUTTON*/
 
 .btn,
-button,
-.md-image-btn {
+button {
     border: none !important;
     border-radius: 0.3rem !important;
     color: var(--text-color) !important;
@@ -1920,16 +1922,14 @@ button,
     outline: none;
 }
 
-.btn-default,
-.md-image-btn {
+.btn-default {
     border: none !important;
     border-radius: 0.3rem !important;
     background-color: var(--boxes) !important;
 }
 
 .btn:hover,
-.button-hover,
-.md-image-btn:hover {
+.button-hover {
     border: none;
     border-radius: 0.3rem;
     background-color: var(--borders) !important;
@@ -1939,8 +1939,7 @@ button,
 button:active,
 button.active,
 .btn:active,
-.btn-default:active,
-.md-image-btn:active {
+.btn-default:active {
     border: none;
     border-radius: 0.3rem;
     background-color: var(--boxes-darker) !important;
@@ -1949,8 +1948,7 @@ button.active,
     color: var(--text-color);
 }
 
-.btn:focus,
-.md-image-btn:focus {
+.btn:focus {
     border: none !important;
     outline: none !important;
     background-color: var(--boxes-darker);
@@ -1971,11 +1969,11 @@ button.active,
 
 .btn.dropdown-toggle-split,
 .btn.dropdown-toggle-split:hover {
-    border-radius: 0rem 0.3rem 0.3rem 0rem;
+    border-radius: 0rem 0.3rem 0.3rem 0rem !important;
 }
 
 #ty-spell-check-dict-missing-primary-btn {
-    border-radius: 0.3rem 0rem 0rem 0.3rem;
+    border-radius: 0.3rem 0rem 0rem 0.3rem !important;
 }
 
 .open > .dropdown-toggle.btn-primary {
@@ -2089,7 +2087,7 @@ button.active,
 .form-control:hover,
 #file-library-search-input:hover {
     border: solid 1px var(--boxes-darker2) !important;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04) !important;
 }
 
 .search-input:focus,
@@ -2098,10 +2096,17 @@ button.active,
 #file-library-search-input:focus {
     background-color: transparent !important;
     border-color: var(--primary-color) !important;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04) !important;
     color: var(--heading-text-color) !important;
     font-size: 0.9rem !important;
     padding: 0.7rem !important;
+}
+
+.search-input::placeholder,
+.search::placeholder,
+.form-control::placeholder,
+#file-library-search-input::placeholder {
+    color: var(--light-text-color-darker) !important;
 }
 
 .clear-btn-icon {
@@ -2127,7 +2132,7 @@ button.active,
     border-radius: 0.3rem;
     border: solid 1px var(--borders);
     user-select: none;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.08) 0px 2px 6px 0px;
 }
 
 #zoom-hint #zoom-hint-reset {
@@ -2139,7 +2144,7 @@ button.active,
 
 #md-searchpanel {
     border-bottom: 1px solid var(--borders);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
     max-height: 46px;
 }
 
@@ -2177,7 +2182,7 @@ button.active,
 .searchpanel-search-option-btn {
     top: 9px;
     border: none;
-    color: var(--light-text-color-brighter) !important /*required*/;
+    color: var(--light-text-color-darker) !important /*required*/;
     transition-duration: 0.3s;
 }
 
@@ -2230,7 +2235,6 @@ html input[type="number"],
     height: 2.1rem !important;
     transition-duration: 0.2s;
     transition-property: border;
-    cursor: text;
 }
 
 select {
@@ -2238,7 +2242,8 @@ select {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+#md-grid-height {
     cursor: text;
 }
 
@@ -2265,7 +2270,7 @@ html input[type="number"]:focus,
 input[type="text"]::placeholder,
 input[type="number"]::placeholder,
 #md-grid-height::placeholder {
-    color: var(--light-text-color-brighter) !important;
+    color: var(--light-text-color-darker) !important;
 }
 
 input[disabled],
@@ -2310,12 +2315,12 @@ textarea:focus {
 
 .modal-body {
     font-size: 0.9rem;
-    color: var(--light-text-color-brighter);
+    color: var(--light-text-color-darker);
     user-select: none;
 }
 
 .modal-content {
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 10px 0px;
+    box-shadow: rgba(116, 129, 141, 0.15) 0px 3px 10px 0px;
     border: solid 1px var(--boxes-darker);
     border-radius: 0.3rem;
 }
@@ -2350,20 +2355,15 @@ textarea:focus {
 /*TOOLTIP*/
 
 .ty-tooltip {
-    color: var(--text-color) !important;
-    background-color: var(--boxes) !important;
+    background-color: var(--bg-color) !important;
     border-radius: 0.3rem !important;
     border: 1px solid var(--borders) !important;
     -webkit-filter: none !important;
     filter: none;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
 }
 
 /*FOOTER*/
-
-footer.ty-footer {
-    border: none;
-}
 
 .footer-item:hover {
     background-color: var(--boxes) !important;
@@ -2434,7 +2434,7 @@ footer.ty-footer {
 
 #megamenu-menu-list li a.active {
     color: var(--primary-color);
-    background-color: var(--bg-color);
+    background-color: white;
     outline: solid 1px var(--borders);
 }
 
@@ -2551,8 +2551,8 @@ footer.ty-footer {
 .long-btn {
     margin-bottom: 12px;
     margin-left: 2px;
-    box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 6px;
-    background-color: var(--bg-color);
+    box-shadow: rgba(116, 129, 141, 0.1) 2px 2px 6px;
+    background-color: white;
     border: 1px solid var(--borders);
     border-radius: 0.3rem;
     padding: 1rem;
@@ -2565,9 +2565,9 @@ footer.ty-footer {
 
 .long-btn:hover {
     background-color: var(--primary-color);
-    color: white !important /*important required*/;
     border: 1px solid transparent;
-    box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 6px,
+    color: white !important /*important required*/;
+    box-shadow: rgba(116, 129, 141, 0.1) 2px 2px 6px,
         rgba(56, 132, 255, 0.2) 0px 0px 10px;
 }
 
@@ -2586,7 +2586,7 @@ footer.ty-footer {
     max-width: none;
     padding: 1.5rem;
     background-color: var(--boxes);
-    border-radius: 0.5rem;
+    border-radius: 0rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1.5rem;
@@ -2595,13 +2595,13 @@ footer.ty-footer {
 .theme-preview-div {
     border: none;
     border-radius: 0.4rem;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 0px 15px;
     margin: 0rem;
     transition-duration: 0.3s;
 }
 
 .theme-preview-div:hover {
-    box-shadow: rgba(0, 0, 0, 0.6) 3px 8px 15px;
+    box-shadow: rgba(116, 129, 141, 0.5) 3px 8px 15px;
     cursor: pointer;
     transform: rotate3d(1, -0.2, 0.2, 15deg);
 }
@@ -2669,8 +2669,8 @@ footer.ty-footer {
 
 a[type="page-link"] {
     display: block;
-    background-color: var(--bg-color);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px 0px;
+    background-color: white;
+    box-shadow: rgba(116, 129, 141, 0.2) 0px 3px 8px 0px;
     border: 1px solid var(--borders);
     border-radius: 0.3rem;
     padding: 1rem;
@@ -2682,7 +2682,7 @@ a[type="page-link"] {
 }
 
 a[type="page-link"]:hover {
-    box-shadow: rgba(0, 0, 0.2, 0.2) 0px 3px 8px 0px;
+    box-shadow: rgba(116, 129, 161, 0.1) 0px 3px 8px 0px;
     border: 1px solid var(--primary-color);
 }
 
