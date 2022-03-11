@@ -1,0 +1,753 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix { height: auto; margin-top: 16px; margin-bottom: 16px; }
+.md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow-y: auto; padding-bottom: 30px; padding-top: 60px; width: 300px; overflow-x: hidden; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
+
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
+
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
+}
+
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} :root {--mermaid-font-zoom:1em ;}  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>simulacao_01</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='simulações-circuitos-eletrônicos-pneumáticos-no-fluidsim'><span>Simulações Circuitos eletrônicos-pneumáticos no FluidSIM</span></h1><p><strong><span>Exemplo</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="0.988ex" height="1.065ex" role="img" focusable="false" viewBox="0 -320.9 436.6 470.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-17-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"></g><g data-mml-node="mn" transform="translate(33,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-17-TEX-N-31"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi></mi><mn>1</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">_1</script></strong><span>: Circuito pneumático simples de avanço-retorno de um pistão sob comando manual (mecânico).</span></p><p><span>Ref: YouTube: Teoria na Prática com Prof. Pedro Henrique de Jesus: </span><a href='https://youtu.be/zW7tsEidWQw'><span>1 - Vídeo Aula automação pneumática (Início simulação FluidSim)</span></a><span>, 71K visualizações, 8:28.</span></p><p><span>Recomendações de uso/Sequencia da simulação:</span></p><ol><li><p><span>Menu &gt;&gt; Biblioteca &gt;&gt; Visão Geral (para abrir janela de componentes);</span></p></li><li><p><span>Menu &gt;&gt; File &gt;&gt; New (abrir/iniciar novo diagrama -- arquivo *.ct -- observar local, pasta da gravação!)</span>
+<span>Local &quot;padrão&quot; adotado: C:\Program Files\Festo Fluidsim 4.2\Pneumatic\ct</span><span>\</span><span>...</span></p></li><li><p><span>Iniciar pela alimentação (fonte) de ar-comprimido:</span>
+<img src="figuras/FluidSim_compressor.png" referrerpolicy="no-referrer" alt="FluidSim_compressor"></p><figure><table><thead><tr><th><span>Aparência</span></th><th><span>Símbolo</span></th><th><span>Configurações</span></th></tr></thead><tbody><tr><td><img src="figuras/compressor_aparencia.png" referrerpolicy="no-referrer" alt="compressor_aparencia"></td><td><img src="figuras/compressor_simbolo.png" referrerpolicy="no-referrer" alt="compressor_simbolo"></td><td><span>Pressão: 0 à 2 MPa (def: 0,6)</span><br><span>Vazão: 0 à 5000 l/min (def: 1000)</span></td></tr></tbody></table></figure></li><li><p><span>Arrastar até janela em branco do novo diagrama:</span>
+<img src="figuras/FluidSim_exemplo_1_01.png" referrerpolicy="no-referrer" alt="FluidSim_exemplo_1_01"></p></li><li><p><span>Acrescentar &quot;Unidade Conservadora&quot; (Air Service Unit), que inclui: filtro de ar, válvula de segurança (regula pressão), manômetro e lubrificador:</span></p><figure><table><thead><tr><th><span>Aparência</span></th><th><span>Símbolo</span></th><th><span>Configurações</span></th></tr></thead><tbody><tr><td><img src="figuras/unidade_conservadora_aparencia.png" referrerpolicy="no-referrer" alt="unidade_conservadora_aparencia"></td><td><img src="figuras/unidade_conservadora_simbolo.png" referrerpolicy="no-referrer" alt="unidade_conservadora_simbolo"></td><td><span>Pressão: 0 à 2 MPa (typ: 0,6)</span><br><span>Vazão: 0,1 à 5000 l/min (typ: 750)</span></td></tr></tbody></table></figure><p><span>Obs.: para abrir detalhes sobre o componente, clicar com botão direito do mouse sobre seu ícone; deve abrir uma janela semelhante à mostrada a seguir; selecionar &quot;Component Description&quot;:</span>
+<img src="figuras/FluidSim_component_description.png" referrerpolicy="no-referrer" alt="FluidSim_component_description"></p></li><li><p><span>Duplo clique sobre certo componente (ou botão direito do Mouse &gt;&gt; Properties), permite configurar suas propriedades como pressão e vazão desejadas:</span>
+<span>Obs.: Alterar pressão da Unidade Conservadora para: 5 bar:</span>
+<img src="figuras/propriedades_air_service_unit.png" referrerpolicy="no-referrer" alt="propriedades_air_service_unit"></p></li><li><p><span>Interligar compressor à unidade de conservação: processo de &quot;clicar e arrastar&quot;. Para tanto selecionar saída do compressor (este ponto circular vai ser ressaltado na cor verde; manter pressionado botão esquerdo do mouse até encontrar entrada da unidade conservadora, círculo que será ressaltado na cor verde enquanto não se confirma a ligação e que muda para vermelho indicando conexão realizada):</span></p><figure><table><thead><tr><th><span>Conectando</span></th><th><span>Conexão estabelecida</span></th></tr></thead><tbody><tr><td><img src="figuras/FluidSim_conexoes.png" referrerpolicy="no-referrer" alt="FluidSim_conexoes"></td><td><img src="figuras/FluidSim_conexao_estabelecida.png" referrerpolicy="no-referrer" alt="FluidSim_conexao_estabelecida"></td></tr></tbody></table></figure></li><li><p><span>Acrescentar cilindro de dupla ação:</span></p><figure><table><thead><tr><th><span>Aparências</span></th><th><span>Símbolos</span></th><th><span>Configurações</span></th></tr></thead><tbody><tr><td><img src="figuras/cilindros_dupla_acao_aparencia.png" referrerpolicy="no-referrer" alt="cilindros_dupla_acao_aparencia"></td><td><img src="figuras/cilindros_dupla_acao_simbolos.png" referrerpolicy="no-referrer" alt="cilindros_dupla_acao_simbolos"></td><td><span>Parâmetros default:</span><br><img src="figuras/cilindro_parametros_default.png" referrerpolicy="no-referrer" alt="cilindro_parametros_default"></td></tr></tbody></table></figure><p><span>Se for pressionado o botão direito sobre o cilindro pode-se modificar sua </span><strong><span>configuração</span></strong><span>:</span>
+<img src="figuras/cilindro_coonfiguracoes.png" referrerpolicy="no-referrer" alt="cilindro_coonfiguracoes">
+<span>Ou modificar </span><strong><span>parâmetros</span></strong><span> de funcionamento:</span>
+<img src="figuras/cilindro_parametros.png" referrerpolicy="no-referrer" alt="cilindro_parametros">
+<span>Obs.: no momento, ainda não modificar nenhuma propriedade!</span></p></li><li><p><span>Acrescentar uma válvula 4/2 (posteriormente configurada para 4/2) e completar ligações com sistema de alimentação e com atuador (cilindro):</span>
+<img src="figuras/exemplo_01_quase.png" referrerpolicy="no-referrer" alt="exemplo_01_quase"></p></li><li><p><span>Note que o terminal de saída 3 da válvula ficou sem conexão. Abrir propriedades da Válvula e indicar que a saída 3 fará &quot;retorno para a atmosfera&quot; (simples escape de ar) ou você pode acrescentar um silenciador. Para o primeiro caso, de &quot;retorno à atmosfera&quot;, você deve selecionar o terminal 3 e clicar com o botão direito do mouse sobre o mesmo para abrir a caixa de propriedades e ajustar conforme indicado na próxima figura:</span></p><figure><table><thead><tr><th><span>Selecionar terminal 3 e abrir propriedades</span></th><th><span>Ajustar propriedades</span></th></tr></thead><tbody><tr><td><img src="figuras/exemplo_01_valvula_terminal_3_retorno_atmosfera.png" referrerpolicy="no-referrer" alt="exemplo_01_valvula_terminal_3_retorno_atmosfera"></td><td><img src="figuras/exemplo_01_valvula_terminal_3_retorno_atmosfera_fim.png" referrerpolicy="no-referrer" alt="exemplo_01_valvula_terminal_3_retorno_atmosfera_fim"></td></tr></tbody></table></figure><p><span>Obs.: Em sistemas hidráulicos o retorno é efeito para o tanque de armazenamento do fluído (óleo).</span></p></li><li><p><span>Por enquanto, neste esquema, a válvula ainda não possui nenhum sistema de acionamento. Se faz necessário acrescentar algum tipo de acionamento (manual, mecânico, elétrico). Para este primeiro exemplo, vamos usar acionamento manual (mecânico) para as 2 posições (&quot;lados&quot;) da válvula. Para tanto, temos que selecionar a válvula e abrir suas propriedades (clicando 2x sobre a válvula ou cilcando com bitão direito sobre a válvula e selecionando Propriedades). Na </span><strong><span>configuração da válvula</span></strong><span>, ajustaremos o </span><strong><span>lado esquerdo</span></strong><span> para </span><strong><span>acionamento manual</span></strong><span> e o </span><strong><span>lado direito</span></strong><span> também com </span><strong><span>acionamento manual</span></strong><span>, nos 2 casos usando botão (mecânico) simples:</span>
+<img src="figuras/exemplo_01_valvula_config_acionamentos.png" referrerpolicy="no-referrer" alt="exemplo_01_valvula_config_acionamentos"></p></li><li><p><span>Note que o diagrama se modificou para:</span>
+<img src="figuras/exemplo_01_depois_config_valvula.png" referrerpolicy="no-referrer" alt="exemplo_01_depois_config_valvula"></p></li><li><p><span>Note que da forma como está configurada a válvula neste esquema, na sua posição default (neutra, ou de retorno) vamos ter o &quot;retorno&quot; do cilindro (ar ciculando do ponto 1 ao ponto 2, o que mantêm o cilindro recuado). Quando a válvula mudar de posição, o ar vai circular da posição1 para o ponto 4, o fará o cilindro &quot;avançar&quot; -- veja animação mais adiante.</span></p></li><li><p><span>Este primeiro exemplo está pronto, para testá-lo, basta executar um &quot;play&quot;, botão &quot;▶︎&quot;. Note que assim que o mesmo é pressionado (sua cor muda para verde), no diagrama surgem linhas ressaltadas em azul escuro (indicando linha pressurizada, com ar-comprimido) e em azul claro (linha sem pressão, sem ar-comprimido):</span>
+<img src="figuras/exemplo_01_simulando_1.png" referrerpolicy="no-referrer" alt="exemplo_01_simulando_1"></p><p><span>Note que o cilindro pneumático é mantido recuado.</span></p></li><li><p><span>Note o que ocorre quando se clica no botão que está à esquerda da válvula e depois no botão da direita da válvula:</span>
+<img src="figuras/exemplo_01_teste.gif" referrerpolicy="no-referrer" alt="exemplo_01_teste"></p></li><li><p><span>Você pode retardar (reduzir velocidade) da simulação clicando na barra de menu em: Opções &gt;&gt; Simulação e alterar &quot;Slow-motion Factor&quot; para um valor como: 6 (ou 15 até):</span></p><figure><table><thead><tr><th><span>Opções &gt;&gt; Simulação</span></th><th><span>Alteração da Velocidade</span></th></tr></thead><tbody><tr><td><img src="figuras/FluidSim_reduzindo_velocidade_simulacao.png" referrerpolicy="no-referrer" alt="FluidSim_reduzindo_velocidade_simulacao"></td><td><img src="figuras/FluidSim_fator_velocidade_simulacao.png" referrerpolicy="no-referrer" alt="FluidSim_fator_velocidade_simulacao"></td></tr></tbody></table></figure><p><span>A figura abaixo mostra a simulação usando fator 12:</span>
+<img src="figuras/exemplo_01_teste_slow_12.gif" referrerpolicy="no-referrer" alt="exemplo_01_teste_slow_12"></p></li><li><p><span>Também posso reduzir a velocidade de todo o circuito, reduzindo a pressão do ar-comprimindo. Neste caso, clicando em propriedades do Sistema de Alimentação para reduzir pressão de 5 bar para apenas 0,1 bar:</span></p><figure><table><thead><tr><th><img src="figuras/FluidSim_reduzindo_pressao_sistema.png" referrerpolicy="no-referrer" alt="FluidSim_reduzindo_pressao_sistema"></th><th><img src="figuras/FluidSim_reduzindo_pressao_sistema_2.png" referrerpolicy="no-referrer" alt="FluidSim_reduzindo_pressao_sistema_2.png"></th></tr></thead><tbody></tbody></table></figure><p><span>O que resulta na seguinte simulação:</span>
+<img src="figuras/exemplo_01_teste_pressao_muito_baixa.gif" referrerpolicy="no-referrer" alt="exemplo_01_teste_pressao_muito_baixa"></p><p><span>Obs.: Neste caso, o fator slow motion adotado para simulação foi retornado para a posição normal (=1). Note que baixar a pressão resulta menor força para deslocar o cilindro. Então o nível de pressão é ditado pela carga à ser movida pelo cilindro e velocidade desejada.</span></p></li><li><p><span>Podemos ainda substituir um dos botões de acionamento mecânico por um </span><strong><span>acionamento com retorno por mola</span></strong><span>. Para tanto, temos que alterar novamente as propriedades da válvula para:</span></p><p><img src="figuras/exemplo_01_valvula_retorno_por_mola.png" referrerpolicy="no-referrer" alt="exemplo_01_valvula_retorno_por_mola"></p><p><span>Obs.: Note que (1) retiramos (temos que selecionar uma opção vazia) para o item e depois (2) clicar na caixa indicando retorno por mola.</span>
+<span>O novo diagrama fica como o mostrado na animação abaixo (fator slow-motion: 6; pressão no sistema: 5 bar):</span>
+<img src="figuras/exemplo_01_teste_valvula_retorno_mola.gif" referrerpolicy="no-referrer" alt="exemplo_01_teste_valvula_retorno_mola"></p></li><li><p><span>Perceba agora que para manter o cilindro avançando se faz necessário pressionar continuamente o botão da esquerda (na válvula). Note que toda vez que o usuário solta o botão, a mola força o retorno da válvula.</span></p></li></ol><p><span>Fim. </span></p><p><span>Referência: YouTube: Teoria na Prática com Prof. Pedro Henrique de Jesus: </span><a href='https://youtu.be/zW7tsEidWQw'><span>1 - Vídeo Aula automação pneumática (Início simulação FluidSim)</span></a><span>, 71K visualizações, 8:28. </span></p><p><span>Outro video recomendado: </span><a href='https://youtu.be/YUnxei8ukag'><span>2 - Vídeo Aula automação pneumática (Método Intuitivo FluidSim)</span></a><span> (Prof. Pedro Henrique de Jesus; 18,8K Visualizações; 19:06).</span></p><hr /><p><strong><span>Exemplo</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="0.988ex" height="1.065ex" role="img" focusable="false" viewBox="0 -320.9 436.6 470.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-18-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"></g><g data-mml-node="mn" transform="translate(33,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-18-TEX-N-32"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi></mi><mn>2</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">_2</script></strong><span>: Circuito eletro-pneumático:</span></p><p><span>Ref.: </span><a href='https://youtu.be/MLyVrviC0nk'><span>&quot;FluidSim Eletropneumatica Aula 1&quot; no YouTube</span></a><span> (Enéias Belan; 20,2K visualizações; maio/2020; 16:36)</span></p><p><span>Detalhe: este tipo de circuito contempla 2 diagramas na mesma &quot;folha&quot;: um diagrama pneumátivo + um diagrama elétrico.</span></p><p><span>A idéia aqui é implementar um simples atuador sobre um cilindro simples com 2 botões (pulsadores elétricos), onde um comanda o avanço do pistão e outro o recesso do pistão.</span></p><p><span>Componentes utilizados:</span></p><ul><li><span>cilindro de simples ação;</span></li><li><span>Válvula 3/2;</span></li><li><span>unidade de conservação;</span></li><li><span>compressor.</span></li></ul><hr /><p><span>Fernando Passold, atualizado em 11/03/2022.</span></p><p>&nbsp;</p></div></div>
+</body>
+</html>
