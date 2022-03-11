@@ -15,5 +15,5 @@
 * [Acionamento Hidráulico e Pneumático (EEE172)](Pneumatica/topicos.html).
 
 ---
-*Página iniciado em Set/2021*
+<font size="1">*Página iniciado em Set/2021, Última atualização: 11/03/2022.*</font> 
 
