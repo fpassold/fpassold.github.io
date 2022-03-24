@@ -1,0 +1,703 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix { height: auto; margin-top: 16px; margin-bottom: 16px; }
+.md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow-y: auto; padding-bottom: 30px; padding-top: 60px; width: 300px; overflow-x: hidden; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow-y: hidden; overflow-x: auto; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; background-repeat: initial initial; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); background-position: initial initial; background-repeat: initial initial; }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print { 
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
+
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
+
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
+}
+
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+ :root {--mermaid-font-zoom:1em ;}  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>videos_minha_pesquisa</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>Download/Instalação do FluidSIM 3.6: </span><a href='https://youtu.be/3s7iKFMjDMA'><span>Youtube: Simulador Festo FluidSIM - Como Baixar?</span></a><span> (UP Educação Profissional; 10/04/2020).</span></p><p><span>FluidSIM 4.2 --&gt; </span><a href='bit.ly/2xlCrMG'><span>Google Drive: bit.ly/2xlCrMG</span></a><span> - Bruno Cimirro, 9/04/2020.</span></p><hr /><p><strong><span>Simbologia Válvulas</span></strong><span>:</span></p><p><a href='https://youtu.be/yrwKI08-7yQ'><span>YouTube: Simbologia Válvulas Direcionais (Parte 01)</span></a><span> (UP Educação Profissional; 28K visualizações; 21/03/2019) - Norma NBR 8897:</span></p><blockquote><p><span>Na parte um (1) desta aula de simbologia das Válvulas Direcionais, faremos uma breve introdução de como as válvulas direcionais são classificadas, quanto:  - ao numero de  posições;  - numero de vias;  - posição inicial; - NA ou NF; - tipo de centro; - tipos de acionamentos e; - tipos de retorno. E já apresentaremos o que são as posições de uma válvula e as vias de uma válvula direcional.</span></p></blockquote><p><a href='https://youtu.be/zx0iUVTbAkQ'><span>YouTube: Simbologia Válvulas Direcionais (Parte 02)</span></a><span> (UP Educação Profissional; 68K visualizações; 21/03/2019)</span></p><blockquote><p><span>Na parte dois (2) desta aula de simbologia das Válvulas Direcionais, é apresentado como fazemos para identificar as vias e as posições em uma válvula direcional, e como fazemos para nomeá-las conforme a norma ISO 1219.  Este conteúdo é apresentado de forma bastante didática e com cinco exemplos, de tipos de válvulas direcionais.</span></p></blockquote><p><a href='https://youtu.be/w3HEqB3Pe-s'><span>YouTube: Simbologia Válvulas Direcionais (Parte 03)</span></a><span> (UP Educação Profissional; 34K visualizações; 21/03/2019)</span></p><blockquote><p><span>Na parte três (3) desta aula de simbologia das Válvulas Direcionais, é apresentado os tipos de acionamentos e retornos das válvulas direcionais, conforme a norma ISO 1219.  Este conteúdo é apresentado de forma bastante didática e com vários exemplos.</span></p></blockquote><hr /><h1 id='videos'><span>Videos</span></h1><h2 id='circuitos-pneumáticos'><span>Circuitos pneumáticos</span></h2><p><span>Video: </span><a href='https://youtu.be/_Rd0xgw9V3g'><span>VÁLVULAS NEUMÁTICAS Y CILINDROS NEUMÁTICOS</span></a><span> (</span><strong><span>296K visualizações</span></strong><span>, 24/02/2018; 5300 gostei; 30 minutos; </span><a href='https://www.youtube.com/channel/UC_ZmlTVGBurlDhGnkDRRmAw'><mark><strong><span>Neheyler Mechatronics</span></strong></mark></a><span>).</span>
+<span>Página inicial da NEHEYLER MECHATRONICS --&gt; </span><a href='https://www.neheylermechatronics.com' target='_blank' class='url'>https://www.neheylermechatronics.com</a><span> </span></p><p><span>Fer - 23/02/2022.</span></p><p><strong><span>Curso de Pneumática Básica</span></strong><span> --&gt; Vídeos YouTube da </span><mark><strong><span>Neheyler Mechatronics</span></strong></mark><span> --&gt; </span><a href='https://youtu.be/gbQ3JBcjHFI'><span>página inicial</span></a><span> (</span><strong><span>71K visualizaçÕes</span></strong><span>; 22/02/2020). São 15 lições:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="page-break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.625px; left: 3.75px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1. Pneumática Básica: Introdução | Princípios (10:25)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">2. Compressor Pneumático | Unidade de Preparação (7:31)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">3. Válvulas Pneumáticas e Cilindros Pneumáticos (8:32)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">4. Conexões Básicas - Válvulas e Cilindros (5:56)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">5. Válvulas Lógicas | Pneumática (10:02)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">6. Funções lógicas com circuitos Pneumáticos (15:34)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">7. Equações booleanos com circuitos pneumáticos (5:42)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">8. Fins de curso pneumáticos | rodízios (10:03)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">9. Como resolver problemas ou Exercícios de Análises (11:24)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">10. Comando direto de indireto pneumático (11:33)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">11. O que é uma sequencia pneumática? (11:14)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">12. Método Intuitivo pneumático | Sequencias (10:02)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">13. Método cascateado pneumático | Sequencias (13:46)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">14. Método cascateado pneumático | Sequencias (10:43)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">15. Método Paso a paso | Sequencia (12:32)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 319px;"></div><div class="CodeMirror-gutters" style="display: none; height: 319px;"></div></div></div></pre><p><span>YouTube: </span><a href='https://youtu.be/_Rd0xgw9V3g'><span>VÁLVULAS NEUMÁTICAS Y CILINDROS NEUMÁTICOS</span></a><span>: </span><mark><strong><span>Neheyler Mechatronics</span></strong></mark><span>; </span><strong><span>299K visualizações</span></strong><span>; 8:31… Material muito bom sobre válvulas.</span>
+<em><span>En este vídeo se muestra y explica los tipos de válvulas distribuidoras, sus configuraciones, tipos de accionamientos configuración interna; ademas, los tipos de cilindros neumáticos mas usados.</span></em>
+<span>Este mesmo autor sugere outros videos:</span>
+<span>VÍDEOS RELACIONADOS:</span><br/><span>👉 Neumática Introducción: </span><a href='https://www.youtube.com/watch?v=gbQ3JBcjHFI&amp;t=0s'><span>https://youtu.be/gbQ3JBcjHFI</span></a><span> </span>
+<span>👉 Compresor Neumático y FRL: </span><a href='https://www.youtube.com/watch?v=83IFw5MPBfs&amp;t=0s'><span>https://www.youtube.com/watch?v=83IFw...</span></a><span> </span>
+<span>👉 Neumática Básica➡ </span><a href='https://www.youtube.com/watch?v=8AesMeRI6j8&amp;t=0s'><span>https://youtu.be/8AesMeRI6j8</span></a><span> </span>
+<span>👉 Válvulas Finales de Carrera➡ </span><a href='https://www.youtube.com/watch?v=mK9tzdc8egA&amp;t=0s'><span>https://youtu.be/mK9tzdc8egA</span></a><span> </span>
+<span>👉 Qué es una </span><strong><span>Secuencia Neumática</span></strong><span>: </span><a href='https://www.youtube.com/watch?v=fcK53WJFZTA&amp;t=0s'><span>https://www.youtube.com/watch?v=fcK53...</span></a><span> </span>
+<span>👉 Método Intuitivo: </span><a href='https://www.youtube.com/watch?v=kq108OVbO3Q&amp;t=0s'><span>https://www.youtube.com/watch?v=kq108...</span></a><span> </span>
+<span>👉 Método Cascada 1: </span><a href='https://www.youtube.com/watch?v=_NeUdfqNLPE&amp;t=0s'><span>https://www.youtube.com/watch?v=_NeUd...</span></a><span> </span></p><p><span>YouTube: </span><a href='https://youtu.be/mK9tzdc8egA'><span>CONEXIONES BÁSICAS - VÁLVULAS Y CILINDROS EN FLUIDSIM</span></a><span>: </span><a href='https://www.youtube.com/channel/UC_ZmlTVGBurlDhGnkDRRmAw'><mark><span>Neheyler Mechatronics</span></mark></a><span>; </span><strong><span>261K visualizações</span></strong><span>; 5:55.</span>
+<em><span>En este video se muestra y se explica  como hacer conexiones en FluidSIM, como conectar válvulas y cilindros, etc; con una explicación sencilla didáctica de algunos componentes usados en este video.</span></em>
+<em><span>*Cilindros simples (</span><mark><span>poderia ser usado para &quot;Lab 1&quot;</span></mark><span>) e de duplo efeito</span></em><span>:</span>
+<img src="figuras/conexoes_basicas_valvulas_cilindros_neheyler.png" referrerpolicy="no-referrer" alt="conexoes_basicas_valvulas_cilindros_neheyler">
+<span>Detalhe do primeiro circuito:</span>
+<img src="figuras/lab_1_acionamento_cilindro_simples_neheyler.png" referrerpolicy="no-referrer" alt="lab_1_acionamento_cilindro_simples_neheyler"></p><p><span>E talvez &quot;Lab 2&quot;:</span>
+<img src="figuras/lab_2_acionamento_cilindro_duplo_efeito_neheyler.png" referrerpolicy="no-referrer" alt="lab_2_acionamento_cilindro_duplo_efeito_neheyler"></p><p>&nbsp;</p><p><span>Detalhes sobre conexões para escape de ar:</span>
+<img src="figuras/orificios_escape_ar_neheyler.png" referrerpolicy="no-referrer" alt="orificios_escape_ar_neheyler"></p><p>&nbsp;</p><p><span>YouTube: </span><a href='https://youtu.be/Wee85cI6wwQ'><span>Neumática Industrial, ¿Cómo Trabaja un Sistema Neumático?</span></a><span>: </span><strong><mark><span>Parker</span></mark></strong><span> Products and Support; </span><strong><span>971K visualizações</span></strong><span>; 8:16 – Falta verificar este video tão acessado!</span>
+<em><span>En el video podemos observar cómo funcionan los sistemas neumáticos industriales, paso a paso se muestra y describe el papel que tiene cada componente utilizado en la red de aire comprimido, el cual generalmente será utilizado para automatizar procesos repetitivos como mover productos o presionar piezas utilizando la neumática como la fuerza motriz para realizar estas tareas.</span></em></p><p><span>Mix de Parker Products and Support: </span><a href='https://www.youtube.com/channel/UCe74hvmtnVrXfZPBofJ_GJA' target='_blank' class='url'>https://www.youtube.com/channel/UCe74hvmtnVrXfZPBofJ_GJA</a><span> </span></p><p>&nbsp;</p><p><a href='https://youtu.be/MLyVrviC0nk'><span>&quot;FluidSim Eletropneumatica Aula 1&quot; no YouTube</span></a><span>, do Enéias Belan, 20,5K visualizações. -- +/- já inicia colocando válvulas e outros componentes mas sem exlicar muito bem porque está montando circuito daquela forma ou como configurar componentes:</span>
+<img src="figuras/youtube_eletropneumatica_aula1_eneias_belan.png" referrerpolicy="no-referrer" alt="youtube_eletropneumatica_aula1_eneias_belan"></p><p><span>Outro vídeo que parece interessante –&gt; </span><a href='https://youtu.be/CO6st7ULlRI'><span>Sensores no FluidSim</span></a><span>, do Enéias Belan; 5,1K visualizações, 10:54:</span>
+<img src="figuras/youtube_sensores_no_fluidsim_eneias_belan.png" referrerpolicy="no-referrer" alt="youtube_sensores_no_fluidsim_eneias_belan">
+<span>Parece que usa presostato além de chave de fim de curso (ou sensor magnético/indutivo)…</span></p><p><a href='https://youtu.be/DgGbZCss0rY'><span>&quot;Circuito pneumático FluidSIM atuador de dupla ação&quot; no YouTube</span></a><span>:</span>
+<img src="figuras/atuador_dupla_acao_simulacao_youtube.png" referrerpolicy="no-referrer" alt="atuador_dupla_acao_simulacao_youtube"></p><p>&nbsp;</p><p><a href='https://youtu.be/mn8lML7dT9s'><span>&quot;Projeto Exemplo FluidSIM 5 - Elevador de Cargas (Simplificado)&quot; no YouTube</span></a><span> - da própria FESTO, Algo Chato.... Demorado (26:13). Não muito didático. Não inicia pelo compressor. Não nomeia solenóides da válvula 5/2. E não explica porque está arrastando certos componentes enquanto faz conexões:</span>
+<img src="figuras/youtube_festo_elevador_cargas.png" referrerpolicy="no-referrer" alt="youtube_festo_elevador_cargas"></p><p>&nbsp;</p><p><strong><span>Blog</span></strong><span> sobre Pneumática e Hidráulica com teoria e </span><strong><span>vários exemplos</span></strong><span>, muitas figuras ilustrativas --&gt; </span><a href='http://eletropneumaticaeeletrohidraulica.blogspot.com/'><span>Eletropneumática e Eletro-hidráulica, Prof. Sinésio Gomes</span></a><span> (março/2022). </span></p><p>&nbsp;</p><p><a href='https://youtu.be/NvzrUQUfz4c'><span>&quot;Diferenças entre as Válvulas Trava, Mola, Autocentrante Centro Fechado e Centro Aberto Negativo.&quot; no YouTube</span></a><span>:</span></p><p><a href='https://youtu.be/9kEmPajmK8A'><span>&quot;Entenda o funcionamento de uma válvula 5 vias 3 posições.&quot; no YouTube</span></a><span>: 1,8K visualizações; Fluir Automação; 1:26 (video rápido).</span></p><p><span>Vídeo </span><a href='https://youtu.be/ome5FAy8G0w'><span>Contador-Temporizador en fluidsim secuencia A+B+A-B-</span></a><span>: Variedad Académica; </span><strong><span>77,9K visualizações</span></strong><span>; 12:41 - Sequencias diretas e indiretas; método direto (ou intuitivo):</span>
+<img src="figuras/youtube_contador_temporizador_secuencia.png" referrerpolicy="no-referrer" alt="youtube_contador_temporizador_secuencia">
+<span>Acompanha Blog em: </span><a href='http://variedadacademia.blogspot.com' target='_blank' class='url'>http://variedadacademia.blogspot.com</a><span> - 8/04/2015.</span></p><p><a href='https://youtu.be/zW7tsEidWQw'><span>&quot;1 - Vídeo Aula automação pneumática (</span><strong><span>Início simulação FluidSim</span></strong><span>)&quot; no YouTube</span></a><span>, Prof. Pedro XX, </span><strong><span>71K visualizações</span></strong><span>. 24/10/2014 -- este parece mais &quot;didático&quot;. Inicial com compressor e unidade conservadora. &lt;-- </span><mark><span>Parece melhor</span></mark><span> – Usar como </span><strong><span>primeiro video uso FluidSim</span></strong><span>.</span></p><p><a href='https://youtu.be/3s7iKFMjDMA'><span>&quot;Simulador Festo FluidSIM - Como Baixar?&quot; no YouTube</span></a></p><p><a href='http://paginapessoal.utfpr.edu.br/luizpepplow/sistemas-hidraulicos-1/apresentacoes-das-aulas/apostila_festo_Fluidsim.pdf/view'><span>Apostila Festo FluidSim — Páginas Pessoais - UTFPR</span></a><span> - em português, para versão 3.6(!) do FluidSIM</span></p><p><span>Outro video: </span><a href='https://youtu.be/YUnxei8ukag'><span>2 - Vídeo Aula automação pneumática (Método Intuitivo FluidSim)</span></a><span> (Prof. Pedro Henrique de Jesus; 18,8K Visualizações; 19:06) – video confuso… longo… não recomendado (Fer: 17/03/2022).</span></p><p><a href='https://youtu.be/QpniDRok2eY'><span>Pneumática básica: simbologia y trazos</span></a><span> (LISA-LAB; 38 K visualizações, 2021)</span></p><p><a href='https://youtu.be/uS3JbFwkxus'><span>Pneumática 1: Princípios Básicos</span></a><span> (Carlapedia; 111 K visualizações, 2021). </span><em><span>Video feito com KineMaster</span></em><span>.</span></p><p><span>YouTube: </span><a href='https://youtu.be/z2NqFrH72po'><span>SIMULACIÓN DE CIRCUITOS NEUMÁTICOS EN FLUID SIM</span></a><span>: Lisa-Lab; 36,6K visualizações; 25:40 (video longo), em espanhol:</span>
+<img src="figuras/simulacao_circuitos_neumaticos_lisa-lab.png" referrerpolicy="no-referrer" alt="simulacao_circuitos_neumaticos_lisa-lab"></p><p>&nbsp;</p><p><span>Youtube: </span><a href='https://youtu.be/QpniDRok2eY'><span>NEUMÁTICA BÁSICA (Simbología y Trazos Neumáticos)</span></a><span>: Lisa-Lab; 41K Visualizações; 34:45 (video londo), em espanhol.</span></p><p><span>YouTube: </span><a href='https://youtu.be/-s1QxsIObLM'><span>Introducción a circuitos neumáticos</span></a><span>: Abel Vila; </span><strong><span>187K visualizações</span></strong><span>; 9:51; espanhol:</span>
+<img src="figuras/intro_neumaticos_abel_vila.png" referrerpolicy="no-referrer" alt="intro_neumaticos_abel_vila"></p><p>&nbsp;</p><p><span>YouTube: </span><a href='https://youtu.be/5lSnpd_LfbU'><span>EJERCICIO BÁSICO DE ELECTRONEUMÁTICA</span></a><span>: CCTI Eléctricidad &amp; Automatización; </span><strong><span>161,4K visualizações</span></strong><span>; 18:39.</span>
+<em><span>La Electroneumática es una de las técnicas de automatización que en la actualidad viene cobrando vital importancia en la optimización de los procesos a nivel industrial. Su evolución fue a partir de la neumática, disciplina bastante antigua que revolucionó la aplicación de los servomecanismos para el accionamiento de sistemas de producción industrial. Con el avance de las técnicas de electricidad y la electrónica se produjo la fusión de métodos y dando así el inicio de los sistemas electro-neumáticos en la industria, los cuales resultaban más compactos y óptimos a diferencia de los sistemas puramente neumáticos.</span></em></p><p><mark><span>Idéia de Lab Eletro-Pneumático:</span></mark>
+<span>Um bom video de eletrônica-pneumática usando sensores ☞ YouTube: </span><a href='https://youtu.be/CO6st7ULlRI'><span>Sensores no FluidSim</span></a><span>: Enéias Belan; 5,1K Visualizações; 10:54 – </span><em><span>Circuito: um atuador avança quando se pressiona botão (elétrico) ao mesmo tempo em que for detectada a presença de uma peça; O atuador avança até o final de curso e então deve parar; Cilindro só volta quando estiver atuando final de curso e for pressionado um botão</span></em><span>:</span>
+<img src="figuras/simulacao_eletropneumatica_uso_sensores_eneias_belan.png" referrerpolicy="no-referrer" alt="simulacao_eletropneumatica_uso_sensores_eneias_belan"></p><p><strong><span>Mas</span></strong><span>, antes deste experimento acima, </span><strong><span>iniciar</span></strong><span> com outro video do Enéias Belan: YouTube: </span><a href='https://youtu.be/MLyVrviC0nk'><span>FluidSim Eletropneumatica Aula 1</span></a><span>; 20,5K Visualizações; 16:36.</span>
+<span>*Neste video, ele ensina como se começa a fazer circuito eletrônico-pneumaticos, começando com: *</span>
+<em><span>Exp</span><span>_</span><span>1) exemplo simples como acionar pistão simples usando válvula 3/2 com retorno por mola e acionado por solenóide; O avanço do cilindro é controlado por botão NA (elétrico).</span></em><span>:</span>
+<img src="figuras/aula_1_eletro_pneumatica_eneias_belan.png" referrerpolicy="no-referrer" alt="aula_1_eletro_pneumatica_eneias_belan">
+<em><span>e Exp</span><span>_</span><span>2: uso de cilindro de dupla ação controlado por botões NA. Neste caso, foi usada uma válvula 5/2.</span></em><span>:</span>
+<img src="figuras/aula_1_eletro_pneumatica_eneias_belan_exp_2.png" referrerpolicy="no-referrer" alt="aula_1_eletro_pneumatica_eneias_belan_exp_2"></p><p>&nbsp;</p><hr /><h2 id='circuitos-hidráulicos'><span>Circuitos Hidráulicos</span></h2><p><span>YouTube: </span><a href='https://youtu.be/1uAYRoQfU48'><span>SIMULACIÓN DE CIRCUITOS </span><strong><span>HIDRÁULICOS</span></strong></a><span>*: </span><strong><span>103K Visualizações</span></strong><span>; </span><a href='https://www.mecatrónica.com.co'><span>Ingeniería Mecatrônica</span></a><span>; 46:47 (video longo), em espanhol (Colômbia). Experimentos: 1) Acionamento de cilindro de efeito simples usando válvula 3/2 com tanque de retorno e válvula limitadora de pressão; 2) Acionamento de cilindro duplo com válvula 4/2. 3) outros…</span></p><p><span> YouTube: </span><a href='https://youtu.be/t2FNq6h-Y_M'><span>SIMBOLOGÍA SISTEMAS HIDRÁULICOS (ISO 1219)</span></a><span>: 55,2K Visualizações; </span><a href='https://www.mecatrónica.com.co'><span>Ingeniería Mecatrônica</span></a><span>; 27:13.</span></p><p><span>YouTube: </span><a href='https://youtu.be/rTm9K5jUNK0'><span>COMPONENTES DE UN SISTEMA </span><strong><span>HIDRAULICO</span></strong><span> - </span><strong><span>LUIS MELENDEZ</span></strong></a><span>: </span><strong><span>189K visualizações</span></strong><span>; Alex de La Peña; 9:56. Itens: 1) Bomba, 2) Válvulas de alivio ou limitadora, 3) Válvula reguladora de pressão; 4) Cilindro de efeito simples; 5) Cilindro de efeito duplo. </span></p><p><span>YouTube: </span><a href='https://youtu.be/AEjlK3q7r6E'><span>CIRCUITO HIDRÁULICO BÁSICO | ANIMAÇÃO</span></a><span>: Neheyler Mechatronics; 44,2K Visualizações; 2:21:</span>
+<img src="figuras/circuito_hidra_basico_neheyler.png" referrerpolicy="no-referrer" alt="circuito_hidra_basico_neheyler"></p><p>&nbsp;</p><p><span>YouTube: </span><a href='https://youtu.be/UkqM61ZcvWE'><span>Hidráulica - Caudal y Velocidad</span></a><span>: </span><strong><span>Luis Meléndez</span></strong><span>; </span><strong><span>367,3K Visualizações</span></strong><span>; 4:24.</span></p><p><span>YouTube: </span><a href='https://youtu.be/7p13IUdsd20'><span>Hidráulica - Válvulas Distribuidoras</span></a><span>: </span><strong><span>Luis Meléndez</span></strong><span>; </span><strong><span>375,7K Visualizações</span></strong><span>; 10:39.</span></p><p><span>YouTube: </span><a href='https://youtu.be/ylriuLRksAA'><span>Hidráulica Básica 1.2 - ¿Cómo Se Transmite La Fuerza Fluida?</span></a><span>: </span><a href='https://www.youtube.com/channel/UCqBKViUyI1BXivPZeKjeBLA'><span>Aceros y Sistemas Hidráulicos De México</span></a><span>; </span><strong><span>543,6K Visualizações</span></strong><span>; 5:39. </span><em><span>En este video de Hidráulica Básica se muestra cómo se transmite la fuerza fluida, cómo funciona un sistema hidráulico y una comparación entre un sistema hidráulico y un sistema neumático.  Vea más información y conozca nuestros productos en </span><a href='http://www.ashm.mx'><span>nuestra página</span></a></em><span>.</span></p><hr /><p><span>Fernando Passold, Fev/Março 2022.</span></p><p>&nbsp;</p></div></div>
+</body>
+</html>
