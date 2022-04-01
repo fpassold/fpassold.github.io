@@ -1,0 +1,7 @@
+DESCR 
+68 68 858 540 0.500000
+1 1 ..
+2 1 figuras
+3 1 eletro_pneumo_1.ct
+4 1 exemplo_01.ct
+5 1 teste1.ct
