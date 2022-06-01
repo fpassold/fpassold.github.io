@@ -14,10 +14,13 @@
   * [Projeto de 2019/2](2019_2/contador_sync_diferente_2019_2.html);
   * [Projeto de 2020/1](2020_1/projeto_contador_sincrono_2020_1.html);
   * [Projeto de 2021/2](cont_sync_2021_2/projeto_cont_sync_2021_2.html);
-* [Exemplo de Uso de Registrador de Deslocamento](Reg_Deslocamento/Exemplo_uso_reg_deslocamento.html) (Aula de 08/06/2020);
+* Registradores de Deslocamento:
+  * [Exercícios iniciais](exercicios_inicio_2022_1.html) (Aula de 31/05/2022);
+  * [Exercícios II de Registradores de Deslocamento](Reg_Deslocamento/Exemplo_uso_reg_deslocamento.html) (Aula de 08/06/2020);
+
 * Projeto de circuito sequencial/combinacional $\rightarrow$ circuito de um ([**cronômetro**](cronometro/cronometro.html) ) (semestre: 2021/2); 
 
 
 ---
 
-Prof. Fernando Passold, atualizado em 17/05/2020; 27/08/2021; 12/09/2021; 28/11/2021.
+<font size="1">Prof. Fernando Passold, atualizado em 17/05/2020; 27/08/2021; 12/09/2021; 28/11/202; 01/06/2022.</font> 

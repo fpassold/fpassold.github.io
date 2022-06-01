@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
@@ -134,7 +134,7 @@ a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; 
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
 kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
 code { text-align: left; }
 a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
@@ -155,8 +155,6 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .md-diagram-panel .messageText { stroke: none !important; }
 .md-diagram-panel .start-state { fill: var(--node-fill); }
 .md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-require-zoom-fix { height: auto; margin-top: 16px; margin-bottom: 16px; }
-.md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
 .md-fences.md-fences-math { font-size: 1em; }
 .md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
 .md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
@@ -203,98 +201,55 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .md-inline-math-container mjx-container { zoom: 0.95; }
 
 
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-@font-face {
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Volumes/Macintosh_HD/Users/fernandopassold/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@import '';
-
 :root {
-    --side-bar-bg-color: #fff;
+    --side-bar-bg-color: #fafafa;
     --control-text-color: #777;
-    --font-sans-serif: 'Ubuntu', 'Source Sans Pro', sans-serif !important;
-    --font-monospace: 'Fira Code', 'Roboto Mono', monospace !important;
 }
 
-html {
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
     font-size: 16px;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    font-family: var(--font-sans-serif);
-    color: #34495e;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.6rem;
-    letter-spacing: 0;
-    margin: 0;
-    overflow-x: hidden;
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
 }
 
 #write {
     max-width: 860px;
-    margin: 0 auto;
-    padding: 20px 30px 100px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
 }
 
-#write p {
-    line-height: 1.6rem;
-    word-spacing: .05rem;
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
 }
 
-#write ol li {
-    padding-left: 0.5rem;
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
 }
 
 #write > ul:first-child,
-#write > ol:first-child {
+#write > ol:first-child{
     margin-top: 30px;
 }
 
-body > *:first-child {
-    margin-top: 0 !important;
-}
-
-body > *:last-child {
-    margin-bottom: 0 !important;
-}
-
 a {
-    color: #42b983;
-    font-weight: 600;
-    padding: 0 2px;
-    text-decoration: none;
+    color: #4183C4;
 }
-
 h1,
 h2,
 h3,
@@ -308,7 +263,6 @@ h6 {
     line-height: 1.4;
     cursor: text;
 }
-
 h1:hover a.anchor,
 h2:hover a.anchor,
 h3:hover a.anchor,
@@ -317,89 +271,84 @@ h5:hover a.anchor,
 h6:hover a.anchor {
     text-decoration: none;
 }
-
 h1 tt,
 h1 code {
-    font-size: inherit !important;
+    font-size: inherit;
 }
-
 h2 tt,
 h2 code {
-    font-size: inherit !important;
+    font-size: inherit;
 }
-
 h3 tt,
 h3 code {
-    font-size: inherit !important;
+    font-size: inherit;
 }
-
 h4 tt,
 h4 code {
-    font-size: inherit !important;
+    font-size: inherit;
 }
-
 h5 tt,
 h5 code {
-    font-size: inherit !important;
+    font-size: inherit;
 }
-
 h6 tt,
 h6 code {
-    font-size: inherit !important;
+    font-size: inherit;
 }
-
-h2 a,
-h3 a {
-    color: #34495e;
-}
-
 h1 {
-    padding-bottom: .4rem;
-    font-size: 2.2rem;
-    line-height: 1.3;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
 }
 
-h2 {
-    font-size: 1.75rem;
-    line-height: 1.225;
-    margin: 35px 0 15px;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid #ddd;
-}
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
 
 h3 {
-    font-size: 1.4rem;
+    font-size: 1.5em;
     line-height: 1.43;
-    margin: 20px 0 7px;
 }
-
 h4 {
-    font-size: 1.2rem;
+    font-size: 1.25em;
 }
-
 h5 {
-    font-size: 1rem;
+    font-size: 1em;
 }
-
 h6 {
-    font-size: 1rem;
+   font-size: 1em;
     color: #777;
 }
-
 p,
 blockquote,
 ul,
 ol,
 dl,
-table {
+table{
     margin: 0.8em 0;
 }
-
-li > ol,
-li > ul {
+li>ol,
+li>ul {
     margin: 0 0;
 }
-
 hr {
     height: 2px;
     padding: 0;
@@ -410,219 +359,118 @@ hr {
     box-sizing: content-box;
 }
 
-body > h2:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-body > h1:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-body > h3:first-child,
-body > h4:first-child,
-body > h5:first-child,
-body > h6:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-a:first-child h1,
-a:first-child h2,
-a:first-child h3,
-a:first-child h4,
-a:first-child h5,
-a:first-child h6 {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-h1 p,
-h2 p,
-h3 p,
-h4 p,
-h5 p,
-h6 p {
-    margin-top: 0;
-}
-
 li p.first {
     display: inline-block;
 }
-
 ul,
 ol {
     padding-left: 30px;
 }
-
 ul:first-child,
 ol:first-child {
     margin-top: 0;
 }
-
 ul:last-child,
 ol:last-child {
     margin-bottom: 0;
 }
-
 blockquote {
-    border-left: 4px solid #42b983;
-    padding: 10px 15px;
-    color: #777;
-    background-color: rgba(66, 185, 131, .1);
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
 }
-
+blockquote blockquote {
+    padding-right: 0;
+}
 table {
     padding: 0;
     word-break: initial;
 }
-
 table tr {
-    border-top: 1px solid #dfe2e5;
+    border: 1px solid #dfe2e5;
     margin: 0;
     padding: 0;
 }
-
 table tr:nth-child(2n),
 thead {
-    background-color: #fafafa;
+    background-color: #f8f8f8;
 }
-
-table tr th {
+table th {
     font-weight: bold;
     border: 1px solid #dfe2e5;
     border-bottom: 0;
-    text-align: left;
     margin: 0;
     padding: 6px 13px;
 }
-
-table tr td {
+table td {
     border: 1px solid #dfe2e5;
-    text-align: left;
     margin: 0;
     padding: 6px 13px;
 }
-
-table tr th:first-child,
-table tr td:first-child {
+table th:first-child,
+table td:first-child {
     margin-top: 0;
 }
-
-table tr th:last-child,
-table tr td:last-child {
+table th:last-child,
+table td:last-child {
     margin-bottom: 0;
 }
 
-#write strong {
-    padding: 0 1px;
+.CodeMirror-lines {
+    padding-left: 4px;
 }
 
-#write em {
-    padding: 0 5px 0 2px;
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
 }
 
-#write table thead th {
-    background-color: #f2f2f2;
-}
-
-#write .CodeMirror-gutters {
-    border-right: none;
-}
-
-#write .md-fences {
-    border: 1px solid #F4F4F4;
-    -webkit-font-smoothing: initial;
-    margin: 0.8rem 0 !important;
-    padding: 0.3rem 0 !important;
-    line-height: 1.43rem;
-    background-color: #F8F8F8 !important;
-    border-radius: 2px;
-    font-family: var(--font-monospace);
-    font-size: 0.85rem;
-    word-wrap: normal;
-}
-
-#write .CodeMirror-wrap .CodeMirror-code pre {
-    padding-left: 12px;
-}
-
-#write code, tt {
-    padding: 2px 4px;
-    border-radius: 2px;
-    font-family: var(--font-monospace);
-    font-size: 0.92rem;
-    color: #e96900;
-    background-color: #f8f8f8;
-}
-
+.md-fences,
+code,
 tt {
-    margin: 0 2px;
-}
-
-#write .md-footnote {
+    border: 1px solid #e7eaed;
     background-color: #f8f8f8;
-    color: #e96900;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
 }
 
-/* heighlight. */
-#write mark {
-    background-color: #EBFFEB;
-    border-radius: 2px;
-    padding: 2px 4px;
-    margin: 0 2px;
-    color: #222;
-    font-weight: 500;
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
 }
 
-#write del {
-    padding: 1px 2px;
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
 }
 
-.cm-s-inner .cm-link,
-.cm-s-inner.cm-link {
-    color: #22a2c9;
-}
-
-.cm-s-inner .cm-string {
-    color: #22a2c9;
-}
 
 .md-task-list-item > input {
-    margin-left: -1.3em;
+  margin-left: -1.3em;
 }
 
 @media print {
     html {
         font-size: 13px;
     }
-
     table,
     pre {
         page-break-inside: avoid;
     }
-
     pre {
         word-wrap: break-word;
     }
 }
 
 .md-fences {
-    background-color: #f8f8f8;
+	background-color: #f8f8f8;
 }
-
-.md-diagram-panel {
-    position: static !important;
-}
-
 #write pre.md-meta-block {
-    padding: 1rem;
+	padding: 1rem;
     font-size: 85%;
     line-height: 1.45;
     background-color: #f7f7f7;
@@ -632,45 +480,46 @@ tt {
     margin-top: 0 !important;
 }
 
-.mathjax-block > .code-tooltip {
-    bottom: .375rem;
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
 }
 
-#write > h3.md-focus:before {
-    left: -1.5625rem;
-    top: .375rem;
+.md-mathjax-midline {
+    background: #fafafa;
 }
 
-#write > h4.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
 }
-
-#write > h5.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
 }
-
-#write > h6.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
 }
-
-.md-image > .md-meta {
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
     border-radius: 3px;
-    font-family: var(--font-monospace);
-    padding: 2px 0 0 4px;
+    padding: 2px 0px 0px 4px;
     font-size: 0.9em;
     color: inherit;
 }
 
 .md-tag {
-    color: inherit;
+    color: #a7a7a7;
+    opacity: 1;
 }
 
-.md-toc {
-    margin-top: 20px;
-    padding-bottom: 20px;
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
 }
 
 .sidebar-tabs {
@@ -689,29 +538,22 @@ tt {
     border-width: 1px;
 }
 
-#md-notification:before {
-    top: 10px;
-}
-
 /** focus mode */
-
 .on-focus-mode blockquote {
     border-left-color: rgba(85, 85, 85, 0.12);
 }
 
-header,
-.context-menu,
-.megamenu-content,
-footer {
-    font-family: var(--font-sans-serif);
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
 }
 
 .file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state {
+.file-node-content:hover .file-node-open-state{
     visibility: visible;
 }
 
 .mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
     background-color: var(--side-bar-bg-color);
 }
 
@@ -719,8 +561,31 @@ footer {
     color: #b4654d;
 }
 
-.html-for-mac .context-menu {
+/*.html-for-mac {
     --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
 }
 
 
@@ -872,10 +737,10 @@ g[data-mml-node="xypic"] path {
 }
 mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 							stroke-width: 0;
-						} :root {--mermaid-font-zoom:1em ;}  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}} .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style><title>digitais_2</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='curso-de-cicuitos-digitais-ii'><span>Curso de Cicuitos Digitais II</span></h1><p><img src="adi-goldstein-EUsVwEOsblE-unsplash.jpg" referrerpolicy="no-referrer" alt="adi-goldstein-EUsVwEOsblE-unsplash.jpg"></p><ul><li><p><strong><span>Contadores Assíncronos</span></strong><span>:</span></p><ul><li><a href='contador_assincrono_1.html'><span>Teoria básica contadores assíncronos</span></a><span>;</span></li><li><span>Uso de </span><strong><span>frequencímetro no Proteus</span></strong><span>: </span><a href='frequencimetro_proteus.html'><span>HTML</span></a><span>, ou </span><a href='como_usar_um_simulador.pdf'><span>PDF</span></a><span>;</span></li><li><a href='Exemplos_Prpjetos_Contadores_Assincronos.html'><span>Exemplos de projetos de contadores assíncronos</span></a><span>: Contador Decimal crescente (de 0 --&gt; 9), Contador de 5 --&gt; 2 (cíclico), Circuito Divisor de Freqüência por 42 [Aula de 12/04/2020; 27/08/2021];</span></li><li><a href='exercicio_04maio2020.html'><span>Exemplos de divisores de frequencia usando CIs 7490, 7493</span></a><span>: Divisor de Freqüência por 37, Contador de 5 --&gt; 12 (cíclico), Contador de 12 --&gt; 5 (cíclico) [aula de 04/05/2020];</span></li><li><span>Exercícios: </span><a href='contadores_assync/exercicio_03set2021.html'><span>Ex_1: Contador de 3 --&gt; 6 (cíclico); Ex_2: Contador de 5 --&gt; 2 (cíclico)</span></a><span> [Aula de 03/09/2021];</span></li><li><span>Soluções/Comentários </span><a href='contadores_assync/aula_10set2021.html'><span>Slides 29 (Div. Freq. por 12), Slide 38 (Div. Freq. por 42 usando 7490 e 7493) e Slide 44 (explicando Efeito Visual)</span></a><span> [aula de 10/09/2021];</span></li></ul></li><li><p><span>Exemplos de Projetos de </span><strong><span>Contadores Síncronos</span></strong><span>:</span></p><ul><li><span>Projeto de 2019/1 (</span><a href='contador_sincrono_diferente_2019_1.pdf'><span>PDF</span></a><span>);</span></li><li><a href='2019_2/contador_sync_diferente_2019_2.html'><span>Projeto de 2019/2</span></a><span>;</span></li><li><a href='2020_1/projeto_contador_sincrono_2020_1.html'><span>Projeto de 2020/1</span></a><span>;</span></li><li><a href='cont_sync_2021_2/projeto_cont_sync_2021_2.html'><span>Projeto de 2021/2</span></a><span>;</span></li></ul></li><li><p><a href='Reg_Deslocamento/Exemplo_uso_reg_deslocamento.html'><span>Exemplo de Uso de Registrador de Deslocamento</span></a><span> (Aula de 08/06/2020);</span></p></li><li><p><span>Projeto de circuito sequencial/combinacional </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-12-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-12-TEX-N-2192"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">→</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\rightarrow</script><span> circuito de um (</span><a href='cronometro/cronometro.html'><strong><span>cronômetro</span></strong></a><span> ) (semestre: 2021/2); </span></p></li></ul><hr /><p><span>Prof. Fernando Passold, atualizado em 17/05/2020; 27/08/2021; 12/09/2021; 28/11/2021.</span></p></div></div>
+<div id='write'  class=''><h1 id='curso-de-cicuitos-digitais-ii'><span>Curso de Cicuitos Digitais II</span></h1><p><img src="adi-goldstein-EUsVwEOsblE-unsplash.jpg" referrerpolicy="no-referrer" alt="adi-goldstein-EUsVwEOsblE-unsplash.jpg"></p><ul><li><p><strong><span>Contadores Assíncronos</span></strong><span>:</span></p><ul><li><a href='contador_assincrono_1.html'><span>Teoria básica contadores assíncronos</span></a><span>;</span></li><li><span>Uso de </span><strong><span>frequencímetro no Proteus</span></strong><span>: </span><a href='frequencimetro_proteus.html'><span>HTML</span></a><span>, ou </span><a href='como_usar_um_simulador.pdf'><span>PDF</span></a><span>;</span></li><li><a href='Exemplos_Prpjetos_Contadores_Assincronos.html'><span>Exemplos de projetos de contadores assíncronos</span></a><span>: Contador Decimal crescente (de 0 --&gt; 9), Contador de 5 --&gt; 2 (cíclico), Circuito Divisor de Freqüência por 42 [Aula de 12/04/2020; 27/08/2021];</span></li><li><a href='exercicio_04maio2020.html'><span>Exemplos de divisores de frequencia usando CIs 7490, 7493</span></a><span>: Divisor de Freqüência por 37, Contador de 5 --&gt; 12 (cíclico), Contador de 12 --&gt; 5 (cíclico) [aula de 04/05/2020];</span></li><li><span>Exercícios: </span><a href='contadores_assync/exercicio_03set2021.html'><span>Ex_1: Contador de 3 --&gt; 6 (cíclico); Ex_2: Contador de 5 --&gt; 2 (cíclico)</span></a><span> [Aula de 03/09/2021];</span></li><li><span>Soluções/Comentários </span><a href='contadores_assync/aula_10set2021.html'><span>Slides 29 (Div. Freq. por 12), Slide 38 (Div. Freq. por 42 usando 7490 e 7493) e Slide 44 (explicando Efeito Visual)</span></a><span> [aula de 10/09/2021];</span></li></ul></li><li><p><span>Exemplos de Projetos de </span><strong><span>Contadores Síncronos</span></strong><span>:</span></p><ul><li><span>Projeto de 2019/1 (</span><a href='contador_sincrono_diferente_2019_1.pdf'><span>PDF</span></a><span>);</span></li><li><a href='2019_2/contador_sync_diferente_2019_2.html'><span>Projeto de 2019/2</span></a><span>;</span></li><li><a href='2020_1/projeto_contador_sincrono_2020_1.html'><span>Projeto de 2020/1</span></a><span>;</span></li><li><a href='cont_sync_2021_2/projeto_cont_sync_2021_2.html'><span>Projeto de 2021/2</span></a><span>;</span></li></ul></li><li><p><span>Registradores de Deslocamento:</span></p><ul><li><a href='exercicios_inicio_2022_1.html'><span>Exercícios iniciais</span></a><span> (Aula de 31/05/2022);</span></li><li><a href='Reg_Deslocamento/Exemplo_uso_reg_deslocamento.html'><span>Exercícios II de Registradores de Deslocamento</span></a><span> (Aula de 08/06/2020);</span></li></ul></li><li><p><span>Projeto de circuito sequencial/combinacional </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-2-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-2-TEX-N-2192"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">→</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\rightarrow</script><span> circuito de um (</span><a href='cronometro/cronometro.html'><strong><span>cronômetro</span></strong></a><span> ) (semestre: 2021/2); </span></p></li></ul><hr /><p><font size="1"><span>Prof. Fernando Passold, atualizado em 17/05/2020; 27/08/2021; 12/09/2021; 28/11/202; 01/06/2022.</span></font><span> </span></p></div></div>
 </body>
 </html>
