@@ -1,0 +1,115 @@
+# Entrando com a Planta
+
+Seja a planta: $G(s)$:
+$$
+G(s)=\dfrac{1}{(s+1)(s+2)(s+10)}
+$$
+
+No Matlab:
+
+```matlab
+G=tf(1, poly( [ -1    -2 10 ] ) )
+
+G =
+ 
+             1
+  -----------------------
+  s^3 - 7 s^2 - 28 s - 20
+ 
+Continuous-time transfer function.
+
+% Verificando...
+zpk(G)
+
+ans =
+ 
+          1
+  ------------------
+  (s-10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+G=tf(1, poly( [ -1    -2 -10 ] ) )
+
+G =
+ 
+             1
+  ------------------------
+  s^3 + 13 s^2 + 32 s + 20
+ 
+Continuous-time transfer function.
+
+zpk(G)
+
+ans =
+ 
+          1
+  ------------------
+  (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+```
+
+## Controlador Proporcional
+
+Usando Root-Locus:
+
+```matlab
+rlocus(G)
+% Calculando zeta
+OS=20; % 20% de overshoot toler�vel
+zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+zeta =
+      0.45595
+hold on
+sgrid(zeta,0);
+```
+
+Gráfico do RL com ganho sintonizado:
+
+![rl_prop](rl_prop.png)
+
+Adotaremos o ganho de $K=51$.
+
+Verificando...
+
+```matlab
+K=51;
+ftmf=feedback(K*G, 1);
+figure; step(ftmf);
+```
+
+![setp_Kp.png](setp_Kp.png)
+
+Notamos erro n�o nulo em regime permanente.
+
+```matlab
+dcgain(ftmf)
+ans =
+      0.71831
+erro=(1-dcgain(ftmf))/1*100
+erro =
+       28.169
+```
+
+Ou seja, um erro de regime permanente de $e(\infty)=28,169\%$.
+
+Posso diminuir?
+
+Resp.: Aumentando o ganho, mas vai aumentar $\%OS$. Testando...
+
+```matlab
+K=75;
+ftmf=feedback(K*G, 1);
+figure; step(ftmf);
+```
+
+![step_Kp_75.png](step_Kp_75.png)
+
+----
+
+```matlab
+save dados
+diary off
+```

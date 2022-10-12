@@ -28,7 +28,8 @@
 
 - [Projeto de Controladores usando Root Locus (Parte I): Controlador Proporcional](projeto_usando_root_locus_parte_1.html);
 - [Melhorias em Controlador Proporcional !?](Melhora_Kp/melhorias_controlador_proporcional.html) (aula de 04/06/2021)
-- [Projeto de Controladores Prooporcional e com Ação Integral](PI_parte1.html)
+- [**Projeto de Controladores Prooporcional e com Ação Integral**](PI_parte1.html)
+- [Projeto de Controlador Proporcional](control2inf_2020_2/aula_10102022.html) (aula de 10/10/2022; cálculo de $Kp$ em função do $e(\infty)$ desejado);
 - [Projeto de PI (por contribuição angular) + Lag](PI_angular_Lag.html);
   - [Projeto de PI usando contribuição angular](projeto_controladores_acao_integral_extendido.html)(versão antiga, de 2019/2);
   - [Exemplo$_1$ (Aula de 20/05/2020)](aula_20_05_2020/aula_20_05_2020.html): Projeto de PI usando Contribuição Angular + Projeto de Compensandor por Atraso de Fase.
