@@ -1,6 +1,8 @@
 # Curso de Controle Automático II
 
-![Photo by David Watkis, Golden Gate Bridge](https://images.unsplash.com/photo-1566153580922-16a9709fff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80) <font size="1"> Photo by David Watkis on https://unsplash.com/images/feelings/cool?</font> 
+![tunafish-mayonnaise-pSIt7op-mds-unsplash.jpg](tunafish-mayonnaise-pSIt7op-mds-unsplash.jpg)Photo by Tunafish Mayonnaise, Cherry Blossom, Mount Fuji, Japan on [Unsplash](https://unsplash.com/photos/pSIt7op-mds)
+
+![Photo by <a href="https://unsplash.com/@david_watkis?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">David Watkis</a> on <a href="https://unsplash.com/images/feelings/cool?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>](https://unsplash.com/photos/ttMBIEnFeKA)
 
 ## 2) Ações de Controle
 
