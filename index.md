@@ -12,7 +12,7 @@
 * [Circuitos Digitais II (Eletrônica Digital Sequencial)](Digitais_2/digitais_2.html);
   * Lab. de Circuitos Digitais II;
 * [Controle Automático 2 (Controle Automático Clássico)](Controle_2/index.html);
-  * Laboratório de Controle Automático II (2022/2);
+  * [Laboratório de Controle Automático II](Lab_Controle_2/lab_controle_2.html) (2022/2);
 * [Controle Automático 3 (Controle Clássico Discreto ou Digital)](Controle_3/controle_3.html).
 * [Acionamento Hidráulico e Pneumático (EEE172)](Pneumatica/topicos.html).
 
