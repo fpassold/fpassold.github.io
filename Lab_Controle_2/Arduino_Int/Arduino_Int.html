@@ -25,118 +25,128 @@
 </header>
 <main>
 <div class="github-markdown-body github-markdown-auto">
-            <div class="github-markdown-content"><div  dir="auto" ></div>
-<!-- title: Arduino & Interrupções -->
-<div  dir="auto" ></div>
+            <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
+                    data-dark-mode-theme="dark"
+                    data-light-mode-theme="default"></span>
+                <!-- title: Arduino & Interrupções -->
 <!-- ![Atmega168_pin_mapping.webp](figuras/Atmega168_pin_mapping.webp) -->
-<p dir="auto"><img src="https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80" alt="https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80" data-src="https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80">
+<p><img src="https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80" alt="https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80">
 <font size="1">Photo by <a href="https://unsplash.com/ja/@coltonsturgeon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Colton Sturgeon</a> on <a href="https://unsplash.com/s/photos/zen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></font></p>
-<h1 dir="auto" id="arduino--interrup%C3%A7%C3%B5es">Arduino &amp; Interrupções</h1>
-<p dir="auto"><a href="https://youtu.be/vVXIK1xCRpY">:music_note:</a></p>
-<div  dir="auto" ></div>
+<h1 id="arduino--interrupções">Arduino &amp; Interrupções</h1>
+<p><a href="https://youtu.be/vVXIK1xCRpY">:music_note:</a></p>
 <!-- [Audioslave - Show Me How to Live (Video) - Bing video](https://www.bing.com/videos/search?q=audioslva+show+me+how+live&&view=detail&mid=ADD582B1D04BCCBFDD4FADD582B1D04BCCBFDD4F&&FORM=VDRVRV) -->
-<p dir="auto">Referências adotadas</p>
-<blockquote dir="auto">
-<ul dir="auto">
-<li dir="auto">
-<p dir="auto"><strong>Página oficial do Arduino</strong>: <a href="https://www.arduino.cc/reference/en">Reference</a> &gt; <a href="https://www.arduino.cc/reference/en/libraries">Libraries</a> &gt; <a href="https://www.arduino.cc/reference/en/libraries/timerinterrupt/">TimerInterrupt - Arduino Reference</a> -- mas esta página é algo superficial e não traz nenhum exemplo ou informações relevantes.</br>
-Informa que existe uma biblioteca capaz de suportar até 16 &quot;ISR&quot;s (Interrupt Service Routines) usando hadrware do <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>C presentes em placas como <a href="https://store.arduino.cc/arduino-nano">Arduino Nano</a>,<a href="https://store.arduino.cc/arduino-uno-rev3?_gl=1*1f4mfxh*_ga*MTc3Nzc2NTE3OC4xNjY2NzIzMTE1*_ga_NEXN8H46L5*MTY2NjcyMzExNS4xLjEuMTY2NjcyMzM3MC4wLjAuMA..">Arduino Uno</a>, Arduino Mega, etc.</br>
+<font size="2">
+Referências adotadas
+<blockquote>
+<ul>
+<li>
+<p><strong>Página oficial do Arduino</strong>: <a href="https://www.arduino.cc/reference/en">Reference</a> &gt; <a href="https://www.arduino.cc/reference/en/libraries">Libraries</a> &gt; <a href="https://www.arduino.cc/reference/en/libraries/timerinterrupt/">TimerInterrupt - Arduino Reference</a> -- mas esta página é algo superficial e não traz nenhum exemplo ou informações relevantes.</br>
+Informa que existe uma biblioteca capaz de suportar até 16 &quot;ISR&quot;s (Interrupt Service Routines) usando hadrware do <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span></span></span></span></eq>C presentes em placas como <a href="https://store.arduino.cc/arduino-nano">Arduino Nano</a>,<a href="https://store.arduino.cc/arduino-uno-rev3?_gl=1*1f4mfxh*_ga*MTc3Nzc2NTE3OC4xNjY2NzIzMTE1*_ga_NEXN8H46L5*MTY2NjcyMzExNS4xLjEuMTY2NjcyMzM3MC4wLjAuMA..">Arduino Uno</a>, Arduino Mega, etc.</br>
 Para fazer esta biblioteca funcionar é necessário ativar o <a href="https://www.arduino.cc/en/Guide/Libraries">Library Manager</a> da IDE do Arduino, que estava na versão <a href="https://downloads.arduino.cc/libraries/github.com/khoih-prog/TimerInterrupt-1.8.0.zip">1.8.0</a> em 25/10/2022.</p>
 </li>
-<li dir="auto">
-<p dir="auto">Página da <a href="https://amandaghassaei.com/">Amanda Ghassaei</a> no <a href="https://www.instructables.com/circuits/"><strong>Instructables/Circuits</strong></a> &gt;&gt; <a href="https://www.instructables.com/Arduino-Timer-Interrupts/">Arduino Timer Interrupts</a>, que é que usaremos como base.</p>
+<li>
+<p>Página da <a href="https://amandaghassaei.com/">Amanda Ghassaei</a> no <a href="https://www.instructables.com/circuits/"><strong>Instructables/Circuits</strong></a> &gt;&gt; <a href="https://www.instructables.com/Arduino-Timer-Interrupts/">Arduino Timer Interrupts</a>, que é que usaremos como base.</p>
 </li>
 </ul>
-<p dir="auto">Outras páginas interessantes:</p>
-<ul dir="auto">
-<li dir="auto">Página da ForProjects: <a href="https://duino4projects.com/arduino-timer-and-interrupt-tutorial/">Tutorial sobre Interrupções e Timer´s no Arduino</a>;</li>
-<li dir="auto">Página da Digi-Key: <a href="https://www.digikey.com.br/en/maker/blogs/2022/how-to-avoid-using-the-delay-function-in-arduino-sketches">Como evitar a função <code>delay()</code> no Arduino Sketch</a>;</li>
-<li dir="auto">Página da Digi-Key: <a href="https://www.digikey.com.br/en/maker/blogs/2022/how-to-use-arduino-interrupts-to-detect-user-inputs">Como usar interrupções (de hardware) para detectar entradas do usuário</a>.</li>
-<li dir="auto"><a href="http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-9365-Automotive-Microcontrollers-ATmega88-ATmega168_Datasheet.pdf">Datasheet do ATmega168</a></li>
+<p>Outras páginas interessantes:</p>
+<ul>
+<li>Página da ForProjects: <a href="https://duino4projects.com/arduino-timer-and-interrupt-tutorial/">Tutorial sobre Interrupções e Timer´s no Arduino</a>;</li>
+<li>Página da Digi-Key: <a href="https://www.digikey.com.br/en/maker/blogs/2022/how-to-avoid-using-the-delay-function-in-arduino-sketches">Como evitar a função <code>delay()</code> no Arduino Sketch</a>;</li>
+<li>Página da Digi-Key: <a href="https://www.digikey.com.br/en/maker/blogs/2022/how-to-use-arduino-interrupts-to-detect-user-inputs">Como usar interrupções (de hardware) para detectar entradas do usuário</a>.</li>
+<li><a href="http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-9365-Automotive-Microcontrollers-ATmega88-ATmega168_Datasheet.pdf">Datasheet do ATmega168</a></li>
 </ul>
 </blockquote>
-<hr dir="auto">
-<h2 dir="auto" id="o-que-s%C3%A3o-interrup%C3%A7%C3%B5es">O que são interrupções</h2>
-<p dir="auto">As interrupções por temporizador (<em>timer</em>), ou por software (ao estilo de uma <em>task</em> síncrona de sistemas operacionais de tempo-real) permitem que você execute uma tarefa em intervalos especificos de tempo, respeitando certo período de amostragem ou periodo de <em>scanning</em>, independentemente do que mais esteja acontecendo em seu código.</p>
-<p dir="auto"><a href="https://www.instructables.com/Arduino-Timer-Interrupts/">Neste tutorial</a> é explicado como configurar e executar uma interrupção no modo &quot;limpeza&quot; de temporizaçao no modo comparação ou modo &quot;CTC&quot; (<em>Clear Timer on Compare Match mode</em>).</p>
-<p dir="auto">Normalmente, quando você escreve um código na IDE de Arduino (<em>Arduino sketch</em>), o Arduino executa todos os comandos encapsulados na função <code>loop()</code> na ordem em que eles são escritos. No entanto, é difícil cronometrar eventos dentro do bloco <code>loop() { ... }</code>. Alguns comandos demoram mais do que outros para serem executados, alguns dependem de instruções condicionais (if, while...) e algumas funções da biblioteca Arduino (como <code>digitalWrite</code> ou <code>analogRead</code>) são compostas por muitos comandos.</p>
-<p dir="auto">As interrupções por timmer do Arduino permitem pausar momentaneamente a sequência normal de eventos que ocorrem na função <code>loop()</code> em intervalosde tempo precisos, enquanto você executa um conjunto separado de comandos. Uma vez que esses comandos são feitos, o Arduino retoma onde estava no <code>loop()</code>.</p>
-<p dir="auto">Interrupções são úteis para:</p>
-<ul dir="auto">
-<li dir="auto">
-<p dir="auto">medir um sinal de entrada em intervalos de tempo igualmente e rigorosamente espaçados (obedecendo à uma frequência de amostragem fixa);</p>
+</font>
+<hr>
+<ul>
+<li><a href="#arduino--interrup%C3%A7%C3%B5es">Arduino &amp; Interrupções</a>
+<ul>
+<li><a href="#o-que-s%C3%A3o-interrup%C3%A7%C3%B5es">O que são interrupções</a></li>
+<li><a href="#como-fazer">Como fazer?</a>
+<ul>
+<li><a href="#resumo-sobre-temporizadores-timers">Resumo sobre temporizadores (<em>timers</em>)</a></li>
+</ul>
 </li>
-<li dir="auto">
-<p dir="auto">determinar o intervalo de tempo entre dois eventos;</p>
-</li>
-<li dir="auto">
-<p dir="auto">enviar um sinal de uma frequência específica gerando periodicamente os dados de uma série calculada...</p>
-</li>
-<li dir="auto">
-<p dir="auto">determinar a velocidade de um motor, lendo informações periódicas de outro contador que recebe pulsos de um encoder incremental (sensor de velocidade).</p>
+<li><a href="#codifica%C3%A7%C3%A3o-de-uma-isr-no-ardu%C3%ADno">Codificação de uma ISR no Arduíno</a></li>
+<li><a href="#exemplo-c%C3%B3digo-completo">Exemplo (código completo)</a></li>
+<li><a href="#%C3%BAltimas-observa%C3%A7%C3%B5es-recomenda%C3%A7%C3%B5es">Últimas observações (Recomendações)</a></li>
+</ul>
 </li>
 </ul>
-<h2 dir="auto" id="como-fazer">Como fazer?</h2>
-<p dir="auto">Existem algumas maneiras de programar interrupções. Este tutorial se concentra no tipo que parecer ser o mais útil/flexível, chamado de <strong>Clear Timer on Compare Match</strong> ou <strong>CTC Mode</strong>.</p>
-<p dir="auto">Este tutorial serve especificamente para os temporizadores do <a href="http://amzn.to/1JGTEPT">Arduino Uno</a> (e qualquer outro Arduino com <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>C ATMEL 328/168... Lilypad, Duemilanove, Diecimila, Nano...).</p>
-<div  dir="auto" ></div>
+<hr>
+<h2 id="o-que-são-interrupções">O que são interrupções</h2>
+<p>As interrupções por temporizador (<em>timer</em>), ou por software (ao estilo de uma <em>task</em> síncrona de sistemas operacionais de tempo-real) permitem que você execute uma tarefa em intervalos especificos de tempo, respeitando certo período de amostragem ou periodo de <em>scanning</em>, independentemente do que mais esteja acontecendo em seu código.</p>
+<p><a href="https://www.instructables.com/Arduino-Timer-Interrupts/">Neste tutorial</a> é explicado como configurar e executar uma interrupção no modo &quot;limpeza&quot; de temporizaçao no modo comparação ou modo &quot;CTC&quot; (<em>Clear Timer on Compare Match mode</em>).</p>
+<p>Normalmente, quando você escreve um código na IDE de Arduino (<em>Arduino sketch</em>), o Arduino executa todos os comandos encapsulados na função <code>loop()</code> na ordem em que eles são escritos. No entanto, é difícil cronometrar eventos dentro do bloco <code>loop() { ... }</code>. Alguns comandos demoram mais do que outros para serem executados, alguns dependem de instruções condicionais (if, while...) e algumas funções da biblioteca Arduino (como <code>digitalWrite</code> ou <code>analogRead</code>) são compostas por muitos comandos.</p>
+<p>As interrupções por timmer do Arduino permitem pausar momentaneamente a sequência normal de eventos que ocorrem na função <code>loop()</code> em intervalosde tempo precisos, enquanto você executa um conjunto separado de comandos. Uma vez que esses comandos são feitos, o Arduino retoma onde estava no <code>loop()</code>.</p>
+<p>Interrupções são úteis para:</p>
+<ul>
+<li>
+<p>medir um sinal de entrada em intervalos de tempo igualmente e rigorosamente espaçados (obedecendo à uma frequência de amostragem fixa);</p>
+</li>
+<li>
+<p>determinar o intervalo de tempo entre dois eventos;</p>
+</li>
+<li>
+<p>enviar um sinal de uma frequência específica gerando periodicamente os dados de uma série calculada...</p>
+</li>
+<li>
+<p>determinar a velocidade de um motor, lendo informações periódicas de outro contador que recebe pulsos de um encoder incremental (sensor de velocidade).</p>
+</li>
+</ul>
+<h2 id="como-fazer">Como fazer?</h2>
+<p>Existem algumas maneiras de programar interrupções. Este tutorial se concentra no tipo que parecer ser o mais útil/flexível, chamado de <strong>Clear Timer on Compare Match</strong> ou <strong>CTC Mode</strong>.</p>
+<p>Este tutorial serve especificamente para os temporizadores do <a href="http://amzn.to/1JGTEPT">Arduino Uno</a> (e qualquer outro Arduino com <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span></span></span></span></eq>C ATMEL 328/168... Lilypad, Duemilanove, Diecimila, Nano...).</p>
 <details><summary>Clicar aqui para revelar o Diagrama de Blocos geral do ATmega168</summary>
 <p>
-<p dir="auto"><img src="figuras/ATmega168_block_diagram_ed.png" alt="ATmega168_block_diagram_ed.png" data-src="figuras/ATmega168_block_diagram_ed.png"></p>
-<div  dir="auto" ></div>
+<p><img src="figuras/ATmega168_block_diagram_ed.png" alt="ATmega168_block_diagram_ed.png"></p>
 </p>
 </details>
-<div  dir="auto" ></div>
 <details><summary>Clicar aqui para revelar o Diagrama em blocos mostrando registradores do ATmega168</summary>
 <p>
-<p dir="auto"><img src="figuras/AVR-Block-Diagram.webp" alt="AVR-Block-Diagram.webp" data-src="figuras/AVR-Block-Diagram.webp"></p>
-<div  dir="auto" ></div>
+<p><img src="figuras/AVR-Block-Diagram.webp" alt="AVR-Block-Diagram.webp"></p>
 </p>
 </details>
-<p dir="auto">O <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>C do Arduino Uno possui 3 temporizadores chamados:</p>
-<ul dir="auto">
-<li dir="auto">
-<p dir="auto"><strong>Timer0</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span> 8 bits;</p>
+<p>O <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span></span></span></span></eq>C do Arduino Uno possui 3 temporizadores chamados:</p>
+<ul>
+<li>
+<p><strong>Timer0</strong> <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span></eq> 8 bits;</p>
 </li>
-<li dir="auto">
-<p dir="auto"><strong>Timer1</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span> 16 bits, e;</p>
+<li>
+<p><strong>Timer1</strong> <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span></eq> 16 bits, e;</p>
 </li>
-<li dir="auto">
-<p dir="auto"><strong>Timer2</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span> 8 bits.</p>
+<li>
+<p><strong>Timer2</strong> <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span></eq> 8 bits.</p>
 </li>
 </ul>
-<p dir="auto">Cada um dos temporizadores tem um contador que é incrementado a cada &quot;<em>tick</em>&quot; do clock do <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>C. As interrupções do temporizador CTC são acionadas quando o contador atinge um valor especificado (<em>overflow</em>), armazenado num registrador específico usado para realizar a comparação. Uma vez que um contador de temporizador atinja esse valor, ele &quot;recicla&quot; (volta a zero) no próximo <em>tick</em> do clock do temporizador, então ele continuará a contar até o valor de comparação novamente e assim sucessivamente. Ao escolher o valor do registrador de correspondência de comparação (&quot;<strong><mark>compare match register</mark></strong>&quot;) e definir a velocidade com que o temporizador incrementa o contador, você pode controlar a frequência de interrupções do temporizador.</p>
-<p dir="auto">O primeiro parâmetro abordado é quanto a velocidade com que o temporizador incrementa o contador. O clock do Arduino roda a 16 MHz, esta é a velocidade mais rápida que os temporizadores podem incrementar seus contadores. A 16MHz cada <em>tick</em> do contador ocorrere a cada: 1/16.000.000 segundos ou <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≅</mo></mrow><annotation encoding="application/x-tex">\cong</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.589em;"></span><span class="mrel">≅</span></span></span></span> 63 ns. Então um contador levará 10/16.000.000 segundos para atingir o valor de 9 (lembrar que o contador conta de 0 à 9 = 10 estados diferentes) e assim vai levar 100/16.000.000 segundos para atingir um valor de 99, ou 6,25 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\times 10^{-6}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">×</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span> segundos ou simplesmente: 6,25 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>segundos para completar esta contagem.</p>
-<p dir="auto">Em muitas situações, você verá que definir a velocidade do contador para 16MHz é muito rápido.</p>
-<p dir="auto">O <strong>Timer0</strong> o <strong>Timer2</strong> são temporizadores de <strong>8 bits</strong>, o que significa que eles podem armazenar um valor máximo de contagem até 255 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>8</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^8-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>).</p>
-<p dir="auto">O <strong>Timer1</strong> é um temporizador de <strong>16 bits</strong>, o que significa que ele pode armazenar um valor máximo de contagem de 65.535 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>16</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{16}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>).</p>
-<p dir="auto">Uma vez que um contador atinja seu máximo, ele voltará a zero (isso é o chamado de &quot;<em>recycle</em>&quot;, que ocorre no  <strong>overflow</strong> do contador). Isso significa que a 16MHz, mesmo que se defina o registro de correspondência de comparação com o valor máximo do contador, as interrupções ocorrerão a cada 256/16.000.000 segundos (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≅</mo><mn>16</mn><mi>μ</mi></mrow><annotation encoding="application/x-tex">\cong 16\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.589em;"></span><span class="mrel">≅</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">16</span><span class="mord mathnormal">μ</span></span></span></span>s) para os contadores de 8 bits, e a cada 65.536/16.000.000 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≅</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\cong 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.589em;"></span><span class="mrel">≅</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> ms) para o contador de 16 bits.</p>
-<p dir="auto">Claramente, isso não é muito útil se você só quiser interromper uma vez por segundo.</p>
-<p dir="auto">Em vez disso, você pode controlar a velocidade da incrementação do contador de temporizador usando algo chamado <strong><strong>prescaler</strong></strong>. Um<em>prescaler</em> fixa a velocidade de clock de um temporizador de acordo com a seguinte equação:</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>timer speed (Hz)</mtext><mo>=</mo><mfrac><mtext>Arduino Clock speed (16 MHz)</mtext><mtext>prescaler value</mtext></mfrac></mrow><annotation encoding="application/x-tex">
+<p>Cada um dos temporizadores tem um contador que é incrementado a cada &quot;<em>tick</em>&quot; do clock do <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span></span></span></span></eq>C. As interrupções do temporizador CTC são acionadas quando o contador atinge um valor especificado (<em>overflow</em>), armazenado num registrador específico usado para realizar a comparação. Uma vez que um contador de temporizador atinja esse valor, ele &quot;recicla&quot; (volta a zero) no próximo <em>tick</em> do clock do temporizador, então ele continuará a contar até o valor de comparação novamente e assim sucessivamente. Ao escolher o valor do registrador de correspondência de comparação (&quot;<strong><mark>compare match register</mark></strong>&quot;) e definir a velocidade com que o temporizador incrementa o contador, você pode controlar a frequência de interrupções do temporizador.</p>
+<p>O primeiro parâmetro abordado é quanto a velocidade com que o temporizador incrementa o contador. O clock do Arduino roda a 16 MHz, esta é a velocidade mais rápida que os temporizadores podem incrementar seus contadores. A 16MHz cada <em>tick</em> do contador ocorrere a cada: 1/16.000.000 segundos ou <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≅</mo></mrow><annotation encoding="application/x-tex">\cong</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.589em;vertical-align:0em;"></span><span class="mrel">≅</span></span></span></span></eq> 63 ns. Então um contador levará 10/16.000.000 segundos para atingir o valor de 9 (lembrar que o contador conta de 0 à 9 = 10 estados diferentes) e assim vai levar 100/16.000.000 segundos para atingir um valor de 99, ou 6,25 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\times 10^{-6}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">×</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span></eq> segundos ou simplesmente: 6,25 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span></span></span></span></eq>segundos para completar esta contagem.</p>
+<p>Em muitas situações, você verá que definir a velocidade do contador para 16MHz é muito rápido.</p>
+<p>O <strong>Timer0</strong> o <strong>Timer2</strong> são temporizadores de <strong>8 bits</strong>, o que significa que eles podem armazenar um valor máximo de contagem até 255 (<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>8</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^8-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></eq>).</p>
+<p>O <strong>Timer1</strong> é um temporizador de <strong>16 bits</strong>, o que significa que ele pode armazenar um valor máximo de contagem de 65.535 (<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>16</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{16}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></eq>).</p>
+<p>Uma vez que um contador atinja seu máximo, ele voltará a zero (isso é o chamado de &quot;<em>recycle</em>&quot;, que ocorre no  <strong>overflow</strong> do contador). Isso significa que a 16MHz, mesmo que se defina o registro de correspondência de comparação com o valor máximo do contador, as interrupções ocorrerão a cada 256/16.000.000 segundos (<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≅</mo><mn>16</mn><mi>μ</mi></mrow><annotation encoding="application/x-tex">\cong 16\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.589em;vertical-align:0em;"></span><span class="mrel">≅</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">16</span><span class="mord mathnormal">μ</span></span></span></span></eq>s) para os contadores de 8 bits, e a cada 65.536/16.000.000 (<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≅</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\cong 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.589em;vertical-align:0em;"></span><span class="mrel">≅</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span></eq> ms) para o contador de 16 bits.</p>
+<p>Claramente, isso não é muito útil se você só quiser interromper uma vez por segundo.</p>
+<p>Em vez disso, você pode controlar a velocidade da incrementação do contador de temporizador usando algo chamado <strong><strong>prescaler</strong></strong>. Um<em>prescaler</em> fixa a velocidade de clock de um temporizador de acordo com a seguinte equação:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>timer speed (Hz)</mtext><mo>=</mo><mfrac><mtext>Arduino Clock speed (16 MHz)</mtext><mtext>prescaler value</mtext></mfrac></mrow><annotation encoding="application/x-tex">
 \text{timer speed (Hz)} = \dfrac{ \text{Arduino Clock speed (16 MHz)}}{\text{prescaler value}}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">timer speed (Hz)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3074em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">prescaler value</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Arduino Clock speed (16 MHz)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-</math>
-<p dir="auto">Assim:</p>
-<ul dir="auto">
-<li dir="auto"><em>prescaler</em> =1 incrementará o contador em 16MHz;</li>
-<li dir="auto"><em>prescaler</em> = 8 irá incrementá-lo a 2MHz (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn><mi mathvariant="normal">/</mi><mn>8</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">16/8=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">16/8</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>);</li>
-<li dir="auto"><em>prescaler</em> = 64, resultará em 250kHz (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup><mi mathvariant="normal">/</mi><mn>64</mn></mrow><annotation encoding="application/x-tex">16\times10^{6}/64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span><span class="mord">/64</span></span></span></span>), e assim por diante.</li>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">timer speed (Hz)</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.30744em;vertical-align:-0.8804400000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">prescaler value</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Arduino Clock speed (16 MHz)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></eqn></section></math>
+<p>Assim:</p>
+<ul>
+<li><em>prescaler</em> =1 incrementará o contador em 16MHz;</li>
+<li><em>prescaler</em> = 8 irá incrementá-lo a 2MHz (<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn><mi mathvariant="normal">/</mi><mn>8</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">16/8=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">16/8</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></eq>);</li>
+<li><em>prescaler</em> = 64, resultará em 250kHz (<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup><mi mathvariant="normal">/</mi><mn>64</mn></mrow><annotation encoding="application/x-tex">16\times10^{6}/64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span><span class="mord">/64</span></span></span></span></eq>), e assim por diante.</li>
 </ul>
-<p dir="auto">O <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>C ATMEL 328/168 permite definir o <em><mark>prescaler</mark></em> apenas no valores fixos: 1, 8, 64, 256 e 1024. Isto depende da configuração de certos bits do registrador <em><strong><mark>Clock Select (CS)</mark></strong></em> que define a fonte de clocks dos temporizadores.</p>
-<div  dir="auto" ></div>
+<p>O <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span></span></span></span></eq>C ATMEL 328/168 permite definir o <em><mark>prescaler</mark></em> apenas no valores fixos: 1, 8, 64, 256 e 1024. Isto depende da configuração de certos bits do registrador <em><strong><mark>Clock Select (CS)</mark></strong></em> que define a fonte de clocks dos temporizadores.</p>
 <details><summary>Clicar aqui para revelar a Figura 13-2 do Datasheet do ATmega169 com detalhes sobre o *prescaler* para o *timer0* e *timer1*.</summary>
 <p>
-<p dir="auto"><img src="figuras/ATmega169_fig13-2.png" alt="ATmega169_fig13-2.png" data-src="figuras/ATmega169_fig13-2.png"></p>
-<div  dir="auto" ></div>
+<p><img src="figuras/ATmega169_fig13-2.png" alt="ATmega169_fig13-2.png"></p>
 </p>
 </details>
-<p dir="auto">As tabelas a seguir destacam os bits e formas de configuração dos temporizadores.</p>
-<p dir="auto">Segue tabela de configuração do Clock Select register para o <em>timer0</em> (CS02:0):</p>
-<p dir="auto"><img src="figuras/CS_registers_table_timer0.jpg" alt="CS_registers_table_timer0.jpg" data-src="figuras/CS_registers_table_timer0.jpg"></p>
-<p dir="auto">Segue tabela de configuração do Clock Select register para o <em>timer1</em> (CS12:0):</p>
-<p dir="auto"><img src="figuras/CS_registers_table.webp" alt="CS_registers_table.webp" data-src="figuras/CS_registers_table.webp"></p>
-<div  dir="auto" ></div>
+<p>As tabelas a seguir destacam os bits e formas de configuração dos temporizadores.</p>
+<p>Segue tabela de configuração do Clock Select register para o <em>timer0</em> (CS02:0):</p>
+<p><img src="figuras/CS_registers_table_timer0.jpg" alt="CS_registers_table_timer0.jpg"></p>
+<p>Segue tabela de configuração do Clock Select register para o <em>timer1</em> (CS12:0):</p>
+<p><img src="figuras/CS_registers_table.webp" alt="CS_registers_table.webp"></p>
 <!---
 | CS12 | CS11 | CS10 | Descrição                                   |
 |:----:|:----:|:----:|:------------------------------------------- |
@@ -149,121 +159,113 @@ Para fazer esta biblioteca funcionar é necessário ativar o <a href="https://ww
 | 1    | 1    | 0    | clock externo no pino T1 (borda de descida) |
 | 1    | 1    | 1    | clock externo no pino T1 (borda de subida)  |
 -->
-<div  dir="auto" ></div>
 <!-- Note: 2^0=1; 2^3=8; 2^6=64; 256=2^8 e 2^10=1024.Note: 2^0=1; 2^3=8; 2^6=64; 256=2^8 e 2^10=1024. -->
-<p dir="auto">Segue tabela de configuração do Clock Select register para o <em>timer2</em> (CS22:0):</p>
-<p dir="auto"><img src="figuras/CS_registers_table_timer2.jpg" alt="CS_registers_table_timer2.jpg" data-src="figuras/CS_registers_table_timer2.jpg"></p>
-<div  dir="auto" ></div>
+<p>Segue tabela de configuração do Clock Select register para o <em>timer2</em> (CS22:0):</p>
+<p><img src="figuras/CS_registers_table_timer2.jpg" alt="CS_registers_table_timer2.jpg"></p>
 <details><summary>Clique aqui para enteder melhor o prescaler para o timer2.</summary>
 <p>
-<p dir="auto"><img src="figuras/ATmega169_fig15-2.png" alt="ATmega169_fig15-2.png" data-src="figuras/ATmega169_fig15-2.png"></p>
-<div  dir="auto" ></div>
+<p><img src="figuras/ATmega169_fig15-2.png" alt="ATmega169_fig15-2.png"></p>
 </p>
 </details>
-<p dir="auto">Agora podemos calcular a frequência de interrupção pela seguinte equação:</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Interrupt frequency (HZ)</mtext><mo>=</mo><mfrac><mtext>Arduino clock speed (16.000.000 Hz)</mtext><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>r</mi><mo>×</mo><mo stretchy="false">(</mo><mtext>Compare match register</mtext><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+<p>Agora podemos calcular a frequência de interrupção pela seguinte equação:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Interrupt frequency (HZ)</mtext><mo>=</mo><mfrac><mtext>Arduino clock speed (16.000.000 Hz)</mtext><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>r</mi><mo>×</mo><mo stretchy="false">(</mo><mtext>Compare match register</mtext><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">
 \text{Interrupt frequency (HZ)} = \dfrac{\text{Arduino clock speed (16.000.000 Hz)}}{prescaler \times (\text{Compare match register}+1)}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Interrupt frequency (HZ)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">resc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">Compare match register</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Arduino clock speed (16.000.000 Hz)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-</math>
-<p dir="auto">o <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span> está lá porque o registrador comparador de correspondência (<em><strong>compare match register</strong></em>) começa a contar em 0 (0 é um estado da contagem).</p>
-<p dir="auto">Podemos organizar a equação acima, para calcular o valor necessário para o registrador comparador de correspondência (<em><strong>compare match register</strong></em>) gerar a  frequência de interrupção desejada:</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Compare match register</mtext><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><mrow><mn>16.000.000</mn><mtext> Hz</mtext></mrow><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>r</mi><mo>×</mo><mtext>desired interrupt frequency, Hz</mtext></mrow></mfrac><mo fence="true">)</mo></mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Interrupt frequency (HZ)</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">resc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">Compare match register</span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Arduino clock speed (16.000.000 Hz)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></eqn></section></math>
+<p>o <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span></eq> está lá porque o registrador comparador de correspondência (<em><strong>compare match register</strong></em>) começa a contar em 0 (0 é um estado da contagem).</p>
+<p>Podemos organizar a equação acima, para calcular o valor necessário para o registrador comparador de correspondência (<em><strong>compare match register</strong></em>) gerar a  frequência de interrupção desejada:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Compare match register</mtext><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><mrow><mn>16.000.000</mn><mtext> Hz</mtext></mrow><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>r</mi><mo>×</mo><mtext>desired interrupt frequency, Hz</mtext></mrow></mfrac><mo fence="true">)</mo></mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
 \text{Compare match register} = \left( \frac{ 16.000.000 \text{ Hz}}{prescaler \times \text{desired interrupt frequency, Hz} } \right) - 1
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Compare match register</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">resc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">desired interrupt frequency, Hz</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16.000.000</span><span class="mord text"><span class="mord"> Hz</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></p>
-</math>
-<blockquote dir="auto">
-<p dir="auto"><strong>Note</strong>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">Compare match register</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">resc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord text"><span class="mord">desired interrupt frequency, Hz</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16.000.000</span><span class="mord text"><span class="mord"> Hz</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></eqn></section></math>
+<blockquote>
+<p><strong>Note</strong>
 Lembre-se ainda que quando você usa os <strong>Timer0</strong> e o <strong>Timer2</strong> (8 bits) este número deve ser menor que 256, e menos de 65536 para o <strong>Timer1</strong> (16 bits).</br>
 E nem todos os valores estão disponíveis para o <em><strong>prescaler</strong></em>, apenas os valores: 1, 8, 64, 256 e 1024.</p>
 </blockquote>
-<p dir="auto"><strong>Exemplo</strong>: suponha que você queira uma interrupção a cada segundo (frequência de 1Hz), terá que considerar:</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>compare match register</mtext><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><mn>16.000.000</mn><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>r</mi><mo>⋅</mo><mn>1</mn></mrow></mfrac><mo fence="true">)</mo></mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+<p><strong>Exemplo</strong>: suponha que você queira uma interrupção a cada segundo (frequência de 1Hz), terá que considerar:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>compare match register</mtext><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><mn>16.000.000</mn><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>r</mi><mo>⋅</mo><mn>1</mn></mrow></mfrac><mo fence="true">)</mo></mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
 \text{compare match register}=\left( \dfrac{16.000.000}{prescaler \cdot 1} \right) -1
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">compare match register</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">resc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16.000.000</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></p>
-</math>
-<p dir="auto">Com um prescaler=1024 teremos:</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>compare match register</mtext><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><mn>16.000.000</mn><mrow><mn>1024</mn><mo>⋅</mo><mn>1</mn></mrow></mfrac><mo fence="true">)</mo></mrow><mo>−</mo><mn>1</mn><mo>=</mo><mn>15.624</mn></mrow><annotation encoding="application/x-tex">
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">compare match register</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">resc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16.000.000</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></eqn></section></math>
+<p>Com um prescaler=1024 teremos:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>compare match register</mtext><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><mn>16.000.000</mn><mrow><mn>1024</mn><mo>⋅</mo><mn>1</mn></mrow></mfrac><mo fence="true">)</mo></mrow><mo>−</mo><mn>1</mn><mo>=</mo><mn>15.624</mn></mrow><annotation encoding="application/x-tex">
 \text{compare match register}=\left( \dfrac{16.000.000}{1024 \cdot 1} \right) -1 = 15.624
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">compare match register</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1024</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16.000.000</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">15.624</span></span></span></span></span></p>
-</math>
-<p dir="auto">Com este resultado (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>256</mn><mo>&lt;</mo><mi>v</mi><mi>a</mi><mi>l</mi><mi>o</mi><mi>r</mi><mi mathvariant="normal">_</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>r</mi><mi>a</mi><mi>d</mi><mi>o</mi><mo>&lt;</mo><mn>65536</mn></mrow><annotation encoding="application/x-tex">256 &lt; valor\_encontrado &lt; 65536</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mord">256</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0044em;vertical-align:-0.31em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">co</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">65536</span></span></span></span>), concluímos que devemor usar o <strong>Timer1</strong> para esta interrupção.</p>
-<h3 dir="auto" id="resumo-sobre-temporizadores-timers">Resumo sobre temporizadores (<em>timers</em>)</h3>
-<table dir="auto">
-<thead dir="auto">
-<tr dir="auto">
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">compare match register</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1024</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16.000.000</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">15.624</span></span></span></span></span></eqn></section></math>
+<p>Com este resultado (<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>256</mn><mo>&lt;</mo><mi>v</mi><mi>a</mi><mi>l</mi><mi>o</mi><mi>r</mi><mi mathvariant="normal">_</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>r</mi><mi>a</mi><mi>d</mi><mi>o</mi><mo>&lt;</mo><mn>65536</mn></mrow><annotation encoding="application/x-tex">256 &lt; valor\_encontrado &lt; 65536</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord">256</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">co</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">65536</span></span></span></span></eq>), concluímos que devemor usar o <strong>Timer1</strong> para esta interrupção.</p>
+<h3 id="resumo-sobre-temporizadores-timers">Resumo sobre temporizadores (<em>timers</em>)</h3>
+<table>
+<thead>
+<tr>
 <th style="text-align:left">Temporizador</th>
 <th style="text-align:left">Observações</th>
 </tr>
 </thead>
-<tbody dir="auto">
-<tr dir="auto">
+<tbody>
+<tr>
 <td style="text-align:left">Timer0</td>
 <td style="text-align:left">8 bits (0 ~ 255)</br>Usado nas funções:</br><code>delay()</code>, <code>millis()</code> e <code>micros()</code>.</br>Mudar o registrador Timer0 vai influenciar estas funções.</td>
 </tr>
-<tr dir="auto">
+<tr>
 <td style="text-align:left">Timer1</td>
 <td style="text-align:left">16 bits (0 ~65535)</br>A biblioteca Servo usa o Timer1 no Arduino Uno</br> (assim como usar o Timer5 no Arduino Mega).</td>
 </tr>
-<tr dir="auto">
+<tr>
 <td style="text-align:left">Timer2</td>
 <td style="text-align:left">8 bits (0 ~ 255)</br>As funções <code>tone()</code> e <code>noTone()</code> usam o Timer2.</td>
 </tr>
-<tr dir="auto">
+<tr>
 <td style="text-align:left">Timer3,</br>Timer4,</br>Timer5</td>
 <td style="text-align:left">16 bits</br>Somente disponível na placa Arduino Mega.</td>
 </tr>
 </tbody>
 </table>
-<blockquote dir="auto">
-<p dir="auto"><strong>Note</strong> a função <code>analogWrite()</code> também usa algum timer -- esta função está associada com o uso de PWM no Arduino.</p>
+<blockquote>
+<p><strong>Note</strong> a função <code>analogWrite()</code> também usa algum timer -- esta função está associada com o uso de PWM no Arduino.</p>
 </blockquote>
-<p dir="auto">É possível alterar o comportamento de um temporizador alterando os registrdores associados com o temporizador:</p>
-<table dir="auto">
-<thead dir="auto">
-<tr dir="auto">
+<p>É possível alterar o comportamento de um temporizador alterando os registrdores associados com o temporizador:</p>
+<table>
+<thead>
+<tr>
 <th style="text-align:left">Registrador</th>
 <th style="text-align:left">Observação</th>
 </tr>
 </thead>
-<tbody dir="auto">
-<tr dir="auto">
+<tbody>
+<tr>
 <td style="text-align:left">TCCRx</td>
 <td style="text-align:left">Timer/Counter Control Register</br>Registro de controle do Temporizador/Contador</br>O pre-scaler pode ser configurado aqui.</td>
 </tr>
-<tr dir="auto">
+<tr>
 <td style="text-align:left">TCNTx</td>
 <td style="text-align:left">Timer/Counter Registe</br>Registrador do Temporizador/Contador</br>O valor atual do temporizador é guardado aqui.</td>
 </tr>
-<tr dir="auto">
+<tr>
 <td style="text-align:left">OCRx</td>
 <td style="text-align:left">Output Compare Register</br>Registro Comparador (de saída)</td>
 </tr>
-<tr dir="auto">
+<tr>
 <td style="text-align:left">ICRx</td>
 <td style="text-align:left">Input Capture Register</br>Registro de Captura (entrada)</br>Nota: apenas para timer's de 16 bits.</td>
 </tr>
-<tr dir="auto">
+<tr>
 <td style="text-align:left">TIMSKx</td>
 <td style="text-align:left">Timer/Counter Interrupt Mask Register</br>Registrador máscara para interrupção via temporizador/contador.</br>Usado para habilitar/desabilitar interrupções.</td>
 </tr>
-<tr dir="auto">
+<tr>
 <td style="text-align:left">TIFRx</td>
 <td style="text-align:left">Timer/Counter Interrupt Flag Register</br>Registrador flag de interrupção do temporizador/contador.</br>Indica uma interrupção pendente.</td>
 </tr>
 </tbody>
 </table>
-<h2 dir="auto" id="codifica%C3%A7%C3%A3o-de-uma-isr-no-ardu%C3%ADno">Codificação de uma ISR no Arduíno</h2>
-<p dir="auto">A configuração de interrupções por software (ou <em>timer</em>) é realizada dentro do bloco <code>setup(..){..}</code> na IDE do Arduino (Arduino sketch).</p>
-<div  dir="auto" ></div>
+<h2 id="codificação-de-uma-isr-no-arduíno">Codificação de uma ISR no Arduíno</h2>
+<p>A configuração de interrupções por software (ou <em>timer</em>) é realizada dentro do bloco <code>setup(..){..}</code> na IDE do Arduino (Arduino sketch).</p>
 <!-- Falta verificar/manter TERMOS originais em INGLÊS: continuar a partir de: [Arduino Timer Interrupts : 6 Steps (with Pictures) - Instructables](https://www.instructables.com/Arduino-Timer-Interrupts/) 03/11/2022 -->
-<p dir="auto">O próximo bloco de código destaca como programar 3 interrupções diferentes, cada uma associada com um temporizador diferente -- esta configuração é feita apenas no bloco <code>setup(..){..}</code> na IDE do Arduino (Arduino sketch). A ideia é:</p>
-<ul dir="auto">
-<li dir="auto">Usar o <em>timer0</em> para gerar uma interrupção à cada 2 KHz (a cada 0,5 ms);</li>
-<li dir="auto">Usar o <em>timer1</em> para gerar uma interrupção à cada 1 Hz;</li>
-<li dir="auto">Usar o <em>timer2</em> para gerar uma interrupção à cada 8 KHz (a cada 0,125 ms = 125 ns).</li>
+<p>O próximo bloco de código destaca como programar 3 interrupções diferentes, cada uma associada com um temporizador diferente -- esta configuração é feita apenas no bloco <code>setup(..){..}</code> na IDE do Arduino (Arduino sketch). A ideia é:</p>
+<ul>
+<li>Usar o <em>timer0</em> para gerar uma interrupção à cada 2 KHz (a cada 0,5 ms);</li>
+<li>Usar o <em>timer1</em> para gerar uma interrupção à cada 1 Hz;</li>
+<li>Usar o <em>timer2</em> para gerar uma interrupção à cada 8 KHz (a cada 0,125 ms = 125 ns).</li>
 </ul>
-<p dir="auto">Segue o código exemplo:</p>
-<pre><code class="code-line language-Arduino" dir="auto"><div><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>{
+<p>Segue o código exemplo:</p>
+<pre><code class="language-Arduino"><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>{
 
 <span class="hljs-built_in">cli</span>();<span class="hljs-comment">//stop interrupts</span>
 
@@ -311,56 +313,55 @@ E nem todos os valores estão disponíveis para o <em><strong>prescaler</strong>
 
 }<span class="hljs-comment">//end setup</span>
 </div></code></pre>
-<p dir="auto">Note alguns detalhes desta configuração:</p>
-<ul dir="auto">
-<li dir="auto">
-<p dir="auto">Observe como o valor do OCR#A (registrador <em>Compare match value</em>) muda para cada uma das configurações do temporizador.</br>
+<p>Note alguns detalhes desta configuração:</p>
+<ul>
+<li>
+<p>Observe como o valor do OCR#A (registrador <em>Compare match value</em>) muda para cada uma das configurações do temporizador.</br>
 Como explicado na última parte, este valor é calculado de acordo com a seguinte equação:</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>compare match register</mtext><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><mn>16.000.000</mn><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>r</mi><mo>⋅</mo><mo stretchy="false">(</mo><mtext>desired interrupt frequency</mtext><mo stretchy="false">)</mo></mrow></mfrac><mo fence="true">)</mo></mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>compare match register</mtext><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><mn>16.000.000</mn><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>r</mi><mo>⋅</mo><mo stretchy="false">(</mo><mtext>desired interrupt frequency</mtext><mo stretchy="false">)</mo></mrow></mfrac><mo fence="true">)</mo></mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
   \text{compare match register}=\left( \dfrac{16.000.000}{prescaler \cdot (\text{desired interrupt frequency})} \right) -1
-  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">compare match register</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">resc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">desired interrupt frequency</span></span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16.000.000</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></p>
-</math>
-<p dir="auto">Porém, lembre-se que quando você usa <strong>Timer0</strong> ou <strong>Timer2</strong> este número deve ser inferior a 256, e menos que 65536 para o <strong>Timer1</strong>.</br>
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">compare match register</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">resc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">desired interrupt frequency</span></span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16.000.000</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></eqn></section></math>
+<p>Porém, lembre-se que quando você usa <strong>Timer0</strong> ou <strong>Timer2</strong> este número deve ser inferior a 256, e menos que 65536 para o <strong>Timer1</strong>.</br>
 Note também que as configurações entre os 3 temporizadores (timers) diferem ligeiramente na linha de comando que <strong>ativa o modo CTC</strong>:</p>
-<pre><code class="code-line language-Arduino" dir="auto"><div><span class="hljs-comment">// TCCR_A = ativa modo CTC para timer_</span>
+<pre><code class="language-Arduino"><div><span class="hljs-comment">// TCCR_A = ativa modo CTC para timer_</span>
 TCCR0A |= (<span class="hljs-number">1</span> &lt;&lt; WGM01); <span class="hljs-comment">// ativa modo CTC para o timer0</span>
 TCCR1B |= (<span class="hljs-number">1</span> &lt;&lt; WGM12); <span class="hljs-comment">// ativa modo CTC para o timer1</span>
 TCCR2A |= (<span class="hljs-number">1</span> &lt;&lt; WGM21); <span class="hljs-comment">// ativa modo CTC para o timer2</span>
 </div></code></pre>
-<p dir="auto">Estas informações estão presentes da folha de dados (<em>datasheet</em>) do ATMEL 328/168.</p>
+<p>Estas informações estão presentes da folha de dados (<em>datasheet</em>) do ATMEL 328/168.</p>
 </li>
-<li dir="auto">
-<p dir="auto">Note também como o ajuste do <em>prescaler</em> segue as definiçoes mostradas nas tabelas anteriores:</p>
-<pre><code class="code-line language-Arduino" dir="auto"><div><span class="hljs-comment">// TCCR_B = Ajute dos bits CS_2, CS_1 e CS_0 do prescaler para timer_</span>
+<li>
+<p>Note também como o ajuste do <em>prescaler</em> segue as definiçoes mostradas nas tabelas anteriores:</p>
+<pre><code class="language-Arduino"><div><span class="hljs-comment">// TCCR_B = Ajute dos bits CS_2, CS_1 e CS_0 do prescaler para timer_</span>
 TCCR2B |= (<span class="hljs-number">1</span> &lt;&lt; CS22); <span class="hljs-comment">// Define o bit CS_2 do prescaler do timer2 para 64</span>
 TCCR1B |= (<span class="hljs-number">1</span> &lt;&lt; CS11); <span class="hljs-comment">// Define o bit CS_1 do prescaler do timer1 para 8</span>
 TCCR0B |= (<span class="hljs-number">1</span> &lt;&lt; CS02) | (<span class="hljs-number">1</span> &lt;&lt; CS00); <span class="hljs-comment">// Define o bit CS_2 e CS_0 do prescaler do timer0 para 1024 </span>
 </div></code></pre>
-<p dir="auto"><strong>Obs.:</strong> Note que nesta última etapa, que existem diferentes opções de prescaling para os diferentes temporizadores. Por exemplo, o <strong>Timer2</strong> não tem a opção de prescaler = 1024.</p>
+<p><strong>Obs.:</strong> Note que nesta última etapa, que existem diferentes opções de prescaling para os diferentes temporizadores. Por exemplo, o <strong>Timer2</strong> não tem a opção de prescaler = 1024.</p>
 </li>
-<li dir="auto">
-<p dir="auto">Os comandos (na IDE do Arduino) que você deseja executar durante essas interrupções de temporizador seguem o formato:</p>
-<pre><code class="code-line language-Arduino" dir="auto"><div><span class="hljs-built_in">ISR</span>(TIMER0_COMPA_vect){ 
+<li>
+<p>Os comandos (na IDE do Arduino) que você deseja executar durante essas interrupções de temporizador seguem o formato:</p>
+<pre><code class="language-Arduino"><div><span class="hljs-built_in">ISR</span>(TIMER0_COMPA_vect){ 
   <span class="hljs-comment">// alterar de 0 para 1 para passar do Timer1 para o Timer2</span>
   <span class="hljs-comment">// Código para tratamento da interrupção segue abaixo...</span>
 }
 </div></code></pre>
-<p dir="auto"><strong>Atenção</strong>: este bloco de código deve estar localizado <strong>fora das funções</strong> <code>setup()</code> e <code>loop()</code>.</p>
+<p><strong>Atenção</strong>: este bloco de código deve estar localizado <strong>fora das funções</strong> <code>setup()</code> e <code>loop()</code>.</p>
 </li>
 </ul>
-<hr dir="auto">
-<h2 dir="auto" id="exemplo-c%C3%B3digo-completo">Exemplo (código completo)</h2>
-<p dir="auto"><strong>Exemplo:</strong> o código a seguir configura e executa 3 interrupções do temporizador:</p>
-<ul dir="auto">
-<li dir="auto">Fazer <strong>piscar um led à 2 Hz</strong>, isto é, ele fica aceso durante 1 segundo e apagado outro tanto 1 segundo.</br>
+<hr>
+<h2 id="exemplo-código-completo">Exemplo (código completo)</h2>
+<p><strong>Exemplo:</strong> o código a seguir configura e executa 3 interrupções do temporizador:</p>
+<ul>
+<li>Fazer <strong>piscar um led à 2 Hz</strong>, isto é, ele fica aceso durante 1 segundo e apagado outro tanto 1 segundo.</br>
 Uso de iterrupção associado com o <em>Timer1</em>, operando na frequência de 1 Hz; é realizado um &quot;<em>toggle</em>&quot; no pino 13 (do Led).</li>
-<li dir="auto">Geração de uma <strong>onda quadrada de 1 KHz</strong> (tensão de saída entre 0 e 5V).</br>
+<li>Geração de uma <strong>onda quadrada de 1 KHz</strong> (tensão de saída entre 0 e 5V).</br>
 Foi usada uma  interrupção associada com o <em>Timer0</em>, operando na frequencia de 2 KHz; é realizado um &quot;<em>toggle</em>&quot; no pino 8, portanto a frequência de saída corresponde à metade da programada via interrupção.</li>
-<li dir="auto">Geração de <strong>outra onda quadrada vibrando à 4 KHz</strong>.</br>
+<li>Geração de <strong>outra onda quadrada vibrando à 4 KHz</strong>.</br>
 Neste caso, foi adotada interrupção associada com o <em>Timer2</em> operando à 8 KHz; um &quot;<em>toggle</em>&quot; foi realizado no pino 9, onde será verificada então uma onda quadrada gerada à 4 KHz.</li>
 </ul>
-<p dir="auto">Segue o código:</p>
-<pre><code class="code-line language-Arduino" dir="auto"><div><span class="hljs-comment">//timer interrupts</span>
+<p>Segue o código:</p>
+<pre><code class="language-Arduino"><div><span class="hljs-comment">//timer interrupts</span>
 <span class="hljs-comment">//by Amanda Ghassaei</span>
 <span class="hljs-comment">//June 2012</span>
 <span class="hljs-comment">//https://www.instructables.com/id/Arduino-Timer-Interrupts/</span>
@@ -382,11 +383,11 @@ Neste caso, foi adotada interrupção associada com o <em>Timer2</em> operando �
 <span class="hljs-comment">//timer2 will interrupt at 8kHz</span>
 
 <span class="hljs-comment">//storage variables</span>
-<span class="hljs-type">boolean</span> toggle0 = <span class="hljs-number">0</span>;
-<span class="hljs-type">boolean</span> toggle1 = <span class="hljs-number">0</span>;
-<span class="hljs-type">boolean</span> toggle2 = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">boolean</span> toggle0 = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">boolean</span> toggle1 = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">boolean</span> toggle2 = <span class="hljs-number">0</span>;
 
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>{
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>{
 
   <span class="hljs-comment">//set pins as outputs</span>
   <span class="hljs-built_in">pinMode</span>(<span class="hljs-number">8</span>, <span class="hljs-literal">OUTPUT</span>);
@@ -474,38 +475,37 @@ Neste caso, foi adotada interrupção associada com o <em>Timer2</em> operando �
   }
 }
 
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span></span>{
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span></span>{
   <span class="hljs-comment">//do other things here</span>
 }
 </div></code></pre>
-<p dir="auto">As imagens a seguir mostram as saídas geradas pelas interrupções por temporizador.</p>
-<p dir="auto">A próxima figura mostra uma onda quadrada oscilando entre 0 e 5V a 1 KHz (através de interrupção usando Timer0):</p>
-<p dir="auto"><img src="figuras/ondas.webp" alt="ondas.webp" data-src="figuras/ondas.webp"></p>
-<p dir="auto">A próxima figura mostra o LED ligado ao pino 13 ligado por um segundo e depois desligando por um segundo (interrupção usando <em>timer1</em>).</p>
-<p dir="auto"><img src="figuras/led_piscando_1Hz.webp" alt="led_piscando_1Hz.webp" data-src="figuras/led_piscando_1Hz.webp"></p>
-<p dir="auto">E a próxima figura mostra uma onda oscilando entre 0 e 5V a uma frequência de 4khz (interrupção usando <em>timmer2</em>).</p>
-<p dir="auto"><img src="figuras/onda_quadrada_4KHz.webp" alt="onda_quadrada_4KHz.webp" data-src="figuras/onda_quadrada_4KHz.webp"></p>
-<hr dir="auto">
-<h2 dir="auto" id="%C3%BAltimas-observa%C3%A7%C3%B5es-recomenda%C3%A7%C3%B5es">Últimas observações (Recomendações)</h2>
-<p dir="auto">Mantenha a rotina de interrupção o mais curta possível, especialmente se você estiver gerando interrupções em alta frequência. O tempo de processamento gasto para executar a rotina de tratamento de interrupção não pode ser maior que o próprio período da interrupção, senão outra interrupção (se a rotina de tratamento de interrupção não desabilitou nenhuma interrupção) pode ocorrer enquanto ainda se está terminando de tratar a primeira interrupção. Neste ultimo caso, uma pilha (<em>stack</em>) de chamadas de interrupção é criada pelo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>C. Mas esta pilha possui um limite de tamanho. No caso específico do ATmega168/386 o limite desta pilha corresponde ao tamanho da sua memória SRAM (2 Kbytes).</p>
-<div  dir="auto" ></div>
+<p>As imagens a seguir mostram as saídas geradas pelas interrupções por temporizador.</p>
+<p>A próxima figura mostra uma onda quadrada oscilando entre 0 e 5V a 1 KHz (através de interrupção usando Timer0):</p>
+<p><img src="figuras/ondas.webp" alt="ondas.webp"></p>
+<p>A próxima figura mostra o LED ligado ao pino 13 ligado por um segundo e depois desligando por um segundo (interrupção usando <em>timer1</em>).</p>
+<p><img src="figuras/led_piscando_1Hz.webp" alt="led_piscando_1Hz.webp"></p>
+<p>E a próxima figura mostra uma onda oscilando entre 0 e 5V a uma frequência de 4khz (interrupção usando <em>timmer2</em>).</p>
+<p><img src="figuras/onda_quadrada_4KHz.webp" alt="onda_quadrada_4KHz.webp"></p>
+<hr>
+<h2 id="últimas-observações-recomendações">Últimas observações (Recomendações)</h2>
+<p>Mantenha a rotina de interrupção o mais curta possível, especialmente se você estiver gerando interrupções em alta frequência. O tempo de processamento gasto para executar a rotina de tratamento de interrupção não pode ser maior que o próprio período da interrupção, senão outra interrupção (se a rotina de tratamento de interrupção não desabilitou nenhuma interrupção) pode ocorrer enquanto ainda se está terminando de tratar a primeira interrupção. Neste ultimo caso, uma pilha (<em>stack</em>) de chamadas de interrupção é criada pelo <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span></span></span></span></eq>C. Mas esta pilha possui um limite de tamanho. No caso específico do ATmega168/386 o limite desta pilha corresponde ao tamanho da sua memória SRAM (2 Kbytes).</p>
 <!---
 Pode até valer a pena abordar as portas/pinos do chip ATMEL diretamente em vez de usar as funções `digitalWrite()` e `digitalRead()`. Você pode encontrar mais informações sobre isso em [[Manipulação de Posrtas no Arduino]](http://www.arduino.cc/en/Reference/PortManipulation).
 -->
-<p dir="auto">Certas configurações de temporizadores realmente desativarão algumas das funções <a href="http://arduino.cc/en/Reference/millis"><code>millis()</code></a> e <a href="http://arduino.cc/en/Reference/delay"><code>delay()</code></a>.  Se você configura manualmente o <em>timer0</em>, essas funções não funcionarão corretamente.</p>
-<p dir="auto">Se existe alguma parte do código que não pode ser interrompida, considere usar as funções:</p>
-<ul dir="auto">
-<li dir="auto"><a href="http://arduino.cc/playground/Main/AVR">[<code>cli()</code>]</a>;</li>
-<li dir="auto"><a href="http://arduino.cc/playground/Main/AVR">[<code>sei()</code>]</a>;</li>
+<p>Certas configurações de temporizadores realmente desativarão algumas das funções <a href="http://arduino.cc/en/Reference/millis"><code>millis()</code></a> e <a href="http://arduino.cc/en/Reference/delay"><code>delay()</code></a>.  Se você configura manualmente o <em>timer0</em>, essas funções não funcionarão corretamente.</p>
+<p>Se existe alguma parte do código que não pode ser interrompida, considere usar as funções:</p>
+<ul>
+<li><a href="http://arduino.cc/playground/Main/AVR">[<code>cli()</code>]</a>;</li>
+<li><a href="http://arduino.cc/playground/Main/AVR">[<code>sei()</code>]</a>;</li>
 </ul>
-<p dir="auto">para desativar/habilitar globalmente interrupções.</p>
-<p dir="auto">O site do Arquino traz algo sobre interrupções na parte em que que trata sobre <a href="http://arduino.cc/en/Tutorial/SecretsOfArduinoPWM">[geradores de PWM]</a>.</p>
-<p dir="auto">Na sequência original do tutorial é mostrado como montar um <strong><a href="https://www.instructables.com/id/Arduino-Bike-Speedometer/">Velocímetro de bicicleta</a></strong> usando o Arduino</p>
-<p dir="auto">Em outra parte do tutorial (<strong>Passo 4</strong>), existe o exemplo de <strong>Comunicação Serial</strong>, um ponto eventualmente à ser considerado lembrando que ao mesmo tempo que estaremos executando a rotina de controle, vamos querer exportar dados em &quot;tempo-real&quot; do processo, durante sua execução.</p>
-<p dir="auto">Na <strong>Parte 5</strong> do Tutorial original, é apresentado o exemplo de um <strong>conversor D/A</strong>, o qual foi implementado usando um conversor DAC &quot;flash&quot;, com <a href="http://en.wikipedia.org/wiki/Resistor_ladder">rede Ladder R2R</a> de 8-bits. Nesta abordagem em particular, a função original <a href="http://arduino.cc/en/Reference/analogWrite"><code>analogWrite()</code></a> da IDE do Arduino foi sobreescrita para dar lugar a outra função configurada manualmente.
+<p>para desativar/habilitar globalmente interrupções.</p>
+<p>O site do Arquino traz algo sobre interrupções na parte em que que trata sobre <a href="http://arduino.cc/en/Tutorial/SecretsOfArduinoPWM">[geradores de PWM]</a>.</p>
+<p>Na sequência original do tutorial é mostrado como montar um <strong><a href="https://www.instructables.com/id/Arduino-Bike-Speedometer/">Velocímetro de bicicleta</a></strong> usando o Arduino</p>
+<p>Em outra parte do tutorial (<strong>Passo 4</strong>), existe o exemplo de <strong>Comunicação Serial</strong>, um ponto eventualmente à ser considerado lembrando que ao mesmo tempo que estaremos executando a rotina de controle, vamos querer exportar dados em &quot;tempo-real&quot; do processo, durante sua execução.</p>
+<p>Na <strong>Parte 5</strong> do Tutorial original, é apresentado o exemplo de um <strong>conversor D/A</strong>, o qual foi implementado usando um conversor DAC &quot;flash&quot;, com <a href="http://en.wikipedia.org/wiki/Resistor_ladder">rede Ladder R2R</a> de 8-bits. Nesta abordagem em particular, a função original <a href="http://arduino.cc/en/Reference/analogWrite"><code>analogWrite()</code></a> da IDE do Arduino foi sobreescrita para dar lugar a outra função configurada manualmente.
 Sugere-se uma olhada neste outro material também para saber como gerar de maneira correta determinada forma de onda: <a href="https://www.instructables.com/id/Arduino-Waveform-Generator/">https://www.instructables.com/id/Arduino-Waveform-Generator/</a>.</p>
-<hr dir="auto">
-<p dir="auto"><font size="1">Prof. Fernando Passold, em 03/11/2022.</font></p>
+<hr>
+<p><font size="1">Prof. Fernando Passold, em 03/11/2022.</font></p>
 </div>
         </div>
 </main>
