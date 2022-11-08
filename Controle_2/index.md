@@ -43,6 +43,7 @@
   - [Ação Derivativa](Acao_Derivativa.html) (Derivador Puro? Simulações, cuidados e atenção).
   - [Teoria à respeito de Compensador por Avanço de Fase (Lead)](Teoria_PD_Lead/acoes_derivativas.html) (Aula de 02/06/2021)  
   - [Projeto de PD](aula_PD_03out2019.html) (Aula de 03/10/2019; Uso de Contribuição angular)
+  - [Projeto de Controladores PD](control2inf_2020_2/aula_07112022.html) (Aula de 07/11/2022; estudo de múltiplos casos para posição do zero + projeto do PD usando contribuição angular);
   - [Projeto de Compensador por Avanço de Fase (Lead)](projeto_Lead/exemplo_lead.html) (Aula de 09/06/2021)
 
 - [Projeto de PID](PID/examplo_9_5_PID.html) (*example_9_5* do [[NISE, Norman S. Control Systems Engineering]](https://bcs.wiley.com/he-bcs/Books?action=index&itemId=1118170512&bcsId=9295)).
