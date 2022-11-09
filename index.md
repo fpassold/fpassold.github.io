@@ -17,4 +17,4 @@
 
 ----
 
-<font size="1">*Página iniciado em Set/2021, Última atualização: 22/10/2022.*</font> 
+<font size="1">*Página iniciado em Set/2021, Última atualização: 09/11/2022.*</font> 
