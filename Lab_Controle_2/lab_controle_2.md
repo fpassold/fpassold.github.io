@@ -15,6 +15,7 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 * Projeto Final:
   * [Texto sobre Projeto Final](Projeto_Final/projeto_final.html);
   * [Arduino & Interrupções](Arduino_Int/Arduino_Int.html);
+  * [Sugestões uso PWM filtrado do Arduino com kit Feedback](Projeto_Final/parte_10_11_2022.html);
   * [PIC com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento). 
 
 -----
