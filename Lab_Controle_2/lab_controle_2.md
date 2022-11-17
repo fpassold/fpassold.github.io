@@ -17,11 +17,12 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
   * [Arduino & Interrupções](Arduino_Int/Arduino_Int.html);
   * [Sugestões uso PWM filtrado do Arduino com kit Feedback](Projeto_Final/parte_10_11_2022.html);
   * [Gerador Senoide 40 Hz](Projeto_Final/gerador_senoidal.html);
+  * [Prevendo uma Interface com o Usuário](Projeto_Final/interface_usuario.html);
   * [PIC com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento). 
 
 -----
 
-<font size="1">[![:musical_note:](:musical_note:)](https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days)</font> 
+<font size="1">[[♫]](https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days)</font> 
 
 -----
 
