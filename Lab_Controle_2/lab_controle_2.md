@@ -14,10 +14,11 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 
 * **Projeto Final**:
   * [Texto sobre Projeto Final](Projeto_Final/projeto_final.html);
-  * [Arduino & Interrupções](Arduino_Int/Arduino_Int.html);
+  * [**Arduino & Interrupções**](Arduino_Int/Arduino_Int.html);
   * [Sugestões uso PWM filtrado do Arduino com kit Feedback](Projeto_Final/parte_10_11_2022.html);
-  * [Gerador Senoide 40 Hz](Projeto_Final/gerador_senoidal.html);
-  * [Prevendo uma Interface com o Usuário](Projeto_Final/interface_usuario.html);
+  * [Gerador **Senoide** 40 Hz](Projeto_Final/gerador_senoidal.html);
+  * [Gerador **onda triangular** 0,1 Hz](Projeto_Final/onda_triangular.html);
+  * [Prevendo uma **Interface com o Usuário**](Projeto_Final/interface_usuario.html);
   * [PIC com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento). 
 
 -----
