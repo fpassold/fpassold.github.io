@@ -186,7 +186,7 @@ if escolha == 'p'
     % Sum_th_z - Sum_th_p - th_polo = pi
     % Sum_th_z - Sum_th_p - pi = th_polo
     th_polo = Sum_th_z - Sum_th_p - pi;
-    aux = th_zero*180/pi;
+    aux = th_polo*180/pi;
     fprintf('\nAngle contribution required for controller: %.2f^o\n', aux);
     delta_x = wd/tan(th_polo);
     polo_c = -sigma - delta_x;
