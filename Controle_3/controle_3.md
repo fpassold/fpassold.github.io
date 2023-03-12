@@ -1,13 +1,16 @@
+<!--title: Controle 3 -->
 # Curso de Controle Automático III
 
 ![cason-asher-Ur7Efx8lBjs-unsplash.jpg](cason-asher-Ur7Efx8lBjs-unsplash.jpg)
 
 **Tópicos ministrados:**
 
-* Introdução à Sistemas Amostrados, incorporando Z.O.H, cálculo de $BoG(z)$ $\rightarrow$ [deduções e simulações](exemplo_1_BoG/intro_exemplo_1a_ordem.html).
-* [Teoria do Erro](4_teoria_erros/resumo_teoria_erro.html) (papel do integrador);
-* Estabilidade $\Rightarrow$ Método de Jury: [Aplicação](Exemplo_Jury/problema_1.html)
-* Estudo de Caso:
+* [Verificando **Teorema da Amostragem**](Teste_Amost/teste_amostragem.html);
+* Introdução à Sistemas Amostrados, incorporando o **Sustentador de Ordem Zero**, cálculo de $BoG(z)$ $\rightarrow$ [deduções e simulações](exemplo_1_BoG/intro_exemplo_1a_ordem.html).
+* [**Teoria do Erro** (papel do integrador)](4_teoria_erros/resumo_teoria_erro.html);
+* Estabilidade $\Rightarrow$ **Método de Jury**: [Aplicação](Exemplo_Jury/problema_1.html)
+  
+* Estudo de Caso (Projeto de Controladores):
 
   1. Projeto de **Controlador Proporcional**:
      * [Aula de 07/05/2020](aula_07_05_2020.html);
@@ -38,4 +41,4 @@ EXTRAs:
 
 ---
 
-<font size="1"> (c) Fernando Passold, página atualiza em 28/05/2020, 04/06/2020, 11/11/2020, 07.04.2021 </font>
+<font size="1"> (c) Fernando Passold, página atualiza em 28/05/2020, 04/06/2020, 11/11/2020, 07.04.2021, 11/03/2023 </font>
