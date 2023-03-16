@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Cursos Prof&period; Fernando Passold</title>
+        <title>Uso do Octave</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -1660,7 +1660,8 @@ aside > *:last-child {
   background-color: #fafbfc;
 }
 </style>
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -1688,26 +1689,773 @@ aside > *:last-child {
             <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="default"></span>
-                <h1 id="cursos-prof-fernando-passold">Cursos Prof. Fernando Passold</h1>
-<!--title: Prof Fernando Passold -->
-<p><img src="initial_image.jpg" alt=""></p>
-<p><font size="2"> Dr. Eng. Fernando Passold (<a href="https://marcianazambillo.academia.edu/FernandoPassold">Academia.edu</a>, <a href="https://www.webofscience.com/wos/author/rid/J-3070-2015">Publons/Web of Science</a>, <a href="https://www.researchgate.net/profile/Fernando_Passold/info">Research Gate</a>, <a href="https://orcid.org/0000-0002-9599-5914">ORCID</a>, <a href="http://pt.slideshare.net/fpassold">Slideshare</a>, <a href="https://scholar.google.com/citations?user=lvvFQ5YAAAAJ&amp;hl=en">Google Scholar</a>, <a href="https://www.linkedin.com/in/fernando-passold-7a553b22/">LinkedIn</a>, <a href="https://www.youtube.com/user/fpassold/videos">Personal YouTube</a>, <a href="https://www.youtube.com/channel/UCF8lEIDVbtjLWNu1zXlJMVA/videos">Institutional YouTube</a> ) - Prof. <a href="https://www.upf.br/fear/curso/engenharia-eletrica/laboratorios">Eng. Elétrica</a> - <a href="https://www.upf.br/">Universidade de Passo Fundo</a> </font></p>
-<h1 id="cursosdisciplinas-ministradas">Cursos/Disciplinas ministradas:</h1>
+                <!--title: Usando Octave -->
+<h1 id="uso-do-octave">Uso do Octave</h1>
 <ul>
-<li><a href="Digitais_1/index.html">Circuitos Digitais I</a> (Eletrônica Digital Combinacional);</li>
-<li><a href="Digitais_1/lab_dig1.html">Lab. de Circuitos Digitais I</a>;</li>
-<li><a href="Digitais_2/digitais_2.html">Circuitos Digitais II (Eletrônica Digital Sequencial)</a>;</li>
-<li>Lab. de Circuitos Digitais II;</li>
-<li><a href="Controle_2/index.html">Controle Automático 2 (Controle Automático Clássico)</a>;</li>
-<li><a href="Lab_Controle_2/lab_controle_2.html">Laboratório de Controle Automático II</a> (2022/2);</li>
-<li><a href="Controle_3/controle_3.html">Controle Automático 3 (Controle Clássico Discreto ou Digital)</a>.</li>
-<li><a href="Pneumatica/topicos.html">Acionamento Hidráulico e Pneumático (EEE172)</a>.</li>
+<li><a href="#uso-do-octave">Uso do Octave</a>
+<ul>
+<li><a href="#instala%C3%A7%C3%A3o-do-octave">Instalação do Octave</a></li>
+<li><a href="#primeiro-teste">Primeiro Teste</a></li>
+<li><a href="#instalando-pacotes-comandos-extras">Instalando pacotes (comandos extras)</a></li>
+<li><a href="#para-listar-pacotes-j%C3%A1-instalados">Para listar pacotes já instalados</a>
+<ul>
+<li><a href="#pacotes-interessantes-para-nosso-caso-de-uso">Pacotes Interessantes para nosso caso de uso</a></li>
+</ul>
+</li>
+<li><a href="#para-instalar-pacotes">Para instalar pacotes</a>
+<ul>
+<li><a href="#pacotes-m%C3%ADnimos-para-%C3%A1rea-de-controle">Pacotes mínimos para área de Controle</a></li>
+</ul>
+</li>
+<li><a href="#novidades-no-pacote-control">Novidades no pacote <code>Control</code></a></li>
+<li><a href="#atualizando-pacotes-j%C3%A1-instalados">Atualizando pacotes já instalados</a></li>
+<li><a href="#executando-o-pacote-control">Executando o pacote &quot;control&quot;</a></li>
+<li><a href="#exemplo-de-uso-projeto-de-um-controlador-proporcional">Exemplo de Uso: Projeto de um Controlador Proporcional</a>
+<ul>
+<li><a href="#outras-fun%C3%A7%C3%B5es-do-octave">Outras funções do Octave</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <hr>
-<p><font size="1"><em>Página iniciado em Set/2021, Última atualização: 22/11/2022.</em></font></p>
+<h2 id="instalação-do-octave">Instalação do Octave</h2>
+<p>O Octave pode ser obtido à partir de: <a href="https://octave.org/download.html">https://octave.org/download.html</a>. <!-- (em Sept/2022). --></p>
+<p>No Windows, o arquivo de instalação ocupa 364 MB na versão 7.2.0. Porém, depois de instalado (descompactado), e acrescentado os pacotes que necessitaremos para trabalhar na área de controle, o Octave passa a  ocupar aproximadamente 2,17 GBytes.</p>
+<p>No Linux/Ubuntu, a versão snap do Octave 7.2.0 uma vez instalado (sem nenhum pacote extra) ocupa aproximadamente 345 Mbytes. Mas, diferente da versão para Windows, no Linux/Ubuntu, cada pacote (comandos/funções) extras deve se instalado à mão conforme se mostra à seguir e então, o espaço ocupado em disco aumenta.</p>
+<p>Segue um janela de comandos comum do Octave:</p>
+<p><img src="figs/Octave_running.png" alt=""></p>
+<h2 id="primeiro-teste">Primeiro Teste</h2>
+<p>Vamos tentar imprimir um simples gráfico:</p>
+<pre><code class="language-matlab">&gt;&gt; t=<span class="hljs-number">0</span>:<span class="hljs-number">0.01</span>:<span class="hljs-number">2</span>;                  <span class="hljs-comment">% cria vetor tempo</span>
+&gt;&gt; <span class="hljs-built_in">pi</span>                           <span class="hljs-comment">% constante pi</span>
+<span class="hljs-built_in">ans</span> = <span class="hljs-number">3.1416</span>
+&gt;&gt; y=<span class="hljs-number">2</span>*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*<span class="hljs-number">1</span>*t);           <span class="hljs-comment">% cria onda senoidal 1 Hz</span>
+&gt;&gt; <span class="hljs-comment">% suponha um FPB com fc = 1 Hz, queda de 3 dB em 1 Hz:</span>
+&gt;&gt; G=<span class="hljs-number">10</span>^(<span class="hljs-number">-3</span>/<span class="hljs-number">20</span>)                 <span class="hljs-comment">% calculando &quot;ganho&quot; do FPB</span>
+G = <span class="hljs-number">0.7079</span>
+&gt;&gt; y2=G*<span class="hljs-number">2</span>*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*<span class="hljs-number">1</span>*t-<span class="hljs-built_in">pi</span>/<span class="hljs-number">4</span>);   <span class="hljs-comment">% senóide de saída, defasagem de 45 graus</span>
+&gt;&gt; <span class="hljs-built_in">plot</span>(t,y, t,y2)              <span class="hljs-comment">% plotando 2 curvas</span>
+&gt;&gt; <span class="hljs-built_in">legend</span>(<span class="hljs-string">&#x27;Input&#x27;</span>, <span class="hljs-string">&#x27;Output&#x27;</span>)    <span class="hljs-comment">% legenda</span>
+</code></pre>
+<p>Se não houve erros de digitação, uma janela gráfica como a mostrada abaixo deve ter sido gerada:</p>
+<p><img src="figs/curva_1_teste.png" alt=""></p>
+<h2 id="instalando-pacotes-comandos-extras">Instalando pacotes (comandos extras)</h2>
+<p>De forma a ampliar as possibilidades de uso do Octave com a área de <strong>Controle Automático</strong>, se sugere a instalação de algumas ferramentas extras, chamadas de &quot;pacotes&quot;.</p>
+<blockquote>
+<p>Os &quot;pacotes&quot; no caso do Octave, são equivalentes aos &quot;toolboxes&quot; no caso do Matlab.</p>
+</blockquote>
+<!-- 
+- Como descobrir e listar pacotes extras?
+
+No Octave existem 2 formas de instalar pacotes, para todo os usuários (opção "global") ou apenas para o usuário atual (opção "local").
+
+**Obs.:** A opçãp "global" exige usuáruo executando o Octave como Administrador!
+
+Doravante vamos supor que estamos executando o Ocatave como um simples usuário local.
+-->
+<h2 id="para-listar-pacotes-já-instalados">Para listar pacotes já instalados</h2>
+<!--
+```matlab
+>> pkg list          % para listar pacotes já instalados
+>> pkg local_list    % para listar pacotes instalados pelo usuário atual
+>> pkg global_list   % para listar pacotes instalados para todos os usuários
+```
+
+## Para instalar mais pacotes
+-->
+<p>Para listar pacotes já instalados no Octave, fazer:</p>
+<pre><code class="language-matlab">&gt;&gt; pkg list
+Package Name         | Version | Installation directory
+---------------------+---------+-----------------------
+              audio  |   <span class="hljs-number">2.0</span><span class="hljs-number">.5</span> | C:\Program Files\GNU Octave\Octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>\mingw64\share\octave\packages\audio<span class="hljs-number">-2.0</span><span class="hljs-number">.5</span>
+             biosig  |   <span class="hljs-number">2.4</span><span class="hljs-number">.2</span> | C:\Program Files\GNU Octave\Octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>\mingw64\share\octave\packages\biosig<span class="hljs-number">-2.4</span><span class="hljs-number">.2</span>
+     communications  |   <span class="hljs-number">1.2</span><span class="hljs-number">.4</span> | C:\Program Files\GNU Octave\Octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>\mingw64\share\octave\packages\communications<span class="hljs-number">-1.2</span><span class="hljs-number">.4</span>
+            control  |   <span class="hljs-number">3.4</span><span class="hljs-number">.0</span> | C:\Users\fpassold\AppData\Roaming\octave\api-v57\packages\control<span class="hljs-number">-3.4</span><span class="hljs-number">.0</span>
+     data-smoothing  |   <span class="hljs-number">1.3</span><span class="hljs-number">.0</span> | C:\Program Files\GNU Octave\Octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>\mingw64\share\octave\packages\data-smoothing<span class="hljs-number">-1.3</span><span class="hljs-number">.0</span>
+           database  |   <span class="hljs-number">2.4</span><span class="hljs-number">.4</span> | C:\Program Files\GNU Octave\Octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>\mingw64\share\octave\packages\database<span class="hljs-number">-2.4</span><span class="hljs-number">.4</span>
+...
+</code></pre>
+<p>Repare que eventualmente alguns pacote <strong>já estão instalados</strong> (caso do Windows). Entre eles o &quot;<strong>control</strong>&quot; A lista acima é maior, mas apenas uma parte foi mostrada.</p>
+<!-- 
+**De qualquer forma** se sugere executar o seguinte comando logo após a instalação do Octave: `>> pkg rebuild`. Isto evita erros como:
+
+```Matlab
+>> G=tf([1, 5, 7],[1, 8, 6])
+error: could not find any INDEX file in directory C:\Users\fpassold\AppData\Roaming\octave\api-v57\packages\control-3.4.0, try 'pkg rebuild all' to generate missing INDEX files
+error: called from
+    describe>parse_pkg_idx at line 106 column 5
+    describe at line 68 column 40
+    pkg at line 742 column 43
+    __unimplemented__>check_package at line 550 column 15
+    __unimplemented__ at line 129 column 11
+>>
+```
+
+**OBS: o erro continua ocorrendo mesmo após o `pakg rebuild all`!!! -->
+<h3 id="pacotes-interessantes-para-nosso-caso-de-uso">Pacotes Interessantes para nosso caso de uso</h3>
+<p>No nosso caso estamos interessados nos pacotes:</p>
+<ul>
+<li><strong>control</strong></li>
+<li>data-smoothing</li>
+<li>fits</li>
+<li>generate_html</li>
+<li>geometry</li>
+<li>miscellaneous</li>
+<li><strong>symbolic</strong></li>
+<li><strong>signal</strong></li>
+</ul>
+<h2 id="para-instalar-pacotes">Para instalar pacotes</h2>
+<p>Para descobrir que pacotes estão disponíveis (e versão dos mesmos):</p>
+<pre><code class="language-matlab">&gt;&gt; pkg list -forge
+Octave Forge provides these packages:
+  arduino <span class="hljs-number">0.10</span><span class="hljs-number">.0</span>
+  audio <span class="hljs-number">2.0</span><span class="hljs-number">.5</span>
+  bim <span class="hljs-number">1.1</span><span class="hljs-number">.5</span>
+  bsltl <span class="hljs-number">1.3</span><span class="hljs-number">.1</span>
+  cgi <span class="hljs-number">0.1</span><span class="hljs-number">.2</span>
+  communications <span class="hljs-number">1.2</span><span class="hljs-number">.4</span>
+  control <span class="hljs-number">3.4</span><span class="hljs-number">.0</span>
+  data-smoothing <span class="hljs-number">1.3</span><span class="hljs-number">.0</span>
+  database <span class="hljs-number">2.4</span><span class="hljs-number">.4</span>
+  dataframe <span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
+  dicom <span class="hljs-number">0.5</span><span class="hljs-number">.1</span>
+  divand <span class="hljs-number">1.1</span><span class="hljs-number">.2</span>
+  doctest <span class="hljs-number">0.7</span><span class="hljs-number">.0</span>
+  econometrics <span class="hljs-number">1.1</span><span class="hljs-number">.2</span>
+  fem-fenics <span class="hljs-number">0.0</span><span class="hljs-number">.5</span>
+  financial <span class="hljs-number">0.5</span><span class="hljs-number">.3</span>
+  fits <span class="hljs-number">1.0</span><span class="hljs-number">.7</span>
+  fpl <span class="hljs-number">1.3</span><span class="hljs-number">.5</span>
+  fuzzy-logic-toolkit <span class="hljs-number">0.4</span><span class="hljs-number">.6</span>
+  ga <span class="hljs-number">0.10</span><span class="hljs-number">.3</span>
+  general <span class="hljs-number">2.1</span><span class="hljs-number">.2</span>
+  generate_html <span class="hljs-number">0.3</span><span class="hljs-number">.3</span>
+  geometry <span class="hljs-number">4.0</span><span class="hljs-number">.0</span>
+  gsl <span class="hljs-number">2.1</span><span class="hljs-number">.1</span>
+  image <span class="hljs-number">2.14</span><span class="hljs-number">.0</span>
+  image-acquisition <span class="hljs-number">0.2</span><span class="hljs-number">.2</span>
+  instrument-control <span class="hljs-number">0.8</span><span class="hljs-number">.0</span>
+  interval <span class="hljs-number">3.2</span><span class="hljs-number">.1</span>
+  io <span class="hljs-number">2.6</span><span class="hljs-number">.4</span>
+  level-set <span class="hljs-number">0.3</span><span class="hljs-number">.0</span>
+  linear-algebra <span class="hljs-number">2.2</span><span class="hljs-number">.3</span>
+  lssa <span class="hljs-number">0.1</span><span class="hljs-number">.4</span>
+  ltfat <span class="hljs-number">2.3</span><span class="hljs-number">.1</span>
+  mapping <span class="hljs-number">1.4</span><span class="hljs-number">.2</span>
+  matgeom <span class="hljs-number">1.2</span><span class="hljs-number">.3</span>
+  miscellaneous <span class="hljs-number">1.3</span><span class="hljs-number">.0</span>
+  msh <span class="hljs-number">1.0</span><span class="hljs-number">.10</span>
+  mvn <span class="hljs-number">1.1</span><span class="hljs-number">.0</span>
+  <span class="hljs-built_in">nan</span> <span class="hljs-number">3.7</span><span class="hljs-number">.0</span>
+  ncarray <span class="hljs-number">1.0</span><span class="hljs-number">.5</span>
+  netcdf <span class="hljs-number">1.0</span><span class="hljs-number">.16</span>
+  nurbs <span class="hljs-number">1.4</span><span class="hljs-number">.3</span>
+  ocl <span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
+  ocs <span class="hljs-number">0.1</span><span class="hljs-number">.5</span>
+  octclip <span class="hljs-number">2.0</span><span class="hljs-number">.1</span>
+  octproj <span class="hljs-number">2.0</span><span class="hljs-number">.1</span>
+  optics <span class="hljs-number">0.1</span><span class="hljs-number">.4</span>
+  optim <span class="hljs-number">1.6</span><span class="hljs-number">.2</span>
+  optiminterp <span class="hljs-number">0.3</span><span class="hljs-number">.7</span>
+  parallel <span class="hljs-number">4.0</span><span class="hljs-number">.1</span>
+  quaternion <span class="hljs-number">2.4</span><span class="hljs-number">.0</span>
+  queueing <span class="hljs-number">1.2</span><span class="hljs-number">.7</span>
+  secs1d <span class="hljs-number">0.0</span><span class="hljs-number">.9</span>
+  secs2d unknown
+  secs3d <span class="hljs-number">0.0</span><span class="hljs-number">.1</span>
+  signal <span class="hljs-number">1.4</span><span class="hljs-number">.3</span>
+  sockets <span class="hljs-number">1.4</span><span class="hljs-number">.0</span>
+  sparsersb <span class="hljs-number">1.0</span><span class="hljs-number">.9</span>
+  splines <span class="hljs-number">1.3</span><span class="hljs-number">.4</span>
+  statistics <span class="hljs-number">1.4</span><span class="hljs-number">.3</span>
+  stk <span class="hljs-number">2.7</span><span class="hljs-number">.0</span>
+  strings <span class="hljs-number">1.3</span><span class="hljs-number">.0</span>
+  struct <span class="hljs-number">1.0</span><span class="hljs-number">.18</span>
+  symbolic <span class="hljs-number">3.0</span><span class="hljs-number">.1</span>
+  tisean <span class="hljs-number">0.2</span><span class="hljs-number">.3</span>
+  tsa <span class="hljs-number">4.6</span><span class="hljs-number">.3</span>
+  vibes <span class="hljs-number">0.2</span><span class="hljs-number">.0</span>
+  video <span class="hljs-number">2.0</span><span class="hljs-number">.2</span>
+  vrml <span class="hljs-number">1.0</span><span class="hljs-number">.13</span>
+  windows <span class="hljs-number">1.6</span><span class="hljs-number">.3</span>
+  zeromq <span class="hljs-number">1.5</span><span class="hljs-number">.5</span>
+&gt;&gt;
+</code></pre>
+<p><strong>Obs.:</strong> a listagem acima é resultado do Octave sendo executado no Windows.</p>
+<p>Se for necessário instalar pacotes (caso do Linux), use o comando:</p>
+<code>&gt;&gt; pkg install -forge  &lt;package_name&gt;</code></p>
+A opção <code>-forge</code> carrega diretamente do repositório internet da Octave (obviamente exige conexão à internet).</p>
+<p>Por exemplo:</p>
+<pre><code class="language-matlab">&gt;&gt; pkg install -forge symbolic
+For information about changes from previous versions of the symbolic package, run <span class="hljs-string">&#x27;news symbolic&#x27;</span>.
+&gt;&gt;
+</code></pre>
+<p>Se você deseja instalar pacotes e acompanhar o processo de download e instalação, use a opção <code>-verbose</code>, mas isto pode gerar longas mensagens:</p>
+<p>Por exemplo:</p>
+<pre><code class="language-matlab">&gt;&gt; pkg install -forge -verbose control
+mkdir (/tmp/oct-T38v9D)
+untar (/tmp/control<span class="hljs-number">-3.4</span><span class="hljs-number">.0</span>-RNDqAP.tar.gz, /tmp/oct-T38v9D)
+checking <span class="hljs-keyword">for</span> mkoctfile... /app/bin/mkoctfile<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span> --verbose
+checking <span class="hljs-keyword">for</span> octave-config... /app/bin/octave-config<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>
+checking whether the C++ compiler works... yes
+checking <span class="hljs-keyword">for</span> C++ compiler default output file name... a.out
+checking <span class="hljs-keyword">for</span> suffix of executables...
+checking whether we are <span class="hljs-built_in">cross</span> compiling... no
+checking <span class="hljs-keyword">for</span> suffix of object files... o
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking   is_real_type or <span class="hljs-built_in">isreal</span>... <span class="hljs-built_in">isreal</span>
+checking   is_cell or iscell... iscell
+checking   is_object or isobject... isobject
+checking   is_complex_type or iscomplex... iscomplex
+checking   is_numeric_type or isnumeric... isnumeric
+checking <span class="hljs-keyword">for</span> g77... no
+checking <span class="hljs-keyword">for</span> xlf... no
+checking <span class="hljs-keyword">for</span> f77... no
+checking <span class="hljs-keyword">for</span> frt... no
+checking <span class="hljs-keyword">for</span> pgf77... no
+checking <span class="hljs-keyword">for</span> cf77... no
+checking <span class="hljs-keyword">for</span> fort77... no
+
+checking <span class="hljs-keyword">for</span> pghpf... no
+checking <span class="hljs-keyword">for</span> epcf90... no
+checking <span class="hljs-keyword">for</span> gfortran... gfortran
+checking whether we are using the GNU Fortran <span class="hljs-number">77</span> compiler... yes
+checking whether gfortran accepts -g... yes
+checking <span class="hljs-keyword">for</span> library containing dgges... no
+configure: creating ./config.status
+config.status: creating Makefile.conf
+config.status: creating config.h
+make: Entrando no diretório <span class="hljs-string">&#x27;/tmp/oct-T38v9D/control-3.4.0/src&#x27;</span>
+
+tar -xzf slicot.tar.gz
+/app/bin/mkoctfile<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span> --verbose -Wall -Wno-deprecated-declarations  __control_helper_functions__.cc
+g++ -c -I/app/include -fPIC -I/app/include/octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>/octave/.. -I/app/include/octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>/octave -I/app/include  -pthread -fopenmp -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=<span class="hljs-number">2</span> -fexceptions -fstack-protector-strong -grecord-gcc-switches  -Wall -Wno-deprecated-declarations   __control_helper_functions__.cc -o /tmp/oct-PTj2gZ.o
+mkdir sltmp
+mv slicot/src/*.f ./sltmp
+mv slicot/src_aux/*.f ./sltmp
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;0&quot;</span> = <span class="hljs-string">&quot;1&quot;</span> ]; then \
+        echo <span class="hljs-string">&quot;copy routines using DGGES&quot;</span>; \
+        cp SB04OD.fortran ./sltmp/SB04OD.f; \
+        cp SG03AD.fortran ./sltmp/SG03AD.f; \
+        cp SG03BD.fortran ./sltmp/SG03BD.f; \
+fi;
+cp AB08NX.fortran ./sltmp/AB08NX.f
+cp AG08BY.fortran ./sltmp/AG08BY.f
+cp SB01BY.fortran ./sltmp/SB01BY.f
+cp SB01FY.fortran ./sltmp/SB01FY.f
+
+gfortran -c -fPIC -g -O2 -std=legacy     UD01MZ.f -o UD01MZ.o
+gfortran -c -fPIC -g -O2 -std=legacy     UD01ND.f -o UD01ND.o
+gfortran -c -fPIC -g -O2 -std=legacy     UE01MD.f -o UE01MD.o
+ar -rc slicotlibrary.a ./sltmp/*.o
+rm -rf sltmp slicot
+LDFLAGS=<span class="hljs-string">&quot;-L/app/lib  -lopenblas  -L/app/lib -L/usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0 -L/usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../../../x86_64-unknown-linux-gnu/lib -L/usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/../../.. -lgfortran -lm -lquadmath&quot;</span> \
+    /app/bin/mkoctfile<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span> --verbose -Wall -Wno-deprecated-declarations  __control_slicot_functions__.cc common.cc slicotlibrary.a
+g++ -c -I/app/include -fPIC -I/app/include/octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>/octave/.. -I/app/include/octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>/octave -I/app/include  -pthread -fopenmp -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=<span class="hljs-number">2</span> -fexceptions -fstack-protector-strong -grecord-gcc-switches  -Wall -Wno-deprecated-declarations   __control_slicot_functions__.cc -o /tmp/oct<span class="hljs-number">-2</span>fVEiL.o
+g++ -c -I/app/include -fPIC -I/app/include/octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>/octave/.. -I/app/include/octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>/octave -I/app/include  -pthread -fopenmp -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=<span class="hljs-number">2</span> -fexceptions -fstack-protector-strong -grecord-gcc-switches  -Wall -Wno-deprecated-declarations   common.cc -o /tmp/oct-x9Eujr.o
+g++ -I/app/include/octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>/octave/.. -I/app/include/octave<span class="hljs-number">-7.2</span><span class="hljs-number">.0</span>/octave -I/app/include  -pthread -fopenmp -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=<span class="hljs-number">2</span> -fexceptions -fstack-protector-strong -grecord-gcc-switches  -Wall -Wno-deprecated-declarations -o __control_slicot_functions__.oct  /tmp/oct<span class="hljs-number">-2</span>fVEiL.o /tmp/oct-x9Eujr.o  slicotlibrary.a  -shared -Wl,-Bsymbolic -L/app/lib  -lopenblas  -L/app/lib -L/usr/lib/gcc/x86_64-unknown-linux-gnu/<span class="hljs-number">11.3</span><span class="hljs-number">.0</span> -L/usr/lib/gcc/x86_64-unknown-linux-gnu/<span class="hljs-number">11.3</span><span class="hljs-number">.0</span>/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-unknown-linux-gnu/<span class="hljs-number">11.3</span><span class="hljs-number">.0</span>/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-unknown-linux-gnu/<span class="hljs-number">11.3</span><span class="hljs-number">.0</span>/../../../../x86_64-unknown-linux-gnu/lib -L/usr/lib/gcc/x86_64-unknown-linux-gnu/<span class="hljs-number">11.3</span><span class="hljs-number">.0</span>/../../.. -lgfortran -lm -lquadmath  -L/app/lib -shared -Wl,-Bsymbolic  -L/app/lib -Wl,-z,relro,-z,now -Wl,--as-needed
+make: Saindo do diretório <span class="hljs-string">&#x27;/tmp/oct-T38v9D/control-3.4.0/src&#x27;</span>
+
+copyfile /tmp/oct-T38v9D/control<span class="hljs-number">-3.4</span><span class="hljs-number">.0</span>/src/__control_helper_functions__.oct /tmp/oct-T38v9D/control<span class="hljs-number">-3.4</span><span class="hljs-number">.0</span>/src/__control_slicot_functions__.oct /tmp/oct-T38v9D/control<span class="hljs-number">-3.4</span><span class="hljs-number">.0</span>/inst/x86_64-pc-linux-gnu-api-v57
+For information about changes from previous versions of the control package, run <span class="hljs-string">&#x27;newscontrol&#x27;</span>.
+&gt;&gt;
+</code></pre>
+<h3 id="pacotes-mínimos-para-área-de-controle">Pacotes mínimos para área de Controle</h3>
+<p>Os pacotes mínimos necessários para a área de Controle Automático Clássico aparecem listados abaixo:</p>
+<pre><code class="language-matlab">&gt;&gt; ver
+----------------------------------------------------------------------
+GNU Octave Version: <span class="hljs-number">7.2</span><span class="hljs-number">.0</span> (hg id: <span class="hljs-number">6</span>c1e310b2230)
+GNU Octave License: GNU General Public License
+Operating System: Linux <span class="hljs-number">5.15</span><span class="hljs-number">.0</span><span class="hljs-number">-56</span>-generic #<span class="hljs-number">62</span>-Ubuntu SMP Tue Nov <span class="hljs-number">22</span> <span class="hljs-number">19</span>:<span class="hljs-number">54</span>:<span class="hljs-number">14</span> UTC <span class="hljs-number">2022</span> x86_64
+----------------------------------------------------------------------
+Package Name  | Version | Installation directory
+--------------+---------+-----------------------
+     control *|   <span class="hljs-number">3.4</span><span class="hljs-number">.0</span> | .../.var/app/org.octave.Octave/data/octave/api-v57/packages/control<span class="hljs-number">-3.4</span><span class="hljs-number">.0</span>
+      signal *|   <span class="hljs-number">1.4</span><span class="hljs-number">.3</span> | .../.var/app/org.octave.Octave/data/octave/api-v57/packages/signal<span class="hljs-number">-1.4</span><span class="hljs-number">.3</span>
+    symbolic *|   <span class="hljs-number">3.0</span><span class="hljs-number">.1</span> | .../.var/app/org.octave.Octave/data/octave/api-v57/packages/symbolic<span class="hljs-number">-3.0</span><span class="hljs-number">.1</span>
+&gt;&gt;
+</code></pre>
+<!-- 
+Se for desejado instalar este pacote no modo "global", será necessário executar o Octave como Administrador e usar o comando: `>> pkg install -forge -global control`.
+
+No caso, foi instalada a versão control-3.4.0 (Release Date: 2022-01-16).
+-->
+<h2 id="novidades-no-pacote-control">Novidades no pacote <code>Control</code></h2>
+<pre><code class="language-matlab">&gt;&gt; news control
+</code></pre>
+<p>Alguns destaques:</p>
+<ul>
+<li>Declare <code>tf([1],[1])</code> as static gain</li>
+<li>Returned num and den of <code>tfdate</code> have same length (bug #43947)</li>
+<li>Fixes for Octave 7.1.0: removed deprecated <code>.+</code> operator and unsupported <code>plot</code> style</li>
+<li>Fixed time response for first order systems</li>
+<li>new function <code>rlocusx</code> providing gain, damping and frequency for selected poles together with the possibility to generate open loop bode plots and simulations of the closed loop for selected closed loop poles.</li>
+<li>Fixed several issues in <code>bode</code>, <code>c2d</code>, <code>lsim</code> and <code>step</code> (control-3.3.0, Release Date: 2021-06-19).</li>
+<li>Fixed issues in legends of time and frequency responses when requested for multiple systems.</li>
+<li>Added discretization method <code>foh</code> to <code>c2d</code>.</li>
+<li>Fixed transposing a tfploy.</li>
+<li>new function <code>sgrid</code> (control-3.2.0, Release Date: 2019-04-01)</li>
+<li>new function: <code>ss2ss</code>.</li>
+<li>added demos to <code>rlocus</code>, <code>pzmap</code>, <code>bode</code>, <code>nichols</code>, <code>nyquist</code>, <code>impulse</code>, <code>lsim</code>, <code>ramp</code> and <code>step</code>.</li>
+<li>improved <code>pzmap</code> to plot with only zeros.</li>
+<li>New function: <code>damp</code> (control-3.1.0, Release Date: 2018-03-11).</li>
+<li>The new function <code>imp_invar.m</code> converts a Laplace tranfer function to a discrete tranfer function.</li>
+<li>Function <code>lsim</code> now plots inputs as well.</li>
+</ul>
+<!-- ## Instalando outros pacotes interessantes -->
+<h2 id="atualizando-pacotes-já-instalados">Atualizando pacotes já instalados</h2>
+<p>De vez em quando pode ser interessante atualizar os pacotes já instalados. Para tanto, simplesmente execute:</p>
+<code>&gt;&gt; pkg update</code></p></p>
+<pre><code class="language-matlab">&gt;&gt; pkg update
+For information about changes from previous versions of the netcdf package, run <span class="hljs-string">&#x27;news netcdf&#x27;</span>.
+For information about changes from previous versions of the symbolic package, run <span class="hljs-string">&#x27;news symbolic&#x27;</span>.
+For information about changes from previous versions of the windows package, run <span class="hljs-string">&#x27;news windows&#x27;</span>.
+&gt;&gt;
+</code></pre>
+<p>Obs.: usar a opção &quot;global&quot; apenas se deseja aplicar alterações à todos os usuários e se tiver permissão (estiver executando o Octave como) de administrador para acessar/alterar arquivos de instalação, senão ocorrerão erros!</p>
+<!--
+## Para instalar mais pacotes 
+```matlab
+>> pkg update -global
+error: couldn't delete directory C:\Program Files\GNU Octave\Octave-7.2.0\mingw64\share\octave\packages\symbolic-3.
+0.0: Permission denied
+error: called from
+    uninstall at line 131 column 11
+    install at line 217 column 9
+    pkg at line 612 column 9
+    pkg at line 796 column 11
+>>
+```
+-->
+<h2 id="executando-o-pacote-control">Executando o pacote &quot;control&quot;</h2>
+<p>Informações adicionais sobre este pacote podem ser encontradas em:</p>
+<ul>
+<li>
+<p><a href="https://octave.sourceforge.io/control/#:~:text=Octave%20Forge%20is%20a%20collection%20of%20packages%20providing,Design.%20Latest%20package%20release.%20Version.%203.2.0.%20Date.%202019-04-01">https://octave.sourceforge.io/control/#:~:text=Octave Forge is a collection of packages providing,Design. Latest package release. Version. 3.2.0. Date. 2019-04-01</a>. (Sept/2022).</p>
+</li>
+<li>
+<p>ou <a href="https://octave.sourceforge.io/control/index.html">https://octave.sourceforge.io/control/index.html</a>;</p>
+</li>
+<li>
+<p>ou <a href="https://octave.sourceforge.io/control/overview.html">https://octave.sourceforge.io/control/overview.html</a>.</p>
+</li>
+</ul>
+<p>Segue lista das funções mais utilizadas:</p>
+<p><strong>Obs.:</strong> <strong>ANTES</strong> de chamar qualquer função associado a este pacote, você deve &quot;<strong>carregar</strong>&quot;  este pacote executando comandos como:</p>
+<pre><code class="language-matlab">&gt;&gt; pkg load control
+&gt;&gt; pkg load symbolic
+&gt;&gt;
+</code></pre>
+<!-- para forçar o carregamento deste pacote ou outro de interesse. -->
+<p>Segue exemplo de ingresso de uma &quot;transfer function&quot; (função transferência):</p>
+<p>objeto <code>tf</code>, exemplo de uso:</p>
+<pre><code class="language-matlab">&gt;&gt; s = tf(<span class="hljs-string">&#x27;s&#x27;</span>);
+&gt;&gt; G = <span class="hljs-number">1</span>/(s+<span class="hljs-number">1</span>)
+&gt;&gt; z = tf(<span class="hljs-string">&#x27;z&#x27;</span>, tsam);
+&gt;&gt; z = tf(<span class="hljs-string">&#x27;z&#x27;</span>, <span class="hljs-number">0.2</span>);
+&gt;&gt; Gd = <span class="hljs-number">0.095</span>/(z<span class="hljs-number">-0.9</span>)
+&gt;&gt; sys = tf (num,den);
+&gt;&gt; G = tf([<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>])
+&gt;&gt; sys = tf (num,den,tsam);
+</code></pre>
+<p>Exemplo<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow></mrow><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.45110799999999995em;vertical-align:-0.15em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>:</p>
+<pre><code class="language-matlab">&gt;&gt; num=poly([<span class="hljs-number">0</span>, <span class="hljs-number">-2</span>])
+num =
+   <span class="hljs-number">1</span>   <span class="hljs-number">2</span>   <span class="hljs-number">0</span>
+
+&gt;&gt; den=poly([<span class="hljs-number">-1</span>, <span class="hljs-number">-4</span>, <span class="hljs-number">-8</span>]);
+&gt;&gt; G=tf(num,den)
+Transfer <span class="hljs-function"><span class="hljs-keyword">function</span> &#x27;<span class="hljs-title">G</span>&#x27; <span class="hljs-title">from</span> <span class="hljs-title">input</span> &#x27;<span class="hljs-title">u1</span>&#x27; <span class="hljs-title">to</span> <span class="hljs-title">output</span> ...</span>
+
+             s^<span class="hljs-number">2</span> + <span class="hljs-number">2</span> s
+ y1:  ------------------------
+      s^<span class="hljs-number">3</span> + <span class="hljs-number">13</span> s^<span class="hljs-number">2</span> + <span class="hljs-number">44</span> s + <span class="hljs-number">32</span>
+
+Continuous-time model.
+&gt;&gt; zpk(G)
+Transfer <span class="hljs-function"><span class="hljs-keyword">function</span> &#x27;<span class="hljs-title">ans</span>&#x27; <span class="hljs-title">from</span> <span class="hljs-title">input</span> &#x27;<span class="hljs-title">u1</span>&#x27; <span class="hljs-title">to</span> <span class="hljs-title">output</span> ...</span>
+
+             s^<span class="hljs-number">2</span> + <span class="hljs-number">2</span> s
+ y1:  ------------------------
+      s^<span class="hljs-number">3</span> + <span class="hljs-number">13</span> s^<span class="hljs-number">2</span> + <span class="hljs-number">44</span> s + <span class="hljs-number">32</span>
+
+Continuous-time model.
+&gt;&gt; <span class="hljs-comment">% conferindo detalhes da função transferência:</span>
+&gt;&gt; pole(G)
+<span class="hljs-built_in">ans</span> =
+  <span class="hljs-number">-8</span>
+  <span class="hljs-number">-4</span>
+  <span class="hljs-number">-1</span>
+
+&gt;&gt; zero(G)
+<span class="hljs-built_in">ans</span> =
+  <span class="hljs-number">-2</span>
+   <span class="hljs-number">0</span>
+&gt;&gt; <span class="hljs-comment">% de outra forma:</span>
+&gt;&gt; [z,p,k]=tf2zp(G)
+z = [](<span class="hljs-number">0x1</span>)
+p =
+
+  <span class="hljs-number">-10</span>
+   <span class="hljs-number">-4</span>
+   <span class="hljs-number">-1</span>
+
+k = <span class="hljs-number">40</span>
+&gt;&gt;
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>: a função <code>tf2zp()</code> (disponível no pacote <code>signal</code>) permite obter um resultado simular ao que seria obtido usando a função <code>zpk()</code> do MATLAB</p>
+</blockquote>
+<hr>
+<h2 id="exemplo-de-uso-projeto-de-um-controlador-proporcional">Exemplo de Uso: Projeto de um Controlador Proporcional</h2>
+<p>Seja uma planta como:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>40</mn><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><mn>10</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+G(s)=\dfrac{40}{(s+1)(s+4)(s+10)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.25744em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">10</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">40</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></eqn></section></math>
+<p>O projeto de um controlador Proporcional com sobressinal máximo de 10% poderia ser desenvolvido como:</p>
+<pre><code class="language-matlab">&gt;&gt; <span class="hljs-comment">% Nâo esquecer de carregar certos pacotes:</span>
+&gt;&gt; pkg load control
+&gt;&gt; pkg load symbolic
+&gt;&gt; 
+&gt;&gt; G=tf(<span class="hljs-number">40</span>,poly([<span class="hljs-number">-1</span> <span class="hljs-number">-4</span> <span class="hljs-number">-10</span>]))   <span class="hljs-comment">% ingressando a planta</span>
+
+Transfer <span class="hljs-function"><span class="hljs-keyword">function</span> &#x27;<span class="hljs-title">G</span>&#x27; <span class="hljs-title">from</span> <span class="hljs-title">input</span> &#x27;<span class="hljs-title">u1</span>&#x27; <span class="hljs-title">to</span> <span class="hljs-title">output</span> ...</span>
+
+                 <span class="hljs-number">40</span>
+ y1:  ------------------------
+      s^<span class="hljs-number">3</span> + <span class="hljs-number">15</span> s^<span class="hljs-number">2</span> + <span class="hljs-number">54</span> s + <span class="hljs-number">40</span>
+
+Continuous-time model.
+&gt;&gt; pole(G)  <span class="hljs-comment">% confirmando polos da planta</span>
+<span class="hljs-built_in">ans</span> =
+
+  <span class="hljs-number">-10</span>
+   <span class="hljs-number">-4</span>
+   <span class="hljs-number">-1</span>
+
+&gt;&gt; zero(G)  <span class="hljs-comment">% confirmando zeros da planta</span>
+<span class="hljs-built_in">ans</span> = [](<span class="hljs-number">0x1</span>)
+&gt;&gt; dcgain(G)    <span class="hljs-comment">% confirmando ganho DC da planta</span>
+<span class="hljs-built_in">ans</span> = <span class="hljs-number">1</span>
+&gt;&gt; <span class="hljs-comment">% Isto significa que um degrau de amplitude u(t)=1 na entrada da planta </span>
+&gt;&gt; <span class="hljs-comment">% faz saída convergir para y(∞)=1</span>
+&gt;&gt; <span class="hljs-comment">% confirmando aplicando degrau unitário na planta:</span>
+&gt;&gt; step(G)
+</code></pre>
+<p>O que deve ter gerado o seguinte gráfico:</p>
+<p><img src="figs/step_MA_exenmplo1.png" alt=""></p>
+<p>Temos que fechar a malha definindo um ganho para o controlador, evitando o sobressinal máximo desejado, então:</p>
+<pre><code class="language-matlab">&gt;&gt; OS=<span class="hljs-number">10</span>;   <span class="hljs-comment">% valor do sobressinal em porcentagem</span>
+&gt;&gt; zeta=(-<span class="hljs-built_in">log</span>(OS/<span class="hljs-number">100</span>))/(<span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">pi</span>^<span class="hljs-number">2</span>+(<span class="hljs-built_in">log</span>(OS/<span class="hljs-number">100</span>)^<span class="hljs-number">2</span>)))
+zeta = <span class="hljs-number">0.5912</span>
+&gt;&gt; rlocus(G)
+&gt;&gt; <span class="hljs-built_in">hold</span> on;
+&gt;&gt; sgrid(zeta,<span class="hljs-number">0</span>)
+error: sgrid: W argument (<span class="hljs-number">1</span>) must have positive values larger than <span class="hljs-number">0</span>
+error: called from
+    sgrid at line <span class="hljs-number">147</span> column <span class="hljs-number">7</span>
+&gt;&gt; <span class="hljs-comment">% sgrid obriga 2 parâmetros de entrada no mínimo</span>
+
+</code></pre>
+<p><img src="figs/exenmplo1_RL.png" alt=""></p>
+<p>Mas podemos traçar uma reta axial que parte da origem do plano-s. Conhecendo-se o valor do <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi></mrow><annotation encoding="application/x-tex">\zeta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span></span></span></span></eq> podemos determinar o ângulo <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></eq>, ver figura a seguir:</p>
+<p><img src="figs/polos_MF_2a_ordem.png" alt=""></p>
+<p>A figura anterior mostra polos de um sistema de 2a-ordem, do tipo:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi>Y</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mi>K</mi><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mi>K</mi><mrow><mo fence="true">(</mo><mfrac><msubsup><mi>ω</mi><mi>n</mi><mn>2</mn></msubsup><mrow><msup><mi>s</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>ζ</mi><mi>ω</mi><mi>s</mi><mo>+</mo><msubsup><mi>ω</mi><mi>n</mi><mn>2</mn></msubsup></mrow></mfrac><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\dfrac{Y(s)}{R(s)}=\dfrac{K}{(s+p_1)(s+p_2)}=K \left( \dfrac{\omega_n^2}{s^2+2\zeta\omega s + \omega_n^2} \right)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.29633em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.441138em;vertical-align:-0.95003em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.491108em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.4530000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.933em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span></span></span></span></span></eqn></section></math>
+<p>com polos em: <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mi>σ</mi><mo>±</mo><mi>j</mi><msub><mi>ω</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">s=\sigma \pm j \omega_d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">±</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>, onde:</p>
+<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><msub><mi>ω</mi><mi>n</mi></msub><mi>ζ</mi><mo>=</mo><msub><mi>ω</mi><mi>n</mi></msub><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sigma=\omega_n \zeta=\omega_n \cos(\alpha)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span></span></span></span></eq>;</br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ω</mi><mi>n</mi></msub><msqrt><mrow><mn>1</mn><mo>−</mo><msup><mi>ζ</mi><mn>2</mn></msup></mrow></msqrt><mo>=</mo><msub><mi>ω</mi><mi>n</mi></msub><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega_d = \omega_n \sqrt{1-\zeta^2}=\omega_n \sin(\alpha)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.2821659999999999em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9578340000000001em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-2.917834em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2821659999999999em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span></span></span></span></eq>;</br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi><mo>=</mo><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\zeta=\cos(\alpha)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span></span></span></span></eq>;</br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo><mo>=</mo><msqrt><mrow><mn>1</mn><mo>−</mo><msup><mi>ζ</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sin(\alpha)=\sqrt{1-\zeta^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.2821659999999999em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9578340000000001em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-2.917834em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2821659999999999em;"><span></span></span></span></span></span></span></span></span></eq>.</p>
+<p>então: <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mi>arccos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>ζ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\alpha=\arccos(\zeta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">arccos</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span><span class="mclose">)</span></span></span></span></eq></p>
+<pre><code class="language-matlab">&gt;&gt; alpha=<span class="hljs-built_in">acos</span>(zeta)
+alpha = <span class="hljs-number">0.9383</span>
+&gt;&gt; <span class="hljs-comment">% convertendo para graus:</span>
+&gt;&gt; alpha_deg=alpha*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>
+alpha_deg = <span class="hljs-number">53.761</span>
+</code></pre>
+<p>Podemos &quot;automatizar&quot; este cálculo e incluir os comandos para imprimir a reta correspondente a valores constantes de <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi></mrow><annotation encoding="application/x-tex">\zeta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span></span></span></span></eq>, criando uma <strong>nova</strong> função, neste caso, chamada de <code>sgrid2()</code>, cujo código aparece em seguinda:</p>
+<pre><code class="language-matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sgrid2</span> <span class="hljs-params">(zeta)</span></span>
+  <span class="hljs-comment">% função para plotar linha guia do zeta na última janela gráfica ativa</span>
+  <span class="hljs-comment">% a partir do valor de zetam calcula o angulo alpha e traça a reta</span>
+  <span class="hljs-comment">% que corresponde a linha guia</span>
+  <span class="hljs-comment">% Fernando Passold, em 29/12/2022</span>
+  alpha=<span class="hljs-built_in">acos</span>(zeta); <span class="hljs-comment">% angulo correspondente ao zeta</span>
+  <span class="hljs-comment">% fig=gcf(); % descobre numero da última janela ativa atual - dá no mesmo que fazer:</span>
+  fig = get (<span class="hljs-number">0</span>, <span class="hljs-string">&quot;currentfigure&quot;</span>); <span class="hljs-comment">% recupera número da última figura ativa</span>
+  <span class="hljs-comment">% Capturando limite da figura atual</span>
+  xlim=get(gca(),<span class="hljs-string">&quot;xlim&quot;</span>);
+  ylim=get(gca(),<span class="hljs-string">&quot;ylim&quot;</span>);
+  min_x=<span class="hljs-built_in">min</span>(xlim);
+  x=[<span class="hljs-number">0</span> min_x]; <span class="hljs-comment">% vetor pontos da reta</span>
+  y2=<span class="hljs-built_in">abs</span>(min_x)*<span class="hljs-built_in">tan</span>(alpha);
+  y=[<span class="hljs-number">0</span> y2];
+  <span class="hljs-built_in">hold</span> on;
+  <span class="hljs-built_in">plot</span>(x,y,<span class="hljs-string">&quot;color&quot;</span>,<span class="hljs-string">&quot;cyan&quot;</span>); <span class="hljs-comment">% ,&quot;linestyle&quot;,&quot;--&quot;);</span>
+  <span class="hljs-comment">% sobre propriedades de plot ver:</span>
+  <span class="hljs-comment">% https://docs.octave.org/v6.3.0/Line-Properties.html</span>
+  y=[<span class="hljs-number">0</span> -y2];
+  <span class="hljs-built_in">plot</span>(x,y,<span class="hljs-string">&quot;color&quot;</span>,<span class="hljs-string">&quot;cyan&quot;</span>);
+  shg <span class="hljs-comment">% show the graph window</span>
+  <span class="hljs-comment">% Note: shg is equivalent to figure (gcf) assuming that a current figure exists.</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>O resultado da aplicação da mesma na figura anterior gera:</p>
+<p><img src="figs/rlocus_sgrid2_1.png" alt=""></p>
+<p>Podemos usar o comando <code>&gt;&gt; legend off</code> para sumir com o quadro que aparece junto a figura.</p>
+<p>O Ocatve não possui uma função chamada <code>rlocfind()</code> como no caso do MATLAB, mas possui uma função similar: <code>rlocusx()</code>.</p>
+<p>No caso deste exemplo, resultaria em algo como:</p>
+<pre><code class="language-matlab">&gt;&gt; <span class="hljs-built_in">figure</span>; rlocusx(G)
+</code></pre>
+<p>O que acaba gerando uma figura como a mostrada à seguir:</p>
+<p><img src="figs/rlocusx_teste1.png" alt=""></p>
+<p>Mas note no exemplo anterior, que não foi possível imprimir uma linha guia para valores constantes de <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi></mrow><annotation encoding="application/x-tex">\zeta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span></span></span></span></eq>.</p>
+<p><strong>Note</strong> que <code>rlocuxx()</code> entretanto traz outras opções. Uma vez ingressado este comando, a janela gráfica entra em modo interativo aceitando os seguintes comandos (<a href="https://octave.sourceforge.io/control/function/rlocusx.html">https://octave.sourceforge.io/control/function/rlocusx.html</a>):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Tecla</th>
+<th style="text-align:left">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">clique-esquerdo</td>
+<td style="text-align:left">mostra valor do ganho, polos de MF, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi></mrow><annotation encoding="application/x-tex">\zeta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span></span></span></span></eq> e <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\omega_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq></td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:left">&quot;step&quot; = Resposta ao degrau unitário para ganho no ponto escolhido</td>
+</tr>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:left">&quot;bode&quot; = Diagrama de Bode</td>
+</tr>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:left">&quot;margin&quot; = Diagrama de Bode com margens de estabilidade (ganho e fase)</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:left">&quot;all&quot; = Plota os 4 gŕaficos anteriores</td>
+</tr>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:left">&quot;clear&quot; = limpa todas as anotações já feitas</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:left">&quot;delete&quot; = apaga todas as figuras abertas</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:left">&quot;eXit&quot; = sair do modo interativo</td>
+</tr>
+</tbody>
+</table>
+<p>Por exemplo, apontando mais de uma posição no RL, podemos obter uma figura como:</p>
+<p><img src="figs/rlocusx_exe1_2.png" alt=""></p>
+<p>O diagrama de bode com as margens de ganho e de fase são mostradas na próxima figura:</p>
+<p><img src="figs/bode_exe1.png" alt=""></p>
+<p>E a resposta à entrada degrau unitário para o ponto escolhido (<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>3</mn><mo separator="true">,</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">K=3,5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span></span></span></span></eq>) fica:</p>
+<p><img src="figs/step_exe1.png" alt=""></p>
+<p>E clicamos &quot;x&quot; para sair do modo interativo e voltar para a janela de comandos do Octave.</p>
+<p>A única limitação é que no RL mostrado, não aparece nenhuma linha guia referente a valores constantes de <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi></mrow><annotation encoding="application/x-tex">\zeta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span></span></span></span></eq>, o que dificulta um pouco a sintonia do controlador. <strong>Faltaria</strong> &quot;combinar&quot; a função <code>rlocusx()</code> com <code>sgrid2()</code>...</p>
+<p>Mas podemos tentar descobrir o ponto no RL com <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi><mo>=</mo><mn>0.5912</mn></mrow><annotation encoding="application/x-tex">\zeta=0.5912</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0.5912</span></span></span></span></eq>:</p>
+<p><img src="figs/rlocusx_exe1_zoom.png" alt=""></p>
+<p>Encontramos um ganho aproximado de <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>97</mn></mrow><annotation encoding="application/x-tex">K=1,97</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">97</span></span></span></span></eq> (<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">\zeta=0,6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.07378em;">ζ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">6</span></span></span></span></eq>).</p>
+<p>Fechando a malha com <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>95</mn></mrow><annotation encoding="application/x-tex">K=1,95</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">95</span></span></span></span></eq> vamos obter:</p>
+<pre><code class="language-matlab">&gt;&gt; ftma=K*G
+
+Transfer <span class="hljs-function"><span class="hljs-keyword">function</span> &#x27;<span class="hljs-title">ftma</span>&#x27; <span class="hljs-title">from</span> <span class="hljs-title">input</span> &#x27;<span class="hljs-title">u1</span>&#x27; <span class="hljs-title">to</span> <span class="hljs-title">output</span> ...</span>
+
+                 <span class="hljs-number">78</span>
+ y1:  ------------------------
+      s^<span class="hljs-number">3</span> + <span class="hljs-number">15</span> s^<span class="hljs-number">2</span> + <span class="hljs-number">54</span> s + <span class="hljs-number">40</span>
+
+&gt;&gt; H=tf(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)
+
+Transfer <span class="hljs-function"><span class="hljs-keyword">function</span> &#x27;<span class="hljs-title">H</span>&#x27; <span class="hljs-title">from</span> <span class="hljs-title">input</span> &#x27;<span class="hljs-title">u1</span>&#x27; <span class="hljs-title">to</span> <span class="hljs-title">output</span> ...</span>
+
+ y1:  <span class="hljs-number">1</span>
+
+Static gain.
+&gt;&gt; ftmf=feedback(ftma, H, <span class="hljs-number">-1</span>)
+
+Transfer <span class="hljs-function"><span class="hljs-keyword">function</span> &#x27;<span class="hljs-title">ftmf</span>&#x27; <span class="hljs-title">from</span> <span class="hljs-title">input</span> &#x27;<span class="hljs-title">u1</span>&#x27; <span class="hljs-title">to</span> <span class="hljs-title">output</span> ...</span>
+
+                 <span class="hljs-number">78</span>
+ y1:  -------------------------
+      s^<span class="hljs-number">3</span> + <span class="hljs-number">15</span> s^<span class="hljs-number">2</span> + <span class="hljs-number">54</span> s + <span class="hljs-number">118</span>
+
+Continuous-time model.
+&gt;&gt; <span class="hljs-comment">% gráfico da resposta ao degrau:</span>
+&gt;&gt; <span class="hljs-built_in">figure</span>; step(ftmf)
+&gt;&gt;
+</code></pre>
+<p>E a seguinte figura é gerada:</p>
+<p><img src="figs/step_exe1_K_1_95.png" alt=""></p>
+<p>Percebemos um grande erro de regime permanente, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo><mo>=</mo><mn>33</mn><mo separator="true">,</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">e(\infty)=33,9%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord">∞</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">33</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">9</span></span></span></span></eq>:</p>
+<pre><code class="language-matlab">&gt;&gt; dcgain(ftmf)
+<span class="hljs-built_in">ans</span> = <span class="hljs-number">0.6610</span>
+&gt;&gt; erro=(<span class="hljs-number">1</span>-dcgain(ftmf))/<span class="hljs-number">1</span>*<span class="hljs-number">100</span>
+erro = <span class="hljs-number">33.898</span>
+&gt;&gt;
+</code></pre>
+<p>Por curiosidade, usando este controlador e limitando o erro à 10%, teríamos que usar outro valor de ganho:</p>
+<p>Lembrando da Teoria do Erro:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>e</mi><mtext>Step</mtext></msub><mo stretchy="false">(</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mrow><mi>lim</mi><mo>⁡</mo></mrow><mrow><mi>s</mi><mo>→</mo><mn>0</mn></mrow></munder><mi>s</mi><mtext> </mtext><mi>E</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><munder><mrow><mi>lim</mi><mo>⁡</mo></mrow><mrow><mi>s</mi><mo>→</mo><mn>0</mn></mrow></munder><mi>F</mi><mi>T</mi><mi>M</mi><mi>A</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msub><mi>K</mi><mi>p</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+e_{\text{Step}}(\infty)=\lim_{s \to 0} s \, E(s) = \dfrac{1}{1+\lim_{s \to 0} FTMA(s)}=\dfrac{1}{1+K_p}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328331em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">Step</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">∞</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.467108em;vertical-align:-0.717108em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-2.382892em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mrel mtight">→</span><span class="mord mtight">0</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.717108em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.25744em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mop"><span class="mop">lim</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mrel mtight">→</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">FTM</span><span class="mord mathnormal">A</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.293548em;vertical-align:-0.972108em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.972108em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></eqn></section></math>
+<p>onde <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>p</mi></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">K_p=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq>constante do erro estático de posição.</p>
+<p>Neste caso, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo><mo>=</mo><mn>10</mn><mi mathvariant="normal">%</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">e(\infty)=10\%=0,1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord">∞</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">10%</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span></span></span></span></eq>, então <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">K_p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></eq> deveria assumir o valor:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.1600em" columnalign="right center left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msub><mi>K</mi><mi>p</mi></msub></mrow></mfrac></mstyle></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>K</mi><mi>p</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn><mo>−</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow><mrow><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow></mfrac></mstyle><mo>=</mo><mn>9</mn></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{array}{rcl}
+0,1 &amp;=&amp; \dfrac{1}{1+K_p}\\
+K_p &amp;=&amp; \dfrac{1-0,1}{0,1}=9
+\end{array}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.495428em;vertical-align:-1.9977140000000002em;"></span><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.497714em;"><span style="top:-4.497714em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span></span></span><span style="top:-2.204166em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9977140000000002em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.497714em;"><span style="top:-4.497714em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mrel">=</span></span></span><span style="top:-2.204166em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mrel">=</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9977140000000002em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.497714em;"><span style="top:-4.497714em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.972108em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.204166em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">9</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9977140000000002em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span></span></span></span></span></span></span></eqn></section></math>
+<p>Calculando a constante <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">K_p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></eq> para esta planta:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.1600em" columnalign="right center left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mrow><mi>lim</mi><mo>⁡</mo></mrow><mrow><mi>s</mi><mo>→</mo><mn>0</mn></mrow></msub><mi>F</mi><mi>T</mi><mi>M</mi><mi>A</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mrow><mi>lim</mi><mo>⁡</mo></mrow><mrow><mi>s</mi><mo>→</mo><mn>0</mn></mrow></msub><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>K</mi><mo>⋅</mo><mn>40</mn></mrow><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><mn>10</mn><mo stretchy="false">)</mo></mrow></mfrac></mstyle></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>40</mn><mi>K</mi></mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo></mrow></mfrac></mstyle></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>K</mi></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{array}{rcl}
+\lim_{s \to 0} FTMA(s) &amp;=&amp; \lim_{s \to 0} \dfrac{K \cdot 40}{(s+1)(s+4)(s+10)}\\
+&amp;=&amp; \dfrac{40 K}{(1)(4)(10)}\\
+&amp;=&amp; K
+\end{array}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:5.792660000000001em;vertical-align:-2.6463300000000003em;"></span><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.1463300000000003em;"><span style="top:-5.146330000000001em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"><span class="mop"><span class="mop">lim</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mrel mtight">→</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">FTM</span><span class="mord mathnormal">A</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span><span style="top:-2.85em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"></span></span><span style="top:-1.074em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.6463300000000003em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.1463300000000003em;"><span style="top:-5.146330000000001em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"><span class="mrel">=</span></span></span><span style="top:-2.85em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"><span class="mrel">=</span></span></span><span style="top:-1.074em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"><span class="mrel">=</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.6463300000000003em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.1463300000000003em;"><span style="top:-5.146330000000001em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"><span class="mop"><span class="mop">lim</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mrel mtight">→</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">10</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">40</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.85em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">10</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">40</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-1.074em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.6463300000000003em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span></span></span></span></span></span></span></eqn></section></math>
+<p>Então <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><msub><mi>K</mi><mi>p</mi></msub><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">K=K_p=9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span></span></span></span></eq>. Testando:</p>
+<pre><code class="language-matlab">&gt;&gt; ftma2=<span class="hljs-number">9</span>*G
+
+Transfer <span class="hljs-function"><span class="hljs-keyword">function</span> &#x27;<span class="hljs-title">ftma2</span>&#x27; <span class="hljs-title">from</span> <span class="hljs-title">input</span> &#x27;<span class="hljs-title">u1</span>&#x27; <span class="hljs-title">to</span> <span class="hljs-title">output</span> ...</span>
+
+                <span class="hljs-number">360</span>
+ y1:  ------------------------
+      s^<span class="hljs-number">3</span> + <span class="hljs-number">15</span> s^<span class="hljs-number">2</span> + <span class="hljs-number">54</span> s + <span class="hljs-number">40</span>
+
+Continuous-time model.
+
+&gt;&gt; <span class="hljs-comment">% Conferindo detalhes da FTMA2(s):</span>
+&gt;&gt; [z,p,k]=tf2zp(ftma2)
+z = [](<span class="hljs-number">0x1</span>)
+p =
+
+  <span class="hljs-number">-10</span>
+   <span class="hljs-number">-4</span>
+   <span class="hljs-number">-1</span>
+
+k = <span class="hljs-number">360</span>
+&gt;&gt;
+&gt;&gt; ftmf2=feedback(ftma2, H, <span class="hljs-number">-1</span>);
+&gt;&gt; <span class="hljs-built_in">figure</span>; step(ftmf2)
+&gt;&gt;
+</code></pre>
+<p>E obtemos a resposta:</p>
+<p><img src="figs/exe_1_step_K_9.png" alt=""></p>
+<p><strong>Faltaria</strong> obter informações sobre as características de resposta do sitema (função <code>stepinfo()</code> no MATLAB).</p>
+<h3 id="outras-funções-do-octave">Outras funções do Octave</h3>
+<ul>
+<li>
+<p>Blocos em série:
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>G</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>⋅</mo><msub><mi>G</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G(s)=G_1(s) \cdot G_2(s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></eq>
+<code>&gt;&gt; G = series(G1, G2)</code></p>
+</li>
+<li>
+<p>Blocos em paralelo:
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>G</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>+</mo><msub><mi>G</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G(s)=G_1(s)+G_2(s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></eq>
+<code>&gt;&gt; G = parallel(G1, G2)</code></p>
+</li>
+<li>
+<p>Realimentação:
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>G</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>G</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><msub><mi>G</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">G(s)=\dfrac{G_1(s)}{1+G_1(s)G_2(s)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></eq>
+<code>&gt;&gt; G = feedback(G1, G2, -1)</code></p>
+</li>
+<li>
+<p>Resíduos de uma função transferência:
+<code>&gt;&gt; [r,p,k]=residue (num,den)</code></p>
+</li>
+</ul>
+<p>Exemplo: Seja a seguinte função transferência:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mn>4</mn><mi>s</mi><mo>+</mo><mn>6</mn></mrow><mrow><mn>2</mn><msup><mi>s</mi><mn>3</mn></msup><mo>+</mo><mn>10</mn><msup><mi>s</mi><mn>2</mn></msup><mo>+</mo><mn>16</mn><mi>s</mi><mo>+</mo><mn>8</mn></mrow></mfrac><mspace width="2em"/><mtext>eq. (1)</mtext></mrow><annotation encoding="application/x-tex">
+G(s)=\dfrac{4s+6}{2s^3+10s^2+16s+8}\qquad \text{eq. (1)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.09077em;vertical-align:-0.7693300000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">10</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">16</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">8</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:2em;"></span><span class="mord text"><span class="mord">eq. (1)</span></span></span></span></span></span></eqn></section></math>
+<p>supondo que esta função foi gerada à partir da eq. diferencial:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mn>2</mn><mtext> </mtext><msup><mi>d</mi><mn>3</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>3</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><mn>10</mn><mtext> </mtext><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><mn>16</mn><mtext> </mtext><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mn>8</mn><mi>y</mi><mo>=</mo><mfrac><mrow><mn>4</mn><mtext> </mtext><mi>d</mi><mi>u</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mn>6</mn><mi>u</mi></mrow><annotation encoding="application/x-tex">
+\dfrac{2\,d^3 y}{dt^3}+\dfrac{10\,d^2 y}{dt^2} + \dfrac{16\,dy}{dt} + 8y = \dfrac{4\,du}{dt}+6u
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.177108em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.491108em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.177108em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.491108em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">10</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.0574399999999997em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">8</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.05744em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord mathnormal">u</span></span></span></span></span></eqn></section></math>
+<p>A expansão em frações parciais de (1), rende:</p>
+<pre><code class="language-matlab">&gt;&gt; num=[<span class="hljs-number">4</span> <span class="hljs-number">6</span>];
+&gt;&gt; den=[<span class="hljs-number">2</span> <span class="hljs-number">10</span> <span class="hljs-number">16</span> <span class="hljs-number">8</span>];
+&gt;&gt; [r,p,k]=residue(num,den)
+r =
+
+  <span class="hljs-number">-1</span>
+   <span class="hljs-number">1</span>
+   <span class="hljs-number">1</span>
+
+p =
+
+  <span class="hljs-number">-2</span>
+  <span class="hljs-number">-2</span>
+  <span class="hljs-number">-1</span>
+
+k = [](<span class="hljs-number">0x0</span>)
+&gt;&gt;
+</code></pre>
+<p>Resultado da expanção:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.1600em" columnalign="right center left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>G</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>4</mn><mi>s</mi><mo>+</mo><mn>6</mn></mrow><mrow><mn>2</mn><msup><mi>s</mi><mn>3</mn></msup><mo>+</mo><mn>10</mn><msup><mi>s</mi><mn>2</mn></msup><mo>+</mo><mn>16</mn><mi>s</mi><mo>+</mo><mn>8</mn></mrow></mfrac></mstyle></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac></mstyle><mo>−</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac></mstyle></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{array}{rcl}
+G(s) &amp;=&amp; \dfrac{4s+6}{2s^3+10s^2+16s+8}\\
+&amp;=&amp; - \dfrac{1}{(s+2)} + \dfrac{1}{(s+2)} - \dfrac{1}{(s+1)}\\
+\end{array}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.34821em;vertical-align:-1.924105em;"></span><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.424105em;"><span style="top:-4.424105em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span><span style="top:-2.333335em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.924105em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.424105em;"><span style="top:-4.424105em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mrel">=</span></span></span><span style="top:-2.333335em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mrel">=</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.924105em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.424105em;"><span style="top:-4.424105em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">10</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">16</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">8</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.333335em;"><span class="pstrut" style="height:3.32144em;"></span><span class="mord"><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.924105em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span></span></span></span></span></span></span></eqn></section></math>
+<p>Lembrando da tabela de transformadas de Laplace:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></eq></th>
+<th style="text-align:center"><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F(s))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">))</span></span></span></span></eq></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>a</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{at}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7935559999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7935559999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span></span></span></eq></td>
+<td style="text-align:center"><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>1</mn><mrow><mi>s</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\dfrac{1}{s-a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.09077em;vertical-align:-0.7693300000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">a</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></eq></td>
+</tr>
+</tbody>
+</table>
+<p>vamos obter:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><msup><mi>e</mi><mrow><mo>−</mo><mn>2</mn><mi>t</mi></mrow></msup><mo>+</mo><msup><mi>e</mi><mrow><mo>−</mo><mn>2</mn><mi>t</mi></mrow></msup><mo>+</mo><mn>1</mn><msup><mi>e</mi><mrow><mo>−</mo><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">
+g(t)=-e^{-2t}+e^{-2t}+1e^{-t}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.947438em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">2</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.947438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">2</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.843556em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.843556em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span></span></span></span></eqn></section></math>
+<hr>
+<p>Fim</p>
 </div>
         </div>
-        
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         <script async type="text/javascript">
 /* From extension bierner.markdown-mermaid */
 /*! For license information please see index.bundle.js.LICENSE.txt */
