@@ -14,23 +14,28 @@ Seguem anotações/Comentários em sala de aula sobre tópico:
 
 ### Slide 29: Contador módulo 12 --> 0 ~ 11
 
-= contador divisor de frequencia por 12.
+= contador divisor de frequência por 12.
+
+![contador_assync_div_12_7493](./contador_assync_div_12_7493.png)
 
 *Solução*: usando 74LS**93** (MOD-16: 0 ~ 15=F)
 
 Reset ou "Master Reset" quando atinge o número $12_{(10)}=1100_{(2)}$.
 
-**Q3=1**; **Q2=1**; Q1=0 e Q0=0;
+No CI: **Q3=1**; **Q2=1**; Q1=0 e Q0=0 (Na figura apresentada, detectar Q4 e Q3).
 
-0...9 --> 10=A --> 11=b --> 0 -->  
+
 
 ---
 
-### Slide 38: Exercício 3 --> Circuito **dividor de frequencia por 42**.
+### Slide 38: Exercício 3 --> Circuito **divisor de frequência por 42**.
 
-**Opção c)** 42 divisivel por 6 --> 42/6 = 7 ---> $\div 42 = \div 6, \quad \div 7$;
 
-**Opção a)** Usando CI 74**90** --> 2 x 7490 --> 1o. Momento: $\div 100$ [circuito: [contador_MOD_100_74LS90.DSN](contador_MOD_100_74LS90.DSN) ]- -> 2o. Momento: Programar um "Master Reset" quando contagem atinge  $42_{(10)}=4|2_{(10)}={\underbrace{0100}_{Dezenas}|\underbrace{0010}_{Unidades}} \space_{(2,\,BCD)}$.
+
+**Opção a)** Usando CI 74**90** --> 2 x 7490:
+
+1. Etapa 1: Circuito contador ÷ 100 [circuito: [contador_MOD_100_74LS90.DSN](contador_MOD_100_74LS90.DSN) ]
+2. Etapa 2: Programar um "Master Reset" quando contagem atinge  $42_{(10)}=4|2_{(10)}={\underbrace{0100}_{Dezenas}|\underbrace{0010}_{Unidades}} \space_{(2,\,BCD)}$.
 
 Circuito final:  [contador_div42_74LS90.DSN](contador_div42_74LS90.DSN) 
 
@@ -38,18 +43,21 @@ Circuito final:  [contador_div42_74LS90.DSN](contador_div42_74LS90.DSN)
 
 Obs.: para mostrar o Frequência no Proteus:
 
-1. Na aba lateral esquerda, selecione "Instrumentos" e entre os instrumentos, selecione: "Counter Timer":
-   <img src="frequencímetro_ajuste_propriedades_1.PNG" alt="frequencímetro_ajuste_propriedades_1" style="zoom:100%;" />
+1. Na aba lateral esquerda, selecione "Instrumentos" e entre os instrumentos, selecione: "*Counter Timer*":
 
-2. Arraste este instrumento até o ponto desejado no diagrama elétrico e modifique suas propriedades do padrão "Time (secs)" para "Frequency":
+   ![frequencímetro_ajuste_propriedades_1.PNG](frequencímetro_ajuste_propriedades_1.PNG)
+
+   
+
+2. Arraste este instrumento até o ponto desejado no diagrama elétrico e modifique suas propriedades do padrão "*Time (secs)*" para "*Frequency*":
 
    | Propriedade "default"                                        | Ajuste para Frequencímetro                                   |
    | ------------------------------------------------------------ | ------------------------------------------------------------ |
-   | ![frequencímetro_ajuste_propriedades_2_Intruments_counter_timer](frequencímetro_ajuste_propriedades_2_Intruments_counter_timer.PNG) | ![frequencímetro_ajuste_propriedades_3](frequencímetro_ajuste_propriedades_3.png) |
+   | ![frequencímetro_ajuste_propriedades_2_Intruments_counter_timer](./frequencímetro_ajuste_propriedades_2_Intruments_counter_timer.PNG) | ![frequencímetro_ajuste_propriedades_3](./frequencímetro_ajuste_propriedades_3.png) |
 
-3. Note que é necessário "habilitar" este intrumento. Setando a entrada **CE** = Count Enable e desativando a entrada **RST** = Reset.
+3. Note que é necessário "habilitar" este instrumento. Ajustando a entrada **CE** = *Count Enable* e desativando a entrada **RST** = *Reset*.
 
-###### Determinando "duty-cycle" do circuto anterior:
+###### Determinando "duty-cycle" do circuito anterior:
 
 Parte da Tabela verdade do contador:
 
@@ -72,7 +80,10 @@ Reparo que $Q_2$ de U2 permanece em nível lógico ALTO somente durante 2 pulsos
 
 ---
 
-**Opção b)** Usando CI 74**93** --> 2 x 7490 --> 1o. Momento: $\div 16, \, \div16 = \div 256$ --> 2o. Momento: Programar um "Master Reset" quando contagem atinge $42_{(10)}={\underbrace{0010}_{2}:\underbrace{1010}_{A}}\space_{(2)}$.
+**Opção b)** Usando CI 74**93** $\rightarrow$ 2 x 7490:
+
+1. Etapa 1: Circuito ÷ 16 cascateado com outro circuito ÷ 16 ==> Total: ÷ 256
+2. Etapa 2: Programar um "Master Reset" quando contagem atinge $42_{(10)}={\underbrace{0010}_{2}:\underbrace{1010}_{A}}\space_{(2)}$.
 
 Circuito final:  [contador_div42_74LS93.DSN](contador_div42_74LS93.DSN) 
 
@@ -101,17 +112,24 @@ Note: $F_{OUT}$ está sendo coletado na saída Q1 de U2.
 
 Repare que $Q_1$ de U2 permanece em nível lógico ALTO somente durante 10 pulsos de Clock ($F_{IN}$) num ciclo de contagem de 42 pulsos --> $duty\, cycle=\dfrac{10}{42}\times 100\%=23,80952381%$.
 
-Também é possível usar a ferramenta "Graphs/Digital" para mostrar na tela um diagrama de formas de onda e confirmar visualmente o duty-cycle gerado na saída $F_{OUT}$:
+Também é possível usar a ferramenta "*Graphs/Digital*" para mostrar na tela um diagrama de formas de onda e confirmar visualmente o duty-cycle gerado na saída $F_{OUT}$:
 
 ![contador_div42_74LS93_duty_cycle](contador_div42_74LS93_duty_cycle.png)
 
 Note na figura acima, que a janela de tempo de simulação foi alterada para mostrar os primeiros 20 ns de funcionamento do circuito, com $F_{IN}$ ajustado para 4200 Hz.
+
+**Opção c)** 42   divisível por 6 --> 42/6 = 7 ---> ÷ 42 = ÷ 6, ÷ 7;
+(circuito não apresentado aqui)
 
 
 
 ---
 
 ### Slide 44: analisando/entendendo o efeito visual produzido pelo circuito.
+
+Circuito:
+
+![circuito_efeito_visual](./circuito_efeito_visual.png)
 
 Levanta-se equações:
 
