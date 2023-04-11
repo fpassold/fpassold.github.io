@@ -14,7 +14,9 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
   * [Sintonia de PID: Método 3) Método do Relé (Parte I: teoria)](https://fpassold.github.io/Controle_2/8_Ajuste_PID/Sintonia_PIDs_usando_ZN.html); <!-- (aula de 27/10/2022); :white_check_mark: -->
   * [Sintonia de PID: Método 3) Método do Relé (Parte II: simulação)](aula2/metodo_rele_2_simulink.html); <!-- (aula de 27/10/2022); :white_check_mark: -->
 
-* **Projeto Final (Proposta não confirmada) <!-- (versão 1)** (**==cancelado== em 01/12/2022)**; -->
+&nbsp;
+
+* Projeto Final <!-- (Proposta não confirmada) (versão 1)** (**==cancelado== em 01/12/2022)**; -->
   * [Texto sobre Projeto Final](Projeto_Final/projeto_final.html); <!-- >:white_check_mark: -->
   * [**Arduino & Interrupções**](Arduino_Int/Arduino_Int.html); <!-- :white_check_mark: -->
   * [Sugestões uso PWM filtrado do Arduino com kit Feedback](Projeto_Final/parte_10_11_2022.html); <!-- :white_check_mark: -->
@@ -22,17 +24,41 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
   * [Gerador **onda triangular** 0,1 Hz](Projeto_Final/onda_triangular.html); <!--  :white_check_mark: -->
   * [Prevendo uma **Interface com o Usuário**](Projeto_Final/interface_usuario.html);
 
+&nbsp;
+
+* [Controle de Posição usando PID Analógico](controle_posicao.html) (Aula prevista para 11/04/2023)
+
+&nbsp;
+
+#### Sequencia de aulas previstas para o semestre de 2023/1:
+
+* Módulo externo de ajuste de ganho/offset para A/D;
+* Módulo externo D/A p/Arduíno (Raspberry);
+* Filtros Passa-Baixa de 5a-ordem.
+
+* Testes com **PID Analógico**:
+	* Controle de Posição ou,
+	* Controle de Velocidde.
+	* Usando Método 2 de sintonia de PID (fechamento da malha com Controlador Proporcional, determinação de $K_u$ e $T_u$ (usando osciloscópio))
+	* Sintonia fina
+
+* Testes com **PID Digital** usando placa Arduino One
+	* Selecionar e fixar fs (50 ou 100 Hz) ou T.
+	* Implementar (usando Interrupção), algoritmo de PID Parelelo;
+	* Prever alguma interface de entrada e de saída com usuário.
+	* Sintonia deste PID usando Método 2.
+	* Sintonia Fina
+
+
 <!--
   * [PIC com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento).
--->
 
 * **Trabalho Final** (Proposta não confirmada)
   
-  * [**PID com Anti-Windup**](Trabalho_Final_2/trabalho_final_2_lab_controle_2_2022_2.html) <!--(Data entrega: 08/12/2022) -->
-
-
-<font size="1">[♫](https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days)</font> 
+  * [**PID com Anti-Windup**](Trabalho_Final_2/trabalho_final_2_lab_controle_2_2022_2.html) 
+-->  
+  <!--(Data entrega: 08/12/2022) -->
 
 -----
 
-Fernando Passold, em 22/10/2022, 02/12/2022, 28/02/2023.
+<font size="1">[♫](https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days) Fernando Passold, em 22/10/2022, 02/12/2022, 11/04/2023</font> .
