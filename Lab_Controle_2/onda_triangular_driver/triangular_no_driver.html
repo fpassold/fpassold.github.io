@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Lab Controle 2</title>
+        <title>Teste Onda Triangular</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -2970,94 +2970,30 @@ aside > *:last-child {
             <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="default"></span>
-                <!-- title: Lab Controle 2 -->
-<p><img src="https://images.unsplash.com/photo-1605387202149-47169c4ea58a?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="">
-Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Marc Wieland</a> on <a href="https://unsplash.com/s/photos/sailing?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-<h1 id="laboratório-de-controle-automático-ii">Laboratório de Controle Automático II</h1>
-<h2 id="aulas">Aulas:</h2>
+                <!-- title: Teste Onda Triangular -->
+<h1 id="teste-de-onda-triangular">Teste de Onda Triangular</h1>
+<p>A título de experimentação a onda triangular com período de oscilação de 10 segundos e tensão variando entre 0 à 5 Volts, obtido a partir da saída PWM filtrada da placa Arduino One, foi aplicada diretamente numa das entradas do driver de potência (módulo SA150D).</p>
+<p>O código usado para gerar a onda triangular é o mesmo já apresentado antes aqui: <a href="https://fpassold.github.io/Lab_Controle_2/Projeto_Final/onda_triangular.html">https://fpassold.github.io/Lab_Controle_2/Projeto_Final/onda_triangular.html</a>.</p>
+<p><strong>Montagem realizada:</strong></p>
 <ul>
-<li>
-<p>Lab 1) <a href="Lab1/lab1.html">PID (alógico) e Métodos de sintonização</a> <!-- (aula de 13/10/2022). :white_check_mark: --></p>
-</li>
-<li>
-<p>Lab 2) Simulações sintonização PIDs:</p>
-<ul>
-<li><a href="aula2/aula2.html">Sintonia de PID: Método 1) Resposta em MA para entrada degrau</a> <!-- (aula de 20/10/2022); :white_check_mark: --></li>
-<li><a href="aula2/aula2b.html">Sintonia de PID: Método 2) Buscando <em>Ku</em></a> <!-- (aula de 20/10/2022); :white_check_mark: --></li>
-<li><a href="https://fpassold.github.io/Controle_2/8_Ajuste_PID/Sintonia_PIDs_usando_ZN.html">Sintonia de PID: Método 3) Método do Relé (Parte I: teoria)</a>; <!-- (aula de 27/10/2022); :white_check_mark: --></li>
-<li><a href="aula2/metodo_rele_2_simulink.html">Sintonia de PID: Método 3) Método do Relé (Parte II: simulação)</a>; <!-- (aula de 27/10/2022); :white_check_mark: --></li>
+<li>A saída filtrada RC depois do pino 6 do Arduíno foi primeiramente diretamente conectada à entrada &quot;1&quot; do driver de potência (módulo SA150D);</li>
+<li>O canal 1 do osciloscópio foi conectada à entrada 1 do driver de potência para monitorar a tensão efetivamente aplicada;</li>
+<li>O canal 2 do osciloscópio foi conectado aos terminais 1 e 2 do tacogerador (módulo GT150X), para, através da d.d.p. gerada, monitorar no osciloscópio as velocidades alançadas pelo motor. Note que no painel do módulo GT150X, se realizada a conexão do pino 1 ao sei pino 3, e se sua chave seletora for ajustada para a posiçao <em>tacho rpm</em>, pode ser observado no painel deste instrumento, as velocidades geradas já convertidas para a escala de RPM. Não esquecer de alimentar o módulo GT150X se for desejado que o mesmo realize as medições. Se é apenas para monitorar a tensão gerada no tacogerador, não necessariamente este módulo necessita ser alimentado.</li>
 </ul>
-</li>
-</ul>
-<p> </p>
-<ul>
-<li>Projeto Final <!-- (Proposta não confirmada) (versão 1)** (**==cancelado== em 01/12/2022)**; -->
-<ul>
-<li><a href="Projeto_Final/projeto_final.html">Texto sobre Projeto Final</a>; <!-- >:white_check_mark: --></li>
-<li><a href="Arduino_Int/Arduino_Int.html"><strong>Arduino &amp; Interrupções</strong></a>; <!-- :white_check_mark: --></li>
-<li><a href="Projeto_Final/parte_10_11_2022.html">Sugestões uso PWM filtrado do Arduino com kit Feedback</a>; <!-- :white_check_mark: --></li>
-<li><a href="Projeto_Final/gerador_senoidal.html">Gerador <strong>Senoide</strong> 40 Hz</a>; <!-- :white_check_mark: --></li>
-<li><a href="Projeto_Final/onda_triangular.html">Gerador <strong>onda triangular</strong> 0,1 Hz</a>; <!--  :white_check_mark: --></li>
-<li><a href="Projeto_Final/interface_usuario.html">Prevendo uma <strong>Interface com o Usuário</strong></a>;</li>
-</ul>
-</li>
-</ul>
-<p> </p>
-<ul>
-<li><a href="controle_posicao.html">Controle de Posição usando PID Analógico</a> (Aula prevista para 11/04/2023, Ok 👍)</li>
-</ul>
-<p> </p>
-<ul>
-<li><a href="PID/pid.html">PID Digital</a> (equações, código, implementação) (previsto para 25/04/2023)</li>
-</ul>
-<p> </p>
-<ul>
-<li><a href="onda_triangular_driver/triangular_no_driver.html">Aplicando uma Onda Triangular</a> no driver de potência SA150D da Feedback (controle de velocidade em malha-aberta) -- teste realizado no dia 25/04/2023.</li>
-</ul>
-<p> </p>
+<p>O que se prentede aqui é apenas reparar como o motor reage quando lhe é aplicado (em malha-aberta), uma tensão de entrada (no seu driver de potência) variando lentamente entre certa faixa de valores. Seria uma espécie de &quot;controle´´ de velocidade em malha-aberta.</p>
+<p><strong>Observado</strong>:</p>
+<p>Ocorre uma boa queda de tensão na saída filtrada do PWM (depois da rede RC), quando o sinal é efetivamente usado para excitar o módulo SA150D. Pôde ser observado na tela do osciloscópio que a tensão variou apenas entre 0 à 2,28 Volts aproximadamente. Isto significa que <strong>devemos acrescentar um Amp.Op. seguidor de tensão na saída do filtro RC</strong>. Mesmo assim, se comprovou que a velocidade do motor oscilou entre uns 250 RPM e pouco mais de 2000 RPM, quando excitado com esta forma de onda.</p>
+<p><img src="TEK0001.JPG" alt=""></p>
+<p>A figura acima mostra no canal 1 (curva azul), os níveis de tensão diretamente aplicados apenas à entrada 1 do driver de potência (módulo SA150D), sem passar por nenhum Amp.Op. isolador. E o canal 2, mostra as tensões desenvolvidas (d.d.p.) na saída do tacogerador do kit (módulo GTX150X), entre seus pinos 1 e 2. No painel deste instrumento pode-se captar leituras de RPM variando entre uns 250 RPM à pouco mais de 2000 RPM, significando que mesmo um sinal de controle oscilando entre 0 à 2,28 Volts é capaz de fazer variar o motor até sua velocidade máxima. Note que pode-se considerar o motor com certa carga, uma vez que estava acoplado ao eixo de saída do tacogerador, o potenciometro usado como sensor de posição angular (módulo OP150K). <strong>Mas...</strong> poderia-se ter incluído o freio magnético na montagem (módulo LU150L).</p>
+<p>Já a próxima tela capturada se concentra nas amplitudes verificadas na saída do tacogerador, onde se pode regristrar um <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>V</mi><mo>=</mo><mn>6</mn><mo separator="true">,</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">\Delta V = 6,12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">12</span></span></span></span></eq> Volts que corresponde a variação de velocidade desenvolvida pelo motor neste teste.</p>
+<p><img src="TEK0002.JPG" alt=""></p>
+<p>A próxima figura comprova as amplitudes originalmente esperadas na saída do filtro RC da saída PWM (pino 6) do Arduino. Nota-se que era esperada uma amplitude de oscilação entre: <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 5]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span><span class="mclose">]</span></span></span></span></eq> Volts (comprovado na prática, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>4</mn><mo separator="true">,</mo><mn>76</mn></mrow><annotation encoding="application/x-tex">\Delta V_{in} = 4,76</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">76</span></span></span></span></eq> Volts):</p>
+<p><img src="TEK0004.JPG" alt=""></p>
+<p>Por fim, foi usado o Amp.Op. (módulo OA150A) do kit Feedback para trabalhar comum um ''buffer isolador´´ entre a saída PWM filtrada do Arduino e o sinal de entrada no driver de potência (módulo SA150D). Neste caso, a chave seletora de ''<em>feedback selector</em>`` foi ajustada para a posição do resistor de 100K<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>O</mi><mi>m</mi><mi>e</mi><mi>g</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">|Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">a</span></span></span></span></eq>, resultando nunm ganho (inversor), <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K=-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span></eq> (ou seja, a polaridade do sinal gerado foi invertida). O resultado do sinal que então alcançou o módulo SA150D depois de passar pelo AO150A, é mostrado abaixo:</p>
+<p><img src="TEK0007.JPG" alt=""></p>
+<p>Neste caso, percebe-se que a amplitudo de sinal de entrada no módulo SA150D variou entre: -6, à 0 Volts. O sentido de giro do motor se inverteu em comparação ao teste anteiror. <strong>Mas</strong>, o motor se comportou de forma ligeiramente diferente, acusando alguma <strong>saturação</strong> no driver de potência SA150D. Note a parte infeior achatada da curva vermelha, acusando que o motor praticamente ''saturou´´ próximo da velocidade máxima (Cursos 2 em -6,24 Volts), o implica que <strong>não parece ser interessante repassar tensões <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mi mathvariant="normal">∣</mi><mn>2</mn><mo separator="true">,</mo><mn>5</mn><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">\ge |2,5|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5∣</span></span></span></span></eq> Volts na entrada do driver de potência</strong> (módulo SA150D).</p>
 <hr>
-<h4 id="sequencia-de-aulas-previstas-para-o-semestre-de-20231">Sequencia de aulas previstas para o semestre de 2023/1:</h4>
-<ul>
-<li>
-<p>Módulo externo de ajuste de ganho/offset para A/D;</p>
-</li>
-<li>
-<p>Módulo externo D/A p/Arduíno (Raspberry);</p>
-</li>
-<li>
-<p>Filtros Passa-Baixa de 5a-ordem.</p>
-</li>
-<li>
-<p>Testes com <strong>PID Analógico</strong>:</p>
-<ul>
-<li>Controle de Posição ou, ✌️ (realizado em 11/04/2023)</li>
-<li>Controle de Velocidde.</li>
-<li>Usando Método 2 de sintonia de PID (fechamento da malha com Controlador Proporcional, determinação de <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">K_u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> e <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">T_u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> (usando osciloscópio))</li>
-<li>Sintonia fina</li>
-</ul>
-</li>
-<li>
-<p>Testes com <strong>PID Digital</strong> usando placa Arduino One</p>
-<ul>
-<li>Aplicando onda triangular (saída PWM filtrada) com <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">T=10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">10</span></span></span></span></eq> segundos no driver de potência (módulo SA150D) (teste em 25/04/2023)</li>
-<li>Selecionar e fixar fs (50 ou 100 Hz) ou T.</li>
-<li>Implementar (usando Interrupção), algoritmo de PID  Parelelo;</li>
-<li>Prever alguma interface de entrada e de saída com usuário.</li>
-<li>Sintonia deste PID usando Método 2.</li>
-<li>Sintonia Fina</li>
-</ul>
-</li>
-</ul>
-<!--
-  * [PIC com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento).
-
-* **Trabalho Final** (Proposta não confirmada)
-  
-  * [**PID com Anti-Windup**](Trabalho_Final_2/trabalho_final_2_lab_controle_2_2022_2.html) 
--->  
-  <!--(Data entrega: 08/12/2022) -->
-<hr>
-<p><font size="1"><a href="https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days">♫</a> Fernando Passold, em 22/10/2022, 02/12/2022, 11/04/2023</font> .</p>
+<p>Fernando Passold, em 25/04/2023.</p>
 </div>
         </div>
         <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>

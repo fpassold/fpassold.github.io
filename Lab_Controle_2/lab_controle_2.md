@@ -26,9 +26,19 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 
 &nbsp;
 
-* [Controle de Posição usando PID Analógico](controle_posicao.html) (Aula prevista para 11/04/2023)
+* [Controle de Posição usando PID Analógico](controle_posicao.html) (Aula prevista para 11/04/2023, Ok :+1:)
 
 &nbsp;
+
+* [PID Digital](PID/pid.html) (equações, código, implementação) (previsto para 25/04/2023)
+
+&nbsp;
+
+* [Aplicando uma Onda Triangular](onda_triangular_driver/triangular_no_driver.html) no driver de potência SA150D da Feedback (controle de velocidade em malha-aberta) -- teste realizado no dia 25/04/2023.
+
+&nbsp;
+
+---
 
 #### Sequencia de aulas previstas para o semestre de 2023/1:
 
@@ -37,17 +47,18 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 * Filtros Passa-Baixa de 5a-ordem.
 
 * Testes com **PID Analógico**:
-	* Controle de Posição ou,
+	* Controle de Posição ou, :v: (realizado em 11/04/2023)
 	* Controle de Velocidde.
 	* Usando Método 2 de sintonia de PID (fechamento da malha com Controlador Proporcional, determinação de $K_u$ e $T_u$ (usando osciloscópio))
 	* Sintonia fina
 
 * Testes com **PID Digital** usando placa Arduino One
-	* Selecionar e fixar fs (50 ou 100 Hz) ou T.
-	* Implementar (usando Interrupção), algoritmo de PID Parelelo;
-	* Prever alguma interface de entrada e de saída com usuário.
-	* Sintonia deste PID usando Método 2.
-	* Sintonia Fina
+  * Aplicando onda triangular (saída PWM filtrada) com $T=10$ segundos no driver de potência (módulo SA150D) (teste em 25/04/2023)
+  * Selecionar e fixar fs (50 ou 100 Hz) ou T.
+  * Implementar (usando Interrupção), algoritmo de PID  Parelelo;
+  * Prever alguma interface de entrada e de saída com usuário.
+  * Sintonia deste PID usando Método 2.
+  * Sintonia Fina
 
 
 <!--
