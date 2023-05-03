@@ -57,7 +57,11 @@
 - [Projeto de Controlador por Avanço de Fase (Lead)](lead_bode.html);
 - Projeto de Compensador Lead-Lag
 
-## Anexos
+## Trabalhos
+
+* :boom: [Turma de 2023/1](trabalho_2023_1/trabalho_2023_1.html) 
+
+## :speech_balloon: Anexos
 
 - [Como obter gráficos de $u(t)$ e $e(t)$](Acoes_Controle_Erro/acoes_controle_erro.html) na linha de comandos do Matlab.
 - [Uso do MATLAB nas aulas de Controle + documentação **Markdown**](sugestao_uso_matlab_em_controle.html);
