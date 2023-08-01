@@ -1,0 +1,89 @@
+Circuitos Digitais I:
+
+Trabalho Final (2022/2)
+
+		Trabalho Final (2022/2)Item postado: 28 de nov. de 2022
+Cap 6) Aritmética Binária Digital
+Cap 6) Aritmética Binária Digital
+
+		6.5) ExercíciosItem postado: 7 de nov. de 2022
+		6.4) Circuitos ExemploItem postado: 7 de nov. de 2022
+		6.3) Somadores BCD + ULA'sItem postado: 7 de nov. de 2022
+		6.2) Circuitos Aritméticos Binários.Item postado: 7 de nov. de 2022
+		6.1) Números inteiros com sinal (Intro. Sist. Arit. Binários)Item postado: 7 de nov. de 2022
+Cap 5) Funções Lógicas
+Cap 5) Funções Lógicas
+
+		Exercícios para 2a-ProvaItem postado: 7 de nov. de 2022
+		5.1) Funções LógicasItem postado: 17 de out. de 2022
+		5.2) Pastilhas MSIItem postado: 17 de out. de 2022
+		5.3) Avaliação (complementar) - Funções Lógicas - 1Item postado: 17 de out. de 2022
+Cap 4) Mapas de Karnaugh
+Cap 4) Mapas de Karnaugh
+
+		4.1 Mapas de Karnaugh (slides)Item postado: 10 de out. de 2022
+		4.2 Mapas de Karnaugh (2a-parte: "Aplicações").Item postado: 10 de out. de 2022
+Tutoriais
+Tutoriais
+
+		Uso do LogiSim (Soft free Simulação)Item postado: 20 de set. de 2022
+		Video: Uso do LogiSimItem postado: 20 de set. de 2022
+		Vídeo: Uso do ProteusItem postado: 20 de set. de 2022
+Cap 3) Álgebra de Boole
+Cap 3) Álgebra de Boole
+
+		3.3) Lista de ExercíciosItem postado: 20 de set. de 2022
+		3.2) Material opcional (em espanhol): Álgebra de BooleItem postado: 20 de set. de 2022
+		3.1) Álgebra de Boole - TeoriaItem postado: 11 de ago. de 2022
+Exercícios 1a-Prova
+Exercícios 1a-Prova
+
+		Exercícios sugeridos para 1a-provaItem postado: 20 de set. de 2022
+Cap 2) Portas Lógicas Básicas
+Cap 2) Portas Lógicas Básicas
+
+		2.1 Portas Lógicas Básicas - IntroItem postado: 11 de ago. de 2022
+            Portas Lógicas Básicas 
+            * Portas NOT, AND, OR, NAND, NOR, XOR e NXOR;
+            * Exemplos deduzindo tabelas verdades, formas de onda, equações; desenhando primeiros circuitos digitais.
+            --> Portas_Lógicas_Basicas.pdf
+
+		2.1) b) Portas Lógicas Básicas - Intro (material com anotações)Item postado: 11 de ago. de 2022
+            Mesmo material de "2.1 Portas Lógicas Básicas" mas acrescentado de anotações realizadas durante a aula (resolução de alguns exemplos mostrados em slides)
+            --> Portas_Lógicas_Basicas - cópia.pdf
+
+		2.2) Aula (gravada): Portas Lógicas BásicasItem postado: 11 de ago. de 2022
+		2.3) Aula (gravada): Portas lógicas básicas - exemplos (10.08.2021)Item postado: 11 de ago. de 2022
+		2.4) Aula Gravada: Portas XOR NXOR - equações - exercícios portas básicas (10.08.2021)Item postado: 11 de ago. de 2022
+		2.5) Portas Lógicas Básicas (Resumo) + Álgebra de BooleItem postado: 11 de ago. de 2022        
+            Portas Lógicas Básicas (Resumo) + Álgebra de Boole
+            --> PortasLogicasBasicas.pdf
+
+		2.6) Simbologia ANSI (IEC), IEEE Portas lógicas básicasItem postado: 11 de ago. de 2022
+            2.3) Simbologia ANSI (IEC), IEEE Portas lógicas básicas
+            --> IEEE_symbols.pdf
+
+Cap 1) Introdução Circuitos Digitais
+Cap 1) Introdução Circuitos Digitais
+
+		1.1) Introdução à disciplina / Sistemas de Numeração:
+			Conceitos básicos.
+			Sinais analógicos x digitais.
+			Sistemas de numeração e conversão entre bases numéricas.
+			Outros sistemas de codificação.
+			--> Intro_Digitais_1.pdf
+
+		1.2) Aula (gravada): Introdução: parte 1/2Item postado: 11 de ago. de 2022
+			
+		1.3) Outros Sistemas de Codificação BináriosItem postado: 11 de ago. de 2022
+			1.2) Outros Sistemas de Codificação Binários:
+			* Tabela ASCII;
+			* Código Gray e relação com Encoders Absolutos;
+			* Encoders Absolutos x Incrementais.
+			--> outros_codigos_binarios.pdf
+			
+		1.4) Exercícios Conversão entre bases (aula de 14/09/2021)Item postado: 11 de ago. de 2022
+            --> https://fpassold.github.io/Digitais_1/codigos/exe_sist_numeracao.html
+
+		1.5) Exercícios (resolvidos) Sistemas de CodificaçãoItem postado: 11 de ago. de 2022
+            --> exemplos_conversao_base.pdf
