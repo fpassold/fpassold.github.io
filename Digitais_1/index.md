@@ -4,7 +4,7 @@
 
 &nbsp;
 
-[:bell: Conversão do Google Sala de Aula :bell:](/digitais_1.html)
+[:bell: Conversão do Google Sala de Aula :bell:](digitais_1.html)
 
 &nbsp;
 
