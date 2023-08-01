@@ -2,7 +2,13 @@
 
 # Circuitos Digitais I
 
-Opções disponíveis:
+&nbsp;
+
+[:bell: Conversão do Google Sala de Aula :bell:](/digitais_1.html)
+
+&nbsp;
+
+Mais Opções disponíveis:
 
 * Exercícios sobre conversões entre bases numéricas [[aula de 14.09.2021](codigos/exe_sist_numeracao.html)];
 
