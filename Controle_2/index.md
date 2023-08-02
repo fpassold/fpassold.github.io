@@ -1,6 +1,7 @@
 <!-- ttitle: Controle Automático II -->
 
-![Photo by David Watkis, Golden Gate Bridge](https://images.unsplash.com/photo-1566153580922-16a9709fff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80) <font size="1"> Photo by David Watkis on https://unsplash.com/images/feelings/cool?</font> 
+![Photo by David Watkis, Golden Gate Bridge](https://images.unsplash.com/photo-1566153580922-16a9709fff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80) 
+<font size="1"> Photo by David Watkis on https://unsplash.com/images/feelings/cool?</font> 
 
 # Curso de Controle Automático II
 
@@ -26,7 +27,7 @@
 
 * História da Área de Controle Automático (clássico) --> [intro_controle_2.pdf](1_intro/intro_controle_2.pdf);
 * [Artigo da Scientific American](1_intro/The%20Origins%20of%20Feedback%20Control.pdf) sobre as origens do Controle por realimentação (artigo em inglês, de Out/1970);
-* [Artigo IEEE Control Systems Magazine](1_intro/IEEE%20Xplore%20Full-Text%20PDF%20-%20Feeback%20Control-%20An%20Invisible%20Thread%20in%20the%20History%20of%20Technology.pdf) sobre a história da área de Controle Automático (artio em inglês, de Abril/2002);
+* [Artigo IEEE Control Systems Magazine](1_intro/IEEE%20Xplore%20Full-Text%20PDF%20-%20Feeback%20Control-%20An%20Invisible%20Thread%20in%20the%20History%20of%20Technology.pdf) sobre a história da área de Controle Automático (artigo em inglês, de Abril/2002);
 
 ## 2) Ações de Controle
 
@@ -35,7 +36,7 @@
 * Exemplo de [Controle de Velocidade de motor CC](Testes_Velocidade_Motor_CC/modelagem_motor_cc.html) (diferentes controladores), incluindo sua modelagem.
     * Arquivos SLX para Simulações de ações de controle de velocidade do motor CC (para uso com Matlab/Simulink) + imagens e HTML em formato Zipado ([Motor_CC.zip](2_acoes/Motor_CC.zip), 5 MB).
     
-<details><summary>Clique arqui para ver conteúdo de "Motor_CC.zip"</summary>
+<details><summary>Clique aqui para ver conteúdo de "Motor_CC.zip"</summary>
 <p>
 
 ```bash
@@ -188,8 +189,8 @@ Instruções:
 ## 9) Sintonia (prática) de PIDs
 
 * [Sintonia de PID](8_Ajuste_PID/Sintonia_PIDs_usando_ZN.html) (usando Ziegler-Nichols e Método do Relé)
-* [Ajuste usando Método do Relé](8_ajuste_PID/ajuste_metodo_rele.pdf);
-* [PID: Métodos de sintonia (dicas)](8_ajuste_PID/PID_metodos_sintonia.pdf);
+* [Ajuste usando Método do Relé](8_Ajuste_PID/ajuste_metodo_rele.pdf);
+* [PID: Métodos de sintonia (dicas)](8_Ajuste_PID/PID_metodos_sintonia.pdf);
 * Exemplo: arquivo [`sintonia_PID_exemplo.slx`](8_Ajuste_PID/sintonia_PID_exemplo.slx) (Matlab/Simulink)
 
 ## Trabalhos
