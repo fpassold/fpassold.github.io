@@ -168,7 +168,9 @@ Instruções:
 
 ## 8) Projeto de Controladores no Domínio Frequência
 
-- Teoria inicial/slides (arquivos PDF) --> [Parte 1](10_bode/Cap_10_Tecnicas_Resposta_Frecuencia_parte_1-ptbr.pdf) + [Parte 2](10_bode/Cap_10_Tecnicas_Resposta_Frecuencia_2a_parte.pdf);
+- Teoria inicial/slides (arquivos PDF):
+  - [Parte 1: Revisão Diagramas de Bode + Conceitos Área Controle](10_bode/Cap_10_Tecnicas_Resposta_Frecuencia_parte_1-ptbr.pdf);
+  - [Parte 2](10_bode/Cap_10_Tecnicas_Resposta_Frecuencia_2a_parte.pdf);
 - [Projeto de Controlador Proporcional (Ajuste de Ganho)](projeto_bode_01.html);
 - [Projeto de Controlador por Atraso de Fase (Lag)](lag_bode.html);
 - [Projeto de Controlador por Avanço de Fase (Lead)](lead_bode.html);
