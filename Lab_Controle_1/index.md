@@ -24,7 +24,7 @@ Experimentos previstos:
     * 11 O Demodulador (MD150S)
     * 12 Servo-sistema com link síncrono
 
-[![Lab_Controle_1.png](Lab_Controle_1.png)]((apostila_lab_controle_1.pdf))
+[![Lab_Controle_1.png](Lab_Controle_1.png)](apostila_lab_controle_1.pdf)
 
 [**Apostila**](apostila_lab_controle_1.pdf) disponível em **formato PDF** (135 páginas, formato A4, frente e verso, 21.4 Mbytes) --> clique [aqui](apostila_lab_controle_1.pdf) para baixar
 
