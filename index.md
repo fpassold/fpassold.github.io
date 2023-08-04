@@ -14,8 +14,8 @@
   * Lab. de Circuitos Digitais II;
 * [Controle Automático 2 (Controle Automático Clássico)](Controle_2/index.html);
     * [Lab de Controle Automático 1](Lab_Controle_1/index.html)
-* [Laboratório de Controle Automático II](Lab_Controle_2/lab_controle_2.html) (2022/2);
-* [Controle Automático 3 (Controle Clássico Discreto ou Digital)](Controle_3/controle_3.html).
+* [Laboratório de Controle Automático II](Lab_Controle_2/lab_controle_2.html);
+* [Controle Automático 3 (Controle Digital)](Controle_3/index.html).
 * [Acionamento Hidráulico e Pneumático (EEE172)](Pneumatica/topicos.html).
 
 ----
