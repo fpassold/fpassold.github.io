@@ -160,209 +160,152 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 }
 
 
-import url(https://fonts.googleapis.com/css?family=Open%20Sans);
-:root {
-    --code-block-bg-color: inherit;//#f8f8f8;
-
-    --item-hover-bg-color: #0a0d16;
-    --control-text-color: #b7b7b7;
-    --control-text-hover-color: #eee;
-    --window-border: 1px dashed #9b9b9b;
-
-    --active-file-bg-color: #0070E0;
-    --active-file-border-color: #8d8df0;
-
-    --primary-color: #a3d5fe;
-
-    --active-file-text-color: #0070e0;
-    --item-hover-bg-color: #70717d;
-    --item-hover-text-color: white;
-    --primary-color: #6dc1e7;
-}
-
-html,
-body,
-#write{
-	color: #5e676d;
-	font-family: "Open Sans", "Clear Sans", sans-serif;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	/*font-weight: lighter;*/
-	font-weight: 100;
-	color: #5e676d;
-	font-family: "Open Sans", sans-serif;
-	margin: 0.5rem 0;
-}
-
 html {
-	font-size:16px;
+	font-size: 19px;
 }
 
-#write {
-	max-width: 914px;
+html, body {
+	margin: auto;
+	background: #fefefe;
+}
+body {
+	font-family: "Vollkorn", Palatino, Times;
+	color: #333;
+	line-height: 1.4;
 	text-align: justify;
 }
 
-#write>h1:first-child {
-	margin-top: 2.75rem;
+#write {
+	max-width: 960px;
+	margin: 0 auto;
+	margin-bottom: 2em;
+	line-height: 1.53;
+	padding-top: 40px;
 }
-#write>h2:first-child {
-	margin-top: 1.75rem;
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1100px;
+	}
 }
-#write>h3:first-child {
-	margin-top: 1rem;
-}
-#write>h4:first-child {
-	margin-top: 0.5rem;
-}
+
+/* Typography
+-------------------------------------------------------- */
+
+#write>h1:first-child,
 h1 {
-	margin: 1rem 0;
-	/*line-height: 4rem;
-	padding: 5px 30px;
-	text-align: center;
-	margin-top: 4rem;*/
+	margin-top: 1.6em;
+	font-weight: normal;
 }
+
+h1 {
+	font-size:3em;
+}
+
 h2 {
-	margin: 0.8rem 0;
-	/*
-	line-height: 3rem;
-	padding: 0 30px;
-	text-align: center;
-	margin-top: 3rem
-	*/
+	margin-top:2em;
+	font-weight: normal;
 }
+
 h3 {
+	font-weight: normal;
+	font-style: italic;
+	margin-top: 3em;
 }
-h4 {
+
+h1, 
+h2, 
+h3{
+	text-align: center;
 }
-h5 {
-	font-size: 1.125rem;
+
+h2:after{
+	border-bottom: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    height: 1px;
 }
-h6 {
-	font-size: 1.1rem;
+
+h1+h2, h2+h3 {
+	margin-top: 0.83em;
 }
-p {
-	color: #5e676d;
-	font-size: 1rem;
-	line-height: 1.5rem;
-	margin: 0 0 1.25rem;
+
+p,
+.mathjax-block {
+	margin-top: 0;
+	-webkit-hypens: auto;
+	-moz-hypens: auto;
+	hyphens: auto;
 }
-#write>h3.md-focus:before {
-	left: -1.875rem;
-	top: 0.5rem;
-	padding: 2px;
+ul {
+	list-style: square;
+	padding-left: 1.2em;
 }
-#write>h4.md-focus:before {
-	left: -1.875rem;
-	top: 0.3125rem;
-	padding: 2px;
+ol {
+	padding-left: 1.2em;
 }
-#write>h5.md-focus:before {
-	left: -1.875rem;
-	top: 0.25rem;
-	padding: 2px;
+blockquote {
+	margin-left: 1em;
+	padding-left: 1em;
+	border-left: 1px solid #ddd;
 }
-#write>h6.md-focus:before {
-	left: -1.875rem;
-	top: .125rem;
-	padding: 2px;
+code,
+pre {
+	font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
+	font-size: .9em;
+	background: white;
 }
-/*@media screen and (min-width: 48em) {
-	.h1,
-	h1 {
-		font-size: 3.250rem;
-	}
-	.h2,
-	h2 {
-		font-size: 2.298rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.625rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-	#write>h4.md-focus:before,
-	#write>h5.md-focus:before,
-	#write>h6.md-focus:before {
-		top: 1px;
-	}
-	p {
-		font-size: 1.25rem;
-		line-height: 1.8;
-	}
-	table {
-		font-size: 1.25rem;
-	}
-}*/
-@media screen and (max-width: 48em) {
-	blockquote {
-		margin-left: 1rem;
-		margin-right: 0;
-		padding: 0.5em;
-	}
-	.h1,
-	h1 {
-		font-size: 2.827rem;
-	}
-	.h2,
-	h2 {
-		font-size: 1.999rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.413rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
+.md-fences{
+	margin-left: 1em;
+	padding-left: 1em;
+	border: 1px solid #ddd;
+	padding-bottom: 8px;
+	padding-top: 6px;
+	margin-bottom: 1.5em;
 }
-a,
-.md-def-url {
-	color: #007ee5;
+
+a {
+	color: #2484c1;
 	text-decoration: none;
 }
 a:hover {
 	text-decoration: underline;
 }
+a img {
+	border: none;
+}
+h1 a,
+h1 a:hover {
+	color: #333;
+	text-decoration: none;
+}
+hr {
+	color: #ddd;
+	height: 1px;
+	margin: 2em 0;
+	border-top: solid 1px #ddd;
+	border-bottom: none;
+	border-left: 0;
+	border-right: 0;
+}
+.ty-table-edit {
+	background: #ededed;
+    padding-top: 4px;
+}
 table {
-	border: 1px solid #e2e2e2;
-	margin-bottom: 20px
+	margin-bottom: 1.333333rem
 }
 table th,
 table td {
 	padding: 8px;
-	line-height: 1.5rem;
+	line-height: 1.333333rem;
 	vertical-align: top;
-	border: 1px solid #e2e2e2;
+	border-top: 1px solid #ddd
 }
 table th {
-	font-weight: normal;
-	background-color: #f0f7fd;
+	font-weight: bold
 }
 table thead th {
 	vertical-align: bottom
@@ -378,167 +321,137 @@ table thead:first-child tr:first-child td {
 table tbody+tbody {
 	border-top: 2px solid #ddd
 }
-code, .md-fences {
-	padding: .5em;
-	background: #f6f9fc;
-	border: 1px solid #d0d4d9;
-	border-radius: 3px;
-	padding: .1em;
-	font-size: 0.9rem !important;
-	margin-left: 0.2em;
-	margin-right: 0.2em;
-}
-.md-fences {
-	margin: 0 0 20px;
-	font-size: 1em;
-	padding: 0.3em 1em;
-  	padding-top: 0.4em;
-}
+
 .task-list{
-	padding-left: 0;
+	padding:0;
 }
 
-.task-list-item {
-	padding-left:2.125rem;
+.md-task-list-item {
+	padding-left: 1.6rem;
 }
 
-/* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  and (min-resolution:.001dpcm) {
-    .task-list-item input:before {
-    	margin-top: -0.2rem;
-    }
-
-    .task-list-item input:checked:before,
-	.task-list-item input[checked]:before {
-		margin-top: -0.2rem;
-	}
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.33333333rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #fefefe;
 }
 
-blockquote {
-	margin: 0 0 1.11111rem;
-	padding: 0.5rem 1.11111rem 0 1.05556rem;
-	border-left: 2px solid rgba(0, 112, 224, 0.32);
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
 }
-blockquote,
-blockquote p {
-	line-height: 1.6;
-	color: #8f8f8f;
+.md-tag {
+	color: inherit;
+	font: inherit;
 }
 #write pre.md-meta-block {
-	min-height: 30px;
+	min-height: 35px;
+	padding: 0.5em 1em;
+}
+#write pre.md-meta-block {
+	white-space: pre;
 	background: #f8f8f8;
-	padding: 1.5em;
-	font-weight: 300;
-	font-size: 1em;
-	padding-bottom: 1.5em;
-	padding-top: 3em;
-    margin-top: -1.5em;
+	border: 0px;
 	color: #999;
-	border-left: 1000px #f8f8f8 solid;
-	margin-left: -1000px;
-	border-right: 1000px #f8f8f8 solid;
-	margin-right: -1000px;
+	
+	width: 100vw;
+	max-width: calc(100% + 60px);
+	margin-left: -30px;
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+
 	margin-bottom: 2em;
-}
-.MathJax_Display {
+	margin-top: -1.3333333333333rem;
+	padding-top: 26px;
+	padding-bottom: 10px;
+	line-height: 1.8em;
 	font-size: 0.9em;
-	margin-top: 0.5em;
-	margin-bottom: 0;
+	font-size: 0.76em;
+	padding-left: 0;
 }
-p.mathjax-block,
-.mathjax-block {
-	padding-bottom: 0;
+.md-img-error.md-image>.md-meta{
+	vertical-align: bottom;
 }
-.mathjax-block>.code-tooltip {
-	bottom: 5px;
-	box-shadow: none;
-}
-.md-image>.md-meta {
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-}
-.md-image>img {
-	margin-top: 2px;
-}
-.md-image>.md-meta:first-of-type:before {
-	padding-left: 4px;
+#write>h5.md-focus:before {
+	top: 2px;
 }
 
+.md-toc {
+	margin-top: 40px;
+}
+
+.md-toc-content {
+	padding-bottom: 20px;
+}
+
+.outline-expander:before {
+	color: inherit;
+	font-size: 14px;
+	top: auto;
+	content: "\f0da";
+	font-family: FontAwesome;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  	content: "\f0d7";
+}
+
+/** source code mode */
 #typora-source {
-	color: #555;
+	font-family: Courier, monospace;
+    color: #6A6A6A;
 }
 
-/** ui for windows **/
-#md-searchpanel {
-    border-bottom: 1px solid #ccc;
+.html-for-mac #typora-sidebar {
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
 
-#md-searchpanel .btn {
-    border: 1px solid #ccc;
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property,
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+	color: #428bca;
 }
 
-#md-notification:before {
-	top: 14px;
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+	color: #777777;
 }
 
-#md-notification {
-	background: #eee;
+.typora-node .file-list-item-parent-loc, 
+.typora-node .file-list-item-time, 
+.typora-node .file-list-item-summary {
+	font-family: arial, sans-serif;
 }
 
-.megamenu-menu-panel .btn {
-	border: 1px solid #ccc;
+.md-task-list-item>input {
+    margin-left: -1.3em;
+    margin-top: calc(1rem - 12px);
 }
 
-.mac-seamless-mode #typora-sidebar {
-  background-color: #f7f9fa;
+.md-mathjax-midline {
+	background: #fafafa;
 }
 
-.pin-outline .outline-active {
-  color: #0070E0; 
+.md-fences .code-tooltip {
+	bottom: -2em !important;
 }
 
-.file-list-item {
-  border-bottom: 1px solid;
-  border-color: #E6E8EB;
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
 }
-
-.file-list-item-summary {
-  font-weight: 400;
-  color: #637282; 
-}
-
-.file-list-item.active {
-  color: #0070E0;
-  background-color: #E6E8EB;
-}
-
-.file-tree-node.active>.file-node-background {
-  background-color: #E6E8EB;
-} 
-
-.file-tree-node.active>.file-node-content {
-  color: #0070E0;
-}
-
-.file-node-content {
-  color: #5e676d;
-}
-
-.sidebar-tab.active {
-  font-weight: 400;
-}
-
-code, kbd, pre, samp {
-  font-family: "Roboto Mono", Menlo, monospace;
-}
-
 
 
 </style>
 </head>
 <body class='typora-export'>
 <div id='write'  class=''><!-- title: Lab. Processamento Digital de Sinais --><p><img src="Lab_2/p1010913.jpg" referrerpolicy="no-referrer" alt="p1010913"></p><h1><a name="lab-processamento-digital-de-sinais" class="md-header-anchor"></a><span>Lab. Processamento Digital de Sinais</span></h1><p><span>Experimentos previstos:</span></p><ul><li><span>Lab 1) </span><strong><span>Ruídos</span></strong><span> (tipos, definições, geradores):  </span><a href='Lab_1/lab_1_ruidos.pdf'><span>lab_1_ruidos.pdf</span></a><span> (arquivo:  </span><a href='Lab_1/numeros.c'><span>numeros.c</span></a><span>  -- teste da função </span><code>rand()</code><span>: gerador de números aleatórios, linguagem GNU C).</span></li><li><span>Lab 2) </span><strong><span>Convolução (e Reverberação)</span></strong><span>: processando sinal para reverberar de maneira diferente.</span>
-<span>Arquivo PDF do roteiro:  </span><a href='Lab_2/lab_2_convolucao.pdf'><span>lab_2_convolucao.pdf</span></a><span>  + rotina MATLAB para &quot;brincar&quot; com reverberação de sinais:   </span><a href='Lab_2/convol2.m'><span>convol2.m</span></a><span> + Arquivo Zipado com audios para testes:  </span><a href='Lab_2/lab_2_material_aula.zip'><span>lab_2_material_aula.zip</span></a><span> (75,2 MB).</span></li></ul><p>&nbsp;</p><p>👷<span> Página ainda sendo atualizada.</span></p><hr /><p><span>Fernando Passold, em 08/09/2023</span></p></div>
+<span>Arquivo PDF do roteiro:  </span><a href='Lab_2/lab_2_convolucao.pdf'><span>lab_2_convolucao.pdf</span></a><span>  + rotina MATLAB para &quot;brincar&quot; com reverberação de sinais:   </span><a href='Lab_2/convol2.m'><span>convol2.m</span></a><span> + Arquivo Zipado com audios para testes:  </span><a href='Lab_2/lab_2_material_aula.zip'><span>lab_2_material_aula.zip</span></a><span> (75,2 MB).</span>
+<span>Revisão sobre </span><strong><a href='Convolucao/convolucao.html'><span>Convolução</span></a><span> </span></strong><span>.</span></li></ul><p>&nbsp;</p><p>👷<span> Página ainda sendo atualizada.</span></p><hr /><p><span>Fernando Passold, em 08/09/2023</span></p></div>
 </body>
 </html>
