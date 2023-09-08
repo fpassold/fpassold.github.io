@@ -1,8 +1,8 @@
+<!-- title: Circuitos Digitais I -->
+
 ![circuito digital](https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80)
 
 # Circuitos Digitais I
-
-&nbsp;
 
 ## Cap 1) Introdução Circuitos Digitais
 
@@ -119,7 +119,7 @@
 
 * [Tutorial para uso do LogiSim](Uso_LogiSim.html);
 * Video YouTube: [Uso do **LogiSim**](https://youtu.be/NBPMN7aTm_Y?si=f9tcww26C64ca5Bm)
-* Vídeo YouTube: [Uso do **Proteus**](
+* Vídeo YouTube: [Video Intro Usando **Proteus** 7.x (Win7) e 8.x (Win10)](https://youtu.be/4wIsafBMCFs)
 
 ----
 
@@ -132,6 +132,8 @@
 * [Exemplos de Operações Aritméticas Binárias](exemplos_operacoes_sinais/exemplos_operacoes.html);
 
 &nbsp;
+
+[:guitar:](https://youtu.be/ZLQiD4_OiLU?si=5MThm5cd2kzeSy7q)
 
 ---
 
