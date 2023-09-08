@@ -16,8 +16,11 @@
     * [Lab de Controle Automático 1](Lab_Controle_1/index.html)
 * [Laboratório de Controle Automático II](Lab_Controle_2/lab_controle_2.html);
 * [Controle Automático 3 (Controle Digital)](Controle_3/index.html).
+* [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html)  (2023/2);
 * [Acionamento Hidráulico e Pneumático (EEE172)](Pneumatica/topicos.html).
+
+
 
 ----
 
-<font size="2">*Página iniciado em Set/2021, Última atualização: 03/08/2023.*</font> 
+<font size="2">*Página iniciado em Set/2021, Última atualização: 08/09/2023.*</font> 
