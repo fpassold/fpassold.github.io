@@ -81,9 +81,9 @@
 
 ## Cap 5) Funções Lógicas (ou Circuitos MSI)
 
-5.1) Funções Lógicas
+5.1) Funções Lógicas --> [circuitos_media_escala_integracao_pt_2.pdf](msi/circuitos_media_escala_integracao_pt_2.pdf) (8,2 MB; 80 slides)
 
-5.2) Pastilhas MSI (várias pastilhas com símbolos lógicos e tabelas verdade)
+5.2) [Pastilhas MSI](msi/pastilhas_MSI.pdf)  (várias pastilhas com símbolos lógicos e tabelas verdade)
 
 5.3) Avaliação (complementar) - Funções Lógicas
 
@@ -96,6 +96,10 @@
 * Exemplo de [circuito de Bargraph (velocímetro de bicicleta](https://youtu.be/EuQ4-OHVD6w?si=FHujYx9g7wQQAYE0));
 * [Exemplo de uso de **DEC** com Pastilhas de Memória](resumo_MSI/exemplo_uso_DEC.html);
 * [Funcionamento de **MUX** de 4 canais de entrada (com animação)](Funcionamento_MUX/funcionamento_MUX_4.html);
+
+&nbsp;
+
+5.5) [Exercícios](msi/exercicios_4.pdf)  + [Respostas](msi/exercicios_4_respuestas.pdf)  + [Erratas](msi/Errata_2a_lista_exercicios_digitais_1.pdf) (algumas respostas).
 
 &nbsp;
 
