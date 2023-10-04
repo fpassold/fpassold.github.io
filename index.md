@@ -20,7 +20,9 @@
 * [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html)  (2023/2);
 * [Acionamento Hidráulico e Pneumático (EEE172)](Pneumatica/topicos.html).
 
+</nb>
 
+* Dicas para pessoal do [TCC](TCC_Latex/index.html).
 
 ----
 
