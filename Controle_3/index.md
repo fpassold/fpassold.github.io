@@ -1,7 +1,11 @@
 <!--title: Controle Automático 3 -->
 # Curso de Controle Automático III
 
+<!--
 ![cason-asher-Ur7Efx8lBjs-unsplash.jpg](cason-asher-Ur7Efx8lBjs-unsplash.jpg)
+-->
+
+![Austin Schmid - Unsplash](austin-schmid-5Dga0T0x6GY-unsplash-1.jpg)
 
 **Tópicos:**
 
