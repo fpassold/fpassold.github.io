@@ -3,7 +3,7 @@
 # Sinais & Sistemas (I)
 
 * Série de Fourier ([Intro](4_fourier/4_serie_fourier.html))
-* Transformada de [Laplace](/3_transformada_laplace.pdf)
+* Transformada de [Laplace](3_transformada_laplace.pdf)
 
 ----
 
