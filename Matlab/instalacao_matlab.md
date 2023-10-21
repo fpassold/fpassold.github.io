@@ -1,6 +1,6 @@
 <!--title: Matlab em Controle -->
 
-
+![surface_sin_cos_3D](surface_sin_cos_3D.png)
 
 [:grey_exclamation:](https://www.mathworks.com/help/symbolic/fsurf.html)
 
@@ -10,7 +10,7 @@ Dicas instalação do MATLAB (toolboxes necessários)...
 
 Para os propósitos desta disciplina (Controle Automático I, Controle Automático II e Controle Automático III), é altamente desejável o uso do Matlab/Simulink.
 
-O software Matlab/Simulink normalmente vêm acompanhado de vários "toolboxes" (bibliotecas extras que complementam suas funções), em tal quantidade que sua instalação completa (todos os toolboxes), facilmente pode exigir mais de 30 GBytes de espaço em disco!
+O software Matlab/Simulink normalmente vêm acompanhado de vários "toolboxes" (bibliotecas extras que complementam suas funções), em tal quantidade que sua instalação completa (todos os toolboxes), facilmente ==pode exigir mais de 30 GBytes de espaço em disco!==
 
 Sugere-se no momento da instalação do Matlab/Simulink, optar-se pela instalação dos seguintes pacotes:
 
@@ -22,7 +22,7 @@ Products:
 - [x] **Curve Fitting Toolbox**
 
 A lista acima envolvendo instalação do Matlab versão 2017B realizada num MacOS exigiu:</br>
-Installation Size: 5,759 MB (5,7 Gbytes)</br> 
+Installation Size: 5,759 MB (==5,7 Gbytes==)</br> 
 Obs.: o espaço final pode variar um pouco para sistemas Linux ou Windows.
 
 Recomenda-se instalar também:

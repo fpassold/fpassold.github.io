@@ -121,11 +121,11 @@
 
       * **[Dedução Controladores PD & Lead)](pd_plus_filtro.pdf)** (arquivo PDF; Aula de 21/05/2020);
       * [Projeto de PD (sem contribuição angular)](2020_2/aula_28_10_2020.html) (Aula de 28/10/2020)
-      * [Projeto de Controlador PD](projeto_PD_lead_2020.html) (Aula de 28/05/2020):
-      *Avaliando diferentes posições para o zero do PD + Projeto de PD usando contribuição angular usando *script*s: [[`angulos2.m`]](arc.m) + [[`arc.m`]](arc.m).* 
+      * [Projeto de Controlador PD](projeto_PD_lead_2020.html) (Aula de 28/05/2020):</br>
+      *Avaliando diferentes posições para o zero do PD + Projeto de PD usando contribuição angular usando *script*s: [`angulos2.m`](arc.m) + [`arc.m`](arc.m).* 
       * [Projeto de Lead](lead/lead_ex1.html) (Aula de 11/11/2020);
       *(Usando Contribuição angular.)*
-      * [Teste de Controladores com Ação Derivativa](estudo_caso/Teste_Controladores_Acao_Derivativa.html) (Simulink)
+      * [Teste de Controladores com Ação Derivativa](estudo_caso/Teste_Controladores_Acao_Derivativa.html) (Simulink)</br>
          *(Simulaçãoes ressaltando elevadas ações de controle; **uso de bloco Saturador no Simulink**)*
 
 <details><summary>Revisando idéia geral sobre Contribuição Angular</summary>
@@ -138,9 +138,9 @@
 &nbsp;
 
 4. Controlador **Deadbeat** -- projeto(s): 
-      * Teoria Controlador por Tempo Mínimo [[PDF]](PID/exemplo_tempo_minimo.pdf);
+      * Teoria Controlador por Tempo Mínimo [(PDF)](PID/exemplo_tempo_minimo.pdf);
 
-     * Amplitudes das ações de controle (Lead, Lead x outros), Projeto de controlador deadbeat - [Aula de 04/06/2020](deadbeat_08out2019.html) ;
+     * Amplitudes das ações de controle (Lead, Lead x outros),</br> Projeto de controlador deadbeat - [Aula de 04/06/2020](deadbeat_08out2019.html) ;
      * [Aula de 11/11/2020](deadbeat/deadbeat_exemplo_1.html);
      * [Aula de 09/06/2021](deadbeat_09062021/aula_deadbeat_09_06_2021.html).
 
@@ -155,7 +155,8 @@
 
 5. **Projeto de PID** (com ajuste por Ziegler-Nichols)
 
-     * Ver parte final deste [PDF](estudo_caso/Estudo_Caso_Controladores_2020.pdf) (arquivo original inicial do "Estudo de Caso", versão de 2020);
+     * Ver parte final deste [PDF](estudo_caso/Estudo_Caso_Controladores_2020.pdf)</br>
+      (arquivo original inicial do "Estudo de Caso", versão de 2020);
 <!--     * Falta verificar arquivos (11/10/2023) -->
 &nbsp;
 
@@ -167,7 +168,7 @@
 
 EXTRAs:
 
-* Usando **[App Control System Designer](/APP_Control_System_Designer/Intro_APP_Control_System_Designer.html)** (pequeno Tutorial);
+* Usando **==[App Control System Designer](/APP_Control_System_Designer/Intro_APP_Control_System_Designer.html)==** (pequeno Tutorial);
 * Simulações de controladores Digitais **usando Simulik** ([PDF](estudo_caso/aula_12abr2017_uso_simulink_datatypes.pdf))
   *(Lidando com "Data types" das janelas Scope)*;
 * Sugestão de **[instalação de MATLAB](instalacao_matlab.html)** para esta disciplina;
@@ -181,7 +182,7 @@ EXTRAs:
 </details>
 &nbsp;
 
-* Versão 2020 de ["Apostila"](estudo_caso/apostila.pdf) criada para esta disciplina (incompleta)
+* Versão 2020 da **["Apostila"](estudo_caso/apostila.pdf)** (quase livro) criada para esta disciplina (incompleta)
 
 ---
 
