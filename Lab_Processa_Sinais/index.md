@@ -20,7 +20,7 @@ Experimentos previstos:
 
 * [Lab 3) trabalho 3 para 2023.2](/Lab_3/lab3_trabalho_2023_2.html).
 
-* Teoria/Equações Filtro Passa-Baixas Exponencial
+* Teoria/Equações [Filtro Passa-Baixas Exponencial](Filtro/filtro_exponencial.html).
 
 &nbsp;
 
