@@ -11,10 +11,14 @@ Experimentos previstos:
   Arquivo PDF do roteiro:  [lab_2_convolucao.pdf](Lab_2/lab_2_convolucao.pdf)  + rotina MATLAB para "brincar" com reverberação de sinais:   [convol2.m](Lab_2/convol2.m) + Arquivo Zipado com audios para testes:  [lab_2_material_aula.zip](Lab_2/lab_2_material_aula.zip) (75,2 MB).
   Revisão sobre **[Convolução](Convolucao/convolucao.html) **.
 
-* Usando ISR no Arduino (material teórico)
+* Usando ISR no Arduino ([material teórico](https://fpassold.github.io/Lab_Controle_2/Arduino_Int/Arduino_Int.html)).
 
-* Exemplo de síntese de Onda Senoidal usando ISR no Arduino</br>
-  *(com simulações prévias no MATLAB)*
+  * Exemplo de síntese de [Onda Senoidal de 40 Hz](https://fpassold.github.io/Lab_Controle_2/Projeto_Final/gerador_senoidal.html) usando ISR no Arduino.</br>
+  *(com simulações prévias no MATLAB; usando PWM default do Arduino + Filtro Passa-Baixas RC)*
+  * Exemplo de [Onda Triangular de 0,1 Hz](https://fpassold.github.io/Lab_Controle_2/Projeto_Final/onda_triangular.html) usando ISR.</br>
+  *(Uso da interface do Arduino >> Tools >> Serial Plotter, para visualizar a onda gerada)*
+
+* [Lab 3) trabalho 3 para 2023.2](/Lab_3/lab3_trabalho_2023_2.html).
 
 * Teoria/Equações Filtro Passa-Baixas Exponencial
 
