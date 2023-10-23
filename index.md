@@ -20,10 +20,15 @@
 * [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html)  (2023/2);
 * [Acionamento Hidráulico e Pneumático (EEE172)](Pneumatica/topicos.html).
 
-</nb>
+&nbsp;
+
+* [Tutorial rápido sobre Matlab](Matlab/tutorial.html).
+* [Instalação recomendada](Matlab/instalacao_matlab.html) do Matlab (áreas de: Controle E Sinais & Sistemas)
+
+&nbsp;
 
 * Dicas para pessoal do [TCC](TCC_Latex/index.html).
 
 ----
 
-<font size="2">*Página iniciado em Set/2021, Última atualização: 08/09/2023.*</font> 
+<font size="2">*Página iniciado em Set/2021, Última atualização: 23/10/2023.*</font> 

@@ -23,7 +23,6 @@
 </p>
 </details>
 
- 
 <details><summary>Dicas instalação do MATLAB (toolboxes necessários)...</summary>
 <p>
 
@@ -101,7 +100,8 @@ System Identification Toolbox                         Version 9.9         (R2018
 </p>
 </details>
 
-
+* [Tutorial (rápido) sobre o Matlab](https://fpassold.github.io/Matlab/tutorial.html);
+* [Tutorial (rápido) sobre o Octave](https://fpassold.github.io/Octave/octave_inicio.html);
 
 ## 1) Introdução
 
