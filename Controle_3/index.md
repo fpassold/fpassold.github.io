@@ -16,7 +16,7 @@
 * Sugestão de **[instalação de MATLAB](instalacao_matlab.html)** para esta disciplina;
 
 
-  
+
 ## 2. Teorema de Amostragem
 
 * [Teoria Sistemas de Amostragem](2_sampling/01_Sistema_Amostrado_no_Tempo.pdf)
@@ -31,7 +31,7 @@
 </p>
 </details>
 &nbsp;
-  
+
 * [Simulação demonstrando Teorema da Amostragem](Teste_Amost/teste_amostragem.html) 
   (*Amostrando uma onda dente-de-serra*)
   * [Síntese de Onda Quadrada usando Série de Fourier](estudo_dirigido/Síntese_Onda_Quadrada.html)
@@ -85,7 +85,7 @@
 &nbsp;
 
 1. **Controlador com Ação Proporcional**:
-     
+   
      * [Aula de 07/05/2020](aula_07_05_2020.html);
 &nbsp;
 
@@ -127,6 +127,7 @@
       *(Usando Contribuição angular.)*
       * [Teste de Controladores com Ação Derivativa](estudo_caso/Teste_Controladores_Acao_Derivativa.html) (Simulink)</br>
          *(Simulaçãoes ressaltando elevadas ações de controle; **uso de bloco Saturador no Simulink**)*
+      * Projeto de PD e melhorias usando **App Control System Designer** ([aula de 20/10/2023](2023_2/aula_20out2023.html)).
 
 <details><summary>Revisando idéia geral sobre Contribuição Angular</summary>
 <p>
@@ -182,7 +183,9 @@ EXTRAs:
 </details>
 &nbsp;
 
-* Versão 2020 da **["Apostila"](estudo_caso/apostila.pdf)** (quase livro) criada para esta disciplina (incompleta)
+* :black_nib: [Aulas de 2023/2](aulas_2023_2.html).
+
+* :book: Versão 2020 da **["Apostila"](estudo_caso/apostila.pdf)** (quase livro) criada para esta disciplina (incompleta)
 
 ---
 

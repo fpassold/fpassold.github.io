@@ -1,0 +1,110 @@
+
+% Controlador Integrador Puro
+
+C_I = tf(1, [1 -1], T)
+
+C_I =
+ 
+    1
+  -----
+  z - 1
+ 
+Sample time: 0.02 seconds
+Discrete-time transfer function.
+
+ftma_I = C_I*BoG;
+zpk(ftma_I)
+
+ans =
+ 
+      0.00046711 (z+3.27) (z+0.2335)
+  --------------------------------------
+  (z-1) (z-0.9608) (z-0.9048) (z-0.6703)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+figure; rlocus(ftma_I)
+
+% Usando o critério de ação de controle,
+% limitando o $\%OS$ em 10%.
+
+hold on; zgrid(zeta,0)
+
+% Realizando um "zoom" na região de interesse
+
+axis equal
+axis([-2.5 2.5 -2 2])
+
+% ![RL_I.png](RL_I.png) % sem "zoom final"
+
+% Melhorando o zoom anterior...
+
+axis([0.8 1.1 -0.2 0.2])
+axis([0.8 1.1 -0.1 0.1])
+
+% ![RL_I_zoom.png](RL_I_zoom.png)
+
+% Realiazando o ajuste do controlador
+
+[K_I,polosMF_I] = rlocfind(ftma_I)
+Select a point in the graphics window
+selected_point =
+      0.98629 +   0.017811i
+K_I =
+    0.0076064
+polosMF_I =
+      0.98541 +    0.01802i
+      0.98541 -    0.01802i
+      0.89425 +          0i
+      0.67089 +          0i
+K_I =
+ K_I =
+      
+{Error: Invalid expression. Check for missing
+or extra characters.
+} 
+% [RL_I_zoom2.png](RL_I_zoom2.png)
+
+% Fechando a malha:
+
+ftmf_I = feedback(K_I*ftma_I, 1);
+figure; step(ftmf_I, ftmf_K_OS10);
+legend('Integrador Puro', 'Kp (%OS < 10%)')
+
+% ![step_K_I_K_OS10.png](step_K_I_K_OS10.png)
+
+stepinfo(ftmf_I)
+ans = 
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 1.68
+    SettlingTime: 5.38
+     SettlingMin: 0.90063
+     SettlingMax: 1.0801
+       Overshoot: 8.0065
+      Undershoot: 0
+            Peak: 1.0801
+        PeakTime: 3.7
+
+% Repare no valor do ganho do Integrador Puro.
+
+K_I
+K_I =
+    0.0076064
+
+% Este valor é tão baixo que provavelmente é
+% Irrealizável. Ou vamos cair no problema da
+% zona morta da planta.
+
+% A titulo de curiosidade
+
+5.37/1.27
+ans =
+       4.2283
+
+% Este controlador é 4,23 vezes mais lento que
+% o controlador Proporcional.
+
+save planta
+diary off

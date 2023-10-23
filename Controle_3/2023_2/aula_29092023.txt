@@ -1,0 +1,308 @@
+
+#
+ #
+ 
+{Error: Invalid text character. Check for unsupported
+symbol, invisible character, or pasting of non-ASCII
+characters.
+} 
+% # Projeto de Controladores
+
+% ## Projeto de PI
+
+% A estrutura do PI é mostrada em: [](https://fpassold.github.io/Controle_3/aula_14_05_2020.html)
+
+% A estrutura do PI é mostrada em [Aula de 14/05/2020](https://fpassold.github.io/Controle_3/aula_14_05_2020.html):
+
+% ![PID](https://fpassold.github.io/Controle_3/aula_14_05_2020/PI_blocos.drawio.png)
+
+% a equação do PI é:
+
+% $C_{PI}(z)=\dfrac{K_{PI}(z-z_{PI})}{(z-1)}$
+
+% Nossa única incógnita é a posição do zero do PI: $z_{PI}$.
+
+% Lembrando da planta:
+
+zpk(BoG)
+{Unrecognized function or variable 'BoG'.} 
+load planta.mat
+zpk(BoG)
+
+ans =
+ 
+   0.00046711 (z+3.27) (z+0.2335)
+  --------------------------------
+  (z-0.9608) (z-0.9048) (z-0.6703)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+pzmap(BoG)
+axis equal
+axis([0.5 1.05 -0.5 0.5])
+
+% Avaliando 3 opções diferentes de zero para o PI:
+
+PI1=tf([1 -0.98],[1 -1]) % Caso 1) 0,9608 < z_PI < 1
+
+PI1 =
+ 
+  s - 0.98
+  --------
+   s - 1
+ 
+Continuous-time transfer function.
+
+PI1=tf([1 -0.98],[1 -1],T) % Caso 1) 0,9608 < z_PI < 1
+
+PI1 =
+ 
+  z - 0.98
+  --------
+   z - 1
+ 
+Sample time: 0.02 seconds
+Discrete-time transfer function.
+
+PI2=tf([1 -0.93],[1 -1],T) % Caso 2) 0.9048 < z_PI < 0,9608
+
+PI2 =
+ 
+  z - 0.93
+  --------
+   z - 1
+ 
+Sample time: 0.02 seconds
+Discrete-time transfer function.
+
+PI3=tf([1 -0.78],[1 -1],T) % Caso 2) 0.6703 < z_PI < 0.9048
+
+PI3 =
+ 
+  z - 0.78
+  --------
+   z - 1
+ 
+Sample time: 0.02 seconds
+Discrete-time transfer function.
+
+% Plotando os RL resultantes para cada caso:
+ftma_PI1=PI1*BoG;
+ftma_PI2=PI2*BoG;
+ftma_PI3=PI3*BoG;
+figure; rlocus(ftma_PI1); hold on; zgrid(zeta,0); axis([0.5 1.05 -0.5 0.5])
+title('RL do PI1')
+figure; rlocus(ftma_PI2); hold on; zgrid(zeta,0); axis([0.5 1.05 -0.5 0.5])
+title('RL do PI2')
+figure; rlocus(ftma_PI3); hold on; zgrid(zeta,0); axis([0.5 1.05 -0.5 0.5])
+title('RL do PI3')
+axis([0.7 1.05 -0.3 0.3])
+axis([0.7 1.05 -0.25 0.25])
+axis([0.7 1.05 -0.25 0.25])
+axis([0.7 1.05 -0.25 0.25])
+
+% Gráficos dos 3 RL's:
+
+% ![RL_PI1.png](RL_PI1.png)
+
+% ![RL_PI2.png](RL_PI2.png)
+
+% ![RL_PI3.png](RL_PI3.png)
+
+% **Comentários**:
+
+% * O PI1 não parece ser boa opção pelo pólo de MF real entre $0.98 < z < 1$.
+% * Os polos de MF complexos dominantes do PI2 e PI3 estão em locais semelhantes.
+% * O $r_2$ é ligeiramente menor que $r_2$ ($r \prop t_s$). 
+
+% * O $r_2$ é ligeiramente menor que $r_3$ ($r \prop t_s$). 
+
+zpk(ftma_PI1) % repare na ordem do sistema
+
+ans =
+ 
+  0.00046711 (z+3.27) (z-0.98) (z+0.2335)
+  ---------------------------------------
+  (z-1) (z-0.9608) (z-0.9048) (z-0.6703)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+% Novas propostas:
+
+% * PI4 = um zero entre $0.96 < z < 0.98$, mas provavelmente este zero vai
+% atrair também os pólos complexos dominantes, atrasando a respota em MF
+% * PI5: e se colocamos seu zero exatamente sobre o polo mais lento da planta?
+
+% Note que o PI5 realiza o que se chama de "cancelamento pólo-zero", que é
+% antes de tudo, uma situação hipotética, difícil de ser obtida na prática.
+
+% E o PI5 como realiza o cancelamento do pólo mais lento da planta, vai
+% implicar em "redução da complexidade do sistema", ou seja, a ordem do
+% sistema reduz de 4a para 3a-ordem.
+
+zpk(BoG)
+
+ans =
+ 
+   0.00046711 (z+3.27) (z+0.2335)
+  --------------------------------
+  (z-0.9608) (z-0.9048) (z-0.6703)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+polos_MA = pole(BoG)
+polos_MA =
+      0.96079
+      0.90484
+      0.67032
+PI5 = tf([1 -polos_MA(1)], [1 -1], T)
+
+PI5 =
+ 
+  z - 0.9608
+  ----------
+    z - 1
+ 
+Sample time: 0.02 seconds
+Discrete-time transfer function.
+
+ftma_PI5=PI5*BoG;
+zpk(ftma_PI5)
+
+ans =
+ 
+  0.00046711 (z+3.27) (z-0.9608) (z+0.2335)
+  -----------------------------------------
+   (z-1) (z-0.9608) (z-0.9048) (z-0.6703)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_PI5b=minreal(ftma_PI5,1E-5);
+zpk(ftma_PI5b)
+
+ans =
+ 
+  0.00046711 (z+3.27) (z+0.2335)
+  ------------------------------
+   (z-1) (z-0.9048) (z-0.6703)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+figure; rlocus(ftma_PI5); hold on; zgrid(zeta,0)
+axis([0.7 1.05 -0.3 0.3])
+axis([0.85 1.05 -0.3 0.3])
+[K_PI5,polosMF_PI5]=rlocfind(ftma_PI5)
+Select a point in the graphics window
+selected_point =
+      0.95829 +   0.052012i
+K_PI5 =
+      0.61753
+polosMF_PI5 =
+      0.95827 +   0.052015i
+      0.95827 -   0.052015i
+      0.96079 +          0i
+      0.65832 +          0i
+
+% ![RL_PI5.png](RL_PI5.png)
+
+% Fechando a malha...
+
+ftmf_PI5 = feedback(K_PI5*ftma_PI5, 1);
+figure; step(ftmf_PI5, ftmf_I)
+legend('PI5', 'I')
+
+% ![step_PI_I.png](step_PI_I.png)
+
+stepinfo(ftmf_PI5)
+ans = 
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 0.56
+    SettlingTime: 1.8
+     SettlingMin: 0.91418
+     SettlingMax: 1.0908
+       Overshoot: 9.0757
+      Undershoot: 0
+            Peak: 1.0908
+        PeakTime: 1.22
+save planta.mat
+diary off
+
+% Continuando projeto, usando App Control System Designer...
+
+zpk(PI1)
+
+ans =
+ 
+  (z-0.98)
+  --------
+   (z-1)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+zpk(PI8)
+{Unrecognized function or variable 'PI8'.} 
+zpk(C_PI8)
+
+ans =
+ 
+  0.51156 (z-0.9646)
+  ------------------
+        (z-1)
+ 
+Name: C
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+zpk(Lag)
+
+ans =
+ 
+  0.64584 (z-0.9613)
+  ------------------
+      (z-0.9871)
+ 
+Name: C
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+% Repare que a medida que o pólo do Lag se afasta do círculo
+% unitário, o $e(\infty)$ aumenta. Note que estamos com o polo
+% do Lag valendo aproximadamente $z = 0,99$.
+
+% E como foi visto, pode-se acrescentar na janela do RL e na
+% janela da resposta ao degrau, os requisitos de controle
+% desejados para a esta planta, como $\%OS \le 10\%$ e
+% $t_s \le 1,7$ segundos.
+
+% **Cuidado* para não "inverter" a posiçao do pólo do Lag com
+% o zero do mesmo. Se o valor do pólo do Lag for menor que o
+% valor do seu zero, significa que você não está mais realizando
+% o projeto de um Controlador Lag (por Atraso de Fase), e sim
+% outro controlador, com outras propriedades (e outros objetivos)
+% que seria o "Lead", controlador por Avanço de Fase.
+
+save planta.mat
+version
+ans =
+    '9.7.0.1190202 (R2019b)'
+s = settings
+s = 
+  <a href="matlab:helpPopup matlab.settings.SettingsGroup" style="font-weight:bold">SettingsGroup</a> with properties:
+                 Simulink: [1×1 SettingsGroup]
+    mldrivetripwireaccess: [1×1 SettingsGroup]
+                connector: [1×1 SettingsGroup]
+                   matlab: [1×1 SettingsGroup]
+s.matlab.web.LightweightBrowserDefaultType.PersonalValue = 'cef';
+% Ref.: [Property inspector can not be used any more on mac](https://la.mathworks.com/matlabcentral/answers/486208-property-inspector-can-not-be-used-any-more-on-mac)
+
+pwd
+ans =
+    '/Volumes/DADOS/fpassold (DADOS)/Documents/UPF/Controle_3/2023_2'
+diary off

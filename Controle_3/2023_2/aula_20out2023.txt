@@ -1,0 +1,184 @@
+<!--title: Controladores PD -->
+
+# Projeto de Controladores (Cont)
+
+## Controladores com Ação Derivativa
+
+> Aula de 20/10/2023
+> Dados desta aula podem ser recuperados à partir de [planta.mat](planta.mat)
+
+### Projeto de PD
+
+Recuperando dados da aula passada:
+
+```Matlab
+load planta
+```
+
+% Ref.: Projeto de PD (sem contribuição angular) ([Aula de 28/10/2020](https://fpassold.github.io/Controle_3/2020_2/aula_28_10_2020.html))
+
+
+>> % Ref.: Projeto de PD (sem contribuição angular) ([Aula de 28/10/2020](https://fpassold.github.io/Controle_3/2020_2/aula_28_10_2020.html))
+ >> % Ref.: Projeto de PD (sem contribuição angular) ([Aula de 28/10/2020](https://fpassold.github.io/Controle_3/2020_2/aula_28_10_2020.html))
+ 
+{Error: Invalid use of operator.
+} 
+% Equação genérica do PD
+
+% $C_{PD}(z) = \dfrac{K(z-z_{PD}}{z}$
+
+% Única incógnita é a posição do zero do PD: $z_{PD}$.
+
+% SEgunda Ref: https://fpassold.github.io/Controle_3/projeto_PD_lead_2020.html
+
+% Lembrando da nossa planta:
+
+zpk(BoG)
+
+ans =
+ 
+   0.00046711 (z+3.27) (z+0.2335)
+  --------------------------------
+  (z-0.9608) (z-0.9048) (z-0.6703)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+% Seguindo o mesmo raciocínio empregado em https://fpassold.github.io/Controle_3/projeto_PD_lead_2020.html
+
+% Parece ser melhor localizar o zero entre os 2 pólos mais
+% dominantes da planta.
+
+z_PD=(0.9608+0.9048)/2
+z_PD =
+       0.9328
+z_PD=0.93;
+C_PD1 = tf([z -z_PD],[1 0], T)
+{Unrecognized function or variable 'z'.} 
+C_PD1 = tf([1 -z_PD],[1 0], T)
+
+C_PD1 =
+ 
+  z - 0.93
+  --------
+     z
+ 
+Sample time: 0.02 seconds
+Discrete-time transfer function.
+
+ftma_PD1 = C_PD1*BoG;
+zpk(ftma_PD1)
+
+ans =
+ 
+  0.00046711 (z+3.27) (z-0.93) (z+0.2335)
+  ---------------------------------------
+    z (z-0.9608) (z-0.9048) (z-0.6703)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+rlocus(ftma_PD1)
+hold on; zgrid(zeta,0)
+axis([0.4 1.1 -0.6 0.6])
+[K_PD1,polosMF_PD1] = rlocfind(ftma_PD1)
+Select a point in the graphics window
+selected_point =
+      0.80225 +    0.20805i
+K_PD1 =
+       25.218
+polosMF_PD1 =
+      0.93332 +          0i
+      0.80195 +    0.20805i
+      0.80195 -    0.20805i
+    -0.013055 +          0i
+K_PD1 = 25;
+
+% ![RL_PD1.png](RL_PD1.png)
+
+% Fechando a malha com o ganho encontrado...
+
+ftmf_PD1 = feedback(K_PD1*ftma_PD1, 1);
+figure; step(ftmf_PD1, ftmf_K_OS10, ftmf_PI5)
+legend('PD1', 'K (%OS=10%)', 'PI5')
+
+% ![step_PD1_K_PI5.png](step_PD1_K_PI5.png)
+
+% Melhorando projeto com App Control System Designer
+
+% Fazendo ajustes iniciais:
+
+% ![app_control_system_pd_0.png](app_control_system_pd_0.png)
+
+% Importando controlador PD1 já feito:
+
+% ![app_control_system_pd_1.png](app_control_system_pd_1.png)
+
+% Não esqueça de importar a planta...
+
+% ![app_control_system_pd_2](app_control_system_pd_2)
+
+% Editando o ganho do controlador...
+
+
+% ![app_control_system_pd_3](app_control_system_pd_3.png)
+
+% Aumentando o ganho para 49:
+
+% ![app_control_system_pd_4](app_control_system_pd_4.png)
+
+% Exportando equação deste PD:
+
+% ![app_control_system_pd_5](app_control_system_pd_5.png)
+
+zpk(C_PD2)
+
+ans =
+ 
+  49 (z-0.93)
+  -----------
+       z
+ 
+Name: C
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+% Aumentar o ganho implicou em reduzir o erro
+
+% Suponha que agora vamos cancelar o 2o-polo mais
+% lento da planta com o zero do PD3:
+
+
+% Ajustando o zero do PD3:
+
+% ![app_control_system_pd_6](app_control_system_pd_6.png)
+
+% Resultado final:
+
+
+% ![app_control_system_pd_7](app_control_system_pd_7.png)
+
+% Controlador exportado como PD3:
+
+zpk(C_PD3)
+
+ans =
+ 
+  42 (z-0.9048)
+  -------------
+        z
+ 
+Name: C
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+
+% Salvando seção de trabalho do App Control System Designer em [ControlSystemDesignerSession_PD.mat](ControlSystemDesignerSession_PD.mat).
+
+% Salvando dados de todos os projetos já realizados:
+
+save planta
+
+% Encerrando diary (>> diary off)
+
+diary off

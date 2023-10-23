@@ -1,0 +1,159 @@
+pwd
+ans =
+    '/Volumes/DADOS/fpassold (DADOS)/Documents/UPF/Controle_3/2023_2'
+
+% # Projeto Controladores
+
+% Seja a planta:
+
+% $G(s) = \dfrac{400}{(s+2)(s+5)(s+20)}$
+
+bode(G)
+20/(2*pi)
+ans =
+       3.1831
+
+fs=20*ans
+fs =
+       63.662
+T=1/fs
+T =
+     0.015708
+T-20E-3
+ans =
+    -0.004292
+T=20E-3
+T =
+         0.02
+
+BoG = c2d(G, T) 
+
+BoG =
+ 
+  1.25e-06 z^2 + 4.689e-06 z + 1.098e-06
+  --------------------------------------
+    z^3 - 2.76 z^2 + 2.531 z - 0.7711
+ 
+Sample time: 0.02 seconds
+Discrete-time transfer function.
+
+zpk(BoG)
+
+ans =
+ 
+   1.2502e-06 (z+3.5) (z+0.2509)
+  --------------------------------
+  (z-0.9802) (z-0.9608) (z-0.8187)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+G=tf(400,poly([-2 -5 -20]));
+zpk(G)
+
+ans =
+ 
+         400
+  ------------------
+  (s+20) (s+5) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+BoG = c2d(G, T);
+zpk(BoG)
+
+ans =
+ 
+   0.00046711 (z+3.27) (z+0.2335)
+  --------------------------------
+  (z-0.9608) (z-0.9048) (z-0.6703)
+ 
+Sample time: 0.02 seconds
+Discrete-time zero/pole/gain model.
+
+step(BoG)
+step(BoG)
+
+% ![step_MA.png](step_MA.png)
+
+figure; rlocus(BoG)
+
+% ![RL_K.png](RL_K.png_
+
+axis([0.4 1.1 -0.5 0.5])
+
+% ![RL_K_zoom.png](RL_K_zoom.png)
+
+% ![RL_K_super.png](RL_K_super.png)
+
+K=0.08;
+% fechando a malha
+ftmf_K_super=feedback(K*BoG, 1);
+poles(ftmf_K_super)
+{Undefined function 'poles' for input arguments
+of type 'tf'.} 
+pole(ftmf_K_super)
+ans =
+      0.94298
+      0.92453
+       0.6684
+figure; step(ftmf_K_super)
+stepinfo(ftmf_K_super)
+ans = 
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 1
+    SettlingTime: 1.82
+     SettlingMin: 0.12433
+     SettlingMax: 0.13788
+       Overshoot: 0
+      Undershoot: 0
+            Peak: 0.13788
+        PeakTime: 3.18
+
+2.26/1.82
+ans =
+       1.2418
+
+OS=10;
+zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+zeta =
+      0.59116
+% mudar o foco da janela gráfica para o RL
+figure(2)
+hold on
+zgrid(zeta, 0)
+[K_OS10, polosMF_K_OS10]=rlocfind(BoG)
+Select a point in the graphics window
+selected_point =
+      0.94081 +    0.07199i
+K_OS10 =
+      0.72714
+polosMF_K_OS10 =
+      0.94038 +   0.072063i
+      0.94038 -   0.072063i
+      0.65484 +          0i
+
+% ![RL_K_OS10.png](RL_K_OS10.png)
+
+K_OS10=0.75;
+% fechando a malha
+ftmf_K_OS10=feedback(K_OS10*BoG, 1);
+figure; step(ftmf_K_OS10)
+stepinfo(ftmf_K_OS10)
+ans = 
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 0.38
+    SettlingTime: 1.28
+     SettlingMin: 0.54387
+     SettlingMax: 0.65533
+       Overshoot: 9.2212
+      Undershoot: 0
+            Peak: 0.65533
+        PeakTime: 0.86
+
+% ![step_K_OS10.png](step_K_OS10.png)
+
+save planta
+diary off
