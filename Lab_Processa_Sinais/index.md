@@ -11,7 +11,14 @@ Experimentos previstos:
   Arquivo PDF do roteiro:  [lab_2_convolucao.pdf](Lab_2/lab_2_convolucao.pdf)  + rotina MATLAB para "brincar" com reverberação de sinais:   [convol2.m](Lab_2/convol2.m) + Arquivo Zipado com audios para testes:  [lab_2_material_aula.zip](Lab_2/lab_2_material_aula.zip) (75,2 MB).
   Revisão sobre **[Convolução](Convolucao/convolucao.html) **.
 
+* Usando ISR no Arduino (material teórico)
 
+* Exemplo de síntese de Onda Senoidal usando ISR no Arduino</br>
+  *(com simulações prévias no MATLAB)*
+
+* Teoria/Equações Filtro Passa-Baixas Exponencial
+
+&nbsp;
 
 :construction_worker_man: Página ainda sendo atualizada.
 
