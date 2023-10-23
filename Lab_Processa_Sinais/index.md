@@ -18,7 +18,7 @@ Experimentos previstos:
   * Exemplo de [Onda Triangular de 0,1 Hz](https://fpassold.github.io/Lab_Controle_2/Projeto_Final/onda_triangular.html) usando ISR.</br>
   *(Uso da interface do Arduino >> Tools >> Serial Plotter, para visualizar a onda gerada)*
 
-* [Lab 3) trabalho 3 para 2023.2](/Lab_3/lab3_trabalho_2023_2.html).
+* [Lab 3) trabalho 3 para 2023.2](Lab_3/lab3_trabalho_2023_2.html).
 
 * Teoria/Equações [Filtro Passa-Baixas Exponencial](Filtro/filtro_exponencial.html).
 
