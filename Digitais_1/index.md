@@ -107,9 +107,9 @@
 
 6.1) Números inteiros com sinal (Intro. Sist. Arit. Binários)
 
-6.2) Circuitos Aritméticos Binários
+6.2) Circuitos Aritméticos Binários (Arquivo [PDF](ula/Aritmetica_Digital_KeyNote_v5.pdf));
 
-6.3) Somadores BCD + ULA's
+6.3) ULA's (Arquivo [PDF](ula/ULAs.pdf));
 
 6.4) Circuitos Exemplo
 
