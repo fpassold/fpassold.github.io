@@ -3233,7 +3233,8 @@ aside > *:last-child {
             <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="default"></span>
-                <p><img src="surface_sin_cos_3D.png" alt=""></p>
+                <p><img src="surfing_2.jpg" alt=""></p>
+<!-- ![surface_sin_cos_3D.png](surface_sin_cos_3D.png) -->
 <h1 id="matlab-fácil">Matlab fácil</h1>
 <ul>
 <li><a href="#matlab-f%C3%A1cil">Matlab fácil</a>
@@ -3242,6 +3243,7 @@ aside > *:last-child {
 <li><a href="#realizando-gr%C3%A1ficos">Realizando Gráficos</a>
 <ul>
 <li><a href="#fun%C3%A7%C3%A3o-ezplot">Função ezplot</a></li>
+<li><a href="#recomenda%C3%A7%C3%B5es-para-salvar-gr%C3%A1ficos">Recomendações para salvar gráficos</a></li>
 <li><a href="#gr%C3%A1ficos-%C3%A0-partir-de-vetores">Gráficos à partir de vetores</a></li>
 </ul>
 </li>
@@ -3251,6 +3253,7 @@ aside > *:last-child {
 </ul>
 </li>
 <li><a href="#fun%C3%A7%C3%A3o-step">Função step()</a></li>
+<li><a href="#tutorial-mais-completo">Tutorial mais completo</a></li>
 </ul>
 </li>
 </ul>
@@ -3372,6 +3375,47 @@ e =
 <p>Será gerado um gráfico como o mostrado abaixo:</p>
 <p><img src="grafico_1.png" alt=""></p>
 <p>Note que a própria função <code>ezplot</code> já completa o eixo das abcissas com “t” o título do gráfico com a expressão da função.</p>
+<h3 id="recomendações-para-salvar-gráficos">Recomendações para salvar gráficos</h3>
+<p>⚠️ Programas de computador em geral, quando geram gráficos, usam a resolução da próprio tela, normalmente 96 dpi (a menos que você tenha uma tela High DPI tipo Retina Display). Está é uma <mark>resolução muito baixa para exportar figuras e usá-las em documentos</mark>, <strong>pior</strong> se forem escalonadas. Considere ainda que as fontes originais, já usam um tamanho reduzido. Se a figura é reduzida no documento final, o texto presente nas mesmas fica quase ilegível.</p>
+<p><strong>Solução</strong></p>
+<p>Salvar as figuras usando maior resolução e fontes maiores nas figuras. Para tanto, na janela gráfica do Matlab, escolha no menu: &quot;<strong>File &gt;&gt; Export Setup</strong>&quot; e modifique os seguintes parâmetros:</p>
+<ul>
+<li><strong>Resolução</strong>: aumente a resolução do &quot;auto&quot; (96 dpi) para o valor 150 ou 300 dpi:
+<img src="rendering.png" alt=""></li>
+<li>Aumente o <strong>tamanho mínimo das fontes</strong> para algo como 14 pts:
+<img src="font.png" alt=""></li>
+<li>Aumente a <strong>espessura mínima para as linhas</strong> usadas nos gráficos:
+<img src="lines.png" alt=""></li>
+</ul>
+<p><strong>Obs.:</strong> Não é necessário repetir estes comandos toda vez que você quiser exportar ou salvar um gráfico. Basta <strong>uma única vez, criar seu próprio Template</strong>. Para tanto, repare que na parte infeior das figuras anteriores aparece um quadro &quot;Export Styles&quot;. Nesta parte da janela, <strong>salve</strong> seu próprio estilo definindo um nome para o mesmo no qadro de texto &quot;<strong>Save as style named</strong>&quot;. Não esqueça de clicar no botão &quot;<strong>Save</strong>&quot;. Assim, toda vez que quiser <strong>recuperar o estilo criado</strong>, basta ir esta seção de <em>styles</em> e na caixa de textos (menu pull-down) &quot;<strong>Load setting for</strong>&quot;, selecionar o nome adotado anteriormente para o estilo. Depois disto é necessário clicar em <strong>Aply</strong> para que as novas propriedades sejam aplicadas na figura atual. <em>Atenção</em>: não se recomenda gravar o estilo modificado usando o nome <em>default</em> porque isto altera o padrão do Matlab e não há como voltar atrpas, caso seja necessário.</p>
+<p>A figura à seguir destaca a diferença obtida em termos de qualidade gráfica:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Propriedades <em>Default</em></th>
+<th style="text-align:center">Estilo modificado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="teste1.png" alt=""></td>
+<td style="text-align:center"><img src="teste2.png" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">96 dpi</td>
+<td style="text-align:center">150 dpi</td>
+</tr>
+<tr>
+<td style="text-align:center">Fonts <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo></mrow><annotation encoding="application/x-tex">\ge</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span></span></span></span></eq> 8 pts</td>
+<td style="text-align:center">Fonts <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo></mrow><annotation encoding="application/x-tex">\ge</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span></span></span></span></eq> 14 pts</td>
+</tr>
+<tr>
+<td style="text-align:center">18 Kbytes</td>
+<td style="text-align:center">41 Kbytes</td>
+</tr>
+</tbody>
+</table>
+<p>Por fim, preferir <mark>salvar as figuras como .PNG</mark> ao invés de .JPG ou pior ainda .BMP.</p>
 <h3 id="gráficos-à-partir-de-vetores">Gráficos à partir de vetores</h3>
 <p>Mas existem outras formas de obter este gráfico, que envolve a <strong>criação de vetores</strong>:</p>
 <pre><code class="language-Matlab">&gt;&gt; t = <span class="hljs-number">0</span>:<span class="hljs-number">10</span>	<span class="hljs-comment">% cria vetor t variando de 0 até 10, incremento == 1</span>
@@ -3628,6 +3672,11 @@ r =
 </code></pre>
 <p>Que deve ter rendido o gráfico:</p>
 <p><img src="figura_7.png" alt=""></p>
+<p> </p>
+<p> </p>
+<h2 id="tutorial-mais-completo">Tutorial mais completo</h2>
+<p>:PDF: Um tutorial mais completo e mais longo pode ser baixado (<strong><a href="Matlab_guide.pdf">Matlab_guide.pdf</a></strong>) (arquivo PDF de 44 páginas; 13.4 Mbytes).</p>
+<p> </p>
 <p>🤜 That´s all folks! 🤛</p>
 <hr>
 <font size="2"> 

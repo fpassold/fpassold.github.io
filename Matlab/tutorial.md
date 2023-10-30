@@ -1,4 +1,5 @@
-![surface_sin_cos_3D.png](surface_sin_cos_3D.png)
+![surfing_2.jpg](surfing_2.jpg)
+<!-- ![surface_sin_cos_3D.png](surface_sin_cos_3D.png) -->
 
 # Matlab fácil
 
@@ -6,10 +7,12 @@
   - [Comandos simples no Matlab](#comandos-simples-no-matlab)
   - [Realizando Gráficos](#realizando-gráficos)
     - [Função ezplot](#função-ezplot)
+    - [Recomendações para salvar gráficos](#recomendações-para-salvar-gráficos)
     - [Gráficos à partir de vetores](#gráficos-à-partir-de-vetores)
   - [Usando outras funções no Matlab](#usando-outras-funções-no-matlab)
     - [Transformada Inversa de Laplace](#transformada-inversa-de-laplace)
   - [Função step()](#função-step)
+  - [Tutorial mais completo](#tutorial-mais-completo)
 
 ---
 
@@ -147,6 +150,34 @@ Será gerado um gráfico como o mostrado abaixo:
 ![grafico_1.png](grafico_1.png)
 
 Note que a própria função `ezplot` já completa o eixo das abcissas com “t” o título do gráfico com a expressão da função.
+
+### Recomendações para salvar gráficos
+
+:warning: Programas de computador em geral, quando geram gráficos, usam a resolução da próprio tela, normalmente 96 dpi (a menos que você tenha uma tela High DPI tipo Retina Display). Está é uma ==resolução muito baixa para exportar figuras e usá-las em documentos==, **pior** se forem escalonadas. Considere ainda que as fontes originais, já usam um tamanho reduzido. Se a figura é reduzida no documento final, o texto presente nas mesmas fica quase ilegível.
+
+**Solução**
+
+Salvar as figuras usando maior resolução e fontes maiores nas figuras. Para tanto, na janela gráfica do Matlab, escolha no menu: "**File >> Export Setup**" e modifique os seguintes parâmetros:
+
+* **Resolução**: aumente a resolução do "auto" (96 dpi) para o valor 150 ou 300 dpi:
+    ![rendering.png](rendering.png)
+* Aumente o **tamanho mínimo das fontes** para algo como 14 pts:
+    ![font.png](font.png)
+* Aumente a **espessura mínima para as linhas** usadas nos gráficos:
+    ![lines.png](lines.png)
+
+**Obs.:** Não é necessário repetir estes comandos toda vez que você quiser exportar ou salvar um gráfico. Basta **uma única vez, criar seu próprio Template**. Para tanto, repare que na parte infeior das figuras anteriores aparece um quadro "Export Styles". Nesta parte da janela, **salve** seu próprio estilo definindo um nome para o mesmo no qadro de texto "**Save as style named**". Não esqueça de clicar no botão "**Save**". Assim, toda vez que quiser **recuperar o estilo criado**, basta ir esta seção de *styles* e na caixa de textos (menu pull-down) "**Load setting for**", selecionar o nome adotado anteriormente para o estilo. Depois disto é necessário clicar em **Aply** para que as novas propriedades sejam aplicadas na figura atual. *Atenção*: não se recomenda gravar o estilo modificado usando o nome *default* porque isto altera o padrão do Matlab e não há como voltar atrpas, caso seja necessário.
+
+A figura à seguir destaca a diferença obtida em termos de qualidade gráfica:
+
+| Propriedades *Default* | Estilo modificado |
+| :---: | :---: |
+| ![teste1.png](teste1.png) | ![teste2.png](teste2.png) |
+| 96 dpi | 150 dpi |
+| Fonts $\ge$ 8 pts | Fonts $\ge$ 14 pts |
+| 18 Kbytes | 41 Kbytes |
+
+Por fim, preferir ==salvar as figuras como .PNG== ao invés de .JPG ou pior ainda .BMP.
 
 ### Gráficos à partir de vetores
 
@@ -472,6 +503,18 @@ Por acaso, comparar com:
 Que deve ter rendido o gráfico:
 
 ![figura_7.png](figura_7.png)
+
+&nbsp;
+
+&nbsp;
+
+
+## Tutorial mais completo
+
+:PDF: Um tutorial mais completo e mais longo pode ser baixado (**[Matlab\_guide.pdf](Matlab_guide.pdf)**) (arquivo PDF de 44 páginas; 13.4 Mbytes).
+
+
+&nbsp;
 
 :fist_right: That´s all folks! :fist_left:
 

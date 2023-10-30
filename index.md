@@ -23,7 +23,8 @@
 &nbsp;
 
 * [Tutorial rápido sobre Matlab](Matlab/tutorial.html).
-* [Instalação recomendada](Matlab/instalacao_matlab.html) do Matlab (áreas de: Controle E Sinais & Sistemas)
+* **[Matlab\_guide.pdf](Matlab/Matlab_guide.pdf)** (tutorial mais longo, arquivo PDF de 13.4 Mbytes, 44 páginas)
+* **[Instalação recomendada](Matlab/instalacao_matlab.html)** do Matlab (áreas de: Controle E Sinais & Sistemas)
 
 &nbsp;
 
@@ -31,4 +32,4 @@
 
 ----
 
-<font size="2">*Página iniciado em Set/2021, Última atualização: 23/10/2023.*</font> 
+<font size="2">*Página iniciado em Abr/2020, Última atualização: 23/10/2023.*</font> 

@@ -12,6 +12,7 @@ Outros tópicos:
 
 * [Tutorial (rápido) sobre Matlab](https://fpassold.github.io/Matlab/tutorial.html).
 * Recomendações sobre [Instalação do Matlab](https://fpassold.github.io/Matlab/instalacao_matlab.html).
+* Tutorial (algo mais longo) sobre o Matlab ([aula de 26/10/2023](aula_26oct2023.html))
 * [Tutorial (rápido) sobre o Octave](https://fpassold.github.io/Octave/octave_inicio.html).
 ----
 
