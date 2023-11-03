@@ -169,7 +169,7 @@
 
 EXTRAs:
 
-* Usando **==[App Control System Designer](/APP_Control_System_Designer/Intro_APP_Control_System_Designer.html)==** (pequeno Tutorial);
+* Usando **==[App Control System Designer](APP_Control_System_Designer/Intro_APP_Control_System_Designer.html)==** (Tutorial introdutório);
 * Simulações de controladores Digitais **usando Simulik** ([PDF](estudo_caso/aula_12abr2017_uso_simulink_datatypes.pdf))
   *(Lidando com "Data types" das janelas Scope)*;
 * Sugestão de **[instalação de MATLAB](instalacao_matlab.html)** para esta disciplina;
@@ -189,4 +189,4 @@ EXTRAs:
 
 ---
 
-<font size="2"> (c) Fernando Passold, página atualiza em 28/05/2020, 04/06/2020, 11/11/2020, 07.04.2021, 11/03/2023, 04/08/2023, 16/10/2023. </font>
+[:mushroom:](https://youtu.be/PdctLROYkZY?si=x5IpfM62zFDuUO2a) <font size="2"> (c) Fernando Passold, página atualiza em 28/05/2020, 04/06/2020, 11/11/2020, 07.04.2021, 11/03/2023, 04/08/2023, 16/10/2023. </font>
