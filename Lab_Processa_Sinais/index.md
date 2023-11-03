@@ -21,6 +21,7 @@ Experimentos previstos:
 * [Lab 3) trabalho 3 para 2023.2](Lab_3/lab3_trabalho_2023_2.html).
 
 * Teoria/Equações [Filtro Passa-Baixas Exponencial](Filtro/filtro_exponencial.html).
+* [Explorando o Espectro com a Transformada de Fourier](lab_5_transf_fourier/lab_5_trans_fourier.html)
 
 &nbsp;
 
@@ -28,4 +29,4 @@ Experimentos previstos:
 
 ----
 
-Fernando Passold, em 08/09/2023
+Fernando Passold, em 02/11/2023

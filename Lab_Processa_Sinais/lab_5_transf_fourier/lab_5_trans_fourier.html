@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Lab&period; Processamento Digital de Sinais</title>
+        <title>Explorando o Espectro com a Transformada de Fourier</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -3199,7 +3199,8 @@ aside > *:last-child {
   background-color: #fafbfc;
 }
 </style>
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -3232,45 +3233,98 @@ aside > *:last-child {
             <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="default"></span>
-                <!-- title: Lab. Processamento Digital de Sinais -->
-<p><img src="Lab_2/p1010913.jpg" alt=""></p>
-<h1 id="lab-processamento-digital-de-sinais">Lab. Processamento Digital de Sinais</h1>
-<p>Experimentos previstos:</p>
+                <h1 id="explorando-o-espectro-com-a-transformada-de-fourier">Explorando o Espectro com a Transformada de Fourier</h1>
+<h2 id="intro">Intro</h2>
+<!--
+Através da transformada de Fourier pode-se obter o conteúdo harmônico de um ==sinal periódico==. Essa análise é muito importante para avaliar a qualidade de amplificadores e para calcular o fator de potência de cargas não lineares alimentadas a partir da rede elétrica.
+-->
+<p>A análise espectral desempenha um papel fundamental em engenharia elétrica, fornecendo uma visão profunda da composição de sinais e sistemas complexos. A Transformada de Fourier é uma ferramenta matemática essencial que permite desdobrar um sinal no domínio da frequência, revelando as diferentes componentes de frequência que o compõem. Neste laboratório, iremos explorar como a Transformada de Fourier pode ser aplicada para analisar e observar o espectro de sinais, um conceito essencial para engenheiros elétricos.</p>
+<p>Este laboratório proporcionará uma compreensão prática e sólida da Transformada de Fourier e como ela pode ser aplicada na engenharia elétrica para analisar e interpretar o espectro de diferentes tipos de sinais. Os conceitos aprendidos neste laboratório são essenciais para uma ampla gama de aplicações em engenharia, incluindo telecomunicações, processamento de áudio, processamento de imagem e muito mais. Portanto, prepare-se para explorar o fascinante mundo do processamento de sinais e sua relação com o domínio da frequência</p>
+<h2 id="objetivos">Objetivos</h2>
+<ol>
+<li>Compreender os fundamentos da Transformada de Fourier e seu papel na análise de sinais.</li>
+<li>Aprender a aplicar a Transformada de Fourier no domínio do tempo e do espectro.</li>
+<li>Explorar a relação entre o domínio do tempo e do espectro de um sinal.</li>
+<li>Realizar experimentos práticos para analisar diferentes tipos de sinais e observar suas características espectrais.</li>
+</ol>
+<h2 id="materiais-e-equipamentos">Materiais e Equipamentos</h2>
 <ul>
-<li>
-<p>Lab 1) <strong>Ruídos</strong> (tipos, definições, geradores):  <a href="Lab_1/lab_1_ruidos.pdf">lab_1_ruidos.pdf</a> (arquivo:  <a href="Lab_1/numeros.c">numeros.c</a>  -- teste da função <code>rand()</code>: gerador de números aleatórios, linguagem GNU C).</p>
-</li>
-<li>
-<p>Lab 2) <strong>Convolução (e Reverberação)</strong>: processando sinal para reverberar de maneira diferente.
-Arquivo PDF do roteiro:  <a href="Lab_2/lab_2_convolucao.pdf">lab_2_convolucao.pdf</a>  + rotina MATLAB para &quot;brincar&quot; com reverberação de sinais:   <a href="Lab_2/convol2.m">convol2.m</a> + Arquivo Zipado com audios para testes:  <a href="Lab_2/lab_2_material_aula.zip">lab_2_material_aula.zip</a> (75,2 MB).
-Revisão sobre **<a href="Convolucao/convolucao.html">Convolução</a> **.</p>
-</li>
-<li>
-<p>Usando ISR no Arduino (<a href="https://fpassold.github.io/Lab_Controle_2/Arduino_Int/Arduino_Int.html">material teórico</a>).</p>
-<ul>
-<li>Exemplo de síntese de <a href="https://fpassold.github.io/Lab_Controle_2/Projeto_Final/gerador_senoidal.html">Onda Senoidal de 40 Hz</a> usando ISR no Arduino.</br>
-<em>(com simulações prévias no MATLAB; usando PWM default do Arduino + Filtro Passa-Baixas RC)</em></li>
-<li>Exemplo de <a href="https://fpassold.github.io/Lab_Controle_2/Projeto_Final/onda_triangular.html">Onda Triangular de 0,1 Hz</a> usando ISR.</br>
-<em>(Uso da interface do Arduino &gt;&gt; Tools &gt;&gt; Serial Plotter, para visualizar a onda gerada)</em></li>
+<li>Computador com software de processamento de sinais (por exemplo, MATLAB ou Python com bibliotecas de processamento de sinais).</li>
+<li>Gerador de sinais (opcional).</li>
+<li>Osciloscópio (opcional).</li>
+<li>Sinais de exemplo ou dados coletados anteriormente.</li>
 </ul>
-</li>
-<li>
-<p><a href="Lab_3/lab3_trabalho_2023_2.html">Lab 3) trabalho 3 para 2023.2</a>.</p>
-</li>
-<li>
-<p>Teoria/Equações <a href="Filtro/filtro_exponencial.html">Filtro Passa-Baixas Exponencial</a>.</p>
-</li>
-<li>
-<p><a href="lab_5_transf_fourier/lab_5_trans_fourier.html">Explorando o Espectro com a Transformada de Fourier</a></p>
-</li>
-</ul>
-<p> </p>
-<p>👷‍♂️ Página ainda sendo atualizada.</p>
+<h2 id="procedimento-previsto">Procedimento Previsto</h2>
+<ol>
+<li>Breve revisão teórica sobre a Transformada de Fourier e sua aplicação.</li>
+<li>Aplicação da Transformada de Fourier em sinais de exemplo no domínio do tempo.</li>
+<li>Análise dos espectros resultantes e interpretação das informações espectrais.</li>
+<li>Realização de experimentos práticos com sinais reais ou gerados, utilizando a Transformada de Fourier para analisar seu espectro.</li>
+<li>Discussão dos resultados e conclusões sobre a análise espectral.</li>
+</ol>
+<h2 id="transformada-de-fourier-uma-visão-geral">Transformada de Fourier: Uma Visão Geral</h2>
+<p>A Transformada de Fourier é uma ferramenta matemática fundamental na análise de sinais e sistemas que permite decompor um sinal no domínio do tempo em suas componentes de frequência. Foi desenvolvida por Jean-Baptiste Joseph Fourier e é amplamente utilizada em áreas como engenharia elétrica, matemática, física, e processamento de sinais.</p>
+<p>A Transformada de Fourier de um sinal é representada pela seguinte fórmula:</p>
+<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></msubsup><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>j</mi><mn>2</mn><mi>π</mi><mi>f</mi><mi>t</mi></mrow></msup><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">X(f) = \int_{-\infty}^{+\infty} x(t)e^{-j2\pi f t} dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.380382em;vertical-align:-0.41415100000000005em;"></span><span class="mop"><span class="mop op-symbol small-op" style="margin-right:0.19445em;position:relative;top:-0.0005599999999999772em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9662310000000001em;"><span style="top:-2.34418em;margin-left:-0.19445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">∞</span></span></span></span><span style="top:-3.2579000000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.41415100000000005em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mord mtight">2</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></eq></p>
+<p>onde:</br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">X(f)=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq> representação do sinal no dominio frequencia;</br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">x(t)=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq> sinal no dominio tempo;</br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></eq> = frequência;</br></p>
+<p>A Transformada de Fourier expressa o sinal <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></eq> como uma soma (ou integral) de componentes senoidais com diferentes frequências. Isso permite a análise das contribuições de cada frequência presente no sinal.</p>
+<h3 id="aplicações-da-transformada-de-fourier">Aplicações da Transformada de Fourier:</h3>
+<ol>
+<li><strong>Análise Espectral</strong>: Uma das aplicações mais comuns é a análise espectral. A Transformada de Fourier permite analisar um sinal e identificar as frequências que o compõem. Isso é crucial em telecomunicações, processamento de áudio e imagem, onde a análise de frequência é essencial.</li>
+<li><strong>Filtragem de Sinais</strong>: A Transformada de Fourier é usada para projetar filtros que podem atenuar ou realçar componentes de frequência específicas em um sinal. Isso é útil em sistemas de comunicação para remover ruído e distorção.</li>
+<li><strong>Modulação e Demodulação</strong>: Em sistemas de comunicação, a modulação é usada para transmitir informações em uma frequência portadora. A Transformada de Fourier é fundamental para entender a modulação e demodulação de sinais.</li>
+<li><strong>Processamento de Imagem</strong>: Em processamento de imagem, a Transformada de Fourier é usada em técnicas como filtragem de imagens, compressão de imagens e detecção de bordas.</li>
+<li><strong>Medição e Análise de Sinais Biomédicos</strong>: Na área médica, a Transformada de Fourier é aplicada na análise de eletroencefalogramas (EEG), eletrocardiogramas (ECG) e outros sinais biomédicos para extrair informações relevantes.</li>
+<li><strong>Espectro de Potência</strong>: É usado para calcular o espectro de potência de um sinal, que é útil na análise de sinais estocásticos e na caracterização do comportamento de sistemas dinâmicos.</br>
+Essa análise é muito importante para avaliar a qualidade de amplificadores e para corrigir o fator de potência de cargas não lineares alimentadas a partir da rede elétrica.</li>
+<li><strong>Óptica</strong>: Na óptica, a Transformada de Fourier é usada para descrever a propagação da luz e a difração em sistemas ópticos.</li>
+</ol>
+<p>Em resumo, a Transformada de Fourier desempenha um papel fundamental na análise e processamento de sinais em uma ampla gama de aplicações. Ela permite a decomposição de sinais complexos em suas componentes de frequência, facilitando a análise e manipulação desses sinais de maneira eficaz.</p>
+<h2 id="aplicação-da-transformada">Aplicação da Transformada</h2>
+<p>A idéia é simular sinais analógicos e observar o espectro destes sinais e  eventualmente vamos tentar levantar o espectro de um sinal capturado em laboratório, usando o A/D do Arduíno.</p>
+<p>Para tanto vamos usar a rotina <a href="signal_fft.m">signal_fft.m</a> implementada no Matlab que faz uso da função <code>fftshift()</code> para mostrar corretamente o espectro de um sinal.</p>
+<p>Segue código <a href="signal_fft.m">signal_fft.m</a>:</p>
+<pre><code class="language-matlab">
+</code></pre>
+<p><strong>Testando</strong>:</p>
+<p>Suponha o sinal composto por 2 harmônicas apenas:</p>
+<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mn>500</mn><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mn>1000</mn><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y(t)=\sin(2\pi 500 t) + 1/2 \sin(2\pi 1000 t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mord">500</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mord">1000</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></eq></p>
+<p>Este sinal gera o seguinte gráfico no domínio tempo:</p>
+<p><img src="sinal_teste1.png" alt=""></p>
+<p>Note que a freq. fundamental (1a-harmônica) está em 500 Hz, o que implica <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>1</mn><mi mathvariant="normal">/</mi><mi>f</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mn>002</mn></mrow><annotation encoding="application/x-tex">T=1/f=0,002</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">002</span></span></span></span></eq> segundos <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></eq> mili-segundos. Um período e meio do sinal implica então num intervalo de tempo igual à 4 mili-segundos.</p>
+<p>Segue código da função que gerou a simulação do sinal anterior:</p>
+<pre><code class="language-matlab">&gt;&gt; f=<span class="hljs-number">500</span>;
+&gt;&gt; T=<span class="hljs-number">1</span>/f
+T =
+        <span class="hljs-number">0.002</span>
+&gt;&gt; delta_t=<span class="hljs-number">2</span>*T
+delta_t =
+        <span class="hljs-number">0.004</span>
+&gt;&gt; t=<span class="hljs-number">0</span>:T/<span class="hljs-number">200</span>:delta_t-T/<span class="hljs-number">200</span>; <span class="hljs-comment">% gera vetor tempo, 200 amostras por ciclo</span>
+&gt;&gt; <span class="hljs-built_in">size</span>(t)
+<span class="hljs-built_in">ans</span> =
+     <span class="hljs-number">1</span>   <span class="hljs-number">400</span>
+&gt;&gt; y=<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*<span class="hljs-number">500</span>*t)+(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>)*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*<span class="hljs-number">2</span>*<span class="hljs-number">500</span>*t);
+&gt;&gt; <span class="hljs-built_in">plot</span>(t,y)
+&gt;&gt; grid
+&gt;&gt; xlabel(<span class="hljs-string">&#x27;tempo (s)&#x27;</span>)
+&gt;&gt; ylabel(<span class="hljs-string">&#x27;Amplitude (Volts)&#x27;</span>)
+&gt;&gt; title(<span class="hljs-string">&#x27;Sinal à ser analizado&#x27;</span>)
+</code></pre>
+<p>Realizando a FFT sobre sinal usando a função <code>signal_fft</code>:</p>
+<pre><code class="language-matlab">&gt;&gt; signal_fft(t,y,<span class="hljs-number">0</span>)
+signal_fft &gt;&gt; Intervalo de tempo considerado: [<span class="hljs-number">0</span>, <span class="hljs-number">0.003</span>]
+&gt;&gt; 
+</code></pre>
+<p>Obtemos:</p>
 <hr>
-<p>Fernando Passold, em 02/11/2023</p>
+<p>Fernando Passold, em 02/11/2023 21:25 (em edição)</p>
 </div>
         </div>
-        
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         <script async type="text/javascript">
 /* From extension bierner.markdown-mermaid */
 /*! For license information please see index.bundle.js.LICENSE.txt */
