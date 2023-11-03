@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>FFT e Espectro de sinais</title>
+        <title>FFT e Espectro de Sinal em Raspberry Pi</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -3199,8 +3199,7 @@ aside > *:last-child {
   background-color: #fafbfc;
 }
 </style>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -3233,277 +3232,73 @@ aside > *:last-child {
             <div class="github-markdown-content"><span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="default"></span>
-                <!-- title: FFT e Espectro de sinais -->
-<p><img src="Dandelion-8.jpg" alt=""></p>
-<h1 id="explorando-o-espectro-com-a-transformada-de-fourier">Explorando o Espectro com a Transformada de Fourier</h1>
-<ul>
-<li><a href="#explorando-o-espectro-com-a-transformada-de-fourier">Explorando o Espectro com a Transformada de Fourier</a>
-<ul>
-<li><a href="#intro">Intro</a></li>
-<li><a href="#objetivos">Objetivos</a></li>
-<li><a href="#materiais-e-equipamentos">Materiais e Equipamentos</a></li>
-<li><a href="#procedimento-previsto">Procedimento Previsto</a></li>
-<li><a href="#transformada-de-fourier-uma-vis%C3%A3o-geral">Transformada de Fourier: Uma Visão Geral</a>
-<ul>
-<li><a href="#aplica%C3%A7%C3%B5es-da-transformada-de-fourier">Aplicações da Transformada de Fourier:</a></li>
-</ul>
-</li>
-<li><a href="#aplica%C3%A7%C3%A3o-da-transformada">Aplicação da Transformada</a>
-<ul>
-<li><a href="#teste-1">Teste 1</a></li>
-<li><a href="#teste-2">Teste 2</a></li>
-</ul>
-</li>
-<li><a href="#teorema-de-amostragem-de-nyquist">Teorema de Amostragem de Nyquist:</a></li>
-<li><a href="#transformada-r%C3%A1pida-de-fourier-fft">Transformada Rápida de Fourier (FFT)</a></li>
-<li><a href="#rela%C3%A7%C3%A3o-entre-o-teorema-de-nyquist-e-a-fft">Relação entre o Teorema de Nyquist e a FFT</a></li>
-<li><a href="#trabalho">Trabalho</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="intro">Intro</h2>
-<!--
-Através da transformada de Fourier pode-se obter o conteúdo harmônico de um ==sinal periódico==. Essa análise é muito importante para avaliar a qualidade de amplificadores e para calcular o fator de potência de cargas não lineares alimentadas a partir da rede elétrica.
--->
-<p>A análise espectral desempenha um papel fundamental em engenharia elétrica, fornecendo uma visão profunda da composição de sinais e sistemas complexos. A Transformada de Fourier é uma ferramenta matemática essencial que permite desdobrar um sinal no domínio da frequência, revelando as diferentes componentes de frequência que o compõem. Neste laboratório, iremos explorar como a Transformada de Fourier pode ser aplicada para analisar e observar o espectro de sinais, um conceito essencial para engenheiros elétricos.</p>
-<p>Este laboratório proporcionará uma compreensão prática e sólida da Transformada de Fourier e como ela pode ser aplicada na engenharia elétrica para analisar e interpretar o espectro de diferentes tipos de sinais. Os conceitos aprendidos neste laboratório são essenciais para uma ampla gama de aplicações em engenharia, incluindo telecomunicações, processamento de áudio, processamento de imagem e muito mais. Portanto, prepare-se para explorar o fascinante mundo do processamento de sinais e sua relação com o domínio da frequência</p>
-<h2 id="objetivos">Objetivos</h2>
+                <h2 id="fft-e-espectro-de-sinal-em-raspberry-pi">FFT e Espectro de Sinal em Raspberry Pi</h2>
+<p><strong>Desafio</strong>:</br>
+Poderíamos tentar mostrar o algoritmo FFT sendo executado num Raspberry programado em Python, cuja rotina atualize constantemente o espectro de certo sinal numa janela gráfica (algo como 1 vez por segundo).</p>
+<p>Vamos utilizar a biblioteca <strong>numpy</strong> para a computação e a biblioteca <strong>matplotlib</strong> para a visualização. Certifique-se de que essas bibliotecas estejam instaladas no seu Raspberry Pi.</p>
+<pre><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> matplotlib.animation <span class="hljs-keyword">as</span> animation
+<span class="hljs-keyword">from</span> scipy.fftpack <span class="hljs-keyword">import</span> fft
+
+<span class="hljs-comment"># Parâmetros</span>
+fs = <span class="hljs-number">1000</span>  <span class="hljs-comment"># Frequência de amostragem (1 kHz)</span>
+T = <span class="hljs-number">1.0</span>  <span class="hljs-comment"># Duração do sinal em segundos</span>
+N = <span class="hljs-built_in">int</span>(fs * T)  <span class="hljs-comment"># Número de pontos no sinal</span>
+freq = <span class="hljs-number">5.0</span>  <span class="hljs-comment"># Frequência do sinal em Hz</span>
+amplitude = <span class="hljs-number">1.0</span>  <span class="hljs-comment"># Amplitude do sinal</span>
+update_interval = <span class="hljs-number">1000</span>  <span class="hljs-comment"># Intervalo de atualização em milissegundos (1 segundo)</span>
+
+<span class="hljs-comment"># Gere o sinal senoidal</span>
+t = np.linspace(<span class="hljs-number">0.0</span>, N/fs, N, endpoint=<span class="hljs-literal">False</span>)
+signal = amplitude * np.sin(<span class="hljs-number">2</span> * np.pi * freq * t)
+
+<span class="hljs-comment"># Inicialização da figura</span>
+fig, (ax1, ax2) = plt.subplots(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>)
+x = np.linspace(<span class="hljs-number">0</span>, fs/<span class="hljs-number">2</span>, N//<span class="hljs-number">2</span>)
+line, = ax1.plot(x, np.zeros(N//<span class="hljs-number">2</span>))
+ax1.set_xlim(<span class="hljs-number">0</span>, fs/<span class="hljs-number">2</span>)
+ax1.set_ylim(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>)
+ax1.set_title(<span class="hljs-string">&#x27;Espectro em Tempo Real&#x27;</span>)
+ax1.set_xlabel(<span class="hljs-string">&#x27;Frequência (Hz)&#x27;</span>)
+ax1.set_ylabel(<span class="hljs-string">&#x27;Amplitude&#x27;</span>)
+
+ax2.plot(t, signal)
+ax2.set_xlim(<span class="hljs-number">0</span>, T)
+ax2.set_ylim(-amplitude, amplitude)
+ax2.set_title(<span class="hljs-string">&#x27;Sinal de Entrada&#x27;</span>)
+ax2.set_xlabel(<span class="hljs-string">&#x27;Tempo (s)&#x27;</span>)
+ax2.set_ylabel(<span class="hljs-string">&#x27;Amplitude&#x27;</span>)
+
+<span class="hljs-comment"># Função de atualização para calcular a FFT em tempo real</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">i</span>):
+    signal = amplitude * np.sin(<span class="hljs-number">2</span> * np.pi * freq * t)
+    Y = fft(signal)
+    Y = Y[:N//<span class="hljs-number">2</span>]
+    line.set_ydata(np.<span class="hljs-built_in">abs</span>(Y) / N * <span class="hljs-number">2</span>)
+    fig.canvas.flush_events()
+
+<span class="hljs-comment"># Crie uma animação para atualizar a FFT em tempo real</span>
+ani = animation.FuncAnimation(fig, update, blit=<span class="hljs-literal">False</span>, interval=update_interval)
+
+<span class="hljs-comment"># Exiba a janela gráfica</span>
+plt.show()
+</code></pre>
+<p>Neste código:</p>
 <ol>
-<li>Compreender os fundamentos da Transformada de Fourier e seu papel na análise de sinais.</li>
-<li>Aprender a aplicar a Transformada de Fourier no domínio do tempo e do espectro.</li>
-<li>Explorar a relação entre o domínio do tempo e do espectro de um sinal.</li>
-<li>Realizar experimentos práticos para analisar diferentes tipos de sinais e observar suas características espectrais.</li>
+<li>Um sinal senoidal é gerado com uma frequência de 5 Hz e uma amplitude de 1.0.</li>
+<li>Uma janela gráfica é inicializada com duas subtramas: uma para o sinal de entrada e outra para o espectro em tempo real.</li>
+<li>A função <code>update(i)</code> calcula a FFT em tempo real do sinal e atualiza o gráfico do espectro.</li>
+<li>A animação é criada para atualizar o espectro a cada segundo.</li>
+<li>A função <code>plt.show()</code> exibe a janela gráfica.</li>
+<li></li>
 </ol>
-<h2 id="materiais-e-equipamentos">Materiais e Equipamentos</h2>
-<ul>
-<li>Computador com software de processamento de sinais (por exemplo, MATLAB ou Python com bibliotecas de processamento de sinais).</li>
-<li>Gerador de sinais (opcional).</li>
-<li>Osciloscópio (opcional).</li>
-<li>Sinais de exemplo ou dados coletados anteriormente.</li>
-</ul>
-<h2 id="procedimento-previsto">Procedimento Previsto</h2>
-<ol>
-<li>Breve revisão teórica sobre a Transformada de Fourier e sua aplicação.</li>
-<li>Aplicação da Transformada de Fourier em sinais de exemplo no domínio do tempo.</li>
-<li>Análise dos espectros resultantes e interpretação das informações espectrais.</li>
-<li>Realização de experimentos práticos com sinais reais ou gerados, utilizando a Transformada de Fourier para analisar seu espectro.</li>
-<li>Discussão dos resultados e conclusões sobre a análise espectral.</li>
-</ol>
-<h2 id="transformada-de-fourier-uma-visão-geral">Transformada de Fourier: Uma Visão Geral</h2>
-<p>A Transformada de Fourier é uma ferramenta matemática fundamental na análise de sinais e sistemas que permite decompor um sinal no domínio do tempo em suas componentes de frequência. Foi desenvolvida por Jean-Baptiste Joseph Fourier e é amplamente utilizada em áreas como engenharia elétrica, matemática, física, e processamento de sinais.</p>
-<p>A Transformada de Fourier de um sinal é representada pela seguinte fórmula:</p>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo><mo>=</mo><mstyle scriptlevel="0" displaystyle="true"><msubsup><mo>∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></msubsup><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>j</mi><mn>2</mn><mi>π</mi><mi>f</mi><mi>t</mi></mrow></msup><mi>d</mi><mi>t</mi></mstyle></mrow><annotation encoding="application/x-tex">X(f) = \displaystyle\int_{-\infty}^{+\infty} x(t)e^{-j2\pi f t} dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.491512em;vertical-align:-0.970281em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011249999999999316em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5212310000000002em;"><span style="top:-1.7880500000000001em;margin-left:-0.44445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">∞</span></span></span></span><span style="top:-3.8129000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.970281em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mord mtight">2</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></eq></p>
-<p>onde:</br>
-<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">X(f)=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq> representação do sinal no dominio frequencia -- a transformada;</br>
-<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">x(t)=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq> sinal no dominio tempo;</br>
-<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></eq> = frequência;</br></p>
-<p>A Transformada de Fourier expressa o sinal <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></eq> como uma soma (ou integral) de componentes senoidais com diferentes frequências. Isso permite a análise das contribuições de cada frequência presente no sinal.</p>
-<h3 id="aplicações-da-transformada-de-fourier">Aplicações da Transformada de Fourier:</h3>
-<ol>
-<li><strong>Análise Espectral</strong>: Uma das aplicações mais comuns é a análise espectral. A Transformada de Fourier permite analisar um sinal e identificar as frequências que o compõem. Isso é crucial em telecomunicações, processamento de áudio e imagem, onde a análise de frequência é essencial.</li>
-<li><strong>Filtragem de Sinais</strong>: A Transformada de Fourier é usada para projetar filtros que podem atenuar ou realçar componentes de frequência específicas em um sinal. Isso é útil em sistemas de comunicação para remover ruído e distorção.</li>
-<li><strong>Modulação e Demodulação</strong>: Em sistemas de comunicação, a modulação é usada para transmitir informações em uma frequência portadora. A Transformada de Fourier é fundamental para entender a modulação e demodulação de sinais.</li>
-<li><strong>Processamento de Imagem</strong>: Em processamento de imagem, a Transformada de Fourier é usada em técnicas como filtragem de imagens, compressão de imagens e detecção de bordas.</li>
-<li><strong>Medição e Análise de Sinais Biomédicos</strong>: Na área médica, a Transformada de Fourier é aplicada na análise de eletroencefalogramas (EEG), eletrocardiogramas (ECG) e outros sinais biomédicos para extrair informações relevantes.</li>
-<li><strong>Espectro de Potência</strong>: É usado para calcular o espectro de potência de um sinal, que é útil na análise de sinais estocásticos e na caracterização do comportamento de sistemas dinâmicos.</br>
-Essa análise é muito importante para avaliar a qualidade de amplificadores e para corrigir o fator de potência de cargas não lineares alimentadas a partir da rede elétrica.</li>
-<li><strong>Óptica</strong>: Na óptica, a Transformada de Fourier é usada para descrever a propagação da luz e a difração em sistemas ópticos.</li>
-</ol>
-<p>Em resumo, a Transformada de Fourier desempenha um papel fundamental na análise e processamento de sinais em uma ampla gama de aplicações. Ela permite a decomposição de sinais complexos em suas componentes de frequência, facilitando a análise e manipulação desses sinais de maneira eficaz.</p>
-<h2 id="aplicação-da-transformada">Aplicação da Transformada</h2>
-<p>A idéia é simular sinais analógicos e observar o espectro destes sinais e  eventualmente vamos tentar levantar o espectro de um sinal capturado em laboratório, usando o A/D do Arduíno.</p>
-<p>Para tanto vamos usar a rotina <a href="signal_fft.m">signal_fft.m</a> implementada no Matlab que faz uso da função <code>fftshift()</code> para mostrar corretamente o espectro de um sinal.</p>
-<p>Segue código da função: <a href="signal_fft.m">signal_fft.m</a>:</p>
-<pre><code class="language-matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">signal_fft3</span><span class="hljs-params">(t,sinal,tol)</span></span>
-<span class="hljs-comment">% signal_fft.m</span>
-<span class="hljs-comment">% Mostra o espectro de um sinal baseado na FFT do sinal</span>
-<span class="hljs-comment">% Usa função `fft()` e `fftshift()` para obter o espectro</span>
-<span class="hljs-comment">%</span>
-<span class="hljs-comment">% Parâmetros de entrada</span>
-<span class="hljs-comment">%   t = vetor tempo (em segundos): posição temporal de cada amostra</span>
-<span class="hljs-comment">%   sinal = amplitude do sinal em cada instante de tempo</span>
-<span class="hljs-comment">%   tol = tolerência (em %) usada para ainda considerar magnitudes</span>
-<span class="hljs-comment">%         baixas como harmônica do sinal (sugerido 0.1%)</span>
-<span class="hljs-comment">%</span>
-<span class="hljs-comment">% Fernando Passold, em 02/11/2023</span>
-
-
-u = <span class="hljs-built_in">length</span>(sinal);
-fprintf(<span class="hljs-string">&#x27;signal_fft &gt;&gt; Número original de amostras: %d\n&#x27;</span>, u);
-k_ini = <span class="hljs-number">1</span>;
-k_fim = u;
-tt = t(k_fim) - t(k_ini);   <span class="hljs-comment">% intervalo de tempo considerado (em segundos)</span>
-n = k_fim - k_ini + <span class="hljs-number">1</span>;      <span class="hljs-comment">% número de amostras</span>
-I = sinal(k_ini:k_fim);     <span class="hljs-comment">% separando a região de interesse</span>
-I2 = I;
-t2 = t;
-
-fprintf(<span class="hljs-string">&#x27;signal_fft &gt;&gt; Número de amostras consideradas, n = %d\n&#x27;</span>, n);
-fprintf(<span class="hljs-string">&#x27;signal_fft &gt;&gt; Intervalo de tempo considerado, tt = %g\n&#x27;</span>, tt);
-<span class="hljs-built_in">figure</span>; subplot(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)
-<span class="hljs-built_in">plot</span>(t2, I2) <span class="hljs-comment">% plot(I2) </span>
-<span class="hljs-comment">% I2 = vetor de n-linhas x 2 colunas !? para fins da função fft() !?</span>
-<span class="hljs-comment">% Se é este o caso:</span>
-<span class="hljs-comment">% n = número de amostras</span>
-<span class="hljs-comment">% coluna 1 = instante de tempo da amostra</span>
-<span class="hljs-comment">% coluna 2 = amplitude da amostra</span>
-title(<span class="hljs-string">&#x27;Sinal analisado (domínio tempo)&#x27;</span>)
-xlabel(<span class="hljs-string">&#x27;t (segundos)&#x27;</span>)
-grid
-
-<span class="hljs-comment">% Calculando a FFT</span>
-fft_result = fft(I2);    <span class="hljs-comment">% DFT sobre o sinal, retorna n-pontos (n=length(I2))</span>
-
-<span class="hljs-comment">% Fs = Taxa de amostragem (Hz)</span>
-<span class="hljs-comment">% Calculo das frequencias correspondentes</span>
-<span class="hljs-comment">% Fs = Taxa de amostragem (Hz)</span>
-Fs = <span class="hljs-number">1</span>/(t(<span class="hljs-number">2</span>)-t(<span class="hljs-number">1</span>));     <span class="hljs-comment">% assumindo amostras equidistantes entre si</span>
-fprintf(<span class="hljs-string">&#x27;signal_fft &gt;&gt; Freq. de amostragem original, Fs = %g Hz\n&#x27;</span>, Fs);
-Fnyq = Fs/<span class="hljs-number">2</span>;
-freq_ini = -Fnyq;
-freq_inc = <span class="hljs-number">2</span>*Fnyq/n;
-freq_fim =  Fnyq - freq_inc;            <span class="hljs-comment">% retrocede 1 ponto</span>
-freq = freq_ini: freq_inc : freq_fim;   <span class="hljs-comment">% forma vetor frequencia (em Hz)</span>
-u = <span class="hljs-built_in">length</span>(freq);
-fprintf(<span class="hljs-string">&#x27;signal_fft &gt;&gt; Frequências: [ %g : %g : %g] Hz (%d pontos)\n&#x27;</span>, freq_ini, freq_inc, freq_fim, u);
-<span class="hljs-comment">% Calculando a magnitude (descartando a fase)</span>
-mag = <span class="hljs-number">2</span>*<span class="hljs-built_in">abs</span>(fftshift(fft_result))/n;    <span class="hljs-comment">% desloca o componente da frequencia zero (nível DC) do sinal no centro do espectro obtido via fft()</span>
-
-subplot(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)
-<span class="hljs-built_in">plot</span>(freq, mag, <span class="hljs-string">&#x27;bo-&#x27;</span>);
-title(<span class="hljs-string">&#x27;Sinal analisado (domínio Frequência)&#x27;</span>)
-xlabel(<span class="hljs-string">&#x27;Frequência (Hz)&#x27;</span>)
-axis([<span class="hljs-number">0</span> freq_fim <span class="hljs-number">0</span> <span class="hljs-built_in">max</span>(mag)*<span class="hljs-number">1.1</span>])
-grid
-
-<span class="hljs-comment">% Encontrando frquencias correspondentes aos picos do sinal no dominio</span>
-<span class="hljs-comment">% frequencia</span>
-<span class="hljs-comment">% Varrendo vetor frequencia</span>
-<span class="hljs-comment">% freq_central = freq(u/2+1); % eventualmente rende 0 Hz</span>
-tol2= tol/<span class="hljs-number">100</span>;
-[maior, last] = <span class="hljs-built_in">max</span>(mag);
-limiar = maior*tol2;
-<span class="hljs-built_in">disp</span>(<span class="hljs-string">&#x27;signal_fft &gt;&gt; Harmônicas detectadas:&#x27;</span>);
-fprintf(<span class="hljs-string">&#x27;signal_fft &gt;&gt; [Freq\tMag]\n&#x27;</span>);
-<span class="hljs-keyword">for</span> index = u/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>:u
-    <span class="hljs-keyword">if</span> mag(index)&gt;=limiar;
-       fprintf(<span class="hljs-string">&#x27;signal_fft &gt;&gt; [%g\t%g]\n&#x27;</span>, freq(index), mag(index));
-       last = index;
-    <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span>
-<span class="hljs-comment">% re-escalonando figura</span>
-axis([<span class="hljs-number">0</span> freq(last)*<span class="hljs-number">2</span> <span class="hljs-number">0</span> maior*<span class="hljs-number">1.1</span>])
-</code></pre>
-<h3 id="teste-1">Teste 1</h3>
-<p>Suponha o sinal composto por 2 harmônicas apenas:</p>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mn>500</mn><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mn>1000</mn><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y(t)=\sin(2\pi 500 t) + 1/2 \sin(2\pi 1000 t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mord">500</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mord">1000</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></eq></p>
-<p>Este sinal gera o seguinte gráfico no domínio tempo:</p>
-<img src="sinal_teste1.png" alt="sinal_teste1.png" style="zoom:50%;" />
-<p>Note que a freq. fundamental (1a-harmônica) está em 500 Hz, o que implica <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>1</mn><mi mathvariant="normal">/</mi><mi>f</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mn>002</mn></mrow><annotation encoding="application/x-tex">T=1/f=0,002</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">002</span></span></span></span></eq> segundos <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></eq> mili-segundos. Um período e meio do sinal implica então num intervalo de tempo igual à 4 mili-segundos.</p>
-<p>Segue código da função que gerou a simulação do sinal anterior:</p>
-<pre><code class="language-matlab">&gt;&gt; f=<span class="hljs-number">500</span>;
-&gt;&gt; T=<span class="hljs-number">1</span>/f
-T =
-        <span class="hljs-number">0.002</span>
-&gt;&gt; delta_t=<span class="hljs-number">2</span>*T
-delta_t =
-        <span class="hljs-number">0.004</span>
-&gt;&gt; t=<span class="hljs-number">0</span>:T/<span class="hljs-number">200</span>:delta_t-T/<span class="hljs-number">200</span>; <span class="hljs-comment">% gera vetor tempo, 200 amostras por ciclo</span>
-&gt;&gt; <span class="hljs-built_in">size</span>(t)
-<span class="hljs-built_in">ans</span> =
-     <span class="hljs-number">1</span>   <span class="hljs-number">400</span>
-&gt;&gt; y=<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*<span class="hljs-number">500</span>*t)+(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>)*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*<span class="hljs-number">2</span>*<span class="hljs-number">500</span>*t);
-&gt;&gt; <span class="hljs-built_in">plot</span>(t,y)
-&gt;&gt; grid
-&gt;&gt; xlabel(<span class="hljs-string">&#x27;tempo (s)&#x27;</span>)
-&gt;&gt; ylabel(<span class="hljs-string">&#x27;Amplitude (Volts)&#x27;</span>)
-&gt;&gt; title(<span class="hljs-string">&#x27;Sinal à ser analizado&#x27;</span>)
-</code></pre>
-<p>Realizando a FFT sobre sinal usando a função <code>signal_fft()</code>:</p>
-<pre><code class="language-matlab">&gt;&gt; help signal_fft
-  signal_fft.m
-  Mostra o espectro de um sinal baseado na FFT do sinal
-  Usa função `fft()` e `fftshift()` para obter o espectro
- 
-  Parâmetros de entrada
-    t = vetor tempo (em segundos): posição temporal de cada amostra
-    sinal = amplitude do sinal em cada instante de tempo
-    tol = tolerência (em <span class="hljs-comment">%) usada para ainda considerar magnitudes</span>
-          baixas como harmônica do sinal (sugerido <span class="hljs-number">0.1</span><span class="hljs-comment">%)</span>
-
-&gt;&gt; signal_fft(t,y,<span class="hljs-number">0.1</span>)
-signal_fft &gt;&gt; Número original de amostras: <span class="hljs-number">400</span>
-signal_fft &gt;&gt; Número de amostras consideradas, n = <span class="hljs-number">400</span>
-signal_fft &gt;&gt; Intervalo de tempo considerado, tt = <span class="hljs-number">0.00399</span>
-signal_fft &gt;&gt; Freq. de amostragem original, Fs = <span class="hljs-number">100000</span> Hz
-signal_fft &gt;&gt; Frequências: [ <span class="hljs-number">-50000</span> : <span class="hljs-number">250</span> : <span class="hljs-number">49750</span>] Hz (<span class="hljs-number">400</span> pontos)
-signal_fft &gt;&gt; Harmônicas detectadas:
-signal_fft &gt;&gt; [Freq	Mag]
-signal_fft &gt;&gt; [<span class="hljs-number">500</span>	<span class="hljs-number">1</span>]
-signal_fft &gt;&gt; [<span class="hljs-number">1000</span>	<span class="hljs-number">0.5</span>]
-&gt;&gt; 
-</code></pre>
-<p>E o seguinte gráfico é obtido:</p>
-<img src="fft_sinal_teste1.png" alt="fft_sinal_teste1.png" style="zoom:50%;" />
-<h3 id="teste-2">Teste 2</h3>
-<p>Podemos aplicar um nível &quot;DC&quot; sobre este sinal, acrescentando um &quot;offset&quot; no seu nível de tensão. Suponha que vamos acrescentar à amplitude da onda anterior 1,0 Volts.</p>
-<p>Se o <em>workspace</em> do Matlab ainda contêm na sua memória os dados da onda anteior, com os vetores <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></eq> e <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span></eq>, podemos criar um segundo vetor, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">y_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> que simplesmente faz: <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y_2(t) = y(t) + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></eq>.</p>
-<p>No Matlab:</p>
-<pre><code class="language-matlab">&gt;&gt; y2=y+<span class="hljs-number">1</span>;
-&gt;&gt; signal_fft3(t,y2,<span class="hljs-number">0.1</span>)
-signal_fft &gt;&gt; Número original de amostras: <span class="hljs-number">400</span>
-signal_fft &gt;&gt; Número de amostras consideradas, n = <span class="hljs-number">400</span>
-signal_fft &gt;&gt; Intervalo de tempo considerado, tt = <span class="hljs-number">0.00399</span>
-signal_fft &gt;&gt; Freq. de amostragem original, Fs = <span class="hljs-number">100000</span> Hz
-signal_fft &gt;&gt; Frequências: [ <span class="hljs-number">-50000</span> : <span class="hljs-number">250</span> : <span class="hljs-number">49750</span>] Hz (<span class="hljs-number">400</span> pontos)
-signal_fft &gt;&gt; Harmônicas detectadas:
-signal_fft &gt;&gt; [Freq	Mag]
-signal_fft &gt;&gt; [<span class="hljs-number">0</span>	<span class="hljs-number">2</span>]
-signal_fft &gt;&gt; [<span class="hljs-number">500</span>	<span class="hljs-number">1</span>]
-signal_fft &gt;&gt; [<span class="hljs-number">1000</span>	<span class="hljs-number">0.5</span>]
-&gt;&gt;
-</code></pre>
-<p>Desta vez vamos obter o seguinte gráfico:</p>
-<img src="fft_sinal_teste2.png" alt="fft_sinal_teste2.png" style="zoom:50%;" />
-<p>Notamos que a amplitude do nível DC (na frequência <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span></eq> 0 Hz) resultou 2 Volts. O esperado era 1 Volt. Este erro se deve a forma como a função <code>fftshift()</code> (do Matlab) desloca o centro do espectro calculado antes pela função <code>fft()</code> -- aparentemente, a magnitude do espectro está sendo duplicada na frequência central nula (0 Hz). Notar que a Transformada de Fourier é calculada deste <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">f=-\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">∞</span></span></span></span></eq> até <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">f=\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord">∞</span></span></span></span></eq> Hz. A função <code>fft()</code> do Matlab calcula na realidade a transformada discreta de fourier (<strong>DFT</strong>) para uma faixa de frequências negativa e positiva cujos limites estão associados com a frequência de amostragem adotada para o sinal sobre o qual foi aplicado o algoritmo e o número de pontos totais repassados como amostras do sinal. Esta faixa de frequências está associada com o Teorema de Amostragem de Nyquist. A precisão do algoritmo aumenta com o aumento da frquencia de amostragem do sinal e quantidade de ciclos completos do sinal repassados para a rotina.</p>
-<h2 id="teorema-de-amostragem-de-nyquist">Teorema de Amostragem de Nyquist:</h2>
-<p>O Teorema de Amostragem de Nyquist é um princípio fundamental no processamento de sinais que estabelece que para evitar a perda de informações ao amostrar um sinal contínuo no tempo, a taxa de amostragem deve ser pelo menos o dobro da frequência máxima presente no sinal. Matematicamente, o teorema é expresso como:</p>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>≥</mo><mn>2</mn><mo>⋅</mo><msub><mi>f</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">f_s \ge 2 \cdot f_{max}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ma</span><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq></p>
-<p>onde:</br>
-<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">f_s=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq> frequência (ou taxa) de amostragem;
-<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">f_{max}=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ma</span><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq> frequência máxima presente no sinal.</p>
-<p>Se a taxa de amostragem for menor que o dobro da frequência máxima, ocorrerá o que é conhecido como aliasing, onde as componentes de frequência do sinal original se sobrepõem e não podem ser recuperadas corretamente na reconstrução do sinal.</p>
-<h2 id="transformada-rápida-de-fourier-fft">Transformada Rápida de Fourier (FFT)</h2>
-<p>A Transformada Rápida de Fourier (FFT) é um algoritmo eficiente para calcular a Transformada de Fourier Discreta (DFT) de um sinal amostrado no domínio discreto. A DFT é uma ferramenta que nos permite analisar as componentes de frequência de um sinal discreto no tempo.</p>
-<h2 id="relação-entre-o-teorema-de-nyquist-e-a-fft">Relação entre o Teorema de Nyquist e a FFT</h2>
-<p>A relação entre o Teorema de Nyquist e a FFT é a seguinte:</p>
-<ul>
-<li>O Teorema de Nyquist estabelece a taxa mínima de amostragem necessária para evitar o <em><strong>aliasing</strong></em> ao amostrar um sinal contínuo no tempo.</li>
-<li>A FFT é usada para calcular a DFT de um sinal discreto no tempo. A DFT nos permite analisar as componentes de frequência presentes no sinal discreto.</li>
-</ul>
-<p>A relação direta entre eles é que, ao aplicar a FFT a um sinal discreto, você está efetivamente transformando o sinal do domínio do tempo para o domínio da frequência, o que permite a análise das componentes de frequência do sinal amostrado. Para garantir que a análise seja precisa e que nenhuma informação seja perdida durante a transformação, é essencial que a taxa de amostragem seja escolhida de acordo com o Teorema de Nyquist.</p>
-<p>Em resumo, o Teorema de Amostragem de Nyquist é uma diretriz fundamental para aquisição de sinais, garantindo que a taxa de amostragem seja adequada para permitir a recuperação correta das componentes de frequência durante a aplicação da FFT ou DFT em sinais discretos.</p>
-<h2 id="trabalho">Trabalho</h2>
-<p>Use o Matlab para sintetizar uma onda quadrada de 400 Hz até sua 11a-harmônica (usando série de Fourier) e depois use a função <code>signal_fft()</code> para confirmar as harmônicas detectadas.</p>
-<p>Pede-se:</p>
-<ul>
-<li>Apresente, numa tabela, as frequências e amplitudes da onda quadrada até a 11a-harmônica;</li>
-<li>Mostre um gráfico da onda quadrada sintetizada usando a série de fourier até a 11a-harmônica;</li>
-<li>Apresente (caso tenha usado), o <em>script</em> ou comandos usados no Matlab para realizar a primeira parte deste trabalho.</li>
-<li>Execute a função <code>signal_fft()</code> sobre o sinal sintetizado usando série de Fourier até a 11a-harmônica mas usando:
-<ul>
-<li>a) freq. de amostragem (da onda quadrada), <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">f_s=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq> 400 Hz;</li>
-<li>b) freq. de amostragem (da onda quadrada), <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">f_s=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq> 800 Hz;</li>
-<li>c) <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">f_s=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></eq> 8 Khz KHz.</li>
-</ul>
-</li>
-<li>Para cada um dos itens anteriores mostre os gráficos do sinal amostrado no tempo (desejavelmente mostrando uma segunda curva onde foi adotada uma freq. de amostragem muito maior, algo como 200 pontos por ciclo da onda -- a idéia é mostrar a &quot;pobreza&quot; ou &quot;riqueza&quot; do processo de amostragem). Depois mostre como fica o espectro obtido para estes sinais usando a função <code>signal_fft()</code>. Provavelmente para o item (a) deve ter sido observado um caso de &quot;<em><strong>aliasing</strong></em>&quot;. Mas também não deve ter sido obtido um resultado muito melhor para o item (b). Detalhe final: amostre 4 ciclos da onda quadrada e passe este vetor para a função <code>signal_fft()</code>, para cada um dos itens anteriores.</li>
-</ul>
+<p>Você pode ajustar os parâmetros, como frequência, amplitude e frequência de amostragem, de acordo com suas necessidades e conectar seu sinal de entrada real ao lugar do sinal senoidal gerado para analisar o espectro em tempo real. Certifique-se de ter as bibliotecas <strong>numpy</strong> e <strong>matplotlib</strong> instaladas no seu Raspberry Pi.</p>
 <hr>
-<p>Fernando Passold, em 02/11/2023 21:25 (em edição)</p>
+<p>Fernando Passold, em 02/11/2023</p>
 </div>
         </div>
-        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
         <script async type="text/javascript">
 /* From extension bierner.markdown-mermaid */
 /*! For license information please see index.bundle.js.LICENSE.txt */
