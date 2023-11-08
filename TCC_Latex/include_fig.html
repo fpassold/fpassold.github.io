@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Dicas TCC</title>
+        <title>1&period; LaTeX - Dicas</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -1190,16 +1190,191 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <span id="markdown-mermaid" aria-hidden="true"
                     data-dark-mode-theme="dark"
                     data-light-mode-theme="default"></span>
-                <!-- title: Dicas TCC -->
-<h1 id="dicas-para-seu-tcc">Dicas para seu TCC</h1>
+                <h1 id="1-latex---dicas">1. LaTeX - Dicas</h1>
 <ul>
-<li>Como <strong><a href="escrita.html">organizar a escrita ✍️</a></strong> do seu TCC;</li>
-<li>Como <strong><a href="TCC_Latex.html">usar <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span></a></strong> para escrever seu TCC.</li>
-<li>Mais <a href="include_fig.html">Dicas sobre <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span></a> (incluir figuras, referências bibliográficas estilo ABNT, etc);</li>
+<li><a href="#1-latex---dicas">1. LaTeX - Dicas</a>
+<ul>
+<li><a href="#11-instala%C3%A7%C3%A3o-do-latex">1.1. Instalação do LaTeX</a></li>
+<li><a href="#12-apostila-introdut%C3%B3ria-recomendada">1.2. Apostila Introdutória recomendada</a></li>
+<li><a href="#13-editor-recomendado">1.3. Editor Recomendado</a></li>
+<li><a href="#14-para-resolver-d%C3%BAvidas-sobre-latex">1.4. Para resolver dúvidas sobre LaTeX</a></li>
+<li><a href="#15-para-editar-equa%C3%A7%C3%B5es-no-latex">1.5. Para editar equações no LaTeX</a></li>
+<li><a href="#16-inserir-figuras-e-refenci%C3%A1-las">1.6. Inserir figuras e refenciá-las</a></li>
+<li><a href="#17-modificar-tamanho-de-fonte-em-partes-do-texto">1.7. Modificar tamanho de fonte em partes do texto</a></li>
+<li><a href="#18-corretor-ortogr%C3%A1fico-no-texstudio">1.8. Corretor ortográfico no TeXstudio</a></li>
+<li><a href="#19-gerenciar-refer%C3%AAncias-bibliogr%C3%A1ficas">1.9. Gerenciar Referências Bibliográficas</a></li>
+<li><a href="#110-desenhar-diagramas-em-blocos">1.10. Desenhar Diagramas em Blocos</a></li>
+<li><a href="#111-formato-abnt-ref-bib">1.11. Formato ABNT Ref Bib</a></li>
 </ul>
-<p>Bom trabalho 👍</p>
+</li>
+</ul>
+<h2 id="11-instalação-do-latex">1.1. Instalação do LaTeX</h2>
+<p>O LaTeX é na verdade um sistema para edição de documentos mais complexos, bem formatatos, agradavelmente estéticos e bastante consistente em estilos internos. Facilita muito a criação de índices, índices remissivos, lista de figuras e lista de tabelas. Porém exige uma pequena curva de aprendizado.</p>
+<p>Para instalar LaTeX:</p>
+<ul>
+<li>
+<p>no <strong>Windows</strong>, se recomenda a instalação do <strong><a href="https://miktex.org">MiKTeX</a></strong>.</p>
+</li>
+<li>
+<p>no <strong>Linux</strong>, e <em>flavours</em> Debian (Ubuntu):</br>
+<code>$ sudo apt-get update</code></br>
+<code>$ sudo apt-get upgrade</code></br>
+<code>$ sudo apt-get install texlive-full biblatex abntex jabref texlive-fonts-extra klatexformula texlive-latex-extra texlive</code></p>
+</li>
+<li>
+<p>no <strong>Mac OS</strong>, se recomanda o <strong><a href="https://tug.org/mactex/">MacTeX</a></strong>.</br>
+Este ultimo app completo é bastante grande e pode ocupar muito espaço em disco.</p>
+</li>
+</ul>
+<p>Estes app's possuem em comum o fato de facilitar  a atualização e instalação de pacotes extras LaTeX (comum para usuários mais avançados), com excessão do Linux, onde o sistema LaTeX é atualizado usando o tradicional <code>sudo apt update &amp; sudo apt upgrade</code>.</p>
+<h2 id="12-apostila-introdutória-recomendada">1.2. Apostila Introdutória recomendada</h2>
+<ul>
+<li>
+<p><strong><a href="figuras/LaTeX.pdf">Apostila</a></strong> organizada pelo grupo de Telecom da Universidade Federal Fluminense (RJ).</p>
+</li>
+<li>
+<p><a href="figuras/latexsheet.pdf">Cheat Sheet</a> - resumo com principais comandos.</p>
+</li>
+</ul>
+<h2 id="13-editor-recomendado">1.3. Editor Recomendado</h2>
+<p>Recomenda-se fortemente a instalação do <strong><a href="https://www.texstudio.org">TeXstudio</a></strong>. Ele é free e multiplataforma (roda em Windows, Linux e Mac).</p>
+<p>Existe um segundo editor mais antigo que o TexStudio e seu predecessor, o <a href="https://www.texniccenter.org">TexnicCenter</a>. Ele também é free e multi-plataforma. E parece que se dá melhor com o <a href="http://www.miktex.org/">MikTeX</a> (pacote de instalação do LaTeX no Windows).</p>
+<h2 id="14-para-resolver-dúvidas-sobre-latex">1.4. Para resolver dúvidas sobre LaTeX</h2>
+<p>Você pode &quot;googlar&quot; na internet para buscar soluções para seus problemas com o LaTeX, mas em especial se recomdam os seguintes sites:</p>
+<ul>
+<li><a href="https://pt.overleaf.com">Overleaf</a>, por exemplo: como escrever <a href="https://pt.overleaf.com/learn/latex/Display_style_in_math_mode">equações usando LaTeX</a>.
+O site “Overleaf” permite editar online arquivos .tex — mas existe versão gratuita e limitada e versão paga para os arquivos mantidos na nuvem deles… O interessante é que muito gente começou a usá-los e eles acabaram se transformando numa fonte de help.</li>
+<li>outro site bom para resolver dúvidas específicas sobre LaTeX é o <strong>StackExchange</strong>. Por exemplo: pode-se introduzir equações dentro de tabelas? -- ver: <a href="https://tex.stackexchange.com/questions/112576/math-mode-in-tabular-without-having-to-use-everywhere">https://tex.stackexchange.com/questions/112576/math-mode-in-tabular-without-having-to-use-everywhere</a></li>
+</ul>
+<h2 id="15-para-editar-equações-no-latex">1.5. Para editar equações no LaTeX</h2>
+<ul>
+<li>
+<p>Para descobrir que código LaTeX corresponde á certo símbolo matemático ou regra grega, recomenda-se o site <strong><a href="https://detexify.kirelabs.org/classify.html">Detexify</a></strong>. Ele abre uma janela gráfica que permite que você desenhe (usando o mouse), o símbolo desejado. O site então ativa um sistema inteligente baseado em redes neurais para tentar identificar que comandos LaTeX mais se aproximam do símbolo desenhado, por exemplo:
+<img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/detexify-2.png" alt=""></p>
+</li>
+<li>
+<p>Outro site que permite editar (on-line) equações LaTeX é o <a href="https://katex.org">KaTeX</a>:
+<img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/KaTeX.png" alt=""></p>
+</li>
+<li>
+<p>Para o Mac OS existe o editor <strong><a href="https://www.chachatelier.fr/latexit/latexit-home.php?lang=en">LaTeXiT</a></strong> que permite editar equações localmente (não é on-line) e mais interessante: permite exportar as equações criadas para outros programas, como sendo arquivos PDF ou PNG. E normalmente incorporando internamente no arquivo gerado, os comandos LaTeX usados para gerar a equação desejada, o que permite que se uma figura colocada no PowerPoint (ou Keynote) foi gerada através do mesmo, basta arrastar e soltar a figura na janela de edição do LaTeXiT para voltar a editar a equação (<em>mas atenção: talvez esta compatibilidade seja desfeita dependendo das versões usadas do LaTeXiT</em>). Mesmo assim, acredito que vale a pena tentar usar este app:
+<img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/LaTeXiT.png" alt=""></p>
+</li>
+<li>
+<p>Programas semelhantes ao anterior mas disponíveis para Windows podem ser testados, por exemplo:</p>
+<ul>
+<li><a href="https://latexeqedit.sourceforge.net/index.php">LaTeX Equation Editor</a>:
+<img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/latex-equation-editor.gif" alt=""></li>
+<li>ou o <a href="https://www.linuxlinks.com/klatexformula-generate-images-from-latex-equations/">KLatexFormula</a> para Linux:
+<img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/KLatexFormula.png.webp" alt=""></li>
+</ul>
+</li>
+</ul>
+<h2 id="16-inserir-figuras-e-refenciá-las">1.6. Inserir figuras e refenciá-las</h2>
+<p>O editor <strong>TexStudio</strong> facilita bastante a inclusão de figuras durante a edição de um arquivo LaTeX, ele possui &quot;<strong>Wizards</strong>&quot; para incluir figuras (entre outras coisas), veja figura abaixo:</p>
+<p><img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/Wizard_insert_Graphic.jpeg" alt=""></p>
+<p>Abre-se uma nova janela:</p>
+<p><img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/inserindo_figuras_1.jpeg" alt=""></p>
+<p>E então basta ter selecionado o arquivo desejado:</p>
+<p><img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/inserindo_figura_2.png" alt=""></p>
+<p>Note que no campo “width/height” existe o valor 0.7 em relação à <code>\linewidth</code> — isto escalona automaticamente para sua figura ocupar 70% da largura do espaço disponível para texto. Se você mudar o tamanho das bordas (comando “geometry&quot;), o próprio LaTeX depois da compilação do .tex, já aumenta/diminui sua figura de acordo.</p>
+<p>Note ainda que existem opções para colocar texto explicativo da figura (<code>\caption</code>) acima ou abaixo da mesma:</p>
+<p><img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/inserindo_figuras_3.png" alt=""></p>
+<p>Ao final, no arquivo .tex, fica algo como:</p>
+<p><img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/inserindo_figura_com_fonte_final.png" alt=""></p>
+<h2 id="17-modificar-tamanho-de-fonte-em-partes-do-texto">1.7. Modificar tamanho de fonte em partes do texto</h2>
+<p>Usando novamente o <strong>TeXstudio</strong>, para mudar tamanho da fonte (entre outras coisas), selecione a região do texto onde pretende usar outra fonte ou estilo de fonte e:</p>
+<p><img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/inserindo_fonte_da_figura_2.png" alt=""></p>
+<h2 id="18-corretor-ortográfico-no-texstudio">1.8. Corretor ortográfico no TeXstudio</h2>
+<p>Você pode configurar o TexStudio para corrigir textos em português ativando as preferências ou opções dele e baixando um dicionário de português (arquivo <code>.oxc</code>, ou algo assim) do pessoal do <a href="https://pt-br.libreoffice.org/projetos/vero/">LibreOfiice</a> (<em>note: você não precisa instalar todo o LivreOffice; você vai apenas baixar uma extensão, o corretor ortográfico</em>). Dai tudo que você escreve e está com erros de português,  já aparece com aquele sublinhado típico do Word.</p>
+<h2 id="19-gerenciar-referências-bibliográficas">1.9. Gerenciar Referências Bibliográficas</h2>
+<p>Para trabalhar mais a sério com referências bibliográficas sugiro instalar e se cadastrar o <strong><a href="https://www.zotero.org">Zotero</a></strong>. que facilita recuperar info bibliográfica de páginas da internet (depois de instalar plugins num Chrome ou Firefox da vida).</p>
+<p>Pode-se também instalar o <strong><a href="https://www.jabref.org">JabRef</a></strong> para &quot;editar no braço&quot; referências bibliográficas (algumas vezes se faz necessário para certas referências bibliográficas).</p>
+<h2 id="110-desenhar-diagramas-em-blocos">1.10. Desenhar Diagramas em Blocos</h2>
+<p>Sugere-se usar o App on-line <strong><a href="https://app.diagrams.net">Draw.io</a></strong> (do Google) para desenhos de diagramas de blocos ou fluxogramas. Como é parte do Google exige cadastro (conta gmail) no mesmo.</p>
+<p>Mas o mais interessante é que existe um detalhe de configuração (habilitar uma opção especial para indicar que pretende inserir texto usando notação LaTeX) e iniciar equações LaTeX digitando pares <code>$$</code>  na parte do texto que pretenda que seja interpretada por algum sistema LaTeX, de forma semelhante ao que já se faz em editores compatíveis Markdown. Por exemplo, dentro de uma caixa retangular que é para representar uma planta de um sistema de controle, pode ser digitado algo como: <code>$$G(s)=\dfrac{80}{(s+1)(s+2)(s+4)}$$</code>:</p>
+<p><img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/draw_io.png" alt=""></p>
+<p>Outro editor que pode ser instaldo localmente é o <strong><a href="http://dia-installer.de/index.html.en">Dia Diagram Editor</a></strong>:</p>
+<p><img src="file:////Users/fernandopassold/Documents/GitHub/fpassold.github.io/TCC_Latex/figuras/dia_screenshot.png" alt=""></p>
+<p>O <strong>Dia</strong> é multiplaforma e free. Instruções sobre como usar o <strong>Dia</strong> podem ser encontrados neste material organizado pela <a href="https://sites.icmc.usp.br/andretta/ensino/aulas/sme0230-1-10/aula-lab03-2.pdf">USP</a>. Ele permite desenhar:</p>
+<ul>
+<li>
+<p>Fluxogramas:</br>
+<img src="http://dia-installer.de/shapes/Flowchart/images/Flowchart.png" alt=""></p>
+</li>
+<li>
+<p>Diagramas UML:</br>
+<img src="http://dia-installer.de/shapes/UML/images/UML.png" alt=""></p>
+</li>
+</ul>
+<h2 id="111-formato-abnt-ref-bib">1.11. Formato ABNT Ref Bib</h2>
+<p>o LaTeX pode trabalhar com diferentes estilos de referências bibiográficas -- usando a opção &quot;<strong>bibTeX</strong>&quot; (ver: <a href="https://pt.overleaf.com/learn/latex/Bibtex_bibliography_styles">Overleaf: Bibtex bibliography styles</a>) ou pode usar uma opção separada de compilação (normalmente presente nos editores LaTeX), chamada de <strong><a href="https://pt.overleaf.com/learn/latex/Bibliography_management_with_biblatex">biblatex</a></strong>.</p>
+<p>Em todos os casos, o arquivo <code>.tex</code> é normalmente acompanhado de um arquivo do tipo <code>.bib</code> (outro arquivo texto) que traz dentro si, todos os detalhes necessários para gerar uma referência bibliográfica conforme o estilo desejado. Um arquivo <code>.bib</code> exemplo segue abaixo:</p>
+<pre><code class="language-latex">@article{einstein,
+    author =       &quot;Albert Einstein&quot;,
+    title =        &quot;{Zur Elektrodynamik bewegter K{<span class="hljs-keyword">\&quot;</span>o}rper}. ({German})
+    [{On} the electrodynamics of moving bodies]&quot;,
+    journal =      &quot;Annalen der Physik&quot;,
+    volume =       &quot;322&quot;,
+    number =       &quot;10&quot;,
+    pages =        &quot;891--921&quot;,
+    year =         &quot;1905&quot;,
+    DOI =          &quot;http://dx.doi.org/10.1002/andp.19053221004&quot;,
+    keywords =     &quot;physics&quot;
+}
+
+@book{dirac,
+    title={The Principles of Quantum Mechanics},
+    author={Paul Adrien Maurice Dirac},
+    isbn={9780198520115},
+    series={International series of monographs on physics},
+    year={1981},
+    publisher={Clarendon Press},
+    keywords = {physics}
+}
+
+@online{knuthwebsite,
+    author    = &quot;Donald Knuth&quot;,
+    title     = &quot;Knuth: Computers and Typesetting&quot;,
+    url       = &quot;http://www-cs-faculty.stanford.edu/~uno/abcde.html&quot;,
+    keywords  = &quot;latex,knuth&quot;
+}
+
+@inbook{knuth-fa,
+    author = &quot;Donald E. Knuth&quot;,
+    title = &quot;Fundamental Algorithms&quot;,
+    publisher = &quot;Addison-Wesley&quot;,
+    year = &quot;1973&quot;,
+    chapter = &quot;1.2&quot;,
+    keywords  = &quot;knuth,programming&quot;
+}
+</code></pre>
+<p>Para saber mais, se sugere uma visita à pagina da <a href="https://pt.overleaf.com/learn/latex/Bibliography_management_with_biblatex#The_bibliography_file">Overleaf: Bibliography management with biblatex</a> e se sugere o uso de aplicativos extras para facilitar o gerenciamento de referênicas bibliográficas como o: <a href="https://www.jabref.org">JabRef</a> (mais completo mas exige mais interação; nada automático)  ou <a href="https://www.zotero.org">Zotero</a> (que pode automatizar a inclusão/captura de dados para referências bibliográficas diretamente à partir de páginas WEB mediante a instalação de plug-ins compatíveis com alguns browses como FireFox, Edge e Chrome, o &quot;<a href="https://www.zotero.org/download/#">Zotero Connector</a>&quot;).</p>
+<p>Mas neste caso específico, estamos tendo a necessidade de compatibilizar o LaTeX com o sistema ABNT brasileiro.  Um processo algo chato, mas felizmente, algo recentemente (final de 2018) um grupo obstinado de entusiastas do LaTeX se atreveram a desenvolver uma ferramenta que permitisse obedecer as normas da ABNT para criação de documentos e referências bibliográficas.</p>
+<p>Se sugere fortemente que seja instalada a ferramenta &quot;<strong><a href="https://www.abntex.net.br">abnTeX2</a></strong>&quot; (<em>ABsurd Norms for TeX</em>). Sua <a href="https://github.com/abntex/abntex2/wiki/Instalacao">página wiki no GitHub</a> explica como instalar o abnTeX2. Uma seção da sua página Wiki explica <a href="https://github.com/abntex/abntex2/wiki/PorOndeComecar#j%C3%A1-conhe%C3%A7o-algo-de-latex-vou-usar-o-abntex2">como iniciar o uso desta ferramenta</a>.</p>
+<p>Provavelmente você trabalhará como o pacote de estilo:</p>
+<ul>
+<li><a href="https://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2cite.pdf">abnTeX2cite</a>: bibliografia no formato ABNT NBR 6023, ou seja, gera algo: &quot;Segundo a referência 117 entende-se que ...&quot; (referência usando números).</li>
+<li><strong><a href="https://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2cite-alf.pdf">abnTeX2cite-alf</a></strong>: <mark>mais moderno</mark>, que trabalha as referências bibliográficas no novo formato NBR 10520:2002, ou seja, no formato autor-ano, algo como: &quot;E a pátria não poderia faltar (BRASIL, 1995).&quot;. Este estilo está próximo do estilo &quot;original&quot; do LaTeX (e mais adotado internacionalmente), o <strong><a href="https://pt.overleaf.com/learn/latex/Natbib_bibliography_styles">natbib</a></strong> (usado fazendo-se: <code>\usepackage[round]{natbib}</code>) ou o estilo BibTeX <a href="">apalike</a>.</li>
+</ul>
+<p>Neste último caso, <mark>no pre-âmbulo do seu arquivo <code>.tex</code></mark> constará uma declaração como:</p>
+<pre><code class="language-latex"><span class="hljs-keyword">\usepackage</span>[alf]{abntex2cite} <span class="hljs-comment">% Para usar o estilo de citação alfabético (seção 9.2 em 6023/2000 (ABNT, 2000))</span>
+</code></pre>
+<p>Você pode então realizar referênicas bibliográficas no estilo:</p>
+<ul>
+<li>autos-data, usando o comando <code>\citeonline[opções]{label}</code>, algo como:</li>
+</ul>
+<pre><code class="language-latex"><span class="hljs-keyword">\citeonline</span>[p.~146]{10520:2000:4.2-2} dizem que <span class="hljs-keyword">\ldots</span><span class="hljs-keyword">\
+</span></code></pre>
+<p>que gera algo como:</p>
+<p>&quot;Oliveira e Leonardos (1943, p. 146) dizem que ...&quot;</p>
+<p>Ou você pode usar o tradicional comando <code>\cite[opções]{label}</code></p>
+<pre><code class="language-latex">‘‘Apesar da filosofia’’ <span class="hljs-keyword">\cite</span>[p.~293]{10520:2000:4.1-2}.
+</code></pre>
+<p>que gera algo como:</p>
+<p>&quot;“Apesar da filosofia” (DERRIDA, 1967, p. 293).&quot;</p>
 <hr>
-<p><font size="2"><em>Prof. Fernando Passold | Página criada em 04/10/2023.</em></font></p>
+<p>Fernando Passold, 2023.</p>
 
         <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         <script async type="text/javascript">

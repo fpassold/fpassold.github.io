@@ -2,9 +2,8 @@
 # Dicas para seu TCC
 
 * Como **[organizar a escrita :writing_hand:](escrita.html)** do seu TCC;
-* Como **[usar $LaTeX$](TCC_Latex.html)** para escrever seu TCC.
-
-
+* Como **[usar $\LaTeX$](TCC_Latex.html)** para escrever seu TCC.
+* Mais [Dicas sobre $\LaTeX$](include_fig.html) (incluir figuras, referências bibliográficas estilo ABNT, etc);
 
 Bom trabalho :thumbsup:
 
