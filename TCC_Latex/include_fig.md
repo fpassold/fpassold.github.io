@@ -13,7 +13,6 @@
   - [1.10. Desenhar Diagramas em Blocos](#110-desenhar-diagramas-em-blocos)
   - [1.11. Formato ABNT Ref Bib](#111-formato-abnt-ref-bib)
 
-
 ## 1.1. Instalação do LaTeX
 
 O LaTeX é na verdade um sistema para edição de documentos mais complexos, bem formatatos, agradavelmente estéticos e bastante consistente em estilos internos. Facilita muito a criação de índices, índices remissivos, lista de figuras e lista de tabelas. Porém exige uma pequena curva de aprendizado.
@@ -34,9 +33,9 @@ Estes app's possuem em comum o fato de facilitar  a atualização e instalação
 
 ## 1.2. Apostila Introdutória recomendada
 
-* **[Apostila](figuras/LaTeX.pdf)** organizada pelo grupo de Telecom da Universidade Federal Fluminense (RJ).
+* **[Apostila](figuras/LaTeX.pdf)** -- organizada pelo grupo de Telecom da Universidade Federal Fluminense (RJ) (1.3 Mbytes; 60 páginas).
 
-* [Cheat Sheet](figuras/latexsheet.pdf) - resumo com principais comandos. 
+* [Cheat Sheet](figuras/latexsheet.pdf) - resumo com principais comandos (2 páginas) 
 
 
 ## 1.3. Editor Recomendado
@@ -51,23 +50,30 @@ Você pode "googlar" na internet para buscar soluções para seus problemas com 
 
 * [Overleaf](https://pt.overleaf.com), por exemplo: como escrever [equações usando LaTeX](https://pt.overleaf.com/learn/latex/Display_style_in_math_mode).
     O site “Overleaf” permite editar online arquivos .tex — mas existe versão gratuita e limitada e versão paga para os arquivos mantidos na nuvem deles… O interessante é que muito gente começou a usá-los e eles acabaram se transformando numa fonte de help.
-* outro site bom para resolver dúvidas específicas sobre LaTeX é o **StackExchange**. Por exemplo: pode-se introduzir equações dentro de tabelas? -- ver: https://tex.stackexchange.com/questions/112576/math-mode-in-tabular-without-having-to-use-everywhere 
+
+* **StackExchange**: outro site bom para resolver dúvidas específicas sobre LaTeX. Por exemplo: pode-se introduzir equações dentro de tabelas? -- ver: https://tex.stackexchange.com/questions/112576/math-mode-in-tabular-without-having-to-use-everywhere 
 
 ## 1.5. Para editar equações no LaTeX
 
 * Para descobrir que código LaTeX corresponde á certo símbolo matemático ou regra grega, recomenda-se o site **[Detexify](https://detexify.kirelabs.org/classify.html)**. Ele abre uma janela gráfica que permite que você desenhe (usando o mouse), o símbolo desejado. O site então ativa um sistema inteligente baseado em redes neurais para tentar identificar que comandos LaTeX mais se aproximam do símbolo desenhado, por exemplo:
+  
     ![detexify-2.png](figuras/detexify-2.png)
 
 * Outro site que permite editar (on-line) equações LaTeX é o [KaTeX](https://katex.org):
+  
     ![KaTeX.png](figuras/KaTeX.png)
 
 * Para o Mac OS existe o editor **[LaTeXiT](https://www.chachatelier.fr/latexit/latexit-home.php?lang=en)** que permite editar equações localmente (não é on-line) e mais interessante: permite exportar as equações criadas para outros programas, como sendo arquivos PDF ou PNG. E normalmente incorporando internamente no arquivo gerado, os comandos LaTeX usados para gerar a equação desejada, o que permite que se uma figura colocada no PowerPoint (ou Keynote) foi gerada através do mesmo, basta arrastar e soltar a figura na janela de edição do LaTeXiT para voltar a editar a equação (*mas atenção: talvez esta compatibilidade seja desfeita dependendo das versões usadas do LaTeXiT*). Mesmo assim, acredito que vale a pena tentar usar este app:
+  
     ![LaTeXiT.png](figuras/LaTeXiT.png)
 
 * Programas semelhantes ao anterior mas disponíveis para Windows podem ser testados, por exemplo:
   * [LaTeX Equation Editor](https://latexeqedit.sourceforge.net/index.php):
+  
      ![latex-equation-editor.gif](figuras/latex-equation-editor.gif)
+
   * ou o [KLatexFormula](https://www.linuxlinks.com/klatexformula-generate-images-from-latex-equations/) para Linux:
+
     ![KLatexFormula.png](figuras/KLatexFormula.png.webp)
 
 
@@ -125,10 +131,12 @@ Outro editor que pode ser instaldo localmente é o **[Dia Diagram Editor](http:/
 
 O **Dia** é multiplaforma e free. Instruções sobre como usar o **Dia** podem ser encontrados neste material organizado pela [USP](https://sites.icmc.usp.br/andretta/ensino/aulas/sme0230-1-10/aula-lab03-2.pdf). Ele permite desenhar:
 
-* Fluxogramas:</br>
+* Fluxogramas:
+  
   ![fluxograma](http://dia-installer.de/shapes/Flowchart/images/Flowchart.png)
 
-* Diagramas UML:</br>
+* Diagramas UML:
+
   ![UML](http://dia-installer.de/shapes/UML/images/UML.png)
 
 ## 1.11. Formato ABNT Ref Bib
