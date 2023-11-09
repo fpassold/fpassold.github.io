@@ -2,10 +2,11 @@
 
 <img src="dente_serra_100Hz_10termos_amostrado_400Hz_amostras.png" alt="dente_serra_100Hz_10termos_amostrado_400Hz_amostras.png" style="zoom:67%;" />
 
-# Sinais & Sistemas (I)
+# Sinais & Sistemas I
 
 * Série de Fourier ([Intro](4_fourier/4_serie_fourier.html))
 * Transformada de [Laplace](3_transformada_laplace.pdf)
+* Resposta Frequencial (ou [Diagramas de Bode](Diagramas_Bode_1.pdf))
 
 &nbsp;
 Outros tópicos:
