@@ -23,10 +23,12 @@ Experimentos previstos:
 * Teoria/Equações [Filtro Passa-Baixas Exponencial](Filtro/filtro_exponencial.html).
 * [Explorando o Espectro com a Transformada de Fourier](lab_5_transf_fourier/lab_5_trans_fourier.html)
 
+* [Lab 4](lab_4/lab_4_gerador_senoidal.html) Gerador Onda Senoidal] usando Arduíno, conversor I2C DAC e ISR.
+  
 &nbsp;
 
 :construction_worker_man: Página ainda sendo atualizada.
 
-----
+---
 
 Fernando Passold, em 02/11/2023
