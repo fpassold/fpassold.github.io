@@ -3199,7 +3199,8 @@ aside > *:last-child {
   background-color: #fafbfc;
 }
 </style>
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -3234,18 +3235,62 @@ aside > *:last-child {
                     data-light-mode-theme="default"></span>
                 <h1 id="gerador-onda-senoidal">Gerador Onda Senoidal</h1>
 <p>Projeto: gerar onda senoidal de 440 Hz, (&quot;la&quot; musical)</p>
+<h2 id="material">Material</h2>
+<p>Este projeto usa um módulo externo de D/A que trabalha conectado ao Arduíno via comunicação I2C.</p>
+<p>Módulo MCP4725 usado:</p>
+<p><img src="MCP4725.webp" alt=""></p>
+<h2 id="métodologia">Métodologia</h2>
+<p>O conversor D/A usado (MCP4725) é de 12 bits, o que significa que trabalha com valores de entrada variando de 0 até  <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mn>12</mn></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4095</mn></mrow><annotation encoding="application/x-tex">(2^{12}-1)=4095</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4095</span></span></span></span></eq>:</p>
+<pre><code class="language-matlab">&gt;&gt; <span class="hljs-number">2</span>^<span class="hljs-number">12</span>
+<span class="hljs-built_in">ans</span> =
+        <span class="hljs-number">4096</span>
+&gt;&gt; <span class="hljs-built_in">ans</span>/<span class="hljs-number">2</span>
+<span class="hljs-built_in">ans</span> =
+        <span class="hljs-number">2048</span>
+</code></pre>
+<p>Isto significa que a onda senoidal será gerada usando uma equação como:</p>
+<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2047</mn><mo>+</mo><mn>2048</mn><mo>⋅</mo><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mo>⋅</mo><mn>440</mn><mo>⋅</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y(t) = 2047 + 2048 \cdot \sin(2\pi \cdot 440 \cdot t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2047</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2048</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">440</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></eq></p>
+<p>Se vamos gerar 20 pontos por ciclo de senóide teremos algo como:</p>
+<pre><code class="language-matlab">&gt;&gt; f=<span class="hljs-number">440</span>;       <span class="hljs-comment">% freq. desejada</span>
+&gt;&gt; fs=<span class="hljs-number">20</span>*<span class="hljs-number">440</span>
+fs =
+        <span class="hljs-number">8800</span>
+&gt;&gt; T=<span class="hljs-number">1</span>/fs       <span class="hljs-comment">% período de amostragem necessário</span>
+T =
+   <span class="hljs-number">0.00011364</span>
+&gt;&gt; <span class="hljs-comment">% Os valores anteriores servem de guia para programação do pre-escaler</span>
+&gt;&gt; <span class="hljs-comment">% e registrados gerados com o timer2 que será usando na</span>
+&gt;&gt; <span class="hljs-comment">% rotina ISR à ser implementada no Arduíno</span>
+&gt;&gt; <span class="hljs-number">360</span>/<span class="hljs-number">20</span>       <span class="hljs-comment">% incremento angular entre os pontos na onda senoidal (em graus)</span>
+<span class="hljs-built_in">ans</span> =
+    <span class="hljs-number">18</span>
+&gt;&gt; <span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>/<span class="hljs-number">20</span>      <span class="hljs-comment">% incremento angular entre os pontos na onda senoidal (em radiano)</span>
+<span class="hljs-built_in">ans</span> =
+      <span class="hljs-number">0.31416</span>
+</code></pre>
+<h3 id="acessando-o-módulo-dac-mcp4725">Acessando o módulo DAC MCP4725</h3>
+<p>O módulo A/D usado se comunica com o Arduino usando comunicação I2C. revisando páginas exemplo na internet usando este módulo perbemos que:</p>
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<h2 id="montagem">Montagem</h2>
 <p>Digrama elétrico para ligação do alto-faltante no Arduíno:</p>
 <p><img src="ligacao_alto_faltante.png" alt=""></p>
 <p><em>Obs.: página em construção</em></p>
-<p>Referências:</p>
+<h2 id="referências">Referências:</h2>
 <ul>
 <li><a href="arduinosistucontroladosintroeletrica2019keynotenovo-190314222158.pdf">Introdução à Arduíno (PDF)</a></li>
+<li><a href="https://www.makerhero.com/produto/conversor-digital-analogico-dac-mcp4725-i2c/">Conversor Digital Analógico DAC MCP4725 I2C</a></li>
+<li>Exemplo de uso do DAC MCP4725 para compor um gerador de sinais: <a href="https://www.makerhero.com/blog/mini-wave_gen-gerador-de-sinais-parte-01/">	
+Gerador de sinais DIY – Mini Wave_Gen Parte 01</a> e <a href="https://www.makerhero.com/blog/mini-wave_gen-gerador-de-sinais-parte-02-2/">	
+Gerador de sinais DIY – Mini Wave_Gen Parte 02</a>;</li>
 </ul>
 <hr>
 <p>Fernando Passold, em 10/11/2023</p>
 </div>
         </div>
-        
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         <script async type="text/javascript">
 /* From extension bierner.markdown-mermaid */
 /*! For license information please see index.bundle.js.LICENSE.txt */
