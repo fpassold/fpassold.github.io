@@ -3257,6 +3257,7 @@ aside > *:last-child {
 <li><a href="#teorema-de-amostragem-de-nyquist">Teorema de Amostragem de Nyquist:</a></li>
 <li><a href="#transformada-r%C3%A1pida-de-fourier-fft">Transformada Rápida de Fourier (FFT)</a></li>
 <li><a href="#rela%C3%A7%C3%A3o-entre-o-teorema-de-nyquist-e-a-fft">Relação entre o Teorema de Nyquist e a FFT</a></li>
+<li><a href="#uso-incorreto-do-algoritmo-fft">Uso incorreto do algoritmo FFT</a></li>
 <li><a href="#exemplo-de-c%C3%B3digo-para-ardu%C3%ADno">Exemplo de código para Arduíno</a></li>
 <li><a href="#trabalho">Trabalho</a></li>
 </ul>
@@ -3485,6 +3486,79 @@ signal_fft &gt;&gt; [<span class="hljs-number">1000</span>	<span class="hljs-num
 </ul>
 <p>A relação direta entre eles é que, ao aplicar a FFT a um sinal discreto, você está efetivamente transformando o sinal do domínio do tempo para o domínio da frequência, o que permite a análise das componentes de frequência do sinal amostrado. Para garantir que a análise seja precisa e que nenhuma informação seja perdida durante a transformação, é essencial que a taxa de amostragem seja escolhida de acordo com o Teorema de Nyquist.</p>
 <p>Em resumo, o Teorema de Amostragem de Nyquist é uma diretriz fundamental para aquisição de sinais, garantindo que a taxa de amostragem seja adequada para permitir a recuperação correta das componentes de frequência durante a aplicação da FFT ou DFT em sinais discretos.</p>
+<h2 id="uso-incorreto-do-algoritmo-fft">Uso incorreto do algoritmo FFT</h2>
+<p>Suponha que se queria confirmar o espectro de uma onda quadrada.</p>
+<p>Simulando corretamente, poderíamos fazer:</p>
+<pre><code class="language-matlab">&gt;&gt; f=<span class="hljs-number">1E3</span>;       <span class="hljs-comment">% freq. (fundamental) da onda quadrada</span>
+&gt;&gt; T=<span class="hljs-number">1</span>/f        <span class="hljs-comment">% calculando seu período</span>
+T =
+        <span class="hljs-number">0.001</span> 
+&gt;&gt; t_fim=<span class="hljs-number">2</span>*T    <span class="hljs-comment">% definindo instante de tempo final para simulação de 2 ciclos</span>
+t_fim =
+        <span class="hljs-number">0.002</span>
+&gt;&gt; t=<span class="hljs-number">0</span>: T/<span class="hljs-number">200</span> :t_fim - T/<span class="hljs-number">200</span>;   <span class="hljs-comment">% criando vetor tempo, 20 amostras por ciclo, 2 ciclos da onda</span>
+&gt;&gt; <span class="hljs-built_in">size</span>(t)
+<span class="hljs-built_in">ans</span> =
+     <span class="hljs-number">1</span>   <span class="hljs-number">400</span>
+&gt;&gt; y=<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*t)+(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>)*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*<span class="hljs-number">3</span>*t)+(<span class="hljs-number">1</span>/<span class="hljs-number">5</span>)*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*<span class="hljs-number">5</span>*t);   <span class="hljs-comment">% onda quadrada até 5a-harmônica</span>
+&gt;&gt; <span class="hljs-built_in">size</span>(y)
+<span class="hljs-built_in">ans</span> =
+     <span class="hljs-number">1</span>   <span class="hljs-number">400</span>
+&gt;&gt; <span class="hljs-built_in">plot</span>(t,y)    <span class="hljs-comment">% verificando o resultado até 5a-harmônica</span>
+</code></pre>
+<p>Resultado da simulação de uma onda quadrada de 1 KHz, até 5a-harmônica, usando 200 pontos por ciclo:</p>
+<img src="quadrada_200pts.png" alt="quadrada_200pts.png" style="zoom:50%;" />
+<p>Executando o algoritmo obtemos:</p>
+<pre><code class="language-matlab">&gt;&gt; signal_fft(t,y,<span class="hljs-number">1</span>)
+signal_fft &gt;&gt; Número original de amostras: <span class="hljs-number">400</span>
+signal_fft &gt;&gt; Número de amostras consideradas, n = <span class="hljs-number">400</span>
+signal_fft &gt;&gt; Intervalo de tempo considerado, tt = <span class="hljs-number">0.001995</span>
+signal_fft &gt;&gt; Freq. de amostragem original, Fs = <span class="hljs-number">200000</span> Hz
+signal_fft &gt;&gt; Frequências: [ <span class="hljs-number">-100000</span> : <span class="hljs-number">500</span> : <span class="hljs-number">99500</span>] Hz (<span class="hljs-number">400</span> pontos)
+signal_fft &gt;&gt; Harmônicas detectadas:
+signal_fft &gt;&gt; [Freq	Mag]
+signal_fft &gt;&gt; [<span class="hljs-number">1000</span>	<span class="hljs-number">1</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">3000</span>	<span class="hljs-number">0.333333</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">5000</span>	<span class="hljs-number">0.2</span>]
+&gt;&gt;
+</code></pre>
+<p>E obtemos:</p>
+<img src="fft_quadrada_200pts.png" alt="fft_quadrada_200pts.png" style="zoom: 67%;" />
+<p>O resultado obtido está dentro do esperado.</p>
+<p>Mas suponha que agora vamos &quot;amostrar&quot; a onda quadrada, apenas 20 pontos por ciclo e para complicar um pouco mais, vamos passar para o algoritmo 1,5 ciclos.</p>
+<p><em>Obs.: foram criados outros vetores para o par <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>t</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(t,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></eq>: <code>t3</code> e <code>y3</code>.</em></p>
+<pre><code class="language-matlab">&gt;&gt; t3=<span class="hljs-number">0</span>: T/<span class="hljs-number">20</span> :T*<span class="hljs-number">1.5</span> - T/<span class="hljs-number">20</span>;
+&gt;&gt; y3=<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*t3)+(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>)*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*<span class="hljs-number">3</span>*t3)+(<span class="hljs-number">1</span>/<span class="hljs-number">5</span>)*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*<span class="hljs-number">5</span>*t3);
+&gt;&gt; <span class="hljs-built_in">plot</span>(t3,y3)
+&gt;&gt; signal_fft(t3,y3,<span class="hljs-number">1</span>)
+signal_fft &gt;&gt; Número original de amostras: <span class="hljs-number">30</span>
+signal_fft &gt;&gt; Número de amostras consideradas, n = <span class="hljs-number">30</span>
+signal_fft &gt;&gt; Intervalo de tempo considerado, tt = <span class="hljs-number">0.00145</span>
+signal_fft &gt;&gt; Freq. de amostragem original, Fs = <span class="hljs-number">20000</span> Hz
+signal_fft &gt;&gt; Frequências: [ <span class="hljs-number">-10000</span> : <span class="hljs-number">666.667</span> : <span class="hljs-number">9333.33</span>] Hz (<span class="hljs-number">30</span> pontos)
+signal_fft &gt;&gt; Harmônicas detectadas:
+signal_fft &gt;&gt; [Freq	Mag]
+signal_fft &gt;&gt; [<span class="hljs-number">1.81899e-12</span>	<span class="hljs-number">0.477864</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">666.667</span>	<span class="hljs-number">0.820126</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">1333.33</span>	<span class="hljs-number">0.479418</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">2000</span>	<span class="hljs-number">0.0472932</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">2666.67</span>	<span class="hljs-number">0.167864</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">3333.33</span>	<span class="hljs-number">0.223803</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">4000</span>	<span class="hljs-number">0.0534308</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">4666.67</span>	<span class="hljs-number">0.0660189</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">5333.33</span>	<span class="hljs-number">0.173042</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">6000</span>	<span class="hljs-number">0.0795437</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">6666.67</span>	<span class="hljs-number">0.0573913</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">7333.33</span>	<span class="hljs-number">0.046945</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">8000</span>	<span class="hljs-number">0.0410565</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">8666.67</span>	<span class="hljs-number">0.0376185</span>]
+signal_fft &gt;&gt; [<span class="hljs-number">9333.33</span>	<span class="hljs-number">0.0357906</span>]
+&gt;&gt; 
+</code></pre>
+<p>O resultado obtido aparece na figura à seguir:</p>
+<img src="ffft_quadrada_30pts.png" alt="ffft_quadrada_30pts.png" style="zoom:67%;" />
+<p>Note que já percebemos que amostrar apenas 20 pontos na onda quadrada, já rende um sinal com uma resolução &quot;pobre&quot;. Note que ainda estamos respeitando o <strong>Teoreama de Amostragem de Nyquist</strong>, mas continua sendo poucos pontos para definir a onda. E se aplicarmos o algoritmo de FFT sobre 1,5 ciclos deste sinal, ainda leva um resultado algo distante do esperado.</p>
+<p>Isto significa que o algoritmo da FFT rende melhores resultados quanto mais amostradas tiveremos do sinal de entrada, e preferencialmente mais que 1 ciclo periódico do mesmo.</p>
 <h2 id="exemplo-de-código-para-arduíno">Exemplo de código para Arduíno</h2>
 <p>Segue exemplo básico de código para implementar uma Transformada Rápida de Fourier (FFT) em uma placa Arduino usando a biblioteca &quot;<strong>arduinoFFT</strong>&quot;. Essa biblioteca simplifica a implementação da FFT no Arduino.</p>
 <p>Certifique-se de que você instalou a biblioteca &quot;<strong>arduinoFFT</strong>&quot; em seu ambiente Arduino antes de usar este código. Você pode fazer isso através do Gerenciador de Bibliotecas do Arduino.</p>

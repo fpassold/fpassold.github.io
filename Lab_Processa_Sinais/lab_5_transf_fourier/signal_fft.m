@@ -76,4 +76,8 @@ for index = u/2+1:u
     end
 end
 % re-escalonando figura
-axis([0 freq(last)*2 0 maior*1.1])
+freq_limite = freq(last)*2;
+if freq_limite >= (freq_fim - freq_inc)
+    freq_limite = -freq_ini;
+end
+axis([0 freq_limite 0 maior*1.1])
