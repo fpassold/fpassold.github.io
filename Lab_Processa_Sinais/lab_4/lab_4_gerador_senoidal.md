@@ -1,6 +1,9 @@
+![foto-vaga-lume.jpeg](foto-vaga-lume.jpeg)</br>
+[Vaga-lume entra para a lista de insetos em extinção; diz estudo](https://super.abril.com.br/ciencia/vaga-lumes-estao-sob-risco-de-extincao-diz-estudo)
+
 # Gerador Onda Senoidal
 
-Projeto: gerar onda senoidal de 440 Hz, ("la" musical)
+Projeto: gerar uma onda senoidal de 440 Hz, ("la" musical) usando Arduino e circuitos auxiliares.
 
 ## Material
 
@@ -8,7 +11,7 @@ Este projeto usa um módulo externo de D/A que trabalha conectado ao Arduíno vi
 
 Módulo MCP4725 usado:
 
-![MCP4725](MCP4725.webp)
+<img src="MCP4725.webp" alt="MCP4725" style="zoom:50%;" />
 
 ## Métodologia
 
@@ -43,7 +46,7 @@ T =
 >> 360/20       % incremento angular entre os pontos na onda senoidal (em graus)
 ans =
     18
->> 2*pi/20      % incremento angular entre os pontos na onda senoidal (em radiano)
+>> 2*pi/20      % incremento angular entre os pontos na onda senoidal (em radianos)
 ans =
       0.31416
 ```
@@ -59,7 +62,7 @@ O módulo A/D usado se comunica com o Arduino usando comunicação I2C. revisand
 
 Digrama elétrico para ligação do alto-faltante no Arduíno:
 
-![ligacao_alto_faltante.png](ligacao_alto_faltante.png)
+<img src="ligacao_alto_faltante.png" alt="ligacao_alto_faltante.png" style="zoom:50%;" />
 
 
 *Obs.: página em construção*
@@ -74,4 +77,4 @@ Gerador de sinais DIY – Mini Wave_Gen Parte 01](https://www.makerhero.com/blog
 Gerador de sinais DIY – Mini Wave_Gen Parte 02](https://www.makerhero.com/blog/mini-wave_gen-gerador-de-sinais-parte-02-2/);
 ---
 
-Fernando Passold, em 10/11/2023
+[:musical_note:](https://youtu.be/VTT6picaCoQ?si=ZGrtAwUYUEWxuV8O) Fernando Passold, em 10/11/2023
