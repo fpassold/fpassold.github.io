@@ -101,19 +101,36 @@
 
 5.5) [Exercícios](msi/exercicios_4.pdf)  + [Respostas](msi/exercicios_4_respuestas.pdf)  + [Erratas](msi/Errata_2a_lista_exercicios_digitais_1.pdf) (algumas respostas).
 
+*   [Exemplo de projeto de Decodificador para Display 7-segmentos usando FPGA (linguagem Verilog)](SystemVerilog Study Notes. Hex-Digit to Seven-Segment LED Decoder RTL Combinational Circuit - elemen.pdf).
+
 &nbsp;
 
 ## Cap 6) Aritmética Binária Digital
 
-6.1) Números inteiros com sinal (Intro. Sist. Arit. Binários)
+*   Circuitos Aritméticos Binários (Arquivo [PDF](ula/Aritmetica_Digital_KeyNote_v5.pdf));
+    *   [Exemplos de operações artiméticas binárias](exemplos_operacoes_sinais/exemplos_operacoes.html) de números inteiros com sinal;
+*   Teoria ULA's (Arquivo [PDF](ula/ULAs.pdf));
+    *   Exemplo de [Projeto de ULA 4-bits 8-operacoes (pdf)](exe_ulas/projeto_exemplo_ULA_4-bits_8-operacoes.pdf) (2016);
+*   [Lista Exercícios 3a-prova (pdf)](exe_ulas/digitais_1_exerecicios_p3.pdf) (com soluções).
 
-6.2) Circuitos Aritméticos Binários (Arquivo [PDF](ula/Aritmetica_Digital_KeyNote_v5.pdf));
+&nbsp;
 
-6.3) ULA's (Arquivo [PDF](ula/ULAs.pdf));
+## Cap 7) Intro Arquitetura Computadores
 
-6.4) Circuitos Exemplo
-
-6.5) Exercícios
+*    [Intro Arquitetura Computadores (pdf)](intro_arquitetura_computadores.pdf) 
+*   Sites sugeridos:
+    *   [Arquitetura Von Neumann (e seu "gargalo")](https://en.wikipedia.org/wiki/Von_Neumann_architecture):
+    *   [Arquitetura Harward](https://en.wikipedia.org/wiki/Harvard_architecture);
+    *   [Lei de Moore](https://en.wikipedia.org/wiki/Moore%27s_law);
+    *   [Novo chip para IA da IBM: **North Pole**](https://research.ibm.com/blog/northpole-ibm-ai-chip);
+        *   Artigo na [Scince](https://www.science.org/doi/full/10.1126/science.adh1174) e [Nature](https://www.nature.com/articles/s41586-023-06337-5): chip capaz de estocar informações (pesos sinápticos) de forma analógica usando "**phasse-change memories**" (não volátil).
+        *   **[Vídeo no YouTube (Anastasi In Tech)](https://www.youtube.com/watch?v=p0W5eHn5sZ0)**.
+        *   [Redes ResNet-50](https://huggingface.co/microsoft/resnet-50) (rede para reconhecimento fde imagens);
+        *   [Rede YOLOv4](https://arxiv.org/abs/2004.10934) (rede para detecção de objetos).
+        *   [Redes Transformer](https://blog.research.google/2017/08/transformer-novel-neural-network.html) (rede recorrente; para modelos de linguagem (LLM's): ChatGPT);
+        *   [O que é IA Generativa?](https://research.ibm.com/blog/what-is-generative-AI).
+        *   [Algoritmo de Strassen's para multiplicação de matrizes 2x2](https://www.quantamagazine.org/ai-reveals-new-possibilities-in-matrix-multiplication-20221123/);
+        *   Novo Algoritmo (Google DeepMind) para multiplicação de matrizes (usando aprendizado reforçado): [vídeo YouTube 1](https://www.youtube.com/watch?v=WHuH4qSqoRs), [video YouTube 2 (Quanta Magazine)](https://www.youtube.com/watch?v=fDAPJ7rvcUw) e artigo na [Nature](https://www.nature.com/articles/s41586-022-05172-4);
 
 &nbsp;
 
@@ -141,4 +158,4 @@
 
 ---
 
-Fernando Passold, atualizado em 17.03.2011; 06/09/2023.
+Fernando Passold, atualizado em 17.03.2011; 21/11/2023.
