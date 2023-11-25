@@ -154,11 +154,14 @@
 </details>
 &nbsp;
 
-5. **Projeto de PID** (com ajuste por Ziegler-Nichols)
+5. **Projeto de Controlador PID**
+    * [Base teórica controladores PID](https://fpassold.github.io/Lab_Controle_2/PID/pid.html)</br> 
+        *(arquitetura ISA, arquitetura Paralela, integrações numéricas, derivada numérica, filtro passa-baixas para ação derivativa, saturação integral, PID no formato de Posição, PID no formato de Velocidade)*
+    * [Métodos de Sintonia de PID (resumido)](https://fpassold.github.io/Controle_2/8_Ajuste_PID/Sintonia_PIDs_usando_ZN.html)</br>
+        *(Sintonia usando Zigler-Nichols, buscando $K_u$ (Ultimate Gain) e $T_u$ (Ultimate Period), [Tabela de Ziegler-Nichols (Wikipedia)](https://en.wikipedia.org/wiki/Ziegler–Nichols_method)) )*
+    * **Projeto de PID** arquitetura ISA, formato de Velocidade para **planta do estudo de caso**: **[Arquivo PDF](estudo_caso/Estudo_Caso_Controladores_2020.pdf)** (à partir da página 24)</br> *(Extras: [arquivo .SLX (Matlab/Simulink R2019b)](PID/planta_PID_velocity.slx) ou [arquivo .MDL (versões antigas Matlab/Simulink)](PID/planta_PID_velocity.mdl) do PID formato velocidade + [figura demonstrativa](PID/uso_planta_PID_velocity.png))*
+    * Exemplo de Implementação Real de Controlador PID Digital em [Processo da "Bola no Tubo"](implementacao_controle_digital.html) (TCC de 2006);
 
-     * Ver parte final deste [PDF](estudo_caso/Estudo_Caso_Controladores_2020.pdf)</br>
-      (arquivo original inicial do "Estudo de Caso", versão de 2020);
-<!--     * Falta verificar arquivos (11/10/2023) -->
 &nbsp;
 
 6. Implementação Real de Controladores Digitais:
