@@ -35,6 +35,7 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 &nbsp;
 
 * [Aplicando uma Onda Triangular](onda_triangular_driver/triangular_no_driver.html) no driver de potência SA150D da Feedback (controle de velocidade em malha-aberta) -- teste realizado no dia 25/04/2023.
+* Como [trabalhar com Módulo I2C MPC 4725](PID_Digital/modulo_DAC.html).
 
 &nbsp;
 
