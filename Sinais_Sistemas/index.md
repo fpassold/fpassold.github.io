@@ -1,6 +1,10 @@
 <!--title: Sinais & Sistemas -->
 
+<!--
 <img src="dente_serra_100Hz_10termos_amostrado_400Hz_amostras.png" alt="dente_serra_100Hz_10termos_amostrado_400Hz_amostras.png" style="zoom:67%;" />
+-->
+
+![tela_trabalho](tela_trabalho.png)
 
 # Sinais & Sistemas I
 
@@ -28,7 +32,8 @@ Outros tópicos:
 Trabalhos 2023/2:
 
 * Trabalho 1;
-* Trabalho 2;
+* [Trabalho 2 (PDF)](trabalho_2_2023_2.pdf) (Deadline: 13/12/2023);
+
 
 ----
 
