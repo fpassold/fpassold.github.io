@@ -2,6 +2,10 @@
 
 ![adi-goldstein-EUsVwEOsblE-unsplash.jpg](adi-goldstein-EUsVwEOsblE-unsplash.jpg)
 
+* **Biestáveis**:
+  * Teoria inicial ( [Biestaveis.pdf](bi/Biestaveis.pdf) );
+  * CIs comerciais, parâmetros no tempo (Características AC) + Exercícios iniciais ( [PDF](bi/biestaveis_caracteristicas_AC_exemplos_exercicios.pdf) );
+  * [Exercícios](bi/exercicios_biestáveis_2018_2.pdf) de fixação de conteúdo.
 * **Contadores Assíncronos**:
   * [Teoria básica contadores assíncronos](contador_assincrono_1.html);
   * Uso de **frequencímetro no Proteus**: [HTML](frequencimetro_proteus.html), ou [PDF](como_usar_um_simulador.pdf);
@@ -17,10 +21,9 @@
 * Registradores de Deslocamento:
   * [Exercícios iniciais](exercicios_inicio_2022_1.html) (Aula de 31/05/2022);
   * [Exercícios II de Registradores de Deslocamento](Reg_Deslocamento/Exemplo_uso_reg_deslocamento.html) (Aula de 08/06/2020);
-
 * Projeto de circuito sequencial/combinacional $\rightarrow$ circuito de um ([**cronômetro**](cronometro/cronometro.html) ) (semestre: 2021/2); 
 
 
 ---
 
-<font size="1">Prof. Fernando Passold, atualizado em 17/05/2020; 27/08/2021; 12/09/2021; 28/11/202; 01/06/2022.</font> 
+<font size="1">Prof. Fernando Passold, atualizado em 17/05/2020; 27/08/2021; 12/09/2021; 28/11/202; 01/06/2022, 08/03/2024.</font> 

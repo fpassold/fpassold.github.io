@@ -12,25 +12,27 @@ Maori proverb</font>
 </center>
 
 
-
 # Cursos/Disciplinas ministradas:
 
-* [Circuitos Digitais I](Digitais_1/index.html) (Eletrônica Digital Combinacional);
-* [Laboratório de Circuitos Digitais I](Digitais_1/lab_dig1.html);  
-* [Circuitos Digitais II (Eletrônica Digital Sequencial)](Digitais_2/digitais_2.html);
-* Laboratório de Circuitos Digitais II;
-* [Controle Automático 2 (Controle Automático Clássico)](Controle_2/index.html);
-* [Laboratório de Controle Automático I](Lab_Controle_1/index.html)
-* [Laboratório de Controle Automático II](Lab_Controle_2/lab_controle_2.html);
-* [Controle Automático 3 (Controle Digital)](Controle_3/index.html).
-* [Sinais & Sistemas](Sinais_Sistemas/index.html);
-* [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html);
-* [Acionamento Hidráulico e Pneumático (EEE172)](Pneumatica/topicos.html).
+* [Circuitos Digitais 1](Digitais_1/index.html) (Eletrônica Digital Combinacional, Eng. Elétrica);
+  * [Laboratório de Circuitos Digitais 1](Digitais_1/lab_dig1.html) (Eng. Elétrica);  
+* [Circuitos Digitais 2](Digitais_2/digitais_2.html) (Eletrônica Digital Sequencial, Eng. Elétrica);
+  * Laboratório de Circuitos Digitais 2 (Eng. Elétrica);
+* [Sinais & Sistemas](Sinais_Sistemas/index.html) (Eng. Elétrica);
+* Controle Automático 1 (Introdução à sistemas e modelagens, Eng. Elétrica);
+* [Controle Automático 2](Controle_2/index.html) (Controle Automático Clássico, Analógico, Eng. Elétrica, Eng. Computação);
+  * [Laboratório de Controle Automático 1](Lab_Controle_1/index.html) (Lab. Controladores Analógicos, Eng. Computação);
+* [Controle Automático 3](Controle_3/index.html) (Controle Digital);
+  * [Laboratório de Controle Automático 2](Lab_Controle_2/lab_controle_2.html) (Lab. Controle Digital, Eng. Elétrica, Eng. Computação (opcional))
+* Processamento Digital de Sinais (Eng. Elétrica);
+  * [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html) (Eng. Elétrica);
+* Processamento de Sinais e Controle Digital (Eng. Computação);
+* [Acionamento Hidráulico e Pneumático](Pneumatica/topicos.html) (Eng. Elétrica);
 
 &nbsp;
 
 * [Tutorial rápido sobre Matlab](Matlab/tutorial.html).
-* **[Matlab\_guide.pdf](Matlab/Matlab_guide.pdf)** (tutorial mais longo, arquivo PDF de 13.4 Mbytes, 44 páginas)
+* **[Matlab\_guide.pdf](Matlab/Matlab_guide.pdf)** (tutorial mais longo, arquivo PDF de 44 páginas; 13.4 Mbytes)
 * **[Instalação recomendada](Matlab/instalacao_matlab.html)** do Matlab (áreas de: Controle E Sinais & Sistemas)
 
 &nbsp;
@@ -39,4 +41,4 @@ Maori proverb</font>
 
 ----
 
-<font size="2">*Página iniciado em Abr/2020, Última atualização: 23/10/2023.*</font> 
+<font size="2">*Página iniciada em Abr/2020, Última atualização: April/2024.*</font> 
