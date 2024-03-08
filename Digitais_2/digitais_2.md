@@ -5,7 +5,7 @@
 * **Biestáveis**:
   * Teoria inicial ( [Biestaveis.pdf](bi/Biestaveis.pdf) );
   * CIs comerciais, parâmetros no tempo (Características AC) + Exercícios iniciais ( [PDF](bi/biestaveis_caracteristicas_AC_exemplos_exercicios.pdf) );
-  * [Exercícios](bi/exercicios_biestáveis_2018_2.pdf) de fixação de conteúdo.
+  * [Exercícios](bi/exercicios_biestaveis_2018_2.pdf) de fixação de conteúdo.
 * **Contadores Assíncronos**:
   * [Teoria básica contadores assíncronos](contador_assincrono_1.html);
   * Uso de **frequencímetro no Proteus**: [HTML](frequencimetro_proteus.html), ou [PDF](como_usar_um_simulador.pdf);
