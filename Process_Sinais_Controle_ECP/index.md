@@ -13,7 +13,7 @@
    3. Parte 3:  [transformada_Z_parte_3.pdf](../Controle_3/3_transformada/transformada_Z_parte_3.pdf) 
    4. Resumo:  [revisao_partes_importantes_transformada_Z.pdf](../Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf) 
    5. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf))
-   6. Impacto (ou falta) do $BoG(z)$
+   6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)
 3. Mapeamento entre planos S e Z.
 4. Análise de estabilidade e regime transitório.
 5. Projeto com lugar das raízes e resposta em frequência.
