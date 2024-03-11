@@ -34,6 +34,7 @@
 - Relatórios de experimentos realizados em laboratório.
 - Participação em discussões e atividades em sala de aula.
 - Trabalhos individuais e em grupo.
+  - [Trabalho #1)](trabalho_1_2024_1.html) Sobre sinais amostrados (Teorema de Amostragem) -- Deadline: 01/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).
 
 ---
 
