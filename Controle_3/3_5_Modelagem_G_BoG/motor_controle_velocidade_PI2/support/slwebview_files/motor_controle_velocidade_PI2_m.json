@@ -1,0 +1,39 @@
+[
+ {
+  "sid":"motor_controle_velocidade_PI2",
+  "className":"Simulink.BlockDiagram",
+  "icon":"motor_controle_velocidade_PI20",
+  "name":"motor_controle_velocidade_PI2",
+  "label":"motor_controle_velocidade_PI2",
+  "parent":"",
+  "inspector":{
+   "params":[
+    "ModelVersion",
+    "LastModifiedDate",
+    "LibraryLinkDisplay",
+    "ModelBrowserVisibility",
+    "Dirty",
+    "Description"
+   ],
+   "values":[
+    "1.20",
+    "Fri May 19 18:19:21 2023",
+    "disabled",
+    "off",
+    "off",
+    ""
+   ],
+   "tabs":[
+   ],
+   "tabs_idx":[
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ }
+]

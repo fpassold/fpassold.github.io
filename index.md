@@ -15,18 +15,39 @@ Maori proverb</font>
 # Cursos/Disciplinas ministradas:
 
 * [Circuitos Digitais 1](Digitais_1/index.html) (Eletrônica Digital Combinacional, Eng. Elétrica);
+  
   * [Laboratório de Circuitos Digitais 1](Digitais_1/lab_dig1.html) (Eng. Elétrica);  
+  
 * [Circuitos Digitais 2](Digitais_2/digitais_2.html) (Eletrônica Digital Sequencial, Eng. Elétrica);
+  
   * Laboratório de Circuitos Digitais 2 (Eng. Elétrica);
+  
+    
+  
 * [Sinais & Sistemas](Sinais_Sistemas/index.html) (Eng. Elétrica);
+
+  
+
 * Controle Automático 1 (Introdução à sistemas e modelagens, Eng. Elétrica);
+
 * [Controle Automático 2](Controle_2/index.html) (Controle Automático Clássico, Analógico, Eng. Elétrica, Eng. Computação);
+  
   * [Laboratório de Controle Automático 1](Lab_Controle_1/index.html) (Lab. Controladores Analógicos, Eng. Computação);
+  
 * [Controle Automático 3](Controle_3/index.html) (Controle Digital);
+  
   * [Laboratório de Controle Automático 2](Lab_Controle_2/lab_controle_2.html) (Lab. Controle Digital, Eng. Elétrica, Eng. Computação (opcional))
+  
+  
+  
 * Processamento Digital de Sinais (Eng. Elétrica);
-  * [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html) (Eng. Elétrica);
-* Processamento de Sinais e Controle Digital (Eng. Computação);
+  
+  * [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html) (Eng. Elétrica: 2023/2);
+  
+* [Processamento de Sinais e Controle Digital](Process_Sinais_Controle_ECP/index.html)  (Eng. Computação);
+
+  
+
 * [Acionamento Hidráulico e Pneumático](Pneumatica/topicos.html) (Eng. Elétrica);
 
 &nbsp;

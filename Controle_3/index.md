@@ -51,7 +51,7 @@
 * [Modelagem do Sustentador](3_transformada/3_BoG_Transformada_Z.pdf) de Ordem Zero (Z.O.H., ou $BoG(z)$).
 * Incorporando o **Sustentador de Ordem Zero**, cálculo de $BoG(z)$ $\rightarrow$ [deduções e simulações](exemplo_1_BoG/intro_exemplo_1a_ordem.html)
    *(1o-exemplo de sistema de 1a-ordem digitalizado)*
-
+* [Impacto (ou falta) do $BoG(z)$](3_5_Modelagem_G_BoG/teste_BoG.html) 
 * **[Resumo final Transformada Z](3_transformada/revisao_partes_importantes_transformada_Z.pdf)** (partes principais).
 
 <details><summary>Malha típica de sistema de controle digital</summary>

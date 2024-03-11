@@ -1,0 +1,7 @@
+.motor_controle_velocidade_PI20,
+.motor_controle_velocidade_PI21,
+.motor_controle_velocidade_PI22 { background-image: url('motor_controle_velocidade_PI2_icons.png'); width: 16px; height: 16px; }
+
+.motor_controle_velocidade_PI20 { background-position: -0px; }
+.motor_controle_velocidade_PI21 { background-position: -16px; }
+.motor_controle_velocidade_PI22 { background-position: -32px; }

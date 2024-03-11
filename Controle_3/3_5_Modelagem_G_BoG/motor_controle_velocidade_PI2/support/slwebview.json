@@ -1,0 +1,25 @@
+{
+ "baseUrl":"support/slwebview_files",
+ "homeHid":1,
+ "initialElement":"",
+ "sections":[
+  {
+   "hid":1,
+   "sid":"motor_controle_velocidade_PI2",
+   "name":"motor_controle_velocidade_PI2",
+   "fullname":"motor_controle_velocidade_PI2",
+   "label":"motor_controle_velocidade_PI2",
+   "parent":0,
+   "descendants":[
+   ],
+   "hierarchyUrl":"support/slwebview_files/motor_controle_velocidade_PI2_h_1.json",
+   "backingUrl":"support/slwebview_files/motor_controle_velocidade_PI2_m.json"
+  }
+ ],
+ "optViews":[
+ ],
+ "display":{
+  "informer":false
+ },
+ "iconsUrl":"support/slwebview_files/motor_controle_velocidade_PI2_icons.css"
+}
