@@ -40,7 +40,7 @@ Maori proverb</font>
   
   
   
-* Processamento Digital de Sinais (Eng. Elétrica);
+* [Processamento Digital de Sinais](Process_Sinais/index.html) (Eng. Elétrica);
   
   * [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html) (Eng. Elétrica: 2023/2);
   
