@@ -1,4 +1,4 @@
-# Processamento de Sinais (Eng. Elétrica)
+# Processamento Digital de Sinais (Eng. Elétrica)
 
 **Conteúdo sendo previsto** (parte teórica):
 
