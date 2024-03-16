@@ -28,7 +28,7 @@ Maori proverb</font>
 
   
 
-* Controle Automático 1 (Introdução à sistemas e modelagens) - Eng. Elétrica;
+* [Controle Automático 1](Controle_1/index.html) (Introdução à sistemas, modelagem e análise de sistemas) - Eng. Elétrica;
 
 * [Controle Automático 2](Controle_2/index.html) (Controle Automático Clássico, Analógico) - Eng. Elétrica, Eng. Computação;
   
