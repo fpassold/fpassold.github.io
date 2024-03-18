@@ -8,22 +8,30 @@
    3. [Wolfram Demonstrations Project: **Sampling Theorem**](https://demonstrations.wolfram.com/SamplingTheorem/)
    4. [Wolfram Demonstrations Project: **Aliasing** in Time Series Analysis](https://demonstrations.wolfram.com/AliasingInTimeSeriesAnalysis/);
 2. Transformada Z.
-   1. Parte 1:  [transformada_Z.pdf](../Controle_3/3_transformada/transformada_Z.pdf) 
-   2. Parte 2:  [transformada_Z_parte2.pdf](../Controle_3/3_transformada/transformada_Z_parte2.pdf) 
-   3. Parte 3:  [transformada_Z_parte_3.pdf](../Controle_3/3_transformada/transformada_Z_parte_3.pdf) 
-   4. Resumo:  [revisao_partes_importantes_transformada_Z.pdf](../Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf) 
+   1. Parte 1:  [transformada_Z.pdf](../Controle_3/3_transformada/transformada_Z.pdf) (parte inicial, definições, transformadas de sinais "básicos")
+   2. Parte 2:  [transformada_Z_parte2.pdf](../Controle_3/3_transformada/transformada_Z_parte2.pdf) (continuando com transformadas de outros sinais, Propriedades)
+   3. Parte 3:  [transformada_Z_parte_3.pdf](../Controle_3/3_transformada/transformada_Z_parte_3.pdf) (Métodos Transformada Inversa de Laplace)
+   4. Resumo:  [revisao_partes_importantes_transformada_Z.pdf](../Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf) (paralelos sinais/sistemas tempo contínuo x tempo discreto)
    5. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf))
    6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)
-3. Mapeamento entre planos S e Z.
-4. Análise de estabilidade e regime transitório.
-5. Projeto com lugar das raízes e resposta em frequência.
-   1. [Sistema de 1a-ordem digitalizado](https://fpassold.github.io/Controle_3/exemplo_1_BoG/intro_exemplo_1a_ordem.html) (uso de Matlab)
-6. Controladores digitais.
-7. Implementação em sistemas embarcados de controladores digitais.
-8. Análise de sinais e sistemas discretos nos domínios do tempo e da frequência.
-9. Transformada discreta de Fourier (DFT/FFT).
-10. Filtros digitais.
-11. Implementação em sistemas embarcados de filtros digitais.
+   7. [Sistema de 1a-ordem digitalizado](https://fpassold.github.io/Controle_3/exemplo_1_BoG/intro_exemplo_1a_ordem.html) (uso de Matlab)
+3. Análise de Sinais/Transformada de Laplace/Modelagem - aplica à Controle Digital
+   1. Respostas típicas de Processos Industriais + Modelagem (Identificação) (Modelos de 1a-ordem com atraso no tempo, modelos de 2a-ordem, respostas típicas, modelos de ordem superior, simulações + exercícios).
+4. Açoes de Controle Típicas
+   1. Ações Típicas de Controle: P, PI, PD e PID:
+      1. Modelos/Simulações no mundo contíniuo - plano-s;
+      2. Paralelos entre planos s e z
+      3. Modelos/Simulações no mundo digital - plano-z.
+5. Implementação em sistemas embarcados de controladores digitais.
+6. Análise de Sinais/Transformada de Fourir/Modelagem - aplica à Processamento (Digital) de Sinais
+   1. Diagrama de Bode (análise)
+   2. Série de Fourier (espectro de ondas; síntese de onda quadrada)
+   3. DFT e FFT, cuidados.
+7. Filtros digitais.
+   1. Filtros de média aritmética, média móvel;
+   2. Filtros FIR
+   3. Filtros IFIR
+8. Implementação em sistemas embarcados de filtros digitais.
 
 ---
 
@@ -54,5 +62,5 @@ Detalhes:
 
 ---
 
-Prof. Passold, em 11/03/2024
+Prof. Passold, em 11/03/2024, 18/03/2024.
 
