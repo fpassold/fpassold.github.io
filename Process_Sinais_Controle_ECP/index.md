@@ -16,7 +16,9 @@
    6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)
    7. [Sistema de 1a-ordem digitalizado](https://fpassold.github.io/Controle_3/exemplo_1_BoG/intro_exemplo_1a_ordem.html) (uso de Matlab)
 3. Análise de Sinais/Transformada de Laplace/Modelagem - aplica à Controle Digital
-   1. Respostas típicas de Processos Industriais + Modelagem (Identificação) (Modelos de 1a-ordem com atraso no tempo, modelos de 2a-ordem, respostas típicas, modelos de ordem superior, simulações + exercícios).
+   1. [Transformada de Laplace](3_transformada_laplace.pdf) (aplicado à Controle: revisão).
+   2. [Respostas temporais](4_Respostas_Sistemas.pdf) típicas de Processos Industriais.
+   3. [Introdução à Modelagem](5_intro_modelagem.pdf) (algumas técnicas). 
 4. Açoes de Controle Típicas
    1. Ações Típicas de Controle: P, PI, PD e PID:
       1. Modelos/Simulações no mundo contíniuo - plano-s;
