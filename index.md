@@ -1,6 +1,6 @@
-# Cursos Prof. Fernando Passold
-
 <!--title: Prof Fernando Passold -->
+
+# Cursos Prof. Fernando Passold
 
 ![initial_image.jpg](initial_image.jpg)
 
@@ -11,53 +11,22 @@
 Maori proverb</font>
 </center>
 
-
 # Cursos/Disciplinas ministradas:
 
-* [Circuitos Digitais 1](Digitais_1/index.html) (Eletrônica Digital Combinacional) - Eng. Elétrica;
-  
-  * [Laboratório de Circuitos Digitais 1](Digitais_1/lab_dig1.html) - Eng. Elétrica;  
-  
-* [Circuitos Digitais 2](Digitais_2/digitais_2.html) (Eletrônica Digital Sequencial, Eng. Elétrica);
-  
-  * [Laboratório de Circuitos Digitais 2](Digitais_2/lab_digitais_2.html)  - Eng. Elétrica
-  
-    
-  
-* [Sinais & Sistemas](Sinais_Sistemas/index.html) - Eng. Elétrica;
-
-  
-
-* [Controle Automático 1](Controle_1/index.html) (Introdução à sistemas, modelagem e análise de sistemas) - Eng. Elétrica;
-
-* [Controle Automático 2](Controle_2/index.html) (Controle Automático Clássico, Analógico) - Eng. Elétrica, Eng. Computação;
-  
-  * [Laboratório de Controle Automático 1](Lab_Controle_1/index.html) (Lab. Controle Analógico) - Eng. Elétrica, Eng. Computação;
-  
-* [Controle Automático 3](Controle_3/index.html) (Controle Digital);
-  
-  * [Laboratório de Controle Automático 2](Lab_Controle_2/lab_controle_2.html) (Lab. Controle Digital) - Eng. Elétrica, Eng. Computação (opcional))
-  
-  
-  
-* [Processamento Digital de Sinais](Process_Sinais/index.html) - Eng. Elétrica;
-  
-  * [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html) - Eng. Elétrica;
-  
-* [Processamento de Sinais e Controle Digital](Process_Sinais_Controle_ECP/index.html)  - Eng. Computação;
-
-  
-
-* [Acionamento Hidráulico e Pneumático](Pneumatica/topicos.html) - Eng. Elétrica;
-
+| [Circuitos Digitais 1](Digitais_1/index.html)</br><font size="2">(Eletrônica Digital Combinacional - Eng. Elétrica)</font> | [Laboratório de Circuitos Digitais 1](Digitais_1/lab_dig1.html)</br><font size="2">(Eng. Elétrica)</font> |
+| :--- | :--- |
+| [Circuitos Digitais 2](Digitais_2/digitais_2.html)</br><font size="2">(Eletrônica Digital Sequencial - Eng. Elétrica)</font> | [Laboratório de Circuitos Digitais 2](Digitais_2/lab_digitais_2.html)</br><font size="2">(Eng. Elétrica)</font> |
+| [Sinais & Sistemas](Sinais_Sistemas/index.html)</br><font size="2">(Eng. Elétrica)</font> |  |
+| [Controle Automático 1](Controle_1/index.html)</br><font size="2">(Introdução à sistemas, modelagem e análise de sistemas - Eng. Elétrica)</font> |   |
+| [Controle Automático 2](Controle_2/index.html)</br><font size="2">(Controle Automático Clássico, Analógico - Eng. Elétrica, Eng. Computação)</font> | [Laboratório de Controle Automático 1](Lab_Controle_1/index.html)</br><font size="2">(Lab. Controle Analógico - Eng. Elétrica, Eng. Computação)</font> |
+| [Controle Automático 3](Controle_3/index.html)</br><font size="2">(Controle Digital - Eng. Elétrica)</font> | [Laboratório de Controle Automático 2](Lab_Controle_2/lab_controle_2.html)</br><font size="2">(Lab. Controle Digital - Eng. Elétrica, Eng. Computação (opcional))</font> |
+| [Processamento Digital de Sinais](Process_Sinais/index.html)</br><font size="2">(Eng. Elétrica)</font> | [Laboratório de Processamento Digital de Sinais](Lab_Processa_Sinais/index.html)</br><font size="2">(Eng. Elétrica)</font> |
+| [Processamento de Sinais e Controle Digital](Process_Sinais_Controle_ECP/index.html)</br><font size="2">(Eng. Computação)</font> |  |
+|  [Acionamento Hidráulico e Pneumático](Pneumatica/topicos.html)</br><font size="2">(Eng. Elétrica)</font> |   |
 &nbsp;
-
-* [Tutorial rápido sobre Matlab](Matlab/tutorial.html).
-* **[Matlab\_guide.pdf](Matlab/Matlab_guide.pdf)** (tutorial mais longo, arquivo PDF de 44 páginas; 13.4 Mbytes)
+* [Tutorial rápido sobre Matlab](Matlab/tutorial.html) ou **[Matlab\_guide.pdf](Matlab/Matlab_guide.pdf)** (tutorial mais longo, arquivo PDF de 44 páginas; 13.4 Mbytes)
 * **[Instalação recomendada](Matlab/instalacao_matlab.html)** do Matlab (áreas de: Controle E Sinais & Sistemas)
-
 &nbsp;
-
 * [Dicas para estudantes de TCC](TCC_Latex/index.html) (envolve dicas para escrita e dicas sobre $\LaTeX$).
 
 ----
