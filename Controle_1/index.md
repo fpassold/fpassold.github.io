@@ -1,3 +1,5 @@
+![christopher-ruel](christopher-ruel.jpg)
+
 # Controle 1
 
 ("Análise de Sinais e de Sistemas, Modelagem de Sistemas")
@@ -41,7 +43,7 @@ Conteúdo previsto:
 
    
 
-* [Trabalho 1](trabalho_1_controle_1.pdf): Transformada de Laplace, gráficos de funções (respostas temporais), uso de Transformada de Laplace.
+* [Trabalho 1](trabalho_1.pdf): Transformada de Laplace, gráficos de funções (respostas temporais), uso de Transformada de Laplace. <!-- (trabalho_1_controle_1.pdf)--></br>Deadline: ==19/04/2024==
 * [Trabalho 2](trabalho_2.pdf): Diagramas de Bode, Resposta de Filtros, Série de Fourier (onda Quadrada), Simulando filtro passa-baixas aplicado sobre onda quadrada. 
 
 ----
