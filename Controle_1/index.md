@@ -20,10 +20,29 @@ Conteúdo previsto:
 
 4. Modelagem usando Transformada de Laplace
 
-   1. [Modelagem usando Transformada de Laplace](4_modelagem_laplace.pdf) (modelagem motor CC usando Matlab/Simulink)
-   2. [Modelagem usando Matlab/Simulink](4_modelagem_simulink.pdf) 
-   3. Exemplos usando Matlab/Simulink: [System Modeling (Michigan/Carnegie Melon/Detroit Mercy)](https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=SystemModeling).
-   4. Modelagem de circuitos baseados em Amplificadores Operacionais:
+   1. [Modelagem usando Transformada de Laplace](4_modelagem_laplace.pdf):
+
+      1. Arquivos associados com modelagem de circuito RL ( [circuito_RL.slx](circuito_RL.slx) ) (tensão de entrada x corrente x ddp\_resistor x ddp\_indutor):
+
+         | Modelo                          | Scope (resultado)                           |
+         | ------------------------------- | ------------------------------------------- |
+         | ![circuito_RL](circuito_RL.png) | ![circuito_RL_scope](circuito_RL_scope.png) |
+
+         
+
+      2. Arquivos associados com modelagem motor CC usando Matlab/Simulink (tensão de entrada x velocidade);
+         ( [motor_DC_Vel.slx](motor_DC_Vel.slx)  +  [init_motor_velocidade.m](init_motor_velocidade.m) + [motor_DC_Vel_teste_degrau.slx](motor_DC_Vel_teste_degrau.slx) )
+
+      3. Arquivos associados com modelagem motor CC (tensão de entrada x posição angular).
+         ( +  [init_motor_posicao.m](init_motor_posicao.m) )
+
+   2. [**Usando MATLAB**](Usando_Matlab_2.pdf)  (Introdução; para iniciantes, 11 páginas)
+
+   3. [Modelagem usando Matlab/Simulink](4_modelagem_simulink.pdf) 
+
+   4. Exemplos usando Matlab/Simulink: [System Modeling (Michigan/Carnegie Melon/Detroit Mercy)](https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=SystemModeling).
+
+   5. Modelagem de circuitos baseados em Amplificadores Operacionais:
       1. Material do Prof. Dr. Victor da Fonte Dias, Professor Auxiliar no Instituto Superior Técnico (IST), Lisboa, de 1999: disciplina de **Circuitos e Sistemas Electrónicos** ([Índice](https://www.ufrgs.br/eng04030/Aulas/teoria/cap_00/indice.htm)) --> [Cap 15: Circuitos cm AmpOps](https://www.ufrgs.br/eng04030/Aulas/teoria/cap_15/circampo.htm#:~:text=Em)):
       2. [Exemplo 1](Funcao_transferancia_amp_op-1.pdf): circuito RC com 1 pólo + 1 zero (material da StackExchange: Electrical Engineering).
       3. [Exemplo 2](Funcao_transferancia_amp_op-2.pdf): circuito com cascateamento de Amp. Op.´s + A.I. (material da StackExchange: Electrical Engineering). 
