@@ -1,76 +1,54 @@
 <!-- title: Lab Controle 2 -->
+
 ![https://unsplash.com/photos/U9YrT6trizs](https://images.unsplash.com/photo-1605387202149-47169c4ea58a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
+
+<font size="2">
 Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Marc Wieland</a> on <a href="https://unsplash.com/s/photos/sailing?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+</font>
 
 # Laboratório de Controle Automático II
 
-## Aulas:
+### Teoria
 
-* Lab 1) [PID (alógico) e Métodos de sintonização](Lab1/lab1.html) <!-- (aula de 13/10/2022). :white_check_mark: -->
+* [PID (Analógico) e Métodos de sintonização](Lab1/lab1.html) (Resumo) <!-- (aula de 13/10/2022). :white_check_mark: -->
 
-* Lab 2) Simulações sintonização PIDs: 
+* Sintonização de PIDs: 
   * [Sintonia de PID: Método 1) Resposta em MA para entrada degrau](aula2/aula2.html) <!-- (aula de 20/10/2022); :white_check_mark: -->
   * [Sintonia de PID: Método 2) Buscando *Ku*](aula2/aula2b.html) <!-- (aula de 20/10/2022); :white_check_mark: -->
   * [Sintonia de PID: Método 3) Método do Relé (Parte I: teoria)](https://fpassold.github.io/Controle_2/8_Ajuste_PID/Sintonia_PIDs_usando_ZN.html); <!-- (aula de 27/10/2022); :white_check_mark: -->
   * [Sintonia de PID: Método 3) Método do Relé (Parte II: simulação)](aula2/metodo_rele_2_simulink.html); <!-- (aula de 27/10/2022); :white_check_mark: -->
+  * Trabalho #1 ( [2024/1](trabalho_1_2024_1.html) ) <!-- | [2023/1](aula2/trabalho_1_2023_1.html) | [2022/2](aula2/trabalho_1_2022_2.html) ) -->
+<!--&nbsp;-->
+  * [PID Digital](PID/pid.html) (equações, código, implementação) <!--(previsto para 25/04/2023)-->
+<!-- * [PID com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento).-->
+  * [PID com Anti-Windup](Trabalho_Final_2/trabalho_final_2_lab_controle_2_2022_2.html) (Trabalho final em 2022/2) 
 
-&nbsp;
-
-* Projeto Final <!-- (Proposta não confirmada) (versão 1)** (**==cancelado== em 01/12/2022)**; -->
-  * [Texto sobre Projeto Final](Projeto_Final/projeto_final.html); <!-- >:white_check_mark: -->
-  * [**Arduino & Interrupções**](Arduino_Int/Arduino_Int.html); <!-- :white_check_mark: -->
-  * [Sugestões uso PWM filtrado do Arduino com kit Feedback](Projeto_Final/parte_10_11_2022.html); <!-- :white_check_mark: -->
-  * [Gerador **Senoide** 40 Hz](Projeto_Final/gerador_senoidal.html); <!-- :white_check_mark: -->
-  * [Gerador **onda triangular** 0,1 Hz](Projeto_Final/onda_triangular.html); <!--  :white_check_mark: -->
+### Parte Prática  <!-- (Proposta não confirmada) (versão 1) (**==cancelado== em 01/12/2022)**; -->
+  * [Proposta de Projeto Final (2022/2)](Projeto_Final/projeto_final.html); <!-- >:white_check_mark: -->
+  * [**Arduino & Interrupções (Rotinas ISR)**](Arduino_Int/Arduino_Int.html); <!-- :white_check_mark: -->
+  * [Exemplo Processo Bola-no-Tubo (interface c/usuário); conexão PWM do Arduino à kit Feedback](Projeto_Final/parte_10_11_2022.html); <!-- :white_check_mark: -->
+  * [Usando Arduino (saída PWM) para gerar **Senoide** de 40 Hz](Projeto_Final/gerador_senoidal.html) :+1:
+  * [Usando Arduino (saída PWM) para gerar **onda triangular** de 0,1 Hz](Projeto_Final/onda_triangular.html) :+1:
+    * [Teste de Onda Triangular](onda_triangular_driver/triangular_no_driver.html) - aplicado no driver de potência SA150D da Feedback (controle de velocidade em malha-aberta) -- teste realizado em 25/04/2023 :+1:
   * [Prevendo uma **Interface com o Usuário**](Projeto_Final/interface_usuario.html);
-
-&nbsp;
-
-* [Controle de Posição usando PID Analógico](controle_posicao.html) (Aula prevista para 11/04/2023, Ok :+1:)
-
-&nbsp;
-
-* [PID Digital](PID/pid.html) (equações, código, implementação) (previsto para 25/04/2023)
-
-&nbsp;
-
-* [Aplicando uma Onda Triangular](onda_triangular_driver/triangular_no_driver.html) no driver de potência SA150D da Feedback (controle de velocidade em malha-aberta) -- teste realizado no dia 25/04/2023.
-* Como [trabalhar com Módulo I2C MPC 4725](PID_Digital/modulo_DAC.html).
-
-&nbsp;
-
----
-
-#### Sequencia de aulas previstas para o semestre de 2023/1:
-
-* Módulo externo de ajuste de ganho/offset para A/D;
-* Módulo externo D/A p/Arduíno (Raspberry);
-* Filtros Passa-Baixa de 5a-ordem.
-
-* Testes com **PID Analógico**:
-	* Controle de Posição ou, :v: (realizado em 11/04/2023)
-	* Controle de Velocidde.
-	* Usando Método 2 de sintonia de PID (fechamento da malha com Controlador Proporcional, determinação de $K_u$ e $T_u$ (usando osciloscópio))
-	* Sintonia fina
-
-* Testes com **PID Digital** usando placa Arduino One
-  * Aplicando onda triangular (saída PWM filtrada) com $T=10$ segundos no driver de potência (módulo SA150D) (teste em 25/04/2023)
-  * Selecionar e fixar fs (50 ou 100 Hz) ou T.
-  * Implementar (usando Interrupção), algoritmo de PID  Parelelo;
-  * Prever alguma interface de entrada e de saída com usuário.
-  * Sintonia deste PID usando Método 2.
-  * Sintonia Fina
+<!--&nbsp;-->
+* [**Sintonia prática de PID Analógico** aplicado em Controle de Posição no kit Feedback](controle_posicao.html) (Aula executada em 11/04/2023, :+1:)
+<!--&nbsp;-->
+* [Como trabalhar com Módulo DAC: MPC 4725](PID_Digital/modulo_DAC.html) (Conexão I2C com Arduino One).
+<!--&nbsp;-->
+* Fechar malha de controle com $T=$ 100ms ou 50ms no kit Feedback (2023/2);
+  * Obs.: Detectado bug com Timer0 do ATMEGA presente no Arduino One (execução suspensa; impraticável)
 
 
-<!--
-  * [PIC com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento).
 
-* **Trabalho Final** (Proposta não confirmada)
-  
-  * [**PID com Anti-Windup**](Trabalho_Final_2/trabalho_final_2_lab_controle_2_2022_2.html) 
--->  
-  <!--(Data entrega: 08/12/2022) -->
+* Eventual uso de placa Raspberry Pi 3 executando run-time CODESYS (2024/1); :new:
+  * [Sobre o CODESYS](CODESYS/instalacao.html);
+  * [Instalação do CODESYS Development System](CODESYS/codesys_install.html);
+  * [SSH para placa Rasp](CODESYS/SSH_Rasp.html) (descobrindo seu número IP);
+
+
 
 -----
 
 <font size="1">[♫](https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days) Fernando Passold, em 22/10/2022, 02/12/2022, 11/04/2023</font> .
+

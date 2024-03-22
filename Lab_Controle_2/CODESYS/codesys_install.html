@@ -1,0 +1,617 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>codesys_install</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; font-size-adjust: none; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: medium !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
+
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
+
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
+}
+
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+
+</style>
+</head>
+<body class='typora-export'>
+<div id='write'  class=''><h1><a name="codesys" class="md-header-anchor"></a><span>Codesys</span></h1><h2><a name="breve-descrição" class="md-header-anchor"></a><span>Breve descrição</span></h2><p><span>Trata-se de software desenvolvido pelo grupo CODESYS, Kempten, Alemanha.</span></p><p><span>O CODESYS Control para Raspberry Pi SL contém um aplicativo </span><strong><span>CODESYS Control</span></strong><span> para todos os Raspberry Pi, incluindo o </span><strong><span>Módulo de Computação (</span><em><span>Compute Module</span></em><span>)</span></strong><span> (consulte </span><a href='http://www.raspberrypi.org/' target='_blank' class='url'>http://www.raspberrypi.org/</a><span>), bem como a capacidade de usar os módulos de extensão e vários dispositivos/breakouts com interface de comunicação SPI, I²C ou 1 fio.</span></p><p><img src="codesys-raspberrypi2_1_2_2.png" alt="codesys-raspberrypi2_1_2_2" style="zoom:75%;" /></p><p><span>Este produto pode ser instalado com o plug-in </span><strong><span>CODESYS Deploy Tool</span></strong><span> incluído através do Sistema de Desenvolvimento CODESYS no sistema Linux do Raspberry Pi. Após cada reinicialização, o sistema de tempo de execução será iniciado automaticamente. </span></p><p><img src="all_screen_1_1101000000_Development_System.png" alt="all_screen_1_1101000000_Development_System" style="zoom:75%;" /></p><p>⚠️<span> Após inicializado o runtime do CODESYS numa placa Rasp, se nenhuma licença completa válida puder ser encontrada, o CODESYS Control será executado por duas horas sem limitações funcionais antes de desligar.</span></p><p>⚠️<span> A combinação de Raspberry Pi e do CODESYS Runtime é para uso privado, teste e fins de ensino. O uso comercial não é permitido. Não liberado para uso em contêineres ou máquinas virtuais (VMs)! O CODESYS Control para Raspberry Pi SL 4.11.0.0 não suporta GPIOs para o Raspberry Pi 5.</span></p><p><span>Informações detalhadas podem ser encontradas na </span><a href='https://content.helpme-codesys.com/en/CODESYS Control/_rtsl_start_page.html'><span>Ajuda Online</span></a><span>. Recomenda-se em especial iniciar pelo item &quot;</span><a href='https://content.helpme-codesys.com/en/CODESYS%20Control/_rtsl_first_steps.html'><span>Getting Started</span></a><span>&quot;.</span></p><hr /><h2><a name="requisitos" class="md-header-anchor"></a><span>Requisitos</span></h2><ul><li><span>Raspberry Pi </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.807ex" height="2.161ex" viewBox="0 -722.4 778 930.3" role="img" focusable="false" style="vertical-align: -0.483ex;"><defs><path stroke-width="0" id="E2-MJMAIN-2265" d="M83 616Q83 624 89 630T99 636Q107 636 253 568T543 431T687 361Q694 356 694 346T687 331Q685 329 395 192L107 56H101Q83 58 83 76Q83 77 83 79Q82 86 98 95Q117 105 248 167Q326 204 378 228L626 346L360 472Q291 505 200 548Q112 589 98 597T83 616ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMAIN-2265" x="0" y="0"></use></g></svg></span><script type="math/tex">\ge</script><span> 2B</span></li><li><span>Cartão SD </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.807ex" height="2.161ex" viewBox="0 -722.4 778 930.3" role="img" focusable="false" style="vertical-align: -0.483ex;"><defs><path stroke-width="0" id="E2-MJMAIN-2265" d="M83 616Q83 624 89 630T99 636Q107 636 253 568T543 431T687 361Q694 356 694 346T687 331Q685 329 395 192L107 56H101Q83 58 83 76Q83 77 83 79Q82 86 98 95Q117 105 248 167Q326 204 378 228L626 346L360 472Q291 505 200 548Q112 589 98 597T83 616ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMAIN-2265" x="0" y="0"></use></g></svg></span><script type="math/tex">\ge</script><span> 8 GM (Sistema operacional Raspbian + runtime do Codesys)</span></li></ul><h2><a name="vantagens" class="md-header-anchor"></a><span>Vantagens:</span></h2><ul><li><p><span>Permite programação usando norma IEC 61131-3 3rd Edition “PLC Programming Languages” de 07/2021 -- </span><a href='https://www.codesys.com/index.php?eID=tx_securedownloads&amp;p=277&amp;u=0&amp;g=0&amp;t=1709131940&amp;hash=39e58a88b2819a6f82038925962d2603732ce789&amp;file=/fileadmin/Download/ALL/Manuals/ComplianceTable.pdf'><span>Detalhes</span></a><span>.</span></p></li><li><p><span>Suporta:</span></p><ul><li><span>Câmera Raspberry Pi</span></li><li><span>Interface I²C, com SenseHat, SRF02, Adafruit PWM, MPU6050 Gyro, MPU9150 Gyro, AK8975 Compass</span></li><li><span>Interface SPI, com MCP3008, MCP23S17, PiFace Digital, Display de Controle PiFace</span></li><li><span>Interface de um fio, com DS20B18</span></li><li><span>GPIO do Rasp.</span></li></ul></li></ul><h2><a name="desvantagens" class="md-header-anchor"></a><span>Desvantagens</span></h2><p><mark><span>Carece de módulos A/D, D/A, PWM, ou &quot;Rack&quot;</span></mark><span> para instalação de módulos externos (necessários para ligação do Rasp ao equipamento à ser controlado).</span></p><p><span>Diferente de um CLP industrial, considerar que uma placa Raspberry não é construída para ser tolerante à interferências eletromagnéticas originadas de motores elétricos, inversores de frequência e nem foi projetada para trabalhar 24 horas, 7 dias por semana a até 70 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.029ex" height="1.922ex" viewBox="0 -773.9 442.9 827.4" role="img" focusable="false" style="vertical-align: -0.124ex;"><defs><path stroke-width="0" id="E3-MJMATHI-6F" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use transform="scale(0.707)" xlink:href="#E3-MJMATHI-6F" x="0" y="513"></use></g></svg></span><script type="math/tex">^o</script><span>C.</span></p><h2><a name="instalação" class="md-header-anchor"></a><span>Instalação</span></h2><ul><li><a href='https://youtu.be/uNpAhK9QdWQ?si=EiSeT_KHeO_KqkoF'><span>Video ilustrando instalação</span></a><span> (Publicado há +1 ano, 27/02/2023)</span></li><li><span>Página principal do &quot;Codesys Store&quot;. Baixar &quot;</span><a href='https://store.codesys.com/en/codesys-control-for-raspberry-pi-sl.html'><span>CODESYS Control for Raspberry Pi SL</span></a><span>&quot; (runtime Engine for PLC extension; free for non-comercial use: seu funcionamento fica limitado a no máximo 2 horas contínuas de execução). (CODESYS Control for Raspberry PI 4.11.0.0.package: 98,5 MB) - </span><strong><span>Atenção</span></strong><span>: para poder baixar o arquivo, é necessário se cadastrar (gratuitamente). Será baixado um &quot;package&quot; (ver forma de instalar mais abaixo).</span></li><li><span>Atenção: Pré-requisito: </span><a href='https://www.raspberrypi.com/software/'><span>Raspberry Pi OS (</span><strong><span>32-bits</span></strong><span>)</span></a><span> --&gt; esta versão atualmente seria a &quot;</span><a href='https://downloads.raspberrypi.com/raspios_armhf/images/raspios_armhf-2023-12-06/2023-12-05-raspios-bookworm-armhf.img.xz'><span>Raspberry Pi OS with desktop</span></a><span>&quot; (Debian 12 = Bookworm, 5/12/2023, 1.31 Gb) ou </span><mark><span>&quot;</span><a href='https://downloads.raspberrypi.com/raspios_oldstable_armhf/images/raspios_oldstable_armhf-2023-12-06/2023-12-05-raspios-bullseye-armhf.img.xz'><span>Raspberry Pi OS (Legacy) with desktop</span></a><span>&quot; (Debian 11 = Bullseye, 32-bits, 5/12/2023, 937 MB) &lt;-- parece ser melhor instalar a versão 11 do Debian (principalmente em placas mais antigas Rasp II ou Rasp III)</span></mark><span>.</span></li><li><span>As próximas linhas supõem que o Raspberry Pi OS já esteja instalado no Raspberry </span>❗️</li></ul><hr /><h2><a name="download-do-codesys" class="md-header-anchor"></a><span>Download do CODESYS</span></h2><p><span>Para tanto, se faz necessário baixar o </span><a href='https://us.store.codesys.com'><span>CODESYS Development System V3</span></a><span>, preferenciaclmente à partir da sua loja nos Estados Unidos (conexão mais rápida, média de 250 KB/s, ETA até 2 horas). </span></p><p><img src="CODESYS Development System V3 - page.png" referrerpolicy="no-referrer" alt="CODESYS Development System V3 - page"></p><p><span>Será necessário realizar cadastro e login na &quot;Store&quot; do grupo Codesys para poder baixar este software:</span></p><p><img src="login_codesys_store.png" referrerpolicy="no-referrer" alt="login_codesys_store"></p><p>⚠️<span> Baixar este software da loja internacional é impraticável devido à baixa velocidade de conexão (em torno de 23 KB/s). Considere que este programa ocupa aproximadamente 1,6 GBytes, o que leva a um ETA de 12 horas ou mais. Considere fortemente realizar o download à partir da sua loja nos Estados Unidos (conexão mais rápida, média de 250 KB/s, ETA até 2 horas). </span></p><p><img src="CODESYS_download.png" referrerpolicy="no-referrer" alt="CODESYS_download"></p><p><span>Uma vez realizado seu cadastro (numa conta nos Estados Unidos) e logado, busque por &quot;CODESYS Develop System V3&quot; na aba Enginnering &gt; Integrated Vevelopment Environment ou tente </span><a href='https://us.store.codesys.com/codesys.html'><span>clicando aqui</span></a><span>. </span></p><h3><a name="instalação-no-raspbery" class="md-header-anchor"></a><span>Instalação no Raspbery</span></h3><p><span>O grupo do CODESYS disponibilizou um </span><a href='https://youtu.be/RPoPscbo3Kc?si=iVxw1z9ZCJUaQJyG'><span>video no YouTube: CODESYS on Raspberry Pi - First Steps</span></a><span> ilustrando este tipo de instalação, à partir de um PC rodando Windows!!!</span></p><p><span>Uma vez bootado o Rasperry OS, é muito interessante atualizar seu sistema. Para tanto, sbrir uma janela de terminal e executar:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ sudo</span> apt <span class="cm-builtin">get</span> update</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ sudo</span> apt <span class="cm-builtin">get</span> upgrade</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre><p><span>Os comandos acima atualizam o sistema Raspberry (e podem ser exectuados regularmente, mais de uma vez).</span></p><p><span>Se faz necessãrio </span><strong><span>ativar a comunicação SSH</span></strong><span> da placa Rasp.</span></p><p><span>Descobrir endereço IP do seu Rasp:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ ifconfig</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>Obs.: Para acessar o Rasp remotamente através de </span><strong><span>conexão SSH</span></strong><span>, clique [</span><a href='SSH_Rasp.html'><span>aqui</span></a><span>].</span></p><p><span>Este passo é importante porque o CODESYS executando numa máquina Windows (ou Linux), necessita estabelever conexão com a placa Rasp via rede:</span></p><p><img src="codesys-raspberrypi1_1_2_2.png" referrerpolicy="no-referrer" alt="codesys-raspberrypi1_1_2_2"></p><hr /><h2><a name="instalação-do-codesys-runtime-no-rasp" class="md-header-anchor"></a><span>Instalação do CODESYS </span><em><span>runtime</span></em><span> no Rasp</span></h2><p><span>Para instalar o </span><em><span>runtime</span></em><span> do Codesys no Rasp, se faz necessário </span><a href='https://content.helpme-codesys.com/en/CODESYS%20Control/_rtsl_install_runtime_on_controller.html'><span>instalar o &quot;Controller&quot;</span></a><span> numa máquina Windows ou Linux (pode ser numa VM).</span></p><h3><a name="usando-windows" class="md-header-anchor"></a><span>Usando Windows</span></h3><ul><li><p><span>No Windows, será necessário instalar o &quot;Codesys Control RTE V3&quot; (versão 32 ou 64 bits). Por padrão, o diretório de trabalho do mesmo é </span><code>C:\ProgramData\CODESYS\CODESYSControlRTEV3</code><span>.</span>
+<strong><span>Obs.</span></strong><span>: aparentemente para executar este módulo no Windows se faz necessário desabilitar na BIOS do computador o &quot;Hyperthreading&quot; (o que pode evitar futuras execuções de VMs de outros SO´s nesta máquina).</span></p></li><li><p><span>Depois, instalar o &quot;Codesys Controle Win V3&quot;</span></p></li><li><p><span>Estes 2 app&#39;s podem ser instalados via &quot;Codesys Installer&quot;&quot; --&gt;&gt; !???</span></p><ul><li><p><span>Uma vez executando este &quot;installer&quot;, será necessário indicar quais &quot;pacotes&quot; devem ser instalados.</span></p></li><li><p><span>Selecionar: &quot;CODESYS Control for Raspberry Pi&quot; -- esta opção pode ser descoberta usando o campo de pesquisa por um pacote sinalizado pelo ícone de uma lupa.</span></p></li><li><p><span>Uma vez selecionado o pacote clicar em instalar e aguardar a finalização.</span></p></li><li><p><span>Provavelmente além do CODESYS for Raspberry Pi, serão instalados os pacotes:</span></p><ul><li><span>CODESYS Edge Gateway for Linux;</span></li><li><span>CODESYS Control SL Extension Package.</span></li></ul></li><li><p><span>Para finalizar a instalação poderá ser necessário concordar com termos de licenciamento de software.</span></p></li><li><p><span>Esta instalação tarda não muito mais que 1 minuto.</span></p></li></ul></li></ul><p><span>Uma vez instalado o CODESYS no Windows, executar o mesmo.</span></p><h4><a name="executando-o-codesys-no-windows" class="md-header-anchor"></a><span>Executando o CODESYS no Windows</span></h4><p><span>Uma janela grande quase vazia poderá ser visualizada onde consta uma janela interna com o título &quot;Cpodesys V3.5 SP18 Patch 4&quot; (por exemplo). Esta janela (parece uma página WEB) traz informações sobre novidades e detalhes de licenciamento do Codesys.</span></p><p><span>Para iniciar um projeto, neste app, ir para a barra de menu (topo da tela), buscar a opção &quot;File&quot; e clicar em &quot;New Project&quot;. Será exigido um nome para o projeto, use por exemplo &quot;teste1&quot; -- observe que provavelmente em outra parte na janela de diáologo que se abre, já aparece selecionado como padrão &quot;Standart Project&quot; (mantenha esta opção).</span></p><p><span>Uma nova janela aparece com 2 menus pull-down. </span></p><p><span>O primeiro menu pull-down permite você selecionar o dispostivo que será programado. Pode ser selecionado a opção &quot;CODESYS Control Win V3 x64 ...&quot; o que implica que o seu CLP será executado dentro do próprio Windows. Mas note que (se selecionado) devem aparecer as opções:</span></p><ul><li><span>CODESYS Control for Raspberry Pi MC SL e ;</span></li><li><span>CODESYS Control for Raspberry Pi SL&quot;.</span></li></ul><p><span>O &quot;MC&quot; significa Motion Control, um opção interessante de controle de servo-motores (e sugerida neste caso).</span></p><p><span>Note que um segundo menu pull-down surge abaixo da opção anterior, que permite você selecionar a linguagem de programação pretendita. Por padrão, a linguagem Ladder (Logic Diagram) aparece selecionada.</span></p><p><span>Uma vez selecionado o dispositivo e a linguagem, a janela maior inicial deve deseaparecer e no lado esquerdo deve aparecer um diagrama estilo árvore mostrando itens disponíveis para programação do seu CLP. Note que aparecem opções para comunicação do Rasp com dispositivos SPI e I2C (típicos de sensores digitais). </span></p><p><span>Deve aparecer ainda uma opção &quot;GPIOs_A_B&quot; que serve para configurar as portas I/O que serão usadas do conector GPIO do seu Rasp.</span></p><p><span>Mas note que </span><mark><span>até aqui o Codesys runtime não foi instalado no Raspberry</span></mark><span>.</span></p><p><span>Então será necessário ir na barra de Menu, selecionar a opção &quot;Tool&quot; e a opção &quot;Update Raspberry Pi&quot;. Isto fará surgir uma janela no canto esquerdo exigindo o nome de usuário e senha necessários para acessar o Rasp. Normalmente o usuário é &quot;pi&quot; e a senha &quot;raspberry&quot; (se você não modificou estas informações no momento da instalação do Raspberry OS).</span></p><p><span>Note ainda que na janela anterior aparece no seção &quot;Select Target&quot;, um campo para informar o número IP do seu Rasp. Você pode tentar clicar na opção &quot;Scan&quot; para tentar identificar sua placa Rasp na sua rede. Na lista de dispositivos IP aparece o endereço MAC do seu Rasp. Eventualmente pode ser útil saber o MAC do seu Rasp. Eventualmente aparecem 2 números IP para o mesmo Rasp, um para conexão via cabo Ethernet e outro para conexão via WiFi (caso da placa Raspberry Pi IIIB).</span></p><p><strong><span>Para encontrar/conectar com placa Rasp</span></strong><span>:</span></p><p><span>Os números IP e MAC da sua placa Rasp podem ser obtidos, abrindo-se uma janela de comandos no Raspberry e executando:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ if</span> config</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>Obs.: Normalmente a conexão ethernet aparece precedida pelo códio eth0, ou mesmo eno1. A conexão IP via Wifi pode aparecer com o código wls1.</span></p><p><span>Outra forma é usar o comando:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ hostname</span> <span class="cm-attribute">-I</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>Se você por acaso desejar </span><a href='https://pimylifeup.com/raspberry-pi-ip-address/'><span>mais detalhes</span></a><span> da conexão no Rasp, usar:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ sudo</span> nmap <span class="cm-attribute">-sn</span> &lt;número_IP&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>Este último comando informa até os tempos de latência (atrasos de comunicação) envolvidos com cada número IP.</span></p><p><strong><span>Transferindo o CODESYS </span><em><span>runtime</span></em><span> para placa Rasp</span></strong><span>:</span></p><p><span>Uma vez informado no Codesys (no Windows) o número IP (a conexão) à ser realizada com seu Rasp, selecionar o botão &quot;Install&quot; nesta seção &quot;Select Target&quot;. A transferência deste runtime só é necessária uma única vez. Não se faz necessário repetir esta transferência nas próximas vezes.</span></p><p><span>Quando o runtime é transferido aparece outra caixa de diálogo perguntando se é desejado instalar o runtime de forma:</span></p><ul><li><span>Standart, ou</span></li><li><span>Multicore (suportando apenas em placas Rasp 2 e 3)</span></li></ul><p><span>Normalmente a opção &quot;multicore&quot; funciona.</span></p><p><span>Eventualmente na primeira transferência/instalação do runtime, será  instalado também o pacote:</span></p><ul><li><span>CODESYS Edge Gateway for Linux &lt;-- confirmar esta opção de instalação (transferência de arquivos).</span></li></ul><p><span>Uma vez finalizada a transferência, este runtime deve ser habilitado. Para tanto, nesta mesma janela (canto esquerdo com provável título Raspberry PI),na sua parte inferior, deve aparecer a seção &quot;Runtime&quot;, com o botão &quot;Start&quot; que deve ser clicado.</span></p><p><span>Na versão &quot;Developer&quot; (free) do runtime, o mesmo pode estará funcional por 2 horas. Passado este perído, nesta janela será necessário cilcar no botão &quot;Stop&quot; e depois no botão &quot;Start&quot; novamente para reiniciar a runtime. Ou em último caso, o Rasp pode ser re-iniciado clicando-se bo botão &quot;Reboot Target&quot;.</span></p><p><strong><span>Realizando um teste inicial</span></strong><span>:</span></p><p><span>Para teste inicial, pode ser criado um simples programa (opção &quot;PRG&quot;) contendo algo como:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">VAR</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>BtLiga : BOOL;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>SaidaLampada : BOOL;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">END_VAR</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 80px;"></div><div class="CodeMirror-gutters" style="display: none; height: 80px;"></div></div></div></pre><p><span>Na parte superior da janela que aparece no lado direito da tela.</span></p><p><span>E na parte inferior desta janela (espaço para o diagrama Ladder), implementar algo como:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|  BtLiga &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SaidaLampada</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|---| |----------------------------------( ) </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre><p><span>Note que este editor é do tipo auto-completar (menus pull-down para facilitar codificação).</span></p><p><span>Uma vez codificado este teste, buscar na barra de menu, o ícone (na 2a-linha do Menu, de metade para o canto direito), o ícone para Login (ALT-F8).</span></p><p><span>Eventualmente pode aparecer uma caixa de diáologo alertando para &quot;No active path defined. Do you Want to set it&quot;. Nesta caixa de diáologo clicar no botão &quot;Sim&quot;. Uma nova janela gráfica aparece ilustrando a conexão do seu PC com o Rasp. Esta etapa usa a rotina de &quot;Gateway&quot; e fica buscado pela conexão IP com seu Rasp. Caso ocorra alguma falha de conexão, a tecla ESC pode ser pressionada. Mesmo que neste etapa ocorra um erro do tipo &quot;dispositivo não encontrado&quot;, normalmente a janela &quot;Select Device&quot; surge permitindo que você scaneie o IP de conexão adotado. Normalmente sua placa Rasp deve ser encontrada. Basta neste caso, clicar no botão &quot;Ok&quot; desta janela.</span></p><p><span>Eventualmente se a primeira vez que um código está sendo transferido, uma senha pode ser exigida. Surge uma janela informando a necessidade de &quot;user management&quot;. Neste caso, o provável é que este gerenciado ainda não tenha sido ativado. E neste caso, uma nova senha de administração (do &quot;CLP&quot;) será exigida. Ciclar simplesmente no botão &quot;Sim&quot; e então deve surgir a tela &quot;Add Device User&quot;, que pede o nome do usuário e uma senha. Sugere-se para nome de usuário &quot;admin&quot; e para senha uma palavra qualquer fácil de ser lembrando. Note que reconfigurar este usuário e senha pode ser bastante complicado (e não está relacionado com o nome do usuário e senha definidos na placa Rasp para o Raspberry OS). Sugestão simples: usar como senha: &quot;admin&quot;.</span></p><p><span>Depois disto uma nova janela &quot;Device User Login&quot; deve surgir exigindo o nome do usuário e senhas definidos anteriormente. Clicarl no botão &quot;Ok&quot;.</span></p><p><span>Isto deve garantir a conexão do Codesys sendo executado no Windows com o runtime sendo executado no Rasp. Esta aba &quot;device&quot; pode então ser fechado.</span></p><p><span>Será necessário clicar novamente no ícone &quot;Login&quot; e então finalmente seu novo código será transferido para o Rasp. Eventualmente uma janela de alerta pode ser exibida informando que nenhuma aplicação existe no &quot;Device&quot; ou já foi transferida antes para a mesma.</span></p><p><span>Uma vez transferido o código, o Codesys entra normalmente no modo &quot;Stop&quot;, ficando pronto para rodar o código.</span></p><p><span>Será necessário mudar para o modo &quot;Run&quot; (em certo ícone da barra de menu, ou fazer CTRL+F7).</span></p><p><span>Uma vez o código sendo executado, o mesmo pode ser testando no Codesys rodando no Windows. Basta clicar sobre o símbolo do botão Liga na seção de programação Ladder (</span><code>BtLiga</code><span>). No diagrama Ladder, o símbolo associado com a lâmpada será ativada. Fisicamente nada será observado no Rasp porque até este momento, não foi associada nenhuma porta I/O com a suposta lâmpada (poderia ser um Led devidamente conectado através de um resistor à algum pino do GPIO do Rasp, lembrando que as tensões neste barramento variam entre 0 e 3,3 Volts).</span></p><p><span>Existe um Led que vêm por padrão em placas Rasp associado com a porta XX do GPIO.</span></p><p><span>O botão Liga neste caso ainda é &quot;fictício&quot; (não real) porque não foi associada nenhum pino do GPIO do Rasp e configurado como entrada.</span></p><p><span>Ref.: Vídeo YouTube de </span><a href='https://www.youtube.com/@plcedrives'><span>PLC &amp; Drives</span></a><span> --&gt; </span><a href='https://youtu.be/uNpAhK9QdWQ?si=DMa4rO_vbnWBUydw'><span>Codesys [011] - Saiba como transformar o Raspberry Pi em um CLP Codesys</span></a><span>.</span></p><hr /><h3><a name="usando-linux" class="md-header-anchor"></a><span>Usando Linux</span></h3><h4><a name="usando-máquina-linux-na-mesma-rede-do-rasp" class="md-header-anchor"></a><span>Usando máquina Linux na mesma rede do Rasp</span></h4><ul><li><p><span>Iniciar a runtime do Codesys no Rasp.</span></p></li><li><p><span>Clicar em Tools --&gt; Update </span><device></p></li><li><p><span>Em &quot;Select target&quot;, selecionar botão &quot;Scan&quot;:</span></p><ul><li><span>Uma caixa de diálogo deve surgir listando endereços IP de dispositivos compatíveis com o Codesys na rede.</span></li><li><span>Selecione o seu dispositivo</span></li></ul></li></ul><h4><a name="descobrindo-ip-da-placa-rasp" class="md-header-anchor"></a><span>Descobrindo IP da placa Rasp</span></h4><ul><li><p><span>Realizar login como </span><code>root</code><span> sem senha!</span></p></li><li><p><span>Abrir uma janela de terminal/console e executar:</span></p><p><code>$ ifconfig</code></p><p><span>Este comando deve retornar o endereço IP do Rasp.</span></p></li></ul><h4><a name="usando-uma-máquina-windows" class="md-header-anchor"></a><span>Usando uma máquina Windows</span></h4><ul><li><p><span>No Windows, buscar no ambiente da rede pelo disposistivo com nome do tipo &quot;raspberry&quot;. Hum... </span>⚠️<span> (placas Rasp não constumam aparecer na rede Windows)</span></p><p>&nbsp;</p></li></ul><p><em><span>&lt;</span><span> Falta completar &gt;</span></em></p><hr /><p><span>Fernando Passold, em 03/03/2024.</span></p></div>
+</body>
+</html>

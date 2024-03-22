@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>instalacao</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; font-size-adjust: none; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+
+
+
+</style>
+</head>
+<body class='typora-export'>
+<div id='write'  class=''><h1><a name="instalação-do-codesys" class="md-header-anchor"></a><span>Instalação do Codesys</span></h1><p><a href='https://soundcloud.com/goldroom'>🎵</a></p><h2><a name="o-que-é-codesys" class="md-header-anchor"></a><span>O que é Codesys?</span></h2><p><span>O Codesys é um ambiente de programação para PLCs e é utilizado por muitas empresas de automação industrial como Bosch, Beckhoff, Festo, Eaton, Wago e muito mais. Você pode programar usando a lógica de escada tradicional para o texto estruturado mais moderno e gráfico de fluxo contínuo (padrões IEC 61131-3).</span></p><h2><a name="o-que-é-o-codesys-control-for-raspberry" class="md-header-anchor"></a><span>O que é o &quot;Codesys Control for Raspberry&quot;?</span></h2><p><span>O </span><a href='https://store.codesys.com/en/codesys-control-for-raspberry-pi-sl.html?___store=en'><span>CodesyS Control for Raspberry Pi SL</span></a><span> contém um aplicativo codesys control para todos raspberry Pi, incluindo o Módulo computacional, bem como a capacidade de usar os módulos de extensão e vários dispositivos/breakouts com SPI, I²C ou interface de comunicação de 1 fio.</span></p><p><span>Este produto pode ser instalado com o </span><strong><span>plug-in</span></strong><span> incluído </span><strong><span>codesys deploy tool</span></strong><span> através do </span><strong><span>CodeSYS Development System</span></strong><span> no sistema Linux do Raspberry Pi. </span></p><p><span>Obs.: Após cada reinicialização, o sistema de tempo de execução será iniciado automaticamente. Se nenhuma licença completa válida puder ser encontrada, o CONTROLE CODESYS será executado por duas horas sem limitações funcionais antes de ser desligado.</span></p><p><span>Link do fabricante: </span><a href='https://store.codesys.com/codesys-control-for-raspberry-pi-sl.html?___store=en'><span>[</span><strong><span>CODESYS Control for Raspberry Pi SL</span></strong><span>]</span></a><span>.</span></p><p><span>Atenção: você deve se cadastrar neste site para poder ter acesso a uma versão free (&quot;SL&quot;) cuja run-time library rodará continuamente por 2 horas no Raspberry.</span></p><h3><a name="interfaces-previstas" class="md-header-anchor"></a><span>Interfaces previstas:</span></h3><p><span>The CODESYS device description does support the following components:</span></p><ul><li><span>Codesys OPC UA Server, como versão completa para troca de dados</span></li><li><span>CANopen via EL6751 Gateway</span></li><li><span>Câmera Raspberry Pi</span></li><li><span>Interface I²C, com SenseHat, SRF02, Adafruit PWM, MPU6050 Gyro, MPU9150 Gyro, AK8975 Compass</span></li><li><span>Interface SPI, com MCP3008, MCP23S17, PiFace Digital, PiFace Control Display</span></li><li><span>Interface de um fio, com DS20B18</span></li><li><span>GPIO</span></li></ul><h3><a name="visualização" class="md-header-anchor"></a><span>Visualização</span></h3><p><strong><span>CODESYS WebVisu</span></strong><span>, está incluído como versão completa na entrega do pacote de runtime.</span></p><h3><a name="extensão-sl" class="md-header-anchor"></a><span>Extensão SL</span></h3><p><span>O Pacote de Extensão SL está incluído no pacote de runtime e oferece funções adicionais:</span></p><ul><li><span>Integração de código C existente</span></li><li><span>Implementação de funções externas</span></li><li><span>Suporte de switches start/stop</span></li><li><span>Uso de I/Os locais</span></li><li><span>Uso de tarefas de eventos externos</span></li><li><span>Conecte memórias persistentes (Retenções</span></li></ul><h3><a name="suporte-a-fieldbus" class="md-header-anchor"></a><span>Suporte a fieldbus</span></h3><p><span>Com a entrega do Pacote Runtime, os seguintes ônibus de campo são suportados:</span></p><ul><li><span>Codesys CANopen Manager / Dispositivo</span></li><li><span>Mestre CODESYS EtherCAT</span></li><li><span>CODESYS EtherNet/IP Scanner / Adaptador</span></li><li><span>CODESYS J1939</span></li><li><span>CODESYS Modbus TCP Master / Escravo</span></li><li><span>CODESYS Modbus Serial Master / Slave</span></li><li><span>Controlador profinet /dispositivo codesys profinet</span></li></ul><h3><a name="opções-de-produtos" class="md-header-anchor"></a><span>Opções de produtos</span></h3><p><span>Outros produtos podem ser licenciados por uma taxa:</span></p><ul><li><span>CODESYS BACnet SL</span></li><li><span>CODESYS KNX SL</span></li><li><span>Codesys Redundância SL</span></li><li><span>CODESYS SoftMotion SL</span></li><li><span>CODESYS SoftMotion CNC+Robotics SL</span></li></ul><h3><a name="requisitos" class="md-header-anchor"></a><span>Requisitos</span></h3><ul><li><p><span>Plataformas/dispositivos suportados</span></p><ul><li><span>Todos os modelos Pi</span>
+<span>Nota: Use a ferramenta &quot;Leitor de Dispositivos&quot; para descobrir os recursos suportados do seu dispositivo (componente gratuito do CodeSYS Development System).</span></li></ul></li><li><p><span>Requisitos adicionais</span></p><ul><li><p><span>O Controle CODESYS requer uma interface de rede (LAN, WLAN), especialmente com o Módulo De computação Raspberry Pi e o Raspberry Pi ZERO.</span></p></li><li><p><span>Se o produto for utilizado para fins industriais, é responsabilidade do fabricante do sistema garantir o cumprimento das especificações necessárias.</span></p></li><li><p><span>O sistema operacional </span><strong><span>Raspberry Pi OS (32 bits)</span></strong><span>, disponível à partir de: </span><a href='https://www.raspberrypi.org/downloads/' target='_blank' class='url'>https://www.raspberrypi.org/downloads/</a></p></li><li><p><strong><span>Bibliotecas</span></strong><span> dinâmicas </span><strong><span>necessárias</span></strong><span> pelo binário </span><strong><span>codesys control runtime</span></strong><span>:</span></p><ul><li><span>libm.so.6</span></li><li><span>libpthread.so.0</span></li><li><span>libdl.so.2</span></li><li><span>librt.so.1</span></li><li><span>libc.so.6</span></li><li><span>libgcc_s.so.1</span></li></ul></li></ul></li><li><p><span>Acessórios obrigatórios</span></p><ul><li><strong><span>Cartão SD (mínimo de 4GB)</span></strong></li><li><span>Opcional: Chave CODESYS</span></li></ul></li></ul><h2><a name="instalação-no-raspberry" class="md-header-anchor"></a><span>Instalação no Raspberry</span></h2><p><span>Baixar arquivos à partir de: </span><a href='https://store.codesys.com/codesys-control-for-raspberry-pi-sl.html?___store=en'><span>[</span><strong><span>CODESYS Control for Raspberry Pi SL</span></strong><span>]</span></a><span>. Arquivo:</span>
+<code>CODESYS Control for Raspberry PI 4.5.0.0.package</code><span> (35,3 Mbytes; versão de 30.06.2022)</span>
+<span>Obs</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.053ex" height="1.53ex" viewBox="0 -418.7 453.6 658.8" role="img" focusable="false" style="vertical-align: -0.558ex;"><defs><path stroke-width="0" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use transform="scale(0.707)" xlink:href="#E1-MJMAIN-31" x="0" y="-213"></use></g></svg></span><script type="math/tex">_1</script><span>.: Esta extensão não é reconhecida nem pelo Raspbery nem pelo Windows.</span></p><p><span>Obs</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.053ex" height="1.53ex" viewBox="0 -418.7 453.6 658.8" role="img" focusable="false" style="vertical-align: -0.558ex;"><defs><path stroke-width="0" id="E2-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use transform="scale(0.707)" xlink:href="#E2-MJMAIN-32" x="0" y="-213"></use></g></svg></span><script type="math/tex">_2</script><span>: Para baixar os arquivos necessário (numa máquina Windows) será necessário estar logado como usuário para a licença free.</span></p><h2><a name="instalação-no-windows" class="md-header-anchor"></a><span>Instalação no Windows</span></h2><p><span>É necessário o CODESYS para Windows.</span></p><p><span>Para baixar </span><strong><span>CoDeSys (COntroller DEvelopment SYStem)</span></strong><span> acesse o seguinte link:</span></p><p><a href='https://www.codesys.com/download' target='_blank' class='url'>https://www.codesys.com/download</a></p><p><span>ou vá diretamente para a loja online do Codesys:</span></p><p><a href='https://store.codesys.com/en/' target='_blank' class='url'>https://store.codesys.com/en/</a></p><p><span>Role para baixo e clique em &quot;Download Center como usuário de Codesys (Download Center as a Codesys user)&quot;.</span></p><p><span>Há várias opções de pacotes:</span></p><ul><li><strong><span>Codesys Development System V3</span></strong><span>:</span></li></ul><p><span>O CODESYS ou COdesys DEvelopment SYStem é a ferramenta de programação IEC 61131-3 para tecnologia de controle industrial e automação, disponível em uma versão de 32 bits e 64 bits.</span></p><ul><li><p><span>SoftPLC:</span></p><ul><li><span>Codesys Control for Linux ARM SL;</span></li><li><span>Codesys Control RTE SL;</span></li><li><span>Condesys Control Win SL;</span></li><li><span>Codesys Safety for EtherCAT Safety Module SL;</span></li><li><span>Codesys Control for Raspberry Pi MC SL;</span></li><li><span>Codesys Control for Raspberry Pi SL;</span></li><li><span>IEC 60870-5-104 Server;</span></li><li><span>Codesys Control for Linux SL;</span></li><li><span>Condesys Control Linux MC SL;</span></li><li><span>Codesys Control for PFC200 SL.</span></li></ul></li><li><p><span>Codesys Professional Developer Edition</span></p></li><li><p><span>Codesys Automation Server</span></p></li><li><p><span>Engineering</span></p></li></ul><p><span>Antes de realmente baixar o programa, você deve primeiro obter algumas credenciais de login. Clique no link &quot;Registro&quot; (em vermelho) e, em seguida, você terá que selecionar um país e preencher um formulário. Em seguida, você receberá um e-mail com algumas credenciais de login.</span></p><p><span>Se você retornar à central de download (onde você clicou no link de registro vermelho), agora você pode baixar o arquivo exe para o codesys V3 mais recente depois de digitar o nome de usuário e senha.</span></p><p><span>Uma vez que o arquivo tenha sido baixado, abra o arquivo exe e se o windows tentar bloqueá-lo selecione &quot;executar de qualquer maneira&quot;. Siga o assistente de instalação. Notei ocasionalmente que ao baixar isso você recebe um erro e o assistente de instalação não vai iniciar, se isso acontecer, tente baixar novamente o arquivo exe.</span></p><p><span>Se você está lutando por espaço, você só precisa instalar os seguintes recursos:</span></p><ul><li><span>CODESYS V3;</span></li><li><span>CODESYS Gateway;</span></li><li><span>CODESYS OPC Sever;</span></li></ul><p><span>Depois de instalar o CODESYS, você precisa adicionar o </span><strong><span>Raspberry Pi Package</span></strong><span> a ele. Para fazer isso, primeiro você tem que visitar a loja CODESYS e baixar o pacote. A loja estabelece um preço de 35 euros, no entanto, isso é apenas se você deseja executar o seu programa no Pi por mais de 2 horas. Caso contrário, é completamente gratuito e você só precisa baixar novamente o programa para o Pi a cada 2 horas, afinal CODESYS é direcionado para a indústria...</span></p><p><a href='http://store.codesys.com/codesys-control-for-raspberry-pi-sl.html' target='_blank' class='url'>http://store.codesys.com/codesys-control-for-raspberry-pi-sl.html</a></p><p><span>Infelizmente para baixar este pacote você precisará de </span><strong><span>outro nome de usuário e senha</span></strong><span>, então você terá que se cadastrar na </span><strong><span>CodesYS Store</span></strong><span>. Se você clicar no botão de download, ele solicitará que você faça login, se você seguir este link você pode se cadastrar na loja. Depois de se inscrever, retorne à página de download e clique no download. Baixe este em algum lugar memorável, você vai precisar dele na próxima etapa.</span></p><p><span>Uma vez que o pacote tenha sido baixado, você precisará abrir codesys e instalá-lo. Vou explicar como fazer isso no próximo passo.</span></p><blockquote><p><span>falta continuar a partir de: </span><a href='https://www.instructables.com/Programming-Raspberry-Pi-With-CODESYS/' target='_blank' class='url'>https://www.instructables.com/Programming-Raspberry-Pi-With-CODESYS/</a><span> e </span><a href='https://store.codesys.com/en/codesys.html' target='_blank' class='url'>https://store.codesys.com/en/codesys.html</a><span> (arquivos de instalação para Windows)... A loja oficial CODESYS: </span><a href='https://www.codesys.com/download/' target='_blank' class='url'>https://www.codesys.com/download/</a></p></blockquote><h2><a name="programação" class="md-header-anchor"></a><span>Programação</span></h2><p><span>Link sugestivo para programação: </span><a href='https://www.instructables.com/Programming-Raspberry-Pi-With-CODESYS/'><span>Programming Raspberry Pi With CODESYS</span>
+<span>By chrisbeardy in CircuitsRaspberry Pi</span></a></p><p><span>Neste tuturial, é mostrado como controlar o GPIO do Pi. Também é abordardo como controlar a I/O da Beckhoff (relativamente barata) e um pequeno Servomotor Technosoft usando protocolo de comunicação EtherCat, além de criar uma visualização web para controlar o IO através do seu smartphone. Ele cobre um pouco como foi estruturado. Assim você pode escolher o que deseja fazer.</span></p><hr /><p><span>Fernando Passold (15/02/2023)</span></p></div>
+</body>
+</html>
