@@ -15,11 +15,12 @@
    5. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf))
    6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)
    7. [Sistema de 1a-ordem digitalizado](https://fpassold.github.io/Controle_3/exemplo_1_BoG/intro_exemplo_1a_ordem.html) (uso de Matlab)
-3. Análise de Sinais/Transformada de Laplace/Modelagem - aplica à Controle Digital
+3. Análise de Sinais/Transformada de Laplace/Modelagem (voltado à Controle Digital)
    1. [Transformada de Laplace](3_transformada_laplace.pdf) (aplicado à Controle: revisão).
    2. [Respostas temporais](4_Respostas_Sistemas.pdf) típicas de Processos Industriais.
-   3. [Introdução à Modelagem](5_intro_modelagem.pdf) (algumas técnicas). 
-4. Açoes de Controle Típicas
+   3. [Introdução à Modelagem](5_intro_modelagem.pdf) (algumas técnicas).
+   4. [Paralelos entre plano-s $\times$ plano-z](6_respostas_paralelos_s_z.pdf) (parte final: malha controle digital típica).
+4. Ações de Controle Típicas
    1. Ações Típicas de Controle: P, PI, PD e PID:
       1. Modelos/Simulações no mundo contíniuo - plano-s;
       2. Paralelos entre planos s e z
