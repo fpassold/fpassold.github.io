@@ -14,7 +14,7 @@ Tópicos:
 8. Apostila de Pneumática do professor (  [apostila_pneumatica.pdf](apostila_pneumatica.pdf) - 72 pág, 16.7 MB )
 9. [Material extra](material_extra.html) ) (mais material).
 10. **Exercícios de Fixação de Conteúdo**, à partir da pág. 66 da Apostila "**Tecnologia Eletropneumática Industrial**, M1002-2 BR/Agosto 2001 da Parker Training) - 152 págs. -  [20_01_04_apostila_eletropneumatica_parker.pdf](Exercicios/20_01_04_apostila_eletropneumatica_parker.pdf) 
-    <!-- (https://fpassold.github.io/Pneumatica/exercicios_2.html) -->;
+    <!-- (https://fpassold.github.io/Pneumatica/exercicios_2.html) -->
 11. [Introdução](apostila_pneumatica.pdf) com Cálculos (Dimensionamento) do Reservatório Ar-Comprimido.
 12. [Considerações Matemáticas](https://fpassold.github.io/Pneumatica/calculos_pneumo.html);
 13. [Exemplos Especificações Circuitos Pneumáticos](https://fpassold.github.io/Pneumatica/exercicios_1.html).
