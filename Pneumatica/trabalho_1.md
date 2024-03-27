@@ -4,26 +4,26 @@ Trabalhos em equipe de 2 à 3 alunos:
 
 | Equipe                     | Exercícios de Fixação | Data Entrega | a    | b    | c    | d    | e    | Nota Final |
 | -------------------------- | --------------------- | ------------ | ---- | ---- | ---- | ---- | ---- | ---------- |
-| Equipe #1            | 1, 5, 9, 13, 18.      |         |      |      |      |      |      |            |
-| Equipe #2            | 2, 6, 10,14, 17.      |         |      |      |      |      |      |            |
-| Equipe #3            | 3, 7, 11, 15, 18.     |         |      |      |      |      |      |            |
-| Equipe #4 | 4, 8, 12, 16, 17.     |         |      |      |      |      |      |            |
+| <font color="blue">Equipe \#1</font> | 1, 5, 9, 13, 18.      |         |      |      |      |      |      |            |
+| <font color="red">Equipe \#2</font> | 2, 6, 10,14, 17.      |         |      |      |      |      |      |            |
+| <font color="green">Equipe \#3</font> | 3, 7, 11, 15, 18.     |         |      |      |      |      |      |            |
+| ~~Equipe #4~~ | <font color="lightgrey">4, 8, 12, 16, 17.</font> |         |      |      |      |      |      |            |
 
 
-Equipes (2024/1):
+Equipes (2024/1 - atualizado em 27/03 10:15):
 
 | Equipe | Estudantes |
 | ------ | ---------- |
-|        | 1. DANIEL CAMARGO ZUSELSKI |
-|        | 2. DANIEL PELISSER NAVARINI |
-|        | 3. DANIEL RUFATO |
-|        | 4. DANIELLE LIMA REBELATTO |
-|        | 5. LUÍS GUSTAVO ZANOLLA |
-|        | 6. MATEUS FRANCESCON |
-|        | 7. RAFAEL ANTÔNIO FAVERO |
+| $\color{red}{\#2}$ - Email 26/03 21:40 | 1. <font color="red">DANIEL CAMARGO ZUSELSKI</font> |
+| $\color{blue}{\#1}$ - Email 26/03 19:40 | 2. <font color="blue">DANIEL PELISSER NAVARINI</font> |
+| $\color{green}{\#3}$ - Email 26/03 21:42 | 3. <font color="green">DANIEL RUFATO</font> |
+| $\color{blue}{\#1}$ - Email 26/03 19:40 | 4. <font color="blue">DANIELLE LIMA REBELATTO</font> |
+| $\color{blue}{\#1}$ - Email 26/03 19:40 | 5. <font color="blue">LUÍS GUSTAVO ZANOLLA</font>f |
+| $\color{red}{\#2}$ - Email 26/03 21:40 | 6. <font color="red">MATEUS FRANCESCON</font> |
+| $\color{green}{\#3}$ - Email 26/03 21:42 | 7. <font color="green">RAFAEL ANTÔNIO FAVERO</font> |
 
 
-Material à ser entregue:
+Material à ser entregue (arquivos via email):
 
 * Arquivo da simulação (FluidSim: *.ct);
 * Figura do circuito pneumático (*.png, *.jpg -- boa resolução/legível);
