@@ -6,7 +6,7 @@ Trabalhos em equipe de 2 à 3 alunos:
 | -------------------------- | --------------------- | ------------ | ---- | ---- | ---- | ---- | ---- | ---------- |
 | <font color="blue">Equipe \#1</font> | 1, 5, 9, 13, 18.      |         |      |      |      |      |      |            |
 | <font color="red">Equipe \#2</font> | 2, 6, 10,14, 17.      |         |      |      |      |      |      |            |
-| <font color="green">Equipe \#3</font> | 3, 7, 11, 15, 18.     |         |      |      |      |      |      |            |
+| <font color="green">Equipe \#3</font> | 3, 7, 11, 15, 16.    |         |      |      |      |      |      |            |
 | ~~Equipe #4~~ | <font color="lightgrey">4, 8, 12, 16, 17.</font> |         |      |      |      |      |      |            |
 
 
