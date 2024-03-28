@@ -17,18 +17,20 @@
    
       <!--Bloco que será explorado?; 5. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf)); 6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)-->
    
-3. Mapeamento entre planos S e Z.
+3. [Introdução ao Matlab](../Matlab/aula_intro_matlab_1.html) 
 
-4. Análise de sinais e sistemas discretos nos domínios do tempo e da frequência.
+4. Mapeamento entre planos S e Z.
 
-5. Transformada discreta de Fourier (DFT/FFT).
+5. Análise de sinais e sistemas discretos nos domínios do tempo e da frequência.
 
-6. Filtros digitais.
+6. Transformada discreta de Fourier (DFT/FFT).
+
+7. Filtros digitais.
 
    1. Filtros FIR
    2. Filtros IFIR
 
-7. Implementação em sistemas embarcados de filtros digitais.
+8. Implementação em sistemas embarcados de filtros digitais.
 
 
 

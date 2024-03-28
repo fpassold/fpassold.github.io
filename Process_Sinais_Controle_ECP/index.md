@@ -20,21 +20,22 @@
    2. [Respostas temporais](4_Respostas_Sistemas.pdf) típicas de Processos Industriais.
    3. [Introdução à Modelagem](5_intro_modelagem.pdf) (algumas técnicas).
    4. [Paralelos entre plano-s $\times$ plano-z](6_respostas_paralelos_s_z.pdf) (parte final: malha controle digital típica).
-4. Ações de Controle Típicas
+4. [Introdução ao Matlab](../Matlab/aula_intro_matlab_1.html) 
+5. Ações de Controle Típicas
    1. Ações Típicas de Controle: P, PI, PD e PID:
       1. Modelos/Simulações no mundo contíniuo - plano-s;
       2. Paralelos entre planos s e z
       3. Modelos/Simulações no mundo digital - plano-z.
-5. Implementação em sistemas embarcados de controladores digitais.
-6. Análise de Sinais/Transformada de Fourir/Modelagem - aplica à Processamento (Digital) de Sinais
+6. Implementação em sistemas embarcados de controladores digitais.
+7. Análise de Sinais/Transformada de Fourir/Modelagem - aplica à Processamento (Digital) de Sinais
    1. Diagrama de Bode (análise)
    2. Série de Fourier (espectro de ondas; síntese de onda quadrada)
    3. DFT e FFT, cuidados.
-7. Filtros digitais.
+8. Filtros digitais.
    1. Filtros de média aritmética, média móvel;
    2. Filtros FIR
    3. Filtros IFIR
-8. Implementação em sistemas embarcados de filtros digitais.
+9. Implementação em sistemas embarcados de filtros digitais.
 
 ---
 
