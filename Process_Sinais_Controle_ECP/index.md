@@ -1,3 +1,5 @@
+![Kioto_2](Kioto_2.jpg)
+
 # Processamento de Sinais e Controle Digital
 
 **Conteúdo sendo previsto** (parte teórica):
@@ -22,20 +24,25 @@
    4. [Paralelos entre plano-s $\times$ plano-z](6_respostas_paralelos_s_z.pdf) (parte final: malha controle digital típica).
 4. [Introdução ao Matlab](../Matlab/aula_intro_matlab_1.html) 
 5. Ações de Controle Típicas
-   1. Ações Típicas de Controle: P, PI, PD e PID:
-      1. Modelos/Simulações no mundo contíniuo - plano-s;
-      2. Paralelos entre planos s e z
-      3. Modelos/Simulações no mundo digital - plano-z.
-6. Implementação em sistemas embarcados de controladores digitais.
-7. Análise de Sinais/Transformada de Fourir/Modelagem - aplica à Processamento (Digital) de Sinais
+   1. [Ações Básicas de Controle](7_acoes_controle.pdf) ): P, PI, PD, PID e outros (mundo contínuo):
+      1. Modelos/Simulações no mundo discreto - plano-z;
+6. Projetos de Controladores Digitais usando Root-Locus
+   1. O que é o "Root Locus" ?
+   2. Controlador Proporcional
+   3. Controlador PI
+   4. Controlador PD
+   5. Controlador PID
+7. Variações de PID´s
+8. Implementação em sistemas embarcados de controladores digitais.
+9. Análise de Sinais/Transformada de Fourir/Modelagem - aplica à Processamento (Digital) de Sinais
    1. Diagrama de Bode (análise)
    2. Série de Fourier (espectro de ondas; síntese de onda quadrada)
    3. DFT e FFT, cuidados.
-8. Filtros digitais.
+10. Filtros digitais.
    1. Filtros de média aritmética, média móvel;
    2. Filtros FIR
    3. Filtros IFIR
-9. Implementação em sistemas embarcados de filtros digitais.
+11. Implementação em sistemas embarcados de filtros digitais.
 
 ---
 
@@ -54,7 +61,7 @@
 
 - MATLAB/Simulink para análise e simulação de sistemas de controle digital e filtros digitais.
 - Ambiente de desenvolvimento integrado (IDE) para microcontroladores, como o Code Composer Studio para MSPs.
-- Ferramentas de simulação de sinais e sistemas discretos, como GNU Octave ou Python com bibliotecas especializadas (limitado).
+- Ferramentas de simulação de sinais e sistemas discretos, como GNU Octave ou Python com bibliotecas especializadas (limitado). Ver: http://octave-online.net/ (versão online do Octave).
 
 ---
 
