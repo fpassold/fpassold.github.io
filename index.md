@@ -24,10 +24,17 @@ Maori proverb</font>
 | [Processamento de Sinais e Controle Digital](Process_Sinais_Controle_ECP/index.html)</br><font size="2">(Eng. Computação)</font> |  |
 |  [Acionamento Hidráulico e Pneumático](Pneumatica/topicos.html)</br><font size="2">(Eng. Elétrica)</font> |   |
 &nbsp;
-* [Tutorial rápido sobre Matlab](Matlab/tutorial.html) ou **[Matlab\_guide.pdf](Matlab/Matlab_guide.pdf)** (tutorial mais longo, arquivo PDF de 44 páginas; 13.4 Mbytes)
-* **[Instalação recomendada](Matlab/instalacao_matlab.html)** do Matlab (áreas de: Controle E Sinais & Sistemas)
-&nbsp;
-* [Dicas para estudantes de TCC](TCC_Latex/index.html) (envolve dicas para escrita e dicas sobre $\LaTeX$).
+* [Tutorial rápido sobre Matlab](Matlab/tutorial.html) ou **[Matlab\_guide.pdf](Matlab/Matlab_guide.pdf)** (tutorial mais longo, arquivo PDF de 44 páginas; 13.4 Mbytes);
+
+* **[Instalação recomendada](Matlab/instalacao_matlab.html)** do Matlab (áreas de: Controle E Sinais & Sistemas);
+
+* [Tutorial do **Octave**](Octave/octave_inicio.html) (para a área de Controle);
+
+* Octave on-line --> http://octave-online.net/
+
+  &nbsp;
+
+* [Dicas para **estudantes de TCC**](TCC_Latex/index.html) (envolve dicas para escrita e dicas sobre $\LaTeX$).
 
 ----
 
