@@ -160,240 +160,106 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 }
 
 
-/**
- * NexT for Typora
- * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
- *
- * - Want code ligatures for JetBrains Mono?
- * - Search for `font-variant-ligatures: none;` and comment that line.
- *
- * - Want to change the font size in exported pdf?
- * - Change the variable `--export-font-size` below.
- **/
 
-.md-rawblock-control:not(.md-rawblock-tooltip) {
-    background: #555;
-    color: #fff;
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0;
 }
 
-.md-rawblock-on-edit>.md-rawblock-tooltip,
-.md-rawblock:hover>.md-rawblock-container,
-.md-rawblock:hover>.md-rawblock-tooltip {
-    background: #555;
-    color: #fff;
+body, button, input, select, textarea {
+  font: 12px/1.5tahoma, arial, 宋体;
 }
 
-:root {
-    --base-font-size: 16px;
-    --highlight-color: rgb(0, 200, 200);
-    --text-color: #DDD;
-    --headings-color: #DDD;
-    --export-font-size: 13px;
-    --bg-color: #333;
-    --bg-highlight: #282828;
-    --bg-dark: #222;
-    --border-dark: #555;
-    --select-text-bg-color: #111;
-    --select-text-font-color: #ddd;
-    --item-hover-bg-color: #333;
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
 }
 
-
-/* code color
- This part cames from Vue Dark */
-
-.cm-s-inner .cm-keyword {
-    color: #bb7fc3
+address, cite, dfn, em, var {
+  font-style: normal;
 }
 
-.cm-s-inner .cm-atom,
-.cm-s-inner.cm-atom {
-    color: #9088cc
+code, kbd, pre, samp {
+  font-family: couriernew, courier, monospace;
 }
 
-.cm-s-inner .cm-number {
-    color: #88b2a1
+small {
+  font-size: 12px;
 }
 
-.cm-s-inner .cm-def {
-    color: #7f7fff
+a {
+  text-decoration: none;
 }
 
-.cm-s-inner .cm-variable {
-    color: #efefef
+a:hover {
+  text-decoration: underline;
 }
 
-.cm-s-inner .cm-variable-2 {
-    color: #7faad4
+sup {
+  vertical-align: text-top;
 }
 
-.cm-s-inner .cm-variable-3 {
-    color: #7fc3aa
+sub {
+  vertical-align: text-bottom;
 }
 
-.cm-s-inner .cm-string {
-    color: #d48888
+legend {
+  color: #000;
 }
 
-.cm-s-inner .cm-property {
-    color: #efefef
+fieldset, img {
+  border: 0;
 }
 
-.cm-s-inner .cm-operator {
-    color: #cb8c8c
+button, input, select, textarea {
+  font-size: 100%;
 }
 
-.cm-s-inner .cm-comment,
-.cm-s-inner.cm-comment {
-    color: hsl(0, 0%, 35%)
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.cm-s-inner .cm-string-2 {
-    color: #ffaa7f
+/*
+    Update default scroll-bar style.
+    More: https://ovirgo.com/posts/scroll-bar
+*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.cm-s-inner .cm-meta {
-    color: hsl(0, 0%, 33%)
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  border-radius: 5px;
 }
 
-.cm-s-inner .cm-qualifier {
-    color: hsl(0, 0%, 33%)
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 5px;
 }
 
-.cm-s-inner .cm-builtin {
-    color: #997fd4
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
 }
 
-.cm-s-inner .cm-bracket {
-    color: #ccccbb
+::-webkit-scrollbar-corner {
+  display: block;
 }
 
-.cm-s-inner .cm-tag {
-    color: #88bb7f
+html {
+  scroll-behavior: smooth;
 }
 
-.cm-s-inner .cm-attribute {
-    color: #7f7fe5
+body {
+  color: #343a40;
+  font-family: jostFont, jinkaiFont, "kaiti", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-.cm-s-inner .cm-header,
-.cm-s-inner.cm-header {
-    color: #7f7fff
-}
-
-.cm-s-inner .cm-quote,
-.cm-s-inner.cm-quote {
-    color: #7fcc7f
-}
-
-.cm-s-inner .cm-hr,
-.cm-s-inner.cm-hr {
-    color: hsl(0, 0%, 60%)
-}
-
-.cm-s-inner .cm-link,
-.cm-s-inner.cm-link {
-    color: #7f7fe5
-}
-
-.cm-negative {
-    color: #eea1a1
-}
-
-.cm-positive {
-    color: #90cc90
-}
-
-.cm-header,
-.cm-strong {
-    font-weight: 700
-}
-
-.cm-error {
-    color: #ff7f7f
-}
-
-.cm-invalidchar {
-    color: #ff7f7f
-}
-
-.cm-constant {
-    color: #42b983
-}
-
-.cm-defined {
-    color: #dac37f
-}
-
-div.CodeMirror span.CodeMirror-matchingbracket {
-    color: #7fff7f
-}
-
-div.CodeMirror span.CodeMirror-nonmatchingbracket {
-    color: #ff9090
-}
-
-.CodeMirror div.CodeMirror-cursor{
-    border-left: 1px solid var(--text-color);
-    z-index: 3;
-}
-
-.cm-s-typora-default .cm-code, .cm-s-typora-default .cm-comment{
-    color: #8398f1;
-}
-
-.cm-s-typora-default .CodeMirror-activeline-background {
-
-    background-color: var(--bg-highlight);
-    /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 -1px 0.5px 0 rgba(0, 0, 0, 0.09); */
-}
-
-* {
-    /* Disable ligatures */
-    font-variant-ligatures: none;
-}
-
-
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-/* *::selection {
-    background: #111;
-    color: #DDD;
-} */
-
-html,
-body,
-#write {
-    color: var(--text-color);
-    font-size: var(--base-font-size);
-    background: #333;
-    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
-    font-weight: 400;
-    line-height: 1.15;
-    -webkit-text-size-adjust: 100%;
-    /* letter-spacing: -0.5px; */
+li::marker {
+  color: #ccc;
 }
 
 h1,
@@ -402,721 +268,1163 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--headings-color);
-    font-weight: 700;
-    line-height: 1.5;
-    margin: 20px 0 15px
+  background: rgba(255, 255, 255, 0);
+  padding: 16px 0;
 }
-
-.CodeMirror pre {
-    font-family: 'JetBrains Mono';
-    font-size: 0.95em;
-    line-height: 1.65em;
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  display: inline-block;
+  margin: 4px;
+  font-size: 14px;
 }
-
-#write {
-    max-width: 914px;
-    text-align: justify;
-}
-
-#write>h1:first-child {
-    margin-top: 1.75rem;
-}
-
-#write>h2:first-child {
-    margin-top: 1.5rem;
-}
-
-#write>h3:first-child {
-    margin-top: 1rem;
-}
-
-#write>h4:first-child {
-    margin-top: 0.5rem;
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  font-family: romanFont, jinkaiFont, "kaiti", sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 h1 {
-    font-size: 2.5em
+  font-size: 32px;
 }
 
 h2 {
-    font-size: 1.75 em
+  font-size: 28px;
+}
+h2:before {
+  content: "♪² ";
 }
 
 h3 {
-    font-size: 1.45em
+  font-size: 24px;
+}
+h3:before {
+  content: "♪³ ";
 }
 
 h4 {
-    font-size: 1.25em
+  font-size: 20px;
+}
+h4:before {
+  content: "♪⁴ ";
 }
 
 h5 {
-    font-size: 1.1em
+  font-size: 20px;
+}
+h5:before {
+  content: "♪⁵ ";
 }
 
 h6 {
-    font-size: 1em;
-    font-weight: bold
+  font-size: 20px;
+}
+h6:before {
+  content: "♪⁶ ";
 }
 
-#write code {
-    color: var(--highlight-color);
-}
-
-p {
-    color: var(--text-color);
-    line-height: 1.75rem;
-    margin: 0 0 7.5px;
-}
-
-#write ul {
-    line-height: 1.75rem;
-    margin-block-start: 0.6em;
-    margin-block-end: 0.6em;
-}
-
-#write ol li {
-    line-height: 1.75rem;
-    margin-block-start: 0.6em;
-    margin-block-end: 0.6em;
-}
-
-u {
-    text-decoration: none;
-    border-bottom: 1px solid #999;
-}
-
-#write>h3.md-focus:before {
-    left: -1.875rem;
-    top: 0.5rem;
-    padding: 2px;
-}
-
-#write>h4.md-focus:before {
-    left: -1.875rem;
-    top: 0.3125rem;
-    padding: 2px;
-}
-
-#write>h5.md-focus:before {
-    left: -1.875rem;
-    top: 0.25rem;
-    padding: 2px;
-}
-
-#write>h6.md-focus:before {
-    left: -1.875rem;
-    top: .125rem;
-    padding: 2px;
-}
-
-@media screen and (max-width: 48em) {
-    blockquote {
-        margin-left: 1rem;
-        margin-right: 0;
-        padding: 0.5em;
-    }
-    /* .h1,
-    h1 {
-        font-size: 2.827rem;
-    }
-    .h2,
-    h2 {
-        font-size: 1.999rem;
-    }
-    .h3,
-    h3 {
-        font-size: 1.413rem;
-    }
-    .h4,
-    h4 {
-        font-size: 1.250rem;
-    }
-    .h5,
-    h5 {
-        font-size: 1.150rem;
-    }
-    .h6,
-    h6 {
-        font-size: 1rem;
-    } */
-}
-
-a .md-def-url {
-    color: #262a30;
+img {
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0);
 }
 
 a {
-    color: var(--highlight-color);
-    text-decoration: none;
-    font-weight: bold;
-    transition-duration: 0.5s;
+  color: #5d2f86;
 }
-
 a:hover {
-    text-decoration: underline;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 1em;
-    margin: 0 0 20px;
-    width: 100%;
-}
-
-table tr:nth-child(2n - 1),
-thead {
-    background-color: var(--bg-highlight);
-}
-
-tbody tr:hover {
-    background: var(--bg-color)
-}
-
-caption,
-td,
-th {
-    font-weight: 400;
-    padding: 8px;
-    text-align: left;
-    vertical-align: middle;
-}
-
-td,
-th {
-    border: 1px solid #555;
-}
-
-table tr th {
-    border-bottom: 3px solid #555;
-    font-weight: 700;
-    padding-bottom: 10px;
-    background-color: var(--bg-color);
-}
-
-td {
-    border-bottom-width: 1px
-}
-
-
-/* Inline Code */
-
-code,
-.md-fences {
-    background: var(--bg-dark);
-    border-radius: 3px;
-    color: var(--text-color);
-    padding: 2px 4px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    font-family: 'JetBrains Mono';
-    font-size: 0.935em;
-    caret-color: var(--text-color);
-}
-
-
-/* Code Blocks */
-
-.md-fences {
-    margin: 0 0 20px;
-    font-size: 0.9em;
-    line-height: 1.5em;
-    padding: 0.4em 1em;
-    color: var(--text-color);
-
-    padding-top: 0.4em;
-    caret-color: var(--text-color);
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 -1px 0.5px 0 rgba(0, 0, 0, 0.09);
-}
-
-.task-list {
-    padding-left: 0;
-}
-
-.task-list-item {
-    padding-left: 2rem;
-}
-
-.task-list-item input {
-    top: 3px;
-}
-
-.task-list-item input {
-    outline: none;
-    margin-bottom: 0.5em;
-}
-
-.task-list-item input::before {
-    content: "";
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    vertical-align: middle;
-    text-align: center;
-    border: 1px solid #ddd;
-    background-color: var(--bg-dark);
-    margin-left: -0.1rem;
-    margin-right: 0.1rem;
-    margin-top: -0.9rem;
-}
-
-.task-list-item input:checked::before {
-    padding-left: 0.125em;
-    content: '✔';
-    color: #ddd;
-    /*◘*/
-    font-size: 0.8125rem;
-    line-height: 0.9375rem;
-    margin-top: -0.9rem;
-}
-
-
-/* Chrome 29+ */
-
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-    .task-list-item input:before {
-        margin-top: -0.2rem;
-    }
-    .task-list-item input:checked:before,
-    .task-list-item input[checked]:before {
-        margin-top: -0.2rem;
-    }
-}
-
-blockquote {
-    border-left: 4px solid #ddd;
-    margin: 0;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 0 15px
-}
-
-blockquote p {
-    color: #aaa;
-}
-
-blockquote cite::before {
-    content: '-';
-    padding: 0 5px
-}
-
-#write pre.md-meta-block {
-    padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: var(--bg-dark);
-    border: 0;
-    border-radius: 3px;
-    color: hsl(0, 0%, 53%);
-    margin-top: 0 !important;
-    margin-bottom: 2em;
-    font-size: 0.8em;
-    line-height: 1.5em;
-    font-family: 'JetBrains Mono';
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 -1px 0.5px 0 rgba(0, 0, 0, 0.09);
-}
-
-.MathJax_Display {
-    font-size: 0.9em;
-    margin-top: 0.5em;
-    margin-bottom: 0;
-}
-
-p.mathjax-block,
-.mathjax-block {
-    padding-bottom: 0;
-}
-
-.mathjax-block>.code-tooltip {
-    bottom: 5px;
-    box-shadow: none;
-}
-
-.md-image>.md-meta {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-}
-
-.md-image>img {
-    margin-top: 2px;
-}
-
-.md-image>.md-meta:first-of-type:before {
-    padding-left: 4px;
-}
-
-#typora-source {
-    color: #aaa;
-}
-
-
-/** ui for windows **/
-
-
-#md-searchpanel {
-    border-bottom: 1px solid #ccc;
-}
-
-#md-searchpanel .btn {
-    border: 1px solid #ccc;
-}
-
-#md-notification:before {
-    top: 14px;
-}
-
-#md-notification {
-    background: var(--bg-highlight);
-}
-
-.megamenu-menu-panel .btn {
-    border: 1px solid #ccc;
-}
-
-#write>h3.md-focus:before {
-    left: -1.5625rem;
-    top: .375rem;
-}
-
-#write>h4.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
-}
-
-#write>h5.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
-}
-
-#write>h6.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
-}
-
-.md-image>.md-meta {
-    border-radius: 3px;
-    padding: 2px 0 0 4px;
-    font-size: 0.9em;
-    color: inherit;
-}
-
-.md-tag {
-    color: inherit;
-}
-
-.md-toc {
-    margin-top: 20px;
-    padding-bottom: 5px;
-}
-
-.sidebar-tabs {
-    border-bottom: none;
-}
-
-#typora-sidebar {
-    background-color: #282828;
-}
-
-#typora-quick-open {
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
-}
-
-#typora-quick-open-item {
-    background-color: #FAFAFA;
-    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-    border-style: solid;
-    border-width: 1px;
-}
-
-#md-notification:before {
-    top: 10px;
-}
-
-
-/** focus mode */
-
-.on-focus-mode blockquote {
-    border-left-color: rgba(85, 85, 85, 0.12);
-}
-
-.file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state {
-    visibility: visible;
-}
-
-.md-lang {
-    color: #b4654d;
-}
-
-.html-for-mac .context-menu {
-    --item-hover-bg-color: #E6F0FE;
-}
-
-.file-tree-node {
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-
-.file-node-title {
-    padding-top: 2px;
-}
-
-.outline-item {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    cursor: pointer;
-}
-
-/* Search panel & UI */
-
-
-#md-searchpanel input {
-    box-shadow: none;
-}
-
-
-#md-searchpanel .btn {
-    border: none;
-}
-
-
-.modal-content {
-    border-color: #aaa;
-}
-
-.searchpanel-search-option-btn {
-    border-color: #aaa;
-    border-radius: 0;
-}
-
-.modal-dialog .btn {
-    background: #222;
-    border-width: 2px;
-    border-color: #222;
-    border-radius: 0;
-    color: #fff;
-    display: inline-block;
-    font-size: .875em;
-    line-height: 2rem;
-    padding: 0 20px;
-    margin: 5px;
-    text-decoration: none;
-    transition-delay: 0s;
-    transition-duration: .2s;
-    transition-timing-function: ease-in-out
-}
-
-.modal-dialog .btn:hover {
-    background: #eee;
-    border-color: #222;
-    color: #222;
-}
-
-
-/* Printing issue */
-
-.typora-export * {
-    -webkit-print-color-adjust: exact;
-}
-
-.typora-export p {
-    font-size: var(--export-font-size) !important;
-}
-
-.typora-export li {
-    font-size: var(--export-font-size);
-    line-height: 2rem;
-}
-
-.typora-export #write {
-    font-size: var(--export-font-size) !important;
-}
-
-table,
-pre {
-    page-break-inside: avoid;
-}
-
-pre {
-    word-wrap: break-word;
-}
-
-.file-tree-node.active .file-node-background {
-    background-color: #333;
-}
-
-.file-list-item.active {
-    background-color: #333;
-}
-
-.file-list-item {
-    border-color: #555;
-}
-
-.sidebar-footer {
-    border-top-color: #555
-}
-
-.CodeMirror-gutters {
-    border-right-color: #555;
-}
-
-
-hr {
-    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
-    border: 0;
-    height: 3px;
-    margin: 40px 0
-}
-
-.megamenu-content,
-.megamenu-opened header {
-    background: var(--bg-color);
-}
-
-.megamenu-menu-panel h2,
-.megamenu-menu-panel h1,
-.long-btn {
-    color: inherit;
-}
-
-.megamenu-menu-panel input[type='text'] {
-    background: inherit;
-    border: 0;
-    border-bottom: 1px solid;
-}
-
-#recent-file-panel-action-btn {
-    background: inherit;
-    border: 1px grey solid;
-}
-
-.megamenu-menu-panel .dropdown-menu>li>a {
-    color: inherit;
-    background-color: #2F353A;
-    text-decoration: none;
-}
-
-.megamenu-menu-panel table td:nth-child(1) {
-    color: inherit;
-    font-weight: bold;
-}
-
-.megamenu-menu-panel tbody tr:hover td:nth-child(1) {
-    color: white;
-}
-
-
-.megamenu-menu {
-    background-color: var(--bg-dark);
-}
-
-.megamenu-menu-list:not(.saved) li a:hover, .megamenu-menu-list li a.active {
-    background-color: var(--bg-color);
-
-}
-
-#recent-file-panel tbody tr:nth-child(2n - 1){
-    background-color: var(--bg-highlight)
-}
-
-.ty-preferences {
-    transition-duration: 0.3s;
-}
-
-
-.ty-preferences .btn-default {
-    background: transparent;
-}
-.ty-preferences .btn-default:hover {
-    background: #555 !important
-}
-
-.ty-preferences select {
-    border: 1px solid #222;
-    height: 21px;
-}
-
-.ty-preferences .nav-group-item.active {
-    background: var(--bg-dark);
-    border-radius: 0;
-}
-
-.ty-preferences .nav-group-item {
-    background: var(--bg-dark);
-    border-radius: 0;
-}
-
-.ty-preferences input[type="search"] {
-    border-color: #333;
-    background: #333;
-    line-height: 22px;
-    color: white;
-}
-
-.ty-preferences input[type="search"]:focus {
-    box-shadow: none;
-}/**
- * NexT for Typora
- * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
- *
- * - Want code ligatures for JetBrains Mono?
- * - Search for `font-variant-ligatures: none;` and comment that line.
- *
- **/
-
-@import "";
-* {
-    /* Disable ligatures */
-    font-variant-ligatures: none;
-}
-
-
-/* Helvetica Neue */
-
-html,
-body,
-#write {
-    font-family: HelveticaN, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+  text-decoration: none;
+  color: #e69;
+  text-shadow: 0px 0px 1px #e69;
 }
 
 p {
-    color: var(--text-color);
-    line-height: 1.55rem;
-    margin: 0 0 12.5px;
+  margin: 16px 0;
 }
 
-.task-list-item input::before {
-    content: "";
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    vertical-align: middle;
-    text-align: center;
-    border: 1px solid gray;
-    background-color: #fdfdfd;
-    margin-left: -0.1rem;
-    margin-right: 0.1rem;
-    margin-top: -0.9rem;
+hr {
+  margin: 24px 0;
+  border-color: rgba(0, 0, 0, 0);
+  border-bottom-color: rgba(239, 239, 239, 0.5);
 }
 
-.task-list-item input:checked::before {
-    padding-left: 0.125em;
-    content: '✔';
-    /*◘*/
-    font-size: 0.8125rem;
-    line-height: 0.9375rem;
-    margin-top: -0.5rem;
+table {
+  margin: 24px 0;
 }
+table thead tr {
+  border-top: 2px solid #e9e7ef;
+}
+table tbody {
+  border-top: 2px solid #e9e7ef;
+}
+table tbody tr {
+  border-bottom: 1px solid #e9e7ef;
+}
+table tbody tr:last-child {
+  border-bottom: 2px solid #e9e7ef;
+}
+table th,
+table td {
+  padding: 3px 6px;
+  border-right: 1px solid #e9e7ef;
+}
+table th:first-child,
+table td:first-child {
+  border-left: rgba(255, 255, 255, 0);
+}
+table th:last-child,
+table td:last-child {
+  border-right: rgba(255, 255, 255, 0);
+}
+
+blockquote {
+  padding-left: 16px;
+  border-left: 1px solid #6c757d;
+  color: #6c757d;
+}
+
+.summary code,
+p code,
+td code,
+li code {
+  font-size: 14px;
+  font-family: romanFont, jinkaiFont, "kaiti", sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
+  color: #d63384;
+}
+
+pre,
+pre code {
+  font-family: romanFont, jinkaiFont, "kaiti", sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+ul,
+ol {
+  list-style-position: outside;
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+ul li p,
+ol li p {
+  margin: 0;
+}
+
+.some {
+  font-family: "Segoe Script", segoeFont;
+}
+
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+strong code,
+u code,
+em code,
+.oh-hl code,
+.oh-essay code {
+  color: #d63384;
+}
+
+.oh-essay {
+  position: relative;
+  margin: 16px auto;
+  padding-left: 16px;
+  border-left: 1px dashed #969696;
+  font-size: 15px;
+  color: #969696;
+}
+.oh-essay p {
+  margin-bottom: 0;
+}
+
+.oh-hl {
+  background: #fef9e7;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+body.active-animate {
+  -webkit-animation: fadeIn 2s;
+          animation: fadeIn 2s;
+}
+body.active-animate p {
+  -webkit-animation: slideInUp 0.6s;
+          animation: slideInUp 0.6s;
+}
+body.active-animate .container-home .menu .item {
+  -webkit-animation: slideInDown 1s;
+          animation: slideInDown 1s;
+}
+body.active-animate .container-home .content .desc {
+  -webkit-animation: slideInUp 1s;
+          animation: slideInUp 1s;
+}
+body.active-animate .container-nav .content-nav .nav ul {
+  -webkit-animation: slideInUp 1s;
+          animation: slideInUp 1s;
+}
+body.active-animate .container-search #search {
+  -webkit-animation: slideInLeft 1s;
+          animation: slideInLeft 1s;
+}
+body.active-animate .container-search .list .item {
+  -webkit-animation: slideInUp 1s;
+          animation: slideInUp 1s;
+}
+body.active-animate .container-list .list .recentf, body.active-animate .container-list .list .item {
+  -webkit-animation: slideInUp 1s;
+          animation: slideInUp 1s;
+}
+body.active-animate .container-archive .recentf .rec-post .rec-post-item {
+  -webkit-animation: slideInLeft 1s;
+          animation: slideInLeft 1s;
+}
+body.active-animate .container-archive .categories .arc-item,
+body.active-animate .container-archive .tags .arc-item {
+  -webkit-animation: slideInUp 1s;
+          animation: slideInUp 1s;
+}
+body.active-animate .container-archive .categories .arc-item .arc-post .arc-post-item,
+body.active-animate .container-archive .tags .arc-item .arc-post .arc-post-item {
+  -webkit-animation: slideInRight 1s;
+          animation: slideInRight 1s;
+}
+body.active-animate .container-page .toc .page-operation {
+  -webkit-animation: slideInLeft 1s;
+          animation: slideInLeft 1s;
+}
+
+#header {
+  border-top: 4px solid;
+  border-image-source: linear-gradient(90deg, #0d6efd, #8ed6fb 50%, #d32e9d);
+  border-image-slice: 1;
+  -webkit-border-top: 4px solid;
+  -webkit-border-image-source: linear-gradient(90deg, #0d6efd, #8ed6fb 50%, #d32e9d);
+  -webkit-border-image-slice: 1;
+  z-index: 1000;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -66px;
+  padding: 0 80px;
+}
+#header.js-header {
+  transition: 0.2s background-color linear;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+          backdrop-filter: saturate(180%) blur(5px);
+}
+#header .container-header .some {
+  position: relative;
+  padding: 4px 0px 6px 24px;
+}
+#header .container-header .some #light-dark {
+  cursor: pointer;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+}
+#header .container-header .container-breadcrumb-nav {
+  padding-bottom: 8px;
+}
+#header .container-header .container-breadcrumb-nav .breadcrumb-nav-bar {
+  display: flex;
+  font-size: 12px;
+}
+#header .container-header .container-breadcrumb-nav .breadcrumb-nav-bar a {
+  white-space: break-spaces;
+  overflow: hidden;
+  height: 18px;
+  display: block;
+  color: rgba(90, 41, 228, 0.8);
+  background: rgba(239, 239, 239, 0.3);
+  margin-right: 8px;
+  padding: 4px 8px;
+  border-radius: 0 12px 0 8px;
+}
+#header .container-header .container-breadcrumb-nav .breadcrumb-nav-bar .active a {
+  color: #5a29e4;
+}
+#header .container-header #toc {
+  display: none;
+}
+
+#content {
+  background: rgba(255, 255, 255, 0);
+  padding: 16px 80px 32px;
+}
+#content .container-home {
+  font-family: "Segoe Script", segoeFont, jostFont, jinkaiFont, "kaiti", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+#content .container-home .menu {
+  height: 108px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+#content .container-home .menu .item a {
+  display: block;
+  margin: 4px 8px;
+  padding: 8px;
+  width: 96px;
+  background: rgba(239, 239, 239, 0.4);
+  border-radius: 6px;
+  text-align: center;
+  transition: 0.3s padding ease;
+}
+#content .container-home .menu .item a:hover {
+  padding: 24px 8px;
+}
+#content .container-home .content-md {
+  padding-top: 24px;
+}
+#content .container-home .content-md p > code,
+#content .container-home .content-md li > code,
+#content .container-home .content-md td > code {
+  color: #d63384;
+}
+#content .container-home .content-md .highlight {
+  margin: 16px 0;
+  border-top: 2px solid #e9e7ef;
+  border-bottom: 2px solid #e9e7ef;
+  padding: 2px 0;
+  font-size: 14px;
+  overflow: hidden;
+}
+#content .container-home .content-md .highlight:hover {
+  overflow: auto;
+}
+#content .container-home .content-md .highlight pre {
+  padding-top: 0;
+}
+#content .container-home .content-md pre {
+  font-size: 14px;
+  border-top: 1px solid #e9e7ef;
+  border-bottom: 1px solid #e9e7ef;
+  padding: 12px;
+  overflow: hidden;
+}
+#content .container-home .content-md pre:hover {
+  overflow: auto;
+}
+#content .container-home .content-md pre .lang {
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding: 4px 0px;
+  border-bottom: 1px dashed #adb5bd;
+}
+#content .container-home .content-md em {
+  font-style: italic;
+}
+#content .container-home .content {
+  text-align: center;
+}
+#content .container-home .content .desc img {
+  max-width: 100%;
+}
+#content .container-home .content .desc .words {
+  box-sizing: border-box;
+  font-size: 18px;
+  color: #adb5bd;
+  max-width: 600px;
+  padding: 48px 32px;
+  border-radius: 10px;
+  margin: 120px 0 160px;
+  background: rgba(239, 239, 239, 0.4);
+}
+#content .container-list {
+  font-size: 16px;
+}
+#content .container-list .count {
+  color: #6c757d;
+}
+#content .container-list .list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+#content .container-list .list .recentf {
+  box-sizing: border-box;
+  width: 360px;
+  padding: 8px 4px 32px;
+  margin-right: 32px;
+  margin-top: 48px;
+  background: rgba(239, 239, 239, 0.2);
+  box-shadow: 3px 3px 5px #eee;
+}
+#content .container-list .list .recentf .desc {
+  width: 100%;
+  padding: 8px 0;
+  color: #999;
+}
+#content .container-list .list .recentf .rec-post .rec-post-item a {
+  font-size: 14px;
+  display: inline-block;
+  background: rgba(239, 239, 239, 0.3);
+  margin: 4px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+#content .container-list .list .desc .date {
+  color: #999;
+  font-size: 12px;
+  font-family: "Segoe Script", segoeFont;
+}
+#content .container-list .list .desc .date:first-child {
+  padding-left: 8px;
+}
+#content .container-list .list .item {
+  box-shadow: 3px 3px 5px #eee;
+  position: relative;
+  padding-bottom: 32px;
+  background: rgba(239, 239, 239, 0.2);
+  margin-right: 32px;
+  margin-top: 48px;
+  width: 360px;
+  overflow: hidden;
+}
+#content .container-list .list .item > a {
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  background: rgba(239, 239, 239, 0.2);
+  margin-bottom: 8px;
+  padding: 6px 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: 0.3s padding ease;
+}
+#content .container-list .list .item > a:hover {
+  padding-left: 16px;
+}
+#content .container-list .list .item > a .date {
+  color: #999;
+  font-size: 12px;
+  font-family: "Segoe Script", segoeFont;
+  margin-right: 4px;
+}
+#content .container-list .list .item .summary {
+  font-size: 15px;
+  padding: 8px;
+  color: #6c757d;
+}
+#content .container-list .list .item .read-more {
+  font-size: 13px;
+  text-align: right;
+  background: rgba(239, 239, 239, 0.2);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+#content .container-list .list .item .read-more a {
+  display: block;
+  padding: 2px 6px;
+  transition: 0.3s padding ease;
+  color: #ced4da;
+}
+#content .container-list .list .item .read-more a:hover {
+  padding-right: 16px;
+}
+#content .container-list .list .item-term {
+  margin: 4px;
+  width: 360px;
+}
+#content .container-list .list .item-term a {
+  box-sizing: border-box;
+  height: 80px;
+  display: block;
+  background: rgba(239, 239, 239, 0.3);
+  margin-bottom: 8px;
+  padding: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 0 16px 0 16px;
+  transition: 0.3s padding ease;
+}
+#content .container-list .list .item-term a:hover {
+  padding-top: 16px;
+}
+#content .container-list .list .item-term a .date {
+  color: #999;
+  font-size: 12px;
+  font-family: "Segoe Script", segoeFont;
+  margin-right: 4px;
+}
+#content .container-list .list .item-term sup {
+  color: #adb5bd;
+}
+#content .container-list .list-single-col {
+  display: block;
+}
+#content .container-list .list-single-col .recentf {
+  width: 760px;
+  margin: 24px auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+#content .container-list .list-single-col .item {
+  width: 760px;
+  margin: 24px auto;
+}
+#content .container-page {
+  position: relative;
+  font-size: 16px;
+  margin: 0 auto;
+  padding: 0 24% 0 16%;
+  max-width: 760px;
+}
+#content .container-page .desc {
+  color: #adb5bd;
+  font-size: 14px;
+}
+#content .container-page .toc {
+  position: fixed;
+  border-left: 1px solid #dee2e6;
+  width: 260px;
+  max-height: 566px;
+  top: 176px;
+  right: 16px;
+  font-size: 14px;
+  overflow: scroll;
+}
+#content .container-page .toc::-webkit-scrollbar {
+  width: 2px;
+}
+#content .container-page .toc::-webkit-scrollbar-thumb {
+  background-color: #dee2e6;
+}
+#content .container-page .toc li {
+  list-style: none;
+}
+#content .container-page .toc li a {
+  color: #6c757d;
+}
+#content .container-page .toc li a:hover {
+  color: #e69;
+}
+#content .container-page .toc .toc-link--active {
+  color: #d14;
+}
+#content .container-page .toc .page-operation {
+  display: flex;
+  position: fixed;
+  top: 136px;
+  right: 144px;
+}
+#content .container-page .toc .page-operation a img {
+  padding: 2px;
+  width: 24px;
+}
+#content .container-page .toc #TableOfContents ul,
+#content .container-page .toc #TableOfContents ol {
+  margin-bottom: 4px;
+}
+#content .container-page .toc #TableOfContents li a:not(:first-child) {
+  color: #dee2e6;
+  font-size: 1px;
+}
+#content .container-page .content p > code,
+#content .container-page .content li > code,
+#content .container-page .content td > code {
+  color: #d63384;
+}
+#content .container-page .content-card h3 {
+  color: #adb5bd;
+  font-size: 18px;
+}
+#content .container-page .content-card h3::before {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  content: "";
+  border-top: 1px dashed #adb5bd;
+  padding-top: 16px;
+}
+#content .container-page .content-card h4 {
+  color: #adb5bd;
+  font-size: 16px;
+}
+#content .container-page .highlight {
+  margin: 16px 0;
+  border-top: 1px solid #e9e7ef;
+  padding: 2px 0;
+  font-size: 14px;
+  overflow: hidden;
+}
+#content .container-page .highlight:hover {
+  overflow: auto;
+}
+#content .container-page .highlight pre {
+  padding-top: 0;
+}
+#content .container-page pre {
+  font-size: 14px;
+  border-top: 1px solid #e9e7ef;
+  border-bottom: 1px solid #e9e7ef;
+  padding: 12px 0;
+  overflow: hidden;
+}
+#content .container-page pre:hover {
+  overflow: auto;
+}
+#content .container-page pre .lang {
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding: 4px 0px;
+  border-bottom: 1px dashed #e9ecef;
+}
+#content .container-page em {
+  font-style: italic;
+}
+#content .container-nav {
+  padding: 0 16%;
+}
+#content .container-nav .toc {
+  position: fixed;
+  right: 100px;
+  top: 183px;
+  height: 468px;
+  overflow: auto;
+  padding: 4px 12px 0px;
+}
+#content .container-nav .toc::-webkit-scrollbar {
+  width: 2px;
+}
+#content .container-nav .toc::-webkit-scrollbar-thumb {
+  background-color: #e9ecef;
+}
+#content .container-nav .toc li {
+  width: 84px;
+  height: 36px;
+  line-height: 28px;
+  list-style: none;
+  border-radius: 8px;
+  margin: 6px 0;
+  border-style: double;
+  border-color: rgba(239, 239, 239, 0.8);
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: 0.2s all linear;
+}
+#content .container-nav .toc li em {
+  color: #666;
+}
+#content .container-nav .toc li a {
+  display: block;
+  padding: 4px 8px;
+  transition: 0.1s all linear;
+  color: #666;
+}
+#content .container-nav .toc li a:hover {
+  padding-left: 28px;
+  background: rgba(239, 239, 239, 0.5);
+}
+#content .container-nav .toc li a:hover em {
+  opacity: 0;
+}
+#content .container-nav h2 {
+  font-size: 16px;
+  color: #adb5bd;
+  font-weight: 400;
+}
+#content .container-nav h2::before {
+  content: "";
+}
+#content .container-nav .content-nav .nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+#content .container-nav .content-nav .nav ul li {
+  box-sizing: border-box;
+  list-style-type: none;
+  width: 20%;
+  margin: 4px 0;
+}
+#content .container-nav .content-nav .nav ul li a {
+  box-sizing: border-box;
+  font-family: jostFont, jinkaiFont, "kaiti", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 16px;
+  transition: 0.3s padding linear;
+  display: inline-block;
+  width: 96%;
+  height: 36px;
+  line-height: 36px;
+  font-weight: 400;
+  padding: 2px 6px;
+  background: rgba(239, 239, 239, 0.5);
+  border-radius: 1px 5px 1px 5px;
+  white-space: nowrap;
+}
+#content .container-nav .content-nav .nav ul li a:hover {
+  padding-left: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#content .container-nav .content-nav p {
+  color: #adb5bd;
+  margin-right: 1%;
+  padding: 8px 4px 2px;
+}
+#content .container-nav .content-nav .bookmark ul {
+  padding: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#content .container-nav .content-nav .bookmark ul:hover {
+  overflow: auto;
+}
+#content .container-nav .content-nav .bookmark ul li {
+  list-style-type: none;
+  transition: 0.3s padding linear;
+  border-radius: 1px 5px 1px 5px;
+  padding-left: 4px;
+}
+#content .container-nav .content-nav .bookmark ul li::before {
+  content: "➣ ";
+}
+#content .container-nav .content-nav .bookmark ul li:hover {
+  padding-left: 16px;
+}
+#content .container-nav .content-nav .bookmark ul li a {
+  display: inline-block;
+  width: 100%;
+  padding: 6px 0;
+}
+#content .container-nav .content-nav .bookmark ul li:nth-child(even) {
+  background: rgba(239, 239, 239, 0.6);
+}
+#content .container-search {
+  font-size: 16px;
+}
+#content .container-search #search {
+  padding: 32px 0;
+  position: relative;
+}
+#content .container-search #search #sc-clear {
+  cursor: pointer;
+  transition: 0.5s opacity ease;
+  position: absolute;
+}
+#content .container-search #search #sc-input {
+  outline-style: none;
+  border: 0px;
+  border-bottom: 1px solid #5dade2;
+  padding-bottom: 8px;
+  padding-left: 32px;
+  font-family: jostFont, jinkaiFont, "kaiti", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  width: 500px;
+  background: rgba(255, 255, 255, 0);
+}
+#content .container-search #search #sc-input:focus-visible {
+  border-color: #0dcaf0;
+}
+#content .container-search #search #sc-input::-moz-placeholder {
+  color: #dee2e6;
+  font-family: "Segoe Script", segoeFont;
+}
+#content .container-search #search #sc-input:-ms-input-placeholder {
+  color: #dee2e6;
+  font-family: "Segoe Script", segoeFont;
+}
+#content .container-search #search #sc-input::placeholder {
+  color: #dee2e6;
+  font-family: "Segoe Script", segoeFont;
+}
+#content .container-search #search #sc-res .statistics {
+  padding: 16px 0 0 56px;
+  color: #adb5bd;
+}
+#content .container-search #search #sc-res hr {
+  border: 1px dashed #ccc;
+  margin: 8px 0;
+}
+#content .container-search .list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+#content .container-search .list .item {
+  box-shadow: 3px 3px 5px #eee;
+  background: rgba(239, 239, 239, 0.2);
+  margin-right: 32px;
+  margin-top: 48px;
+  width: 360px;
+  overflow: hidden;
+}
+#content .container-search .list .item > a {
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  background: rgba(239, 239, 239, 0.2);
+  margin-bottom: 8px;
+  padding: 6px 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: 0.3s padding ease;
+}
+#content .container-search .list .item > a:hover {
+  padding-left: 16px;
+}
+#content .container-search .list .item > a .date {
+  color: #999;
+  font-size: 12px;
+  font-family: "Segoe Script", segoeFont;
+  margin-right: 4px;
+}
+#content .container-search .list .item .summary {
+  font-size: 15px;
+  padding: 8px;
+  color: #6c757d;
+}
+#content .container-search .list-single-col .item {
+  width: 60%;
+  margin: 24px auto;
+}
+#content .container-archive .desc {
+  font-size: 20px;
+}
+#content .container-archive .recentf {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+#content .container-archive .recentf .rec-post .rec-post-item a {
+  font-size: 14px;
+  display: inline-block;
+  background: rgba(239, 239, 239, 0.6);
+  margin: 4px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+#content .container-archive .categories,
+#content .container-archive .tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+#content .container-archive .categories .arc-item,
+#content .container-archive .tags .arc-item {
+  padding: 4px;
+  background: #f8f9fa;
+  margin: 12px 12px 6px 0px;
+  width: 31%;
+  box-sizing: border-box;
+}
+#content .container-archive .categories .arc-item .arc-desc,
+#content .container-archive .tags .arc-item .arc-desc {
+  padding: 8px 0;
+}
+#content .container-archive .categories .arc-item .arc-desc a,
+#content .container-archive .tags .arc-item .arc-desc a {
+  font-size: 16px;
+}
+#content .container-archive .categories .arc-item .arc-desc a sup,
+#content .container-archive .tags .arc-item .arc-desc a sup {
+  color: #dee2e6;
+}
+#content .container-archive .categories .arc-item .arc-post,
+#content .container-archive .tags .arc-item .arc-post {
+  display: flex;
+  flex-wrap: wrap;
+}
+#content .container-archive .categories .arc-item .arc-post .arc-post-item a,
+#content .container-archive .tags .arc-item .arc-post .arc-post-item a {
+  font-size: 14px;
+  display: inline-block;
+  background: rgba(239, 239, 239, 0.6);
+  margin: 4px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+#content .container-archive .tags {
+  margin-top: 32px;
+}
+
+.container-ctgtag {
+  padding-bottom: 8px;
+}
+.container-ctgtag .taxonomy {
+  display: flex;
+}
+.container-ctgtag .taxonomy .ctg {
+  margin-right: 4px;
+}
+.container-ctgtag .taxonomy .ctg a,
+.container-ctgtag .taxonomy .tag a {
+  font-size: 12px;
+  color: #adb5bd;
+  background: rgba(239, 239, 239, 0.6);
+  padding: 0px 8px;
+  border-radius: 4px;
+  margin-right: 4px;
+}
+.container-ctgtag .taxonomy .tag a {
+  border-radius: 0 8px 0 6px;
+}
+
+.container-contact {
+  position: relative;
+  background: rgba(255, 255, 255, 0);
+  text-align: right;
+  margin-top: 128px;
+}
+.container-contact .contact .slogan {
+  padding-right: 8px;
+}
+.container-contact .contact .icons {
+  padding: 4px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.container-contact .contact a svg {
+  padding: 0 5px;
+  opacity: 0.5;
+}
+.container-contact .contact a .qr {
+  width: 0;
+  height: 160px;
+  opacity: 0;
+  position: absolute;
+  top: -200px;
+  transform: translate(-50%);
+  transition: 0.3s all ease;
+}
+.container-contact .contact #wechat:hover .qr {
+  z-index: 1;
+  width: 160px;
+  opacity: 1;
+}
+
+.container-prevnext {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #f8f9fa;
+  padding-top: 32px;
+  overflow: hidden;
+}
+.container-prevnext a {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #dee2e6;
+  min-width: 128px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.container-comment {
+  background: rgba(239, 239, 239, 0.3);
+  margin-top: 32px;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.container-pagination {
+  margin: 0 auto;
+  padding: 32px 0 48px;
+  position: relative;
+}
+.container-pagination ul.pagination {
+  list-style-type: none;
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.container-pagination ul.pagination li.page-item {
+  padding: 8px;
+}
+.container-pagination ul.pagination li.active a {
+  font-weight: 700;
+}
+.container-pagination ul.pagination li.disabled a {
+  opacity: 0.3;
+}
+
+.container-404 .content {
+  width: 54%;
+  margin: 48px auto 56px;
+}
+.container-404 .content .words {
+  text-align: center;
+  font-family: xianmoFont;
+  font-size: 18px;
+}
+.container-404 .desc {
+  text-align: center;
+  font-weight: 700;
+}
+.container-404 .desc a {
+  font-size: 24px;
+}
+
+#footer {
+  background: rgba(255, 255, 255, 0);
+  padding: 16px 0 32px 0;
+  padding: 16px 80px 32px;
+  border-top: 1px solid #eee;
+}
+#footer .container-footer {
+  clear: both;
+  font-size: 14px;
+}
+#footer .container-footer a {
+  color: #5d2f86;
+}
+
+.container-media .media a svg {
+  width: 20px;
+  height: 20px;
+  padding: 6px 0;
+}
+
+body.on-focus-mode {
+  color: #c8c8c8;
+}
+body #write {
+  width: 766px;
+}
+body #write > p > span {
+  width: auto;
+}
+body #write > p > span.md-comment {
+  font-size: 14px;
+  color: #969696;
+}
+body pre {
+  font-size: 14px !important;
+  background: #f6f8fa !important;
+}
+body pre.md-meta-block {
+  padding: 6px;
+}
+body .CodeMirror-code {
+  padding: 4px;
+}
+body #write blockquote {
+  margin: 16px 0;
+}
+
+:root {
+  --bg-color: #333; /*改变背景色*/
+  --text-color: #c7c5c5;
+  --md-char-color: #C7C5C5; /*改变元字符的颜色，例如 markdown 中的“*”*/
+  --meta-content-color: #5b808d; /*改变元内容的颜色，例如 markdown 中的图像文本和链接地址*/
+  --primary-color: #428bca; /*主按钮的颜色*/
+  --primary-btn-border-color: #285e8e;
+  --primary-btn-text-color: #fff;
+  --window-border: 1px solid #eee; /*边栏等的边框*/
+  --active-file-bg-color: #696969; /*文件树或文件列表中当前项的背景色*/
+  --active-file-text-color: inherit;
+  --active-file-border-color: #777;
+  --side-bar-bg-color: var(--bg-color); /*改变边栏颜色*/
+  --item-hover-bg-color: #696969;
+  --item-hover-text-color: inherit;
+  --blur-text-color:#696969;
+  --select-text-bg-color: #696969;
+}
+
+body {
+  background: #333;
+  color: #c7c5c5;
+}
+body.on-focus-mode {
+  color: #696969;
+}
+body.on-focus-mode #typora-sidebar {
+  color: #c7c5c5;
+}
+body .typora-quick-open-item.active {
+  background: #696969;
+}
+body a {
+  color: #aa8ac7;
+}
+body pre {
+  background: #333 !important;
+  border: 1px solid #666;
+}
+body .summary code, body p code, body td code, body li code {
+  color: #c2588d;
+}
+body .cm-s-inner .cm-keyword {
+  color: #906d95;
+}
+body .cm-s-inner .cm-comment, body .cm-s-inner.cm-comment {
+  color: #8d8781;
+}
+body .cm-s-inner .cm-property {
+  color: #c7c5c5;
+}
+body .cm-s-inner .cm-atom, body .cm-s-inner.cm-atom {
+  color: #78739d;
+}
+body .cm-s-inner .cm-string {
+  color: #9a7c7c;
+}
+body .cm-s-inner .cm-string-2 {
+  color: #9a7c7c;
+}
+body .cm-s-inner .cm-builtin {
+  color: #8c83a3;
+}
+body .cm-s-inner .cm-def {
+  color: #8a8aeb;
+}
+body .cm-s-inner .cm-variable-3 {
+  color: #588474;
+}
+body .cm-s-inner .cm-variable-2 {
+  color: #4a739c;
+}
+body .cm-s-inner .cm-variable {
+  color: #a8a5a5;
+}
+body .cm-s-inner .cm-operator {
+  color: #8c6060;
+}
+body .cm-s-inner .cm-number {
+  color: #497663;
+}
+body .cm-s-inner .cm-attribute {
+  color: #aaaac7;
+}
+body .cm-s-inner .cm-tag {
+  color: #62815d;
+}
+body .cm-invalidchar {
+  color: #865858;
+}
+body .cm-s-inner .CodeMirror-cursor {
+  border-left: solid thin #f8f8f2 !important;
+  margin-left: 4px;
+}/*# sourceMappingURL=virgo-dark.css.map */
 
 
 </style>
 </head>
 <body class='typora-export'>
-<div id='write'  class=''><h1><a name="processamento-digital-de-sinais-eng-elétrica" class="md-header-anchor"></a><span>Processamento Digital de Sinais (Eng. Elétrica)</span></h1><p><strong><span>Conteúdo sendo previsto</span></strong><span> (parte teórica):</span></p><ol start='' ><li><p><a href='../Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf'><span>Teoria da amostragem e Aquisição de Sinais</span></a><span>.</span></p><ol start='' ><li><a href='https://fpassold.github.io/Controle_3/Teste_Amost/teste_amostragem.html'><span>Simulação demonstrando Teorema da Amostragem</span></a><span> (</span><em><span>Amostrando uma onda dente-de-serra</span></em><span>).</span></li><li><a href='https://fpassold.github.io/Controle_3/estudo_dirigido/Síntese_Onda_Quadrada.html'><span>Síntese de Onda Quadrada usando Série de Fourier</span></a><span>. </span></li><li><a href='https://demonstrations.wolfram.com/SamplingTheorem/'><span>Wolfram Demonstrations Project: </span><strong><span>Sampling Theorem</span></strong></a></li><li><a href='https://demonstrations.wolfram.com/AliasingInTimeSeriesAnalysis/'><span>Wolfram Demonstrations Project: </span><strong><span>Aliasing</span></strong><span> in Time Series Analysis</span></a><span>;</span></li></ol></li><li><p><span>Transformada Z.</span></p><ol start='' ><li><p><span>Parte 1:  </span><a href='../Controle_3/3_transformada/transformada_Z.pdf'><span>transformada_Z.pdf</span></a><span> </span></p></li><li><p><span>Parte 2:  </span><a href='../Controle_3/3_transformada/transformada_Z_parte2.pdf'><span>transformada_Z_parte2.pdf</span></a><span> </span></p></li><li><p><span>Parte 3:  </span><a href='../Controle_3/3_transformada/transformada_Z_parte_3.pdf'><span>transformada_Z_parte_3.pdf</span></a><span> </span></p></li><li><p><span>Resumo:  </span><a href='../Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf'><span>revisao_partes_importantes_transformada_Z.pdf</span></a><span> </span></p><!--Bloco que será explorado?; 5. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf)); 6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)--></li></ol></li><li><p><a href='../Matlab/aula_intro_matlab_1.html'><span>Introdução ao Matlab</span></a><span> </span></p></li><li><p><span>Mapeamento entre planos S e Z.</span></p></li><li><p><span>Análise de sinais e sistemas discretos nos domínios do tempo e da frequência.</span></p></li><li><p><span>Transformada discreta de Fourier (DFT/FFT).</span></p></li><li><p><span>Filtros digitais.</span></p><ol start='' ><li><span>Filtros FIR</span></li><li><span>Filtros IFIR</span></li></ol></li><li><p><span>Implementação em sistemas embarcados de filtros digitais.</span></p></li></ol><p>&nbsp;</p><p><strong><span>Formas de Avaliação:</span></strong></p><!--Provas teóricas abordando os conceitos fundamentais.--><ul><li><p><span>Avaliação de projetos de filtros digitais</span></p></li><li><p><span>Participação em discussões e atividades em sala de aula.</span></p></li><li><p><span>Trabalhos individuais e em grupo.</span></p><ul><li><a href='trabalho_1_2024_1.html'><span>Trabalho #1)</span></a><span> Sobre sinais amostrados (Teorema de Amostragem)</span>
-<span>Deadline: 02/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).</span></li></ul></li></ul><p>&nbsp;</p><p><strong><span>Softwares Indicados:</span></strong></p><ul><li><span>MATLAB/Simulink para análise e simulação de filtros digitais.</span></li></ul><hr /><p><span>Prof. Passold, em 11/03/2024</span></p><p>&nbsp;</p></div>
+<div id='write'  class=''><h1><a name="processamento-digital-de-sinais-eng-elétrica" class="md-header-anchor"></a><span>Processamento Digital de Sinais (Eng. Elétrica)</span></h1><p><strong><span>Conteúdo sendo previsto</span></strong><span> (parte teórica):</span></p><ol start='' ><li><p><a href='../Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf'><span>Teoria da amostragem e Aquisição de Sinais</span></a><span>.</span></p><ol start='' ><li><a href='https://fpassold.github.io/Controle_3/Teste_Amost/teste_amostragem.html'><span>Simulação demonstrando Teorema da Amostragem</span></a><span> (</span><em><span>Amostrando uma onda dente-de-serra</span></em><span>).</span></li><li><a href='https://fpassold.github.io/Controle_3/estudo_dirigido/Síntese_Onda_Quadrada.html'><span>Síntese de Onda Quadrada usando Série de Fourier</span></a><span>. </span></li><li><a href='https://demonstrations.wolfram.com/SamplingTheorem/'><span>Wolfram Demonstrations Project: </span><strong><span>Sampling Theorem</span></strong></a></li><li><a href='https://demonstrations.wolfram.com/AliasingInTimeSeriesAnalysis/'><span>Wolfram Demonstrations Project: </span><strong><span>Aliasing</span></strong><span> in Time Series Analysis</span></a><span>;</span></li></ol></li><li><p><span>Transformada Z.</span></p><ol start='' ><li><p><span>Parte 1:  </span><a href='../Controle_3/3_transformada/transformada_Z.pdf'><span>transformada_Z.pdf</span></a><span> </span></p></li><li><p><span>Parte 2:  </span><a href='../Controle_3/3_transformada/transformada_Z_parte2.pdf'><span>transformada_Z_parte2.pdf</span></a><span> </span></p></li><li><p><span>Parte 3:  </span><a href='../Controle_3/3_transformada/transformada_Z_parte_3.pdf'><span>transformada_Z_parte_3.pdf</span></a><span> </span></p></li><li><p><span>Resumo:  </span><a href='../Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf'><span>revisao_partes_importantes_transformada_Z.pdf</span></a><span> </span></p><!--Bloco que será explorado?; 5. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf)); 6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)--></li></ol></li><li><p><a href='https://fpassold.github.io/Matlab/aula_intro_matlab_1.html'><span>Iniciando no Matlab</span></a><span> ou </span><a href='https://fpassold.github.io/Matlab/tutorial.html'><span>Matlab fácil</span></a><span> (outro tutorial) ou </span><a href='https://fpassold.github.io/Matlab/Matlab_guide.pdf'><span>Matlab Guide</span></a><span> (arquivo PDF, 44 pp.) </span></p></li><li><p><a href='intro_process_sinal.html'><span>Intro. Sistemas Processamento Digital de Sinais</span></a></p><ol start='' ><li><p><a href='media_movel.html'><span>Filtro de Média Móvel</span></a></p><ol start='' ><li><a href='funcao_filter.html'><span>Uso da função </span><code>filter()</code><span> do Matlab</span></a></li></ol></li><li><p><a href='modelo_termico.html'><span>Modelagem de Sistema Térmico</span></a></p></li></ol></li><li><p><a href='usando_fft_matlab.html'><span>Usando FFT (no Matlab)</span></a></p></li></ol><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="0.646ex" height="3.478ex" viewBox="0 -1384.9 278 1497.6" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E10-MJMAIN-22EE" d="M78 30Q78 54 95 72T138 90Q162 90 180 74T199 31Q199 6 182 -12T139 -30T96 -13T78 30ZM78 440Q78 464 95 482T138 500Q162 500 180 484T199 441Q199 416 182 398T139 380T96 397T78 440ZM78 840Q78 864 95 882T138 900Q162 900 180 884T199 841Q199 816 182 798T139 780T96 797T78 840Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E10-MJMAIN-22EE" x="0" y="0"></use></g></svg></span><script type="math/tex">\vdots</script><span> </span><font color="gray"><span>Conteúdo sendo atualizado...</span></font></p><!--Obs.: Sequencia abaixo sendo revisada...-->
+<!--Mapeamento entre planos S e Z.-->
+<!--Análise de sinais e sistemas discretos nos domínios do tempo e da frequência.-->
+<!--Transformada discreta de Fourier (DFT/FFT).-->
+<!--Filtros digitais.-->
+<!--Filtros FIR-->
+<!--Filtros IFIR-->
+<!--Implementação em sistemas embarcados de filtros digitais.--><p><strong><span>Formas de Avaliação:</span></strong></p><!--Provas teóricas abordando os conceitos fundamentais.--><ul><li><p><span>Avaliação de projetos de filtros digitais</span></p></li><li><p><span>Participação em discussões e atividades em sala de aula.</span></p></li><li><p><span>Trabalhos individuais e em grupo.</span></p><ul><li><a href='trabalho_1_2024_1.html'><span>Trabalho #1)</span></a><span> Sobre sinais amostrados (Teorema de Amostragem)</span>
+<span>Deadline: 15/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).</span></li></ul></li></ul><p>&nbsp;</p><p><strong><span>Softwares Indicados:</span></strong></p><ul><li><span>MATLAB/Simulink para análise e simulação de filtros digitais.</span></li><li><a href='http://octave-online.net/' target='_blank' class='url'>http://octave-online.net/</a><span> (versão online do Octave).</span></li></ul><hr /><p><span>Prof. Passold, em 11/03/2024</span></p><p>&nbsp;</p></div>
 </body>
 </html>

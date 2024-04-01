@@ -17,22 +17,26 @@
    
       <!--Bloco que será explorado?; 5. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf)); 6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)-->
    
-3. [Introdução ao Matlab](../Matlab/aula_intro_matlab_1.html) 
+3. [Iniciando no Matlab](https://fpassold.github.io/Matlab/aula_intro_matlab_1.html) ou [Matlab fácil](https://fpassold.github.io/Matlab/tutorial.html) (outro tutorial) ou [Matlab Guide](https://fpassold.github.io/Matlab/Matlab_guide.pdf) (arquivo PDF, 44 pp.) 
 
-4. Mapeamento entre planos S e Z.
+4. [Intro. Sistemas Processamento Digital de Sinais](intro_process_sinal.html)
 
-5. Análise de sinais e sistemas discretos nos domínios do tempo e da frequência.
+   1. [Filtro de Média Móvel](media_movel.html)
+      1. [Uso da função `filter()` do Matlab](funcao_filter.html)
+   2. [Modelagem de Sistema Térmico](modelo_termico.html)
 
-6. Transformada discreta de Fourier (DFT/FFT).
+5. [Usando FFT (no Matlab)](usando_fft_matlab.html)
 
-7. Filtros digitais.
+$\vdots$ <font color="gray">Conteúdo sendo atualizado...</font>
 
-   1. Filtros FIR
-   2. Filtros IFIR
-
-8. Implementação em sistemas embarcados de filtros digitais.
-
-
+<!--Obs.: Sequencia abaixo sendo revisada...-->
+<!--Mapeamento entre planos S e Z.-->
+<!--Análise de sinais e sistemas discretos nos domínios do tempo e da frequência.-->
+<!--Transformada discreta de Fourier (DFT/FFT).-->
+<!--Filtros digitais.-->
+<!--Filtros FIR-->
+<!--Filtros IFIR-->
+<!--Implementação em sistemas embarcados de filtros digitais.-->
 
 **Formas de Avaliação:**
 
@@ -42,13 +46,14 @@
 - Participação em discussões e atividades em sala de aula.
 - Trabalhos individuais e em grupo.
   - [Trabalho #1)](trabalho_1_2024_1.html) Sobre sinais amostrados (Teorema de Amostragem)
-    Deadline: 02/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).
+    Deadline: 15/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).
 
 
 
 **Softwares Indicados:**
 
 - MATLAB/Simulink para análise e simulação de filtros digitais.
+- http://octave-online.net/ (versão online do Octave).
 
 ---
 
