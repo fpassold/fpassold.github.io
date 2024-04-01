@@ -2,7 +2,7 @@
 
 # Processamento de Sinais e Controle Digital
 
-**Conteúdo sendo previsto** (parte teórica):
+**Conteúdo Previsto** (parte teórica):
 
 1. [Teoria da amostragem e Aquisição de Sinais](../Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf).
    1. [Simulação demonstrando Teorema da Amostragem](https://fpassold.github.io/Controle_3/Teste_Amost/teste_amostragem.html) (*Amostrando uma onda dente-de-serra*).
@@ -23,26 +23,25 @@
    3. [Introdução à Modelagem](5_intro_modelagem.pdf) (algumas técnicas).
    4. [Paralelos entre plano-s $\times$ plano-z](6_respostas_paralelos_s_z.pdf) (parte final: malha controle digital típica).
 4. [Introdução ao Matlab](../Matlab/aula_intro_matlab_1.html) 
-5. Ações de Controle Típicas
-   1. [Ações Básicas de Controle](7_acoes_controle.pdf) ): P, PI, PD, PID e outros (mundo contínuo):
-      1. Modelos/Simulações no mundo discreto - plano-z;
-6. Projetos de Controladores Digitais usando Root-Locus
+5. [Ações Básicas de Controle](7_acoes_controle.pdf) ): P, PI, PD, PID e outros (mundo contínuo).
+6. [Teoria do Erro](https://fpassold.github.io/Controle_3/4_teoria_erros/resumo_teoria_erro.html) (ou da Precisão)
+7. Projetos de Controladores Digitais usando Root-Locus
    1. O que é o "Root Locus" ?
    2. Controlador Proporcional
    3. Controlador PI
    4. Controlador PD
    5. Controlador PID
-7. Variações de PID´s
-8. Implementação em sistemas embarcados de controladores digitais.
-9. Análise de Sinais/Transformada de Fourir/Modelagem - aplica à Processamento (Digital) de Sinais
-   1. Diagrama de Bode (análise)
-   2. Série de Fourier (espectro de ondas; síntese de onda quadrada)
-   3. DFT e FFT, cuidados.
-10. Filtros digitais.
-   1. Filtros de média aritmética, média móvel;
-   2. Filtros FIR
-   3. Filtros IFIR
-11. Implementação em sistemas embarcados de filtros digitais.
+8. Variações de PID´s
+9. Implementação em sistemas embarcados de controladores digitais.
+10. Análise de Sinais/Transformada de Fourir/Modelagem - aplica à Processamento (Digital) de Sinais
+   11. Diagrama de Bode (análise)
+   12. Série de Fourier (espectro de ondas; síntese de onda quadrada)
+   13. DFT e FFT, cuidados.
+14. Filtros digitais.
+    1. Filtros de média aritmética, média móvel;
+    2. Filtros FIR
+    3. Filtros IFIR
+15. Implementação em sistemas embarcados de filtros digitais.
 
 ---
 
@@ -73,5 +72,6 @@ Detalhes:
 
 ---
 
-Prof. Passold, em 11/03/2024, 18/03/2024.
+<font size="1">[T. Dark Graphite]</font>
+<font size="2">Prof. Passold, em 11/03/2024, 18/03/2024, 31/04/2024.</font>
 

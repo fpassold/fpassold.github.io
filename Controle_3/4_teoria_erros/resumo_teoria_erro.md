@@ -2,9 +2,9 @@
 
 # Resumo Teoria do Erro (ou da Precisão)
 
-Tópico explorado nesta aula:
+<!--Tópico explorado nesta aula:-->
 
-* Cap 4) Teoria do Erro (da Apostila)
+<!--* Cap 4) Teoria do Erro (da Apostila)-->
 
 ## Considerações principais
 
@@ -26,7 +26,7 @@ $\dfrac{Y(z)}{R(z)}=\dfrac{FTMA(z)}{1+FTMA(z)}$
 
 Quando isolamos o sinal do Erro a equação fica:
 
-$E(z)=\left[ \dfrac{1}{1+FTMA(z)} \right] \; R(z)$
+$E(z)=\left[ \dfrac{1}{1+FTMA(z)} \right] \; R(z)$	(eq. (1))
 
 ou seja, o erro só depende de:
 
@@ -35,10 +35,10 @@ ou seja, o erro só depende de:
 
 Supondo diferentes tipos de sistemas para a $FTMA(z)$ e diferentes sinais de referência $R(z)$ teremos:
 
-$FTMA(z)$ : pode ser um sistema do tipo:
+$FTMA(z)$ : pode ser um sistema do tipo $n$, onde:
 
-* 0 (sem integrador);
-* tipo 1 (1 integrador);
+* $n=0$: sistema tipo 0, sistema sem integrador;
+* $n=1$: sistema tipo 1 (com 1 integrador);
 * tipo $n$ ($n$ integradores).
 
 De modo geral podemos escrever a $FTMA(z)$ como:
@@ -47,57 +47,111 @@ FTMF(z)=\dfrac{N(z)}{D(z)}=\dfrac{K(z-z_1)(z-z_2)\cdots(z-zi)}{(z-1)^n(z-p_1)(z-
 $$
 onde: $K$ é um “ganho”; num sistema com $i$ zeros, $j$ pólos e eventualmente $n$ integradores.
 
-A questão agora é: **— Como distinguit um integrador** (ou mais) dentro de uma $FTMA(z)$ (no plano-z) ?
+A questão agora é: **— Como identificar um integrador** (ou mais) dentro de uma $FTMA(z)$ (no plano-z) ?
 
 ## Ação Integral
 
-Um sistema com ação integral fica:
+NUm sistema discreto, podemos sintetizar uma ação integral fazendo:
 
-* no caso de integração numérica retangular:
+* integração numérica retangular:
   <img src="fig_3_int_retangular.png" alt="fig_3_int_retangular.png" style="zoom:15%;" />
 
 Tentando generalizar (extrair) uma equação no plano-z para um processo de integração numérica retangular, percebemos que:
 
+Desenvolvendo as equações, supondo que estamos interessados em integrar o erro de malha-fechada de um sistema, $e[k]$ ou $E(z)$, teremos:
+
 > em $k=0 \quad \therefore \quad i[0]=0$
 >
-> em $k=1 \quad \therefore \quad i[1]=i[0]+T \cdot g[0]$
+> em $k=1 \quad \therefore \quad i[1]=i[0]+T \cdot e[0]$
 >
-> em $k=2 \quad \therefore \quad i[2]=i[1]+T \cdot g[1]$
+> em $k=2 \quad \therefore \quad i[2]=i[1]+T \cdot e[1]$
 >
-> e assim por diante, então podemos generalizar esta processo/equação para:
+> e assim por diante, então podemos generalizar esta processe/equação para:
 >
-> $i[k] = i[k-1]+T \cdot g[k-1]$
+> $i[k] = i[k-1]+T \cdot e[k-1]$
 >
 > A eq. anteior está no formato de “equação de diferenças”, sua transformada $\mathcal{Z}$ rede:
 >
-> $I(z)=z^{-1}I(z)+T\; z^{-1} \; G(z)$
+> $I(z)=z^{-1}I(z)+T\; z^{-1} \; E(z)$
 >
 > melhorando a expressão acima:
 >
-> $I(z)\left[ 1-z^{-1}\right]=T\;z^{-1}\;G(z)$
+> $I(z)\left[ 1-z^{-1}\right]=T\;z^{-1}\;E(z)$
 >
 > e finalmente temos que:
 >
-> $I(z)=\left( \dfrac{T\;z^{-1}}{1-z^{-1}} \right) G(z)$
+> $I(z)=\left( \dfrac{T\;z^{-1}}{1-z^{-1}} \right) E(z)$
 >
 > ou:
 
-$I(z)=\dfrac{T}{(z-1)} \cdot G(z)$
+$I(z)=\dfrac{T}{ \textcolor{blue}{(z-1)} } \cdot E(z)$
 
-onde $G(z)$ é o sinal que está sendo integrado e $I(z)$ é o resultado da integração. Note o pólo em $z=1$, o **Integrador**.
+onde $E(z)$ é o sinal que está sendo integrado (o erro do sistema) e $I(z)$ é o resultado da integração. 
 
-* no caso de integração numérica trapezoidal:
+Note o pólo em $z=1$, o **Integrador**.
+
+* no caso de uma integração numérica trapezoidal:
   <img src="fig_4_Int_trapezio.png" alt="fig_4_Int_trapezio.png" style="zoom:20%;" />
 
-Desenvolvendo as equações chegaremos à:
+Desenvolvendo as equações para este caso resulta:
 
-$I(z)=\dfrac{T}{2} \cdot \dfrac{(z+1)}{(z-1)} \cdot G(z)$
+> Lembrando do cálculo da área de um trapézio:
+> 
+> $A=\left( \dfrac{B+b}{2} \right) \cdot h$
+> 
+> onde: $B=$ base maior; $b=$ base menor; $h=$ "altura" do trapézio. Neste caso, as "bases" correspondem aos valores dos erros amostrados e a "altura" corresponde a passagem de tempo, ou período de amostragem adotado, $T$.
+> 
+> Então:
+> 
+> em $k=0 \quad \therefore \quad i[0]=0$
+>
+> em $k=1 \quad \therefore \quad i[1]=i[0]+T \left( \dfrac{e[1]+e[0]}{2} \right)$
+>
+> em $k=2 \quad \therefore \quad i[2]=i[1]+ \dfrac{T}{2} \cdot \left( e[2] + e[1] \right)$
+>
+> e assim por diante, então podemos generalizar este processo/equação para:
+>
+> $i[k] = i[k-1]+ \dfrac{T \left( e[k] + e[k-1] \right)}{2}$
+>
+> A eq. anteior está no formato de “equação de diferenças”, sua transformada $\mathcal{Z}$ rede:
+>
+> $I(z)=z^{-1}I(z)+ \dfrac{T}{2} E(z) \left( 1 + z^{-1} \right)$
+>
+> melhorando a expressão acima:
+>
+> $I(z)\left[ 1-z^{-1}\right]=\dfrac{T}{2}E(z)\left( 1 + z^{-1} \right)$
+>
+> e finalmente temos que:
+>
+> $I(z)=\dfrac{T}{2 }\cdot \dfrac{(1+z^{-1})}{(1-z^{-1})} \cdot E(z)$
+>
+> ou:
+
+E assim chegaremos à:
+
+$I(z)=\dfrac{T}{2} \cdot \dfrac{(z+1)}{\textcolor{blue}{(z-1)}} \cdot E(z)$
 
 **Note que**: Nos 2 casos, sempre surge um __pólo em $z=1$__. 
 
-Um pólo em $z=1$ caracteriza o que chamamos de __ação integral__.
+**Conclusão final**: Um pólo em $z=1$ caracteriza o que chamamos de __ação integral__.
 
-## Sinais de referência típicos
+## Determinando o erro
+
+Lembrando da eq. (1), temos que:
+
+$E(z)=\left[ \dfrac{1}{1+FTMA(z)} \right] \; R(z)$
+
+Usando da **Propriedade da Transformada-$\mathbb{Z}$: Valor final**, temos que:
+
+$e(\infty) = \mathop {\lim }\limits_{k \to \infty} \; e(kT) = \mathop {\lim }\limits_{z \to 1} \;\; (z-1) \cdot \left( \dfrac{1}{1+FTMA(z)} \right) \cdot R(z)$
+
+Notamos que erro só depende do sinal referência, $R(z)$, e da função transferência de malha direta, $FTMA(z)$. Ou seja, ele pode variar com o tipo de sinal de referência aplicado num sistema e pode ser modificado se a $FTMA(z|)$ for convenientemente alterada através de um cuidadoso projeto do controlador da malha, $C(z)$, lembrando que:
+
+$FTMA(s)=C(z)\cdot BoG(z)$
+
+Para continuar podemos considerar diferentes sinais de referência e tentar prever o valor do erro.
+
+### Sinais de referência típicos
 
 | Entrada:    | Domínio tempo:                                               | Tranformada $\mathcal{Z}$                                    | Gráfico                       |
 | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------- |
@@ -105,25 +159,179 @@ Um pólo em $z=1$ caracteriza o que chamamos de __ação integral__.
 | Rampa:      | $r(t) = \left\{ \begin{array}{ll} 0, & t<0\\ \textcolor{blue}{A} \cdot t, & t \ge 0 \\ \end{array} \right.$ | $R(z)= \dfrac{\textcolor{blue}{A} \cdot T \, z}{(z-1)^2}$    | ![rampa.png](rampa.png)       |
 | Parabólica: | $r(t) = \left\{ \begin{array}{ll} 0, & t<0\\ \textcolor{blue}{A} \cdot \frac{1}{2} \, t^2, & t \ge 0 \\ \end{array} \right.$ | $R(z)=  \dfrac{\textcolor{blue}{A} \; T^2 \, z(z+1)}{2 \, (z-1)^3}$ | ![parabola.png](parabola.png) |
 
-## Determinando o erro
+Analisando alguns casos...
 
-A eq. geral para erro de regime permanente fica:
+### Erro para Entrada Degrau
 
-$E=\mathcal{f}\left( R, FTMA\right)$, no plano-z:
+Erro para entrada degrau:
 
-$E(z)=\left[ \dfrac{1}{1+FTMA(z)} \right] \; R(z)$
+$e_{step}(\infty)=\displaystyle\lim_{z \to 1} (z-1) \cdot \dfrac{1}{(1+FTMA(z)} \cdot \underbrace{\dfrac{z}{(z-1)}}_{\text{Degrau}}$
 
-Usando Teorema do Valor final temos:
+$e_{step}(\infty)=\displaystyle\lim_{z \to 1} \cancel{(z-1)} \cdot \dfrac{1}{(1+FTMA(z)} \cdot \dfrac{z}{ \cancel{(z-1)} }$
 
-$e(\infty) = \mathop {\lim }\limits_{k \to \infty} \; e(kT) = \mathop {\lim }\limits_{z \to 1} \;\; (z-1) \cdot \left( \dfrac{1}{1+FTMA(z)} \right) \cdot R(z)$
+$e_{step}(\infty)= \dfrac{1}{1 + \displaystyle\lim_{z \to 1} FTMA(z)}$
 
-O erro agora depende de $R(Z)$ e $FTMA(z)$.
+Temos que agora analisar para diferentes tipos de sistemas (para a $FTMA(z)$).
+
+#### Erro para Entrada Degrau e Sistema tipo 0
+
+Se a $FTMA(z)$ corresponde à um sistema do tipo 0 (sem integrador), então:
+
+$FTMA(z)=\dfrac{N(z)}{D(z)}=\dfrac{K(z-z_1) \cdots (z-z_n)}{(z-p_1)\cdots(z-p_m)}$
+
+Teremos então que:
+
+$\displaystyle\lim_{z \to 1} FTMA(z)=\displaystyle\lim_{z \to 1} \dfrac{K(z-z_1) \cdots (z-z_n)}{(z-p_1)\cdots(z-p_m)}=\dfrac{K(z_1)\cdots(z_n)}{(p_1)\cdots(p_m)}=\dfrac{cte_1}{cte_2}=cte_3$
+
+e assim:
+
+$e_{step}(\infty)= \dfrac{1}{1 + \displaystyle\lim_{z \to 1} FTMA(z)} = \dfrac{1}{1 + cte_3}=cte_4 \quad \ne \quad 0$
+
+Algo como mostrado na próxima figura:
+
+<img src="erro_degrau_sistema0.png" alt="erro_degrau_sistema0" style="zoom:33%;" />
+
+ou seja, concluímos que leva à um erro constante diferente de zero (não nulo), mas constante (limitado).
+
+Note que a constante $cte_3$ é chamada de "==constante de posição==" (ou constante do erro estático de posição), e assim esta equação fica generalizada para:
+
+$e_{step}(\infty)=\dfrac{1}{1+\displaystyle\lim_{z \to 1} FTMA(z)}=\dfrac{1}{(1+K_P)}$ 
+
+Onde: $K_p=\displaystyle\lim_{z \to 1} FTMA(z)$.
+
+#### Erro para entrada degrau e sistema tipo 1
+
+Se a $FTMA(z)$ corresponde à um sistema do tipo 1 (com 1 integrador), então:
+
+$FTMA(z)=\dfrac{N(z)}{D(z)}=\dfrac{K(z-z_1) \cdots (z-z_n)}{ \textcolor{blue}{(z-1)} \cdots(z-p_m)}$
+
+Teremos então que:
+
+$K_p = \displaystyle\lim_{z \to 1} FTMA(z) = \displaystyle\lim_{z \to 1} \dfrac{K(z-z_1) \cdots (z-z_n)}{ \textcolor{blue}{(z-1)} \cdots(z-p_m)} = \dfrac{K(z_1)\cdots(z_n)}{ \underbrace{(z-1)}_{\to 0} \cdots (p_m) }=\dfrac{cte_1}{ \underbrace{(z-1)}_{\to 0} \cdot cte_2} = \dfrac{cte_1}{\to 0}=\infty$, 
+
+o que implica em:
+
+$e_{step}(\infty)= \dfrac{1}{1 + \infty} = \dfrac{1}{\infty}= 0$
+
+Algo como:
+
+<img src="erro_degrau_sistema1.png" alt="erro_degrau_sistema1" style="zoom:33%;" />
+
+ou seja, o erro tende à zero, isto significa que a saída converge para o mesmo valor da rampa (sem erro em regime permanente).
+
+#### Entrada degrau e sistemas tipo $>1$
+
+Podemos repetir o raciocínio da entrada degrau para sistemas maiores que 1 e também vamos concluir que neste caso, para entrada degrau, basta um integrador presente na malha-direta para que $e(\infty)=0$.
+
+### Erro para entrada Rampa
+
+Neste caso, a equação do erro fica:
+
+$e_{Ramp}(\infty)=\displaystyle\lim_{z \to 1} \cancel{(z-1)} \left[ \dfrac{1}{1+FTMA(z)}\right] \cdot \dfrac{T\;z}{ (z-1)^{\textcolor{blue}{\cancel{2}^1} } }$
+
+$e_{Ramp}(\infty)=\dfrac{T}{ \displaystyle\lim_{z \to 1} \; (z-1) \; FTMA(z) }=\dfrac{T}{K_v}$
+
+Neste caso, surge a ==constante de velocidade==, $K_v$ (constante do erro estático de velocidade):
+
+$K_v=\displaystyle\lim_{z \to 1} \; (z-1) \cdot FTMA(z)$
+
+#### Erro para Entrada Rampa e sistema tipo 0
+
+Neste caso, a $FTMA(z)$ é do tipo:
+
+$FTMA(z)=\dfrac{N(z)}{D(z)}=\dfrac{K(z-z_1) \cdots (z-z_n)}{(z-p_1)\cdots(z-p_m)}$
+
+A constante de velocidade fica:
+
+$K_v=\displaystyle\lim_{z \to 1} \; (z-1) \cdot FTMA(z) = \overbrace{(z-1)}^{\to 0} \cdot \dfrac{K(z_1)\cdots(z_n)}{(p_1)\cdots(p_m)} = 0$
+
+E então:
+
+$e_{Ramp}(\infty)=\dfrac{T}{ \displaystyle\lim_{z \to 1} \; (z-1) \; FTMA(z) }=\dfrac{T}{K_v}=\dfrac{T}{\to 0} \to \infty$
+
+Algo do tipo:
+
+<img src="erro_rampa_sistema0.png" alt="erro_rampa_sistema0" style="zoom:33%;" />
+
+ou seja, a saída do sistema não converge (não consegue acompanhar a rampa) e o erro é cada vez maior, ou tendendo ao $\infty$.
+
+#### Erro para Entrada Rampa e sistema tipo 1
+
+Neste caso, a $FTMA(z)$ é do tipo:
+
+$FTMA(z)=\dfrac{N(z)}{D(z)}=\dfrac{K(z-z_1) \cdots (z-z_n)}{ \textcolor{blue}{(z-1)} \cdots(z-p_m)}$
+
+A constante de velocidade fica:
+
+$K_v=\displaystyle\lim_{z \to 1} \; (z-1) \cdot FTMA(z)$
+
+$K_v=\displaystyle\lim_{z \to 1} \dfrac{ \cancel{(z-1)} \cdot K(z-z_1) \cdots (z-z_n)}{ \cancel{(z-1)} \cdots (z-p_m)}$
+
+$K_v=\dfrac{K(z_1)\cdots(z_n)}{(p_1)\cdots(p_m)}=\dfrac{cte_1}{cte_2}=cte_3$.
+
+E então:
+
+$e_{Ramp}(\infty)=\dfrac{T}{K_v}=\dfrac{T}{cte_3} = cte_4$
+
+Ou algo como:
+
+<img src="erro_rampa_sistema1.png" alt="erro_rampa_sistema1" style="zoom:33%;" />
+
+ou seja, a saída do sistema converge para determinado valor, um valor não nulo, ou seja, um erro em regime permanente. Isto significa que passado um certo período de tempo (o período transitório), a saída do sistema acompanha a rampa de forma "paralela", mantendo um erro constante.
+
+#### Erro para Entrada Rampa e sistema tipo 2
+
+Neste caso, a $FTMA(z)$ é do tipo:
+
+$FTMA(z)=\dfrac{N(z)}{D(z)}=\dfrac{K(z-z_1) \cdots (z-z_n)}{ \textcolor{blue}{(z-1)^2} \cdots (z-p_m)}$
+
+A constante de velocidade fica:
+
+$K_v=\displaystyle\lim_{z \to 1} \; (z-1) \cdot FTMA(z)$
+
+$K_v=\displaystyle\lim_{z \to 1} \dfrac{ \cancel{(z-1)} \cdot K(z-z_1) \cdots (z-z_n)}{ (z-1)^{ \cancel{\textcolor{blue}{2}}^1 } (z-p_1) \cdots (z-p_m)}$
+
+$K_v=\dfrac{cte_1}{ \underbrace{\displaystyle\lim_{z \to 1}(z-1)}_{\to 0} \cdot cte_2}=\dfrac{cte_1}{\to0}=\infty$.
+
+E então:
+
+$e_{Ramp}(\infty)=\dfrac{T}{K_v}=\dfrac{T}{\infty}=0$
+
+Numa figura:
+
+<img src="erro_rampa_sistema2.png" alt="erro_rampa_sistema2" style="zoom:33%;" />
+
+ou seja, a saída do sistema converge para o mesmo valor da rampa, ou seja, irá acompanhar a rampa sem nenhum erro.
+
+### Erro para Entrada Parabólica
+
+Neste caso, a equação do erro fica:
+
+$e_{Parabola}(\infty)=\displaystyle\lim_{z \to 1} \cancel{(z-1)} \left[ \dfrac{1}{1+FTMA(z)}\right] \cdot \dfrac{T^2\;z(z+1)}{ 2(z-1)^{\textcolor{blue}{\cancel{3}^2} } }$
+
+$e_{Ramp}(\infty)=\dfrac{T}{ \displaystyle\lim_{z \to 1} \; (z-1) \; FTMA(z) }=\dfrac{T}{K_v}$
+
+$e_{Parabola}(\infty)=\dfrac{T^2}{ \displaystyle\lim_{z \to 1} \; (z-1)^2 \; FTMA(z) }=\dfrac{T^2}{K_a}$
+
+Onde: $K_a=\displaystyle\lim_{z \to 1} \; (z-1)^2 \; FTMA(z)$.
+
+$K_a$ se refere à ==constante de aceleração== (ou constante do erro estático de aceleração).
+
+#### Erro Entrada Rampa para Sistemas
+
+Obedecendo aos raciocínios anteriores, vamos perceber que só vamos começar a limitar o erro para uma entrada parabólica quando a malha-direta do sistema contiver 2 integradores (sistema tipo 2). 
+
+Para sistemas menores que 2 (1 integrador ou menos), o erro nunca vai convergir, isto é, é $\infty$, significando que o sistema nunca vai conseguir acompanhar a parábola.
+
+
+
+Por fim, podemos resumir as conclusões numa "Tabela Resumo de Erros":
 
 ## Tabela resumo de erros
 
 <img src="tabela_resumo_erros.png" alt="tabela_resumo_erros.png" style="zoom:50%;" />
 
-Ou seja:
+Isto significa que:
 
 * Sistemas tipo 0 ($FTMA(z)$ sem pólo em $z=1$, sem integrador), sempre resultarão em algum erro ($cte \ne 0$) para entrada degrau; felizmente um erro constante que não aumenta com o passar do tempo (mas que também não diminui). Isto é válido independente do ganho (de malha fechada) adotado para o sistema.
 
@@ -131,73 +339,6 @@ Ou seja:
   
   
 
-* Erro para entrada degrau depende da constante $K_p$:
-  
-  $e_{step}(\infty)=\lim_{z \to 1} (z-1) \cdot \dfrac{1}{(1+FTMA(z))} \cdot \underbrace{\dfrac{z}{(z-1)}}_{\text{Degrau}}$
-  
-  $e_{step}(\infty)=\dfrac{1}{1+\lim_{z \to 1} FTMA(z)}=\dfrac{1}{(1+K_P)}$ 
-  
-  
-  
-* Para sistemas tipo 0,  $K_p \ge 0$:
-  
-  
-  
-  $K_p=\lim_{z \to 1} \dfrac{K(z-z_1)\cdots(z-z_n)}{(z-p_1)\cdots(z-p_m)}=cte_1$
-   ou seja, um ganho de erro estático de posição, não nulo. E como $e_{Degrau}(\infty)=\dfrac{1}{1+K_p}=cte_2$, isto resulta em:
-   $e_{Degrau}(\infty) \ge 0$   sempre!
-  
-  
-
-* Para zerar (anular) o erro para uma entrada degrau, se faz necessário ao menos 1 integrador na malha de realimentação. Neste caso:
-  
-  
-  
-  $K_P=\lim_{z \to 1} FTMA(z)$
-  
-  $K_p=\lim_{z \to 1} \dfrac{K(z-z_1) \cdots (z-z_n)}{\underbrace{(z-1)^\textcolor{blue}{1}}_{\text{integrador}}(z-p_1)\cdots(z-p_m)}$
-  
-  $K_p=\dfrac{cte_1}{ \underbrace{(z-1)}_{\to 0} \cdot cte_2} = \dfrac{cte_1}{\to 0}=\infty$
-  
-  $e_{step}=\dfrac{1}{1+Kp}=\dfrac{1}{\infty}=0$
-
-  
-
-* Para zerar o erro para entrada rampa, são necessários __2__ integradores:
-
-* O erro para entrada rampa é definido como:
-  
-  $e_{Ramp}(\infty)=\lim_{z \to 1} \cancel{(z-1)} \left[ \dfrac{1}{1+FTMA(z)}\right] \cdot \dfrac{T\;z}{ (z-1)^{\textcolor{blue}{\cancel{2}^1} } }$
-  
-  $e_{Ramp}(\infty)=\dfrac{T}{ \lim_{z \to 1} \; (z-1) \; FTMA(z) }=\dfrac{T}{K_v}$
-  
-  onde $K_v$ se refere ao ganho do erro estático de velocidade.
-
-
-
-* Se a $FTMA(z)$ possui __2__ integradores, então:
-  
-  $K_v=\lim_{z \to 1} \; (z-1) \cdot FTMA(z)$  fica:
-  
-  $K_v=\lim_{z \to 1} \dfrac{ \cancel{(z-1)} \cdot K(z-z_1) \cdots (z-z_n)}{ (z-1)^{ \cancel{\textcolor{blue}{2}}^1 } (z-p_1) \cdots (z-p_m)}$
-  
-  $K_v=\dfrac{cte_1}{ \underbrace{\lim_{z \to 1}(z-1)}_{\to 0} \cdot cte_2}=\dfrac{cte_1}{\to0}=\infty$.
-  
-  $e_{Ramp}(\infty)=\dfrac{T}{K_v}=\dfrac{T}{\infty}=0$
-  
-  
-
-* Se a $FTMA(z)$ possui 1 integrador, este erro fica:
-  
-  $K_v=\lim_{z \to 1} \dfrac{ \cancel{(z-1)} \cdot (z-z_1)\cdots(z-z_n)}{\cancel{(z-1)}^{\textcolor{blue}{1}}(z-p_1)\cdots(z-p_n)}$
-  
-  $K_v=\dfrac{cte_1}{cte_2}=cte_3$
-  
-  ou seja: $K_v \ge 0$, e então:
-  
-  $e_{Ramp}(\infty)=\dfrac{T}{K_v}=\dfrac{T}{cte_3}=cte_4$, ou seja, não é nulo (__mas limitado__).
-  
-  
 
 ---
 
@@ -398,4 +539,4 @@ Fim.
 
 ---
 
-Fernando Passold, em 07.04.2021
+Fernando Passold, em 07.04.2021 (revisado em 01/04/2024).
