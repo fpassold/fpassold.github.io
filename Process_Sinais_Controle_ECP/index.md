@@ -23,7 +23,7 @@
    3. [Introdução à Modelagem](5_intro_modelagem.pdf) (algumas técnicas).
    4. [Paralelos entre plano-s $\times$ plano-z](6_respostas_paralelos_s_z.pdf) (parte final: malha controle digital típica).
 4. [Introdução ao Matlab](../Matlab/aula_intro_matlab_1.html) 
-5. [Ações Básicas de Controle](7_acoes_controle.pdf) ): P, PI, PD, PID e outros (mundo contínuo).
+5. [Ações Básicas de Controle](7_acoes_controle.pdf): P, PI, PD, PID e outros (ainda mundo contínuo).
 6. [Teoria do Erro](https://fpassold.github.io/Controle_3/4_teoria_erros/resumo_teoria_erro.html) (ou da Precisão)
 7. Projetos de Controladores Digitais usando Root-Locus
    1. O que é o "Root Locus" ?
