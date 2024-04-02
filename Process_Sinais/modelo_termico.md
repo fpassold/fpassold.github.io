@@ -25,7 +25,7 @@ A constante $k$ geralmente é determinada por meio de experimentação e, uma ve
 
 Transformando a eq. (1) num diagrama de fluxo de sinais teríamos:
 
-<img src="modelo_termico_equacoes.png" alt="modelo_termico_equacoes" style="zoom:33%;" />
+<img src="modelo_termico_equacoes.png" alt="modelo_termico_equacoes" style="zoom:30%;" />
 
 Como exemplo, vamos tentar modelar como a temperatura de um copo de água mudaria se ele estivesse inicialmente em 15 °C e depois fosse colocado em uma geladeira a 4 °C. A diferença é, portanto, de 11 °C e a entrada será uma sequência de valores de amostragem que são todos valores iguais à 11:
 

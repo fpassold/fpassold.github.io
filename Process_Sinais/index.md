@@ -1,3 +1,5 @@
+![Kioto-Koizumo_Junsaku-twin_dragons_2](figuras/Kioto-Koizumo_Junsaku-twin_dragons_2.jpeg)
+
 # Processamento Digital de Sinais (Eng. Elétrica)
 
 **Conteúdo sendo previsto** (parte teórica):

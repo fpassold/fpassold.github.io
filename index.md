@@ -10,7 +10,6 @@
 <font size="2">(Where there is artistic excellence, there is human dignity)</br>
 Maori proverb</font>
 </center>
-
 # Cursos/Disciplinas ministradas:
 
 | [Circuitos Digitais 1](Digitais_1/index.html)</br><font size="2">(Eletrônica Digital Combinacional - Eng. Elétrica)</font> | [Laboratório de Circuitos Digitais 1](Digitais_1/lab_dig1.html)</br><font size="2">(Eng. Elétrica)</font> |

@@ -1,4 +1,5 @@
 ![Kioto-Koizumo_Junsaku-twin_dragons_2](figuras/Kioto-Koizumo_Junsaku-twin_dragons_2.jpeg)
+
 <font size="1">[Koizumi Junsaku's twin dragons - Kennin-ji Buddhist temple (Kyoto)](https://www.discoverkyoto.com/places-go/kennin-ji/)</font>
 
 # Usando função *fft* do Matlab
