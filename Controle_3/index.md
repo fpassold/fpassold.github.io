@@ -114,7 +114,7 @@
 * Sugestão de **[instalação de MATLAB](instalacao_matlab.html)** para esta disciplina;
 * Como abrir arquivos SLX originados de diferentes versões do Matlab/Simulink --> [figura](abrindo_SLX_de_versoes_mais_recentes-2.png)
 * :black_nib: [Aulas de 2023/2](aulas_2023_2.html).
-* :black_nib: [Aulas de 2024/1](2024_1/aulas_2024_1.html).
+* :black_nib: [Aulas de 2024/1](2024_1/aulas.html).
 * :book: Versão 2020 da **["Apostila"](estudo_caso/apostila.pdf)** (quase livro) criada para esta disciplina (incompleta)
 
 ---
