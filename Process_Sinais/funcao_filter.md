@@ -24,11 +24,15 @@ a_1\,y[n] &=& b_1\,x[n] &+& b_2\,x[n-1] + \ldots + b_{n_b+1}\,x[n-n_b] +\\
 
 Note que no Matlab, os índices dos vetores/matrizes iniciam em zero.
 
+Se $a_1=1$, então, podemos generalizar a eq. (2) para:
+
+$y[n]=\displaystyle\sum_{i=0}^{b_n} b_i \cdot x[n-i] + \displaystyle\sum_{j=1}^{n_a} a_j \cdot y[n-j]$			(eq. (3))
+
 Podemos realizar a transformada Z sobre a eq. (2) e obter:
 
 $\begin{array}{rcll}
 a_1\,Y(z) &=& b_1\,X(z) &+& b_2\,z^{-1}X(z) + b_3\,z^{-2}X(z) + \ldots + b_{n_b+1}\,z^{-n_b}X(z) +\\
-          & &           &-& a_2\,z^{-1}Y(z) - a_3\,z^{-2}Y(z) - \ldots - a_{n_a+1}\,z^{-n_a}Y(z) \end{array}$		(eq. (3))
+          & &           &-& a_2\,z^{-1}Y(z) - a_3\,z^{-2}Y(z) - \ldots - a_{n_a+1}\,z^{-n_a}Y(z) \end{array}$		(eq. (4))
 
 Percebe-se que este filtro trabalha com até $n_b$ amostras atrasadas do sinal de entrada $X(z)$ e $n_a$ amostras atrasadas do sinal filtrado $Y(z)$.
 
@@ -58,9 +62,13 @@ Note que $a_1$ e $b_1$ se refere aos termos de mais alta ordem dos filtros (na n
 
 Ou, de outro ponto de vista, note que $a_{n_a}=$ corresponde ao ganho (fator aternuação ou ganho) que será aplicado sobre o maior atraso sofrido no sinal de saída do filtro, $y[n]$, ou seja: $a_{n_a+1} \cdot z^{-n_a} \cdot Y(z) = a_{n_a+1} \cdot y[n-n_a]$. E $a_1=$ corresponde então ao ganho/atenuação que será aplicado sobre o sinal atual $y[n]$ (sem atraso).
 
-A eq. (4) pode ser visualizada num diagrama de fluxo de sinais como:
+A eq. (3), para um filtro digital de 2a-ordem pode ser visualizada num diagrama de fluxo de sinais como:
 
-<< falta o desenho >>
+![forma_direta_1](figuras/forma_direta_1.png)
+
+Obs.: Este diagrama está no formato conhecido como **Forma Direta I**.
+
+
 
 ## Uso da função `filter()`
 
@@ -84,9 +92,13 @@ Observe também que o primeiro elemento do vetor de coeficientes está associado
 
 Da mesma forma, o primeiro elemento do vetor de coeficiente $b$ está associado a $x[n]$; o segundo elemento (se houver) está associado a $x[n-1]$; o terceiro elemento (se houver) está associado a $x[n-2]$; etc.
 
+
+
 ### Implementando exemplos
 
 Depois de ter os coeficientes $b$ e $a$ de um sistema, a implementação é uma tarefa trivial usando funções Matlab/Octave integradas. Esta seção aborda os exemplos mostrados antes (amplificador, média móvel e modelo de sistema) que você mesmo deve experimentar. Se você não possui Matlab ou Octave instalado em seu computador, você pode usar uma versão online http://octave-online.net.
+
+
 
 **Exemplo\_1**: Amplificador
 Um sistema amplificador que amplifica por um fator de 2 é descrito pela seguinte equação de diferenças:
@@ -103,6 +115,8 @@ Use o código abaixo para determinar a saída deste sistema após aplicar uma en
 >> a = 1;
 >> y = filter(b, a, x)
 ```
+
+
 
 **Exemplo\_2**: filtro de média móvel de 4 pontos
 Seja um filtro de média móvel de 4 amostras, cuja equação de diferenças é dada abaixo:
@@ -121,6 +135,8 @@ $[.375 \quad .35 \quad .425 \quad .475 \quad .4 \quad .375 \quad .525 \quad .425
 >> y = filter(b, a, x)
 >> plot(y)
 ```
+
+
 
 **Exemplo_3**: Modelo térmico
 Um modelo da mudança de temperatura de um copo de água colocado em uma geladeira é dado pela equação abaixo:
