@@ -23,25 +23,31 @@
    3. [Introdução à Modelagem](5_intro_modelagem.pdf) (algumas técnicas).
    4. [Paralelos entre plano-s $\times$ plano-z](6_respostas_paralelos_s_z.pdf) (parte final: malha controle digital típica).
 4. [Introdução ao Matlab](../Matlab/aula_intro_matlab_1.html) 
-5. [Ações Básicas de Controle](7_acoes_controle.pdf): P, PI, PD, PID e outros (ainda mundo contínuo).
-6. [Teoria do Erro](https://fpassold.github.io/Controle_3/4_teoria_erros/resumo_teoria_erro.html) (ou da Precisão)
-7. Projetos de Controladores Digitais usando Root-Locus
+
+Parte de **Controle Digital**:
+
+1. [Ações Básicas de Controle](7_acoes_controle.pdf): P, PI, PD, PID e outros (ainda mundo contínuo).
+2. [Teoria do Erro](https://fpassold.github.io/Controle_3/4_teoria_erros/resumo_teoria_erro.html) (ou da Precisão + importância do integrador c/ dedução integral numérica).
+3. Projetos de Controladores Digitais usando Root-Locus
    1. O que é o "Root Locus" ?
-   2. Controlador Proporcional
+   2. Controlador Proporcional -- [Aula de 08/04/2024](2024_1/aula_080402024.html) , .
    3. Controlador PI
    4. Controlador PD
    5. Controlador PID
-8. Variações de PID´s
-9. Implementação em sistemas embarcados de controladores digitais.
-10. Análise de Sinais/Transformada de Fourir/Modelagem - aplica à Processamento (Digital) de Sinais
-   11. Diagrama de Bode (análise)
-   12. Série de Fourier (espectro de ondas; síntese de onda quadrada)
-   13. DFT e FFT, cuidados.
-14. Filtros digitais.
-    1. Filtros de média aritmética, média móvel;
-    2. Filtros FIR
-    3. Filtros IFIR
-15. Implementação em sistemas embarcados de filtros digitais.
+4. Variações de PID´s
+5. Implementação em sistemas embarcados de controladores digitais.
+
+Parte de **Processamento (Digital) de Sinais**:
+
+1. Análise de Sinais/Transformada de Fourir/Modelagem - aplicado à Processamento (Digital) de Sinais
+   2. Diagrama de Bode (análise)
+   3. Série de Fourier (espectro de ondas; síntese de onda quadrada)
+   4. DFT e FFT, cuidados.
+5. Filtros digitais.
+   1. Filtros de média aritmética, média móvel;
+   2. Filtros FIR
+   3. Filtros IFIR
+6. Implementação em sistemas embarcados de filtros digitais.
 
 ---
 
