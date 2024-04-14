@@ -50,7 +50,8 @@ Conteúdo previsto:
 
 5. [Respostas Transitórias de Sistemas Lineares](5_Respostas_Sistemas.pdf)
 
-   1. Trabalho: Modelagem de um Sistema de Automação Industrial
+   1. Exemplo de [modelagem de sistema térmico](Levantando_Modelo_Planta Termica.pdf).
+   2. Trabalho: Modelagem de um Sistema de Automação Industrial
 
 6. [Lugar Geométrico das Raízes](6_intro_root_locus.pdf) (ou *root-locus*)
 
