@@ -1,3 +1,7 @@
+![geothermal-power-plant-at-dusk](figuras/geothermal-power-plant-at-dusk.webp)
+
+<font size="1">[Geothermal Power Plant At Dusk (Iceland)](https://www.theguardian.com/environment/2016/may/29/sustainable-energy-iceland-geothermal-plant), </font> 
+
 # Processamento de Sinais
 
 ## Modelagem de um Sistema Térmico
@@ -25,7 +29,7 @@ A constante $k$ geralmente é determinada por meio de experimentação e, uma ve
 
 Transformando a eq. (1) num diagrama de fluxo de sinais teríamos:
 
-<img src="modelo_termico_equacoes.png" alt="modelo_termico_equacoes" style="zoom:30%;" />
+<img src="modelo_termico_equacoes.png" alt="modelo_termico_equacoes" style="zoom:33%;" />
 
 Como exemplo, vamos tentar modelar como a temperatura de um copo de água mudaria se ele estivesse inicialmente em 15 °C e depois fosse colocado em uma geladeira a 4 °C. A diferença é, portanto, de 11 °C e a entrada será uma sequência de valores de amostragem que são todos valores iguais à 11:
 
@@ -166,7 +170,7 @@ $H(z)=\dfrac{-0.009901}{1-0.9901\,z^{-1}} \cdot \dfrac{z^1}{z^1}$
 
 $H(z)=\dfrac{-0.009901\,z}{z-0.9901}$
 
-Adaptando para o uso com a função `filter()` fica:
+Adaptando para o uso com a função [`filter()`](funcao_filter.html) fica:
 
 ```matlab
 >> x = 11*ones(7,1)	% inicializando o vetor x[n]

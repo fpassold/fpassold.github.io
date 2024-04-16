@@ -1,0 +1,160 @@
+Exemplo de uso de filtro de média móvel:
+
+Problema do nível de um rio:
+Ref.: Digital Signal Processing Foundations, David Dorran, Technological University Dublin, david.dorran@tudublin.ie
+(PDF: Digital Signal Processing Foundations.pdf), pág. 19 - 23...
+
+Níveis de um rio capturados a cada 20 minutos:
+
+```matlab
+>> nivel=[.375 .35 .425 .475 .4 .375 .525 .425 .475 .425 .5 .45 .575 .525 .6 .675 .575 .7 .725 .6];
+>> % salvando dados num arquivo .txt
+>> save('nivel.txt', '-ascii', 'nivel')
+>> u=length(nivel)
+u =
+    20
+>> 
+```
+
+Único problema: se for traçado um gráfico não irá aparecer no gráfico o instante de captura de cada dado.
+
+Criando vetor com dados das supostas coletas:
+
+```matlab
+>> minute(datetime('now'))
+ans =
+    42
+>> minute(datetime('11:42:30'))
+ans =
+    42
+>> t0=datetime('10:00:00')
+t0 = 
+  datetime
+   27-Mar-2024 10:00:00
+>> tfim=t0+u*minutes(20)
+tfim = 
+  datetime
+   27-Mar-2024 16:40:00
+>> TimeStamp=[t0:minutes(20):tfim]
+TimeStamp = 
+  1×21 datetime array
+Columns 1 through 3
+   27-Mar-2024 10:00:00   27-Mar-2024 10:20:00   27-Mar-2024 10:40:00
+Columns 4 through 6
+   27-Mar-2024 11:00:00   27-Mar-2024 11:20:00   27-Mar-2024 11:40:00
+Columns 7 through 9
+   27-Mar-2024 12:00:00   27-Mar-2024 12:20:00   27-Mar-2024 12:40:00
+Columns 10 through 12
+   27-Mar-2024 13:00:00   27-Mar-2024 13:20:00   27-Mar-2024 13:40:00
+Columns 13 through 15
+   27-Mar-2024 14:00:00   27-Mar-2024 14:20:00   27-Mar-2024 14:40:00
+Columns 16 through 18
+   27-Mar-2024 15:00:00   27-Mar-2024 15:20:00   27-Mar-2024 15:40:00
+Columns 19 through 21
+   27-Mar-2024 16:00:00   27-Mar-2024 16:20:00   27-Mar-2024 16:40:00
+>> TimeStamp.Format='HH:mm';
+>> TimeStamp'
+ans = 
+  21×1 datetime array
+   10:00
+   10:20
+   10:40
+   11:00
+   11:20
+   11:40
+   12:00
+   12:20
+   12:40
+   13:00
+   13:20
+   13:40
+   14:00
+   14:20
+   14:40
+   15:00
+   15:20
+   15:40
+   16:00
+   16:20
+   16:40
+>> size(TimeStamp)
+ans =
+     1    21
+>>      
+```
+
+Pequeno erro no momento de criar vetor com horários das capturas... ele acabou ficando com 21 pontos. E deveriam ser 20 pontos. Corrigindo:
+
+```matlab
+>> tfim=t0+(u-1)*minutes(20)
+tfim = 
+  datetime
+   27-Mar-2024 16:20:00
+>> TimeStamp=[t0:minutes(20):tfim];
+>> size(TimeStamp)
+ans =
+     1    20
+>> 
+```
+
+Agora podemos tentar plotar o gráfico:
+
+```matlab
+>> plot(TimeStamp, nivel)
+>> title('Nível do Rio')
+>> ylabel('Nível (metros)');
+>> grid
+>> 
+```
+
+![nivel_rio.png](nivel_rio.png)
+
+Aplicar o filtro de média móvel de 2 passos rende:
+
+Obs.: aparentemente pode-se usar a função `filter()` do Matlab para computar a saída resultante:
+
+```matlab
+>> a=[1];
+>> b=[0.25 0.25 0.25 0.25];
+>> y4=filter(b,a,nivel);
+>> figure; plot(TimeStamp, nivel, 'k--', TimeStamp, y4, 'b-')
+```
+
+![nivel_rio_media_4.png](nivel_rio_media_4.png)
+
+Diagrama de fluxo de sinal:
+
+![filtro_media_movel_4.png](filtro_media_movel_4.png)
+
+**Exercício Proposto:** desenvolva uma função em C (para um Arduino), Matlab ou Python capaz de realizar filtragem por média móvel, onde o usuário entra com os dados, e o tamanho do filtro (número de passos).
+
+
+----
+
+## Modelando um sistema térmico
+
+
+Equação do tipo:
+
+$y[n]=\left( \frac{-kT}{1+kT} \right)x[n] + \left( \frac{1}{1+kT} \right)y[n-1]$
+
+quando $k=0,01$ e $T=1$, obtemos:
+
+$y[n]=-0,009901\,x[n]+0,9901\,y[n-1]$
+
+Simulando no Matlab:
+
+```matlab
+>> k=0.01; T=1;
+>> a=(-k*T)/(1+k*T)
+a =
+    -0.009901
+>> b=1/(1+k*T)
+b =
+       0.9901
+>> x(1)=11;
+>> y(1)=a*x(1)+b*(a*11)
+y =
+     -0.21674
+```
+

@@ -233,1163 +233,379 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 }
 
 
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
 
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
-  margin: 0;
-  padding: 0;
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
 }
 
-body, button, input, select, textarea {
-  font: 12px/1.5tahoma, arial, 宋体;
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
 }
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: 100%;
-}
-
-address, cite, dfn, em, var {
-  font-style: normal;
-}
-
-code, kbd, pre, samp {
-  font-family: couriernew, courier, monospace;
-}
-
-small {
-  font-size: 12px;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-sup {
-  vertical-align: text-top;
-}
-
-sub {
-  vertical-align: text-bottom;
-}
-
-legend {
-  color: #000;
-}
-
-fieldset, img {
-  border: 0;
-}
-
-button, input, select, textarea {
-  font-size: 100%;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/*
-    Update default scroll-bar style.
-    More: https://ovirgo.com/posts/scroll-bar
-*/
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track-piece {
-  background-color: transparent;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  cursor: pointer;
-  background-color: #ccc;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #999;
-}
-
-::-webkit-scrollbar-corner {
-  display: block;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  color: #343a40;
-  font-family: jostFont, jinkaiFont, "kaiti", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-li::marker {
-  color: #ccc;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  background: rgba(255, 255, 255, 0);
-  padding: 16px 0;
-}
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {
-  display: inline-block;
-  margin: 4px;
-  font-size: 14px;
-}
-h1 code,
-h2 code,
-h3 code,
-h4 code,
-h5 code,
-h6 code {
-  font-family: romanFont, jinkaiFont, "kaiti", sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
 }
 
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
 h1 {
-  font-size: 32px;
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
 }
-
 h2 {
-  font-size: 28px;
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
 }
-h2:before {
-  content: "♪² ";
-}
-
 h3 {
-  font-size: 24px;
 }
-h3:before {
-  content: "♪³ ";
-}
-
 h4 {
-  font-size: 20px;
 }
-h4:before {
-  content: "♪⁴ ";
-}
-
 h5 {
-  font-size: 20px;
+	font-size: 1.125rem;
 }
-h5:before {
-  content: "♪⁵ ";
-}
-
 h6 {
-  font-size: 20px;
+	font-size: 1.1rem;
 }
-h6:before {
-  content: "♪⁶ ";
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
 }
-
-img {
-  max-width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0);
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
 }
-
-a {
-  color: #5d2f86;
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
 }
 a:hover {
-  text-decoration: none;
-  color: #e69;
-  text-shadow: 0px 0px 1px #e69;
+	text-decoration: underline;
 }
-
-p {
-  margin: 16px 0;
-}
-
-hr {
-  margin: 24px 0;
-  border-color: rgba(0, 0, 0, 0);
-  border-bottom-color: rgba(239, 239, 239, 0.5);
-}
-
 table {
-  margin: 24px 0;
-}
-table thead tr {
-  border-top: 2px solid #e9e7ef;
-}
-table tbody {
-  border-top: 2px solid #e9e7ef;
-}
-table tbody tr {
-  border-bottom: 1px solid #e9e7ef;
-}
-table tbody tr:last-child {
-  border-bottom: 2px solid #e9e7ef;
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
 }
 table th,
 table td {
-  padding: 3px 6px;
-  border-right: 1px solid #e9e7ef;
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
 }
-table th:first-child,
-table td:first-child {
-  border-left: rgba(255, 255, 255, 0);
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
 }
-table th:last-child,
-table td:last-child {
-  border-right: rgba(255, 255, 255, 0);
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
 }
 
 blockquote {
-  padding-left: 16px;
-  border-left: 1px solid #6c757d;
-  color: #6c757d;
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
 }
 
-.summary code,
-p code,
-td code,
-li code {
-  font-size: 14px;
-  font-family: romanFont, jinkaiFont, "kaiti", sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
-  color: #d63384;
+#typora-source {
+	color: #555;
 }
 
-pre,
-pre code {
-  font-family: romanFont, jinkaiFont, "kaiti", sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
 }
 
-ul,
-ol {
-  list-style-position: outside;
-  padding-left: 20px;
-  margin-bottom: 16px;
-}
-ul li p,
-ol li p {
-  margin: 0;
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
 }
 
-.some {
-  font-family: "Segoe Script", segoeFont;
+#md-notification:before {
+	top: 14px;
 }
 
-h2 code,
-h3 code,
-h4 code,
-h5 code,
-h6 code,
-strong code,
-u code,
-em code,
-.oh-hl code,
-.oh-essay code {
-  color: #d63384;
+#md-notification {
+	background: #eee;
 }
 
-.oh-essay {
-  position: relative;
-  margin: 16px auto;
-  padding-left: 16px;
-  border-left: 1px dashed #969696;
-  font-size: 15px;
-  color: #969696;
-}
-.oh-essay p {
-  margin-bottom: 0;
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
 }
 
-.oh-hl {
-  background: #fef9e7;
-  padding: 0 4px;
-  border-radius: 4px;
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
 }
 
-body.active-animate {
-  -webkit-animation: fadeIn 2s;
-          animation: fadeIn 2s;
-}
-body.active-animate p {
-  -webkit-animation: slideInUp 0.6s;
-          animation: slideInUp 0.6s;
-}
-body.active-animate .container-home .menu .item {
-  -webkit-animation: slideInDown 1s;
-          animation: slideInDown 1s;
-}
-body.active-animate .container-home .content .desc {
-  -webkit-animation: slideInUp 1s;
-          animation: slideInUp 1s;
-}
-body.active-animate .container-nav .content-nav .nav ul {
-  -webkit-animation: slideInUp 1s;
-          animation: slideInUp 1s;
-}
-body.active-animate .container-search #search {
-  -webkit-animation: slideInLeft 1s;
-          animation: slideInLeft 1s;
-}
-body.active-animate .container-search .list .item {
-  -webkit-animation: slideInUp 1s;
-          animation: slideInUp 1s;
-}
-body.active-animate .container-list .list .recentf, body.active-animate .container-list .list .item {
-  -webkit-animation: slideInUp 1s;
-          animation: slideInUp 1s;
-}
-body.active-animate .container-archive .recentf .rec-post .rec-post-item {
-  -webkit-animation: slideInLeft 1s;
-          animation: slideInLeft 1s;
-}
-body.active-animate .container-archive .categories .arc-item,
-body.active-animate .container-archive .tags .arc-item {
-  -webkit-animation: slideInUp 1s;
-          animation: slideInUp 1s;
-}
-body.active-animate .container-archive .categories .arc-item .arc-post .arc-post-item,
-body.active-animate .container-archive .tags .arc-item .arc-post .arc-post-item {
-  -webkit-animation: slideInRight 1s;
-          animation: slideInRight 1s;
-}
-body.active-animate .container-page .toc .page-operation {
-  -webkit-animation: slideInLeft 1s;
-          animation: slideInLeft 1s;
+.pin-outline .outline-active {
+  color: #0070E0; 
 }
 
-#header {
-  border-top: 4px solid;
-  border-image-source: linear-gradient(90deg, #0d6efd, #8ed6fb 50%, #d32e9d);
-  border-image-slice: 1;
-  -webkit-border-top: 4px solid;
-  -webkit-border-image-source: linear-gradient(90deg, #0d6efd, #8ed6fb 50%, #d32e9d);
-  -webkit-border-image-slice: 1;
-  z-index: 1000;
-  position: -webkit-sticky;
-  position: sticky;
-  top: -66px;
-  padding: 0 80px;
-}
-#header.js-header {
-  transition: 0.2s background-color linear;
-  background-color: rgba(255, 255, 255, 0.5);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: saturate(180%) blur(5px);
-          backdrop-filter: saturate(180%) blur(5px);
-}
-#header .container-header .some {
-  position: relative;
-  padding: 4px 0px 6px 24px;
-}
-#header .container-header .some #light-dark {
-  cursor: pointer;
-  position: absolute;
-  left: 4px;
-  top: 4px;
-}
-#header .container-header .container-breadcrumb-nav {
-  padding-bottom: 8px;
-}
-#header .container-header .container-breadcrumb-nav .breadcrumb-nav-bar {
-  display: flex;
-  font-size: 12px;
-}
-#header .container-header .container-breadcrumb-nav .breadcrumb-nav-bar a {
-  white-space: break-spaces;
-  overflow: hidden;
-  height: 18px;
-  display: block;
-  color: rgba(90, 41, 228, 0.8);
-  background: rgba(239, 239, 239, 0.3);
-  margin-right: 8px;
-  padding: 4px 8px;
-  border-radius: 0 12px 0 8px;
-}
-#header .container-header .container-breadcrumb-nav .breadcrumb-nav-bar .active a {
-  color: #5a29e4;
-}
-#header .container-header #toc {
-  display: none;
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
 }
 
-#content {
-  background: rgba(255, 255, 255, 0);
-  padding: 16px 80px 32px;
-}
-#content .container-home {
-  font-family: "Segoe Script", segoeFont, jostFont, jinkaiFont, "kaiti", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-#content .container-home .menu {
-  height: 108px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  font-size: 14px;
-}
-#content .container-home .menu .item a {
-  display: block;
-  margin: 4px 8px;
-  padding: 8px;
-  width: 96px;
-  background: rgba(239, 239, 239, 0.4);
-  border-radius: 6px;
-  text-align: center;
-  transition: 0.3s padding ease;
-}
-#content .container-home .menu .item a:hover {
-  padding: 24px 8px;
-}
-#content .container-home .content-md {
-  padding-top: 24px;
-}
-#content .container-home .content-md p > code,
-#content .container-home .content-md li > code,
-#content .container-home .content-md td > code {
-  color: #d63384;
-}
-#content .container-home .content-md .highlight {
-  margin: 16px 0;
-  border-top: 2px solid #e9e7ef;
-  border-bottom: 2px solid #e9e7ef;
-  padding: 2px 0;
-  font-size: 14px;
-  overflow: hidden;
-}
-#content .container-home .content-md .highlight:hover {
-  overflow: auto;
-}
-#content .container-home .content-md .highlight pre {
-  padding-top: 0;
-}
-#content .container-home .content-md pre {
-  font-size: 14px;
-  border-top: 1px solid #e9e7ef;
-  border-bottom: 1px solid #e9e7ef;
-  padding: 12px;
-  overflow: hidden;
-}
-#content .container-home .content-md pre:hover {
-  overflow: auto;
-}
-#content .container-home .content-md pre .lang {
-  cursor: pointer;
-  margin-bottom: 16px;
-  padding: 4px 0px;
-  border-bottom: 1px dashed #adb5bd;
-}
-#content .container-home .content-md em {
-  font-style: italic;
-}
-#content .container-home .content {
-  text-align: center;
-}
-#content .container-home .content .desc img {
-  max-width: 100%;
-}
-#content .container-home .content .desc .words {
-  box-sizing: border-box;
-  font-size: 18px;
-  color: #adb5bd;
-  max-width: 600px;
-  padding: 48px 32px;
-  border-radius: 10px;
-  margin: 120px 0 160px;
-  background: rgba(239, 239, 239, 0.4);
-}
-#content .container-list {
-  font-size: 16px;
-}
-#content .container-list .count {
-  color: #6c757d;
-}
-#content .container-list .list {
-  display: flex;
-  flex-wrap: wrap;
-  flex-shrink: 0;
-}
-#content .container-list .list .recentf {
-  box-sizing: border-box;
-  width: 360px;
-  padding: 8px 4px 32px;
-  margin-right: 32px;
-  margin-top: 48px;
-  background: rgba(239, 239, 239, 0.2);
-  box-shadow: 3px 3px 5px #eee;
-}
-#content .container-list .list .recentf .desc {
-  width: 100%;
-  padding: 8px 0;
-  color: #999;
-}
-#content .container-list .list .recentf .rec-post .rec-post-item a {
-  font-size: 14px;
-  display: inline-block;
-  background: rgba(239, 239, 239, 0.3);
-  margin: 4px;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-#content .container-list .list .desc .date {
-  color: #999;
-  font-size: 12px;
-  font-family: "Segoe Script", segoeFont;
-}
-#content .container-list .list .desc .date:first-child {
-  padding-left: 8px;
-}
-#content .container-list .list .item {
-  box-shadow: 3px 3px 5px #eee;
-  position: relative;
-  padding-bottom: 32px;
-  background: rgba(239, 239, 239, 0.2);
-  margin-right: 32px;
-  margin-top: 48px;
-  width: 360px;
-  overflow: hidden;
-}
-#content .container-list .list .item > a {
-  box-sizing: border-box;
-  width: 100%;
-  display: block;
-  background: rgba(239, 239, 239, 0.2);
-  margin-bottom: 8px;
-  padding: 6px 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: 0.3s padding ease;
-}
-#content .container-list .list .item > a:hover {
-  padding-left: 16px;
-}
-#content .container-list .list .item > a .date {
-  color: #999;
-  font-size: 12px;
-  font-family: "Segoe Script", segoeFont;
-  margin-right: 4px;
-}
-#content .container-list .list .item .summary {
-  font-size: 15px;
-  padding: 8px;
-  color: #6c757d;
-}
-#content .container-list .list .item .read-more {
-  font-size: 13px;
-  text-align: right;
-  background: rgba(239, 239, 239, 0.2);
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
-#content .container-list .list .item .read-more a {
-  display: block;
-  padding: 2px 6px;
-  transition: 0.3s padding ease;
-  color: #ced4da;
-}
-#content .container-list .list .item .read-more a:hover {
-  padding-right: 16px;
-}
-#content .container-list .list .item-term {
-  margin: 4px;
-  width: 360px;
-}
-#content .container-list .list .item-term a {
-  box-sizing: border-box;
-  height: 80px;
-  display: block;
-  background: rgba(239, 239, 239, 0.3);
-  margin-bottom: 8px;
-  padding: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border-radius: 0 16px 0 16px;
-  transition: 0.3s padding ease;
-}
-#content .container-list .list .item-term a:hover {
-  padding-top: 16px;
-}
-#content .container-list .list .item-term a .date {
-  color: #999;
-  font-size: 12px;
-  font-family: "Segoe Script", segoeFont;
-  margin-right: 4px;
-}
-#content .container-list .list .item-term sup {
-  color: #adb5bd;
-}
-#content .container-list .list-single-col {
-  display: block;
-}
-#content .container-list .list-single-col .recentf {
-  width: 760px;
-  margin: 24px auto;
-  display: flex;
-  flex-wrap: wrap;
-}
-#content .container-list .list-single-col .item {
-  width: 760px;
-  margin: 24px auto;
-}
-#content .container-page {
-  position: relative;
-  font-size: 16px;
-  margin: 0 auto;
-  padding: 0 24% 0 16%;
-  max-width: 760px;
-}
-#content .container-page .desc {
-  color: #adb5bd;
-  font-size: 14px;
-}
-#content .container-page .toc {
-  position: fixed;
-  border-left: 1px solid #dee2e6;
-  width: 260px;
-  max-height: 566px;
-  top: 176px;
-  right: 16px;
-  font-size: 14px;
-  overflow: scroll;
-}
-#content .container-page .toc::-webkit-scrollbar {
-  width: 2px;
-}
-#content .container-page .toc::-webkit-scrollbar-thumb {
-  background-color: #dee2e6;
-}
-#content .container-page .toc li {
-  list-style: none;
-}
-#content .container-page .toc li a {
-  color: #6c757d;
-}
-#content .container-page .toc li a:hover {
-  color: #e69;
-}
-#content .container-page .toc .toc-link--active {
-  color: #d14;
-}
-#content .container-page .toc .page-operation {
-  display: flex;
-  position: fixed;
-  top: 136px;
-  right: 144px;
-}
-#content .container-page .toc .page-operation a img {
-  padding: 2px;
-  width: 24px;
-}
-#content .container-page .toc #TableOfContents ul,
-#content .container-page .toc #TableOfContents ol {
-  margin-bottom: 4px;
-}
-#content .container-page .toc #TableOfContents li a:not(:first-child) {
-  color: #dee2e6;
-  font-size: 1px;
-}
-#content .container-page .content p > code,
-#content .container-page .content li > code,
-#content .container-page .content td > code {
-  color: #d63384;
-}
-#content .container-page .content-card h3 {
-  color: #adb5bd;
-  font-size: 18px;
-}
-#content .container-page .content-card h3::before {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  content: "";
-  border-top: 1px dashed #adb5bd;
-  padding-top: 16px;
-}
-#content .container-page .content-card h4 {
-  color: #adb5bd;
-  font-size: 16px;
-}
-#content .container-page .highlight {
-  margin: 16px 0;
-  border-top: 1px solid #e9e7ef;
-  padding: 2px 0;
-  font-size: 14px;
-  overflow: hidden;
-}
-#content .container-page .highlight:hover {
-  overflow: auto;
-}
-#content .container-page .highlight pre {
-  padding-top: 0;
-}
-#content .container-page pre {
-  font-size: 14px;
-  border-top: 1px solid #e9e7ef;
-  border-bottom: 1px solid #e9e7ef;
-  padding: 12px 0;
-  overflow: hidden;
-}
-#content .container-page pre:hover {
-  overflow: auto;
-}
-#content .container-page pre .lang {
-  cursor: pointer;
-  margin-bottom: 16px;
-  padding: 4px 0px;
-  border-bottom: 1px dashed #e9ecef;
-}
-#content .container-page em {
-  font-style: italic;
-}
-#content .container-nav {
-  padding: 0 16%;
-}
-#content .container-nav .toc {
-  position: fixed;
-  right: 100px;
-  top: 183px;
-  height: 468px;
-  overflow: auto;
-  padding: 4px 12px 0px;
-}
-#content .container-nav .toc::-webkit-scrollbar {
-  width: 2px;
-}
-#content .container-nav .toc::-webkit-scrollbar-thumb {
-  background-color: #e9ecef;
-}
-#content .container-nav .toc li {
-  width: 84px;
-  height: 36px;
-  line-height: 28px;
-  list-style: none;
-  border-radius: 8px;
-  margin: 6px 0;
-  border-style: double;
-  border-color: rgba(239, 239, 239, 0.8);
-  box-sizing: border-box;
-  overflow: hidden;
-  transition: 0.2s all linear;
-}
-#content .container-nav .toc li em {
-  color: #666;
-}
-#content .container-nav .toc li a {
-  display: block;
-  padding: 4px 8px;
-  transition: 0.1s all linear;
-  color: #666;
-}
-#content .container-nav .toc li a:hover {
-  padding-left: 28px;
-  background: rgba(239, 239, 239, 0.5);
-}
-#content .container-nav .toc li a:hover em {
-  opacity: 0;
-}
-#content .container-nav h2 {
-  font-size: 16px;
-  color: #adb5bd;
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
   font-weight: 400;
 }
-#content .container-nav h2::before {
-  content: "";
-}
-#content .container-nav .content-nav .nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-}
-#content .container-nav .content-nav .nav ul li {
-  box-sizing: border-box;
-  list-style-type: none;
-  width: 20%;
-  margin: 4px 0;
-}
-#content .container-nav .content-nav .nav ul li a {
-  box-sizing: border-box;
-  font-family: jostFont, jinkaiFont, "kaiti", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 16px;
-  transition: 0.3s padding linear;
-  display: inline-block;
-  width: 96%;
-  height: 36px;
-  line-height: 36px;
-  font-weight: 400;
-  padding: 2px 6px;
-  background: rgba(239, 239, 239, 0.5);
-  border-radius: 1px 5px 1px 5px;
-  white-space: nowrap;
-}
-#content .container-nav .content-nav .nav ul li a:hover {
-  padding-left: 12px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-#content .container-nav .content-nav p {
-  color: #adb5bd;
-  margin-right: 1%;
-  padding: 8px 4px 2px;
-}
-#content .container-nav .content-nav .bookmark ul {
-  padding: 4px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-#content .container-nav .content-nav .bookmark ul:hover {
-  overflow: auto;
-}
-#content .container-nav .content-nav .bookmark ul li {
-  list-style-type: none;
-  transition: 0.3s padding linear;
-  border-radius: 1px 5px 1px 5px;
-  padding-left: 4px;
-}
-#content .container-nav .content-nav .bookmark ul li::before {
-  content: "➣ ";
-}
-#content .container-nav .content-nav .bookmark ul li:hover {
-  padding-left: 16px;
-}
-#content .container-nav .content-nav .bookmark ul li a {
-  display: inline-block;
-  width: 100%;
-  padding: 6px 0;
-}
-#content .container-nav .content-nav .bookmark ul li:nth-child(even) {
-  background: rgba(239, 239, 239, 0.6);
-}
-#content .container-search {
-  font-size: 16px;
-}
-#content .container-search #search {
-  padding: 32px 0;
-  position: relative;
-}
-#content .container-search #search #sc-clear {
-  cursor: pointer;
-  transition: 0.5s opacity ease;
-  position: absolute;
-}
-#content .container-search #search #sc-input {
-  outline-style: none;
-  border: 0px;
-  border-bottom: 1px solid #5dade2;
-  padding-bottom: 8px;
-  padding-left: 32px;
-  font-family: jostFont, jinkaiFont, "kaiti", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  width: 500px;
-  background: rgba(255, 255, 255, 0);
-}
-#content .container-search #search #sc-input:focus-visible {
-  border-color: #0dcaf0;
-}
-#content .container-search #search #sc-input::-moz-placeholder {
-  color: #dee2e6;
-  font-family: "Segoe Script", segoeFont;
-}
-#content .container-search #search #sc-input:-ms-input-placeholder {
-  color: #dee2e6;
-  font-family: "Segoe Script", segoeFont;
-}
-#content .container-search #search #sc-input::placeholder {
-  color: #dee2e6;
-  font-family: "Segoe Script", segoeFont;
-}
-#content .container-search #search #sc-res .statistics {
-  padding: 16px 0 0 56px;
-  color: #adb5bd;
-}
-#content .container-search #search #sc-res hr {
-  border: 1px dashed #ccc;
-  margin: 8px 0;
-}
-#content .container-search .list {
-  display: flex;
-  flex-wrap: wrap;
-  flex-shrink: 0;
-}
-#content .container-search .list .item {
-  box-shadow: 3px 3px 5px #eee;
-  background: rgba(239, 239, 239, 0.2);
-  margin-right: 32px;
-  margin-top: 48px;
-  width: 360px;
-  overflow: hidden;
-}
-#content .container-search .list .item > a {
-  box-sizing: border-box;
-  width: 100%;
-  display: block;
-  background: rgba(239, 239, 239, 0.2);
-  margin-bottom: 8px;
-  padding: 6px 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: 0.3s padding ease;
-}
-#content .container-search .list .item > a:hover {
-  padding-left: 16px;
-}
-#content .container-search .list .item > a .date {
-  color: #999;
-  font-size: 12px;
-  font-family: "Segoe Script", segoeFont;
-  margin-right: 4px;
-}
-#content .container-search .list .item .summary {
-  font-size: 15px;
-  padding: 8px;
-  color: #6c757d;
-}
-#content .container-search .list-single-col .item {
-  width: 60%;
-  margin: 24px auto;
-}
-#content .container-archive .desc {
-  font-size: 20px;
-}
-#content .container-archive .recentf {
-  display: flex;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-}
-#content .container-archive .recentf .rec-post .rec-post-item a {
-  font-size: 14px;
-  display: inline-block;
-  background: rgba(239, 239, 239, 0.6);
-  margin: 4px;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-#content .container-archive .categories,
-#content .container-archive .tags {
-  display: flex;
-  flex-wrap: wrap;
-}
-#content .container-archive .categories .arc-item,
-#content .container-archive .tags .arc-item {
-  padding: 4px;
-  background: #f8f9fa;
-  margin: 12px 12px 6px 0px;
-  width: 31%;
-  box-sizing: border-box;
-}
-#content .container-archive .categories .arc-item .arc-desc,
-#content .container-archive .tags .arc-item .arc-desc {
-  padding: 8px 0;
-}
-#content .container-archive .categories .arc-item .arc-desc a,
-#content .container-archive .tags .arc-item .arc-desc a {
-  font-size: 16px;
-}
-#content .container-archive .categories .arc-item .arc-desc a sup,
-#content .container-archive .tags .arc-item .arc-desc a sup {
-  color: #dee2e6;
-}
-#content .container-archive .categories .arc-item .arc-post,
-#content .container-archive .tags .arc-item .arc-post {
-  display: flex;
-  flex-wrap: wrap;
-}
-#content .container-archive .categories .arc-item .arc-post .arc-post-item a,
-#content .container-archive .tags .arc-item .arc-post .arc-post-item a {
-  font-size: 14px;
-  display: inline-block;
-  background: rgba(239, 239, 239, 0.6);
-  margin: 4px;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-#content .container-archive .tags {
-  margin-top: 32px;
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
 }
 
-.container-ctgtag {
-  padding-bottom: 8px;
-}
-.container-ctgtag .taxonomy {
-  display: flex;
-}
-.container-ctgtag .taxonomy .ctg {
-  margin-right: 4px;
-}
-.container-ctgtag .taxonomy .ctg a,
-.container-ctgtag .taxonomy .tag a {
-  font-size: 12px;
-  color: #adb5bd;
-  background: rgba(239, 239, 239, 0.6);
-  padding: 0px 8px;
-  border-radius: 4px;
-  margin-right: 4px;
-}
-.container-ctgtag .taxonomy .tag a {
-  border-radius: 0 8px 0 6px;
-}
-
-.container-contact {
-  position: relative;
-  background: rgba(255, 255, 255, 0);
-  text-align: right;
-  margin-top: 128px;
-}
-.container-contact .contact .slogan {
-  padding-right: 8px;
-}
-.container-contact .contact .icons {
-  padding: 4px 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.container-contact .contact a svg {
-  padding: 0 5px;
-  opacity: 0.5;
-}
-.container-contact .contact a .qr {
-  width: 0;
-  height: 160px;
-  opacity: 0;
-  position: absolute;
-  top: -200px;
-  transform: translate(-50%);
-  transition: 0.3s all ease;
-}
-.container-contact .contact #wechat:hover .qr {
-  z-index: 1;
-  width: 160px;
-  opacity: 1;
-}
-
-.container-prevnext {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid #f8f9fa;
-  padding-top: 32px;
-  overflow: hidden;
-}
-.container-prevnext a {
-  display: block;
-  box-sizing: border-box;
-  border: 1px solid #dee2e6;
-  min-width: 128px;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 8px;
-  text-align: center;
-  padding: 0 16px;
-}
-
-.container-comment {
-  background: rgba(239, 239, 239, 0.3);
-  margin-top: 32px;
-  border-radius: 8px;
-  padding: 4px;
-}
-
-.container-pagination {
-  margin: 0 auto;
-  padding: 32px 0 48px;
-  position: relative;
-}
-.container-pagination ul.pagination {
-  list-style-type: none;
-  display: flex;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-}
-.container-pagination ul.pagination li.page-item {
-  padding: 8px;
-}
-.container-pagination ul.pagination li.active a {
-  font-weight: 700;
-}
-.container-pagination ul.pagination li.disabled a {
-  opacity: 0.3;
-}
-
-.container-404 .content {
-  width: 54%;
-  margin: 48px auto 56px;
-}
-.container-404 .content .words {
-  text-align: center;
-  font-family: xianmoFont;
-  font-size: 18px;
-}
-.container-404 .desc {
-  text-align: center;
-  font-weight: 700;
-}
-.container-404 .desc a {
-  font-size: 24px;
-}
-
-#footer {
-  background: rgba(255, 255, 255, 0);
-  padding: 16px 0 32px 0;
-  padding: 16px 80px 32px;
-  border-top: 1px solid #eee;
-}
-#footer .container-footer {
-  clear: both;
-  font-size: 14px;
-}
-#footer .container-footer a {
-  color: #5d2f86;
-}
-
-.container-media .media a svg {
-  width: 20px;
-  height: 20px;
-  padding: 6px 0;
-}
-
-body.on-focus-mode {
-  color: #c8c8c8;
-}
-body #write {
-  width: 766px;
-}
-body #write > p > span {
-  width: auto;
-}
-body #write > p > span.md-comment {
-  font-size: 14px;
-  color: #969696;
-}
-body pre {
-  font-size: 14px !important;
-  background: #f6f8fa !important;
-}
-body pre.md-meta-block {
-  padding: 6px;
-}
-body .CodeMirror-code {
-  padding: 4px;
-}
-body #write blockquote {
-  margin: 16px 0;
-}/*# sourceMappingURL=virgo.css.map */
 
 
 </style>
@@ -1398,6 +614,6 @@ body #write blockquote {
 <div id='write'  class=''><p><img src="figuras/Honen-in-Temple-Northern-Higashiyama.png" referrerpolicy="no-referrer" alt="Honen-in-Temple-Northern-Higashiyama"></p><!--
 Ref.: Digital Signal Processing Foundations, David Dorran, Technological University Dublin, david.dorran@tudublin.ie
 (PDF: Digital Signal Processing Foundations.pdf), pág. 19 - 23... 
---><h1><a name="intro-sistemas-discretos" class="md-header-anchor"></a><span>Intro Sistemas Discretos</span></h1><p><span>Sistemas discretos são usados para manipular ou modificar sinais discretos de maneira significativa. Eles recebem um sinal discreto (sequência de números) como entrada e geram um sinal discreto em sua saída, ver próxima figura.</span></p><p><img src="figuras/discrete_system.png" alt="discrete_system" style="zoom:50%;" /></p><p><span>Uma aplicação comum de sistemas discretos é remover alguma interferência ou componente de “ruído” de um sinal. Por exemplo, sinais de ECG podem ser afetados pela introdução de ruído de equipamentos elétricos nas proximidades dos sensores usados para capturar o sinal. Este tipo de ruído está normalmente presente em frequências de 50 Hz ou 60 Hz, dependendo de onde você mora, e sistemas discretos, conhecidos como filtros, podem ser projetados para remover tais artefatos -- ver próxima figura.</span></p><p><img src="figuras/sinal_ECG_filtrar.png" alt="sinal_ECG_filtrar" style="zoom:45%;" /></p><p><span>Outra aplicação comum de sistemas discretos é modelar o comportamento de sistemas do mundo real, como uma ponte ou a suspensão de um carro. Usando a suspensão do carro como exemplo, imagine que você queira experimentar um novo design de suspensão para um carro de corrida e gostaria de ver como ele se comporta em pistas de corrida acidentadas. Uma maneira seria construir a suspensão, alugar uma pista para o dia, testar seu projeto, voltar à oficina para fazer os ajustes e repetir este procedimento quantas vezes for necessário. Isso pode ser muito caro se você precisar testar com frequência! Uma alternativa é construir um sistema discreto que modele o design da sua suspensão; em seguida, criar um sinal que modele as forças aplicadas ao carro conforme ele passa por solavancos; e, finalmente, usar o computador para analisar e ajustar o funcionamento do projeto antes de passar o caro pelo processo de fabricação.</span></p><p><span>Os sistemas discretos são capazes de alcançar resultados surpreendentes e são fundamentais para o processamento digital de sinais. Na próxima seção você aprenderá sobre os três componentes básicos de sistemas discretos: somadores, multiplicadores e atrasos. Você também verá como visualizar sistemas discretos usando diagramas de fluxo de sinal e como eles se relacionam com a descrição matemática de um sistema discreto, ou seja, com as </span><strong><span>equações de diferenças</span></strong><span>.</span></p><p><span>Você verá como operam alguns sistemas discretos práticos e também verá seus </span><strong><span>diagramas de fluxo de sinal</span></strong><span> e suas </span><strong><span>equações de diferenças</span></strong><span>. Depois de concluir esta seção, será importante que você seja capaz de associar as equações de diferenças com os diagramas de fluxo de sinal para cada caso.</span></p><!-- Também serão mostrados alguns exemplos de código que podem ser usados para implementar cada sistema; se você deseja apenas ter uma ideia do DSP, não é importante que você entenda totalmente esse código, mas se quiser poder aplicar o DSP, você o fará.--><h2><a name="ex1-caso-do-amplificador" class="md-header-anchor"></a><span>Ex.1) Caso do Amplificador</span></h2><p><span>Talvez o sistema discreto mais básico seja um amplificador. A figura abaixo mostra um sinal discreto </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.013ex" height="2.623ex" viewBox="0 -820.5 1728 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E3-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E3-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E3-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E3-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E3-MJMATHI-78" x="0" y="0"></use><use xlink:href="#E3-MJMAIN-5B" x="572" y="0"></use><use xlink:href="#E3-MJMATHI-6E" x="850" y="0"></use><use xlink:href="#E3-MJMAIN-5D" x="1450" y="0"></use></g></svg></span><script type="math/tex">x[n]</script><span> sendo amplificado por um fator de 2, com todas as amostras do sinal de entrada sendo multiplicadas por 2. Guiar-se pela próxima figura:</span></p><p><img src="figuras/amplificador.png" alt="amplificador" style="zoom:50%;" /></p><p><span>Embora este seja um sistema muito básico, ainda assim é muito útil. Por exemplo, em aplicações de áudio, um tal sistema teria o efeito de aumentar o volume do sinal de áudio.</span></p><p><span>Sistemas discretos são frequentemente descritos matematicamente e este sistema amplificador pode ser descrito usando a seguinte equação (referida como equação de diferenças):</span></p><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.789ex" height="2.623ex" viewBox="0 -820.5 5937 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E2-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E2-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E2-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E2-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E2-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E2-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E2-MJMAIN-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path stroke-width="0" id="E2-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E2-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E2-MJMATHI-6E" x="775" y="0"></use><use xlink:href="#E2-MJMAIN-5D" x="1375" y="0"></use><use xlink:href="#E2-MJMAIN-3D" x="1930" y="0"></use><use xlink:href="#E2-MJMAIN-32" x="2986" y="0"></use><use xlink:href="#E2-MJMAIN-22C5" x="3708" y="0"></use><use xlink:href="#E2-MJMATHI-78" x="4209" y="0"></use><use xlink:href="#E2-MJMAIN-5B" x="4781" y="0"></use><use xlink:href="#E2-MJMATHI-6E" x="5059" y="0"></use><use xlink:href="#E2-MJMAIN-5D" x="5659" y="0"></use></g></svg></span><script type="math/tex">y[n]=2\cdot x[n]</script></p><p><span>onde </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.013ex" height="2.623ex" viewBox="0 -820.5 1728 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E3-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E3-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E3-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E3-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E3-MJMATHI-78" x="0" y="0"></use><use xlink:href="#E3-MJMAIN-5B" x="572" y="0"></use><use xlink:href="#E3-MJMATHI-6E" x="850" y="0"></use><use xlink:href="#E3-MJMAIN-5D" x="1450" y="0"></use></g></svg></span><script type="math/tex">x[n]</script><span> representa a entrada do sistema, </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.839ex" height="2.623ex" viewBox="0 -820.5 1653 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E4-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E4-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E4-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E4-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E4-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E4-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E4-MJMATHI-6E" x="775" y="0"></use><use xlink:href="#E4-MJMAIN-5D" x="1375" y="0"></use></g></svg></span><script type="math/tex">y[n]</script><span> representa a saída e </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.394ex" height="1.435ex" viewBox="0 -513.5 600 617.9" role="img" focusable="false" style="vertical-align: -0.242ex;"><defs><path stroke-width="0" id="E6-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E6-MJMATHI-6E" x="0" y="0"></use></g></svg></span><script type="math/tex">n</script><span> representa o número da amostra.</span></p><p><span>Ao resolver esta equação de diferenças para diferentes valores de </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.394ex" height="1.435ex" viewBox="0 -513.5 600 617.9" role="img" focusable="false" style="vertical-align: -0.242ex;"><defs><path stroke-width="0" id="E6-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E6-MJMATHI-6E" x="0" y="0"></use></g></svg></span><script type="math/tex">n</script><span> você pode determinar a saída do sistema para qualquer sinal discreto de entrada (sequência de números). Por exemplo, vamos descobrir qual será a saída do amplificador se a entrada do sistema for dada pela seguinte sequência:</span></p><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="28.144ex" height="2.623ex" viewBox="0 -820.5 12117.6 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E7-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E7-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E7-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E7-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E7-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E7-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E7-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E7-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E7-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E7-MJMAIN-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-78" x="0" y="0"></use><use xlink:href="#E7-MJMAIN-5B" x="572" y="0"></use><use xlink:href="#E7-MJMATHI-6E" x="850" y="0"></use><use xlink:href="#E7-MJMAIN-5D" x="1450" y="0"></use><use xlink:href="#E7-MJMAIN-3D" x="2005" y="0"></use><use xlink:href="#E7-MJMAIN-5B" x="3061" y="0"></use><g transform="translate(3339,0)"><use xlink:href="#E7-MJMAIN-31"></use><use xlink:href="#E7-MJMAIN-30" x="500" y="0"></use></g><g transform="translate(5339,0)"><use xlink:href="#E7-MJMAIN-32"></use><use xlink:href="#E7-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E7-MJMAIN-35" x="7339" y="0"></use><g transform="translate(8839,0)"><use xlink:href="#E7-MJMAIN-35"></use><use xlink:href="#E7-MJMAIN-30" x="500" y="0"></use></g><g transform="translate(10839,0)"><use xlink:href="#E7-MJMAIN-36"></use><use xlink:href="#E7-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E7-MJMAIN-5D" x="11839" y="0"></use></g></svg></span><script type="math/tex">x[n]=[10 \quad 20 \quad 5 \quad 50 \quad 60]</script></p><p><span>Vamos primeiro resolver para </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.652ex" height="2.029ex" viewBox="0 -769.3 2433.6 873.6" role="img" focusable="false" style="vertical-align: -0.242ex;"><defs><path stroke-width="0" id="E8-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E8-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E8-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E8-MJMATHI-6E" x="0" y="0"></use><use xlink:href="#E8-MJMAIN-3D" x="877" y="0"></use><use xlink:href="#E8-MJMAIN-30" x="1933" y="0"></use></g></svg></span><script type="math/tex">n = 0</script><span>, portanto:</span></p><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.325ex" height="2.623ex" viewBox="0 -820.5 5737 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E9-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E9-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E9-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E9-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E9-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E9-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E9-MJMAIN-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path stroke-width="0" id="E9-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E9-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E9-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E9-MJMAIN-30" x="775" y="0"></use><use xlink:href="#E9-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E9-MJMAIN-3D" x="1830" y="0"></use><use xlink:href="#E9-MJMAIN-32" x="2886" y="0"></use><use xlink:href="#E9-MJMAIN-22C5" x="3608" y="0"></use><use xlink:href="#E9-MJMATHI-78" x="4109" y="0"></use><use xlink:href="#E9-MJMAIN-5B" x="4681" y="0"></use><use xlink:href="#E9-MJMAIN-30" x="4959" y="0"></use><use xlink:href="#E9-MJMAIN-5D" x="5459" y="0"></use></g></svg></span><script type="math/tex">y[0]=2 \cdot x[0]</script></p><p><span>Substituindo </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.781ex" height="2.623ex" viewBox="0 -820.5 1628 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E10-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E10-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E10-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E10-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E10-MJMATHI-78" x="0" y="0"></use><use xlink:href="#E10-MJMAIN-5B" x="572" y="0"></use><use xlink:href="#E10-MJMAIN-30" x="850" y="0"></use><use xlink:href="#E10-MJMAIN-5D" x="1350" y="0"></use></g></svg></span><script type="math/tex">x[0]</script><span> por </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.323ex" height="2.029ex" viewBox="0 -769.3 1000 873.6" role="img" focusable="false" style="vertical-align: -0.242ex;"><defs><path stroke-width="0" id="E11-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E11-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E11-MJMAIN-31"></use><use xlink:href="#E11-MJMAIN-30" x="500" y="0"></use></g></svg></span><script type="math/tex">10</script><span> obtemos:</span></p><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="17.286ex" height="2.623ex" viewBox="0 -820.5 7442.6 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E12-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E12-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E12-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E12-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E12-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E12-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E12-MJMAIN-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path stroke-width="0" id="E12-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E12-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E12-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E12-MJMAIN-30" x="775" y="0"></use><use xlink:href="#E12-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E12-MJMAIN-3D" x="1830" y="0"></use><use xlink:href="#E12-MJMAIN-32" x="2886" y="0"></use><use xlink:href="#E12-MJMAIN-22C5" x="3608" y="0"></use><g transform="translate(4109,0)"><use xlink:href="#E12-MJMAIN-31"></use><use xlink:href="#E12-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E12-MJMAIN-3D" x="5386" y="0"></use><g transform="translate(6442,0)"><use xlink:href="#E12-MJMAIN-32"></use><use xlink:href="#E12-MJMAIN-30" x="500" y="0"></use></g></g></svg></span><script type="math/tex">y[0]=2 \cdot 10 = 20</script></p><p><span>Se você resolvesse para </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.652ex" height="2.029ex" viewBox="0 -769.3 2433.6 873.6" role="img" focusable="false" style="vertical-align: -0.242ex;"><defs><path stroke-width="0" id="E13-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E13-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E13-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E13-MJMATHI-6E" x="0" y="0"></use><use xlink:href="#E13-MJMAIN-3D" x="877" y="0"></use><use xlink:href="#E13-MJMAIN-31" x="1933" y="0"></use></g></svg></span><script type="math/tex">n = 1</script><span>, descobriria que </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.027ex" height="2.623ex" viewBox="0 -820.5 3886.6 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E14-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E14-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E14-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E14-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E14-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E14-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path stroke-width="0" id="E14-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E14-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E14-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E14-MJMAIN-31" x="775" y="0"></use><use xlink:href="#E14-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E14-MJMAIN-3D" x="1830" y="0"></use><g transform="translate(2886,0)"><use xlink:href="#E14-MJMAIN-34"></use><use xlink:href="#E14-MJMAIN-30" x="500" y="0"></use></g></g></svg></span><script type="math/tex">y[1]=40</script><span>; para </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.652ex" height="2.029ex" viewBox="0 -769.3 2433.6 873.6" role="img" focusable="false" style="vertical-align: -0.242ex;"><defs><path stroke-width="0" id="E15-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E15-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E15-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMATHI-6E" x="0" y="0"></use><use xlink:href="#E15-MJMAIN-3D" x="877" y="0"></use><use xlink:href="#E15-MJMAIN-32" x="1933" y="0"></use></g></svg></span><script type="math/tex">n = 2</script><span> dá </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.027ex" height="2.623ex" viewBox="0 -820.5 3886.6 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E16-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E16-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E16-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E16-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E16-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E16-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E16-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E16-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E16-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E16-MJMAIN-32" x="775" y="0"></use><use xlink:href="#E16-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E16-MJMAIN-3D" x="1830" y="0"></use><g transform="translate(2886,0)"><use xlink:href="#E16-MJMAIN-31"></use><use xlink:href="#E16-MJMAIN-30" x="500" y="0"></use></g></g></svg></span><script type="math/tex">y[2]=10</script><span>; </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="10.188ex" height="2.623ex" viewBox="0 -820.5 4386.6 1129.4" role="img" focusable="false" style="vertical-align: -0.718ex;"><defs><path stroke-width="0" id="E17-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E17-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E17-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path stroke-width="0" id="E17-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E17-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E17-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E17-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E17-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E17-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E17-MJMAIN-33" x="775" y="0"></use><use xlink:href="#E17-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E17-MJMAIN-3D" x="1830" y="0"></use><g transform="translate(2886,0)"><use xlink:href="#E17-MJMAIN-31"></use><use xlink:href="#E17-MJMAIN-30" x="500" y="0"></use><use xlink:href="#E17-MJMAIN-30" x="1000" y="0"></use></g></g></svg></span><script type="math/tex">y[3]=100</script><span>; etc.</span></p><p><span>Tenho certeza de que você achará que resolver essas equações é uma tarefa trivial; no entanto, seria extremamente tedioso determinar a saída do sistema manualmente se você estivesse lidando com milhares ou milhões de amostras de entrada. É aqui que os computadores são extremamente úteis, pois podem facilmente multiplicar milhões de números a cada segundo. </span></p><p><span>Usando Matlab/Octave:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">x</span> = [<span class="cm-number">10</span> <span class="cm-number">20</span> <span class="cm-number">5</span> <span class="cm-number">50</span> <span class="cm-number">60</span>];</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">y</span> = <span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">x</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">y</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">y</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">20</span> &nbsp; &nbsp;<span class="cm-number">40</span> &nbsp; &nbsp;<span class="cm-number">10</span> &nbsp; <span class="cm-number">100</span> &nbsp; <span class="cm-number">120</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> [<span class="cm-variable">x</span><span class="cm-operator">'</span> <span class="cm-variable">y</span><span class="cm-operator">'</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ans</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">10</span> &nbsp; &nbsp;<span class="cm-number">20</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">20</span> &nbsp; &nbsp;<span class="cm-number">40</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">5</span> &nbsp; &nbsp;<span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">50</span> &nbsp; <span class="cm-number">100</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">60</span> &nbsp; <span class="cm-number">120</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 260px;"></div><div class="CodeMirror-gutters" style="display: none; height: 260px;"></div></div></div></pre><p><span>Outra maneira de representar um sistema discreto é usar o que chamamos de </span><strong><span>diagrama de fluxo de sinal</span></strong><span>. O diagrama de fluxo de sinal é uma representação gráfica de um sistema discreto que ilustra como o sistema se comporta. A figura abaixo mostra o diagrama de fluxo de sinal para o sistema amplificador. O diagrama de fluxo de sinal contém um operador multiplicador que multiplica qualquer entrada por um fator de 2:</span></p><p><img src="amplificador_blocos.png" alt="amplificador_blocos" style="zoom:60%;" /></p><p><font size="2"></p><blockquote><p><span>Obs.: Para transformar um diagrama de blocos do Matlab/Simulink em uma imagem, fazer:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">print</span>(<span class="cm-variable">‘</span><span class="cm-operator">-</span><span class="cm-variable">samplificador</span><span class="cm-operator">'</span>,<span class="cm-string">'-dpng'</span>,<span class="cm-string">'-r150'</span>,<span class="cm-string">'amplificador.png'</span>)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>onde: </span><code>-s&lt;nome do arquivo SLX (sem a extensão)&gt;</code><span> indica que certo &quot;sistema&quot; (ou diagrama de blocos) deve ser &quot;impresso&quot;; </span><code>-dpng</code><span> indica que deve ser gerado um arquivo de imagem PNG, </span><code>-r150</code><span> indica a resolução desejada (150 dpi).</span></p></blockquote><p></font></p><hr /><p><span>Segue com outros exemplos de sistemas discretos:</span></p><ul><li><span>Exemplo 2) </span><a href='media_movel.html'><span>Filtro de Média Móvel</span></a><span> (problema do nível do rio); </span></li><li><span>Exemplo 3) </span><a href='modelo_termico.html'><span>Modelagem Sistema Térmico</span></a><span>;</span></li><li><a href='usando_fft_matlab.html'><span>Usando FFT</span></a><span> (espectro de sinais).</span></li></ul><hr /><p><span>Fernando Passold, em 31/03/2024.</span></p><p>&nbsp;</p><p>&nbsp;</p></div>
+--><h1><a name="intro-sistemas-discretos" class="md-header-anchor"></a><span>Intro Sistemas Discretos</span></h1><p><span>Sistemas discretos são usados para manipular ou modificar sinais discretos de maneira significativa. Eles recebem um sinal discreto (sequência de números) como entrada e geram um sinal discreto em sua saída, ver próxima figura.</span></p><p><img src="figuras/discrete_system.png" alt="discrete_system" style="zoom:50%;" /></p><p><span>Uma aplicação comum de sistemas discretos é remover alguma interferência ou componente de “ruído” de um sinal. Por exemplo, sinais de ECG podem ser afetados pela introdução de ruído de equipamentos elétricos nas proximidades dos sensores usados para capturar o sinal. Este tipo de ruído está normalmente presente em frequências de 50 Hz ou 60 Hz, dependendo de onde você mora, e sistemas discretos, conhecidos como filtros, podem ser projetados para remover tais artefatos -- ver próxima figura.</span></p><p><img src="figuras/sinal_ECG_filtrar.png" alt="sinal_ECG_filtrar" style="zoom:45%;" /></p><p><span>Outra aplicação comum de sistemas discretos é modelar o comportamento de sistemas do mundo real, como uma ponte ou a suspensão de um carro. Usando a suspensão do carro como exemplo, imagine que você queira experimentar um novo design de suspensão para um carro de corrida e gostaria de ver como ele se comporta em pistas de corrida acidentadas. Uma maneira seria construir a suspensão, alugar uma pista para o dia, testar seu projeto, voltar à oficina para fazer os ajustes e repetir este procedimento quantas vezes for necessário. Isso pode ser muito caro se você precisar testar com frequência! Uma alternativa é construir um sistema discreto que modele o design da sua suspensão; em seguida, criar um sinal que modele as forças aplicadas ao carro conforme ele passa por solavancos; e, finalmente, usar o computador para analisar e ajustar o funcionamento do projeto antes de passar o caro pelo processo de fabricação.</span></p><p><span>Os sistemas discretos são capazes de alcançar resultados surpreendentes e são fundamentais para o processamento digital de sinais. Na próxima seção você aprenderá sobre os três componentes básicos de sistemas discretos: somadores, multiplicadores e atrasos. Você também verá como visualizar sistemas discretos usando diagramas de fluxo de sinal e como eles se relacionam com a descrição matemática de um sistema discreto, ou seja, com as </span><strong><span>equações de diferenças</span></strong><span>.</span></p><p><span>Você verá como operam alguns sistemas discretos práticos e também verá seus </span><strong><span>diagramas de fluxo de sinal</span></strong><span> e suas </span><strong><span>equações de diferenças</span></strong><span>. Depois de concluir esta seção, será importante que você seja capaz de associar as equações de diferenças com os diagramas de fluxo de sinal para cada caso.</span></p><!-- Também serão mostrados alguns exemplos de código que podem ser usados para implementar cada sistema; se você deseja apenas ter uma ideia do DSP, não é importante que você entenda totalmente esse código, mas se quiser poder aplicar o DSP, você o fará.--><h2><a name="ex1-caso-do-amplificador" class="md-header-anchor"></a><span>Ex.1) Caso do Amplificador</span></h2><p><span>Talvez o sistema discreto mais básico seja um amplificador. A figura abaixo mostra um sinal discreto </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.013ex" height="2.714ex" viewBox="0 -849 1728 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E3-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E3-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E3-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E3-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E3-MJMATHI-78" x="0" y="0"></use><use xlink:href="#E3-MJMAIN-5B" x="572" y="0"></use><use xlink:href="#E3-MJMATHI-6E" x="850" y="0"></use><use xlink:href="#E3-MJMAIN-5D" x="1450" y="0"></use></g></svg></span><script type="math/tex">x[n]</script><span> sendo amplificado por um fator de 2, com todas as amostras do sinal de entrada sendo multiplicadas por 2. Guiar-se pela próxima figura:</span></p><p><img src="figuras/amplificador.png" alt="amplificador" style="zoom:50%;" /></p><p><span>Embora este seja um sistema muito básico, ainda assim é muito útil. Por exemplo, em aplicações de áudio, um tal sistema teria o efeito de aumentar o volume do sinal de áudio.</span></p><p><span>Sistemas discretos são frequentemente descritos matematicamente e este sistema amplificador pode ser descrito usando a seguinte equação (referida como equação de diferenças):</span></p><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.789ex" height="2.714ex" viewBox="0 -849 5937 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E2-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E2-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E2-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E2-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E2-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E2-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E2-MJMAIN-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path stroke-width="0" id="E2-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E2-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E2-MJMATHI-6E" x="775" y="0"></use><use xlink:href="#E2-MJMAIN-5D" x="1375" y="0"></use><use xlink:href="#E2-MJMAIN-3D" x="1930" y="0"></use><use xlink:href="#E2-MJMAIN-32" x="2986" y="0"></use><use xlink:href="#E2-MJMAIN-22C5" x="3708" y="0"></use><use xlink:href="#E2-MJMATHI-78" x="4209" y="0"></use><use xlink:href="#E2-MJMAIN-5B" x="4781" y="0"></use><use xlink:href="#E2-MJMATHI-6E" x="5059" y="0"></use><use xlink:href="#E2-MJMAIN-5D" x="5659" y="0"></use></g></svg></span><script type="math/tex">y[n]=2\cdot x[n]</script></p><p><span>onde </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.013ex" height="2.714ex" viewBox="0 -849 1728 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E3-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E3-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E3-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E3-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E3-MJMATHI-78" x="0" y="0"></use><use xlink:href="#E3-MJMAIN-5B" x="572" y="0"></use><use xlink:href="#E3-MJMATHI-6E" x="850" y="0"></use><use xlink:href="#E3-MJMAIN-5D" x="1450" y="0"></use></g></svg></span><script type="math/tex">x[n]</script><span> representa a entrada do sistema, </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.839ex" height="2.714ex" viewBox="0 -849 1653 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E4-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E4-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E4-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E4-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E4-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E4-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E4-MJMATHI-6E" x="775" y="0"></use><use xlink:href="#E4-MJMAIN-5D" x="1375" y="0"></use></g></svg></span><script type="math/tex">y[n]</script><span> representa a saída e </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.394ex" height="1.485ex" viewBox="0 -531.4 600 639.2" role="img" focusable="false" style="vertical-align: -0.251ex;"><defs><path stroke-width="0" id="E6-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E6-MJMATHI-6E" x="0" y="0"></use></g></svg></span><script type="math/tex">n</script><span> representa o número da amostra.</span></p><p><span>Ao resolver esta equação de diferenças para diferentes valores de </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.394ex" height="1.485ex" viewBox="0 -531.4 600 639.2" role="img" focusable="false" style="vertical-align: -0.251ex;"><defs><path stroke-width="0" id="E6-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E6-MJMATHI-6E" x="0" y="0"></use></g></svg></span><script type="math/tex">n</script><span> você pode determinar a saída do sistema para qualquer sinal discreto de entrada (sequência de números). Por exemplo, vamos descobrir qual será a saída do amplificador se a entrada do sistema for dada pela seguinte sequência:</span></p><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="28.144ex" height="2.714ex" viewBox="0 -849 12117.6 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E7-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E7-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E7-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E7-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E7-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E7-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E7-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E7-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E7-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E7-MJMAIN-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-78" x="0" y="0"></use><use xlink:href="#E7-MJMAIN-5B" x="572" y="0"></use><use xlink:href="#E7-MJMATHI-6E" x="850" y="0"></use><use xlink:href="#E7-MJMAIN-5D" x="1450" y="0"></use><use xlink:href="#E7-MJMAIN-3D" x="2005" y="0"></use><use xlink:href="#E7-MJMAIN-5B" x="3061" y="0"></use><g transform="translate(3339,0)"><use xlink:href="#E7-MJMAIN-31"></use><use xlink:href="#E7-MJMAIN-30" x="500" y="0"></use></g><g transform="translate(5339,0)"><use xlink:href="#E7-MJMAIN-32"></use><use xlink:href="#E7-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E7-MJMAIN-35" x="7339" y="0"></use><g transform="translate(8839,0)"><use xlink:href="#E7-MJMAIN-35"></use><use xlink:href="#E7-MJMAIN-30" x="500" y="0"></use></g><g transform="translate(10839,0)"><use xlink:href="#E7-MJMAIN-36"></use><use xlink:href="#E7-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E7-MJMAIN-5D" x="11839" y="0"></use></g></svg></span><script type="math/tex">x[n]=[10 \quad 20 \quad 5 \quad 50 \quad 60]</script></p><p><span>Vamos primeiro resolver para </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.652ex" height="1.977ex" viewBox="0 -743.1 2433.6 851" role="img" focusable="false" style="vertical-align: -0.251ex;"><defs><path stroke-width="0" id="E8-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E8-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E8-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E8-MJMATHI-6E" x="0" y="0"></use><use xlink:href="#E8-MJMAIN-3D" x="877" y="0"></use><use xlink:href="#E8-MJMAIN-30" x="1933" y="0"></use></g></svg></span><script type="math/tex">n = 0</script><span>, portanto:</span></p><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.325ex" height="2.714ex" viewBox="0 -849 5737 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E9-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E9-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E9-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E9-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E9-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E9-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E9-MJMAIN-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path stroke-width="0" id="E9-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E9-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E9-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E9-MJMAIN-30" x="775" y="0"></use><use xlink:href="#E9-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E9-MJMAIN-3D" x="1830" y="0"></use><use xlink:href="#E9-MJMAIN-32" x="2886" y="0"></use><use xlink:href="#E9-MJMAIN-22C5" x="3608" y="0"></use><use xlink:href="#E9-MJMATHI-78" x="4109" y="0"></use><use xlink:href="#E9-MJMAIN-5B" x="4681" y="0"></use><use xlink:href="#E9-MJMAIN-30" x="4959" y="0"></use><use xlink:href="#E9-MJMAIN-5D" x="5459" y="0"></use></g></svg></span><script type="math/tex">y[0]=2 \cdot x[0]</script></p><p><span>Substituindo </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.781ex" height="2.714ex" viewBox="0 -849 1628 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E10-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E10-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E10-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E10-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E10-MJMATHI-78" x="0" y="0"></use><use xlink:href="#E10-MJMAIN-5B" x="572" y="0"></use><use xlink:href="#E10-MJMAIN-30" x="850" y="0"></use><use xlink:href="#E10-MJMAIN-5D" x="1350" y="0"></use></g></svg></span><script type="math/tex">x[0]</script><span> por </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.323ex" height="1.977ex" viewBox="0 -743.1 1000 851" role="img" focusable="false" style="vertical-align: -0.251ex;"><defs><path stroke-width="0" id="E11-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E11-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E11-MJMAIN-31"></use><use xlink:href="#E11-MJMAIN-30" x="500" y="0"></use></g></svg></span><script type="math/tex">10</script><span> obtemos:</span></p><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="17.286ex" height="2.714ex" viewBox="0 -849 7442.6 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E12-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E12-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E12-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E12-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E12-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E12-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E12-MJMAIN-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path stroke-width="0" id="E12-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E12-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E12-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E12-MJMAIN-30" x="775" y="0"></use><use xlink:href="#E12-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E12-MJMAIN-3D" x="1830" y="0"></use><use xlink:href="#E12-MJMAIN-32" x="2886" y="0"></use><use xlink:href="#E12-MJMAIN-22C5" x="3608" y="0"></use><g transform="translate(4109,0)"><use xlink:href="#E12-MJMAIN-31"></use><use xlink:href="#E12-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E12-MJMAIN-3D" x="5386" y="0"></use><g transform="translate(6442,0)"><use xlink:href="#E12-MJMAIN-32"></use><use xlink:href="#E12-MJMAIN-30" x="500" y="0"></use></g></g></svg></span><script type="math/tex">y[0]=2 \cdot 10 = 20</script></p><p><span>Se você resolvesse para </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.652ex" height="1.977ex" viewBox="0 -743.1 2433.6 851" role="img" focusable="false" style="vertical-align: -0.251ex;"><defs><path stroke-width="0" id="E13-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E13-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E13-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E13-MJMATHI-6E" x="0" y="0"></use><use xlink:href="#E13-MJMAIN-3D" x="877" y="0"></use><use xlink:href="#E13-MJMAIN-31" x="1933" y="0"></use></g></svg></span><script type="math/tex">n = 1</script><span>, descobriria que </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.027ex" height="2.714ex" viewBox="0 -849 3886.6 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E14-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E14-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E14-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E14-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E14-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E14-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path stroke-width="0" id="E14-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E14-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E14-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E14-MJMAIN-31" x="775" y="0"></use><use xlink:href="#E14-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E14-MJMAIN-3D" x="1830" y="0"></use><g transform="translate(2886,0)"><use xlink:href="#E14-MJMAIN-34"></use><use xlink:href="#E14-MJMAIN-30" x="500" y="0"></use></g></g></svg></span><script type="math/tex">y[1]=40</script><span>; para </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.652ex" height="1.977ex" viewBox="0 -743.1 2433.6 851" role="img" focusable="false" style="vertical-align: -0.251ex;"><defs><path stroke-width="0" id="E15-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E15-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E15-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMATHI-6E" x="0" y="0"></use><use xlink:href="#E15-MJMAIN-3D" x="877" y="0"></use><use xlink:href="#E15-MJMAIN-32" x="1933" y="0"></use></g></svg></span><script type="math/tex">n = 2</script><span> dá </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.027ex" height="2.714ex" viewBox="0 -849 3886.6 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E16-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E16-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E16-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E16-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E16-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E16-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E16-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E16-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E16-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E16-MJMAIN-32" x="775" y="0"></use><use xlink:href="#E16-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E16-MJMAIN-3D" x="1830" y="0"></use><g transform="translate(2886,0)"><use xlink:href="#E16-MJMAIN-31"></use><use xlink:href="#E16-MJMAIN-30" x="500" y="0"></use></g></g></svg></span><script type="math/tex">y[2]=10</script><span>; </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="10.188ex" height="2.714ex" viewBox="0 -849 4386.6 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E17-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E17-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E17-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path stroke-width="0" id="E17-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E17-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E17-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E17-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E17-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E17-MJMAIN-5B" x="497" y="0"></use><use xlink:href="#E17-MJMAIN-33" x="775" y="0"></use><use xlink:href="#E17-MJMAIN-5D" x="1275" y="0"></use><use xlink:href="#E17-MJMAIN-3D" x="1830" y="0"></use><g transform="translate(2886,0)"><use xlink:href="#E17-MJMAIN-31"></use><use xlink:href="#E17-MJMAIN-30" x="500" y="0"></use><use xlink:href="#E17-MJMAIN-30" x="1000" y="0"></use></g></g></svg></span><script type="math/tex">y[3]=100</script><span>; etc.</span></p><p><span>Tenho certeza de que você achará que resolver essas equações é uma tarefa trivial; no entanto, seria extremamente tedioso determinar a saída do sistema manualmente se você estivesse lidando com milhares ou milhões de amostras de entrada. É aqui que os computadores são extremamente úteis, pois podem facilmente multiplicar milhões de números a cada segundo. </span></p><p><span>Usando Matlab/Octave:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 3.333328px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">x</span> = [<span class="cm-number">10</span> <span class="cm-number">20</span> <span class="cm-number">5</span> <span class="cm-number">50</span> <span class="cm-number">60</span>];</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">y</span> = <span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">x</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">y</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">y</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">20</span> &nbsp; &nbsp;<span class="cm-number">40</span> &nbsp; &nbsp;<span class="cm-number">10</span> &nbsp; <span class="cm-number">100</span> &nbsp; <span class="cm-number">120</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> [<span class="cm-variable">x</span><span class="cm-operator">'</span> <span class="cm-variable">y</span><span class="cm-operator">'</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ans</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">10</span> &nbsp; &nbsp;<span class="cm-number">20</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">20</span> &nbsp; &nbsp;<span class="cm-number">40</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">5</span> &nbsp; &nbsp;<span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">50</span> &nbsp; <span class="cm-number">100</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">60</span> &nbsp; <span class="cm-number">120</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 260px;"></div><div class="CodeMirror-gutters" style="display: none; height: 260px;"></div></div></div></pre><p><span>Outra maneira de representar um sistema discreto é usar o que chamamos de </span><strong><span>diagrama de fluxo de sinal</span></strong><span>. O diagrama de fluxo de sinal é uma representação gráfica de um sistema discreto que ilustra como o sistema se comporta. A figura abaixo mostra o diagrama de fluxo de sinal para o sistema amplificador. O diagrama de fluxo de sinal contém um operador multiplicador que multiplica qualquer entrada por um fator de 2:</span></p><p><img src="amplificador_blocos.png" alt="amplificador_blocos" style="zoom:60%;" /></p><p><font size="2"></p><blockquote><p><span>Obs.: Para transformar um diagrama de blocos do Matlab/Simulink em uma imagem, fazer:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 3.333336px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">print</span>(<span class="cm-variable">‘</span><span class="cm-operator">-</span><span class="cm-variable">samplificador</span><span class="cm-operator">'</span>,<span class="cm-string">'-dpng'</span>,<span class="cm-string">'-r150'</span>,<span class="cm-string">'amplificador.png'</span>)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><span>onde: </span><code>-s&lt;nome do arquivo SLX (sem a extensão)&gt;</code><span> indica que certo &quot;sistema&quot; (ou diagrama de blocos) deve ser &quot;impresso&quot;; </span><code>-dpng</code><span> indica que deve ser gerado um arquivo de imagem PNG, </span><code>-r150</code><span> indica a resolução desejada (150 dpi).</span></p></blockquote><p></font></p><hr /><p><span>Segue com outros exemplos de sistemas discretos:</span></p><ul><li><span>Exemplo 2) </span><a href='media_movel.html'><span>Filtro de Média Móvel</span></a><span> (problema do nível do rio); </span></li><li><span>Exemplo 3) </span><a href='modelo_termico.html'><span>Modelagem Sistema Térmico</span></a><span>;</span></li><li><a href='usando_fft_matlab.html'><span>Usando FFT</span></a><span> (espectro de sinais).</span></li></ul><hr /><p><span>Fernando Passold, em 31/03/2024.</span></p><p>&nbsp;</p></div>
 </body>
 </html>

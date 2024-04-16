@@ -160,13 +160,385 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 }
 
 
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
+
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
+
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
+}
+
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
 
 
 
 </style>
 </head>
 <body class='typora-export'>
-<div id='write'  class=''><p><img src="figuras/Kioto-Koizumo_Junsaku-twin_dragons_2.jpeg" referrerpolicy="no-referrer" alt="Kioto-Koizumo_Junsaku-twin_dragons_2"></p><h1><a name="processamento-digital-de-sinais-eng-elétrica" class="md-header-anchor"></a><span>Processamento Digital de Sinais (Eng. Elétrica)</span></h1><p><strong><span>Conteúdo sendo previsto</span></strong><span> (parte teórica):</span></p><ol start='' ><li><p><a href='../Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf'><span>Teoria da amostragem e Aquisição de Sinais</span></a><span>.</span></p><ol start='' ><li><a href='https://fpassold.github.io/Controle_3/Teste_Amost/teste_amostragem.html'><span>Simulação demonstrando Teorema da Amostragem</span></a><span> (</span><em><span>Amostrando uma onda dente-de-serra</span></em><span>).</span></li><li><a href='https://fpassold.github.io/Controle_3/estudo_dirigido/Síntese_Onda_Quadrada.html'><span>Síntese de Onda Quadrada usando Série de Fourier</span></a><span>. </span></li><li><a href='https://demonstrations.wolfram.com/SamplingTheorem/'><span>Wolfram Demonstrations Project: </span><strong><span>Sampling Theorem</span></strong></a></li><li><a href='https://demonstrations.wolfram.com/AliasingInTimeSeriesAnalysis/'><span>Wolfram Demonstrations Project: </span><strong><span>Aliasing</span></strong><span> in Time Series Analysis</span></a><span>;</span></li></ol></li><li><p><span>Transformada Z.</span></p><ol start='' ><li><p><span>Parte 1:  </span><a href='../Controle_3/3_transformada/transformada_Z.pdf'><span>transformada_Z.pdf</span></a><span> </span></p></li><li><p><span>Parte 2:  </span><a href='../Controle_3/3_transformada/transformada_Z_parte2.pdf'><span>transformada_Z_parte2.pdf</span></a><span> </span></p></li><li><p><span>Parte 3:  </span><a href='../Controle_3/3_transformada/transformada_Z_parte_3.pdf'><span>transformada_Z_parte_3.pdf</span></a><span> </span></p></li><li><p><span>Resumo:  </span><a href='../Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf'><span>revisao_partes_importantes_transformada_Z.pdf</span></a><span> </span></p><!--Bloco que será explorado?; 5. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf)); 6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)--></li></ol></li><li><p><a href='https://fpassold.github.io/Matlab/aula_intro_matlab_1.html'><span>Iniciando no Matlab</span></a><span> ou </span><a href='https://fpassold.github.io/Matlab/tutorial.html'><span>Matlab fácil</span></a><span> (outro tutorial) ou </span><a href='https://fpassold.github.io/Matlab/Matlab_guide.pdf'><span>Matlab Guide</span></a><span> (arquivo PDF, 44 pp.) </span></p></li><li><p><a href='intro_process_sinal.html'><span>Intro. Sistemas Processamento Digital de Sinais</span></a></p><ol start='' ><li><p><a href='media_movel.html'><span>Filtro de Média Móvel</span></a></p><ol start='' ><li><a href='funcao_filter.html'><span>Uso da função </span><code>filter()</code><span> do Matlab</span></a></li></ol></li><li><p><a href='modelo_termico.html'><span>Modelagem de Sistema Térmico</span></a></p></li></ol></li><li><p><a href='usando_fft_matlab.html'><span>Usando FFT (no Matlab)</span></a></p></li></ol><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="0.646ex" height="3.466ex" viewBox="0 -1371 278 1492.1" role="img" focusable="false" style="vertical-align: -0.281ex;"><defs><path stroke-width="0" id="E1-MJMAIN-22EE" d="M78 30Q78 54 95 72T138 90Q162 90 180 74T199 31Q199 6 182 -12T139 -30T96 -13T78 30ZM78 440Q78 464 95 482T138 500Q162 500 180 484T199 441Q199 416 182 398T139 380T96 397T78 440ZM78 840Q78 864 95 882T138 900Q162 900 180 884T199 841Q199 816 182 798T139 780T96 797T78 840Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMAIN-22EE" x="0" y="0"></use></g></svg></span><script type="math/tex">\vdots</script><span> </span><font color="gray"><span>Conteúdo sendo atualizado...</span></font></p><!--Obs.: Sequencia abaixo sendo revisada...-->
+<div id='write'  class=''><p><img src="figuras/Kioto-Koizumo_Junsaku-twin_dragons_2.jpeg" referrerpolicy="no-referrer" alt="Kioto-Koizumo_Junsaku-twin_dragons_2"></p><h1><a name="processamento-digital-de-sinais" class="md-header-anchor"></a><span>Processamento Digital de Sinais</span></h1><p><strong><span>Conteúdo sendo previsto</span></strong><span> (parte teórica):</span></p><ol start='' ><li><p><a href='https://fpassold.github.io/Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf'><strong><span>Teoria da Amostragem</span></strong><span> e Aquisição de Sinais</span></a><span>.</span></p><ol start='' ><li><a href='https://fpassold.github.io/Controle_3/Teste_Amost/teste_amostragem.html'><span>Simulação demonstrando Teorema da Amostragem</span></a><span> (</span><em><span>Amostrando uma onda dente-de-serra</span></em><span>).</span></li><li><a href='https://fpassold.github.io/Controle_3/estudo_dirigido/Síntese_Onda_Quadrada.html'><span>Síntese de Onda Quadrada usando Série de Fourier</span></a><span>. </span></li><li><a href='https://demonstrations.wolfram.com/SamplingTheorem/'><span>Wolfram Demonstrations Project: </span><strong><span>Sampling Theorem</span></strong></a></li><li><a href='https://demonstrations.wolfram.com/AliasingInTimeSeriesAnalysis/'><span>Wolfram Demonstrations Project: </span><strong><span>Aliasing</span></strong><span> in Time Series Analysis</span></a><span>;</span></li></ol></li><li><p><span>Transformada Z.</span></p><ol start='' ><li><p><span>Parte 1:  </span><a href='../Controle_3/3_transformada/transformada_Z.pdf'><span>transformada_Z.pdf</span></a><span> (parte inicial, definições, transformadas de sinais &quot;básicos&quot;)</span></p></li><li><p><span>Parte 2:  </span><a href='../Controle_3/3_transformada/transformada_Z_parte2.pdf'><span>transformada_Z_parte2.pdf</span></a><span> (continuando com transformadas de outros sinais, propriedades)</span></p></li><li><p><span>Parte 3:  </span><a href='../Controle_3/3_transformada/transformada_Z_parte_3.pdf'><span>transformada_Z_parte_3.pdf</span></a><span> (Métodos Transformada Inversa de Laplace)</span></p></li><li><p><span>Resumo:  </span><a href='../Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf'><span>revisao_partes_importantes_transformada_Z.pdf</span></a><span> (paralelos sinais/sistemas tempo contínuo x tempo discreto)</span></p><!--Bloco que será explorado?; 5. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf)); 6. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)--></li></ol></li><li><p><a href='https://fpassold.github.io/Matlab/aula_intro_matlab_1.html'><span>Iniciando no Matlab</span></a><span> ou </span><a href='https://fpassold.github.io/Matlab/tutorial.html'><span>Matlab fácil</span></a><span> (outro tutorial) ou </span><a href='https://fpassold.github.io/Matlab/Matlab_guide.pdf'><span>Matlab Guide</span></a><span> (arquivo PDF, 44 pp.) </span></p></li><li><p><a href='intro_process_sinal.html'><span>Intro. Sistemas Processamento Digital de Sinais</span></a></p><ol start='' ><li><p><a href='media_movel.html'><span>Filtro de Média Móvel</span></a></p><ol start='' ><li><a href='funcao_filter.html'><span>Uso da função </span><code>filter()</code><span> do Matlab</span></a></li></ol></li><li><p><a href='modelo_termico.html'><span>Modelagem de Sistema Térmico</span></a></p></li></ol></li><li><p><a href='usando_fft_matlab.html'><span>Usando FFT (no Matlab)</span></a></p><ol><li><span>Analisador de Espectro - </span><a href='https://academo.org/demos/spectrum-analyzer/'><span>exemplos de uso</span></a><span> (site academo.org, em inglês com animações Javascript)</span></li></ol></li><li><p><span>Revisando </span><a href='funcao_transferencia.html'><span>Funções Trasferência</span></a><span> (Diagramas pólo-zero)</span></p></li><li><p><a href='estabilidade.html'><span>Estabilidade</span></a><span> de Sistemas Discretos</span></p></li><li><p><a href='papel_polos_zeros.html'><span>Papel dos pólos e zeros na magnitude da resposta frequencial de um sistema</span></a></p></li></ol><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="0.646ex" height="3.489ex" viewBox="0 -1397 278 1502.3" role="img" focusable="false" style="vertical-align: -0.245ex;"><defs><path stroke-width="0" id="E1-MJMAIN-22EE" d="M78 30Q78 54 95 72T138 90Q162 90 180 74T199 31Q199 6 182 -12T139 -30T96 -13T78 30ZM78 440Q78 464 95 482T138 500Q162 500 180 484T199 441Q199 416 182 398T139 380T96 397T78 440ZM78 840Q78 864 95 882T138 900Q162 900 180 884T199 841Q199 816 182 798T139 780T96 797T78 840Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMAIN-22EE" x="0" y="0"></use></g></svg></span><script type="math/tex">\vdots</script></p><p>🚧<span> </span><font color="gray"><span>Conteúdo sendo atualizado...</span></font></p><!--Obs.: Sequencia abaixo sendo revisada...-->
 <!--Mapeamento entre planos S e Z.-->
 <!--Análise de sinais e sistemas discretos nos domínios do tempo e da frequência.-->
 <!--Transformada discreta de Fourier (DFT/FFT).-->

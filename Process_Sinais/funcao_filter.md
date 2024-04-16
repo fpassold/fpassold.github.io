@@ -1,3 +1,5 @@
+![cool-macbook-beach](figuras/cool-macbook-beach.webp)
+
 # A função `filter()` do Matlab
 
 A função `filter()` do Matlab pode ser útil para determinar a saída de um filtro discreto/digital.

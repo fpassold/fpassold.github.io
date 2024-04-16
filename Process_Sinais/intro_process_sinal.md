@@ -98,5 +98,3 @@ Segue com outros exemplos de sistemas discretos:
 
 Fernando Passold, em 31/03/2024.
 
-
-
