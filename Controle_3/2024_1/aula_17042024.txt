@@ -1,0 +1,138 @@
+
+% # Controlador Deadbeat
+
+load planta
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+polos_BoG=pole(BoG);
+polos_BoG=pole(BoG)
+polos_BoG =
+      0.90484
+      0.81873
+      0.36788
+zero_BoG=zero(BoG)
+zero_BoG =
+      -2.7471
+     -0.19031
+C_dead1=tf(poly(polos_BoG), poly([zero_BoG(1) 1 1]), T);
+zpk(C_dead1)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+         (z+2.747) (z-1)^2
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+C_dead1=tf(poly(polos_BoG), poly([zero_BoG(2) 1 1]), T);
+zpk(C_dead1)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+         (z-1)^2 (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_dead1=C_dead1*BoG;
+zpk(ftma_dead1)
+
+ans =
+ 
+                                                                
+  0.00012224 (z+2.747) (z-0.9048) (z-0.8187) (z-0.3679)         
+                                                                
+                                                      (z+0.1903)
+                                                                
+  --------------------------------------------------------------
+                                                          
+       (z+0.1903) (z-0.3679) (z-0.8187) (z-0.9048) (z-1)^2
+                                                          
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+zpk(ftma_dead1)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z-0.9048) (z-0.8187) (z-0.3679) (z+0.1903)
+  ----------------------------------------------------------------
+        (z+0.1903) (z-0.3679) (z-0.8187) (z-0.9048) (z-1)^2
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+minreal(ftma_dead1)
+
+ans =
+ 
+  0.0001222 z + 0.0003358
+  -----------------------
+       z^2 - 2 z + 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+zpk(minreal(ftma_dead1))
+
+ans =
+ 
+  0.00012224 (z+2.747)
+  --------------------
+        (z-1)^2
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+rlocus(ftma_dead1)
+axis equal
+axis([0.6 1.1 -0.5 0.5])
+
+C_dead2=tf(poly(polos_BoG), poly([zero_BoG(2) 1 0]), T);
+zpk(C_dead2)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+         z (z-1) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_dead2=C_dead2*BoG;
+zpk(minreal(ftma_dead2))
+
+ans =
+ 
+  0.00012224 (z+2.747)
+  --------------------
+        z (z-1)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+figure; rlocus(ftma_dead2)
+hold on;
+zgrid(zeta,0)
+aixs equal
+{Unrecognized function or variable 'aixs'.} 
+axis equal
+axis([-0.1 1.1 -1 1])
+save planta
+axis equal
+quit
