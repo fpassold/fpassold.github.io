@@ -23,21 +23,22 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 <!-- * [PID com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento).-->
   * [PID com Anti-Windup](Trabalho_Final_2/trabalho_final_2_lab_controle_2_2022_2.html) (Trabalho final em 2022/2) 
 
-### Parte Prática  <!-- (Proposta não confirmada) (versão 1) (**==cancelado== em 01/12/2022)**; -->
-  * [Proposta de Projeto Final (2022/2)](Projeto_Final/projeto_final.html); <!-- >:white_check_mark: -->
+### Parte Prática
+
+<!--~~* [Proposta de Projeto Final (2022/2)](Projeto_Final/projeto_final.html) :white_check_mark: -->
+
   * [**Arduino & Interrupções (Rotinas ISR)**](Arduino_Int/Arduino_Int.html); <!-- :white_check_mark: -->
   * [Exemplo Processo Bola-no-Tubo (interface c/usuário); conexão PWM do Arduino à kit Feedback](Projeto_Final/parte_10_11_2022.html); <!-- :white_check_mark: -->
-  * [Usando Arduino (saída PWM) para gerar **Senoide** de 40 Hz](Projeto_Final/gerador_senoidal.html) :+1:
-  * [Usando Arduino (saída PWM) para gerar **onda triangular** de 0,1 Hz](Projeto_Final/onda_triangular.html) :+1:
+  * Exemplo\_1: [Usando Arduino (saída PWM) para gerar **Senoide** de 40 Hz](Projeto_Final/gerador_senoidal.html) :+1:
+  * Exemplo\_2: [Usando Arduino (saída PWM) para gerar **onda triangular** de 0,1 Hz](Projeto_Final/onda_triangular.html) :+1:
     * [Teste de Onda Triangular](onda_triangular_driver/triangular_no_driver.html) - aplicado no driver de potência SA150D da Feedback (controle de velocidade em malha-aberta) -- teste realizado em 25/04/2023 :+1:
-  * [Prevendo uma **Interface com o Usuário**](Projeto_Final/interface_usuario.html);
+  * [**Interface com o Usuário?**](Projeto_Final/interface_usuario.html);
 <!--&nbsp;-->
-* [**Sintonia prática de PID Analógico** aplicado em Controle de Posição no kit Feedback](controle_posicao.html) (Aula executada em 11/04/2023, :+1:)
+* [**Sintonia prática de PID Analógico** aplicado em Controle de Posição no kit Feedback](controle_posicao.html) (Aula de 11/04/2023, :+1:)
 <!--&nbsp;-->
 * [Como trabalhar com Módulo DAC: MPC 4725](PID_Digital/modulo_DAC.html) (Conexão I2C com Arduino One).
 <!--&nbsp;-->
-* Fechar malha de controle com $T=$ 100ms ou 50ms no kit Feedback (2023/2);
-  * Obs.: Detectado bug com Timer0 do ATMEGA presente no Arduino One (execução suspensa; impraticável)
+* Teste de Algoritmo de PID, executando à taxa de 100 Hz, com comunicação serial com o usuário.
 
 
 
