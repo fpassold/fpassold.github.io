@@ -1,0 +1,543 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>setup_arduino_PID</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; font-size-adjust: none; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
+
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
+
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
+}
+
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+
+</style>
+</head>
+<body class='typora-export'>
+<div id='write'  class=''><h1><a name="setup-para-uso-de-pid-em-arduino-uno" class="md-header-anchor"></a><span>Setup para uso de PID em Arduino Uno</span></h1><p><span>Para as aulas de controle digital usando kits Feedback ainda presentes no Laboratório de Controle do Curso de Engenharia Elétrica da UPF, foram desenvolvidas algumas placas extras para possibilitar a ligação de uma placa Arduino Uno à estes kits.</span></p><p><span>A figura abaixo mostra a montagem de uma malha-fechada de </span><a href='https://fpassold.github.io/Lab_Controle_2/controle_posicao.html'><span>controle de posição angular usando kits da marca inglesa Feedback com PID analógico</span></a><span>:</span></p><p><img src="https://fpassold.github.io/Lab_Controle_2/figs/controle_posicao_com_PID.jpg" referrerpolicy="no-referrer" alt="kit"></p><p><span>Na figura anterior, na parte inferior central está ressaltando o PID analógico. O diagrama de blocos equivalente ao sistema acima aparece abaixo:</span></p><p><img src="https://fpassold.github.io/Lab_Controle_2/figs/controle_posicao_kit_feedback.drawio.png" referrerpolicy="no-referrer" alt="blocos"></p><p><span>Mas para as aulas práticas de controle digital, a idéia é executar uma </span><strong><span>versão digital do PID</span></strong><span>.</span></p><p><span>Para tanto, os seguintes componentes são necessários:</span></p><ul><li><span>Placa Arduino Uno comum;</span></li><li><span>Módulo DAC/I2C </span><strong><span>MPC4725</span></strong><span> - para saber como usar/instalar, clique </span><a href='https://fpassold.github.io/Lab_Controle_2/PID_Digital/modulo_DAC.html'><span>[aqui]</span></a><span>;</span></li><li><span>Filtros Passa-Baixa com frequência de corte em </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.534ex" height="2.468ex" viewBox="0 -796.1 1952 1062.7" role="img" focusable="false" style="vertical-align: -0.619ex;"><defs><path stroke-width="0" id="E8-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E8-MJMATHI-63" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path><path stroke-width="0" id="E8-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E8-MJMATHI-66" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E8-MJMATHI-63" x="692" y="-213"></use><use xlink:href="#E8-MJMAIN-3D" x="1173" y="0"></use></g></svg></span><script type="math/tex">f_c=</script><span> 50 Hz, para prever efeitos de </span><em><span>aliasing</span></em><span>;</span></li><li><span>Placa acondicionadora de sinais para o A/D do Arduíno;</span></li><li><span>Placa acondicionado do sinal de saída do DAC incorporado ao Arduino.</span></li></ul><p><span>Um </span><a href='PID_no_Arduino.html'><span>primeiro teste do algoritmo de controle digital de um PID usando Arduíno Uno</span></a><span> pode ser visto </span><a href='PID_no_Arduino.html'><span>[aqui]</span></a><span>.</span></p><p><span>Segue breve descrição de cada bloco.</span></p><h2><a name="módulo-dac-mpc4725" class="md-header-anchor"></a><span>Módulo DAC MPC4725</span></h2><p><span>Uma placa Arduino Uno (ou mesmo Raspberry Pi) não contempla um conversor D/A (de sinal digital para analógico).</span></p><p><span>Para resolver este problema, está previsto o uso de pequenos módulos DAC, baseados no chip MPC4725. </span></p><p><img src="https://fpassold.github.io/Lab_Controle_2/PID_Digital/MCP4725.webp" alt="MPC4725" style="zoom:45%;" /></p><p><span>Trata-se um conversor A/D de 12-bits (trabalha com números de entrada, inteiros sem sinal, na faixa de [0 .. 4095]). Este pequeno módulo se comunica com o Arduino usando protocolo digital I2C, através dos pinos: A4 (sinal SDA) e A5 (sinal SCL). E então é capaz de gerar um sinal de saída analógico variando de 0 à 5 Volts no máximo. </span></p><p><span>Ver </span><a href='https://fpassold.github.io/Lab_Controle_2/PID_Digital/modulo_DAC.html'><span>Trabalhar com o Módulo DAC</span></a><span> para obter mais informações e detalhes sobre como instalar/fazer este módulo funcionar com a interface de programação tradicional das placas Arduino Uno.</span></p><p><span>Este módulo está previsto para ser encaixado na placa &quot;condicionara de sinai de saída do DAC&quot;.</span></p><h2><a name="placa-de-condicionamento-de-sinal-para-o-dac" class="md-header-anchor"></a><span>Placa de Condicionamento de Sinal para o DAC</span></h2><p><span>Um DAC normalmente só gera tensão na mesma faixa do circuito digital com o qual opera. No caso, no intervalo entre [0 .. 5] Volts. Mas para sua aplicação num sistema real, se faz necessário &quot;amplificar&quot; e &quot;isolar&quot; seu sinal de saída. Em parte para não danificar o próprio módulo e em parte porque normalmente um sistema real (físico/analógico) trabalha com faixas de tensão que vão de </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.692ex" height="2.714ex" viewBox="0 -849 5895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E44-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E44-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E44-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E44-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E44-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E44-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E44-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E44-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E44-MJMAIN-2212" x="278" y="0"></use><g transform="translate(1056,0)"><use xlink:href="#E44-MJMAIN-31"></use><use xlink:href="#E44-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E44-MJMAIN-2026" x="2222" y="0"></use><use xlink:href="#E44-MJMAIN-2B" x="3616" y="0"></use><g transform="translate(4617,0)"><use xlink:href="#E44-MJMAIN-31"></use><use xlink:href="#E44-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E44-MJMAIN-5D" x="5617" y="0"></use></g></svg></span><script type="math/tex">[-10 \ldots +10]</script><span> Volts ou outras faixas ainda dependendo da aplicação.</span></p><p><span>Neste caso, está previsto ao controle de um motor CC usando o driver de potência, módulo SA150D dos kits Feedback. Este módulo aceita tensões em cada uma de suas entradas, variando na faixa de </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.692ex" height="2.714ex" viewBox="0 -849 5895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E72-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E72-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E72-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E72-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E72-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E72-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E72-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E72-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E72-MJMAIN-2212" x="278" y="0"></use><g transform="translate(1056,0)"><use xlink:href="#E72-MJMAIN-31"></use><use xlink:href="#E72-MJMAIN-35" x="500" y="0"></use></g><use xlink:href="#E72-MJMAIN-2026" x="2222" y="0"></use><use xlink:href="#E72-MJMAIN-2B" x="3616" y="0"></use><g transform="translate(4617,0)"><use xlink:href="#E72-MJMAIN-31"></use><use xlink:href="#E72-MJMAIN-35" x="500" y="0"></use></g><use xlink:href="#E72-MJMAIN-5D" x="5617" y="0"></use></g></svg></span><script type="math/tex">[-15 \ldots +15]</script><span> Volts. Eventualmente este módulo pode ser usado com um pré-amplificador, módulo PA150C, que também é capaz de trabalhar com estas mesma faixa de tensão em cada uma de suas entradas. O fato é que, se queremos realizar um controle de posição angular por exemplo, girar um motor de certo número de graus, se faz necessário comandar o motor nos 2 sentidos, o que implica em apresentar tensões negativas na entrada do driver de potência ou de seu módulo pré-amplificador. Sem isto, o motor não pode inverter o sentido do giro caso tenha ultrapassado a posição angular desejada.</span></p><p><span>Este é o motivo para a criação da placa de </span><strong><span>Condicionamento de Sinal para o DAC</span></strong><span>:</span></p><p><img src="placas_arduino_DAC.jpeg" alt="placas_arduino_DAC" style="zoom:67%;" /></p><p><span>Esta placa recebe o sinal analógico gerado pelo </span><strong><span>módulo MPC4725</span></strong><span> e é capaz de amplificar e acrescentar um </span><em><span>offset</span></em><span> negativo de tensão para enquadrar a saída do sinal analógico nas faixas:</span></p><ol><li><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="15.757ex" height="2.714ex" viewBox="0 -849 6784.4 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E100-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E100-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E100-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E100-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E100-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E100-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E100-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E100-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E100-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E100-MJMAIN-2212" x="278" y="0"></use><use xlink:href="#E100-MJMAIN-32" x="1056" y="0"></use><use xlink:href="#E100-MJMAIN-2C" x="1556" y="0"></use><use xlink:href="#E100-MJMAIN-35" x="2000" y="0"></use><use xlink:href="#E100-MJMAIN-2026" x="2667" y="0"></use><use xlink:href="#E100-MJMAIN-2B" x="4061" y="0"></use><use xlink:href="#E100-MJMAIN-32" x="5061" y="0"></use><use xlink:href="#E100-MJMAIN-2C" x="5561" y="0"></use><use xlink:href="#E100-MJMAIN-35" x="6006" y="0"></use><use xlink:href="#E100-MJMAIN-5D" x="6506" y="0"></use></g></svg></span><script type="math/tex">[-2,5 \ldots +2,5]</script><span> Volts;</span></li><li><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="11.369ex" height="2.714ex" viewBox="0 -849 4895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E122-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E122-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E122-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E122-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E122-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E122-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E122-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E122-MJMAIN-2212" x="278" y="0"></use><use xlink:href="#E122-MJMAIN-35" x="1056" y="0"></use><use xlink:href="#E122-MJMAIN-2026" x="1722" y="0"></use><use xlink:href="#E122-MJMAIN-2B" x="3116" y="0"></use><use xlink:href="#E122-MJMAIN-35" x="4117" y="0"></use><use xlink:href="#E122-MJMAIN-5D" x="4617" y="0"></use></g></svg></span><script type="math/tex">[-5 \ldots +5]</script><span> Volts;</span></li><li><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.692ex" height="2.714ex" viewBox="0 -849 5895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E44-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E44-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E44-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E44-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E44-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E44-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E44-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E44-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E44-MJMAIN-2212" x="278" y="0"></use><g transform="translate(1056,0)"><use xlink:href="#E44-MJMAIN-31"></use><use xlink:href="#E44-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E44-MJMAIN-2026" x="2222" y="0"></use><use xlink:href="#E44-MJMAIN-2B" x="3616" y="0"></use><g transform="translate(4617,0)"><use xlink:href="#E44-MJMAIN-31"></use><use xlink:href="#E44-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E44-MJMAIN-5D" x="5617" y="0"></use></g></svg></span><script type="math/tex">[-10 \ldots +10]</script><span> Volts;</span></li><li><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.692ex" height="2.714ex" viewBox="0 -849 5895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E72-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E72-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E72-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E72-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E72-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E72-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E72-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E72-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E72-MJMAIN-2212" x="278" y="0"></use><g transform="translate(1056,0)"><use xlink:href="#E72-MJMAIN-31"></use><use xlink:href="#E72-MJMAIN-35" x="500" y="0"></use></g><use xlink:href="#E72-MJMAIN-2026" x="2222" y="0"></use><use xlink:href="#E72-MJMAIN-2B" x="3616" y="0"></use><g transform="translate(4617,0)"><use xlink:href="#E72-MJMAIN-31"></use><use xlink:href="#E72-MJMAIN-35" x="500" y="0"></use></g><use xlink:href="#E72-MJMAIN-5D" x="5617" y="0"></use></g></svg></span><script type="math/tex">[-15 \ldots +15]</script><span> Volts.</span></li></ol><p><span>De acordo com a seleção da SW1.</span></p><p><span>Esta placa contêm:</span></p><p><img src="placa_modulo_DAC_2.png" alt="placa_modulo_DAC_2" style="zoom:20%;" /></p><p>&nbsp;</p><h2><a name="placa-de-acondicionamento-de-sinal-de-adc" class="md-header-anchor"></a><span>Placa de Acondicionamento de sinal de ADC</span></h2><p><span>De forma semelhar ao caso anterior, uma placa Arduino Uno até possui um conversor A/D de 10 bits (gera número inteiro sem sinal, variando de [0 .. 1024]), mas suas entradas analógicas só suportam trabalhar com faixa de tensão entre </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.562ex" height="2.714ex" viewBox="0 -849 4117.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E184-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E184-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E184-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E184-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E184-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E184-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E184-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E184-MJMAIN-30" x="278" y="0"></use><use xlink:href="#E184-MJMAIN-2026" x="944" y="0"></use><use xlink:href="#E184-MJMAIN-2B" x="2338" y="0"></use><use xlink:href="#E184-MJMAIN-35" x="3339" y="0"></use><use xlink:href="#E184-MJMAIN-5D" x="3839" y="0"></use></g></svg></span><script type="math/tex">[0 \ldots +5]</script><span> Volts. Nem suporta tensão negativa nestas entradas.</span></p><p><span>Motivo pelo qual se faz necessário outro circuito que capaz de &quot;atenuar&quot; e &quot;enquadrar&quot; tensões analógicas variando em extrermos bem superiores aos previstos pelo A/D do Arduino:</span></p><p><img src="placas_arduino_ADC.jpeg" alt="placas_arduino_ADC" style="zoom:67%;" /></p><p><span>Neste caso, esta placa possibilita trabalhar com tensões analógicas de entrada variando nas faixas:</span></p><ul><li><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="11.369ex" height="2.714ex" viewBox="0 -849 4895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E122-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E122-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E122-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E122-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E122-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E122-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E122-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E122-MJMAIN-2212" x="278" y="0"></use><use xlink:href="#E122-MJMAIN-35" x="1056" y="0"></use><use xlink:href="#E122-MJMAIN-2026" x="1722" y="0"></use><use xlink:href="#E122-MJMAIN-2B" x="3116" y="0"></use><use xlink:href="#E122-MJMAIN-35" x="4117" y="0"></use><use xlink:href="#E122-MJMAIN-5D" x="4617" y="0"></use></g></svg></span><script type="math/tex">[-5 \ldots +5]</script><span> Volts;</span></li><li><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.692ex" height="2.714ex" viewBox="0 -849 5895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E44-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E44-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E44-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E44-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E44-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E44-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E44-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E44-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E44-MJMAIN-2212" x="278" y="0"></use><g transform="translate(1056,0)"><use xlink:href="#E44-MJMAIN-31"></use><use xlink:href="#E44-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E44-MJMAIN-2026" x="2222" y="0"></use><use xlink:href="#E44-MJMAIN-2B" x="3616" y="0"></use><g transform="translate(4617,0)"><use xlink:href="#E44-MJMAIN-31"></use><use xlink:href="#E44-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E44-MJMAIN-5D" x="5617" y="0"></use></g></svg></span><script type="math/tex">[-10 \ldots +10]</script><span> Volts;</span></li><li><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.692ex" height="2.714ex" viewBox="0 -849 5895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E72-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E72-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E72-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E72-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E72-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E72-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E72-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E72-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E72-MJMAIN-2212" x="278" y="0"></use><g transform="translate(1056,0)"><use xlink:href="#E72-MJMAIN-31"></use><use xlink:href="#E72-MJMAIN-35" x="500" y="0"></use></g><use xlink:href="#E72-MJMAIN-2026" x="2222" y="0"></use><use xlink:href="#E72-MJMAIN-2B" x="3616" y="0"></use><g transform="translate(4617,0)"><use xlink:href="#E72-MJMAIN-31"></use><use xlink:href="#E72-MJMAIN-35" x="500" y="0"></use></g><use xlink:href="#E72-MJMAIN-5D" x="5617" y="0"></use></g></svg></span><script type="math/tex">[-15 \ldots +15]</script><span> Volts;</span></li><li><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.692ex" height="2.714ex" viewBox="0 -849 5895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E245-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E245-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E245-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path stroke-width="0" id="E245-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E245-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E245-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E245-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E245-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E245-MJMAIN-2212" x="278" y="0"></use><g transform="translate(1056,0)"><use xlink:href="#E245-MJMAIN-33"></use><use xlink:href="#E245-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E245-MJMAIN-2026" x="2222" y="0"></use><use xlink:href="#E245-MJMAIN-2B" x="3616" y="0"></use><g transform="translate(4617,0)"><use xlink:href="#E245-MJMAIN-33"></use><use xlink:href="#E245-MJMAIN-30" x="500" y="0"></use></g><use xlink:href="#E245-MJMAIN-5D" x="5617" y="0"></use></g></svg></span><script type="math/tex">[-30 \ldots +30]</script><span> Volts.</span></li></ul><p><span>enquadrando estas tensões para a faixa aceita pelo A/D do Arduino (entre </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.562ex" height="2.714ex" viewBox="0 -849 4117.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E184-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E184-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E184-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E184-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E184-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E184-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E184-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E184-MJMAIN-30" x="278" y="0"></use><use xlink:href="#E184-MJMAIN-2026" x="944" y="0"></use><use xlink:href="#E184-MJMAIN-2B" x="2338" y="0"></use><use xlink:href="#E184-MJMAIN-35" x="3339" y="0"></use><use xlink:href="#E184-MJMAIN-5D" x="3839" y="0"></use></g></svg></span><script type="math/tex">[0 \ldots +5]</script><span> Volts).</span></p><p><span>Circuito presente na placa:</span></p><p><img src="ganho_offset_ve3_out_protected_resistores_corrigidos.png" alt="ganho_offset_ve3_out_protected_resistores_corrigidos" style="zoom:25%;" /></p><p>&nbsp;</p><h2><a name="placa-do-filtro-passa-baixas" class="md-header-anchor"></a><span>Placa do Filtro Passa Baixas</span></h2><p><span>Por fim, a fim de evitar problemas com </span><em><span>aliasing</span></em><span> associados com digitalização de sinais, foi previsto um filtro passa-baixas de 4a-ordem com frequência de corte </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.534ex" height="2.468ex" viewBox="0 -796.1 1952 1062.7" role="img" focusable="false" style="vertical-align: -0.619ex;"><defs><path stroke-width="0" id="E8-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E8-MJMATHI-63" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path><path stroke-width="0" id="E8-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E8-MJMATHI-66" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E8-MJMATHI-63" x="692" y="-213"></use><use xlink:href="#E8-MJMAIN-3D" x="1173" y="0"></use></g></svg></span><script type="math/tex">f_c=</script><span> 50 Hz. Esta frequência limita ruídos e geração de sinais em frequênicas superiores. Esta placa está prevista para trabalhar com tensões variando na faixa de </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.692ex" height="2.714ex" viewBox="0 -849 5895.1 1168.6" role="img" focusable="false" style="vertical-align: -0.742ex;"><defs><path stroke-width="0" id="E72-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E72-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E72-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E72-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E72-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E72-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E72-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E72-MJMAIN-5B" x="0" y="0"></use><use xlink:href="#E72-MJMAIN-2212" x="278" y="0"></use><g transform="translate(1056,0)"><use xlink:href="#E72-MJMAIN-31"></use><use xlink:href="#E72-MJMAIN-35" x="500" y="0"></use></g><use xlink:href="#E72-MJMAIN-2026" x="2222" y="0"></use><use xlink:href="#E72-MJMAIN-2B" x="3616" y="0"></use><g transform="translate(4617,0)"><use xlink:href="#E72-MJMAIN-31"></use><use xlink:href="#E72-MJMAIN-35" x="500" y="0"></use></g><use xlink:href="#E72-MJMAIN-5D" x="5617" y="0"></use></g></svg></span><script type="math/tex">[-15 \ldots +15]</script><span> Volts:</span></p><p><img src="placas_arduino_filtro_passa_baixas.jpeg" alt="placas_arduino_filtro_passa_baixas" style="zoom:67%;" /></p><p><span>Circuito interno:</span></p><p><img src="placa_filtro_passa_baixas_50Hz_LM358.png" alt="placa_filtro_passa_baixas_50Hz_LM358" style="zoom:25%;" /></p><hr /><p><span>Fernando Passold, em 08/04/2024.</span></p><p>&nbsp;</p></div>
+</body>
+</html>

@@ -160,6 +160,378 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 }
 
 
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
+
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
+
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
+}
+
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
 
 
 
@@ -170,9 +542,9 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 <span>Photo by </span><a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"><span>Marc Wieland</span></a><span> on </span><a href="https://unsplash.com/s/photos/sailing?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"><span>Unsplash</span></a>
 </font></p><h1><a name="laboratório-de-controle-automático-ii" class="md-header-anchor"></a><span>Laboratório de Controle Automático II</span></h1><h3><a name="teoria" class="md-header-anchor"></a><span>Teoria</span></h3><ul><li><p><a href='Lab1/lab1.html'><span>PID (Analógico) e Métodos de sintonização</span></a><span> (Resumo) </span><!-- (aula de 13/10/2022). :white_check_mark: --></p></li><li><p><span>Sintonização de PIDs: </span></p><ul><li><a href='aula2/aula2.html'><span>Sintonia de PID: Método 1) Resposta em MA para entrada degrau</span></a><span> </span><!-- (aula de 20/10/2022); :white_check_mark: --></li><li><a href='aula2/aula2b.html'><span>Sintonia de PID: Método 2) Buscando </span><em><span>Ku</span></em></a><span> </span><!-- (aula de 20/10/2022); :white_check_mark: --></li><li><a href='https://fpassold.github.io/Controle_2/8_Ajuste_PID/Sintonia_PIDs_usando_ZN.html'><span>Sintonia de PID: Método 3) Método do Relé (Parte I: teoria)</span></a><span>; </span><!-- (aula de 27/10/2022); :white_check_mark: --></li><li><a href='aula2/metodo_rele_2_simulink.html'><span>Sintonia de PID: Método 3) Método do Relé (Parte II: simulação)</span></a><span>; </span><!-- (aula de 27/10/2022); :white_check_mark: --></li><li><span>Trabalho #1 ( </span><a href='trabalho_1_2024_1.html'><span>2024/1</span></a><span> ) </span><!-- | [2023/1](aula2/trabalho_1_2023_1.html) | [2022/2](aula2/trabalho_1_2022_2.html) ) -->
 <!--&nbsp;--></li><li><a href='PID/pid.html'><span>PID Digital</span></a><span> (equações, código, implementação) </span><!--(previsto para 25/04/2023)-->
-<!-- * [PID com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento).--></li><li><a href='Trabalho_Final_2/trabalho_final_2_lab_controle_2_2022_2.html'><span>PID com Anti-Windup</span></a><span> (Trabalho final em 2022/2) </span></li></ul></li></ul><h3><a name="parte-prática-----proposta-não-confirmada-versão-1-cancelado-em-01122022---" class="md-header-anchor"></a><span>Parte Prática  </span><!-- (Proposta não confirmada) (versão 1) (**==cancelado== em 01/12/2022)**; --></h3><ul><li><p><a href='Projeto_Final/projeto_final.html'><span>Proposta de Projeto Final (2022/2)</span></a><span>; </span><!-- >:white_check_mark: --></p></li><li><p><a href='Arduino_Int/Arduino_Int.html'><strong><span>Arduino &amp; Interrupções (Rotinas ISR)</span></strong></a><span>; </span><!-- :white_check_mark: --></p></li><li><p><a href='Projeto_Final/parte_10_11_2022.html'><span>Exemplo Processo Bola-no-Tubo (interface c/usuário); conexão PWM do Arduino à kit Feedback</span></a><span>; </span><!-- :white_check_mark: --></p></li><li><p><a href='Projeto_Final/gerador_senoidal.html'><span>Usando Arduino (saída PWM) para gerar </span><strong><span>Senoide</span></strong><span> de 40 Hz</span></a><span> </span>👍</p></li><li><p><a href='Projeto_Final/onda_triangular.html'><span>Usando Arduino (saída PWM) para gerar </span><strong><span>onda triangular</span></strong><span> de 0,1 Hz</span></a><span> </span>👍</p><ul><li><a href='onda_triangular_driver/triangular_no_driver.html'><span>Teste de Onda Triangular</span></a><span> - aplicado no driver de potência SA150D da Feedback (controle de velocidade em malha-aberta) -- teste realizado em 25/04/2023 </span>👍</li></ul></li><li><p><a href='Projeto_Final/interface_usuario.html'><span>Prevendo uma </span><strong><span>Interface com o Usuário</span></strong></a><span>;</span>
-<!--&nbsp;--></p></li><li><p><a href='controle_posicao.html'><strong><span>Sintonia prática de PID Analógico</span></strong><span> aplicado em Controle de Posição no kit Feedback</span></a><span> (Aula executada em 11/04/2023, </span>👍<span>)</span>
+<!-- * [PID com anti-windup](PID_anti_windup/PID_anti_windup_1.html) (página em desenvolvimento).--></li><li><a href='Trabalho_Final_2/trabalho_final_2_lab_controle_2_2022_2.html'><span>PID com Anti-Windup</span></a><span> (Trabalho final em 2022/2) </span></li></ul></li></ul><h3><a name="parte-prática" class="md-header-anchor"></a><span>Parte Prática</span></h3><!--~~* [Proposta de Projeto Final (2022/2)](Projeto_Final/projeto_final.html) :white_check_mark: --><ul><li><p><a href='Arduino_Int/Arduino_Int.html'><strong><span>Arduino &amp; Interrupções (Rotinas ISR)</span></strong></a><span>; </span><!-- :white_check_mark: --></p></li><li><p><a href='Projeto_Final/parte_10_11_2022.html'><span>Exemplo Processo Bola-no-Tubo (interface c/usuário); conexão PWM do Arduino à kit Feedback</span></a><span>; </span><!-- :white_check_mark: --></p></li><li><p><span>Exemplo</span><span>_</span><span>1: </span><a href='Projeto_Final/gerador_senoidal.html'><span>Usando Arduino (saída PWM) para gerar </span><strong><span>Senoide</span></strong><span> de 40 Hz</span></a><span> </span>👍</p></li><li><p><span>Exemplo</span><span>_</span><span>2: </span><a href='Projeto_Final/onda_triangular.html'><span>Usando Arduino (saída PWM) para gerar </span><strong><span>onda triangular</span></strong><span> de 0,1 Hz</span></a><span> </span>👍</p><ul><li><a href='onda_triangular_driver/triangular_no_driver.html'><span>Teste de Onda Triangular</span></a><span> - aplicado no driver de potência SA150D da Feedback (controle de velocidade em malha-aberta) -- teste realizado em 25/04/2023 </span>👍</li></ul></li><li><p><a href='Projeto_Final/interface_usuario.html'><strong><span>Interface com o Usuário?</span></strong></a><span>;</span>
+<!--&nbsp;--></p></li><li><p><a href='controle_posicao.html'><strong><span>Sintonia prática de PID Analógico</span></strong><span> aplicado em Controle de Posição no kit Feedback</span></a><span> (Aula de 11/04/2023, </span>👍<span>)</span>
 <!--&nbsp;--></p></li><li><p><a href='PID_Digital/modulo_DAC.html'><span>Como trabalhar com Módulo DAC: MPC 4725</span></a><span> (Conexão I2C com Arduino One).</span>
-<!--&nbsp;--></p></li><li><p><span>Fechar malha de controle com </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.087ex" height="1.945ex" viewBox="0 -775.8 1759.8 837.3" role="img" focusable="false" style="vertical-align: -0.143ex;"><defs><path stroke-width="0" id="E11-MJMATHI-54" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path stroke-width="0" id="E11-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E11-MJMATHI-54" x="0" y="0"></use><use xlink:href="#E11-MJMAIN-3D" x="981" y="0"></use></g></svg></span><script type="math/tex">T=</script><span> 100ms ou 50ms no kit Feedback (2023/2);</span></p><ul><li><span>Obs.: Detectado bug com Timer0 do ATMEGA presente no Arduino One (execução suspensa; impraticável)</span></li></ul></li></ul><p>&nbsp;</p><ul><li><p><span>Eventual uso de placa Raspberry Pi 3 executando run-time CODESYS (2024/1); </span>🆕</p><ul><li><a href='CODESYS/instalacao.html'><span>Sobre o CODESYS</span></a><span>;</span></li><li><a href='CODESYS/codesys_install.html'><span>Instalação do CODESYS Development System</span></a><span>;</span></li><li><a href='CODESYS/SSH_Rasp.html'><span>SSH para placa Rasp</span></a><span> (descobrindo seu número IP);</span></li></ul></li></ul><p>&nbsp;</p><hr /><p><font size="1"><a href='https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days'><span>♫</span></a><span> Fernando Passold, em 22/10/2022, 02/12/2022, 11/04/2023</span></font><span> .</span></p><p>&nbsp;</p></div>
+<!--&nbsp;--></p></li><li><p><span>Teste de </span><a href='PID_Arduino/PID_no_Arduino.html'><span>PID Digital usando Arduino Uno</span></a><span>, (algoritmo de controle executado à taxa de 100 Hz; interface com usuário via comunicação serial/USB).</span></p></li><li><p><a href='PID_Arduino/setup_arduino_PID.html'><span>Setup previsto para placa Arduino Uno + kits Feedback</span></a><span>;</span></p></li></ul><p>&nbsp;</p><ul><li><p><span>Eventual uso de placa Raspberry Pi 3 executando run-time CODESYS (2024/1); </span>🆕</p><ul><li><a href='CODESYS/instalacao.html'><span>Sobre o CODESYS</span></a><span>;</span></li><li><a href='CODESYS/codesys_install.html'><span>Instalação do CODESYS Development System</span></a><span>;</span></li><li><a href='CODESYS/SSH_Rasp.html'><span>SSH para placa Rasp</span></a><span> (descobrindo seu número IP);</span></li></ul></li></ul><p>&nbsp;</p><hr /><p><font size="1"><a href='https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days'><span>♫</span></a><span> Fernando Passold, em 22/10/2022, 02/12/2022, 11/04/2023</span></font><span> .</span></p><p>&nbsp;</p></div>
 </body>
 </html>

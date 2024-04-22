@@ -38,7 +38,8 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 <!--&nbsp;-->
 * [Como trabalhar com Módulo DAC: MPC 4725](PID_Digital/modulo_DAC.html) (Conexão I2C com Arduino One).
 <!--&nbsp;-->
-* Teste de Algoritmo de PID, executando à taxa de 100 Hz, com comunicação serial com o usuário.
+* Teste de [PID Digital usando Arduino Uno](PID_Arduino/PID_no_Arduino.html), (algoritmo de controle executado à taxa de 100 Hz; interface com usuário via comunicação serial/USB).
+* [Setup previsto para placa Arduino Uno + kits Feedback](PID_Arduino/setup_arduino_PID.html);
 
 
 
