@@ -30,10 +30,11 @@ Parte de **Controle Digital**:
 2. [Teoria do Erro](https://fpassold.github.io/Controle_3/4_teoria_erros/resumo_teoria_erro.html) (ou da Precisão + importância do integrador c/ dedução integral numérica).
 3. Projetos de Controladores Digitais usando Root-Locus
    1. O que é o "Root Locus" ?
-   2. Controlador Proporcional -- [Aula de 08/04/2024](2024_1/aula_080402024.html) , .
-   3. Controlador PI
-   4. Controlador PD
-   5. Controlador PID
+   2. Controlador Proporcional -- [Aula de 08/04/2024](2024_1/aula_080402024.html);
+   3. Controlador Proporcional + Controle com Ação Integral Pura -- [Aula de 22/04/2024](2024_1/aula_22042024.html);
+   4. Controlador PI;
+   5. Controlador PD;
+   6. Controlador PID;
 4. Variações de PID´s
 5. Implementação em sistemas embarcados de controladores digitais.
 

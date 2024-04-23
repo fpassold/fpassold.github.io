@@ -42,9 +42,11 @@ $FTMA(z)$ : pode ser um sistema do tipo $n$, onde:
 * tipo $n$ ($n$ integradores).
 
 De modo geral podemos escrever a $FTMA(z)$ como:
+
 $$
 FTMF(z)=\dfrac{N(z)}{D(z)}=\dfrac{K(z-z_1)(z-z_2)\cdots(z-zi)}{(z-1)^n(z-p_1)(z-p_2)\cdots(z-p_j)}
 $$
+
 onde: $K$ é um “ganho”; num sistema com $i$ zeros, $j$ pólos e eventualmente $n$ integradores.
 
 A questão agora é: **— Como identificar um integrador** (ou mais) dentro de uma $FTMA(z)$ (no plano-z) ?
@@ -53,8 +55,9 @@ A questão agora é: **— Como identificar um integrador** (ou mais) dentro de 
 
 NUm sistema discreto, podemos sintetizar uma ação integral fazendo:
 
-* integração numérica retangular:
-  <img src="fig_3_int_retangular.png" alt="fig_3_int_retangular.png" style="zoom:15%;" />
+* **Integração numérica retangular**:
+
+<img src="fig_3_int_retangular.png" alt="fig_3_int_retangular.png" style="zoom:15%;" />
 
 Tentando generalizar (extrair) uma equação no plano-z para um processo de integração numérica retangular, percebemos que:
 
@@ -88,10 +91,11 @@ $I(z)=\dfrac{T}{ \textcolor{blue}{(z-1)} } \cdot E(z)$
 
 onde $E(z)$ é o sinal que está sendo integrado (o erro do sistema) e $I(z)$ é o resultado da integração. 
 
-Note o pólo em $z=1$, o **Integrador**.
+Note ==o pólo em $z=1$, é o **Integrador**==.
 
-* no caso de uma integração numérica trapezoidal:
-  <img src="fig_4_Int_trapezio.png" alt="fig_4_Int_trapezio.png" style="zoom:20%;" />
+* Caso de uma **Integração numérica trapezoidal**:
+
+<img src="fig_4_Int_trapezio.png" alt="fig_4_Int_trapezio.png" style="zoom: 17%;" />
 
 Desenvolvendo as equações para este caso resulta:
 
@@ -153,11 +157,11 @@ Para continuar podemos considerar diferentes sinais de referência e tentar prev
 
 ### Sinais de referência típicos
 
-| Entrada:    | Domínio tempo:                                               | Tranformada $\mathcal{Z}$                                    | Gráfico                       |
-| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------- |
-| Degrau:     | $$u(t) = \left\{ \begin{array}{ll}0, & t<0\\ \textcolor{blue}{A} \cdot 1, & t \ge 0	\end{array} \right.$$ | ${ U(z)=\dfrac{\textcolor{blue}{A} \; z}{z-1} }$             |                               |
-| Rampa:      | $r(t) = \left\{ \begin{array}{ll} 0, & t<0\\ \textcolor{blue}{A} \cdot t, & t \ge 0 \\ \end{array} \right.$ | $R(z)= \dfrac{\textcolor{blue}{A} \cdot T \, z}{(z-1)^2}$    | ![rampa.png](rampa.png)       |
-| Parabólica: | $r(t) = \left\{ \begin{array}{ll} 0, & t<0\\ \textcolor{blue}{A} \cdot \frac{1}{2} \, t^2, & t \ge 0 \\ \end{array} \right.$ | $R(z)=  \dfrac{\textcolor{blue}{A} \; T^2 \, z(z+1)}{2 \, (z-1)^3}$ | ![parabola.png](parabola.png) |
+| Entrada:    | Domínio tempo:                                               | Tranformada $\mathcal{Z}$                                    | Gráfico                                                      |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Degrau:     | $$u(t) = \left\{ \begin{array}{ll}0, & t<0\\ \textcolor{blue}{A} \cdot 1, & t \ge 0	\end{array} \right.$$ | ${ U(z)=\dfrac{\textcolor{blue}{A} \; z}{z-1} }$             |                                                              |
+| Rampa:      | $r(t) = \left\{ \begin{array}{ll} 0, & t<0\\ \textcolor{blue}{A} \cdot t, & t \ge 0 \\ \end{array} \right.$ | $R(z)= \dfrac{\textcolor{blue}{A} \cdot T \, z}{(z-1)^2}$    | <img src="rampa.png" alt="rampa.png" style="zoom: 65%;" />   |
+| Parabólica: | $r(t) = \left\{ \begin{array}{ll} 0, & t<0\\ \textcolor{blue}{A} \cdot \frac{1}{2} \, t^2, & t \ge 0 \\ \end{array} \right.$ | $R(z)=  \dfrac{\textcolor{blue}{A} \; T^2 \, z(z+1)}{2 \, (z-1)^3}$ | <img src="parabola.png" alt="parabola.png" style="zoom: 48%;" /> |
 
 Analisando alguns casos...
 
@@ -329,7 +333,7 @@ Por fim, podemos resumir as conclusões numa "Tabela Resumo de Erros":
 
 ## Tabela resumo de erros
 
-<img src="tabela_resumo_erros.png" alt="tabela_resumo_erros.png" style="zoom:50%;" />
+<img src="tabela_resumo_erros.png" alt="tabela_resumo_erros.png" style="zoom: 33%;" />
 
 Isto significa que:
 

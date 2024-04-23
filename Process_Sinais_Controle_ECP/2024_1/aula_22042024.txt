@@ -1,0 +1,204 @@
+load planta
+zpk(BoG)
+
+ans =
+ 
+   0.0020446 (z+2.867) (z+0.2013)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.4493)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+rlocus(BoG)
+
+% Testando o ganho máximo
+
+K=10.6;
+ftmf=feedback(K*BoG,1);
+pole(ftmf)
+ans =
+      0.91393 +    0.39426i
+      0.91393 -    0.39426i
+      0.32336 +          0i
+abs(0.91393 +    0.39426i)
+ans =
+      0.99534
+figure; step(ftmf)
+
+% ## Controlador Proporcional - Projeto 4
+
+% Suponha que os requisitos de controle sejam
+% * $\%OS \le 20\%$;
+% * $e(\infty) \le 20\%$
+
+OS=20;
+zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+zeta =
+      0.45595
+close all % fechar todas as figuras
+rlocus(BoG)
+hold on;
+zgrid(zeta,0)
+% fazendo zoom na região de interesse
+axis([-0.7 1.1 -0.3 1.1])
+% sintonizando o controlador
+[K_OS2,polosMF]=rlocfind(BoG)
+Select a point in the graphics window
+selected_point =
+      0.88033 +    0.18328i
+K_OS2 =
+       1.9896
+polosMF =
+       0.8798 +    0.18337i
+       0.8798 -    0.18337i
+      0.40923 +          0i
+
+% ![rl_K_OS2.png](rl_K_OS2.png)
+
+% fechando a malha...
+
+K_OS2=2;
+ftmf_K_OS2=feedback(K_OS2*BoG,1);
+pole(ftmf_K_OS2)
+ans =
+      0.87987 +    0.18383i
+      0.87987 -    0.18383i
+      0.40906 +          0i
+figure; step(ftmf_K_OS2)
+
+% ![step_K_OS2.png](step_K_OS2.png)
+
+axis([0 6 0 1])
+
+dcgain(ftmf)
+ans =
+      0.91379
+dcgain(ftmf_K_OS2)
+ans =
+      0.66667
+erro=((1-dcgain(ftmf_K_OS2))/1)*100
+erro =
+       33.333
+
+K_2=3.5;
+ftmf_K2=feedback(K_2*BoG,1);
+figure; step(ftmf_K2)
+
+dcgain(ftmf_K2)
+ans =
+      0.77778
+erro=((1-dcgain(ftmf_K2))/1)*100
+erro =
+       22.222
+
+save planta
+
+Kp=(1-0.2)/0.2
+Kp =
+     4
+
+zpk(BoG)
+
+ans =
+ 
+   0.0020446 (z+2.867) (z+0.2013)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.4493)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+limite=dcgain(BoG)
+limite =
+            1
+
+K4=Kp
+K4 =
+     4
+ftmf_K4=feedback(K4*BoG,1);
+figure; step(ftmf_K4)
+
+save planta
+diary off
+
+% ## Controlador com ação integral pura
+
+C_I=tf(1,[1 -1])
+
+C_I =
+ 
+    1
+  -----
+  s - 1
+ 
+Continuous-time transfer function.
+
+C_I=tf(1,[1 -1], T)
+
+C_I =
+ 
+    1
+  -----
+  z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_I = C_i*BoG;
+{Unrecognized function or variable 'C_i'.} 
+ftma_I = C_I*BoG;
+zpk(ftma_I)
+
+ans =
+ 
+      0.0020446 (z+2.867) (z+0.2013)
+  --------------------------------------
+  (z-1) (z-0.9048) (z-0.8187) (z-0.4493)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+rlocus(ftma_I)
+axis equal
+% realizando um zoom na região de interesse
+axis([-4 2 -1.5 1.5])
+
+hold on;
+zgrid(zeta,0)
+axis([0.7 1.05 -0.2 0.2])
+[K_I,polosMF]=rlocfind(ftma_I)
+Select a point in the graphics window
+selected_point =
+      0.97085 +   0.053215i
+K_I =
+     0.047198
+polosMF =
+      0.97039 +   0.053366i
+      0.97039 -   0.053366i
+      0.78049 +          0i
+      0.45162 +          0i
+
+% ![rl_ftma_I_zoom.png](rl_ftma_I_zoom.png)
+K_I=0.05;
+ftmf_I=feedback(K_I*ftma_I,1);
+pole(ftmf_I)
+ans =
+      0.97111 +   0.055534i
+      0.97111 -   0.055534i
+      0.77891 +          0i
+      0.45176 +          0i
+figure; step(ftmf_I)
+
+% ![step_I.png](step_I.png)
+
+figure; step(ftmf_K_OS2, ftmf_I);
+legend('Kp (e[\infty]=20%)', 'Integrador Puro')
+
+figure; step(ftmf_K4, ftmf_I);
+legend('Kp (e[\infty]=20%)', 'Integrador Puro')
+
+% ![step_K4_K_I.png](step_K4_K_I.png)
+
+save planta
+diary off
