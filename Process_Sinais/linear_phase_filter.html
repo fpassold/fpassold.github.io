@@ -233,385 +233,685 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 }
 
 
-import url(https://fonts.googleapis.com/css?family=Open%20Sans);
 :root {
-    --code-block-bg-color: inherit;//#f8f8f8;
+    --base-font: "Ink Free", "FZSJ-SGLDXMHJW", "Helvetica Neue", "Noto Sans", -apple-system, Ubuntu,
+    "Microsoft YaHei", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans",
+    "Noto Sans CJK SC", "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC",
+    "Source Han Sans CN", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti",
+    SimHei, "WenQuanYi Zen Hei Sharp", "Source Sans Pro", sans-serif;
+    --title-font: "Ink Free", "FZSJ-SGLDXMHJW", "EB Garamond", "FZSJ-SGLDXMHJW", Georgia, "Noto Serif", "Noto Serif CJK SC",
+    "Nimbus Roman No9 L", "Songti SC", "Source Han Serif SC",
+    "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun,
+    SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN",
+    "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU,
+    "Ubuntu", "Source Sans Pro", serif;
+    --monospace: "JetBrains Mono", "Fira Code", "Cascadia Code", "Sarasa Term SC",
+    Monaco, "Deja Vu Sans Mono", Consolas, "Lucida Console", "Andale Mono",
+    "Roboto Mono", Courier, Monospace !important;
+}
+  
 
-    --item-hover-bg-color: #0a0d16;
-    --control-text-color: #b7b7b7;
-    --control-text-hover-color: #eee;
-    --window-border: 1px dashed #9b9b9b;
+/* 日间 */
+/* light */
+:root {
+    --title-color: #6f79ff;
+    --text-color: #353535;
+    --light-text-color: #666666;
+    --link-color: #55d3e4;
+    --code-color: #937fce;
 
-    --active-file-bg-color: #0070E0;
-    --active-file-border-color: #8d8df0;
+    --shadow-color: rgba(128, 107, 192, 0.1);
+    --blue: #559CE4;
+    --Mica: #f3f3f3;
+    --border: rgb(179, 179, 179);
+    --shadow: 0.4rem 0.8rem 1.6rem var(--shadow-color);
 
-    --primary-color: #a3d5fe;
+    --table-background-color: #fcfcfc;
 
-    --active-file-text-color: #0070e0;
-    --item-hover-bg-color: #70717d;
-    --item-hover-text-color: white;
-    --primary-color: #6dc1e7;
+    --side-bar-bg-color: var(--Mica);
+    --control-text-color: var(var(--light-text-color));
+    --active-file-text-color: var(--title-color);
+    --active-file-bg-color: var(--shadow-color);
+    --item-hover-bg-color: var(--shadow-color);
+    --active-file-border-color: var(var(--title-color));
 }
 
-html,
-body,
-#write{
-	color: #5e676d;
-	font-family: "Open Sans", "Clear Sans", sans-serif;
+.cm-s-inner {
+    padding: 0.25rem;
+    border-radius: 20px 20px 20px 20px;
 }
+
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+    color: #3a3432 !important;
+    border: none;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+    color: #6d8a88;
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+    padding: 0 0.1rem 0 0.3rem;
+    color: #b8b5b4;
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+    background: var(--shadow-color);
+}
+
+.md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
+    background: var(--shadow-color);
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: #a34e8f !important;
+}
+
+#fences-auto-suggest .active {
+    background: #ddd;
+}
+
+.cm-s-inner span.cm-comment {
+    color: #9daab6;
+}
+
+.cm-s-inner span.cm-builtin {
+    color: #0451a5;
+}
+
+
+/* 打印 */
+/* print */
+@media print {
+    html {
+        font-size: 0.9rem;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+
+    #write {
+        max-width: 100%;
+    }
+
+    @page {
+        size: A4; /* PDF A4 */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: initial;
+}
+
+
+/* 页边距 和 页面大小 */
+#write {
+    font-family: var(--base-font);
+    /* max-width: 914px; */
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    padding-bottom: 100px;
+}
+
+#write p {
+    line-height: 1.6rem;
+    word-spacing: 0.05rem;
+}
+
+body {
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    overflow-x: hidden;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+
+/* 标题 */
+/* title */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-	/*font-weight: lighter;*/
-	font-weight: 100;
-	color: #5e676d;
-	font-family: "Open Sans", sans-serif;
-	margin: 0.5rem 0;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    cursor: text;
+    color: var(--title-color);
+    font-family: var(--title-font);
 }
 
-html {
-	font-size:16px;
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+    background: linear-gradient(to bottom, #43CBFF, #9708CC);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    caret-color: var(--text-color);
 }
 
-#write {
-	max-width: 914px;
-	text-align: justify;
-}
-
-#write>h1:first-child {
-	margin-top: 2.75rem;
-}
-#write>h2:first-child {
-	margin-top: 1.75rem;
-}
-#write>h3:first-child {
-	margin-top: 1rem;
-}
-#write>h4:first-child {
-	margin-top: 0.5rem;
-}
 h1 {
-	margin: 1rem 0;
-	/*line-height: 4rem;
-	padding: 5px 30px;
-	text-align: center;
-	margin-top: 4rem;*/
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 2rem;
 }
+
+h1:after {
+    content: "";
+    display: block;
+    margin: 0.2em auto 0;
+    width: 6rem;
+    height: 2.4px;
+    border-bottom: 2px solid var(--title-color);
+}
+
 h2 {
-	margin: 0.8rem 0;
-	/*
-	line-height: 3rem;
-	padding: 0 30px;
-	text-align: center;
-	margin-top: 3rem
-	*/
+    padding-left: 0.4em;
+    font-size: 1.6em;
+    border-left: 0.4em solid var(--title-color);
+    border-bottom: 1px solid var(--title-color);
 }
+
 h3 {
+    font-size: 1.6em;
 }
+
 h4 {
+    font-size: 1.4em;
 }
+
 h5 {
-	font-size: 1.125rem;
+    font-size: 1.2em;
 }
+
 h6 {
-	font-size: 1.1rem;
+    font-size: 1.0em;
 }
-p {
-	color: #5e676d;
-	font-size: 1rem;
-	line-height: 1.5rem;
-	margin: 0 0 1.25rem;
+
+
+/* 超链接 */
+/* hyperlink */
+a {
+    color: var(--link-color);
+    text-decoration: none;
 }
-#write>h3.md-focus:before {
-	left: -1.875rem;
-	top: 0.5rem;
-	padding: 2px;
+
+#write a {
+    border-bottom: none;
+    background: linear-gradient(to bottom, #3C8CE7, #00EAFF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    caret-color: var(--text-color);
 }
-#write>h4.md-focus:before {
-	left: -1.875rem;
-	top: 0.3125rem;
-	padding: 2px;
+
+#write a:hover {
+    border-bottom: 1px solid var(--link-color);
+    color: var(--link-color);
+    text-decoration: none;
 }
-#write>h5.md-focus:before {
-	left: -1.875rem;
-	top: 0.25rem;
-	padding: 2px;
+
+.md-content {
+    color: var(--light-text-color);
 }
-#write>h6.md-focus:before {
-	left: -1.875rem;
-	top: .125rem;
-	padding: 2px;
-}
-/*@media screen and (min-width: 48em) {
-	.h1,
-	h1 {
-		font-size: 3.250rem;
-	}
-	.h2,
-	h2 {
-		font-size: 2.298rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.625rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-	#write>h4.md-focus:before,
-	#write>h5.md-focus:before,
-	#write>h6.md-focus:before {
-		top: 1px;
-	}
-	p {
-		font-size: 1.25rem;
-		line-height: 1.8;
-	}
-	table {
-		font-size: 1.25rem;
-	}
-}*/
-@media screen and (max-width: 48em) {
-	blockquote {
-		margin-left: 1rem;
-		margin-right: 0;
-		padding: 0.5em;
-	}
-	.h1,
-	h1 {
-		font-size: 2.827rem;
-	}
-	.h2,
-	h2 {
-		font-size: 1.999rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.413rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-}
-a,
-.md-def-url {
-	color: #007ee5;
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
-}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
 table {
-	border: 1px solid #e2e2e2;
-	margin-bottom: 20px
+    margin: 0.8em 0;
 }
+
+/* horizontal rule */
+hr {
+    margin: 1em auto;
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+/* 列表 */
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 2rem;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+#write ol li,
+ul li {
+    padding-left: 0.1rem;
+}
+
+
+/* 表格 */
+table {
+    margin-bottom: 1.25rem;
+}
+
 table th,
 table td {
-	padding: 8px;
-	line-height: 1.5rem;
-	vertical-align: top;
-	border: 1px solid #e2e2e2;
+    padding: 8px;
+    line-height: 1.25rem;
+    vertical-align: middle;
+    border: 1px solid #ddd;
 }
+
 table th {
-	font-weight: normal;
-	background-color: #f0f7fd;
+    font-weight: bold;
 }
+
 table thead th {
-	vertical-align: bottom
-}
-table caption+thead tr:first-child th,
-table caption+thead tr:first-child td,
-table colgroup+thead tr:first-child th,
-table colgroup+thead tr:first-child td,
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-	border-top: 0
-}
-table tbody+tbody {
-	border-top: 2px solid #ddd
-}
-code, .md-fences {
-	padding: .5em;
-	background: #f6f9fc;
-	border: 1px solid #d0d4d9;
-	border-radius: 3px;
-	padding: .1em;
-	font-size: 0.9rem !important;
-	margin-left: 0.2em;
-	margin-right: 0.2em;
-}
-.md-fences {
-	margin: 0 0 20px;
-	font-size: 1em;
-	padding: 0.3em 1em;
-  	padding-top: 0.4em;
-}
-.task-list{
-	padding-left: 0;
+    vertical-align: middle;
 }
 
-.task-list-item {
-	padding-left:2.125rem;
+table tr:nth-child(2n),
+thead {
+    background-color: var(--table-background-color);
 }
 
-/* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  and (min-resolution:.001dpcm) {
-    .task-list-item input:before {
-    	margin-top: -0.2rem;
-    }
 
-    .task-list-item input:checked:before,
-	.task-list-item input[checked]:before {
-		margin-top: -0.2rem;
-	}
-}
-
+/* 引用 */
 blockquote {
-	margin: 0 0 1.11111rem;
-	padding: 0.5rem 1.11111rem 0 1.05556rem;
-	border-left: 2px solid rgba(0, 112, 224, 0.32);
+    border-left: 0.2em solid var(--blue);
+    padding-left: 1em;
+    color: var(--light-text-color);
+    font-family: var(--base-font);
 }
-blockquote,
-blockquote p {
-	line-height: 1.6;
-	color: #8f8f8f;
+
+
+/* 文字样式 */
+strong,
+em,
+code,
+tt,
+mark {
+    padding: 0 4px;
+    border-radius: 8px 8px 8px 8px;
+    margin: 0 2px;
+    color: var(--text-color);
+    background-color: var(--Mica);
 }
+
+/* 粗体 */
+#write strong {
+    font-weight: bold;
+
+}
+
+/* 斜体 */
+#write em {
+
+}
+
+/* 行间公式 */
+/* inline code */
+#write code,
+tt {
+    font-family: var(--monospace);
+    color: var(--code-color);
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    color: var(--code-color);
+    background-color: #f4f2f9;
+}
+
+/* 高亮 */
+/* highlight */
+#write mark {
+    background-color: #FDEEBB;
+    color: #e9781e;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
 #write pre.md-meta-block {
-	min-height: 30px;
-	background: #f8f8f8;
-	padding: 1.5em;
-	font-weight: 300;
-	font-size: 1em;
-	padding-bottom: 1.5em;
-	padding-top: 3em;
-    margin-top: -1.5em;
-	color: #999;
-	border-left: 1000px #f8f8f8 solid;
-	margin-left: -1000px;
-	border-right: 1000px #f8f8f8 solid;
-	margin-right: -1000px;
-	margin-bottom: 2em;
-}
-.MathJax_Display {
-	font-size: 0.9em;
-	margin-top: 0.5em;
-	margin-bottom: 0;
-}
-p.mathjax-block,
-.mathjax-block {
-	padding-bottom: 0;
-}
-.mathjax-block>.code-tooltip {
-	bottom: 5px;
-	box-shadow: none;
-}
-.md-image>.md-meta {
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-}
-.md-image>img {
-	margin-top: 2px;
-}
-.md-image>.md-meta:first-of-type:before {
-	padding-left: 4px;
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: var(--Mica);
+    border: 0;
+    border-radius: 20px 20px 20px 20px;
+    color: #777777;
+    margin-top: 0 !important;
 }
 
-#typora-source {
-	color: #555;
+.mathjax-block > .code-tooltip {
+    bottom: 0.375rem;
 }
 
-/** ui for windows **/
-#md-searchpanel {
-    border-bottom: 1px solid #ccc;
+/* 图片 */
+/* imag */
+.md-image > .md-meta {
+    border-radius: 20px 20px 20px 20px;
+    font-family: var(--monospace);
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
 }
 
-#md-searchpanel .btn {
-    border: 1px solid #ccc;
+/* 图片靠左显示 */
+/* p .md-image:only-child {
+  width: auto;
+  text-align: left;
+  margin-left: 2rem;
+} */
+
+/* 写![shadow-...]() 显示图片阴影 */
+img[alt|="shadow"] {
+    box-shadow: 0.4rem 0.8rem 1.6rem var(--shadow-color);
 }
 
-#md-notification:before {
-	top: 14px;
+/* 目录 */
+/* TOC */
+#write .md-toc {
+    background-color: var(--Mica);
+    border-radius: 20px 20px 20px 20px;
+    padding: 2px 4px;
+    margin: 0 2px;
 }
 
-#md-notification {
-	background: #eee;
+#write a.md-toc-inner {
+    line-height: 1.5;
+    white-space: pre-line;
+    border-bottom: none;
+    font-size: 1rem;
 }
 
-.megamenu-menu-panel .btn {
-	border: 1px solid #ccc;
+.md-toc-h1 {
+    display: none;
 }
 
-.mac-seamless-mode #typora-sidebar {
-  background-color: #f7f9fa;
+#write .md-toc-h2 .md-toc-inner {
+    font-size: 1.2rem;
 }
 
-.pin-outline .outline-active {
-  color: #0070E0; 
+#write .md-toc-h3 .md-toc-inner {
+    font-size: 1.1rem;
 }
 
-.file-list-item {
-  border-bottom: 1px solid;
-  border-color: #E6E8EB;
+#write .md-toc-item:before {
+    display: block;
+    color: rgb(65, 131, 196);
 }
 
-.file-list-item-summary {
-  font-weight: 400;
-  color: #637282; 
+#write .md-toc-h2 .md-toc-inner {
+    font-weight: bold;
 }
 
-.file-list-item.active {
-  color: #0070E0;
-  background-color: #E6E8EB;
+.md-toc-h5,
+.md-toc-h6 {
+    display: none;
 }
 
-.file-tree-node.active>.file-node-background {
-  background-color: #E6E8EB;
-} 
-
-.file-tree-node.active>.file-node-content {
-  color: #0070E0;
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--base-font);
 }
 
-.file-node-content {
-  color: #5e676d;
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
 }
 
-.sidebar-tab.active {
-  font-weight: 400;
+.md-lang {
+    color: #b4654d;
 }
 
-code, kbd, pre, samp {
-  font-family: "Roboto Mono", Menlo, monospace;
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #e6f0fe;
 }
+
+/* 代码段 背景 */
+pre {
+    --select-text-bg-color: #e4d4f5;
+}
+
+/* border and bg */
+.md-fences {
+    border-radius: 20px 20px 20px 20px;
+    background: var(--Mica);
+    backdrop-filter: blur(15px);
+}
+
+#write pre.md-fences {
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: var(--shadow);
+}
+
+
+/* language tip */
+#write .code-tooltip {
+    border: 1px solid var(--border);
+    border-radius: 24px 24px 24px 24px;
+    padding: 8px 12px 8px 12px;
+    margin: 8px 12px 8px 12px;
+}
+
+
+.auto-suggest-container {
+    border-color: #b4b4b4;
+}
+
+.auto-suggest-container .autoComplt-hint.active {
+    background: #b4b4b4;
+    color: inherit;
+}
+
+/* task list */
+#write .md-task-list-item > input {
+    -webkit-appearance: initial;
+    display: block;
+    position: absolute;
+    border: 1px solid #b4b4b4;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 0.3rem;
+    height: 1rem;
+    width: 1rem;
+    transition: background 0.3s;
+}
+
+
+#write .md-task-list-item > input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#write .md-task-list-item > input:hover {
+    background: #ddd;
+}
+
+#write .md-task-list-item > input[checked]::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    height: 60%;
+    width: 2px;
+    transform: rotate(40deg);
+    background: #333;
+}
+
+#write .md-task-list-item > input[checked]::after {
+    content: "";
+    position: absolute;
+    top: 46%;
+    left: 25%;
+    height: 30%;
+    width: 2px;
+    transform: rotate(-40deg);
+    background: #333;
+}
+
+#write .md-task-list-item > p {
+    transition: color 0.3s, opacity 0.3s;
+}
+
+#write .md-task-list-item.task-list-done > p {
+    color: #b4b4b4;
+    text-decoration: line-through;
+}
+
+#write .md-task-list-item.task-list-done > p > .md-emoji {
+    opacity: 0.5;
+}
+
+#write .md-task-list-item.task-list-done > p > .md-link > a {
+    opacity: 0.6;
+}
+
+
+/* 侧栏 */
+/* sidebar */
+#typora-sidebar,
+.typora-node #typora-sidebar {
+    box-shadow: 3px 0px 10px var(--shadow-color);
+    color: var(--text-color);
+}
+
+.sidebar-content-content {
+    font-size: 0.9rem;
+}
+
+/* 选中的文字 */
+::selection {
+    background: #ccc;
+    color: var(--blue);
+}
+
+::-moz-selection {
+    background: #ccc;
+    color: var(--blue);
+}
+
+::-webkit-selection {
+    background: #ccc;
+    color: var(--blue);
+}
+
+body {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* 标题 */
+/* title */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.4em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+h6 {
+    font-size: 1.1em;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
 </style>
 </head>
 <body class='typora-export'>
-<div id='write'  class=''><h1><a name="linear-phase-filters" class="md-header-anchor"></a><span>Linear Phase Filters</span></h1><p><span>Ref.: David Dorran, </span><a href='https://dadorran.wordpress.com/2014/10/01/linear-phase-filters-why-they-are-used/'><span>Linear Phase Filters – why they are used</span></a><span>, October 1, 2014 (acessado em 22/04/2024).</span></p><p><span>Filtros de fase linear - preservam a forma de um sinal filtrado.</span></p><p><span>Vídeo </span><a href='https://www.youtube.com/watch?v=xPTe7ZWLVhQ'><span>YouTube: Why Linear Phase Filters are Used</span></a><span>, 25.733 visualizações  15 de out. de 2014.</span>
-<span>Mostra que os filtros de fase linear preservam a forma de um sinal filtrado e compara isso com um filtro não linear.  </span></p><p><span>Este é o código usado durante uma apresentação de vídeo do YouTube sobre filtros de fase linear</span></p><pre lang="matlab" class="md-fences md-end-block ty-contain-cm modeLoaded md-focus" spellcheck="false" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 2480px; left: 63px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Linear phase filters - preserve shape of a filtered signal</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% This is the code used during a youtube video presentation dealing with linear phase filters</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% &nbsp; &nbsp;  Search for linear phase at http://youtube.com/ddorran</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% Code available from https://dadorran.wordpress.com</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">close</span> <span class="cm-variable">all</span> ; <span class="cm-builtin">clear</span> <span class="cm-variable">all</span>; <span class="cm-variable">clc</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">fs</span> = <span class="cm-number">100</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">T</span> = <span class="cm-number">1</span><span class="cm-operator">/</span><span class="cm-variable">fs</span>; <span class="cm-comment">%sampling interval</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">N</span> = <span class="cm-number">2000</span>; <span class="cm-comment">%length of signal being synthesised</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">n</span> = <span class="cm-number">0</span>:<span class="cm-variable">N</span><span class="cm-number">-1</span>; <span class="cm-comment">%samples of the signal</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">t</span> = <span class="cm-variable">n</span><span class="cm-operator">*</span><span class="cm-variable">T</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">plot_range</span> = [<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2-100</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2+100</span>];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% synthesise a signal</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">x</span> = <span class="cm-builtin">cos</span>(<span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">pi</span><span class="cm-operator">*</span><span class="cm-number">10</span><span class="cm-operator">*</span><span class="cm-variable">t</span>) <span class="cm-operator">+</span> <span class="cm-number">0.5</span><span class="cm-operator">*</span><span class="cm-builtin">cos</span>(<span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">pi</span><span class="cm-operator">*</span><span class="cm-number">20</span><span class="cm-operator">*</span><span class="cm-variable">t</span> <span class="cm-operator">+</span> <span class="cm-number">1.4</span>); </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>(<span class="cm-variable">plot_range</span>),<span class="cm-variable">x</span>(<span class="cm-variable">plot_range</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">xlabel</span>(<span class="cm-string">'Time (seconds)'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ylabel</span>(<span class="cm-string">'Amplitude'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">title</span>(<span class="cm-string">'Synthesised Signals'</span>) </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">axis</span> <span class="cm-variable">tight</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% Add some noise</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ns</span> = <span class="cm-variable">randn</span>(<span class="cm-number">1</span>,<span class="cm-variable">length</span>(<span class="cm-variable">x</span>)<span class="cm-number">+100</span>)<span class="cm-operator">*</span><span class="cm-number">2</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%filter the noise to synthesise band limited noise</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">b</span> <span class="cm-variable">a</span>] = <span class="cm-variable">butter</span>(<span class="cm-number">5</span>, [<span class="cm-number">0.28</span> <span class="cm-number">0.33</span>],<span class="cm-string">'bandpass'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ns_filtered</span> = <span class="cm-variable">filter</span>(<span class="cm-variable">b</span>,<span class="cm-variable">a</span>,<span class="cm-variable">ns</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%add noise to clean signal</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">x_ns</span> = <span class="cm-variable">x</span> <span class="cm-operator">+</span><span class="cm-variable">ns_filtered</span>(<span class="cm-keyword">end</span><span class="cm-operator">-</span><span class="cm-variable">length</span>(<span class="cm-variable">x</span>)<span class="cm-number">+1</span>:<span class="cm-keyword">end</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">noisy_x</span> = <span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>(<span class="cm-variable">plot_range</span>), <span class="cm-variable">x_ns</span>(<span class="cm-variable">plot_range</span>),<span class="cm-string">'r'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'clean signal'</span>, <span class="cm-string">'noisy signal'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Plot frequency Content of Noisy Signal</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">X_ns</span> = <span class="cm-builtin">fft</span>(<span class="cm-variable">x_ns</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">fax</span> = [<span class="cm-number">0</span>:<span class="cm-variable">N</span><span class="cm-number">-1</span>]<span class="cm-operator">/</span>(<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>); <span class="cm-comment">% normalised frequency axis</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">fax</span>(<span class="cm-number">1</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>), <span class="cm-builtin">abs</span>(<span class="cm-variable">X_ns</span>(<span class="cm-number">1</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>))<span class="cm-operator">/</span>(<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>)) ; <span class="cm-comment">%plot first half of spectrum</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">xlabel</span>(<span class="cm-string">'frequency ( x \pi rads/sample)'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ylabel</span>(<span class="cm-string">'Magnitude'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">title</span>(<span class="cm-string">'Magnitude Spectrum of Noisy Signal'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Filter out the noise using an IIR filter (non-linear phase)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">b_iir</span> <span class="cm-variable">a_iir</span>] = <span class="cm-variable">cheby1</span>(<span class="cm-number">10</span>, <span class="cm-number">0.5</span>, [<span class="cm-number">0.27</span> <span class="cm-number">0.34</span>], <span class="cm-string">'stop'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">y_iir</span> = <span class="cm-variable">filter</span>(<span class="cm-variable">b_iir</span>,<span class="cm-variable">a_iir</span>, <span class="cm-variable">x_ns</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">H_iir</span> <span class="cm-variable">w</span>] = <span class="cm-variable">freqz</span>(<span class="cm-variable">b_iir</span>,<span class="cm-variable">a_iir</span>); <span class="cm-comment">%determine frequency response</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>, <span class="cm-builtin">abs</span>(<span class="cm-variable">H_iir</span>),<span class="cm-string">'r'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'|X(\omega)|'</span>,<span class="cm-string">'|H(\omega)|'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pause</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Y_iir</span> = <span class="cm-builtin">fft</span>(<span class="cm-variable">y_iir</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">fax</span>(<span class="cm-number">1</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>), <span class="cm-builtin">abs</span>(<span class="cm-variable">Y_iir</span>(<span class="cm-number">1</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>))<span class="cm-operator">/</span>(<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>),<span class="cm-string">'g'</span>) ; <span class="cm-comment">%plot first half of spectrum</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'|X(\omega)|'</span>,<span class="cm-string">'|H(\omega)|'</span>,<span class="cm-string">'|Y(\omega)|'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pause</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">non_linear_y</span> = <span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>(<span class="cm-variable">plot_range</span>),<span class="cm-variable">y_iir</span>(<span class="cm-variable">plot_range</span>),<span class="cm-string">'g'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'clean signal'</span>, <span class="cm-string">'noisy signal'</span>,<span class="cm-string">'filtered signal'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pause</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">set</span>(<span class="cm-variable">noisy_x</span>,<span class="cm-string">'visible'</span>, <span class="cm-string">'off'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Examine the magnitude and phase response of the IIR filter</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">figure</span>(<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>,<span class="cm-builtin">abs</span>(<span class="cm-variable">H_iir</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">xlabel</span>(<span class="cm-string">'frequency ( x \pi rads/sample)'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ylabel</span>(<span class="cm-string">'Magnitude'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">title</span>(<span class="cm-string">'Magnitude Response of filter'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>,<span class="cm-variable">angle</span>(<span class="cm-variable">H_iir</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">xlabel</span>(<span class="cm-string">'frequency ( x \pi rads/sample)'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ylabel</span>(<span class="cm-string">'Phase Shift'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">title</span>(<span class="cm-string">'Phase Response of filter'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Now filter using an FIR filter (with linear phase)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">b_fir</span> = <span class="cm-variable">fir1</span>(<span class="cm-number">100</span>,  [<span class="cm-number">0.27</span> <span class="cm-number">0.34</span>],<span class="cm-string">'stop'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">a_fir</span> = <span class="cm-number">1</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">y_fir</span> = <span class="cm-variable">filter</span>(<span class="cm-variable">b_fir</span>,<span class="cm-variable">a_fir</span>, <span class="cm-variable">x_ns</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">figure</span>(<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>(<span class="cm-variable">plot_range</span>),<span class="cm-variable">y_fir</span>(<span class="cm-variable">plot_range</span>),<span class="cm-string">'k'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'clean signal'</span>, <span class="cm-string">'noisy signal'</span>,<span class="cm-string">'filtered signal (non-linear)'</span>,<span class="cm-string">'filtered signal (linear)'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">H_fir</span>, <span class="cm-variable">w</span> ]= <span class="cm-variable">freqz</span>(<span class="cm-variable">b_fir</span>,<span class="cm-variable">a_fir</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>, <span class="cm-builtin">abs</span>(<span class="cm-variable">H_fir</span>),<span class="cm-string">'k'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'|X(\omega)|'</span>,<span class="cm-string">'|H(\omega) Non-linear|'</span>,<span class="cm-string">'|Y(\omega)|'</span>,<span class="cm-string">'|H(\omega)| linear'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Compare the frequency responses of the two filter design approaches</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">figure</span>(<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>,<span class="cm-builtin">abs</span>(<span class="cm-variable">H_fir</span>),<span class="cm-string">'g'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'non-linear filter'</span>,<span class="cm-string">'linear filter'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>,<span class="cm-variable">angle</span>(<span class="cm-variable">H_fir</span>),<span class="cm-string">'g'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'non-linear filter'</span>,<span class="cm-string">'linear filter'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pause</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Why does linear phase preserve the shape??</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">close</span> <span class="cm-variable">all</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">clear</span> <span class="cm-variable">all</span>; <span class="cm-variable">clc</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">fs</span> = <span class="cm-number">1000</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">t</span> = <span class="cm-number">0</span>:<span class="cm-number">1</span><span class="cm-operator">/</span><span class="cm-variable">fs</span>:<span class="cm-number">2</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">x1</span> = <span class="cm-builtin">cos</span>(<span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">pi</span><span class="cm-operator">*</span><span class="cm-number">3</span><span class="cm-operator">*</span><span class="cm-variable">t</span><span class="cm-operator">-</span><span class="cm-variable">pi</span><span class="cm-operator">/</span><span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">x2</span> = <span class="cm-builtin">cos</span>(<span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">pi</span><span class="cm-operator">*</span><span class="cm-number">5</span><span class="cm-operator">*</span><span class="cm-variable">t</span><span class="cm-operator">-</span>(<span class="cm-variable">pi</span><span class="cm-operator">/</span><span class="cm-number">2</span>)<span class="cm-operator">/</span><span class="cm-number">3</span><span class="cm-operator">*</span><span class="cm-number">5</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pause</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">3</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>,<span class="cm-variable">x1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">3</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>,<span class="cm-variable">x2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">3</span>,<span class="cm-number">1</span>,<span class="cm-number">3</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>,<span class="cm-variable">x1</span><span class="cm-operator">+</span><span class="cm-variable">x2</span>,<span class="cm-string">'g'</span>)</span></pre><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 2500px;"></div><div class="CodeMirror-gutters" style="display: none; height: 2500px;"></div></div></div></pre><p><span>Fim.</span></p><p>&nbsp;</p></div>
+<div id='write'  class=''><h1><a name="linear-phase-filters" class="md-header-anchor"></a><span>Linear Phase Filters</span></h1><p><span>Ref.: David Dorran, </span><a href='https://dadorran.wordpress.com/2014/10/01/linear-phase-filters-why-they-are-used/'><span>Linear Phase Filters – why they are used</span></a><span>, October 1, 2014 (acessado em 22/04/2024).</span></p><p><strong><span>Objetivo</span></strong><span>: Mostrar que filtros de fase linear (FIR), preservam a forma de um sinal filtrado.</span></p><p><span>Vídeo </span><a href='https://www.youtube.com/watch?v=xPTe7ZWLVhQ'><span>YouTube: Why Linear Phase Filters are Used</span></a><span>, 25.733 visualizações  15 de out. de 2014.</span>
+<span>Mostra que os filtros de fase linear preservam a forma de um sinal filtrado e compara isso com um filtro não linear.  </span></p><p><span>Segue código usado durante uma apresentação de vídeo do YouTube sobre filtros de fase linear</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Linear phase filters - preserve shape of a filtered signal</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% This is the code used during a youtube video presentation dealing with linear phase filters</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% Search for linear phase at http://youtube.com/ddorran</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% Code available from https://dadorran.wordpress.com</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">close</span> <span class="cm-variable">all</span> ; <span class="cm-builtin">clear</span> <span class="cm-variable">all</span>; <span class="cm-comment">% clc</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">fs</span> = <span class="cm-number">100</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">T</span> = <span class="cm-number">1</span><span class="cm-operator">/</span><span class="cm-variable">fs</span>; <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">%sampling interval</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">N</span> = <span class="cm-number">2000</span>; <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">%length of signal being synthesised</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">n</span> = <span class="cm-number">0</span>:<span class="cm-variable">N</span><span class="cm-number">-1</span>; <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-comment">%samples of the signal</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">t</span> = <span class="cm-variable">n</span><span class="cm-operator">*</span><span class="cm-variable">T</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">plot_range</span> = [<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2-100</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2+100</span>];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% synthesise a signal</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">x</span> = <span class="cm-builtin">cos</span>(<span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">pi</span><span class="cm-operator">*</span><span class="cm-number">10</span><span class="cm-operator">*</span><span class="cm-variable">t</span>) <span class="cm-operator">+</span> <span class="cm-number">0.5</span><span class="cm-operator">*</span><span class="cm-builtin">cos</span>(<span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">pi</span><span class="cm-operator">*</span><span class="cm-number">20</span><span class="cm-operator">*</span><span class="cm-variable">t</span> <span class="cm-operator">+</span> <span class="cm-number">1.4</span>); </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>(<span class="cm-variable">plot_range</span>),<span class="cm-variable">x</span>(<span class="cm-variable">plot_range</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">xlabel</span>(<span class="cm-string">'Time (seconds)'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ylabel</span>(<span class="cm-string">'Amplitude'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">title</span>(<span class="cm-string">'Synthesised Signals'</span>) </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">axis</span> <span class="cm-variable">tight</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 525px;"></div><div class="CodeMirror-gutters" style="display: none; height: 525px;"></div></div></div></pre><p><span>Sintetizando um sinal:</span></p><p><img src="linear_phase_filter_01.png" alt="linear_phase_filter_01.png" style="zoom:50%;" /></p><p><span>Adicionando ruído:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% Add some noise</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ns</span> = <span class="cm-variable">randn</span>(<span class="cm-number">1</span>,<span class="cm-variable">length</span>(<span class="cm-variable">x</span>)<span class="cm-number">+100</span>)<span class="cm-operator">*</span><span class="cm-number">2</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%filter the noise to synthesise band limited noise</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">b</span> <span class="cm-variable">a</span>] = <span class="cm-variable">butter</span>(<span class="cm-number">5</span>, [<span class="cm-number">0.28</span> <span class="cm-number">0.33</span>],<span class="cm-string">'bandpass'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ns_filtered</span> = <span class="cm-variable">filter</span>(<span class="cm-variable">b</span>,<span class="cm-variable">a</span>,<span class="cm-variable">ns</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%add noise to clean signal</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">x_ns</span> = <span class="cm-variable">x</span> <span class="cm-operator">+</span><span class="cm-variable">ns_filtered</span>(<span class="cm-keyword">end</span><span class="cm-operator">-</span><span class="cm-variable">length</span>(<span class="cm-variable">x</span>)<span class="cm-number">+1</span>:<span class="cm-keyword">end</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">noisy_x</span> = <span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>(<span class="cm-variable">plot_range</span>), <span class="cm-variable">x_ns</span>(<span class="cm-variable">plot_range</span>),<span class="cm-string">'r'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'clean signal'</span>, <span class="cm-string">'noisy signal'</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 250px;"></div><div class="CodeMirror-gutters" style="display: none; height: 250px;"></div></div></div></pre><p><span>Gráfico do Sinal </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.807ex" height="1.945ex" viewBox="0 -656.8 778 837.3" role="img" focusable="false" style="vertical-align: -0.419ex;"><defs><path stroke-width="0" id="E2-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMAIN-2B" x="0" y="0"></use></g></svg></span><script type="math/tex">+</script><span> ruído:</span></p><p><img src="linear_phase_filter_02.png" alt="linear_phase_filter_02.png" style="zoom:50%;" /></p><p><span>Plotando o gráfico o espectro do sinal ruidoso:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab  "><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab  "><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Plot frequency Content of Noisy Signal</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">X_ns</span> = <span class="cm-builtin">fft</span>(<span class="cm-variable">x_ns</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">fax</span> = [<span class="cm-number">0</span>:<span class="cm-variable">N</span><span class="cm-number">-1</span>]<span class="cm-operator">/</span>(<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>); <span class="cm-comment">% normalised frequency axis</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">fax</span>(<span class="cm-number">1</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>), <span class="cm-builtin">abs</span>(<span class="cm-variable">X_ns</span>(<span class="cm-number">1</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>))<span class="cm-operator">/</span>(<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>)) ; <span class="cm-comment">%plot first half of spectrum</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">xlabel</span>(<span class="cm-string">'frequency ( x \pi rads/sample)'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ylabel</span>(<span class="cm-string">'Magnitude'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">title</span>(<span class="cm-string">'Magnitude Spectrum of Noisy Signal'</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 200px;"></div><div class="CodeMirror-gutters" style="display: none; height: 200px;"></div></div></div></pre><p><span>Gráfico o espectro do sinal ruidoso:</span></p><p><img src="linear_phase_filter_03.png" alt="linear_phase_filter_03.png" style="zoom:48%;" /></p><p><span>Filtrando o ruído do sinalusando filtro IIR (de fase não linear):</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="Matlab"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Filter out the noise using an IIR filter (non-linear phase)</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">b_iir</span> <span class="cm-variable">a_iir</span>] = <span class="cm-variable">cheby1</span>(<span class="cm-number">10</span>, <span class="cm-number">0.5</span>, [<span class="cm-number">0.27</span> <span class="cm-number">0.34</span>], <span class="cm-string">'stop'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">y_iir</span> = <span class="cm-variable">filter</span>(<span class="cm-variable">b_iir</span>,<span class="cm-variable">a_iir</span>, <span class="cm-variable">x_ns</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">H_iir</span> <span class="cm-variable">w</span>] = <span class="cm-variable">freqz</span>(<span class="cm-variable">b_iir</span>,<span class="cm-variable">a_iir</span>); <span class="cm-comment">%determine frequency response</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>, <span class="cm-builtin">abs</span>(<span class="cm-variable">H_iir</span>),<span class="cm-string">'r'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'|X(\omega)|'</span>,<span class="cm-string">'|H(\omega)|'</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 225px;"></div><div class="CodeMirror-gutters" style="display: none; height: 225px;"></div></div></div></pre><p><span>Espectro do sinal ruidoso filtrado usando filtro IIR (fase não linear):</span></p><p><img src="linear_phase_filter_04.png" referrerpolicy="no-referrer" alt="linear_phase_filter_04.png"></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab "><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab "><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% pause</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Y_iir</span> = <span class="cm-builtin">fft</span>(<span class="cm-variable">y_iir</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">fax</span>(<span class="cm-number">1</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>), <span class="cm-builtin">abs</span>(<span class="cm-variable">Y_iir</span>(<span class="cm-number">1</span>:<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>))<span class="cm-operator">/</span>(<span class="cm-variable">N</span><span class="cm-operator">/</span><span class="cm-number">2</span>),<span class="cm-string">'g'</span>) ; <span class="cm-comment">%plot first half of spectrum</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'|X(\omega)|'</span>,<span class="cm-string">'|H(\omega)|'</span>,<span class="cm-string">'|Y(\omega)|'</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><p><span>Gráfico da primeira metade do espectro:</span></p><p><img src="linear_phase_filter_05.png" referrerpolicy="no-referrer" alt="linear_phase_filter_05.png"></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% pause</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">non_linear_y</span> = <span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>(<span class="cm-variable">plot_range</span>),<span class="cm-variable">y_iir</span>(<span class="cm-variable">plot_range</span>),<span class="cm-string">'g'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'clean signal'</span>, <span class="cm-string">'noisy signal'</span>,<span class="cm-string">'filtered signal'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% pause </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">set</span>(<span class="cm-variable">noisy_x</span>,<span class="cm-string">'visible'</span>, <span class="cm-string">'off'</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 150px;"></div><div class="CodeMirror-gutters" style="display: none; height: 150px;"></div></div></div></pre><p><span>Novo espectro do sinal:</span></p><p><img src="linear_phase_filter_06.png" referrerpolicy="no-referrer" alt="linear_phase_filter_06.png"></p><p><span>Examinando a magnitude e fase do </span><strong><span>filtro IIR</span></strong><span>:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab  "><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab  "><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Examine the magnitude and phase response of the IIR filter</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">figure</span>(<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>,<span class="cm-builtin">abs</span>(<span class="cm-variable">H_iir</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">xlabel</span>(<span class="cm-string">'frequency ( x \pi rads/sample)'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ylabel</span>(<span class="cm-string">'Magnitude'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">title</span>(<span class="cm-string">'Magnitude Response of filter'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>,<span class="cm-variable">angle</span>(<span class="cm-variable">H_iir</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">xlabel</span>(<span class="cm-string">'frequency ( x \pi rads/sample)'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ylabel</span>(<span class="cm-string">'Phase Shift'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">title</span>(<span class="cm-string">'Phase Response of filter'</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 300px;"></div><div class="CodeMirror-gutters" style="display: none; height: 300px;"></div></div></div></pre><p><span>Resultado do Espectro do filtro IIR:</span></p><p><img src="linear_phase_filter_07.png" referrerpolicy="no-referrer" alt="linear_phase_filter_07.png"></p><p><strong><span>Agora usando um filtro FIR (com fase linear)</span></strong><span>:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab  "><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab  "><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Now filter using an FIR filter (with linear phase)</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">b_fir</span> = <span class="cm-variable">fir1</span>(<span class="cm-number">100</span>,  [<span class="cm-number">0.27</span> <span class="cm-number">0.34</span>],<span class="cm-string">'stop'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">a_fir</span> = <span class="cm-number">1</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">y_fir</span> = <span class="cm-variable">filter</span>(<span class="cm-variable">b_fir</span>,<span class="cm-variable">a_fir</span>, <span class="cm-variable">x_ns</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">figure</span>(<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>(<span class="cm-variable">plot_range</span>),<span class="cm-variable">y_fir</span>(<span class="cm-variable">plot_range</span>),<span class="cm-string">'k'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'clean signal'</span>, <span class="cm-string">'noisy signal'</span>,<span class="cm-string">'filtered signal (non-linear)'</span>,<span class="cm-string">'filtered signal (linear)'</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 225px;"></div><div class="CodeMirror-gutters" style="display: none; height: 225px;"></div></div></div></pre><p><span>Sinal filtrado usando filtro FIR (com fase linear):</span></p><p><img src="linear_phase_filter_08.png" referrerpolicy="no-referrer" alt="linear_phase_filter_08.png"></p><p><span>Calculando espectro do sinal filtrado usando filtro FIR (com fase linear):</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab "><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab "><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">H_fir</span>, <span class="cm-variable">w</span> ]= <span class="cm-variable">freqz</span>(<span class="cm-variable">b_fir</span>,<span class="cm-variable">a_fir</span>);</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>, <span class="cm-builtin">abs</span>(<span class="cm-variable">H_fir</span>),<span class="cm-string">'k'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'|X(\omega)|'</span>,<span class="cm-string">'|H(\omega) Non-linear|'</span>,<span class="cm-string">'|Y(\omega)|'</span>,<span class="cm-string">'|H(\omega)| linear'</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><p><span>Espectro do sinal filtrado usando filtro FIR (com fase linear):</span></p><p><img src="linear_phase_filter_09.png" referrerpolicy="no-referrer" alt="linear_phase_filter_09.png"></p><p><span>Comparando a resposta frequencial dos 2 filtros:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab  "><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab  "><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Compare the frequency responses of the two filter design approaches</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">figure</span>(<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>,<span class="cm-builtin">abs</span>(<span class="cm-variable">H_fir</span>),<span class="cm-string">'g'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'non-linear filter'</span>,<span class="cm-string">'linear filter'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">2</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">w</span><span class="cm-operator">/</span><span class="cm-variable">pi</span>,<span class="cm-variable">angle</span>(<span class="cm-variable">H_fir</span>),<span class="cm-string">'g'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">legend</span>(<span class="cm-string">'IIR filter (non-linear phase)'</span>,<span class="cm-string">'FIR filter (linear phase)'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% pause</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 275px;"></div><div class="CodeMirror-gutters" style="display: none; height: 275px;"></div></div></div></pre><p><span>Resposta frequencial dos 2 filtros:</span></p><p><img src="linear_phase_filter_10.png" referrerpolicy="no-referrer" alt="linear_phase_filter_10.png"></p><p><strong><span>Por que a fase linear preserva o formato do sinal original?</span></strong></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">%% Why does linear phase preserve the shape??</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">close</span> <span class="cm-variable">all</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">clear</span> <span class="cm-variable">all</span>; <span class="cm-comment">% clc;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">fs</span> = <span class="cm-number">1000</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">t</span> = <span class="cm-number">0</span>:<span class="cm-number">1</span><span class="cm-operator">/</span><span class="cm-variable">fs</span>:<span class="cm-number">2</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">x1</span> = <span class="cm-builtin">cos</span>(<span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">pi</span><span class="cm-operator">*</span><span class="cm-number">3</span><span class="cm-operator">*</span><span class="cm-variable">t</span><span class="cm-operator">-</span><span class="cm-variable">pi</span><span class="cm-operator">/</span><span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">x2</span> = <span class="cm-builtin">cos</span>(<span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">pi</span><span class="cm-operator">*</span><span class="cm-number">5</span><span class="cm-operator">*</span><span class="cm-variable">t</span><span class="cm-operator">-</span>(<span class="cm-variable">pi</span><span class="cm-operator">/</span><span class="cm-number">2</span>)<span class="cm-operator">/</span><span class="cm-number">3</span><span class="cm-operator">*</span><span class="cm-number">5</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% pause</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">3</span>,<span class="cm-number">1</span>,<span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>,<span class="cm-variable">x1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">3</span>,<span class="cm-number">1</span>,<span class="cm-number">2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>,<span class="cm-variable">x2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">subplot</span>(<span class="cm-number">3</span>,<span class="cm-number">1</span>,<span class="cm-number">3</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">plot</span>(<span class="cm-variable">t</span>,<span class="cm-variable">x1</span><span class="cm-operator">+</span><span class="cm-variable">x2</span>,<span class="cm-string">'g'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hold</span> <span class="cm-variable">on</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 400px;"></div><div class="CodeMirror-gutters" style="display: none; height: 400px;"></div></div></div></pre><p><span>Porque a fase linear preserva o formato do sinal original:</span></p><p><img src="linear_phase_filter_11.png" referrerpolicy="no-referrer" alt="linear_phase_filter_11.png"></p><p><span>Fim.</span></p><hr /><p><span>Fernando Passold, em 23/04/2024.</span></p></div>
 </body>
 </html>

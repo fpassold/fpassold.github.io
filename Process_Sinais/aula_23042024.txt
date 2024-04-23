@@ -1,0 +1,216 @@
+
+% Referente a aula de:
+% https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html
+
+% Sintetizando a onda composta por 3 cosenoides
+
+fs=1000;
+t=0: 1/fs: 1.5 - 1/fs;
+y1=3*cos(2*pi*f1*t +0.2);
+y2=1*cos(2*pi*f2*t -0.3);
+y3=2*cos(2*pi*f3*t +2.4);
+subplot(4,1,1)
+plot(t,y1)
+axis([-3 3 0 1.5])
+axis([0 1.5 -3 3])
+ylabel('y_1(t)')
+subplot(4,1,2);
+plot(t,y2);
+axis([0 1.5 -3 3])
+ylabel('y_2(t)')
+subplot(4,1,3);
+plot(t,y3);
+axis([0 1.5 -3 3])
+ylabel('y_3(t)')
+y=y1+y2+y3;
+subplot(4,1,4);
+plot(t,y)
+axis([0 1.5 -3 3])
+axis([0 1.5 -4 4])
+axis([0 1.5 -5 5])
+ylabel('y(t)')
+xlabel('tempo (s)')
+
+% ![fft_ondas.png](fft_ondas.png)
+
+% Calculando a FFT do sinal
+
+Y=fft(y);
+size(y)
+ans =
+           1        1500
+size(Y)
+ans =
+           1        1500
+Y(1:5)' % mostrando os primeiros 5 valores
+ans =
+  -1.4619e-12 +          0i
+   4.9198e-13 + 4.5089e-13i
+   5.6033e-13 + 1.3287e-13i
+  -1.9843e-12 - 1.3565e-13i
+   1.3518e-12 + 4.6719e-13i
+
+Y_mag = abs(Y);
+size(Y_mag)
+ans =
+           1        1500
+Y_mag(20:30)'
+ans =
+   1.5424e-12
+   1.0986e-12
+   9.3599e-13
+   7.6441e-13
+    7.495e-13
+   7.4088e-13
+   1.0461e-12
+    1.799e-12
+    3.106e-12
+   4.0034e-12
+   4.9446e-12
+Y_mag(30:40)'
+ans =
+   4.9446e-12
+         2250
+   5.0273e-12
+   5.5337e-12
+   3.0501e-12
+   1.6695e-12
+   2.3756e-12
+   1.2606e-12
+   4.6942e-13
+   1.5758e-12
+   3.4292e-12
+format short
+Y_mag(30:40)'
+ans =
+   1.0e+03 *
+    0.0000
+    2.2500
+    0.0000
+    0.0000
+    0.0000
+    0.0000
+    0.0000
+    0.0000
+    0.0000
+    0.0000
+    0.0000
+format shortg
+Y_mag(30:40)'
+ans =
+   4.9446e-12
+         2250
+   5.0273e-12
+   5.5337e-12
+   3.0501e-12
+   1.6695e-12
+   2.3756e-12
+   1.2606e-12
+   4.6942e-13
+   1.5758e-12
+   3.4292e-12
+
+figure; plot(Y_mag)
+grid
+
+% ![fft_onda_2.png](fft_onda_2.png)
+
+axis([0 749 0 2500])
+
+% ![fft_onda_3.png](fft_onda_3.png)
+
+L=length(Y)
+L =
+        1500
+eixo_freq=(fs/L)*(0:L-1);
+size(eixo_freq)
+ans =
+           1        1500
+figure; plot(eixo_freq, Y_mag);
+axis([0 749 0 2500])
+xla
+{Unrecognized function or variable 'xla'.} 
+xlabel('Frequencia (Hz)')
+
+% ![fft_onda_4.png](fft_onda_4.png)
+
+axis([0 50 0 2500])
+
+% ![fft_onda_5.png](fft_onda_5.png)
+
+plot(eixo_freq, Y_mag/(L/2));
+axis([0 50 0 3.5])
+grid
+xlabel('Frequencia (Hz)')
+ylabel('Magnitude (Volts)')
+title('Espectro do sinal y[kT]')
+
+% ![fft_onda_6.png](fft_onda_6.png)
+
+% Falta montar o gráfico correspondente à fase
+% do sinal $y[kT]$... próxima aula
+
+save fft_onda1 % salvando dados
+diary off % encerrando arquivo de registro
+
+% Gerando info da fase do sinal
+
+Y_phase = angle(Y);
+% calculando angulo com graus e não radianos
+Y_phase_deg = Y_phase.*(180/pi);
+figure; plot(eixo_freq, Y_phase_deg);
+
+axis([0 749 -200 200])
+xlabel('Frequencia (Hz)')
+ylabel('Fase (Graus)')
+title('Espectro do sinal y[kT]')
+
+% ![fft_onda_7.png](fft_onda_7.png)
+
+% Realizando um zoom na zona de interesse:
+axis([0 50 -200 200])
+
+% ![fft_onda_8.png](fft_onda_8.png)
+
+index=find(eixo_freq<=20);
+index(1)
+ans =
+     1
+index=find(eixo_freq>=20);
+index(1)
+ans =
+    31
+eixo_freq(31)
+ans =
+    20
+Y_phase(31)
+ans =
+          0.2
+Y_phase_deg(31)
+ans =
+       11.459
+
+index=find(eixo_freq>=30);
+index(1)
+ans =
+    46
+[eixo_freq(46) Y_mag(46) Y_phase_deg(46)]
+ans =
+           30          750      -17.189
+[eixo_freq(46) Y_mag(46)/(L/2) Y_phase_deg(46)]
+ans =
+           30            1      -17.189
+[eixo_freq(31) Y_mag(31)/(L/2) Y_phase_deg(31)]
+ans =
+           20            3       11.459
+
+index=find(eixo_freq>=40);
+index(1)
+ans =
+    61
+[eixo_freq(61) Y_mag(61)/(L/2) Y_phase_deg(61)]
+ans =
+           40            2       137.51
+
+
+diary off
