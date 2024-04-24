@@ -1,4 +1,4 @@
-![Controle-PID-1-1](figs/Controle-PID-1-1.png)
+<img src="figs/Controle-PID-1-1.png" alt="Controle-PID-1-1" style="zoom: 25%;" />
 
 # Sintonia de PID em Controle de Posição (angular)
 
@@ -73,11 +73,53 @@ A oscilação produzida na saída do sistema deverá ser observada com a **ajuda
 
 A medida que o estudante aumenta o valor do ganho, pode comprovar resultados gráficos na tela do osciloscópio, similares aos mostrados abaixo:
 
-<img src="figs/TEK0012.JPG" alt="TEK0012" style="zoom:67%;" />
+<!--<img src="figs/TEK0012.JPG" alt="TEK0012" style="zoom:67%;" />-->
 
-Obs.: Na figura acima, o canal 1 do osciloscópio (curva em azul) foi obtida conectando esta ponteira (canal 1) na saída do amplificador que calcula o erro (saída 6 do módulo OA150A); e a "referência" neste caso, foi gerada usando um gerador de onda quadrada oscilando na frequência de 1/4 Hz (0,25 Hz). O **uso de um gerador de sinais** conectado ao kit pode acelear o processo de busca e determinação de $K_u$ e $T_u$. Neste, caso o potênciômetro que era usado para estabelecer a referência de posição angular (módulo IP150H) não é mais usado. A sua saída 3 é substituída pela saída do gerador de sinais. Apenas limite a faixa de amplitude da onda quadrada sendo gerada (normalmente $\pm 2$ Volts deve resolver). 
+<img src="figs/F0000TEK.jpg" alt="F0000TEK" style="zoom:67%;" />
 
-Depois que o estudante encontra o valor prático de $K_u$ (ultimate gain) e $T_u$ (período de oscilação; determinado com ajuda do osciloscópio), se faz necessário acessar alguma tabela de Ziegler-Nichols para testar valores sugeridos para os parâmetros $K_p=K_c$ (ganho proporcional), $\tau_i$ (tempo de integração) e $\tau_d$ (tempo derivativo) para um primeiro teste do PID analógico:
+A figura acima retrata o resultando obtido quando o sinal de referência passa a ser gerado por um **gerador de sinais**, conectado à entrada 1 do módulo OA150B (que calcula o erro; realiza a comparação). Este gerador **passa a gerar o sinal de referência**, $\theta_{ref}$. Para isto ele deve ser ajustado da seguinte forma:
+
+* onda quadrada (simula uma entrada degrau comutando entre 2 valores extremos);
+
+* frequência de oscilação de: 0,2 Hz:
+
+  ![IMG_20240423_102128](figs/IMG_20240423_102128.jpg)
+
+* amplitude de pico de: 2,5 Volts (o que gera um sinal comutando entre $-2,5$ Vots até $+2,5$ Volts) que equivale a fazer a referência comutar entre $-30^o$ até $+30^o$. Note que esta frequência de 0,2 Hz, faz a onda quadrada se manter em cada um destes níveis de tensão por 5 segundos ($1/0,2$):
+
+  ![IMG_20240423_102138](figs/IMG_20240423_102138.jpg)
+
+* *offset* ajustado em 0 (zero) Volts:
+
+  ![IMG_20240423_102145](figs/IMG_20240423_102145.jpg)
+
+O gerador facilita bastante no processo de sintonia do PID pois faz variar de forma "automática" a referência.
+
+Note que o canal 1 do osciloscópio deve ser conectado à saída do gerador ou entrada 1 do módulo OA150B.
+
+Já o canal 2 do osciloscópio deve ser conectado na saída 3 do potenciômetro sensor de posição (módulo OP150K) ou Na entrada 2 do módulo comparador (OA150A).
+
+O que o usuárioa deve fazer agora é "desligar" (chaves na posição "out") as ações Integrativas e Derivativas do PID (módulo PID150Y) e manter "ligada" apenas a chave correspondente à ação Proporcional, como mostrado na figura abaixo:
+
+![IMG_20240423_102213~2](figs/IMG_20240423_102213~2.jpg)
+
+Em seguida, o usuário deve ir aumentando o ganho Proporcional. No osciloscópio serão observadas ondas como:
+
+<!--![IMG_20240423_102202~2](figs/IMG_20240423_102202~2.jpg)-->
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/-YUX-g4TUmY" title="Osciloscópio durante processo de sintonia." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Á medida que o ganho proporcional é aumentado, o *overshoot* aumenta e a amplitude das oscilações acaba se mantendo:
+
+| $K_p=0,3$                               | $K_p=0,4$                          |
+| --------------------------------------- | ---------------------------------- |
+| ![figs/F0000TEK.jpg](figs/F0000TEK.jpg) | ![F0004TEK.jpg](figs/F0004TEK.jpg) |
+
+O processo fica oscilando como mostra a figura abaixo:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/HB7AqIxj-aE" title="Processo durante procedimento de sintonia." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Depois que o estudante encontra o valor prático de $K_u$ (ultimate gain) e $T_u$ (período de oscilação; determinado com ajuda do osciloscópio), se faz necessário acessar alguma **Tabela de Ziegler-Nichols** para testar valores sugeridos para os parâmetros $K_p=K_c$ (ganho proporcional), $\tau_i$ (tempo de integração) e $\tau_d$ (tempo derivativo) para um primeiro teste do PID analógico:
 
 |                Controlador |       $K_{p}$       |        $T_{i}$        |       $T_{d}$        |            $K_{i}$            |           $K_{d}$           |
 | -------------------------: | :-----------------: | :-------------------: | :------------------: | :---------------------------: | :-------------------------: |
@@ -95,9 +137,17 @@ Neste primeiro teste do PID são esperado *overshoots* elevados, algo como:
 
 <img src="figs/step_planta_2_PID_classico.png" alt="step_planta_2_PID_classico" style="zoom:48%;" />
 
-Uma **sintonia fina** dever ser conduzida para determinar os valores finais dos parâmetros do PID para tentar limitar o $\%OS \le 10\%$.
+Inicialmente podem ser encontrados resultados como:
 
-O estudante deve apresentar as telas capturadas do osciloscópio para comprovar os ajustes realizados usando o PID: o primeiro ajuste refletindo a simples adoção dos valores sigeridos por Ziegler-Nichols e uma segunda tela mostrando o resultado da "sintonia fina" do PID.
+![F0006TEK](figs/F0006TEK.jpg)
+
+Neste caso: $\%OS=\dfrac{3,68-2,56}{2,56}\times 100\%=43,75\%$.
+
+Depois, uma **sintonia fina** dever ser conduzida para determinar os valores finais dos parâmetros do PID para tentar limitar o $\%OS \le 30\%$.
+
+![F0008TEK](figs/F0008TEK.jpg)
+
+O estudante deve **apresentar** as telas capturadas do osciloscópio para comprovar os ajustes realizados usando o PID: o primeiro ajuste refletindo a simples adoção dos valores sigeridos por Ziegler-Nichols e uma segunda tela mostrando o resultado da "sintonia fina" do PID.
 
 
 
