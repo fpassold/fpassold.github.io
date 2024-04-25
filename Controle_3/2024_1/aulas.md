@@ -7,6 +7,7 @@ Aulas de 2024/1:
 *  [aula de 10/04/2024](aula_10042024.html) - teoria de PD com filtro derivativo, projetos de PD;
 *  Controlador Deadbeat - [teste #1](deadbeat.html).
 *  [Aula de 17/04/2024](aula_17042024.html) - Controlador Deadbeat na planta do estudo de caso.
+*  [Aula de 24/04/2024](aula_24042024.html) - melhorando projeto de controlador Deadbeat.
 
 Arquivo de dados  [planta.mat](/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_3/2024_1/planta.mat)  (usado nas aulas).
 
