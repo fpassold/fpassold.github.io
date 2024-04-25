@@ -1,0 +1,15 @@
+
+load planta
+zpk(C_dead2)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+         z (z-1) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+save planta
+diary off
