@@ -36,7 +36,7 @@ Conteúdo previsto:
       3. Arquivos associados com modelagem motor CC (tensão de entrada x posição angular).
          ( +  [init_motor_posicao.m](init_motor_posicao.m) )
 
-   2. [**Usando MATLAB**](Usando_Matlab_2.pdf)  (Introdução; para iniciantes, 11 páginas)
+   2. :smiley: ​[**Usando MATLAB**](Usando_Matlab_2.pdf)  (Introdução; para iniciantes, 11 páginas)
 
    3. [Modelagem usando Matlab/Simulink](4_modelagem_simulink.pdf) 
 
@@ -55,7 +55,7 @@ Conteúdo previsto:
 
 6. [Lugar Geométrico das Raízes](6_intro_root_locus.pdf) (ou *root-locus*)
 
-   1. [Simulações usando Matlab](aula_26042024.html) para enteder **relação *Root-Locus* $\times$ Resposta temporal** de um sistema (aula de 26/04/2024;)
+   1. 📈 [Simulações usando Matlab](aula_26042024.html) para enteder **relação *Root-Locus* $\times$ Resposta temporal** de um sistema (aula de 26/04/2024)
 
 7. [Diagramas de Bode](6_intro_root_locus.pdf)
 
@@ -67,6 +67,7 @@ Conteúdo previsto:
 
 * [Trabalho 1](trabalho_1.pdf): Transformada de Laplace, gráficos de funções (respostas temporais), uso de Transformada de Laplace. <!-- (trabalho_1_controle_1.pdf)--></br>Deadline: ==19/04/2024==
 * [Trabalho 2](trabalho_2.pdf): Diagramas de Bode, Resposta de Filtros, Série de Fourier (onda Quadrada), Simulando filtro passa-baixas aplicado sobre onda quadrada. 
+* :ledger: ​Uso de **Diary()** no Matlab e edição de arquivos **Markdown**, ver [aqui](https://fpassold.github.io/Controle_2/sugestao_uso_matlab_em_controle.html).
 
 ----
 
