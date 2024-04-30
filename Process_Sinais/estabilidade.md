@@ -132,7 +132,7 @@ Simulando a resposta à uma entrada impulso teremos:
 >> title('Resposta ao Impulso')
 ```
 
->  Obs.: sobre a fução `filter()` clicar [[aqui](funcao_filter.html)].
+>  Obs.: sobre a fução [`filter()`](funcao_filter.html) clicar [[aqui](funcao_filter.html)].
 
 O que deve ter gerado o gráfico:
 
@@ -212,7 +212,11 @@ A saída de tais sistemas nunca chegará “efetivamente” a zero e continuará
 
 Para obter um melhor "feeling" das consequências de sistemas instáveis, pode ser útil examinar um exemplo prático. 
 
-Vamos dar uma olhada na saída de um sistema estável e instável quando a entrada é um sinal de áudio. Usaremos uma gravação de bateria que contém três batidas distintas (baixe [drum_seg.wav](drum_seg.wav)). Deve resultar numa forma de onda conforme mostrado abaixo: 
+Vamos dar uma olhada na saída de um sistema estável e instável quando a entrada é um sinal de áudio. Usaremos uma gravação de bateria que contém três batidas distintas (baixe [drum_seg.wav](drum_seg.wav)):
+
+<audio controls><source src="drum_seg.wav" type="audio/wav"></audio>.
+
+O gráfico no domínio tempo deve resultar numa forma de onda conforme mostrado abaixo: 
 
 <img src="figuras/drum_seg.png" alt="drum_seg.png" style="zoom:48%;" />
 
@@ -242,7 +246,8 @@ a saída produzida é mostrada abaixo:
 
 <img src="figuras/drum_seg_output.png" alt="drum_seg_output.png" style="zoom:48%;" />
 
-Você ainda pode ver as três batidas distintas e, se ouvir o sinal de saída ([drum_seg_output.wav](drum_seg_output.wav)), ouvirá o efeito do sistema aplicado nesta entrada (neste caso, as alto frequências foram atenuadas -- filtro passa-baixas).
+Você ainda pode ver as três batidas distintas e, se ouvir o sinal de saída ([drum_seg_output.wav](drum_seg_output.wav)), ouvirá o efeito do sistema aplicado nesta entrada (neste caso, as alto frequências foram atenuadas -- filtro passa-baixas):
+<audio controls><source src="drum_seg_output.wav" type="audio/wav"></audio>.
 
 Não há diferença significativa nos gráficos, exceto que as amostras na "cauda" após a primeira batida são visivelmente menores na saída; no entanto, você ouvirá claramente a diferença se ouvir a entrada e a saída.
 

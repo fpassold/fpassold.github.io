@@ -1,6 +1,6 @@
 # Intro Respostas Frequenciais de Filtros
 
-<!-- Ref: 2-Anintroductiontothefrequency-domainandnegativefrequency.pdf -->
+<!-- Ref: 2-Anintroductiontothefrequency-domainandnegativefrequency.pdf, pág. inicial-->
 
 Quando alguém toca violão, sons diferentes são criados porque as cordas do violão vibram ou oscilam em frequências diferentes. Um efeito semelhante pode ser ouvido se você esticar um elástico entre os dedos e puxá-lo, e você notará que alterar o comprimento ou a tensão da corda alteraria a frequência do som, pois isso faz com que a corda vibre em um taxa ou frequência diferente.
 
@@ -36,17 +36,95 @@ Uma forma de onda senoidal que oscila suavemente ao longo do tempo (veja o gráf
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/T7fRGXc9SBI" title="Harmonic oscillation HD" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-O mais interessante é que as formas de onda senoidais são um elemento fundamental de qualquer sinal, por isso vale a pena gastar algum tempo para se acostumar com sua aparência e como podem ser representadas matematicamente. Este fato foi demonstrado matematicamente por um matemático francês chamado Jean Baptiste Joseph Fourier (1768-1830).
+O mais interessante é que as **formas de onda senoidais são um elemento fundamental de qualquer sinal**, por isso vale a pena gastar algum tempo para se acostumar com sua aparência e como podem ser representadas matematicamente. Este fato foi demonstrado matematicamente por um matemático francês chamado **Jean Baptiste Joseph Fourier** (1768-1830).
 
-Existem **três características** das formas de onda senoidais com as quais você precisa se sentir confortável para apreciar plenamente a análise de Fourier: **frequência, amplitude e deslocamento de fase**:
+Existem **três características** das formas de onda senoidais com as quais você precisa se sentir confortável para apreciar plenamente a análise de Fourier: 
+
+* **frequência;**
+
+* **amplitude;**
+* **deslocamento de fase**:
+
+<!--pág. 6 de 2-Anintroductiontothefrequency-domainandnegativefrequency.pdf-->
 
 <img src="intro_resp_freq_03.png" alt="intro_resp_freq_03" style="zoom:60%;" />
 
-A figura acima mostra um gráfico no domínio do tempo de uma forma de onda cossenoidal à esquerda e seu espectro de magnitude correspondente à direita. Na visão no domínio do tempo, observe que a amplitude da senóide oscila entre 1,5 e -1,5, o que significa que a amplitude da senóide é 1,5. Você notará que a senóide se repete a cada 0,5 segundos, ou seja, tem período de 0,5 segundos, o que significa que tem frequência de 2 Hz. 
+A figura acima mostra um **gráfico no domínio do tempo** de uma forma de onda cossenoidal à esquerda e seu espectro de magnitude correspondente à direita. Na visão no domínio do tempo, observe que a amplitude da senóide oscila entre 1,5 e -1,5, o que significa que a amplitude da senóide é 1,5. Você notará que a senóide se repete a cada 0,5 segundos, ou seja, tem período de 0,5 segundos, o que significa que tem frequência de 2 Hz.
 
-<!-- Recomendo que você confira a animação interativa em pzdsp.com/sinusoids para ter uma ideia mais clara sobre esses parâmetros.-->
+ Já o **gráfico no domínio frequência**, mostra um único pico na frequência de 2 Hz. Sempre que você tiver um gráfico no domínio do tempo de uma única senóide, observará um único "pico" no domínio da frequência e a posição do "pico" no eixo da frequência corresponde à frequência da senóide. A **magnitude** (altura) do "pico" é proporcional à amplitude da sinusóide. 
 
-**Exercícios propostos**:
+<!-- Você verá exemplos de sinais com mais de uma senóide presente na próxima seção.. Recomendo que você confira a animação interativa em pzdsp.com/sinusoids para ter uma ideia mais clara sobre esses parâmetros.-->
+
+Em termos genéricos uma onda senoidal pode ser descrita matematicamente como:
+
+$x(t)=A \cos( 2\pi f t + \phi)$
+
+onde: $A=$amplitude da onda sinosoidal; $f=$ frequência da onda (em Hz) e $\phi=$ deslocamento (ou atraso) de fase. A variável $t$ representa o tempo e a expressão matemática é avaliada para uma faixa de valores de $t$ para criar um sinal no domínio do tempo. Então, se você quisesse recriar o gráfico da sinusóide mostrada acima, você substituiria $A$ pelo valor 1,5 e $\phi$ por zero, levando à equação: $x(t)=1,5 \cos(4\pi t)$, e então você deveria considerar esta equação para diferentes valores de $t$ antes de finalmente plotar o gráfico de $x(t)$ contra o tempo.
+
+Você deve notar que quando o valor da fase é zero, a forma de onda será máxima quando $t = 0$ e em todos os períodos da forma de onda depois disso. A mudança de fase alterará os tempos em que ocorrerá o máximo da senóide. Você deve tentar isso sozinho usando o código acima e também observar que adicionar $2\pi$ a qualquer valor de deslocamento de fase testado produzirá exatamente a mesma forma de onda, ou seja:
+
+$A\cos(2\pi f t + \phi) = A \cos(2\pi f t + \phi + k\cdot 2\pi)$
+
+onde $k=\pm 1, \pm 2, \pm 3, \ldots$.
+
+<!--(Veja pzdsp.com/vid14 e pzdsp.com/vid15 para tutoriais/demonstrações em vídeo sobre este conceito); 2-Anintroductiontothefrequency-domainandnegativefrequency.pdf, pág. 8-->
+
+## Qualquer sinal pode ser decomposto em ondas senoidais
+
+O matemático francês Jean-Baptiste Joseph Fourier mostrou que qualquer sinal pode ser recriado adicionando sinais senoidais. 
+
+**Exemplo\_1**: Crie um tom de 800 Hz, por 1 segundo:
+
+```matlab
+>> f1=800;		% freq. do sinal
+>> t_fim=1;		% duração do sinal
+>> fs=20E3;		% freq. de amostragem do sinal
+>> t=0:t_fim/fs:t_fim;		% criando vetor tempo do sinal amostrado
+>> length(t)
+ans =
+       20001
+>> x1=1*cos(2*pi*f1*t);		% criando a onda sinosoidal
+>> sound(x1,fs)				% escute o tom criado
+```
+
+Você pode ouvi-lo aqui:  <audio controls><source src="tom_800Hz_1seg.wav" type="audio/wav"></audio>. (O arquivo WAV foi criado usando o comando `audiowrite('tom_800Hz_1seg.wav', x1, fs)`).
+
+Se o sinal $x_1(t)$ acima for "plotado", teremos:
+
+```matlab
+>> plot(t,x1)
+>> axis([0 1.2 -1.2 1.2])
+```
+
+Com o resultado:
+
+<img src="figuras/tom_800Hz_1seg.png" alt="tom_800Hz_1seg.png" style="zoom:48%;" />
+
+Se você quiser apreciar apenas apreciar apenas 2 ciclos deste sinal, deveria fazer então:
+
+```matlab
+>> T=1/f1;		% período do sinal
+>> axis([0 2*T -1.2 1.2])
+>> grid
+```
+
+e desta forma obteríamos:
+
+<img src="figuras/tom_800Hz_1seg_2ciclos.png" alt="tom_800Hz_1seg_2ciclos.png" style="zoom:48%;" />
+
+
+
+**Exemplo\_2**: Crie um tom de 440 Hz, por 2 segundos:
+
+```matlab
+
+```
+
+
+
+
+
+** Exercícios propostos**:
 
 
 
