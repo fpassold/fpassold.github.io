@@ -32,7 +32,7 @@ Parte de **Controle Digital**:
    1. O que é o "Root Locus" ?
    2. Controlador Proporcional -- [Aula de 08/04/2024](2024_1/aula_080402024.html);
    3. Controlador Proporcional + Controle com Ação Integral Pura -- [Aula de 22/04/2024](2024_1/aula_22042024.html);
-   4. Controlador PI;
+   4. Controlador PI (diferentes opções) + "Lag" -- [Aula de 29/04/2024](2024_1/aula_29042024.html);
    5. Controlador PD;
    6. Controlador PID;
 4. Variações de PID´s
@@ -49,6 +49,12 @@ Parte de **Processamento (Digital) de Sinais**:
    2. Filtros FIR
    3. Filtros IFIR
 6. Implementação em sistemas embarcados de filtros digitais.
+
+
+
+Parte Prática: **[Laboratório](lab/lab_proces_ecp_2024.html) ** (a partir de 30/04/2024).
+
+
 
 ---
 
