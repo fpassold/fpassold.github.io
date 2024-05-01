@@ -6,6 +6,7 @@ Tópicos previstos:
 
 **Parte de Controle Digital**:
 
+* [Equação de diferenças do controlador]() à partir de $C(z)$ (eq. do controlador no plano$-z$);
 * O **[PID Digital](https://fpassold.github.io/Lab_Controle_2/PID/pid.html)** (teoria, codificação);
 * [Arduino & Interrupções](https://fpassold.github.io/Lab_Controle_2/Arduino_Int/Arduino_Int.html) (rotinas ISR);
   * Exemplo 1) [Senóide de 40 Hz](https://fpassold.github.io/Lab_Controle_2/Projeto_Final/gerador_senoidal.html), usando saída PWM filtrada;

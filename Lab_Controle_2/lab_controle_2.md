@@ -27,6 +27,7 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 
 <!--~~* [Proposta de Projeto Final (2022/2)](Projeto_Final/projeto_final.html) :white_check_mark: -->
 
+  * [Equação de diferenças do controlador à partir de $C(z)$](PID_Arduino/controlador_codigo.html) (eq. do controlador no plano-z);
   * [**Arduino & Interrupções (Rotinas ISR)**](Arduino_Int/Arduino_Int.html); <!-- :white_check_mark: -->
   * [Exemplo Processo Bola-no-Tubo (interface c/usuário); conexão PWM do Arduino à kit Feedback](Projeto_Final/parte_10_11_2022.html); <!-- :white_check_mark: -->
   * Exemplo\_1: [Usando Arduino (saída PWM) para gerar **Senoide** de 40 Hz](Projeto_Final/gerador_senoidal.html) :+1:
