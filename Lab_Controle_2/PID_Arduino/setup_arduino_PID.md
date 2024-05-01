@@ -22,6 +22,10 @@ Para tanto, os seguintes componentes são necessários:
 
 Um [primeiro teste do algoritmo de controle digital de um PID usando Arduíno Uno](PID_no_Arduino.html) pode ser visto [[aqui]](PID_no_Arduino.html).
 
+O PID Digital (e seus módulos externos) devem ter seu A/D (entrada) conectado na saída 3 do PO150K (sensor de posição) e a sua saída (D/A) no pino 1 do PA150C (pré-amplificador que se comunica com driver de potência) no diagrama de blocos mostrado anteriormente, resultado num conjunto do tipo:
+
+![controlador_digital_kit_feedback2](controlador_digital_kit_feedback2.jpg)
+
 Segue breve descrição de cada bloco.
 
 ## Módulo DAC MPC4725
