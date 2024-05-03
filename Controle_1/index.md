@@ -57,7 +57,7 @@ Conteúdo previsto:
 
    1. 📈 [Simulações usando Matlab](aula_26042024.html) para enteder **relação *Root-Locus* $\times$ Resposta temporal** de um sistema (aula de 26/04/2024)
 
-7. [Diagramas de Bode](6_intro_root_locus.pdf)
+7. [Diagramas de Bode](Diagramas_Bode_1.pdf);
 
    1. [BodePlotGui](https://lpsa.swarthmore.edu/Bode/BodePlotGui.html): A Tool for Generating Asymptotic Bode Diagrams.
 
