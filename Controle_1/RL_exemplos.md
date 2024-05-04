@@ -81,7 +81,7 @@ $G(s)=\dfrac{(s+5)}{s(s+6)(s+7)(s+8)}$
 
 Um sistema com 1 zero e 4 pólos.
 
-Podemos determinar o ponto de partida do RL como sendo:
+Podemos determinar o ponto de partida das assíntotas do RL como sendo:
 
 $\sigma_a=\dfrac{\sum \text{Polos} - \sum \text{Zeros}}{\text{No. Pólos} - \text{No. Zeros}}$
 
@@ -91,7 +91,7 @@ sigma_a =
       -5.3333
 ```
 
-Os ângulos de partida das assíntotas como sendo:
+E os ângulos de partida das assíntotas como sendo:
 
 $\theta_a=\dfrac{(2k+1)180^o}{\text{No. Polos}-\text{No. Zeros}}, \quad k=0,\pm 1, \pm 2, \pm 3, \ldots$
 
@@ -282,4 +282,20 @@ ou graficamente:
 ---
 
 **Outros exemplos**
+
+**Ex\_1**:
+
+<img src="figs/RL_ex1.png" alt="RL_ex1" style="zoom:60%;" />
+
+**Ex\_2**:
+
+<img src="figs/RL_ex2.png" alt="RL_ex2" style="zoom:60%;" />
+
+**Ex\_3**:
+
+<img src="figs/RL_ex3.png" alt="RL_ex3" style="zoom:67%;" />
+
+---
+
+Fernando Passold, em 03/05/2024.
 

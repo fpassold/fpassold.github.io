@@ -24,6 +24,7 @@
     * [Projeto de 2019/2](2019_2/contador_sync_diferente_2019_2.html);
     * [Projeto de 2020/1](2020_1/projeto_contador_sincrono_2020_1.html);
     * [Projeto de 2021/2](cont_sync_2021_2/projeto_cont_sync_2021_2.html);
+    * **[Projeto de 2024/1](2024_1/contador_sync_2024_1.html)** 👋;
 * [Circuitos Multivibradores, astáveis e monoastáveis](multivibrador_astavel_monoastavel.pdf).
 * **Registradores de Deslocamento**:
   * [Teoria](Reg_Deslocamento/Registradores_de_Deslocamento.pdf);

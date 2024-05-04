@@ -56,7 +56,7 @@ Conteúdo previsto:
 6. [Lugar Geométrico das Raízes](6_intro_root_locus.pdf) (ou *root-locus*)
 
    1. 📈 [Simulações usando Matlab](aula_26042024.html) para enteder **relação *Root-Locus* $\times$ Resposta temporal** de um sistema (aula de 26/04/2024)
-   2. [Mais exemplos](RL_exemplos.html) de traçados de *Root-Loucs* e cálculos dos ângulos de partida das assíntotas, ponto de partida da assíntota, pontos de partida e de chegada num *Root-Loucs* (aula de 03/05/2024).
+   2. :hushed: [Mais exemplos](RL_exemplos.html) de traçados de *Root-Loucs* e cálculos dos ângulos de partida das assíntotas, ponto de partida da assíntota, pontos de partida e de chegada num *Root-Loucs* (aula de 03/05/2024).
 
 7. [Diagramas de Bode](Diagramas_Bode_1.pdf);
 
