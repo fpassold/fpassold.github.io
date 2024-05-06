@@ -33,8 +33,12 @@ Parte de **Controle Digital**:
    2. Controlador Proporcional -- [Aula de 08/04/2024](2024_1/aula_080402024.html);
    3. Controlador Proporcional + Controle com Ação Integral Pura -- [Aula de 22/04/2024](2024_1/aula_22042024.html);
    4. Controlador PI (diferentes opções) + "Lag" -- [Aula de 29/04/2024](2024_1/aula_29042024.html);
-   5. Controlador PD;
-   6. Controlador PID;
+   5. Teoria associada com controladores PD e Lead:
+      1. [Base Teórica](https://fpassold.github.io/Controle_3/Controle_Acao_Derivativa.html);
+      2. [Teste de Controladores com Ação Derivativa](https://fpassold.github.io/Controle_3/estudo_caso/Teste_Controladores_Acao_Derivativa.html) (uso de Matlab/Simulink);
+      3. ["Resumo"](https://fpassold.github.io/Controle_3/pd_plus_filtro.pdf);
+   6. Controlador PD ([Aulas passadas](https://fpassold.github.io/Controle_3/projeto_PD_lead_2020.html));
+   7. Controlador PID;
 4. Variações de PID´s
 5. Implementação em sistemas embarcados de controladores digitais.
 
