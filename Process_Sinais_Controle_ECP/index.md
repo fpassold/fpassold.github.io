@@ -35,8 +35,12 @@ Parte de **Controle Digital**:
    4. Controlador PI (diferentes opções) + "Lag" -- [Aula de 29/04/2024](2024_1/aula_29042024.html);
    5. Teoria associada com controladores PD e Lead:
       1. [Base Teórica](https://fpassold.github.io/Controle_3/Controle_Acao_Derivativa.html);
+      (video* da aula de [Processamento Sinais (Parte 1/2) (2024-05-06 19:53 GMT-3)](https://drive.google.com/open?id=1TUPkOz03XtrCgci29U_2iWQJ1XH5Kl9u));
       2. [Teste de Controladores com Ação Derivativa](https://fpassold.github.io/Controle_3/estudo_caso/Teste_Controladores_Acao_Derivativa.html) (uso de Matlab/Simulink);
+       (video* da aula de [Processamento Sinais (Parte 2/2) (2024-05-06 21:01 GMT-3)](https://drive.google.com/open?id=1UbSlcx5dHV9S7n09K8VHMfBXQ8EfScXY))
       3. ["Resumo"](https://fpassold.github.io/Controle_3/pd_plus_filtro.pdf);
+
+         *Videos eventualmente só acessíveis com usuário logado no domínio @upf.br.
    6. Controlador PD ([Aulas passadas](https://fpassold.github.io/Controle_3/projeto_PD_lead_2020.html));
    7. Controlador PID;
 4. Variações de PID´s
