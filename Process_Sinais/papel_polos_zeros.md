@@ -93,7 +93,7 @@ Note que o Matlab vai variar a frequência deste "Diagrama de Bode" até a metad
 
 Este gráfico indica um pico de atenuação do sinal de entrada na frequência aproximada de 0,243 Hz ou, se considerarmos um gráfico genérico, temos que considerar que $180^p=\pi$ corresponde à $f_s/2$. No caso anterrior, quando ingressamos a *transfer function* no Matlab, somos "obrigados" à especificar um período de amostragem, e neste caso foi adotado $T=1$ segundo, o que corresponde à $f_s=1$ Hz.
 
-Se este sistema for amostrado à $f_s=100$ Hz, o pico de atenuação de sinal ($-10,7$ dB) teria ocorrido em $0,243*100/2=12,5$ Hz.
+Se este sistema for amostrado à $f_s=100$ Hz, o pico de atenuação de sinal ($-10,7$ dB) teria ocorrido em $0,243*100=24,3$ Hz.
 
 Um diagrama completo renderia:
 
@@ -141,17 +141,47 @@ Pode-se perceber os picos positivos associados com os zeros de $H(z)$ e os picos
 > title('H(z)')
 > ```
 
+Percebe mais alguns detalhes comparando o gráfico anterior com um diagrama de pólos e zeros:
 
+<img src="figuras/example1_surface_orig.png" alt="example1_surface_orig" style="zoom: 67%;" />
+
+Perceba a intersecção entre o círculo unitário e a superfície formada por $H(z)$. A figura abaixo mostra os pontos de intersecção que o cilindro faria com o superfície de $H(z)$, mostrada como linhas de cores diferentes (azul, verde, vermelho e amarelo):
+
+<img src="figuras/exemplo1-interseccao.png" alt="exemplo1-interseccao" style="zoom:67%;" />
+
+Uma vista superior plana (com um diagrama de pólo zero sobreposto) mostra que a linha azul está associada ao intervalo de ângulos de $0$ a $0,5\pi$ (rad) e a linha verde está associada aos ângulos de $0,5\pi$ à $\pi$ radianos. Você também deve observar que os contornos das linhas azuis e amarelas serão “espelhados” no eixo real. Da mesma forma, as linhas de contorno verdes e vermelhas serão “espelhadas” ao longo do eixo real:
+
+<img src="figuras/exemplo1_plano_z.png" alt="exemplo1_plano_z" style="zoom:67%;" />
+
+Se você traçasse a magnitude dos pontos de intersecção em relação ao ângulo feito com o eixo real, na faixa de ângulos de $-\pi$ a $\pi$ radianos, (ou seja, plotasse a amplitude das linhas coloridas de interseção em relação ao ângulo), você deveria perceber que você obteria o gráfico mostrado abaixo:
+
+<img src="figuras/exemplo1_magnitude_x_angulo.png" alt="exemplo1_magnitude_x_angulo" style="zoom:67%;" />
+
+Você notará que o lado esquerdo do gráfico acima "espelha” o lado direito. Traçar o lado direito, de 0 a $\pi$ radianos, por si só resulta no gráfico a seguir:
+
+<img src="figuras/exemplo1_magnitude_x_angulo_half.png" alt="exemplo1_magnitude_x_angulo_half" style="zoom:67%;" />
+
+Note que o aumento da magnitude no ângulo de $0,5\pi$ é causado pelo ‘contorno do cone’ associado ao pólo localizado em $-0,5657+j0,5657$. Observe também que a redução na magnitude em um ângulo de $0,5\pi$ é causada pelo ‘contorno do cone invertido’ associado ao zero localizado em $0+j0,8$.
+
+Acontece que se o eixo do ângulo horizontal for interpretado como frequência com unidades de **radianos por amostra**, então o gráfico acima é a **magnitude da resposta em frequência do sistema**, conforme mostrado na figura abaixo:
+
+<img src="figuras/exemplo1_magnitude_response.png" alt="exemplo1_magnitude_response" style="zoom:67%;" />
+
+Observe que se você quisesse interpretar a resposta de frequência em Hertz (em vez de radianos por amostra), então você precisaria saber a taxa de amostragem associada ao sinal que estava passando pelo sistema. Para converter o eixo horizontal para Hertz, substitua $\pi$ por ‘metade da taxa de amostragem’. Por exemplo, se a taxa de amostragem fosse de 100 Hz, então o ponto médio de $0,5\pi$ radianos por amostra no gráfico acima equivaleria a 25 Hz ($0,5*100/2=25$):
+
+<img src="figuras/exemplo_1_magnitude_response_100Hz.png" alt="exemplo_1_magnitude_response_100Hz" style="zoom:48%;" />
+
+<!--Observe que não expliquei por que esse é o caso, no entanto, o leitor interessado pode obter uma visão sobre por que a resposta de frequência de um sistema pode ser determinada dessa maneira na seção intitulada “Por que avaliar o H(z) ao longo do ' círculo unitário'”.-->
+
+Note que o gráfico só avança até a frequência de Nyquist ($=f_s/2$).
 
 **Notas sobre *pólos* e *zeros* localizados na origem**
 
+🚧 Página em construção.
 
+<!-- até pág. 37-->
 
+----
 
-
-
-
-
-
-
+🌊 Fernando Passold, em 07/05/2024.
 
