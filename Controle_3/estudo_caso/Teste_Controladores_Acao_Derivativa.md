@@ -1,11 +1,11 @@
 # Teste de Controladores com Ação Derivativa
 
 > Aula de 24/10/2019, depois da teoria sobre [Ação Derivativa](../Controle_Acao_Derivativa.html)
-
+> Material revisado em 06/05/2024.
 
 ## Fechando malha com Derivador Analógico Puro:
 
-Testando derivador analóriogo puro - arquivo: [derivador_puro.xls](derivador_puro.slx):
+Testando derivador analóriogo puro - arquivo:  [derivador_puro.slx](derivador_puro.slx)  ou  [derivador_puro.mdl](derivador_puro.mdl) :
 
 <img src="derivador_puro.slx.png" alt="derivador_puro.slx.png" style="zoom:80%;" />
 
@@ -15,7 +15,7 @@ Resulta em:
 
 ## Fechando malha com Derivador Puro Discretizado (Numérico)
 
-Avaliando sua versão digital - arquivo: [derivador_purot_digital.xls](derivador_purot_digital.xls):
+Avaliando sua versão digital - arquivo:   [derivador_purot_digital.slx](derivador_purot_digital.slx)  ou   [derivador_purot_digital.mdl](derivador_purot_digital.mdl) :
 
 ![derivador_purot_digital.png](derivador_purot_digital.png)
 
@@ -29,7 +29,7 @@ Saída gerada pela seguinte ação de controle:
 
 ## Fechando a malha com P+D
 
-Simulando um controlador PD (Proporcional + Derivativo) - arquivo [PD_digital.slx](PD_digital.slx):
+Simulando um controlador PD (Proporcional + Derivativo) - arquivo:  [PD_digital.slx](PD_digital.slx) ou  [PD_digital.mdl](PD_digital.mdl) :
 
 ![PD_digital.png](PD_digital.png)
 
@@ -49,7 +49,7 @@ Note que:
 
 ## Controlador PD com Bloco Saturador (Limitador)
 
-Acrescentado o bloco de saturação ajustado para limitar valores à faixa de $1 \le u[kT] \le 100\%$ (supondo que este sinal de controle é repassado para um gerador PWM ponte H completa) -- arquivo: [PD_digital_saturacao.slx](PD_digital_saturacao.slx):
+Acrescentado o bloco de saturação ajustado para limitar valores à faixa de $1 \le u[kT] \le 100\%$ (supondo que este sinal de controle é repassado para um gerador PWM ponte H completa) -- arquivo:  [PD_digital_saturacao.slx](PD_digital_saturacao.slx)  ou  [PD_digital_saturacao.mdl](PD_digital_saturacao.mdl) :
 
 ![PD_digital_saturacao.png](PD_digital_saturacao.png)
 
@@ -73,6 +73,10 @@ Note na próxima figura como as amplitudes elevadas para ação de controle fora
 >> print('-sderivador_puro', '-r150', '-dpng', 'derivador_puro.slx.png'); % a opção -r é para aumentar a resolução (em dpi)
 ```
 
+Em caso de **Problemas para abrir arquivo .SLX**, tente fazer:
+
+![abrindo_SLX_de_versoes_mais_recentes-2](abrindo_SLX_de_versoes_mais_recentes-2.png)
+
 ---
 
-Fernando Passold (2020)
+Fernando Passold (2024/1)
