@@ -1,3 +1,5 @@
+![thinking-snoopy](figuras/thinking-snoopy.gif)
+
 # Papel dos pólos e zeros na magnitude da resposta em frequência.
 
 <!-- Continuação da pág. 26/99 de 5-TheZ-transform-Apracticaloverview.pdf -->
@@ -16,7 +18,7 @@ Neste documento, será mostrado como os pólos e zeros afetam a resposta de freq
 
 Para o primeiro exemplo, será usado o sistema fornecido pelo diagrama de fluxo de sinal mostrado abaixo. Também são fornecidas a equação de diferenças de sistemas e a função de transferência.
 
-<img src="figuras/exemplo1.png" alt="exemplo1.png" style="zoom:25%;" />
+<img src="figuras/exemplo1_fluxo.drawio.webp" alt="exemplo1_fluxo.drawio" style="zoom:37%;" />
 
 A eq. de diferenças do sistema ilustrado acima fica:
 
@@ -121,7 +123,7 @@ Pode-se perceber os picos positivos associados com os zeros de $H(z)$ e os picos
 >     end
 > end
 > figure
-> [X,Y,Z]=cylinder(1);	% cria cilindro "3D"
+> [X,Y,Z]=cylinder(1);	% cria cilindro "3D", raio=1
 > Z1=Z*20;				% alturas -20 e +20 para anéis circulares cilindro
 > Z2=Z*(-20);
 > u=length(Z);
@@ -141,7 +143,7 @@ Pode-se perceber os picos positivos associados com os zeros de $H(z)$ e os picos
 > title('H(z)')
 > ```
 
-Percebe mais alguns detalhes comparando o gráfico anterior com um diagrama de pólos e zeros:
+Perceba mais alguns detalhes comparando o gráfico anterior com o diagrama de pólos e zeros:
 
 <img src="figuras/example1_surface_orig.png" alt="example1_surface_orig" style="zoom: 67%;" />
 
@@ -149,25 +151,25 @@ Perceba a intersecção entre o círculo unitário e a superfície formada por $
 
 <img src="figuras/exemplo1-interseccao.png" alt="exemplo1-interseccao" style="zoom:67%;" />
 
-Uma vista superior plana (com um diagrama de pólo zero sobreposto) mostra que a linha azul está associada ao intervalo de ângulos de $0$ a $0,5\pi$ (rad) e a linha verde está associada aos ângulos de $0,5\pi$ à $\pi$ radianos. Você também deve observar que os contornos das linhas azuis e amarelas serão “espelhados” no eixo real. Da mesma forma, as linhas de contorno verdes e vermelhas serão “espelhadas” ao longo do eixo real:
+Uma vista superior plana (com um diagrama de pólo zero sobreposto) mostra que a linha azul está associada ao intervalo de ângulos de $0$ a $\frac{\pi}{2}=0,5\pi$ (rad) (0 à $90^o$) e a linha verde está associada aos ângulos de $0,5\pi$ à $\pi$ radianos ($90^o$ à $180^o$). Você também deve observar que os contornos das linhas azuis e amarelas serão “espelhados” no eixo real. Da mesma forma, as linhas de contorno verdes e vermelhas serão “espelhadas” ao longo do eixo real:
 
 <img src="figuras/exemplo1_plano_z.png" alt="exemplo1_plano_z" style="zoom:67%;" />
 
-Se você traçasse a magnitude dos pontos de intersecção em relação ao ângulo feito com o eixo real, na faixa de ângulos de $-\pi$ a $\pi$ radianos, (ou seja, plotasse a amplitude das linhas coloridas de interseção em relação ao ângulo), você deveria perceber que você obteria o gráfico mostrado abaixo:
+Se você traçasse a magnitude dos pontos de intersecção em relação ao ângulo feito com o eixo real, na faixa de ângulos de $-\pi$ a $\pi$ radianos ($-180^o$ à $+180^o$), (ou seja, plotasse a amplitude das linhas coloridas de interseção em relação ao ângulo), você obteria o gráfico mostrado abaixo:
 
 <img src="figuras/exemplo1_magnitude_x_angulo.png" alt="exemplo1_magnitude_x_angulo" style="zoom:67%;" />
 
-Você notará que o lado esquerdo do gráfico acima "espelha” o lado direito. Traçar o lado direito, de 0 a $\pi$ radianos, por si só resulta no gráfico a seguir:
+Você notará que o lado esquerdo do gráfico acima "espelha” o lado direito. Traçar o lado direito, de 0 a $\pi$ radianos (ou de 0 até $180^o$), por si só resulta no gráfico a seguir:
 
 <img src="figuras/exemplo1_magnitude_x_angulo_half.png" alt="exemplo1_magnitude_x_angulo_half" style="zoom:67%;" />
 
-Note que o aumento da magnitude no ângulo de $0,5\pi$ é causado pelo ‘contorno do cone’ associado ao pólo localizado em $-0,5657+j0,5657$. Observe também que a redução na magnitude em um ângulo de $0,5\pi$ é causada pelo ‘contorno do cone invertido’ associado ao zero localizado em $0+j0,8$.
+Note que o aumento da magnitude no ângulo de $0,5\pi$ é causado pelo "contorno do cone" associado ao pólo localizado em $-0,5657+j0,5657$. Observe também que a redução na magnitude em um ângulo de $0,5\pi$ é causada pelo "contorno do cone invertido" associado ao zero localizado em $0+j0,8$.
 
 Acontece que se o eixo do ângulo horizontal for interpretado como frequência com unidades de **radianos por amostra**, então o gráfico acima é a **magnitude da resposta em frequência do sistema**, conforme mostrado na figura abaixo:
 
 <img src="figuras/exemplo1_magnitude_response.png" alt="exemplo1_magnitude_response" style="zoom:67%;" />
 
-Observe que se você quisesse interpretar a resposta de frequência em Hertz (em vez de radianos por amostra), então você precisaria saber a taxa de amostragem associada ao sinal que estava passando pelo sistema. Para converter o eixo horizontal para Hertz, substitua $\pi$ por ‘metade da taxa de amostragem’. Por exemplo, se a taxa de amostragem fosse de 100 Hz, então o ponto médio de $0,5\pi$ radianos por amostra no gráfico acima equivaleria a 25 Hz ($0,5*100/2=25$):
+Observe que se você quisesse interpretar a resposta de frequência em Hertz (em vez de radianos por amostra), então você precisaria saber a taxa de amostragem associada ao sinal que estava passando pelo sistema. Para converter o eixo horizontal para Hertz, substitua $\pi$ por "metade da taxa de amostragem". Por exemplo, se a taxa de amostragem fosse de 100 Hz, então o ponto médio de $0,5\pi$ radianos por amostra no gráfico acima equivaleria a 25 Hz ($0,5*100/2=25$):
 
 <img src="figuras/exemplo_1_magnitude_response_100Hz.png" alt="exemplo_1_magnitude_response_100Hz" style="zoom:48%;" />
 
@@ -177,9 +179,69 @@ Note que o gráfico só avança até a frequência de Nyquist ($=f_s/2$).
 
 **Notas sobre *pólos* e *zeros* localizados na origem**
 
-🚧 Página em construção.
-
 <!-- até pág. 37-->
+
+**Detalhes**:  você verá que um pólo ou zero localizado na origem ($0 + 0𝑗$) não afetará a resposta em frequência de um sistema. 
+
+Considere a função transferência abaixo:
+
+$H(z)=\dfrac{1}{z}$
+
+Este sistema possui um pólo localizado em $z=0=0j$, isto é, na origem do plano-z.
+
+Num sistema com um único pólo na origem, a intersecção da superfície $H(z)$ com o cilindro unitário seria tal que a amplitude dos pontos de interseção seria igual, conforme mostrado nas ilustrações abaixo. Na verdade, você descobrirá que a amplitude dos pontos de interseção seria de 0 dB.
+
+<img src="figuras/polos_zero_polo_origem.png" alt="polos_zero_polo_origem" style="zoom:67%;" />
+
+Outra interpretação pode ser feita de um ponto de vista matemático. Recorde que a superfície de $H(z)$ mostra a magnitude de $𝐻(𝑧)$ na escala de decibéis (ou seja, $20\log_{10}(\vert H(z) \vert)$) para um intervalo de valores de $z$ e $z$ é um número complexo. Na imagem anterior, para gerar a superfície $H(z)$, foram calculados pontos para vários valores de $z$, com a parte real variando no intervalo: $[-1.1, 1.1]$ e a parte imaginária variando no intervalo: $[-1.1j, 1.1j]$.
+
+As interseções ocorrem quando a magnitude de $z$ é igual à 1, ou $|z|=1$. Alguns pontos de interseção são fáceis de serem identificados, por exemplo quando $z$ é igual à: $-1$, $1$, $j$ e $-j$, os quais possuem magnitude de 1.
+
+Para encontrar todos os pontos de intersecção será necessário avaliar a expressão $20\log_{10}(|H(z|)$ para todos os casos de magnitude de $z$ igual à 1. Uma vez que $H(z)=1/z$, então $|H(z)|=1/|z|$, assim, a magnitude de $H(z)$ será igual à 1 quando $|z|=1$:
+
+<img src="figuras/exemplo1_surface_interseccao_circulo_unitario.png" alt="exemplo1_surface_interseccao_circulo_unitario" style="zoom:67%;" />
+
+Ou do ponto de vista "superior":
+
+<img src="figuras/exemplo1_similar_bode.png" alt="exemplo1_similar_bode" style="zoom: 50%;" />
+
+Uma situação muito semelhante surgiria se existisse um único zero na superfície $H(z)$. Desta vez você descobriria que a interseção da superfície $H(z)$ com o cilindro unitário seria tal que a amplitude dos pontos de interseção seria igual a 0 dB ($=|z|=1$).
+
+O que isso mostra é que ==pólos ou zeros colocados na origem não afetarão a magnitude da resposta em frequência de um sistema==. Isto levanta a questão: porque então é que existem pólos e zeros na origem se não afectam o comportamento de “magnitude” do sistema? A resposta é que, embora não afetem a resposta de magnitude, afetam os atrasos no sistema (que está associado à resposta de frequência de fase do sistema).
+
+Em geral, você descobrirá que um sistema normalmente possui um número igual de pólos e zeros. Sistemas que não possuem um número igual de pólos e zeros terão atrasos “desnecessários” introduzidos no sistema.
+
+<!--Isto pode ser explicado através de um exemplo, que darei agora, mas gostaria de salientar que esta não é realmente uma questão muito importante para se preocupar e é incluída apenas para o leitor interessado. Se você achar o exemplo a seguir confuso, sinta-se à vontade para ignorá-lo. - pag. 41/99-->
+
+Voltando ao sistema anterior (com pólo na origem do plano-z):
+
+$H(z)=\dfrac{1}{z}$
+
+Se multiplicarmos o numerador e denominador por $z^{-1}$, a função transferência fica:
+
+$H(z)=\left(\dfrac{1}{z}\right) \cdot \left( \dfrac{z^{-1}}{z^{-1}}\right)= \dfrac{z^{-1}}{1} = \dfrac{1z^{-1}+0z^0}{1z^0}$
+
+Adaptando esta expressão para o formato usualmente adotado para filtros, podemos determinar os componentes $b$ a $a$. Neste caso, $b_1=1$, $b_0=0$ e $a_0=1$. A equação de diferenças fica:
+
+$H(z)=\dfrac{Y(z)}{X(z)}=\dfrac{z^{-1}}{1}$
+
+$Y(z)=z^{-1}X(z)$
+
+$y[n]=x[n-1]$
+
+Na forma de um diagrama de fluxo de sinais teríamos algo como:
+
+<img src="figuras/exemplo1_diagrama_fluxo.drawio.png" alt="exemplo1_diagrama_fluxo.drawio" style="zoom:40%;" />
+
+Que rende uma estrutura simplificada como:
+
+<img src="figuras/exemplo1_diagrama_fluxo_equiv.webp" alt="exemplo1_diagrama_fluxo_equiv" style="zoom:40%;" />
+
+O que você deve perceber é que este sistema simplesmente atrasa a entrada em uma amostra e nada mais. Embora possa haver razões práticas para querer atrasar um sinal por uma amostra, em muitos casos, como na filtragem de sinais, o atraso pode não ser desejável e serve simplesmente para desacelerar um processo em uma amostra.
+
+Na maioria dos casos, você descobrirá que os sistemas terão o mesmo número de pólos e zeros; caso contrário, atrasos desnecessários poderão ser introduzidos no sistema, como demonstrado no exemplo anterior.
+
+\>\> Próximo tópico sugerido: [projeto de sistema usando alocação pólo-zero](projeto_polo_zero.html).
 
 ----
 
