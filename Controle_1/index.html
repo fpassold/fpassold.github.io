@@ -160,337 +160,379 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 }
 
 
-@import url("file:///Users/fernandopassold/Library/Application%20Support/abnerworks.Typora/themes/https://fonts.googleapis.com/icon?family=Material+Icons");
-
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
 :root {
-  --blur-text-color: rgba(0, 0, 0, 0.4);
-  --code-background-color: rgba(0, 0, 0, 0.05);
-  --quote-background-color: rgba(0, 0, 0, 0.05);
-  --border-color: #a1a4a8;
-  --border-color-hover: #6a737d;
-  --text-color: #444;
-  --text-muted-color: #666;
-  --text-faded-color: #999;
-  --a-color: #111;
-  --bg-color: #fff;
-  --accent-color: #000;
+    --code-block-bg-color: inherit;//#f8f8f8;
 
-  --block-note-bg: rgba(25, 134, 255, 0.16);
-  --block-tip-bg: rgba(0, 191, 165, 0.16);
-  --block-important-bg: rgba(153, 102, 232, 0.16);
-  --block-warning-bg: rgba(234, 179, 8, .16);
-  --block-caution-bg: rgba(244, 63, 94, .16);
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
 
-  --select-text-bg-color: rgba(0, 0, 0, 0.1);
-  /* --select-text-font-color: #000; */
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
 
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
 }
 
 #write {
-  max-width: 800px;
-  line-height: 1.6;
-  font-size: 14px;
-
+	max-width: 914px;
+	text-align: justify;
 }
 
-
-
-content {
-  color: var(--text-color);
+#write>h1:first-child {
+	margin-top: 2.75rem;
 }
-
-content::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+#write>h2:first-child {
+	margin-top: 1.75rem;
 }
-
-content::-webkit-scrollbar-thumb {
-  width: 8px;
-  border-right: 1px solid var(--active-file-border-color);
-  transition: all 0.3s;
+#write>h3:first-child {
+	margin-top: 1rem;
 }
-
-content::-webkit-scrollbar-thumb:hover {
-  width: 9px;
-  border-right: none;
-  background-color: var(--active-file-border-color);
-  border-radius: 2px;
+#write>h4:first-child {
+	margin-top: 0.5rem;
 }
-
-.md-meta-block {
-  opacity: 0.3;
-  padding: 1rem;
-  transition: all 0.3s;
-}
-
-.md-meta-block:hover {
-  opacity: 1;
-}
-
 h1 {
-  font-size: 2.5rem;
-  text-align: center;
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
 }
-
 h2 {
-  font-size: 2rem;
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
 }
-
 h3 {
-  font-size: 1.75rem;
 }
-
 h4 {
-  font-size: 1.5rem;
 }
-
 h5 {
-  font-size: 1.25rem;
+	font-size: 1.125rem;
 }
-
 h6 {
-  font-size: 1rem;
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
 }
 
-:is(h2, h3, h4, h5, h6)::before {
-  /* paragraph symbol */
-  content: "#";
-  margin-right: 0.5rem;
-  color: var(--blur-text-color);
+.task-list-item {
+	padding-left:2.125rem;
 }
 
-pre.ty-contain-cm {
-  max-width: 90%;
-  margin: 2rem auto;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  page-break-inside: avoid;
-}
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
 
-pre .CodeMirror {
-  page-break-inside: avoid;
-}
-
-pre .CodeMirror-scroll {
-  border-radius: 5px;
-  overflow-x: auto;
-  background-color: var(--code-background-color);
-  page-break-inside: avoid;
-}
-
-pre .CodeMirror-sizer {
-}
-
-pre .CodeMirror-code {
-}
-
-pre .CodeMirror-lines {
-  margin: 1rem;
-  page-break-inside: avoid;
-}
-
-pre .CodeMirror-scroll::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-pre .CodeMirror-scroll::-webkit-scrollbar-thumb {
-  height: 8px;
-  border-bottom: 1px solid var(--active-file-border-color);
-  transition: all 0.3s;
-}
-
-pre .CodeMirror-scroll::-webkit-scrollbar-thumb:hover {
-  height: 9px;
-  border-bottom: none;
-  background-color: var(--active-file-border-color);
-  border-radius: 2px;
-}
-
-pre .CodeMirror-gutters {
-  height: 100% !important;
-  background-color: transparent;
-}
-
-pre .CodeMirror-gutter {
-}
-
-pre .CodeMirror-linenumber {
-  padding-right: 0.5rem;
-  width: 2rem !important;
-  text-align: center;
-  left: -5px !important;
-
-}
-
-.code-tooltip.md-tooltip-remove {
-  border: 1px solid var(--active-file-border-color);
-  border-radius: 5px;
-
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
 }
 
 blockquote {
-  margin: 16px auto;
-  padding: 20px 30px;
-  background-color: var(--quote-background-color);
-  border-radius: 4px;
-  border-left: 4px solid var(--text-muted-color);
-  transition: all 0.2s ease;
-  position: relative;
-  z-index: 0;
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
 }
 
-blockquote > :is(p, ol, ul, pre, table):first-child::before {
-  content: "format_quote";
-  font-family: "Material Icons";
-  position: absolute;
-  display: block;
-  top: -30px;
-  right: -20px;
-  font-size: 2.4rem;
-  color: var(--text-muted-color);
-  opacity: 0.2;
+#typora-source {
+	color: #555;
 }
 
-blockquote:hover {
-  border-left: 4px solid var(--text-color);
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
 }
 
-#write code {
-  padding: 2px 4px;
-  font-size: 0.9em;
-  color: var(--text-muted-color);
-  background-color: var(--code-background-color);
-  border-radius: 4px;
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
 }
 
-#write p strong {
-  font-weight: 600;
-  color: var(--accent-color);
-}
-#write p u {
-  text-underline-offset: 3px;
-}
-#write p mark {
-  background-color: var(--accent-color);
-  color: var(--bg-color);
-  padding: 2px 4px;
-  border-radius: 4px;
+#md-notification:before {
+	top: 14px;
 }
 
-.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) mark span {
-  background-color: var(--accent-color);
-  color: var(--bg-color) !important;
+#md-notification {
+	background: #eee;
 }
 
-#write p sup {
-  font-size: 0.8em;
-  line-height: 1;
-  top: -0.5em;
-  background-color: transparent;
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
 }
 
-#write p sup::before {
-  content: "[";
-  position: relative;
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
 }
 
-#write p sup::after {
-  content: "]";
-  position: relative;
+.pin-outline .outline-active {
+  color: #0070E0; 
 }
 
-#write p sup.md-expand::after,
-#write p sup.md-expand::before {
-  display: none;
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
 }
 
-#write p ul li::marker, content p ol li::marker {
-  color: var(--accent-color);
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
 }
 
-#write p a {
-  color: var(--a-color);
-  text-decoration-color: var(--text-color);
-  text-underline-offset: 3px;
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
 }
 
-#write table {
-  margin: 16px auto;
-  border-collapse: collapse;
-  width: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  page-break-inside: avoid;
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
 }
 
-#write table thead {
-  border-bottom: 2px solid var(--border-color);
+.file-node-content {
+  color: #5e676d;
 }
 
-#write table tbody {
-  background-color: var(--bg-color);
+.sidebar-tab.active {
+  font-weight: 400;
 }
 
-#write table th {
-  padding: 10px;
-  font-weight: 600;
-  text-align: center !important;
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
 }
 
-#write table td {
-  padding: 10px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-#write table th p,
-#write table td p {
-  margin: 0;
-}
-
-#write .md-alert {
-  margin: 16px auto;
-  padding: 10px 30px;
-  border-radius: 4px;
-  border-left: none;
-  page-break-inside: avoid;
-}
-
-#write .md-alert.md-alert-note {
-  background-color: var(--block-note-bg);
-}
-
-#write .md-alert.md-alert-tip {
-  background-color: var(--block-tip-bg);
-}
-
-#write .md-alert.md-alert-important {
-  background-color: var(--block-important-bg);
-}
-
-#write .md-alert.md-alert-warning {
-  background-color: var(--block-warning-bg);
-}
-
-#write .md-alert.md-alert-caution {
-  background-color: var(--block-caution-bg);
-}
-
-.md-toc {
-  margin: 2rem auto;
-}
-
-a.md-toc-inner {
-  font-size: 1.2rem;
-}
-
-.md-toc .md-toc-tooltip {
-  display: block !important;
-}
-
-.md-toc .md-toc-tooltip span {
-  font-size: 1.5rem;
-}
 
 
 </style>
@@ -498,6 +540,6 @@ a.md-toc-inner {
 <body class='typora-export'>
 <div id='write'  class=''><p><img src="christopher-ruel.jpg" referrerpolicy="no-referrer" alt="christopher-ruel"></p><h1><a name="controle-1" class="md-header-anchor"></a><span>Controle 1</span></h1><p><span>(&quot;Análise de Sinais e de Sistemas, Modelagem de Sistemas&quot;)</span></p><p><span>Conteúdo previsto:</span></p><ol start='' ><li><p><span>Introdução.</span></p><ol start='' ><li><a href='intro_controle_1.pdf'><span>Parte 1</span></a><span>: História da área de controle automático e automação industrial.</span></li><li><a href='Intro2.pdf'><span>Parte 2</span></a><span>: Conceitos iniciais: modelagem &quot;DC&quot; (regime permanente) x &quot;AC&quot; (transitórios), malha-aberta x malha-fechada.</span></li></ol></li><li><p><span>Modelagem Matemática de Sistemas (ainda sem usar Laplace)</span></p><ol start='' ><li><a href='2_modelagem_matematica.pdf'><span>Parte 1</span></a><span>: Intro (funções transferência, caixas de redução, sitemas lineares x não-lineares, resposta de sensor, sistema estável x instável, malha-aberta x malha-fechada, dinâmica de um sistema), Sistemas mecânicos (elementos básicos), equações associadas com forças (movimentos translacionais), equações associadas com torques (forças rotacionais), alguns sistemas mecânicos translacionais (equacionamento), sistemas mecânicos rotacionais (equacionamentos), momento de inércia, modelagem de alguns sistemas mecânicos, modelagem considerando Energia/Potência (elementos mecânicos que armazenam/dissipam energia).</span></li><li><a href='2_modelagem_matematica_2.pdf'><span>Parte 2</span></a><span>: Equacionamentos considerando Energia/Potência, Comparando sistemas elétricos x mecânicos, modelagem de sistemas elétricos, modelagem sistema térmico. </span></li></ol></li><li><p><a href='3_transformada_laplace.pdf'><span>Transformada de Laplace</span></a><span> (voltado para modelagem de sistemas).</span></p><ol start='' ><li><span>Expansão em frações parciais --&gt; </span><a href='https://lpsa.swarthmore.edu/LaplaceXform/InvLaplace/InvLaplaceXformPFE.html'><span>The Inverse Laplace Transform by Partial Fraction Expansion</span></a><span> (+ soluções </span><a href='https://lpsa.swarthmore.edu/LaplaceXform/InvLaplace/PFE1Matlab/html/PFE1.html'><span>usando Matlab</span></a><span>).</span></li></ol></li><li><p><span>Modelagem usando Transformada de Laplace</span></p><ol start='' ><li><p><a href='4_modelagem_laplace.pdf'><span>Modelagem usando Transformada de Laplace</span></a><span>:</span></p><ol start='' ><li><p><span>Arquivos associados com modelagem de circuito RL ( </span><a href='circuito_RL.slx'><span>circuito_RL.slx</span></a><span> ) (tensão de entrada x corrente x ddp</span><span>_</span><span>resistor x ddp</span><span>_</span><span>indutor):</span></p><figure><table><thead><tr><th><span>Modelo</span></th><th><span>Scope (resultado)</span></th></tr></thead><tbody><tr><td><img src="circuito_RL.png" referrerpolicy="no-referrer" alt="circuito_RL"></td><td><img src="circuito_RL_scope.png" referrerpolicy="no-referrer" alt="circuito_RL_scope"></td></tr></tbody></table></figure><p>&nbsp;</p></li><li><p><span>Arquivos associados com modelagem motor CC usando Matlab/Simulink (tensão de entrada x velocidade);</span>
 <span>( </span><a href='motor_DC_Vel.slx'><span>motor_DC_Vel.slx</span></a><span>  +  </span><a href='init_motor_velocidade.m'><span>init_motor_velocidade.m</span></a><span> + </span><a href='motor_DC_Vel_teste_degrau.slx'><span>motor_DC_Vel_teste_degrau.slx</span></a><span> )</span></p></li><li><p><span>Arquivos associados com modelagem motor CC (tensão de entrada x posição angular).</span>
-<span>( +  </span><a href='init_motor_posicao.m'><span>init_motor_posicao.m</span></a><span> )</span></p></li></ol></li><li><p>😃<span> ​</span><a href='Usando_Matlab_2.pdf'><strong><span>Usando MATLAB</span></strong></a><span>  (Introdução; para iniciantes, 11 páginas)</span></p></li><li><p><a href='4_modelagem_simulink.pdf'><span>Modelagem usando Matlab/Simulink</span></a><span> </span></p></li><li><p><span>Exemplos usando Matlab/Simulink: </span><a href='https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&amp;section=SystemModeling'><span>System Modeling (Michigan/Carnegie Melon/Detroit Mercy)</span></a><span>.</span></p></li><li><p><span>Modelagem de circuitos baseados em Amplificadores Operacionais:</span></p><ol start='' ><li><span>Material do Prof. Dr. Victor da Fonte Dias, Professor Auxiliar no Instituto Superior Técnico (IST), Lisboa, de 1999: disciplina de </span><strong><span>Circuitos e Sistemas Electrónicos</span></strong><span> (</span><a href='https://www.ufrgs.br/eng04030/Aulas/teoria/cap_00/indice.htm'><span>Índice</span></a><span>) --&gt; </span><a href='https://www.ufrgs.br/eng04030/Aulas/teoria/cap_15/circampo.htm#:~:text=Em'><span>Cap 15: Circuitos cm AmpOps</span></a><span>):</span></li><li><a href='Funcao_transferancia_amp_op-1.pdf'><span>Exemplo 1</span></a><span>: circuito RC com 1 pólo + 1 zero (material da StackExchange: Electrical Engineering).</span></li><li><a href='Funcao_transferancia_amp_op-2.pdf'><span>Exemplo 2</span></a><span>: circuito com cascateamento de Amp. Op.´s + A.I. (material da StackExchange: Electrical Engineering). </span></li><li><a href='Funcao_transferancia_amp_op-3.pdf'><span>Exemplo 3</span></a><span>: Levantando função transferência resolvendo sistema de equações usando Matlab (material da StackExchange: Electrical Engineering).</span></li></ol></li></ol></li><li><p><a href='5_Respostas_Sistemas.pdf'><span>Respostas Transitórias de Sistemas Lineares</span></a></p><ol start='' ><li><span>Exemplo de </span><a href='Levantando_Modelo_Planta Termica.pdf'><span>modelagem de sistema térmico</span></a><span>.</span></li><li><span>Trabalho: Modelagem de um Sistema de Automação Industrial</span></li></ol></li><li><p><a href='6_intro_root_locus.pdf'><span>Lugar Geométrico das Raízes</span></a><span> (ou </span><em><span>root-locus</span></em><span>)</span></p><ol start='' ><li><span>📈 </span><a href='aula_26042024.html'><span>Simulações usando Matlab</span></a><span> para enteder </span><strong><span>relação </span><em><span>Root-Locus</span></em><span> </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.807ex" height="1.41ex" viewBox="0 -554.9 778 607.1" role="img" focusable="false" style="vertical-align: 0.021ex; margin-bottom: -0.142ex;"><defs><path stroke-width="0" id="E1-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMAIN-D7" x="0" y="0"></use></g></svg></span><script type="math/tex">\times</script><span> Resposta temporal</span></strong><span> de um sistema (aula de 26/04/2024)</span></li><li>😯<span> </span><a href='RL_exemplos.html'><span>Mais exemplos</span></a><span> de traçados de </span><em><span>Root-Loucs</span></em><span> e cálculos dos ângulos de partida das assíntotas, ponto de partida da assíntota, pontos de partida e de chegada num </span><em><span>Root-Loucs</span></em><span> (aula de 03/05/2024).</span></li></ol></li><li><p><a href='Diagramas_Bode_1.pdf'><span>Diagramas de Bode</span></a><span>;</span></p><ol start='' ><li><a href='https://lpsa.swarthmore.edu/Bode/BodePlotGui.html'><span>BodePlotGui</span></a><span>: A Tool for Generating Asymptotic Bode Diagrams.</span></li></ol></li><li><p><a href='https://fpassold.github.io/Sinais_Sistemas/4_fourier/4_serie_fourier.html'><span>Série de Fourier</span></a><span>.</span></p><p>&nbsp;</p></li></ol><ul><li><a href='trabalho_1.pdf'><span>Trabalho 1</span></a><span>: Transformada de Laplace, gráficos de funções (respostas temporais), uso de Transformada de Laplace. </span><!-- (trabalho_1_controle_1.pdf)--></br><span>Deadline: </span><mark><span>19/04/2024</span></mark></li><li><a href='trabalho_2.pdf'><span>Trabalho 2</span></a><span>: Diagramas de Bode, Resposta de Filtros, Série de Fourier (onda Quadrada), Simulando filtro passa-baixas aplicado sobre onda quadrada. </span></li><li>📒<span> ​Uso de </span><strong><span>Diary()</span></strong><span> no Matlab e edição de arquivos </span><strong><span>Markdown</span></strong><span>, ver </span><a href='https://fpassold.github.io/Controle_2/sugestao_uso_matlab_em_controle.html'><span>aqui</span></a><span>.</span></li></ul><hr /><p><span>Fernando Passold, 2024</span></p><p>&nbsp;</p></div>
+<span>( +  </span><a href='init_motor_posicao.m'><span>init_motor_posicao.m</span></a><span> )</span></p></li></ol></li><li><p>😃<span> ​</span><a href='Usando_Matlab_2.pdf'><strong><span>Usando MATLAB</span></strong></a><span>  (Introdução; para iniciantes, 11 páginas)</span></p></li><li><p><a href='4_modelagem_simulink.pdf'><span>Modelagem usando Matlab/Simulink</span></a><span> </span></p></li><li><p><span>Exemplos usando Matlab/Simulink: </span><a href='https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&amp;section=SystemModeling'><span>System Modeling (Michigan/Carnegie Melon/Detroit Mercy)</span></a><span>.</span></p></li><li><p><span>Modelagem de circuitos baseados em Amplificadores Operacionais:</span></p><ol start='' ><li><span>Material do Prof. Dr. Victor da Fonte Dias, Professor Auxiliar no Instituto Superior Técnico (IST), Lisboa, de 1999: disciplina de </span><strong><span>Circuitos e Sistemas Electrónicos</span></strong><span> (</span><a href='https://www.ufrgs.br/eng04030/Aulas/teoria/cap_00/indice.htm'><span>Índice</span></a><span>) --&gt; </span><a href='https://www.ufrgs.br/eng04030/Aulas/teoria/cap_15/circampo.htm#:~:text=Em'><span>Cap 15: Circuitos cm AmpOps</span></a><span>):</span></li><li><a href='Funcao_transferancia_amp_op-1.pdf'><span>Exemplo 1</span></a><span>: circuito RC com 1 pólo + 1 zero (material da StackExchange: Electrical Engineering).</span></li><li><a href='Funcao_transferancia_amp_op-2.pdf'><span>Exemplo 2</span></a><span>: circuito com cascateamento de Amp. Op.´s + A.I. (material da StackExchange: Electrical Engineering). </span></li><li><a href='Funcao_transferancia_amp_op-3.pdf'><span>Exemplo 3</span></a><span>: Levantando função transferência resolvendo sistema de equações usando Matlab (material da StackExchange: Electrical Engineering).</span></li></ol></li></ol></li><li><p><a href='5_Respostas_Sistemas.pdf'><span>Respostas Transitórias de Sistemas Lineares</span></a></p><ol start='' ><li><span>Exemplo de </span><a href='Levantando_Modelo_Planta Termica.pdf'><span>modelagem de sistema térmico</span></a><span>.</span></li><li><span>Trabalho: Modelagem de um Sistema de Automação Industrial</span></li></ol></li><li><p><a href='6_intro_root_locus.pdf'><span>Lugar Geométrico das Raízes</span></a><span> (ou </span><em><span>root-locus</span></em><span>)</span></p><ol start='' ><li><span>📈 </span><a href='aula_26042024.html'><span>Simulações usando Matlab</span></a><span> para enteder </span><strong><span>relação </span><em><span>Root-Locus</span></em><span> </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.807ex" height="1.444ex" viewBox="0 -568.1 778 621.5" role="img" focusable="false" style="vertical-align: 0.021ex; margin-bottom: -0.145ex;"><defs><path stroke-width="0" id="E1-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMAIN-D7" x="0" y="0"></use></g></svg></span><script type="math/tex">\times</script><span> Resposta temporal</span></strong><span> de um sistema (aula de 26/04/2024)</span></li><li>😯<span> </span><a href='RL_exemplos.html'><span>Mais exemplos</span></a><span> de traçados de </span><em><span>Root-Loucs</span></em><span> e cálculos dos ângulos de partida das assíntotas, ponto de partida da assíntota, pontos de partida e de chegada num </span><em><span>Root-Loucs</span></em><span> (aula de 03/05/2024).</span></li></ol></li><li><p><a href='Diagramas_Bode_1.pdf'><span>Diagramas de Bode</span></a><span>;</span></p><ol><li><a href='testes_bode_1.html'><span>Exemplo de uso com Matlab</span></a><span>;</span></li><li><a href='https://lpsa.swarthmore.edu/Bode/BodePlotGui.html'><span>BodePlotGui</span></a><span>: A Tool for Generating Asymptotic Bode Diagrams.</span></li></ol></li><li><p><a href='https://fpassold.github.io/Sinais_Sistemas/4_fourier/4_serie_fourier.html'><span>Série de Fourier</span></a><span>.</span></p><p>&nbsp;</p></li></ol><ul><li><a href='trabalho_1.pdf'><span>Trabalho 1</span></a><span>: Transformada de Laplace, gráficos de funções (respostas temporais), uso de Transformada de Laplace. </span><!-- (trabalho_1_controle_1.pdf)--></br><span>Deadline: </span><mark><span>19/04/2024</span></mark></li><li><a href='trabalho_2.pdf'><span>Trabalho 2</span></a><span>: Diagramas de Bode, Resposta de Filtros, Série de Fourier (onda Quadrada), Simulando filtro passa-baixas aplicado sobre onda quadrada. </span></li><li>📒<span> ​Uso de </span><strong><span>Diary()</span></strong><span> no Matlab e edição de arquivos </span><strong><span>Markdown</span></strong><span>, ver </span><a href='https://fpassold.github.io/Controle_2/sugestao_uso_matlab_em_controle.html'><span>aqui</span></a><span>.</span></li></ul><hr /><p><span>Fernando Passold, 2024</span></p><p>&nbsp;</p></div>
 </body>
 </html>

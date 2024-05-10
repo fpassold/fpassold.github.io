@@ -60,7 +60,8 @@ Conteúdo previsto:
 
 7. [Diagramas de Bode](Diagramas_Bode_1.pdf);
 
-   1. [BodePlotGui](https://lpsa.swarthmore.edu/Bode/BodePlotGui.html): A Tool for Generating Asymptotic Bode Diagrams.
+   1. [Exemplo de uso com Matlab](testes_bode_1.html);
+   2. [BodePlotGui](https://lpsa.swarthmore.edu/Bode/BodePlotGui.html): A Tool for Generating Asymptotic Bode Diagrams.
 
 8. [Série de Fourier](https://fpassold.github.io/Sinais_Sistemas/4_fourier/4_serie_fourier.html).
 
