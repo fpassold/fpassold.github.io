@@ -241,9 +241,115 @@ O que você deve perceber é que este sistema simplesmente atrasa a entrada em u
 
 Na maioria dos casos, você descobrirá que os sistemas terão o mesmo número de pólos e zeros; caso contrário, atrasos desnecessários poderão ser introduzidos no sistema, como demonstrado no exemplo anterior.
 
-\>\> Próximo tópico sugerido: [projeto de sistema usando alocação pólo-zero](projeto_polo_zero.html).
+
+
+**Exemplo 2**:
+
+Neste segundo exemplo, como no primeiro exemplo, há também um par de pólos e um par de zeros. No entanto, os pólos e zeros estão em locais diferentes. Observe que os pólos estão mais próximos do círculo unitário e em um ângulo diferente, quando comparados ao primeiro exemplo. Os zeros estão à mesma distância do círculo unitário, mas estão localizados em um ângulo de 45 graus ($\pi/4=0,25\pi$ radianos). Esta mudança na localização dos pólos e zeros resulta em contornos diferentes na superfície H(z) e, portanto, as interseções do ‘cilindro unitário’ com a superfície H(z) também serão diferentes.
+
+A expressão para $H(z)$ neste caso é:
+
+$H(z)=\dfrac{z^2-1,1314z+0,64}{z^2+0,95z+0,9025}$
+
+Trabalhando esta expressão no Matlab/Ocatve, descobrimos que:
+
+```matlab
+>> T=1; % definindo uma taxa de amostragam arbitrária de 1 Hz
+>> H=tf([1 -1.1314 0.64], [1 0.95 0.9025], T)
+
+H =
+ 
+  z^2 - 1.131 z + 0.64
+  ---------------------
+  z^2 + 0.95 z + 0.9025
+ 
+Sample time: 1 seconds
+Discrete-time transfer function.
+
+>> pole(H)
+ans =
+       -0.475 +    0.82272i
+       -0.475 -    0.82272i
+>> zero(H)
+ans =
+       0.5657 +    0.56567i
+       0.5657 -    0.56567i
+>> pzmap(H)
+>> axis equal
+>> % isolando magnitude e fase de um dos zeros:
+>> angle([0.5657 +    0.56567i])
+ans =
+      0.78537
+>> ans*180/pi	% resposta em graus
+ans =
+       44.998
+>> abs(0.5657 +    0.56567i)
+ans =
+          0.8
+>> % calculando magnitude e fase de um dos pólos:
+>> angle([-0.475 +    0.82272i])
+ans =
+       2.0944
+>> ans*180/pi
+ans =
+          120
+>> abs([-0.475 +    0.82272i])
+ans =
+         0.95
+>> % observando os resultados no gráfico do plano-z...
+```
+
+Percebemos a seguinte disposição no plano-z:
+
+<img src="figuras/exemplo2_pzmap.png" alt="exemplo2_pzmap.png" style="zoom:48%;" />
+
+Um gráfico de superfície de $H(z)$ gera:
+
+![exemplo2_superficie_H_1](figuras/exemplo2_superficie_H_1.png)
+
+Destacando a intersecção com o círculo unitário temos:
+
+![exemplo2_superficie_H_2.png](figuras/exemplo2_superficie_H_2.png)
+
+O gráfico à seguir mostra a amplitude dos pontos de intersecção em relação ao ângulo feito com o eixo real, na faixa de ângulos de $-180^o$ a $180^o$ para este segundo exemplo. 
+
+<img src="figuras/exemplo2_bode_a.png" alt="exemplo2_bode_a" style="zoom: 67%;" />
+
+Você deve comparar isso com o primeiro exemplo e notar a **amplificação** significativa em $0,66\pi$ e $-0,66\pi$ radianos ($0,66\pi = 118,8^o$), **causada pelos pólos** estarem mais próximos do círculo unitário e posicionados na linha de ângulo radial 0,66π radianos e -0,66π radianos. Note, que a antenução (cones negativos) está concentrada próxima dos $45^o= \pi/4=0,25 \pi$ (onde estão localizados os zeros de $H(z)$).
+
+Mais uma vez, os lados esquerdo e direito são versões espelhadas um do outro e vamos nos concentrar no lado direito de 0 a $\pi$ radianos (ou de 0 à $180^o$) (que corresponde à freq. de Nyquist, ou $f_s/2$):
+
+<img src="figuras/exemplo2_bode_b.png" alt="exemplo2_bode_b" style="zoom:67%;" />
+
+Gráfico similar pode ser obtido no Matlab fazendo-se:
+
+```matlab
+>> figure; handler=bodeplot(H);
+>> setoptions(handler,'FreqUnits','Hz','PhaseVisible','off');
+>> xlim([1/(2*10) 1/2])
+>> setoptions(handler,'FreqScale','linear');
+>> grid
+```
+
+<img src="figuras/exemplo2_bode_matlab.png" alt="exemplo2_bode_matlab.png" style="zoom:48%;" />
+
+
+
+
+
+---
+
+**Opcional**:
+
+* O site do Matemática/Wolfrang traz um aplicativo Java capaz de gerar os gráficos acima para filtros de 1a-ordem:
+
+  [First-Order Digital Filter Design](https://demonstrations.wolfram.com/FirstOrderDigitalFilterDesign/) (acessado em 13/05/2024);
+
+  
+
+⏩ Próximo tópico sugerido: [projeto de sistema usando alocação pólo-zero](projeto_polo_zero.html).
 
 ----
 
-🌊 Fernando Passold, em 07/05/2024.
+🌊 Fernando Passold, em 07/05/2024; 13/05/2024.
 

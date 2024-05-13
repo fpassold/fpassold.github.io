@@ -24,7 +24,9 @@
    2. [Exemplo de uso de FFT](exe_uso_fft.html) (FFT de sinal de bateria; recomposição do sinal).
 6. Revisando [Funções Trasferência](funcao_transferencia.html) (Diagramas pólo-zero)
 7. [Estabilidade](estabilidade.html) de Sistemas Discretos
-8. [Papel dos pólos e zeros na magnitude da resposta frequencial de um sistema](papel_polos_zeros.html)
+8. [Papel dos pólos e zeros na magnitude da resposta frequencial de um sistema](papel_polos_zeros.html).
+9. Projeto de Filtros
+   1. [Filtro Notch #1](projeto_polo_zero.html).
 
 
 
