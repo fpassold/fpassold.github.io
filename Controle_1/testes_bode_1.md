@@ -177,7 +177,7 @@ ans =
 
 Testando para:
 
-$G_5(s)=\dfrac{10}{(s+1)(s+100)}$
+$G_5(s)=\dfrac{10 (s+10)}{(s+1)(s+100)}$
 
 ```Matlab
 >> G5=tf(10*[1 10],poly([-1 -100]));    % ingressando transfer function
@@ -191,4 +191,8 @@ Fim
 
 ---
 
-Fernando Passold, em 01/06/2023
+<script language="JavaScript">
+<!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("Fernando Passold, em " + LastUpdated); // End Hiding -->
+</script>
