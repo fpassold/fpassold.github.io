@@ -26,7 +26,9 @@
 7. [Estabilidade](estabilidade.html) de Sistemas Discretos
 8. [Papel dos pólos e zeros na magnitude da resposta frequencial de um sistema](papel_polos_zeros.html).
 9. Projeto de Filtros
-   1. [Filtro Notch #1](projeto_polo_zero.html).
+   1. Revisando Diagrama de Bode, Funções Transferência e FFT, Video sugerido:
+      [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas (usado como exemplo) (Acessado em 20/05/2024).
+   2. [Filtro Notch #1](projeto_polo_zero.html).
 
 
 
@@ -48,6 +50,10 @@
 
 ------
 
-Prof. Passold, 2024/1
+<script language="JavaScript">
+<!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("Fernando Passold, em " + LastUpdated); // End Hiding -->
+</script>
 
  

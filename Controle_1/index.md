@@ -62,6 +62,8 @@ Conteúdo previsto:
 
    1. [Exemplo de uso com Matlab](testes_bode_1.html);
    2. [BodePlotGui](https://lpsa.swarthmore.edu/Bode/BodePlotGui.html): A Tool for Generating Asymptotic Bode Diagrams.
+   3. Exemplo de uso/aplicação de Diagrama de Bode (ver trecho do video: [0:00 - 13:00] minutos):
+      [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), 20/06/2021, de [Curio Res](https://www.youtube.com/@curiores111) - material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas (usado como exemplo) (Acessado em 20/05/2024).
 
 8. [Série de Fourier](https://fpassold.github.io/Sinais_Sistemas/4_fourier/4_serie_fourier.html).
 
@@ -73,5 +75,9 @@ Conteúdo previsto:
 
 ----
 
-Fernando Passold, 2024
+<script language="JavaScript">
+<!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("Fernando Passold, em " + LastUpdated); // End Hiding -->
+</script>
 
