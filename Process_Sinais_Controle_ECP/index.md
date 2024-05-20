@@ -8,7 +8,7 @@
 
 **Conteúdo Previsto**:
 
-1. [Teoria da amostragem e Aquisição de Sinais](../Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf).
+1. [Teoria da amostragem e Aquisição de Sinais](../Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf). :beginner:
    1. [Simulação demonstrando Teorema da Amostragem](https://fpassold.github.io/Controle_3/Teste_Amost/teste_amostragem.html) (*Amostrando uma onda dente-de-serra*).
    2. [Síntese de Onda Quadrada usando Série de Fourier](https://fpassold.github.io/Controle_3/estudo_dirigido/Síntese_Onda_Quadrada.html). 
    3. [Wolfram Demonstrations Project: **Sampling Theorem**](https://demonstrations.wolfram.com/SamplingTheorem/)
@@ -19,7 +19,9 @@
    3. Parte 3:  [transformada_Z_parte_3.pdf](../Controle_3/3_transformada/transformada_Z_parte_3.pdf) (Métodos Transformada Inversa de Laplace)
    4. Resumo:  [revisao_partes_importantes_transformada_Z.pdf](../Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf) (paralelos sinais/sistemas tempo contínuo x tempo discreto)
 
-Parte 1: **Controle Digital**:
+![separation_line](separation_line.png)
+
+Parte 1: **Controle Digital** :triangular_flag_on_post::
 
 1. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf))
 2. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)
@@ -39,7 +41,7 @@ Parte 1: **Controle Digital**:
    4. Controlador PI (diferentes opções) + "Lag" -- [Aula de 29/04/2024](2024_1/aula_29042024.html);
    5. Teoria associada com controladores PD e Lead:
       1. [Base Teórica](https://fpassold.github.io/Controle_3/Controle_Acao_Derivativa.html);
-        (video* da aula de [Processamento Sinais (Parte 1/2) (2024-05-06 19:53 GMT-3)](https://drive.google.com/open?id=1TUPkOz03XtrCgci29U_2iWQJ1XH5Kl9u));
+          (video* da aula de [Processamento Sinais (Parte 1/2) (2024-05-06 19:53 GMT-3)](https://drive.google.com/open?id=1TUPkOz03XtrCgci29U_2iWQJ1XH5Kl9u));
       2. [Teste de Controladores com Ação Derivativa](https://fpassold.github.io/Controle_3/estudo_caso/Teste_Controladores_Acao_Derivativa.html) (uso de Matlab/Simulink);
           (video* da aula de [Processamento Sinais (Parte 2/2) (2024-05-06 21:01 GMT-3)](https://drive.google.com/open?id=1UbSlcx5dHV9S7n09K8VHMfBXQ8EfScXY))
       3. ["Resumo"](https://fpassold.github.io/Controle_3/pd_plus_filtro.pdf);
@@ -50,13 +52,14 @@ Parte 1: **Controle Digital**:
    7. Controlador PID:
       1. [Embasamento teórico](https://fpassold.github.io/Lab_Controle_2/PID/pid.html);
       2. [Sintonizando um PID](https://fpassold.github.io/Controle_2/8_Ajuste_PID/Sintonia_PIDs_usando_ZN.html), Tabela de Ziegler-Nichols [(Wikipedia)](https://en.wikipedia.org/wiki/Ziegler–Nichols_method);
-      3. PID no formato velocidade: [figura](https://fpassold.github.io/Controle_3/PID/uso_planta_PID_velocity.png) + arquivos: [.SLX](https://fpassold.github.io/Controle_3/PID/planta_PID_velocity.slx) ou [.MDL](https://fpassold.github.io/Controle_3/PID/planta_PID_velocity.mdl) (Simulink).
+      3. Antiga [apostila](https://fpassold.github.io/Controle_3/estudo_caso/Estudo_Caso_Controladores_2020.pdf) da disciplina, ênfase em PID à partir da pág. 24 :warning:.
+      4. PID no formato velocidade: [figura](https://fpassold.github.io/Controle_3/PID/uso_planta_PID_velocity.png) + arquivos: [.SLX](https://fpassold.github.io/Controle_3/PID/planta_PID_velocity.slx) ou [.MDL](https://fpassold.github.io/Controle_3/PID/planta_PID_velocity.mdl) (Simulink).
 
-Fim da 1a-parte: Controle Digital
+![separation_line](separation_line.png)
 
 Parte 2: **Processamento (Digital) de Sinais**:
 
-1. Análise de Sinais/Transformada de Fourir/Modelagem - aplicado à Processamento (Digital) de Sinais
+1. Análise de Sinais/Transformada de Fourier/Modelagem - aplicado à Processamento (Digital) de Sinais
    2. Diagrama de Bode (análise)
    3. Série de Fourier (espectro de ondas; síntese de onda quadrada)
    4. DFT e FFT, cuidados.
@@ -66,17 +69,18 @@ Parte 2: **Processamento (Digital) de Sinais**:
    3. Filtros IFIR
 6. Implementação em sistemas embarcados de filtros digitais.
 
+![separation_line](separation_line.png)
 
+🧪 Parte Prática da disciplina: Aulas de **[Laboratório](lab/lab_proces_ecp_2024.html)** (a partir de 30/04/2024).
 
-Parte Prática da disciplina: Aulas de **[Laboratório](lab/lab_proces_ecp_2024.html)** (a partir de 30/04/2024).
-
-
+![separation_line](separation_line.png)
 
 ---
 
-**Formas de Avaliação:**
+🎢 **Formas de Avaliação:**
 
 - Provas teóricas abordando os conceitos fundamentais.
+  - Prova #1: Projeto de Controladores Digitais.
 - Avaliação de projetos de filtros e controladores digitais.
 - Relatórios de experimentos realizados em laboratório.
 - Participação em discussões e atividades em sala de aula.
@@ -108,5 +112,4 @@ Detalhes:
 var LastUpdated = document.lastModified;
 document.writeln ("Fernando Passold, página atualizada em " + LastUpdated); // End Hiding -->
 </script>
-
 
