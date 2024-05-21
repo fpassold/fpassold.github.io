@@ -23,6 +23,10 @@ Tópicos previstos:
 
 
 
+* [Sistema de Aquecimento para Xícara de Café](https://fpassold.github.io/Lab_Controle_2/Aquecer_cafe/aquecer_cafe.html) (21/05/2024).
+
+
+
 **Parte de Processamento Digital de Sinais**:
 
 * Filtro Passa-Baixas exponencial: [teoria](https://fpassold.github.io/Lab_Processa_Sinais/Filtro/filtro_exponencial.html);

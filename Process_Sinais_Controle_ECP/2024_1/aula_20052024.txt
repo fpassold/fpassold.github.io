@@ -1,0 +1,124 @@
+
+load planta
+zpk(BoG)
+
+ans =
+ 
+   0.0020446 (z+2.867) (z+0.2013)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.4493)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+rlocus(BoG)
+axis([0.6 1.1 -0.8 0.8])
+
+% ![RL_Ku1.png](RL_Ku1.png)
+
+K=10.8;
+Ku=10.8;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+title('Ku=10.8');
+
+% ![step_Ku1.png](step_Ku1.png)
+
+Ku=11;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+Ku=11.5;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+Ku=11.25;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+Ku=11.175;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+Ku=11.1;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+Ku=11.125;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+title('Ku=11.125');
+
+% ![step_Ku2.png](step_Ku2.png)
+
+% Realizando "zoom's":
+
+axis([1220 1250 0.82 1.02])
+
+% [step_Ku2_zoom.png](step_Ku2_zoom.png)
+ 
+Tu=(1250-1220)/18
+Tu =
+       1.6667
+f=1/Tu
+f =
+          0.6
+
+% Consultando a tabela de Ziegler-Nichols
+% https://en.wikipedia.org/wiki/ZieglerNichols_method
+
+% Primeiro levantando valores para PID analógico
+% PID no formato ISA:
+Kc=0.6*Ku
+Kc =
+        6.675
+Ti=0.5*Tu
+Ti =
+      0.83333
+1/8
+ans =
+        0.125
+Td=Tu/8
+Td =
+      0.20833
+% Recalculando valores para PID Digital:
+Ki=T/Ti
+Ki =
+         0.12
+Kd=Td/T
+Kd =
+       2.0833
+
+% Verificando se no arquivo SLX estamos
+% trabalhando com a mesma planta
+zpk(G)
+
+ans =
+ 
+         16
+  -----------------
+  (s+8) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+OS
+OS =
+    20
+
+figure; plot(y)
+grid
+
+% ![step_PID_sintonizado.png](step_PID_sintonizado.png)
+
+% O PID arquitetura ISA formato de
+% velocidade, ficou com os ganhos:
+Kc=6.675;
+Kd=2.5;
+Ki=0.22;
+
+% Com isto obtemos:
+% $t_s = 9,6$ segundos;
+% $\%OS = 19\%$ em $t_p = 3,982$ segundos.
+
+save planta
+diary off
