@@ -16,7 +16,7 @@ Este algoritmo foi desenvolvido para placa Arduino Uno, juntamente com um pequen
 
 **Diagrama elétrico**:
 
-![arduino_PID_test5_proto_Esquemático](arduino_PID_test5_proto_Esquemático.png)
+![arduino_PID_test5_proto_Esquematico](arduino_PID_test5_proto_Esquematico.png)
 
 Comentários:
 

@@ -6,7 +6,7 @@
 
 Para tanto, podemos montar um circuito similar à:
 
-<img src="heater_bb-1.png" alt="heater_bb-1" style="zoom:50%;" />
+![aquecedor_cafe_proto](aquecedor_cafe_proto.png)
 
 **Alguns cálculos**:
 
@@ -152,6 +152,14 @@ Portanto, se considerarmos que a energia dissipada pelo resistor é absorvida pe
 LM35: sensor de temperatura:
 
 ![LM35](LM35.jpeg)
+
+> Este sensor é capaz de medir temperaturas oscilando na faixa de [-55, +150] $^o$C. Cada 10 mV = 1 $^o$C. O conversor A/D interno do Arduíno é de 10-bits, funcionando com tensões de entrada entre 0 à 5 Volts. Então para converter o valor lido pelo sensor em graus Célcius é necessário fazer:
+>
+> $temp \vert_{^oC}=leitura_{LM35} \times \dfrac{(5-0)}{(2^{10}-1)} \times \dfrac{1}{0,01} = leitura_{LM35} \times 0,0048876 \times 100$.
+>
+> $temp \vert_{^oC}=leitura_{LM35} \cdot 0,488758553274682$.
+>
+> Para trabalhhar no código com este sensor, se sugere: [Leitura de temperatura ambiente com o sensor LM35](https://embarcados.com.br/leitura-de-temperatura-ambiente-com-o-sensor-lm35/) e [Como utilizar o sensor LM35 com Arduino?](https://autocorerobotica.blog.br/utilizando-sensor-lm35-com-arduino/).
 
 Transístor de potência usado para comutar os resistores:
 
