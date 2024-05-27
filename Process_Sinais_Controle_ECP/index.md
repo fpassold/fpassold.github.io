@@ -2,11 +2,22 @@
 
 # Processamento de Sinais e Controle Digital
 
-:point_right: Parte de **[Laboratório](lab/lab_proces_ecp_2024.html)** 🖥️ !?
+* Parte de **[Laboratório](lab/lab_proces_ecp_2024.html)** 𓀨 🖥️ !?
+
+* [Embaseamento teórico](#teoria) (transformada-Z).
+* [Parte I: **Cotrole Digital**](#parte1)
+* [Parte II: **Processamento Digital de Sinais**](#parte2).
+* [Método de Avaliação](#aval)
+* [Software usado](#soft)
+* [Detalhes da disciplina](#detalhes)
+
+---
 
 👇 Segue Parte Teórica
 
-**Conteúdo Previsto**:
+<a id="teoria"></a>
+
+## Embasamento Teórico Inicial
 
 1. [Teoria da amostragem e Aquisição de Sinais](../Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf). :beginner:
    1. [Simulação demonstrando Teorema da Amostragem](https://fpassold.github.io/Controle_3/Teste_Amost/teste_amostragem.html) (*Amostrando uma onda dente-de-serra*).
@@ -21,7 +32,9 @@
 
 ![separation_line](separation_line.png)
 
-Parte 1: **Controle Digital** :triangular_flag_on_post::
+<a id="parte1"></a>
+
+## Parte 1: **Controle Digital**:
 
 1. Modelagem do Sustentador de Ordem Zero ([cálculo de $BoG(z)$](https://fpassold.github.io/Controle_3/3_transformada/3_BoG_Transformada_Z.pdf))
 2. [Impacto (ou falta) do $BoG(z)$](https://fpassold.github.io/Controle_3/3_5_Modelagem_G_BoG/teste_BoG.html)
@@ -57,17 +70,39 @@ Parte 1: **Controle Digital** :triangular_flag_on_post::
 
 ![separation_line](separation_line.png)
 
-Parte 2: **Processamento (Digital) de Sinais**:
+<a id="parte2"></a>
 
-1. Análise de Sinais/Transformada de Fourier/Modelagem - aplicado à Processamento (Digital) de Sinais
-   2. Diagrama de Bode (análise)
-   3. Série de Fourier (espectro de ondas; síntese de onda quadrada)
-   4. DFT e FFT, cuidados.
-5. Filtros digitais.
-   1. Filtros de média aritmética, média móvel;
-   2. Filtros FIR
-   3. Filtros IFIR
-6. Implementação em sistemas embarcados de filtros digitais.
+## Parte 2: **Processamento (Digital) de Sinais**:
+
+1. [Introdução](https://fpassold.github.io/Process_Sinais/intro_process_sinal.html) à Sistemas de Processamento Digital de Sinais.
+
+2. [Filtro de Média Móvel](https://fpassold.github.io/Process_Sinais/media_movel.html).
+
+   1. [Uso da função `filter()` do Matlab](https://fpassold.github.io/Process_Sinais/funcao_filter.html)
+
+3. Modelagem de um [Sistema Térmico](https://fpassold.github.io/Process_Sinais/modelo_termico.html).
+
+4. Usando o [algoritmo de FFT para obter Espectro de um Sinal](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html).
+
+   1. Análise de Espectro: [exemplo da Academo](https://academo.org/demos/spectrum-analyzer/).
+   2. Problema: Levantar Diagrama de Espectro 
+      Especto e reconstrução do som de uma bateria.
+
+5. [Funções Transferência](https://fpassold.github.io/Process_Sinais/funcao_transferencia.html): Gráfico de Superfície e Diagrama pólo-zero.
+
+6. [Estabilidade](https://fpassold.github.io/Process_Sinais/estabilidade.html) de Sistemas Discretos.
+
+7. [Relação pólos-zeros com resposta frequencial](https://fpassold.github.io/Process_Sinais/papel_polos_zeros.html) de um filtro digital.
+
+8. Projeto de Filtros:
+
+   1. [Filtro Passa Baixas](https://fpassold.github.io/Process_Sinais/FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
+
+      Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
+
+   2. [Filtro Notch (passa faixa) #1](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html).
+
+9. 🚧 Conteúdo sendo atualizado...
 
 ![separation_line](separation_line.png)
 
@@ -77,10 +112,12 @@ Parte 2: **Processamento (Digital) de Sinais**:
 
 ---
 
-🎢 **Formas de Avaliação:**
+<a id="aval"></a>
+
+## 🎢 Formas de Avaliação
 
 - Provas teóricas abordando os conceitos fundamentais.
-  - Prova #1: Projeto de Controladores Digitais.
+  - **Prova (Individual) #1**: Projeto de Controladores Digitais $\longrightarrow$ 10/06/2024.
 - Avaliação de projetos de filtros e controladores digitais.
 - Relatórios de experimentos realizados em laboratório.
 - Participação em discussões e atividades em sala de aula.
@@ -89,7 +126,9 @@ Parte 2: **Processamento (Digital) de Sinais**:
 
 ---
 
-**Softwares Indicados:**
+<a id="soft"></a>
+
+## Softwares Usados
 
 - MATLAB/Simulink para análise e simulação de sistemas de controle digital e filtros digitais.
 - Ambiente de desenvolvimento integrado (IDE) para microcontroladores, como o Code Composer Studio para MSPs.
@@ -97,7 +136,9 @@ Parte 2: **Processamento (Digital) de Sinais**:
 
 ---
 
-Detalhes:
+<a id="detalhes"></a>
+
+## Detalhes da disciplina
 
 * Parte teórica: 1 semestre com 19 encontros de 3 horas e 15 minutos com intervalo centra de 15 minutos.
 * Parte prática: 9 encontros de 1,5 horas divididos em 2 seções de 1h30min.

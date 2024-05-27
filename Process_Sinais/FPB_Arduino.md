@@ -214,16 +214,6 @@ Note que o sinal original é levemente atenuado e sofre um pequeno atraso (deslo
 
 <img src="FPB_Arduino/FPB_Arduino.png" alt="FPB_Arduino" style="zoom:70%;" />
 
-
-
-
-
-
-
-
-
- 
-
 ----
 
 **Usando Python**
