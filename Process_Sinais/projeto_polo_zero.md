@@ -13,11 +13,47 @@ O exemplo a seguir descreve o processo para projetar um **filtro Notch**, que re
 
 Neste exemplo, vamos considerar uma situação em que um sinal de ECG (uma medida da atividade elétrica do coração), que foi amostrado em 120 Hz, foi corrompido com ruído de rede de 50 Hz (um exemplo de sinal de ECG pode ser baixado em [noisy_ecg.txt](noisy_ecg.txt)).
 
-Nesta frequência de amostragem, os 50 Hz equivalem à $50/60\pi$ radianos por amostra (isto é, $0,83333\pi$ radianos ($=150^o$). Para reduzir o ruído em 50 Hz do sinal de ECG, podemos então posicionar um par de zeros na localização: $1 \angle \pm 0,8333\pi$ (ou: $-0.86603 \pm j0,5$; parte real: $1\cdot\cos(0,8333\pi)=-0,86603$; parte imaginária: $1\cdot \sin(0,83333\pi)=0,5$), como mostra o gráfico à seguir:
+Nesta frequência de amostragem, os 50 Hz equivalem à $50/60\pi$ radianos por amostra (isto é, $0,83333\pi$ radianos ($=150^o$), ou (no [diagrama pólo-zero](papel_polos_zeros.html)):
+
+$0 \text{ (rad)}\quad \longrightarrow \quad 0 \text{ (Hz)}$
+
+$\pi \text{ (rad)} \quad \longrightarrow \quad f_s/2 = 120/2 = 60 \text{ (Hz)}$
+
+$x \text{ (rad)} \quad \longleftarrow \quad 50 \text{ (Hz)}$
+
+$x=50\pi/60 \text{ (rad)} = 0,83333\pi \text{ (rad)}$, 
+
+ou generalizando:
+
+$f_c \vert_{\text{rad}}= \dfrac{f_c \vert_{\text{Hz}} \cdot 2 \pi}{f_s \vert_{\text{Hz}}}$.
+
+Para **reduzir** o ruído em 50 Hz do sinal de ECG, podemos então posicionar um **par de zeros** na localização:
+
+$\mathcal{Re}\{ \text{zero} \}=1 \cdot \cos(150^o)$
+
+$\mathcal{Im\{ \text{zero} \}}=1 \cdot \sin(150^o)$
+
+No Matlab:
+
+```matlab
+>> Re=1*cos(150*pi/180)		% não esquecer de passar graus para radianos
+Re =
+     -0.86603
+>> Im=1*sin(150*pi/180)
+Im =
+          0.5
+>> 
+```
+
+ou seja:
+
+$1 \, \angle \pm 150^o= 1 \; \angle \pm 0,8333\pi = -0.86603 \pm j0,5$.
+
+Num diagrama pólo-zero fica:
 
 <img src="figuras/filtro_notch_pz_map.png" alt="filtro_notch_pz_map.png" style="zoom:48%;" />
 
-Um ==par de pólos também deve ser colocado **na origem**, para garantir que não sejam introduzidos atrasos desnecessários no sistema==, conforme explicado no tópico anterior. Observe que esses pólos não afetarão a resposta de frequência do sistema (consulte o tópico anterior).
+Ocorre que um ==par de pólos também deve ser colocado **na origem**, para garantir que não sejam introduzidos atrasos desnecessários no sistema==, conforme explicado no tópico anterior. Observe que esses pólos não afetarão a resposta de frequência do sistema (consulte o tópico anterior).
 
 O gráfico de superfície de $H(z)$ associado a este sistema é mostrado à seguir:
 
@@ -42,17 +78,16 @@ ans =
 ze=[x+i*y x-i*y]	% zeros de H(z)
 ze =
      -0.86603 +        0.5i     -0.86603 -        0.5i
->> H=tf(1,poly(ze),1)	% se fs = 1 Hz (apenas para fins didáticos)
+>> H1=tf(poly(ze),1,T)
 
-H =
+H1 =
  
-          1
-  -----------------
   z^2 + 1.732 z + 1
  
-Sample time: 1 seconds
+Sample time: 0.0083333 seconds
 Discrete-time transfer function.
->> pzmap(H)		% gera o gráfico anterior
+
+>> pzmap(H1)		% gera o gráfico anterior
 >> % Acrescentando os 2 pólos na origem e considerando fs=120 Hz:
 >> H=tf(poly(ze),[1 0 0],T)
 
@@ -143,11 +178,46 @@ E então temos o resultado:
 
 <img src="figuras/filtro_notch_sinal_ECG.png" alt="filtro_notch_sinal_ECG" style="zoom:48%;" />
 
-Você pode ver nos gráficos no domínio do tempo do ECG e nos sinais de ECG filtrados acima que o “ruído” foi reduzido. Entretanto, a amplitude do sinal também foi alterada. A relação entre a amplitude do pico dominante da "onda R" e da "onda T" vizinha também foi ligeiramente alterada.
+Você pode ver nos gráficos no domínio do tempo do ECG e nos sinais de ECG filtrados acima que o “ruído” foi reduzido. **Mas...**, a amplitude do sinal também foi alterada. A relação entre a amplitude do pico dominante da "onda R" e da "onda T" vizinha também foi ligeiramente alterada.
 
 <!--Pág. 56/99 de 5-TheZ-transform-Apracticaloverview.pdf-->
 
 <!--save filtro_notch1; até aqui em 13/05/2024-->
+
+**Se o par de pólos não tivesse sido acrescentado ao sistema anterior** teríamos:
+
+$H_1(z)=\dfrac{z^2 + 1,732 z + 1}{1}$
+
+O diagrama de Bode equivalente teria ficado:
+
+```matlab
+>> H1
+
+H1 =
+ 
+  z^2 + 1.732 z + 1
+ 
+Sample time: 0.0083333 seconds
+Discrete-time transfer function.
+
+>> figure;
+>> handler=bodeplot(H1);
+>> setoptions(handler,'FreqUnits','Hz', 'FreqScale','linear');
+>> xlim([fs/(2*10) fs/2])
+>> grid
+```
+
+<img src="figuras/filtro_notch_bode_H1.png" alt="filtro_notch_bode_H1" style="zoom:48%;" />
+
+Esta equação de diferenças teria ficado:
+
+$H_1(z)=\dfrac{z^2 + 1,732 z + 1}{1} \cdot \dfrac{z^{-2}}{z^{-2}}$
+
+$H_1(z)=\dfrac{Y(z)}{X(z)}=\dfrac{1+1,732z^{-1}+z^{-2}}{z^{-2}}$
+
+$Y(z)z^{-2}=\left( 1+1,732z^{-1}+z^{-2} \right) X(z)$
+
+
 
 
 

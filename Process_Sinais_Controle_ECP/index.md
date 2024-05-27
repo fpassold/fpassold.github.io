@@ -100,7 +100,7 @@
 
       Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
 
-   2. [Filtro Notch (passa faixa) #1](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html).
+   2. Filtro Notch (passa faixa).
 
 9. 🚧 Conteúdo sendo atualizado...
 
