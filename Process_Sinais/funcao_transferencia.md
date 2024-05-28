@@ -204,13 +204,13 @@ Aqui estão mais três exemplos de como determinar a função de transferência 
 
 Considere o sistema dado pela seguinte equação de diferença:
 
-$y[n]=2x[n]-3x[-1]+0,5y[n-1]$
+$y[n]=2x[n]+3x[-1]+0,5y[n-1]$
 
 Normalmente, uma equação de diferenças de sistemas é escrita com a saída $y[𝑛]$ à esquerda da equação e todos os outros termos à direita, uma vez que geralmente estamos interessados em determinar a saída do sistema. No entanto, para determinar os coeficientes $b$ e $a$ do sistema, pode ser mais conveniente trazer todos os termos $𝑦$ para a esquerda da equação e todos os termos $𝑥$ para a direita, como mostrado abaixo:
 
-$y[n]+0,5y[n-1]=2x[n]-3x[n-1]$
+$y[n]+0,5y[n-1]=2x[n]+3x[n-1]$
 
-Os coeficientes $b$ estão associados aos termos $𝑥$ e neste caso: $b_0=2$ e $b_1=-3$. Todos os outros coeficientes $b$ são zero. Os coeficientes $a$ estão associados ao termos $y$ e neste caso: $a_0=1$ e $a_1=0,5$. Todos os outros coeficientes de $a$ são nulos.
+Os coeficientes $b$ estão associados aos termos $𝑥$ e neste caso: $b_0=2$ e $b_1=3$. Todos os outros coeficientes $b$ são zero. Os coeficientes $a$ estão associados ao termos $y$ e neste caso: $a_0=1$ e $a_1=0,5$. Todos os outros coeficientes de $a$ são nulos.
 
 Neste caso, a função transferência fica como:
 
@@ -371,5 +371,9 @@ Próximo item >> [Estabilidade](estabilidade.html) de um sistema (discreto). <!-
 
 ----
 
-Fernando Passold, em 07/04/2024
+<script language="JavaScript">
+<!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("Fernando Passold, atualizado em " + LastUpdated); // End Hiding -->
+</script>
 
