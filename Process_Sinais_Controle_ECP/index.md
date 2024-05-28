@@ -82,19 +82,21 @@
 
 3. Modelagem de um [Sistema Térmico](https://fpassold.github.io/Process_Sinais/modelo_termico.html).
 
-4. Usando o [algoritmo de FFT para obter Espectro de um Sinal](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html).
+4. Revisão rápida sobre [Série de Fourier](serie_fourier.html).
+
+5. Usando o [algoritmo de FFT para obter Espectro de um Sinal](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html).
 
    1. Análise de Espectro: [exemplo da Academo](https://academo.org/demos/spectrum-analyzer/).
    2. Problema: Levantar Diagrama de Espectro 
       Especto e reconstrução do som de uma bateria.
 
-5. [Funções Transferência](https://fpassold.github.io/Process_Sinais/funcao_transferencia.html): Gráfico de Superfície e Diagrama pólo-zero.
+6. [Funções Transferência](https://fpassold.github.io/Process_Sinais/funcao_transferencia.html): Gráfico de Superfície e Diagrama pólo-zero.
 
-6. [Estabilidade](https://fpassold.github.io/Process_Sinais/estabilidade.html) de Sistemas Discretos.
+7. [Estabilidade](https://fpassold.github.io/Process_Sinais/estabilidade.html) de Sistemas Discretos.
 
-7. [Relação pólos-zeros com resposta frequencial](https://fpassold.github.io/Process_Sinais/papel_polos_zeros.html) de um filtro digital.
+8. [Relação pólos-zeros com resposta frequencial](https://fpassold.github.io/Process_Sinais/papel_polos_zeros.html) de um filtro digital.
 
-8. Projeto de Filtros:
+9. Projeto de Filtros:
 
    1. [Filtro Passa Baixas](https://fpassold.github.io/Process_Sinais/FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
 
@@ -102,7 +104,7 @@
 
    2. Filtro Notch (passa faixa).
 
-9. 🚧 Conteúdo sendo atualizado...
+10. 🚧 Conteúdo sendo atualizado...
 
 ![separation_line](separation_line.png)
 
