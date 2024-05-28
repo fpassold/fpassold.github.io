@@ -1,0 +1,429 @@
+% # Série de Fourier Onda Quadrada
+
+% Este sinal só possui harmônicas ímpares
+% e termos em cossenos, com:
+% $a_i = 1/1$
+
+% Suponha que queremos sintetizar uma onda
+% quadrada de  1KHz.
+
+f = 1E3;
+T = 1/f; % periodo do sinal
+fs = 20*f; % freq. de amostragem do sinal
+t_fim = 2*T-1/fs;
+t=0:1/fs:t_fim;
+size(t)
+ans =
+     1    40
+t(1:10)'
+ans =
+            0
+        5e-05
+       0.0001
+      0.00015
+       0.0002
+      0.00025
+       0.0003
+      0.00035
+       0.0004
+      0.00045
+
+% Supondo que $a_0=0$ (nível DC = zero).
+
+y=2*sin(2*pi*f*t);
+plot(t,y)
+y=2*sin(2*pi*f*t)+(2/3)*sin(3*2*pi*f*t);
+plot(t,y)
+y=2*sin(2*pi*f*t)+(2/3)*sin(3*2*pi*f*t)+(2/5)*sin(5*2*pi*f*t);
+plot(t,y)
+5)*sin(5*2
+ 5)*sin(5*2
+  
+{Error: Invalid expression. When calling a function or indexing a variable, use
+parentheses. Otherwise, check for mismatched delimiters.
+} 
+help for
+ <strong>for</strong>    Repeat statements a specific number of times.
+    The general form of a <strong>for</strong> statement is:
+  
+       <strong>for</strong> variable = expr, statement, ..., statement END
+  
+    The columns of the expression are stored one at a time in
+    the variable and then the following statements, up to the
+    END, are executed. The expression is often of the form X:Y,
+    in which case its columns are simply scalars. Some examples
+    (assume N has already been assigned a value).
+  
+         for R = 1:N
+             for C = 1:N
+                 A(R,C) = 1/(R+C-1);
+             end
+         end
+  
+    Step S with increments of -0.1
+         for S = 1.0: -0.1: 0.0, do_some_task(S), end
+ 
+    Set E to the unit N-vectors
+         for E = eye(N), do_some_task(E), end
+ 
+    Long loops are more memory efficient when the colon expression appears
+    in the <strong>for</strong> statement since the index vector is never created.
+ 
+    The BREAK statement can be used to terminate the loop prematurely.
+ 
+    See also <a href="matlab:help parfor">parfor</a>, <a href="matlab:help if">if</a>, <a href="matlab:help while">while</a>, <a href="matlab:help switch">switch</a>, <a href="matlab:help break">break</a>, <a href="matlab:help continue">continue</a>, <a href="matlab:help end">end</a>, <a href="matlab:help colon">colon</a>.
+
+length(t)
+ans =
+    40
+helo num2str
+{Unrecognized function or variable 'helo'.} 
+help num2str
+ <strong>num2str</strong> Convert numbers to character representation
+    T = <strong>num2str</strong>(X) converts the matrix X into its character representation T
+    with about 4 digits and an exponent if required.  This is useful for
+    labeling plots with the TITLE, XLABEL, YLABEL, and TEXT commands.
+ 
+    T = <strong>num2str</strong>(X,N) converts the matrix X into a character representation
+    with a maximum N digits of precision.  The default number of digits is
+    based on the magnitude of the elements of X.
+ 
+    T = <strong>num2str</strong>(X,FORMAT) uses the format specifier FORMAT (see SPRINTF for
+    details).
+ 
+    Example:
+        <strong>num2str</strong>(randn(2,2),3) produces a character representation such as
+ 
+         1.44    -0.755
+        0.325      1.37
+ 
+    Example:
+        <strong>num2str</strong>(rand(2,3) * 9999, '%10.5e\n') produces a character
+        representation such as
+ 
+        8.14642e+03
+        1.26974e+03
+        6.32296e+03
+        9.05701e+03
+        9.13285e+03
+        9.75307e+02
+ 
+    See also <a href="matlab:help int2str">int2str</a>, <a href="matlab:help sprintf">sprintf</a>, <a href="matlab:help fprintf">fprintf</a>, <a href="matlab:help mat2str">mat2str</a>, <a href="matlab:help string">string</a>.
+
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('num2str')">Other functions named num2str</a>
+
+tempo=3;
+aux=str2num(tempo)
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('str2num', '/Applications/Matlab_R2019b.app/toolbox/matlab/strfun/str2num.m', 35)" style="font-weight:bold">str2num</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/strfun/str2num.m',35,0)">line 35</a>)
+Input must be a character vector or string scalar.} 
+aux=str2num(tempo,1)
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('str2num')" style="font-weight:bold">str2num</a>
+Too many input arguments.} 
+tempo
+tempo =
+     3
+aux=num2str(tempo)
+aux =
+    '3'
+onda_quadrada
+{Error: <a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',17,30)">File: onda_quadrada.m Line: 17 Column: 30
+</a>Invalid expression. When calling a function or indexing a variable, use
+parentheses. Otherwise, check for mismatched delimiters.} 
+onda_quadrada
+{Error: <a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',17,37)">File: onda_quadrada.m Line: 17 Column: 37
+</a>Invalid expression. When calling a function or indexing a variable, use
+parentheses. Otherwise, check for mismatched delimiters.} 
+onda_quadrada
+{Error: <a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',19,1)">File: onda_quadrada.m Line: 19 Column: 1
+</a>Illegal use of reserved keyword "end".} 
+onda_quadrada
+Freq. da onda em Hz: ? 1000
+Qtas harmônicas: ? 5
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('onda_quadrada', '/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m', 18)" style="font-weight:bold">onda_quadrada</a> (<a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',18,0)">line 18</a>)} 
+onda_quadrada
+Freq. da onda em Hz: ? 1E3
+Qtas harmônicas: ? 5
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('onda_quadrada', '/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m', 18)" style="font-weight:bold">onda_quadrada</a> (<a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',18,0)">line 18</a>)} 
+
+size(y)
+ans =
+   200   200
+clear y
+onda_quadrada
+Freq. da onda em Hz: ? 1E3
+Qtas harmônicas: ? 5
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('onda_quadrada', '/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m', 18)" style="font-weight:bold">onda_quadrada</a> (<a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',18,0)">line 18</a>)} 
+clear all
+onda_quadrada
+Freq. da onda em Hz: ? 1e3
+Qtas harmônicas: ? 5
+{Array indices must be positive integers or logical values.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('onda_quadrada', '/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m', 14)" style="font-weight:bold">onda_quadrada</a> (<a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',14,0)">line 14</a>)
+    y(k)=0;} 
+k
+k =
+     0
+onda_quadrada
+Freq. da onda em Hz: ? 1e3
+Qtas harmônicas: ? 5
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('onda_quadrada', '/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m', 21)" style="font-weight:bold">onda_quadrada</a> (<a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',21,0)">line 21</a>)} 
+onda_quadrada
+Freq. da onda em Hz: ? 1e3
+Qtas harmônicas: ? 5
+
+close all
+clear all
+onda_quadrada
+Freq. da onda em Hz: ? 1e3
+Qtos termos: ? 5
+{Unrecognized function or variable 'k'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('onda_quadrada', '/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m', 14)" style="font-weight:bold">onda_quadrada</a> (<a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',14,0)">line 14</a>)
+    y(k)=0;} 
+onda_quadrada
+Freq. da onda em Hz: ? 1e3
+Qtos termos: ? 5
+onda_quadrada
+Freq. da onda em Hz: ? 1e3
+Qtos termos: ? 5
+onda_quadrada
+Freq. da onda em Hz: ? 1e3
+Qtos termos: ? 17
+mod(3,2)
+ans =
+     1
+mod(4,2)
+ans =
+     0
+help mod
+ <strong>mod</strong>    Modulus after division.
+    <strong>mod</strong>(x,y) returns x - floor(x./y).*y if y ~= 0, carefully computed to
+    avoid rounding error. If y is not an integer and the quotient x./y is
+    within roundoff error of an integer, then n is that integer. The inputs
+    x and y must be real and have compatible sizes. In the simplest cases,
+    they can be the same size or one can be a scalar. Two inputs have
+    compatible sizes if, for every dimension, the dimension sizes of the
+    inputs are either the same or one of them is 1.
+ 
+    The statement "x and y are congruent mod m" means mod(x,m) == mod(y,m).
+ 
+    By convention:
+       <strong>mod</strong>(x,0) is x.
+       <strong>mod</strong>(x,x) is 0.
+       <strong>mod</strong>(x,y), for x~=y and y~=0, has the same sign as y.
+ 
+    Note: REM(x,y), for x~=y and y~=0, has the same sign as x.
+    <strong>mod</strong>(x,y) and REM(x,y) are equal if x and y have the same sign, but
+    differ by y if x and y have different signs.
+ 
+    See also <a href="matlab:help rem">rem</a>.
+
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('mod')">Other functions named mod</a>
+
+mod(17,2)
+ans =
+     1
+help if
+ <strong>if</strong> Conditionally execute statements.
+    The general form of the <strong>if</strong> statement is
+ 
+       <strong>if</strong> expression
+         statements
+       ELSEIF expression
+         statements
+       ELSE
+         statements
+       END
+ 
+    The statements are executed if the real part of the expression 
+    has all non-zero elements. The ELSE and ELSEIF parts are optional.
+    Zero or more ELSEIF parts can be used as well as nested <strong>if</strong>'s.
+    The expression is usually of the form expr rop expr where 
+    rop is ==, <, >, <=, >=, or ~=.
+ 
+    Example
+       if I == J
+         A(I,J) = 2;
+       elseif abs(I-J) == 1
+         A(I,J) = -1;
+       else
+         A(I,J) = 0;
+       end
+ 
+    See also <a href="matlab:help relop">relop</a>, <a href="matlab:help else">else</a>, <a href="matlab:help elseif">elseif</a>, <a href="matlab:help end">end</a>, <a href="matlab:help for">for</a>, <a href="matlab:help while">while</a>, <a href="matlab:help switch">switch</a>.
+
+help figure
+ <strong>figure</strong> Create figure window.
+    <strong>figure</strong>, by itself, creates a new figure window, and returns
+    its handle.
+  
+    <strong>figure</strong>(H) makes H the current figure, forces it to become visible,
+    and raises it above all other figures on the screen.  If Figure H
+    does not exist, and H is an integer, a new figure is created with
+    handle H.
+ 
+    GCF returns the handle to the current figure.
+ 
+    Execute GET(H) to see a list of figure properties and
+    their current values. Execute SET(H) to see a list of figure
+    properties and their possible values.
+ 
+    See also <a href="matlab:help subplot">subplot</a>, <a href="matlab:help axes">axes</a>, <a href="matlab:help gcf">gcf</a>, <a href="matlab:help clf">clf</a>.
+
+onda_quadrada
+{Error: <a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',18,1)">File: onda_quadrada.m Line: 18 Column: 1
+</a>At least one END is missing: the statement may begin here.} 
+onda_quadrada
+
+Onda quadrada usando série de Fourier
+
+Freq. da onda em Hz: ? 1e3
+Até que harmônica: ? 17
+[Freq Mag]
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('horzcat')" style="font-weight:bold">horzcat</a>
+Dimensions of arrays being concatenated are not consistent.} 
+size(Freq)
+ans =
+           1       17001
+texto
+texto =
+    'Harmônicas = 17'
+text(1.05, 0.5, texto, 'FontSize', 14)
+help text
+ <strong>text</strong> Add text descriptions to data points
+    <strong>text</strong>(x,y,str) adds a text description to one or more data points in the
+    current axes using the text specified by str. To add text to one point,
+    specify x and y as scalars in data units. To add text to multiple
+    points, specify x and y as vectors with equal length.
+ 
+    <strong>text</strong>(x,y,z,str) positions the text in 3-D coordinates.
+    
+    <strong>text</strong>(...,Name,Value) specifies text properties using one or more
+    Name,Value pair arguments. For example, 'FontSize',14 sets the font
+    size to 14 points. You can specify text properties with any of the
+    input argument combinations in the previous syntaxes. If you specify
+    the Position and String properties as Name,Value pairs, then you do not
+    need to specify the x, y, z, and str inputs.
+ 
+    <strong>text</strong>(container,...) creates the text in the axes, group, or transform
+    specified by container, instead of in the current axes.
+ 
+    T = <strong>text</strong>(...) returns one or more text objects. Use T to modify
+    properties of the text objects after they are created. For a list of
+    properties and descriptions, see Text Properties. You can specify an
+    output with any of the previous syntaxes.
+ 
+    Execute GET(T), where T is a text object, to see a list of text object
+    properties and their current values.
+    Execute SET(T) to see a list of text object properties and legal
+    property values.
+ 
+    See also <a href="matlab:help xlabel">xlabel</a>, <a href="matlab:help ylabel">ylabel</a>, <a href="matlab:help zlabel">zlabel</a>, <a href="matlab:help title">title</a>, <a href="matlab:help gtext">gtext</a>, <a href="matlab:help line">line</a>, <a href="matlab:help patch">patch</a>.
+
+help gtext
+ <strong>gtext</strong>  Place text with mouse.
+    <strong>gtext</strong>('string') displays the graph window, puts up a
+    cross-hair, and waits for a mouse button or keyboard key to be
+    pressed.  The cross-hair can be positioned with the mouse (or
+    with the arrow keys on some computers).  Pressing a mouse button
+    or any key writes the text string onto the graph at the selected
+    location.
+ 
+    <strong>gtext</strong>(C) places the multi-line strings defined by each row
+    of the cell array of strings C.
+ 
+    <strong>gtext</strong>(...,'PropertyName',PropertyValue,...) sets the value of
+    the specified text property.  Multiple property values can be set
+    with a single statement.
+ 
+    Example
+       gtext({'This is the first line','This is the second line'})
+       gtext({'First line','Second line'},'FontName','Times','Fontsize',12)
+ 
+    See also <a href="matlab:help text">text</a>, <a href="matlab:help ginput">ginput</a>.
+
+
+size(Freq)
+ans =
+           1       17001
+size(Mag)
+ans =
+       17001           1
+h
+h =
+    17
+onda_quadrada
+
+Onda quadrada usando série de Fourier
+
+Freq. da onda em Hz: ? 1e3
+Nível DC: ? 0
+Até que harmônica: ? 17
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stem', '/Applications/Matlab_R2019b.app/toolbox/matlab/specgraph/stem.m', 43)" style="font-weight:bold">stem</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/specgraph/stem.m',43,0)">line 43</a>)
+The length of X must match the number of rows of Y.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('onda_quadrada', '/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m', 40)" style="font-weight:bold">onda_quadrada</a> (<a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',40,0)">line 40</a>)
+        stem(Freq, Mag);} 
+close all
+size(Freq)
+ans =
+     1    18
+size(Mag)
+ans =
+    19    19
+onda_quadrada
+
+Onda quadrada usando série de Fourier
+
+Freq. da onda em Hz: ? 1e3
+Nível DC: ? 0
+Até que harmônica: ? 17
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stem', '/Applications/Matlab_R2019b.app/toolbox/matlab/specgraph/stem.m', 43)" style="font-weight:bold">stem</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/specgraph/stem.m',43,0)">line 43</a>)
+X must be same length as Y.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('onda_quadrada', '/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m', 41)" style="font-weight:bold">onda_quadrada</a> (<a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',41,0)">line 41</a>)
+        stem(Freq, Mag);} 
+size(Freq)
+ans =
+     1    18
+size(Mag)
+ans =
+     1     2
+Freq
+Freq =
+     0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17
+Mag
+Mag =
+     0     1
+clear all; close all
+onda_quadrada
+
+Onda quadrada usando série de Fourier
+
+Freq. da onda em Hz: ? 1e3
+Nível DC: ? 0
+Até que harmônica: ? 17
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stem', '/Applications/Matlab_R2019b.app/toolbox/matlab/specgraph/stem.m', 43)" style="font-weight:bold">stem</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/specgraph/stem.m',43,0)">line 43</a>)
+The length of X must match the number of rows of Y.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('onda_quadrada', '/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m', 40)" style="font-weight:bold">onda_quadrada</a> (<a href="matlab: opentoline('/Users/fernandopassold/Documents/GitHub/fpassold.github.io/Process_Sinais_Controle_ECP/onda_quadrada.m',40,0)">line 40</a>)
+        stem(Freq, Mag);} 
+Freq
+Freq =
+     0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17
+Mag
+Mag =
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     1     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0 

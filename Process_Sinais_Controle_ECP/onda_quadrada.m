@@ -1,0 +1,48 @@
+% Onda quadrada usando série de Fourier
+
+fprintf('\nOnda quadrada usando série de Fourier\n\n');
+f = input("Freq. da onda em Hz: ? ");
+T = 1/f;
+ciclos = 2;
+fs = 100*f;
+t_fim = ciclos*T;
+t = 0:1/fs:t_fim;   % cria vetor tempo t[k] (valores em segundos)
+amostras = length(t);
+
+A = input('Amplitude: ? ');
+a0 = input('Nível DC: ? ');
+
+h = input("Até que harmônica: ? ");
+
+y = zeros(amostras,1);  % inicializa vetor y[k]
+handler=figure;
+Freq=0:h;     % Freq de cada harmônica (em Hz)
+Mag=zeros(1,length(Freq));  % Mag de cada harmômica (em Volts)
+Freq(1)=0;
+Mag(1)=a0;
+for n=1:h     % incremento 2: onda quadrada só harmônicas ímpares
+    % Deterctando se harmônica n atual é ìmpar:
+    Mag(n+1)=0;
+    if mod(n,2)>0
+        Mag(n+1)=1/n;
+        y=a0*zeros(1,amostras);     % inicializa y[k]=nível DC;
+        for k=1:amostras
+            y(k) = y(k) + (1/n)*sin(n*2*pi*f*t(k));
+        end
+        figure(handler)
+        subplot(2,1,1)
+        plot(t,y, 'LineWidth', 2)
+        xlabel('Tempo (segundos)');
+        ylabel('Amplitude (Volts)');
+        title('Série Fourier Onda Quadrada');
+        subplot(2,1,2)
+        stem(Freq, Mag, 'LineWidth', 2, 'MarkerSize', 8);
+        xlabel('Frequência (Hz)');
+        ylabel('Amplitude (Volts)');
+        title('Componentes do Espectro');
+        texto=['Harmônicas = ' num2str(n)];
+        text(0.7*h, 0.75, texto, 'FontSize', 14)
+        pause
+    end
+end
+    
