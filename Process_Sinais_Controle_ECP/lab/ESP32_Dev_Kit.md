@@ -72,7 +72,18 @@ Para instalar todo o software necessário, oferecemos algumas maneiras diferente
 #### IDE
 
 * [Plugin Eclipse](https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md);
-* [Extensão VSCode](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md)  👈  a adotada neste caso.
+
+* [Extensão VSCode](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md)  👈  Explorada neste caso. 
+  Informações sobre o "ESP-IDF" VSCode Extesion [aqui](https://marketplace.visualstudio.com/items?itemName=espressif.esp-idf-extension).
+  Eventualmente será necessário [instalar o Tutorial para exemplos](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md) na extensão ESP-IDF do VSCode. 
+  
+  Mas este "tutorial" mau explica como compilar, transferir e rodar códigos na placa ESP32. E a instalação dos exemplos citados acima não pareceu se cumprir. 😠
+
+
+
+Obs.: Falta um "curso" sobre uso de "cmake" para iniciantes... Nada documentado à respeito!
+
+
 
 #### Instalação Manual
 
@@ -214,7 +225,9 @@ Note que esta aplicação teste fica repetidamente exibindo a mensagem "Hello wo
 
 Para interromper a monitoramento, pressionar a combinação de teclas `CTRL+]`.
 
+Mais info sobre compilar este projeto (no Terminal!) continuar [aqui](iniciando_ESP32.html).
 
+<!-- Falta instalar o VSCode extension: https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md e eventualmente rever: http://esp32.net -->
 
 ---
 
