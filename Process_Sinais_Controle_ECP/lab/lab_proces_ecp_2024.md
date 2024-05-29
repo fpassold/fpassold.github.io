@@ -24,6 +24,19 @@ Tópicos previstos:
 
 
 * [Sistema de Aquecimento para Xícara de Café](https://fpassold.github.io/Lab_Controle_2/Aquecer_cafe/aquecer_cafe.html) ☕ (21/05/2024).
+  **Trabalho** #1: 
+  O algoritmo de controle deve ser baseado em ISR (rodando a 1 ou 10 Hz; não nos 100 Hz do PID exemplo!).
+  Este algoritmo de controle deve ser do tipo Proporcional.
+  Alguma "sintonização" deve ter sido realizada.
+  O algoritmo deve interagir com o usuário via porta serial/USB. Isto é, parâmetros como temperatura desejada e ganhos do controlador devem poder ser variados em tempo de execução (e não através de sucessivas compilações e transferências de código para placa).
+  **Deadline**: Este primeiro projeto deve ser apresentado até 04/06.
+  A apresentação será realizada no primeiro intervalo da aula de 04/06, 20 minutos no máximo para cada equipe.
+  A equipe pode apresentar um pequeno documento (de até 3 páginas) intitulado "**Memorial do Projeto**" que deve ressaltar detalhes do algoritmo implementado, como o controlador foi sintonizado, modificações realizadas no código exemplo do PID (fornecido na página WEB da disciplina) e eventualmente gráficos com resultados obtidos. Mas lembrem-se: são apenas 3 páginas, fonte tamanho mínimo de 9 pontos. 
+  O código (arquivo .ino ou .cpp) deve ser enviado para o professor por email.
+
+
+
+* 🧑‍💻 [Configurando uma placa ESP32](ESP32_Dev_Kit.html). 
 
 
 
@@ -39,8 +52,12 @@ Tópicos previstos:
 
 
 
-<font size="2"> * [Lista de compras](lista_compras_ini_2024.pdf) (solicitada em 14/03/2024; sem retorno até 30/04/24).</font> 
+<font size="2"> * [Lista de compras](lista_compras_ini_2024.pdf) (solicitada em 14/03/2024).</font> 
 
 ---
 
-Fernando Passold, em 30/04/2024
+<script language="JavaScript">
+<!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("🌊 Fernando Passold, atualizado em " + LastUpdated); // End Hiding -->
+</script>
