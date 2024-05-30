@@ -1,0 +1,168 @@
+
+% # Projeto de PID
+
+load planta
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+zpk(G)
+
+ans =
+ 
+          1
+  ------------------
+  (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+rlocus(BoG)
+axis([0 1.1 0 1.1])
+axis([0 1.1 -0.5 1.1])
+axis([0 1.1 -0.2 1.1])
+
+% ![RL_Ku.png](RL_Ku.png)
+
+% O *ultimate gain* fica em: $195 < K_u< 258$.
+
+Ku=246;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+% ![step_Ku1.png](step_Ku1.png)
+
+Ku=250;
+title('Ku=246')
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+Ku=248;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+Ku=247;
+figure; step(ftmf_Ku)
+
+Ku=246.5;
+Ku=247;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+Ku=246.5;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+Ku=246.25;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+
+title('Ku=246.5')
+Ku=246.4;
+ftmf_Ku=feedback(Ku*BoG,1);
+close all
+figure; step(ftmf_Ku)
+
+Ku=246.5;
+ftmf_Ku=feedback(Ku*BoG,1);
+figure; step(ftmf_Ku)
+title('Ku = 246.5')
+
+% ![step_Ku.png](step_Ku.png)
+
+% Realizando "zoom" no gráfico anterior
+
+axis([355 385 0 2])
+axis([355 385 -0.1 2])
+axis([355 385 -0.1 2.1])
+
+Tu=(384-356)/20
+Tu =
+          1.4
+
+% Entrando numa tabela de Ziegler-Nichols
+
+% ![step_Ku_zoom.png](step_Ku_zoom.png)
+
+% ZH: "classic PID"
+% Ref.: https://en.wikipedia.org/wiki/ZieglerNichols_method
+
+% Supondo PID na arquitetura paralela
+
+Kp=0.6*Ku
+Kp =
+        147.9
+Ki=1.2*Ku/Tu
+Ki =
+       211.29
+Kd=0.075*Ku*Tu
+Kd =
+       25.883
+
+% Mas.... não levamos em conta o período de amostragem...
+
+Ti=0.5*Tu % Ti para PID analógico formato ISA
+Ti =
+          0.7
+Td=0.125*Tu % Td para PID analógico formato ISA
+Td =
+        0.175
+
+% Levando que o PID será "digital", sob certo T (período de amostragem)
+
+Ki=(Kp*T)/Ti
+Ki =
+       21.129
+Kd=(Kp*Td)/T
+Kd =
+       258.82
+
+% Simulando o PID usando Simulink
+simulink
+
+zpk(G)
+
+ans =
+ 
+          1
+  ------------------
+  (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+T
+T =
+          0.1
+
+Kp
+Kp =
+        147.9
+
+save planta
+diary off
+
+% Eq. do PID Discreto do Matlab/Simulinl
+
+% $C(z)=K_p+K_i \cdot T \cdot \dfrac{1}{(z-1)} + K_d \cdot \dfrac{1}{T} \cdot \left( \dfrac{z-1}{z} \right)$
+
+% Separando a ação integral teríamos:
+
+% $I(z)=K_i \cdot T \cdot \left( \dfrac{1}{z-1} \right)=\dfrac{U(z)}{E(z)}$
+
+% reescrevendo na notação de expoentes negativos em $z$ teremos:
+
+% Já a ação derivativa corresponde à:
+
+% $D(z)=K_d \cdot \dfrac{1}{T} \left( \dfrac{z-1}{z} \right)$
+
+% usando notação de expoentes negativos em $z$, resulta em:
+
+% Fim
+diary off
