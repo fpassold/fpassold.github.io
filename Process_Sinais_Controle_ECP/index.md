@@ -82,7 +82,8 @@
 
 3. Modelagem de um [Sistema Térmico](https://fpassold.github.io/Process_Sinais/modelo_termico.html).
 
-4. Revisão rápida sobre [Série de Fourier](serie_fourier.html).
+4. Revisão rápida sobre [Série de Fourier](serie_fourier.html). 
+   Mais info sobre Série de Fourier: [Wiki: Fourier Series](https://en.wikipedia.org/wiki/Fourier_series) e [Fourier Series: Graph Tool](https://www.mathsisfun.com/calculus/fourier-series.html).
 
 5. Usando o [algoritmo de FFT para obter Espectro de um Sinal](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html).
 
