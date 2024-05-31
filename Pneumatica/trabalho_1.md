@@ -1,13 +1,17 @@
-# Trabalho I
+# 📈 Trabalho I
 
 Trabalhos em equipe de 2 à 3 alunos:
 
 | Equipe                     | Exercícios de Fixação | Data Entrega | a    | b    | c    | d    | e    | Nota Final |
-| -------------------------- | --------------------- | ------------ | ---- | ---- | ---- | ---- | ---- | ---------- |
-| <font color="blue">Equipe \#1</font> | 1, 5, 9, 13, 18.      |         |      |      |      |      |      |            |
-| <font color="red">Equipe \#2</font> | 2, 6, 10,14, 17.      |         |      |      |      |      |      |            |
-| <font color="green">Equipe \#3</font> | 3, 7, 11, 15, 16.    |         |      |      |      |      |      |            |
+| -------------------------- | --------------------- | :----------: | :--: | :--: | :--: | :--: | :--: | ---------: |
+| <font color="blue">Equipe \#1</font> | 1, 5, 9, 13, 18.      | 16/04 | 100% | 100% | 100% | 100% | 100% | 10,0 |
+| <font color="red">Equipe \#2</font> | 2, 6, 10,14, 17.      | 16/04 | 100% | 25% (1) | 100% | 100% | 100% | 8,5 |
+| <font color="green">Equipe \#3</font> | 3, 7, 11, 15, 16.    | 16/04 | 100% | 100% | 100% | 100% | 100% | 10,0 |
 | ~~Equipe #4~~ | <font color="lightgrey">4, 8, 12, 16, 17.</font> |         |      |      |      |      |      |            |
+
+Erros:
+(1) Erro no EXERCICIO 6.ct: curto-circuito no diagrama elétrico entre S1, S2 e Kc. E S2 deveria ser um botão (não um sensor de fim de curso); S2 deve ser trocada por "Detent switch" (em 2 locais). E "Kc" não é um relé contador ("Relay Counter").
+
 
 
 Equipes (2024/1 - atualizado em 27/03 10:15):
@@ -29,7 +33,7 @@ Material à ser entregue (arquivos via email):
 * Figura do circuito pneumático (*.png, *.jpg -- boa resolução/legível);
 * Texto explicativo (parágrafo entre 5 à 12 linhas).
 
-Calendário:
+C alendário:
 
 ```
      Março 2024       
