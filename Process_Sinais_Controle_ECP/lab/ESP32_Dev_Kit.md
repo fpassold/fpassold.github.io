@@ -78,6 +78,8 @@ Para instalar todo o software necessário, oferecemos algumas maneiras diferente
   Eventualmente será necessário [instalar o Tutorial para exemplos](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md) na extensão ESP-IDF do VSCode. 
   
   Mas este "tutorial" mau explica como compilar, transferir e rodar códigos na placa ESP32. E a instalação dos exemplos citados acima não pareceu se cumprir. 😠
+  
+  * Para instalar esta extensão no VSCode recomenda-se o video [Getting Started with ESP32 - Step-By-Step Tutorial](https://www.youtube.com/watch?v=tc3Qnf79Ny8) de [Tomasz Tarnowski](https://www.youtube.com/watch?v=tc3Qnf79Ny8) (menos de 20 minutos).
 
 
 
