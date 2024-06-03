@@ -29,7 +29,15 @@ Apresente as equações e código comentado usando para resolver cada projeto e 
 
 Este tipo de filtro segue a seguinte equação genérica:
 
-$|H(\omega)|=\dfrac{1}{\sqrt{1+\omega^{2n}}}$
+$H(s)=\dfrac{1}{s^n+1}$
+
+como $s=j\,\omega$, então:
+
+$H(j\,\omega)=\dfrac{1}{(j\,\omega)^n+1}$
+
+A magnitude ou módulo de $H(\omega)$ rende:
+
+$|H(j\,\omega)|=\dfrac{1}{\sqrt{1+\omega^{2n}}}$
 
 Onde:
 $|H(\omega)|=$ ganho (ou módulo) da função transferência do filtro, no mundo contínuo (valor adimensional);
@@ -64,7 +72,9 @@ $g=10^{-1}=\dfrac{1}{10^{1}}=0,1$
 
 Então este filtro, de 5a-ordem na freq. de 50 Hz vai render a seguinte equação ou função transferência:
 
-$|H(s)|=\dfrac{1}{\sqrt{1+(2\pi \cdot 50)^5}}$
+$|H(s)|=\dfrac{1}{\sqrt{1+(2\pi \cdot 50)^{10}}}$
+
+
 
 ### Função butter()
 
@@ -73,6 +83,10 @@ O Matlab/Octave  facilita o projeto deste filtro, calculando sua função transf
 Esta função espera uma função transferência no formato:
 
 $H(s)=\dfrac{Y(s)}{X(s)}=\dfrac{B(s)}{A(s)}$
+
+**Exemplo**:
+
+Filtro Butterworth de 1a-ordem:
 
 
 
