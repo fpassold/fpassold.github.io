@@ -6,7 +6,9 @@
   - [Intro](#intro)
   - [Exemplo 1](#exemplo-1)
   - [Diagrama de Bode no mundo discreto](#diagrama-de-bode-no-mundo-discreto)
+    - [Uso da função freqz()](#uso-da-função-freqz)
   - [Notas sobre *pólos* e *zeros* localizados na origem](#notas-sobre-pólos-e-zeros-localizados-na-origem)
+    - [Por que acrescentar pólos e zeros na origem do plano-z?](#por-que-acrescentar-pólos-e-zeros-na-origem-do-plano-z)
   - [Exemplo 2](#exemplo-2)
 
 
@@ -226,13 +228,65 @@ Observe que se você quisesse interpretar a resposta de frequência em Hertz (em
 
 ==Note que o gráfico só avança até a frequência de Nyquist ($=f_s/2$)==.
 
+### Uso da função freqz()
+
+O Matlab pode facilitar as coisas ao disponibilizar a função:
+
+[ [h, w] = **freqz**(b, a, n, fs) ](https://www.mathworks.com/help/signal/ref/freqz.html)
+
+Esta função retorna o diagrama de  resposta frequêncial (magnitude e fase) e o vetor $f$ que corresponderá a frequência física real (em Hz), de $n-$pontos da função transferência do filtro fornecida com base nos seus coeficientes $b$ e $a$.
+$n=[\; ]$ se o usuário não quiser especificar o número desejado de pontos.
+
+Note:
+
+$H(z)=\dfrac{Num(z)}{Den(z)} = \dfrac{b_0z^{n_b}+b_1z^{n_b-1}+\ldots+b_{n_b}z^0}{a_0z^{n_a}+a_1z^{n_a-1}+\ldots+a_{n_a}z^0}=\dfrac{Y(z)}{X(s)}$
+
+Onde:
+$n_b=$ grau do numerador, $Num(z)$ (ou $n_b=$ número de zeros de $H(z)$);
+$n_a=$ grau do denominador, $Den(z)$ (ou $n_a=$ número de pólos de $H(z)$).
+
+$H(z)=\dfrac{b_0z^0 + b_1z^{-1}+b_2z^{-2}+\ldots+b_{n_b}z^{-n_b}}{ a_0z^0 + a_1z^{-1}+a_2z^{-2}+\ldots+a_{n_a}z^{-n_a} } = \dfrac{Y(z)}{X(z)}$
+
+$Y(z)\left(a_0 + a_1z^{-1} + a_2z^{-2} + \ldots + a_{n_a}z^{-n_a} \right) = X(z)\left( b_0 + b_1z^{-1} + b_2z^{-2} + \ldots + b_{n_b}z^{-n_b} \right)$
+
+$\begin{array}{rcll}
+a_0\,y[n] &=& b_0\,x[n] &+& b_1\,x[n-1] + b_2\,x[n-2] + \ldots + b_{n_b}\,x[n-n_b] +\\
+          & &           &-& a_1\,y[n-1] - a_2\,x[n-2] - \ldots - a_{n_a}\,y[n-n_a] \end{array}$
+
+Lembre-se eventualmente da função **[filter()](funcao_filter.html)**.
+
+A função **freqz()** aplicada no caso anterior, resultaria em:
+
+```matlab
+>> figure;
+>> zpk(H)
+
+ans =
+ 
+      (z^2 + 0.64)
+  ---------------------
+  (z^2 + 1.131z + 0.64)
+ 
+Sample time: 0.01 seconds
+Discrete-time zero/pole/gain model.
+
+>> [numd, dend]=tfdata(H,'v')
+numd =
+            1            0         0.64
+dend =
+            1       1.1314         0.64
+>> freqz(numd, dend, [], 100)
+```
+
+<img src="figuras/exemplo_1_freqz.png" alt="exemplo_1_freqz.png" style="zoom:48%;" />
+
 
 
 ## Notas sobre *pólos* e *zeros* localizados na origem
 
 <!-- até pág. 37-->
 
-**Detalhes**:  você verá que um pólo ou zero localizado na origem ($0 + 0𝑗$) não afetará a resposta em frequência de um sistema. 
+⚠️ **Detalhes**:  você verá que um pólo ou zero localizado na origem ($0 + 0𝑗$) ==não afeta a resposta em frequência de um sistema==. 
 
 Considere a função transferência abaixo:
 
@@ -260,9 +314,17 @@ Uma situação muito semelhante surgiria se existisse um único zero na superfí
 
 ==**Atenção:**==
 
-O que isso mostra é que: ==pólos ou zeros colocados na origem não afetarão a magnitude da resposta em frequência de um sistema==. 
+👋 O que isso mostra é que: ==pólos ou zeros colocados na origem não afetarão a magnitude da resposta em frequência de um sistema==. 
 
-Isto levanta a questão: porque então é que existem pólos e zeros na origem se não afectam o comportamento de “magnitude” do sistema? A resposta é que, embora não afetem a resposta de magnitude, afetam os atrasos no sistema (que está associado à resposta de frequência de fase do sistema).
+
+
+### Por que acrescentar pólos e zeros na origem do plano-z?
+
+Isto levanta a questão: 
+
+**− Por que então é que existem pólos e zeros na origem se eles não afectam o comportamento de “magnitude” do sistema?** 
+
+A resposta é que, embora não afetem a resposta de magnitude, ==afetam os atrasos no sistema== (que está associado ao diagrama de fase (ou defasagens) na resposta frequêncial de um sistema).
 
 Em geral, você descobrirá que um sistema normalmente possui um número igual de pólos e zeros. Sistemas que não possuem um número igual de pólos e zeros terão atrasos “desnecessários” introduzidos no sistema.
 
@@ -292,7 +354,7 @@ Que rende uma estrutura simplificada como:
 
 <img src="figuras/exemplo1_diagrama_fluxo_equiv.webp" alt="exemplo1_diagrama_fluxo_equiv" style="zoom:40%;" />
 
-O que você deve perceber é que este sistema simplesmente atrasa a entrada em uma amostra e nada mais. Embora possa haver razões práticas para querer atrasar um sinal por uma amostra, em muitos casos, como na filtragem de sinais, o atraso pode não ser desejável e serve simplesmente para desacelerar um processo em uma amostra.
+O que você deve perceber é que este sistema simplesmente ==atrasa a entrada em uma amostra== e nada mais. Embora possa haver razões práticas para querer atrasar um sinal por uma amostra, em muitos casos, como na filtragem de sinais, o atraso pode não ser desejável e serve simplesmente para desacelerar um processo em uma amostra.
 
 Na maioria dos casos, você descobrirá que os sistemas terão o mesmo número de pólos e zeros; caso contrário, atrasos desnecessários poderão ser introduzidos no sistema, como demonstrado no exemplo anterior.
 

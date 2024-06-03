@@ -1,53 +1,54 @@
 ![cool-macbook-beach](figuras/cool-macbook-beach.webp)
 
-# A função `filter()` do Matlab
+# A função **filter()** do Matlab/Octave
 
-A função `filter()` do Matlab pode ser útil para determinar a saída de um filtro discreto/digital.
+A função **filter()** do Matlab pode ser útil para determinar resposta temporal (no domínio tempo discreto) da saída de um filtro discreto/digital.
 
-Ela é normalmente usada da seguinte maneira:
+Sintaxe de uso:
 
 ```matlab
 >> Y = filter(B, A, X);
 ```
 
-onde $X=$ vetor das amostras (sinal) de entrada do filtro;
+onde:
+$X=$ vetor das amostras (sinal) de entrada do filtro;
 $Y=$ vetor das amostras (sinal) de saída do filtro;
-os parâmetros $A$ e $B$ são os coeficientes do filtro e estão associados com a implementação da equação de diferenças associada com a forma "Direta II Transposta":
+os parâmetros $A$ e $B$ são os coeficientes do filtro e estão associados com a implementação da equação de diferenças relacionada com **a forma "Direta II Transposta"**, no Matlab:
 
 $\begin{array}{rcll}
 a(1)*y(n) &=& b(1)*x(n) &+& b(2)*x(n-1) + ... + b(nb+1)*x(n-nb) +\\
           & &           &-& a(2)*y(n-1) - ... - a(na+1)*y(n-na) \end{array}$		(eq. (1))
 
-o que dá no mesmo que:
+o que dá no mesmo algébricamente (eq. de diferenças) que:
 
 $\begin{array}{rcll}
-a_1\,y[n] &=& b_1\,x[n] &+& b_2\,x[n-1] + \ldots + b_{n_b+1}\,x[n-n_b] +\\
-          & &           &-& a_2\,y[n-1] - \ldots - a_{n_a+1}\,y[n-n_a] \end{array}$		(eq. (2))
+a_0\,y[n] &=& b_0\,x[n] &+& b_1\,x[n-1] + b_2\,x[n-2] + \ldots + b_{n_b}\,x[n-n_b] +\\
+          & &           &-& a_1\,y[n-1] - a_2\,x[n-2] - \ldots - a_{n_a}\,y[n-n_a] \end{array}$		(eq. (2))
 
-Note que no Matlab, os índices dos vetores/matrizes iniciam em zero.
+> Note que no Matlab, os índices dos vetores/matrizes iniciam em 1 e não em zero como em outras linguagens de programação como C, C++..
 
-Se $a_1=1$, então, podemos generalizar a eq. (2) para:
+Se $a_0=1$ (como normalmente acontece), então podemos generalizar a eq. (2) para:
 
-$y[n]=\displaystyle\sum_{i=0}^{b_n} b_i \cdot x[n-i] + \displaystyle\sum_{j=1}^{n_a} a_j \cdot y[n-j]$			(eq. (3))
+$y[n]=\displaystyle\sum_{i=0}^{b_n} b_i \cdot x[n-i] - \displaystyle\sum_{j=1}^{n_a} a_j \cdot y[n-j]$			(eq. (3))
 
 Podemos realizar a transformada Z sobre a eq. (2) e obter:
 
 $\begin{array}{rcll}
-a_1\,Y(z) &=& b_1\,X(z) &+& b_2\,z^{-1}X(z) + b_3\,z^{-2}X(z) + \ldots + b_{n_b+1}\,z^{-n_b}X(z) +\\
-          & &           &-& a_2\,z^{-1}Y(z) - a_3\,z^{-2}Y(z) - \ldots - a_{n_a+1}\,z^{-n_a}Y(z) \end{array}$		(eq. (4))
+a_0\,Y(z) &=& b_0\,X(z) &+& b_1\,z^{-1}X(z) + b_1\,z^{-2}X(z) + \ldots + b_{n_b}\,z^{-n_b}X(z) +\\
+          & &           &-& a_1\,z^{-1}Y(z) - a_2\,z^{-2}Y(z) - \ldots - a_{n_a}\,z^{-n_a}Y(z) \end{array}$		(eq. (4))
 
 Percebe-se que este filtro trabalha com até $n_b$ amostras atrasadas do sinal de entrada $X(z)$ e $n_a$ amostras atrasadas do sinal filtrado $Y(z)$.
 
-Trabalhando um pouco mais com a eq. (3), podemos rescreve-la na forma:
+Trabalhando um pouco mais com a eq. (4), podemos rescreve-la na forma:
 
 $\begin{array}{l}
-Y(z) \left( a_1 + a_2 z^{-1} + a_3 z^{-2} + \ldots + a_{n_a+1} z^{-n_a} \right)= \\ \qquad = X(z) \left( b_1 + b_2\,z^{-1} + b_3\,z^{-2} + \ldots + b_{n_b+1}\,z^{-n_b} \right) \end{array}$
+Y(z) \left( a_0 + a_1 z^{-1} + a_2 z^{-2} + \ldots + a_{n_a} z^{-n_a} \right)= \\ \qquad = X(z) \left( b_0 + b_1\,z^{-1} + b_2\,z^{-2} + \ldots + b_{n_b}\,z^{-n_b} \right) \end{array}$
 
-$H(z)=\dfrac{Y(z)}{X(z)}=\dfrac{b_1\,z^{0} + b_2\,z^{-1} + b_3\,z^{-2} + \ldots + b_{n_b+1}\,z^{-n_b}}{a_1\,z^{0} + a_2 z^{-1} + a_3 z^{-2} + \ldots + a_{n_a+1} z^{-n_a}}$		(eq. (4))
+$H(z)=\dfrac{Y(z)}{X(z)}=\dfrac{b_0\,z^{0} + b_1\,z^{-1} + b_2\,z^{-2} + \ldots + b_{n_b}\,z^{-n_b}}{a_0\,z^{0} + a_1\,z^{-1} + a_2\,z^{-2} + \ldots + a_{n_a}\, z^{-n_a}}$		(eq. (5))
 
-$H(z)=\dfrac{Y(z)}{X(z)}=\dfrac{b_1\,z^{n_b} + b_2\,z^{n_b-1} + b_3\,z^{n_b-2} + \ldots + b_{n_b+1}\,z^{0}}{a_1\,z^{n_a} + a_2 z^{n_a-1} + a_3 z^{n_a-2} + \ldots + a_{n_a+1} z^{0}}$		(eq. (5))
+$H(z)=\dfrac{Y(z)}{X(z)}=\dfrac{b_0\,z^{n_b} + b_1\,z^{n_b-1} + b_2\,z^{n_b-2} + \ldots + b_{n_b}\,z^{0}}{a_0\,z^{n_a} + a_1\,z^{n_a-1} + a_2\,z^{n_a-2} + \ldots + a_{n_a}\,z^{0}}$		(eq. (6))
 
-Note que as equações (4) e (5) representam a função transferência de um filtro digital, no plano-z.
+Note que as equações (5) e (6) representam a função transferência de um filtro digital, no plano-z.
 
 Note ainda que no Matlab, os valores dos coeficientes $b_i$ e $a_i$ do filtro, correspondem à polinômios e seus valores são ingressados simplesmente fazendo algo como:
 
@@ -57,12 +58,16 @@ Note ainda que no Matlab, os valores dos coeficientes $b_i$ e $a_i$ do filtro, c
 
 onde $T$ corresponde ao período de amostragem adorado para realização do filtro. Modificar o valor de $T$ sem modificar os valores de $A$ e $B$ vai resultar num filtro com diferente resposta frequêncial (a frequência onde ocorrem ganhos e atenuações varia conforme varia $T$).
 
-$B=[b1 \quad b2 \quad b3 \quad \ldots \quad b_{n_b}]=$ vetor (polinômio) do numerador da função transferência do filtro;
-$A=[a1 \quad a2 \quad a3 \quad \ldots \quad a_{n_b}]=$ vetor (polinômio) do denomindador da função transferência do filtro.
+$B=[b_0 \quad b_1 \quad b_2 \quad \ldots \quad b_{n_b}]=$ vetor (polinômio) do numerador da função transferência do filtro;
+$A=[a_0 \quad a_1 \quad a_2 \quad \ldots \quad a_{n_b}]=$ vetor (polinômio) do denomindador da função transferência do filtro.
 
-Note que $a_1$ e $b_1$ se refere aos termos de mais alta ordem dos filtros (na notação positiva para expoentes em $z$).
+Note que $a_0$ e $b_0$ se refere aos termos de mais alta ordem dos filtros (na notação positiva para expoentes em $z$ -- eq. (6)).
 
-Ou, de outro ponto de vista, note que $a_{n_a}=$ corresponde ao ganho (fator aternuação ou ganho) que será aplicado sobre o maior atraso sofrido no sinal de saída do filtro, $y[n]$, ou seja: $a_{n_a+1} \cdot z^{-n_a} \cdot Y(z) = a_{n_a+1} \cdot y[n-n_a]$. E $a_1=$ corresponde então ao ganho/atenuação que será aplicado sobre o sinal atual $y[n]$ (sem atraso).
+Ou, de outro ponto de vista, note que $a_{n_a}=$ corresponde ao ganho (fator aternuação ou ganho) que será aplicado sobre o maior atraso sofrido no sinal de saída do filtro, $y[n]$, ou seja: 
+
+$(a_{n_a}) \, z^{-n_a} \, Y(z) \quad \rightleftharpoons \quad (a_{n_a}) \, y[n-n_a]$. 
+
+E $a_0=$ corresponde então ao ganho/atenuação que será aplicado sobre o sinal atual $y[n]$ (sem atraso).
 
 A eq. (3), para um filtro digital de 2a-ordem pode ser visualizada num diagrama de fluxo de sinais como:
 
@@ -175,5 +180,9 @@ Fim.
 
 ----
 
-Fernando Passold, em 28-29/03/2024.
+<script language="JavaScript">
+<!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("🌊 Fernando Passold, página atualizada em " + LastUpdated); // End Hiding -->
+</script>
 

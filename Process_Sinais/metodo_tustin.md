@@ -42,7 +42,7 @@ E assim:
 
 $F(z)=\dfrac{z}{z-e^{-a \cdot T}}$
 
-Assim, o pólo no mundo contínio em $s=-a$, no plano-$\mathcal{z}$ ficaria localizado em $z=e^{-a \cdot T}$.
+O pólo no mundo contínio em $s=-a$, no plano-$\mathcal{z}$ ficaria localizado em $z=e^{-a \cdot T}$.
 
 
 
@@ -70,7 +70,11 @@ $x[k+1]=$ Valor de $x(t)$ no instante $t_{k+1}$;
 $t_k=k\cdot T$;
 $k=$ Inteiro.
 
-Esta aproximação pode ser usada no lugar de várias derivadas que apareçam na equação diferencial de um filtro e resulta num conjunto de equações que pode ser calculada por um computador digital. Estas *equações de diferenças* são resolvidas repetidamente a cada $T$ período de tempo. Para sistemas com margem de banda da ordem de uns poucos Hertz, taxas de amostragem resultam normalmente na ordem de 1 KHz, e assim os períodos de amostragem ficarão em torno de 1 ms e os erros envolvidos na aproximação resultarão bastante pequenos.
+Esta aproximação pode ser usada no lugar de várias derivadas que apareçam na equação diferencial de um filtro e resulta num conjunto de equações que pode ser calculada por um computador digital. 
+
+Estas *equações de diferenças* são resolvidas repetidamente a cada $T$ período de tempo. 
+
+Para sistemas com margem de banda da ordem de uns poucos Hertz, taxas de amostragem resultam normalmente na ordem de 1 KHz, e assim os períodos de amostragem ficarão em torno de 1 ms e os erros envolvidos na aproximação resultarão bastante pequenos.
 
 **Exemplo**: Se $H(s)=\dfrac{K(s+a)}{(s+b)}$, queremos obter $H(z)$, dado certo valor para $T$.
 
@@ -104,7 +108,7 @@ y1 = y;
 x1 = x;
 ```
 
-Este método atinge um resultado razoável para períodos de amostragem maiores que 20 vezes a maior frequência presentes no sinal de entrada.
+Este método atinge um ==resultado razoável== para períodos de amostragem maiores que 20 vezes a maior frequência presentes no sinal de entrada.
 
 **Exemplo 1**: Simular o caso de um Filtro Passa-Baixas contínuo $\times$ filtro digital obtido pelo método de Euler com a) $f_s=X$ e b) $f_s=2X$ Hz (o dobro da freq. amostragem anterior). Comparar os resultados obtidos. 
 
