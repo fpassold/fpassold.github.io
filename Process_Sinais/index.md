@@ -34,17 +34,15 @@
 
 7. [Estabilidade](estabilidade.html) de Sistemas Discretos.
 
-8. [Papel dos pólos e zeros na magnitude da resposta frequencial de um sistema](papel_polos_zeros.html).
+8. [Impacto dos pólos e zeros](papel_polos_zeros.html) na magnitude da resposta frequencial de um sistema.
 
-9. Transformações Bilineares ([Método de Tustin](metodo_tustin.html)).
+9. Projeto de Filtros:
 
-10. Projeto de Filtros:
-   1. [Filtro Passa Baixas](FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
+   1. "Projeto por emulação" → [Transformações biliares: Método de Tustin](metodo_tustin.html).
+   2. [Filtro Passa Baixas](FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
+      Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
 
-      Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em:
-      [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
-
-   2. Filtro Notch (passa faixa). <!-- projeto_polo_zero.md (em edição> 27/05/2024) -->
+   3. Projeto por alocação de pólos-zeros → Filtro Notch (passa faixa). <!-- projeto_polo_zero.md (em edição> 27/05/2024) -->
 
 
 
@@ -56,6 +54,7 @@
 - Participação em discussões e atividades em sala de aula.
 - Trabalhos individuais e em grupo.
   - [Trabalho #1)](trabalho_1_2024_1.html) Sobre sinais amostrados (Teorema de Amostragem) Deadline: 15/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).
+  - Trabalho #2) Filtrando sinal de ECG usando Média Móvel, Filtro Notch (projeto por emulação e por alocação de pólos-zeros).
 
  
 

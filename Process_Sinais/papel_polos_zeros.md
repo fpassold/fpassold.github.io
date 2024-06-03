@@ -1,12 +1,25 @@
 ![thinking-snoopy](figuras/thinking-snoopy.gif)
 
-# Papel dos pólos e zeros na magnitude da resposta em frequência.
+# Impacto dos pólos e zeros na magnitude da resposta em frequência.
+
+- [Impacto dos pólos e zeros na magnitude da resposta em frequência.](#impacto-dos-pólos-e-zeros-na-magnitude-da-resposta-em-frequência)
+  - [Intro](#intro)
+  - [Exemplo 1](#exemplo-1)
+  - [Diagrama de Bode no mundo discreto](#diagrama-de-bode-no-mundo-discreto)
+  - [Notas sobre *pólos* e *zeros* localizados na origem](#notas-sobre-pólos-e-zeros-localizados-na-origem)
+  - [Exemplo 2](#exemplo-2)
+
+
+## Intro
 
 <!-- Continuação da pág. 26/99 de 5-TheZ-transform-Apracticaloverview.pdf -->
 
 Como os pólos e zeros afetam a magnitude da resposta em frequência de um sistema?
 
-Anteriormente (no tópico: [[Funções Trasferência](funcao_transferencia.html)]) foi mostrado como a localização dos pólos e zeros afeta os contornos da superfície $H(z)$ de um sistema, com pólos associados a "cones" na superfície $H(z)$ e zeros associados a "cones invertidos". 
+Anteriormente (no tópico: [[Funções Trasferência](funcao_transferencia.html)]) foi mostrado como a localização dos pólos e zeros afeta os contornos da superfície $H(z)$ de um sistema:
+
+* Os pólos ficam associados a "cones positivos" no gráfico de superfície de $H(z)$ $\Longrightarrow$ resulta em ganhos no sinal de entrada.
+* Os zeros ficam associados a "cones negativos" no gráfico de superfície de $H(z)$ $\Longrightarrow$ resulta em atenuações no sinal de entrada. 
 
 <!-- Sinal de ECG bruto: arquivo texto: `noisy_ecg.txt` , usado na pág. 46, aplicando filtro PB de 50 Hz sobre o mesmo, simulação usando Matlab -- disponível em: https://pzdsp.com/wavs/noisy_ecg.txt ? Yes! 15/04/2024 -->
 
@@ -14,7 +27,7 @@ Neste documento, será mostrado como os pólos e zeros afetam a resposta de freq
 
 <!--Observe que não explico por que a resposta de frequência pode ser determinada da maneira que descrevo aqui; no entanto, esses detalhes são fornecidos na seção intitulada “Por que avaliar o H(z) ao longo do ‘círculo unitário’”. pág. 27-->
 
-**Exemplo 1**:
+## Exemplo 1
 
 Para o primeiro exemplo, será usado o sistema fornecido pelo diagrama de fluxo de sinal mostrado abaixo. Também são fornecidas a equação de diferenças de sistemas e a função de transferência.
 
@@ -40,7 +53,13 @@ eue rende a seguinte função transferência
 
 $H(z)=\dfrac{z^2+0,64}{z^2+1,1314z+0,64}$
 
-Neste função percebemos 2 zeros (raízes do numerador), localizados em $z=\pm \sqrt{-0,64}=\pm j\,0,8=0,8 \angle{(\pm 1,5708 \text{ (rad)})}= 0,8 \angle \pm{90^o}$. Adicionalmente temos pólos em $z=-0.5657 \pm j\,0.56567=0,8 \angle{(\pm 2,3562 \text{ (rad)})}=0,8 \angle{(\pm 135^o)}$. Os pólos correspondem às raízes do denominador de $H(z)$. Um diagrama pólo-zero deste sistema rende:
+Neste função percebemos 2 zeros (raízes do numerador), localizados em $z=\pm \sqrt{-0,64}=\pm j\,0,8=0,8 \angle{(\pm 1,5708 \text{ (rad)})}= 0,8 \angle \pm{90^o}$. 
+
+Adicionalmente temos pólos em $z=-0.5657 \pm j\,0.56567=0,8 \angle{(\pm 2,3562 \text{ (rad)})}=0,8 \angle{(\pm 135^o)}$. 
+
+Os pólos correspondem às raízes do denominador de $H(z)$. 
+
+Um diagrama pólo-zero deste sistema rende:
 
 <img src="figuras/pzmap_exemplo1.png" alt="pzmap_exemplo1.png" style="zoom:48%;" />
 
@@ -50,7 +69,7 @@ Usando a função `bode()` do Matlab para sistemas discretos (no plano-z), rende
 
 Note que o próprio Matlab alerta para a forma como calcula este diagrama:
 
-> Para modelos de tempo discreto com tempo de amostragem $T_s$, `bode()` usa  transformação $z = \exp(j \cdot \omega \cdot T_s)$ para mapear o círculo unitário para o eixo real de frequência. A resposta de frequência é plotada apenas para frequências menores que a frequência de Nyquist $\pi/T_s$, e o valor padrão 1, para unidade de tempo (= 1 segundo), é assumido quando $Ts$ não é especificado.
+> Para modelos de tempo discreto com tempo de amostragem $T_s$, `bode()` usa a transformação $z = \exp(j \cdot \omega \cdot T_s)$ para mapear o círculo unitário para o eixo real de frequência. A resposta de frequência é plotada apenas para frequências menores que a frequência de Nyquist $\pi/T_s$ (rad) ou $180^o/T_s$ (graus), e ==o valor padrão 1, para unidade de tempo (= 1 segundo), é assumido quando $Ts$ não é especificado==.
 
 O gráfico anterior foi feito usando os comandos:
 
@@ -81,9 +100,9 @@ E então temos o gráfico:
 
 <img src="figuras/bodeplot_exemplo1.png" alt="bodeplot_exemplo1.png" style="zoom:48%;" />
 
-Note que o eixo X (das frequências), ainda está na escala logarítmica. 
+Note que o "eixo $x$" (das frequências), ainda está na escala logarítmica ($\log(\omega)$). 
 
-Modificando para variação linear do eixo X (frequências) e então temos um gráfico mais útil:
+Modificando para variação linear do eixo $x$ (frequências) obtemos um gráfico mais útil:
 
 ```matlab
 >> setoptions(handler,'FreqScale','linear');
@@ -93,11 +112,37 @@ Modificando para variação linear do eixo X (frequências) e então temos um gr
 
 Note que o Matlab vai variar a frequência deste "Diagrama de Bode" até a metade da frequência de Nyquist. Neste caso: $f_s=1/T=1$ Hz, então, o diagrama só avança até $f_{max}=$ 0,5 Hz.
 
-Este gráfico indica um pico de atenuação do sinal de entrada na frequência aproximada de 0,243 Hz ou, se considerarmos um gráfico genérico, temos que considerar que $180^p=\pi$ corresponde à $f_s/2$. No caso anterrior, quando ingressamos a *transfer function* no Matlab, somos "obrigados" à especificar um período de amostragem, e neste caso foi adotado $T=1$ segundo, o que corresponde à $f_s=1$ Hz.
+Este gráfico indica um pico de atenuação do sinal de entrada na frequência aproximada de 0,243 Hz ou, se considerarmos um gráfico genérico, temos que considerar que $180^o=\pi$ corresponde à $f_s/2$. 
 
-Se este sistema for amostrado à $f_s=100$ Hz, o pico de atenuação de sinal ($-10,7$ dB) teria ocorrido em $0,243*100=24,3$ Hz.
+No caso anterrior, quando ingressamos a *transfer function* no Matlab, somos "obrigados" à especificar um período de amostragem, e neste caso foi adotado $T=1$ segundo, o que corresponde à $f_s=1$ Hz. Mas o sistema será implementado usando $T=1$ segundos !? 
 
-Um diagrama completo renderia:
+Se este sistema for amostrado à $f_s=100$ Hz, o pico de atenuação de sinal ($-10,7$ dB) terá ocorrido em $0,243*100=24,3$ Hz. Ou:
+
+```matlab
+>> H=tf([1 0 0.64],[1 1.1314 0.64], 1/100)
+
+H =
+ 
+       z^2 + 0.64
+  --------------------
+  z^2 + 1.131 z + 0.64
+ 
+Sample time: 0.01 seconds
+Discrete-time transfer function.
+
+>> % Note que H(z) não mudou (em relação à fs = 1 Hz)
+>> % Mas o "diagrama de Bode" vai mudar
+>> handler=bodeplot(H);
+>> setoptions(handler,'FreqUnits','Hz','FreqScale','linear','PhaseVisible','off');
+>> xlim([100/(2*10) 100/2]) % iniciando uma década abaixo de fs/2 até fs/2
+>> grid
+```
+
+<img src="figuras/bodeplot_completo_exemplo1_100Hz_linear_freq.png" alt="bodeplot_completo_exemplo1_100Hz_linear_freq" style="zoom:48%;" />
+
+
+
+Voltando ao primeiro gráfico usando $f_s=1$ Hz, seu diagrama completo (amplitudes e fase $\times$ frequência) rende:
 
 <img src="figuras/bodeplot_completo_exemplo1_linear_freq.png" alt="bodeplot_completo_exemplo1_linear_freq.png" style="zoom:48%;" />
 
@@ -145,7 +190,9 @@ Pode-se perceber os picos positivos associados com os zeros de $H(z)$ e os picos
 
 Perceba mais alguns detalhes comparando o gráfico anterior com o diagrama de pólos e zeros:
 
-<img src="figuras/example1_surface_orig.png" alt="example1_surface_orig" style="zoom: 67%;" />
+| Gráfico de superfície de $H(z)$ | Diagrama pólo-zero |
+| :---: | :---: |
+| ![example1_surface_orig](figuras/example1_surface_orig.png) | ![exemplo_1_surface_superior.png](figuras/exemplo_1_surface_superior.png) |
 
 Perceba a intersecção entre o círculo unitário e a superfície formada por $H(z)$. A figura abaixo mostra os pontos de intersecção que o cilindro faria com o superfície de $H(z)$, mostrada como linhas de cores diferentes (azul, verde, vermelho e amarelo):
 
@@ -165,6 +212,8 @@ Você notará que o lado esquerdo do gráfico acima "espelha” o lado direito. 
 
 Note que o aumento da magnitude no ângulo de $0,5\pi$ é causado pelo "contorno do cone" associado ao pólo localizado em $-0,5657+j0,5657$. Observe também que a redução na magnitude em um ângulo de $0,5\pi$ é causada pelo "contorno do cone invertido" associado ao zero localizado em $0+j0,8$.
 
+## Diagrama de Bode no mundo discreto
+
 Acontece que se o eixo do ângulo horizontal for interpretado como frequência com unidades de **radianos por amostra**, então o gráfico acima é a **magnitude da resposta em frequência do sistema**, conforme mostrado na figura abaixo:
 
 <img src="figuras/exemplo1_magnitude_response.png" alt="exemplo1_magnitude_response" style="zoom:67%;" />
@@ -175,9 +224,11 @@ Observe que se você quisesse interpretar a resposta de frequência em Hertz (em
 
 <!--Observe que não expliquei por que esse é o caso, no entanto, o leitor interessado pode obter uma visão sobre por que a resposta de frequência de um sistema pode ser determinada dessa maneira na seção intitulada “Por que avaliar o H(z) ao longo do ' círculo unitário'”.-->
 
-Note que o gráfico só avança até a frequência de Nyquist ($=f_s/2$).
+==Note que o gráfico só avança até a frequência de Nyquist ($=f_s/2$)==.
 
-**Notas sobre *pólos* e *zeros* localizados na origem**
+
+
+## Notas sobre *pólos* e *zeros* localizados na origem
 
 <!-- até pág. 37-->
 
@@ -207,7 +258,11 @@ Ou do ponto de vista "superior":
 
 Uma situação muito semelhante surgiria se existisse um único zero na superfície $H(z)$. Desta vez você descobriria que a interseção da superfície $H(z)$ com o cilindro unitário seria tal que a amplitude dos pontos de interseção seria igual a 0 dB ($=|z|=1$).
 
-O que isso mostra é que ==pólos ou zeros colocados na origem não afetarão a magnitude da resposta em frequência de um sistema==. Isto levanta a questão: porque então é que existem pólos e zeros na origem se não afectam o comportamento de “magnitude” do sistema? A resposta é que, embora não afetem a resposta de magnitude, afetam os atrasos no sistema (que está associado à resposta de frequência de fase do sistema).
+==**Atenção:**==
+
+O que isso mostra é que: ==pólos ou zeros colocados na origem não afetarão a magnitude da resposta em frequência de um sistema==. 
+
+Isto levanta a questão: porque então é que existem pólos e zeros na origem se não afectam o comportamento de “magnitude” do sistema? A resposta é que, embora não afetem a resposta de magnitude, afetam os atrasos no sistema (que está associado à resposta de frequência de fase do sistema).
 
 Em geral, você descobrirá que um sistema normalmente possui um número igual de pólos e zeros. Sistemas que não possuem um número igual de pólos e zeros terão atrasos “desnecessários” introduzidos no sistema.
 
@@ -243,7 +298,7 @@ Na maioria dos casos, você descobrirá que os sistemas terão o mesmo número d
 
 
 
-**Exemplo 2**:
+## Exemplo 2
 
 Neste segundo exemplo, como no primeiro exemplo, há também um par de pólos e um par de zeros. No entanto, os pólos e zeros estão em locais diferentes. Observe que os pólos estão mais próximos do círculo unitário e em um ângulo diferente, quando comparados ao primeiro exemplo. Os zeros estão à mesma distância do círculo unitário, mas estão localizados em um ângulo de 45 graus ($\pi/4=0,25\pi$ radianos). Esta mudança na localização dos pólos e zeros resulta em contornos diferentes na superfície H(z) e, portanto, as interseções do ‘cilindro unitário’ com a superfície H(z) também serão diferentes.
 
@@ -351,5 +406,11 @@ Gráfico similar pode ser obtido no Matlab fazendo-se:
 
 ----
 
-🌊 Fernando Passold, em 07/05/2024; 13/05/2024.
+<font size="1">Theme: Fluent.</font>
+
+<script language="JavaScript">
+<!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("🌊 Fernando Passold, página atualizada em " + LastUpdated); // End Hiding -->
+</script>
 
