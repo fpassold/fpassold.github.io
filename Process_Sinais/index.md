@@ -2,6 +2,8 @@
 
 # Processamento Digital de Sinais
 
+(Eng. Elétrica)
+
 **Conteúdo previsto**:
 
 1. [**Teoria da Amostragem** e Aquisição de Sinais](https://fpassold.github.io/Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf).
@@ -28,7 +30,7 @@
    
    1. Analisador de Espectro - [exemplos de uso](https://academo.org/demos/spectrum-analyzer/) 
       (site academo.org, em inglês com animações Javascript);
-   2. [Exemplo de uso de FFT](exe_uso_fft.html) (FFT de sinal de bateria; recomposição do sinal).
+   2. [Exemplo de uso de Espectro de um Sinal](exe_uso_fft.html) (Espectro de sinal de bateria; tentativa de recomposição do sinal).
    
 6. Revisando [Funções Trasferência](funcao_transferencia.html) (Diagramas pólo-zero).
 
@@ -42,7 +44,8 @@
    2. [Filtro Passa Baixas](FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
       Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
 
-   3. Projeto por alocação de pólos-zeros → Filtro Notch (passa faixa). <!-- projeto_polo_zero.md (em edição> 27/05/2024) -->
+   3. Projeto usando alocação pólo-zero: [Filtro Notch sobre sinal de ECG](projeto_polo_zero.html) (Eletrocardiograma). 
+      <!-- projeto_polo_zero.md (em edição> 27/05/2024) -->
 
 
 
@@ -54,7 +57,11 @@
 - Participação em discussões e atividades em sala de aula.
 - Trabalhos individuais e em grupo.
   - [Trabalho #1)](trabalho_1_2024_1.html) Sobre sinais amostrados (Teorema de Amostragem) Deadline: 15/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).
-  - Trabalho #2) Filtrando sinal de ECG usando Média Móvel, Filtro Notch (projeto por emulação e por alocação de pólos-zeros).
+  - Trabalho #2) Filtrando sinal de ECG usando: 
+    - Média Móvel;
+    - Filtro Notch (projeto por emulação);
+    - Filtro Notch (projeto por alocação de pólos-zeros),  e;
+    - Filtro Butterworth de 2a-ordem.
 
  
 
@@ -67,7 +74,7 @@
   Para instalar o Jupyter ("Python interativo"): https://jupyter.org/install.html
   ou instale:
   Miniconda: https://docs.anaconda.com/free/miniconda/index.html (menor)
-  [Anaconda](https://www.anaconda.com): https://www.anaconda.com/download (pode exigir 4.8 Gbytes - mas se você vai trabalhar com IA... :smile: ).
+  [Anaconda](https://www.anaconda.com): https://www.anaconda.com/download (pode exigir 4.8 Gbytes - mas se você pretende com IA... :smile: ).
 
 ------
 

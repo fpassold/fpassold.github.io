@@ -2,6 +2,8 @@
 
 # Processamento de Sinais e Controle Digital
 
+Eng. de Computação.
+
 * Parte de **[Laboratório](lab/lab_proces_ecp_2024.html)** 𓀨 🖥️ !?
 
 * [Embaseamento teórico](#teoria) (transformada-Z).
@@ -88,22 +90,25 @@
 5. Usando o [algoritmo de FFT para obter Espectro de um Sinal](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html).
 
    1. Análise de Espectro: [exemplo da Academo](https://academo.org/demos/spectrum-analyzer/).
-   2. Problema: Levantar Diagrama de Espectro 
-      [Espectro e reconstrução do som de uma bateria](https://fpassold.github.io/Process_Sinais/exe_uso_fft.html).
-
+   2. [Exemplo de uso de Espectro de um Sinal](exe_uso_fft.html) (Espectro de sinal de bateria; tentativa de recomposição do sinal).
+   
 6. [Funções Transferência](https://fpassold.github.io/Process_Sinais/funcao_transferencia.html): Gráfico de Superfície e Diagrama pólo-zero.
 
 7. [Estabilidade](https://fpassold.github.io/Process_Sinais/estabilidade.html) de Sistemas Discretos.
 
-8. [Relação pólos-zeros com resposta frequencial](https://fpassold.github.io/Process_Sinais/papel_polos_zeros.html) de um filtro digital.
+8. [Impacto dos pólos e zeros](https://fpassold.github.io/Process_Sinais/papel_polos_zeros.html) na magnitude da resposta frequencial de um sistema.
 
 9. Projeto de Filtros:
 
-   1. [Filtro Passa Baixas](https://fpassold.github.io/Process_Sinais/FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
+   1. "Projeto por emulação" → [Transformações biliares: Método de Tustin](https://fpassold.github.io/Process_Sinais/metodo_tustin.html).
+
+   2. [Filtro Passa Baixas](https://fpassold.github.io/Process_Sinais/FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
 
       Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
 
-   2. Projeto usando alocação pólo-zero: [Filtro Notch sobre sinal de ECG](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html).
+   3. Projeto usando alocação pólo-zero: [Filtro Notch sobre sinal de ECG](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html) (Eletrocardiograma).
+
+   
 
 10. 🚧 Conteúdo sendo atualizado...
 
@@ -126,6 +131,8 @@
 - Participação em discussões e atividades em sala de aula.
 - Trabalhos individuais e em grupo.
   - [Trabalho #1)](trabalho_1_2024_1.html) Sobre sinais amostrados (Teorema de Amostragem) -- Deadline: 01/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).
+  - **Trabalho #2**) Levantar o espectro de um sinal de ECG (Eletrocardiograma).
+    O tópico  [Filtro Notch sobre sinal de ECG](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html), mostra a aplicação de um filtro especial para tentar eliminar componentes (ruído) na frequênica de 50 Hz. O objetivo neste trabalho é, aplicar a teoria mostrada no tópico: [Algoritmo de FFT para obter Espectro de um Sinal](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html), para apresentar o diagrama espectral de magnitude de um típico sinal de ECG antes da sua filtragem (usando o arquivo [noisy\_ecg.txt](https://fpassold.github.io/Process_Sinais/noisy_ecg.txt): resultado de amostragem de um sinal de ECG usando frequência de amostragem de $f_s=$ 120 Hz). **Deadline**: 17/06/2024. 
 
 ---
 
@@ -134,8 +141,14 @@
 ## Softwares Usados
 
 - MATLAB/Simulink para análise e simulação de sistemas de controle digital e filtros digitais.
-- Ambiente de desenvolvimento integrado (IDE) para microcontroladores, como o Code Composer Studio para MSPs.
-- Ferramentas de simulação de sinais e sistemas discretos, como GNU Octave ou Python com bibliotecas especializadas (limitado). Ver: http://octave-online.net/ (versão online do Octave).
+- Ambiente de desenvolvimento integrado (IDE) para microcontroladores, como o VSCode para sistemas microcontrolados.
+- http://octave-online.net/ (versão online do Octave).
+- Eventualmente Pyhon + Jupyter:
+  Para baixar o Python: https://wiki.python.org/moin/BeginnersGuide/Download;
+  Para instalar o Jupyter ("Python interativo"): https://jupyter.org/install.html
+  ou instale:
+  Miniconda: https://docs.anaconda.com/free/miniconda/index.html (menor)
+  [Anaconda](https://www.anaconda.com): https://www.anaconda.com/download (pode exigir 4.8 Gbytes - mas se você pretende com IA... :smile: ).
 
 ---
 
