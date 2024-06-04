@@ -89,7 +89,7 @@
 
    1. Análise de Espectro: [exemplo da Academo](https://academo.org/demos/spectrum-analyzer/).
    2. Problema: Levantar Diagrama de Espectro 
-      Especto e reconstrução do som de uma bateria.
+      [Espectro e reconstrução do som de uma bateria](https://fpassold.github.io/Process_Sinais/exe_uso_fft.html).
 
 6. [Funções Transferência](https://fpassold.github.io/Process_Sinais/funcao_transferencia.html): Gráfico de Superfície e Diagrama pólo-zero.
 
@@ -103,7 +103,7 @@
 
       Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
 
-   2. Filtro Notch (passa faixa).
+   2. Projeto usando alocação pólo-zero: [Filtro Notch sobre sinal de ECG](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html).
 
 10. 🚧 Conteúdo sendo atualizado...
 

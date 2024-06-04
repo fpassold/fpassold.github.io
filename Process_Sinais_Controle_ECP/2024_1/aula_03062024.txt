@@ -1,0 +1,204 @@
+
+fs=1E3
+fs =
+        1000
+% Onda mais rápida = 40 Hz
+% 1 ciclo ocupa:
+T=1/40
+T =
+        0.025
+% So quero mostrar 20 ciclos da onda de 40 Hz:
+t_fim = T*20
+t_fim =
+          0.5
+t=[0: 1/fs: t_fim];
+size(t)
+ans =
+     1   501
+t(1,1:5)'
+ans =
+            0
+        0.001
+        0.002
+        0.003
+        0.004
+y1=3*cos(2*pi*20*t + 0.2);
+size(y1)
+ans =
+     1   501
+plot(t,y1)
+
+y2=1*cos(2*pi*30*t - 0.3);
+size(y2)
+ans =
+     1   501
+y3=2*cos(2*pi*40*t + 2.4);
+
+y=y1+y2+y3;
+
+figure;
+subplot(4,1,1); % subplot(411)
+plot(t,y1);
+ylabel('y_1(t)')
+
+subplot(4,1,2);
+plot(t,y2)
+ylabel('y_2(t)')
+
+subplot(4,1,3)
+plot(t,y3)
+ylabel('y_3(t)')
+
+subplot(4,1,4)
+plot(t,y)
+ylabel('y(t)')
+
+% ![sinal_teste.png](sinal_teste.png)
+
+Y = fft(y);
+size(Y)
+ans =
+     1   501
+Y(1,1:10)'
+ans =
+       2.4207 +          0i
+       2.4502 -     0.1229i
+       2.5421 -    0.25119i
+       2.7091 -    0.39134i
+       2.9765 -     0.5525i
+       3.3942 -     0.7497i
+       4.0641 -     1.0115i
+       5.2251 -     1.4026i
+       7.5887 -      2.114i
+       14.643 -     4.0819i
+Y_mag = abs(Y);
+size(Y_mag)
+ans =
+     1   501
+Y_phase = angle(Y);
+
+figure; plot(Y_mag)
+help xlim
+ <strong>xlim</strong> Set or query x-axis limits
+    <strong>xlim</strong>(limits) specifies the x-axis limits for the current axes. Specify
+    limits as a two-element vector of the form [xmin xmax], where xmax is a
+    numeric value greater than xmin.
+    
+    xl = <strong>xlim</strong> returns a two-element vector containing the x-axis limits for
+    the current axes.
+    
+    <strong>xlim</strong>('auto') lets the axes choose the x-axis limits. This command sets
+    the XLimMode property for the axes to 'auto'.
+    
+    <strong>xlim</strong>('manual') freezes the x-axis limits at the current values. Use
+    this option if you want to retain the current limits when adding new
+    data to the axes using the hold on command. This command sets the
+    XLimMode property for the axes to 'manual'.
+    
+    m = <strong>xlim</strong>('mode') returns the current value of the x-axis limits mode,
+    which is either 'auto' or 'manual'. By default, the mode is automatic
+    unless you specify limits or set the mode to manual.
+    
+    ___ = <strong>xlim</strong>(ax, ___ ) uses the axes specified by ax instead of the
+    current axes.
+ 
+    <strong>xlim</strong> sets or gets the XLim or XLimMode property of an axes.
+ 
+    See also <a href="matlab:help pbaspect">pbaspect</a>, <a href="matlab:help daspect">daspect</a>, <a href="matlab:help ylim">ylim</a>, <a href="matlab:help zlim">zlim</a>, <a href="matlab:help thetalim">thetalim</a>, <a href="matlab:help rlim">rlim</a>.
+
+xlim([0 length(Y)]
+ xlim([0 length(Y)]
+                   
+{Error: Invalid expression. When calling a function
+or indexing a variable, use parentheses. Otherwise,
+check for mismatched delimiters.
+} 
+xlim([0 length(Y)])
+
+% Resultado bruto do algoritmo FFT
+
+% ![fft_sinal_teste.png](fft_sinal_teste.png)
+
+% Notamos que o espectro do sinal aparece
+% "espelhado"
+% Separando o "lado esquerdo"
+length(Y_mag)
+ans =
+   501
+axis([0 500/2 0 800])
+L=length(Y)
+L =
+   501
+L = 500; % para obter número par (divisível por 2)
+eixo_freq = (fs/L)*(0:L-1);
+size(eixo_freq)
+ans =
+     1   500
+figure;
+plot(eixo_freq, Y_mag)
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('plot')" style="font-weight:bold">plot</a>
+Vectors must be the same length.} 
+plot(eixo_freq, Y_mag(1,0:L-1))
+{Index in position 2 is invalid. Array indices must
+be positive integers or logical values.} 
+L
+L =
+   500
+plot(eixo_freq, Y_mag(1, (0:L-1) ) )
+{Index in position 2 is invalid. Array indices must
+be positive integers or logical values.} 
+eixo_freq = (fs/L)*(0:501-1);
+plot(eixo_freq, Y_mag)
+axis([0 250, 0 800])
+axis([0 fs/2, 0 800])
+axis([0 250 0 800])
+xlabel('Frequência (Hz)')
+
+% Adequando amplitude para valores reais
+L
+L =
+   500
+L=length(y)
+L =
+   501
+P2=abs(Y/L);
+L/2
+ans =
+        250.5
+P1=P2(1:(L-1)/2+1);
+size(P1)
+ans =
+     1   251
+P1(2:end-1) = 2*Pi(2:end-1);
+{Maximum variable size allowed by the program is
+exceeded.} 
+P1(2:end-1) = 2*P1(2:end-1);
+size(P1)
+ans =
+     1   251
+size(eixo_freq)
+ans =
+     1   501
+f = fs/L(0:(L-1)/2);
+{Array indices must be positive integers or logical
+values.} 
+f = (fs/L)*(0:(L-1)/2);
+size(f)
+ans =
+     1   251
+figure; plot(f,P1)
+xlabel('Frequência (Hz)');
+ylabel('Magnitude (Volst)');
+title('Espectro do sinal (FFT)')
+
+% ![espectro_sinal_teste.png](espectro_sinal_teste.png)
+
+% Realizando "zoom" na região de interesse
+axis([0 100 0 3.5])
+axis([0 100 0 3.5])
+
+% ![espectro_sinal_teste_zoom.png](espectro_sinal_teste_zoom.png)
+
+doffiary 
+{Unrecognized function or variable 'doffiary'.} 
+diary off
