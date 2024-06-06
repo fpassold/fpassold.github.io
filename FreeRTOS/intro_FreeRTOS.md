@@ -1,8 +1,35 @@
 # Sobre o FreeRTOS
 
+- [Sobre o FreeRTOS](#sobre-o-freertos)
+  - [O que é o FreeRTOS?](#o-que-é-o-freertos)
+  - [Idéia Central](#idéia-central)
+  - [Características Principais](#características-principais)
+  - [Determinismo no FreeRTOS para Aplicações de Tempo Real](#determinismo-no-freertos-para-aplicações-de-tempo-real)
+    - [Escalonamento de Tarefas](#escalonamento-de-tarefas)
+    - [Tempo de Troca de Contexto](#tempo-de-troca-de-contexto)
+    - [Sincronização e Comunicação](#sincronização-e-comunicação)
+    - [Temporizadores de Software](#temporizadores-de-software)
+    - [Gerenciamento de Memória](#gerenciamento-de-memória)
+    - [Práticas de Design](#práticas-de-design)
+    - [Priorização](#priorização)
+    - [Interrupções](#interrupções)
+    - [Exemplo de Determinismo](#exemplo-de-determinismo)
+  - [Exemplo de Multitarefa com tasks síncronas](#exemplo-de-multitarefa-com-tasks-síncronas)
+    - [Configuração do Hardware](#configuração-do-hardware)
+    - [Código de Exemplo](#código-de-exemplo)
+    - [Explicação do Código](#explicação-do-código)
+    - [Notas Finais](#notas-finais)
+  - [Outras Opções](#outras-opções)
+
+
+
 ## O que é o FreeRTOS?
 
 FreeRTOS é um sistema operacional de tempo real (RTOS - Real-Time Operating System) de código aberto, amplamente utilizado em sistemas embarcados. Ele é projetado para ser pequeno, eficiente e fácil de portar para várias arquiteturas de hardware.
+
+O kernel FreeRTOS foi originalmente desenvolvido por Richard Barry por volta de 2003, e mais tarde foi desenvolvido e mantido pela empresa de Barry, Real Time Engineers Ltd. Em 2017, a empresa passou a administração do projeto FreeRTOS para a [Amazon Web Services ](https://en.wikipedia.org/wiki/Amazon_Web_Services)(AWS). Barry continua trabalhando no FreeRTOS como parte de uma equipe da AWS. Mais detalhes sobre interesse da Amazon sobre o FreeRTOS ver [[aqui]](http://www.openrtos.net/FAQ_Amazon.html).
+
+Site oficial: https://www.freertos.org/index.html
 
 ## Idéia Central
 

@@ -1,5 +1,20 @@
 # Função **vTaskDelayUntil()**
 
+- [Função **vTaskDelayUntil()**](#função-vtaskdelayuntil)
+  - [Intro](#intro)
+  - [Sintaxe:](#sintaxe)
+      - [Parâmetros da Função](#parâmetros-da-função)
+      - [Como Funciona](#como-funciona)
+    - [Exemplo de Uso](#exemplo-de-uso)
+    - [Detalhamento do Funcionamento](#detalhamento-do-funcionamento)
+    - [Efeito no Escalonador de Tarefas](#efeito-no-escalonador-de-tarefas)
+    - [Comparação com `vTaskDelay()`](#comparação-com-vtaskdelay)
+    - [Conclusão](#conclusão)
+  - [Outras Opções:](#outras-opções)
+
+
+## Intro
+
 A função `vTaskDelayUntil()` é usada no FreeRTOS para criar **tarefas síncronas** que precisam ser executadas em intervalos regulares e precisos. Esta função permite que uma tarefa seja suspensa até que um período específico tenha decorrido desde a última vez que a tarefa foi executada. É especialmente útil para tarefas que precisam ser executadas periodicamente, como as que monitoram sensores ou controlam atuadores.
 
 ## Sintaxe:

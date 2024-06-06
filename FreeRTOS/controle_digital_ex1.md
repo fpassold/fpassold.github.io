@@ -1,5 +1,14 @@
 # Controle Digital usando FreeRTOS
 
+- [Controle Digital usando FreeRTOS](#controle-digital-usando-freertos)
+  - [Exemplo de uma rotina de controle digital](#exemplo-de-uma-rotina-de-controle-digital)
+    - [Possível solução](#possível-solução)
+    - [Passos para Implementação](#passos-para-implementação)
+    - [Código de Exemplo](#código-de-exemplo)
+      - [Configuração do Hardware](#configuração-do-hardware)
+      - [Inicialização do FreeRTOS](#inicialização-do-freertos)
+    - [Explicação do Código](#explicação-do-código)
+  - [Outras opções](#outras-opções)
 
 
 ## Exemplo de uma rotina de controle digital

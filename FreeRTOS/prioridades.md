@@ -1,5 +1,19 @@
 # Prioridades na Criação da Tarefa
 
+- [Prioridades na Criação da Tarefa](#prioridades-na-criação-da-tarefa)
+  - [Intro](#intro)
+  - [Criando Tarefas com Prioridades](#criando-tarefas-com-prioridades)
+  - [Alterando a Prioridade de uma Tarefa Existente](#alterando-a-prioridade-de-uma-tarefa-existente)
+  - [Obtendo a Prioridade Atual de uma Tarefa](#obtendo-a-prioridade-atual-de-uma-tarefa)
+  - [Obtendo o *Handler* de uma Tarefa](#obtendo-o-handler-de-uma-tarefa)
+  - [Exemplo Completo](#exemplo-completo)
+    - [Explicação do Exemplo](#explicação-do-exemplo)
+    - [Considerações](#considerações)
+    - [Prática Recomendada](#prática-recomendada)
+  - [Outras Opções](#outras-opções)
+
+## Intro
+
 No FreeRTOS, a prioridade de uma tarefa determina a ordem em que as tarefas são escalonadas. Tarefas com prioridades mais altas são escalonadas antes das tarefas com prioridades mais baixas. 
 
 a prioridade de uma tarefa é estabelecida no momento de sua criação através da função `xTaskCreate` ou `xTaskCreatePinnedToCore`. 

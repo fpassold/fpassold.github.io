@@ -1,6 +1,21 @@
 # Função **xTaskCreate()**
 
-`
+- [Função **xTaskCreate()**](#função-xtaskcreate)
+  - [Intro](#intro)
+  - [Protótipo da Função](#protótipo-da-função)
+    - [Parâmetros](#parâmetros)
+    - [Valor de Retorno](#valor-de-retorno)
+  - [Pilha da Tarefa](#pilha-da-tarefa)
+    - [Sugestões para Definir o Tamanho da Pilha](#sugestões-para-definir-o-tamanho-da-pilha)
+  - [Parâmetro Passado para a Função da Tarefa](#parâmetro-passado-para-a-função-da-tarefa)
+  - [Exemplo Completo](#exemplo-completo)
+    - [Explicação do Exemplo](#explicação-do-exemplo)
+    - [Conclusão](#conclusão)
+  - [Outras opções](#outras-opções)
+
+[🤘](https://www.youtube.com/watch?v=avISxwo8-Ao)
+
+## Intro
 
 A função `xTaskCreate()` é usada para criar uma nova tarefa no FreeRTOS. Essa função inicializa a tarefa, aloca memória para sua pilha e adiciona a tarefa à lista de tarefas prontas para serem executadas pelo escalonador.
 
@@ -23,6 +38,7 @@ BaseType_t xTaskCreate(
    
    ```c
    void TaskFunction(void *pvParameters);
+   ```
 ```
    
 2. **`pcName`**: Um nome descritivo para a tarefa. Este nome é usado apenas para fins de depuração.
@@ -76,7 +92,7 @@ O parâmetro `pvParameters` permite que você passe dados para a tarefa quando e
 
 Aqui está um exemplo que demonstra a criação de duas tarefas com diferentes prioridades e uso do parâmetro `pvParameters`.
 
-```c
+​```c
 #include <Arduino.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
