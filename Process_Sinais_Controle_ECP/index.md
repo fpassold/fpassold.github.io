@@ -1,4 +1,6 @@
-![Kioto_2](Kioto_2.jpg)
+![close-up-monitor-hospital](close-up-monitor-hospital.jpg)
+
+<!-- https://www.freepik.com/premium-ai-image/close-up-monitor-hospital_201809557.htm#from_view=detail_alsolike -->
 
 # Processamento de Sinais e Controle Digital
 
@@ -169,4 +171,5 @@ Eng. de Computação.
 var LastUpdated = document.lastModified;
 document.writeln ("🌊 Fernando Passold, página criada em 11/03/2024, atualizada em " + LastUpdated); // End Hiding -->
 </script>
+
 
