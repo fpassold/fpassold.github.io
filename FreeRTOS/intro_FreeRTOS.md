@@ -231,6 +231,7 @@ Este código pode ser facilmente carregado no ESP32 usando o Arduino IDE ou outr
 * Função [**xTaskCreate()**](xTaskCreate.html);
 * Função [**vTaskDelayUntil()**](vTaskDelayUntil.html);
 * [Definindo prioridades em tarefas](prioridades.html);
+* Ferramentas ["htop" para FreeRTOS](htop_FreeRTOS.html);
 * [Exemplo de rotina de controle digital](controle_digital_ex1.html).
 
 ---
