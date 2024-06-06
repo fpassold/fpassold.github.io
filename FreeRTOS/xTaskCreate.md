@@ -21,7 +21,7 @@ A função `xTaskCreate()` é usada para criar uma nova tarefa no FreeRTOS. Essa
 
 ## Protótipo da Função
 
-```c
+```c++
 BaseType_t xTaskCreate(
     TaskFunction_t pvTaskCode,
     const char * const pcName,
@@ -36,11 +36,10 @@ BaseType_t xTaskCreate(
 
 1. **`pvTaskCode`**: Um ponteiro para a função que implementa a tarefa. Esta função deve seguir o seguinte protótipo:
    
-   ```c
-   void TaskFunction(void *pvParameters);
-   ```
+```c++
+void TaskFunction(void *pvParameters);
 ```
-   
+
 2. **`pcName`**: Um nome descritivo para a tarefa. Este nome é usado apenas para fins de depuração.
 
 3. **`usStackDepth`**: O tamanho da pilha da tarefa, em palavras (não bytes). Por exemplo, se `configSTACK_DEPTH_TYPE` for definido como `uint16_t` e o tamanho da palavra for 4 bytes, um `usStackDepth` de 100 significa que a pilha pode armazenar 100 palavras, ou seja, 400 bytes.
@@ -92,7 +91,8 @@ O parâmetro `pvParameters` permite que você passe dados para a tarefa quando e
 
 Aqui está um exemplo que demonstra a criação de duas tarefas com diferentes prioridades e uso do parâmetro `pvParameters`.
 
-​```c
+
+```c++
 #include <Arduino.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
