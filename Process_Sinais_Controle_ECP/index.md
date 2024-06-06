@@ -4,7 +4,7 @@
 
 Eng. de Computação.
 
-* Parte de **[Laboratório](lab/lab_proces_ecp_2024.html)** 𓀨 🖥️ !?
+* Parte de **[Laboratório](lab/index.html)** 𓀨 🖥️ !?
 
 * [Embaseamento teórico](#teoria) (transformada-Z).
 * [Parte I: **Cotrole Digital**](#parte1)
@@ -114,7 +114,7 @@ Eng. de Computação.
 
 ![separation_line](separation_line.png)
 
-🧪 Parte Prática da disciplina: Aulas de **[Laboratório](lab/lab_proces_ecp_2024.html)** (a partir de 30/04/2024).
+🧪 Parte Prática da disciplina: Aulas de **[Laboratório](lab/index.html)** (a partir de 30/04/2024).
 
 ![separation_line](separation_line.png)
 
@@ -167,6 +167,6 @@ Eng. de Computação.
 <script language="JavaScript">
 <!-- Hide JavaScript...
 var LastUpdated = document.lastModified;
-document.writeln ("🌊 Fernando Passold, página atualizada em " + LastUpdated); // End Hiding -->
+document.writeln ("🌊 Fernando Passold, página criada em 11/03/2024, atualizada em " + LastUpdated); // End Hiding -->
 </script>
 

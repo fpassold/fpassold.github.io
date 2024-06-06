@@ -1,3 +1,5 @@
+![colored-wires-lying-wooden-desktop](colored-wires-lying-wooden-desktop.jpg)
+
 # Lab. Processamento Digital de Sinais e Controle Digital
 
 ECP/2024.1
@@ -47,7 +49,15 @@ Tópicos previstos:
 
 
 
-* 🧑‍💻 [Configurando uma placa ESP32](ESP32_Dev_Kit.html). 
+* 🧑‍💻 [Configurando uma placa ESP32](ESP32_Dev_Kit.html).
+* [Programando ESP32 no Terminal](iniciando_ESP32.html);
+* [Usando VSCode com ESP32](ESP32_VSCode.html);
+* **FreeRTOS**:
+  * [Introdução à FreeRTOS](https://fpassold.github.io/FreeRTOS/intro_FreeRTOS.html);
+  * Criação de tasks síncronas → uso da função [xTaskCreate();](https://fpassold.github.io/FreeRTOS/xTaskCreate.html)
+  * Uso da função [vTaskDelayUntil();](https://fpassold.github.io/FreeRTOS/vTaskDelayUntil.html)
+  * Definição de [prioridades](https://fpassold.github.io/FreeRTOS/prioridades.html);
+  * [Exemplo 1](https://fpassold.github.io/FreeRTOS/controle_digital_ex1.html) de Controle Digital usando tasks síncronas.
 
 
 
@@ -70,5 +80,5 @@ Tópicos previstos:
 <script language="JavaScript">
 <!-- Hide JavaScript...
 var LastUpdated = document.lastModified;
-document.writeln ("🌊 Fernando Passold, atualizado em " + LastUpdated); // End Hiding -->
+document.writeln ("🌊 Fernando Passold, página criada em 30/04/2024 17:47, atualizada em " + LastUpdated); // End Hiding -->
 </script>
