@@ -23,12 +23,12 @@ A função `xTaskCreate()` é usada para criar uma nova tarefa no FreeRTOS. Essa
 
 ```c++
 BaseType_t xTaskCreate(
-    TaskFunction_t pvTaskCode,
-    const char * const pcName,
-    const uint16_t usStackDepth,
-    void *pvParameters,
-    UBaseType_t uxPriority,
-    TaskHandle_t *pxCreatedTask
+    TaskFunction_t pvTaskCode,		// 1. Ponteiro associado com a tarefa
+    const char * const pcName,		// 2. "Nome" para tarefas (apenas para debugs)
+    const uint16_t usStackDepth,	// 3. Tamanho da pilha
+    void *pvParameters,				// 4. Ponteiro para parâmetros de entrada
+    UBaseType_t uxPriority,			// 5. Prioridade da tarefa
+    TaskHandle_t *pxCreatedTask		// 6. Ponteiro para o handler da tarefa
 );
 ```
 

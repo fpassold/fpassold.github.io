@@ -224,6 +224,133 @@ void Task_Button(void *pvParameters) {
 
 Este código pode ser facilmente carregado no ESP32 usando o Arduino IDE ou outro ambiente de desenvolvimento compatível.
 
+### ERRATA
+
+O código anterior faz atuar o watchdog, implicando em constantes reboots da placa. É gerado uma "task exception" em relação à "Task_SquareWave":
+
+```
+ELF file SHA256: Guru Meditation Error: Core  1 panic'ed (Unhandled debug exception). 
+Debug exception reason: Stack canary watchpoint triggered (Task_SquareWave) 
+Core  1 register dump:
+PC      : 0x400811bb  PS      : 0x00060736  A0      : 0x800d7e07  A1      : 0x3ffb8ef0  
+A2      : 0x3ffb8f2b  A3      : 0x00000010  A4      : 0x3ffc1514  A5      : 0x00000001  
+A6      : 0x00000000  A7      : 0x00000000  A8      : 0x3ffb8f3b  A9      : 0x0000000d  
+A10     : 0x3ffc1480  A11     : 0x0000000f  A12     : 0x00000009  A13     : 0x00000066  
+A14     : 0xffdfffff  A15     : 0x00000000  SAR     : 0x0000000a  EXCCAUSE: 0x00000001  
+EXCVADDR: 0x00000000  LBEG    : 0x40085b8c  LEND    : 0x40085ba2  LCOUNT  : 0x00000000  
+```
+
+Significa que o tamanho alocado para a pilha da tarefa "Task_SquareWave" é pequeno. Revisando a função "[xTaskCreate()](xTaskCreate.html)" tomamos:
+
+```c++
+xTaskCreate(Task_SquareWave, "Task_SquareWave", 1024, NULL, 1, NULL);
+```
+
+Aumentar um pouco o tamanho da pilha para:
+
+```c++
+xTaskCreate(Task_SquareWave, "Task_SquareWave", 1224, NULL, 1, NULL);
+```
+
+Com isto, este erro desaparece, mas ainda temos a placa rebootando:
+
+```
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1448
+load:0x40078000,len:14844
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3356
+entry 0x4008059c
+
+
+assert failed: xTaskDelayUntil tasks.c:1570 (( xTimeIncrement > 0U ))
+
+
+Backtrace: 0x400d96da:0x3ffb8f30 0x400d7b5d:0x3ffb8f60 0x400d7b78:0x3ffb8fa0 0x400d7b88:0x3ffb8fc0 0x400d7cbe:0x3ffb8fe0 0x400d2094:0x3ffb9060 0x400d8742:0x3ffb9080 0x400824e8:0x3ffb90d0 0x40083830:0x3ffb90f0 0x40082131:0x3ffb91b0 0x40088011:0x3ffb91d0 0x4008d016:0x3ffb91f0 0x40089916:0x3ffb9320 0x400d14a9:0x3ffb9340
+
+
+
+
+ELF file SHA256: d20271629ccfebb1
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+```
+
+Este problema de "assert" associado com uma task está relacionado com as configurações de períodos de tempo escolhidos para as tasks síncronas.
+
+O FreeRTOS não “gostou” do intervalo de tempo adotado. Observe que o FreeRTOS e seus temporizadores operam com base em *ticks*.
+
+Com a taxa de *tick* padrão de 100 Hz, 1 *tick* = 10ms = portTICK_PERIOD_MS.
+
+Para referência, o ESP32 rodando a 240 MHz e usando o método Task Dispatch tem os valores de tempo limite mínimo aproximados [como segue](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/system/esp_timer.html#timeout-value-limits):
+
+* Temporizadores de disparo único: $\cong$ 20 $\mu$s ($f_s\vert_{\text{one_shoot}}>$ 50 KHz)
+  Se esp_timer_start_once() for chamado, este será o primeiro momento após o qual o sistema poderá despachar a execução de uma nova tarefa.
+
+* Temporizadores periódicos: $\cong$ 50 $\mu$s ($f_s>$ 20 KHz)
+  Os temporizadores de software periódicos com um valor de tempo limite menor simplesmente consumiriam a maior parte do tempo da CPU, o que é impraticável. 
+
+<!--Então const TickType_t vPeriodicTaskPreiod = 1/portTICK_PERIOD_MS; produz 0. Ref.: https://esp32.com/viewtopic.php?t=34128 -->
+
+Uma solução pode ser uar  [High Resolution Timer (ESP timer)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/system/esp_timer.html). 
+
+Ou alternativamente, pode-se alterar a taxa de *tick* do FreeRTOS para 1000 Hz por meio do menuconfig. No entanto, é provável que isso aumente a carga da CPU devido a 10x mais interrupções de ticks e potencial troca de tarefas.
+
+Este problema deve ser solucionado dentro da declaração das tarefas. Como o led parece estar piscando na frequência correta de 1 Hz, vamos supor que o problema esteja associado com a task que deve ser executada de maneira mais rápida: "Task_SquareWave":
+
+```C++
+void Task_SquareWave(void *pvParameters) {
+  const TickType_t xFrequency = pdMS_TO_TICKS(0.5);  // 0.5 ms (2 kHz)
+  // Inicializar o último tempo de despertar com o tick atual
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
+  while (true) {
+    if (squareWaveEnabled) {
+      // Alternar o estado da saída digital
+      digitalWrite(SQUARE_WAVE_PIN, !digitalRead(SQUARE_WAVE_PIN));
+    } else {
+      // Se a tarefa estiver desabilitada, garantir que o pino esteja em nível baixo
+      digitalWrite(SQUARE_WAVE_PIN, LOW);
+    }
+    // Aguardar até a próxima execução
+    vTaskDelayUntil(&xLastWakeTime, xFrequency);
+  }
+}
+```
+
+Aqui, devemos conferir se as informações para a função "[vTaskDelayUntil()](vTaskDelayUntil.html)" estão chegando da forma correta.
+
+E realmente, temos um problema com a definição da constante "TickType_t" que faz com que o valor de "xLastWakeTime" fique incorreto. A variável do tipo "TickType_t" parece ser do tipo "uint64_t", então 0.5 será interpretado como zero (nulo).
+
+Note que:
+
+```c++
+uint64t	TickTypet;
+define pdMSTOTICKS( xTimeInMs ) ( ( TickTypet ) ( ( ( TickTypet ) ( xTimeInMs ) * ( TickTypet ) configTICKRATEHZ ) / ( TickTypet ) 1000 ) )
+```
+
+Assim sendo "pdMSTOTICKS" só funciona com taxas de tick iguais ou inferiores a 1KHz, pois os resultados são armazenados em **números inteiros** que não podem armazenar frações de milissegundo.
+
+
+
+|                                                              | **Atenção:**                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![spongebob-spongebob-squarepants](figs/spongebob-spongebob-squarepants.gif) | As funções **vTaskDelay()** ou **vTaskDelayUntil()** só funcionam para períodos de amostragem $\ge$ 1 ms. |
+
+A **solução** é aumentar a taxa do *tick rate* do FreeRTOS para valores acima de 1000 Hz ou fazer uso de rotinas ISR usando [**ESP Timer (High Resolution Timer)**](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/esp_timer.html#esp-timer-high-resolution-timer). Desta forma, seria possível executar taskj síncronas a com [taxas de amostragem próximas de 50 $\mu$s ($f_s \cong$ 20 KHz)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/esp_timer.html#timeout-value-limits).
+
+
+
+
+
 ---
 
 ## Outras Opções

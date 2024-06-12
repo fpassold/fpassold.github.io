@@ -109,13 +109,13 @@ Outros:
   
   O VSCode isoladamente ocupa uns 580 Mbytes + as extensões que ficam armazenadas numa pasta invisível na conta do usuário (`~/.vscode/extension`) ; no caso, `/Users/fernandopassold/.vscode/extensions/espressif.esp-idf-extension-1.7.1` ocupou: 21,5 Mbytes.
   
-* Obs.: Eventualmente a vantagem do VSCode é a [extenção CoPilot](https://code.visualstudio.com/docs/copilot/setup) que pode facilitar a programação.
+* Obs.: Eventualmente a vantagem do VSCode é a [extenção CoPilot](https://code.visualstudio.com/docs/copilot/setup) que pode facilitar a programação 🤔.
 
 
 
 #### Instalação Manual
 
-Para o procedimento manual, compilando e transferindo coódigos para placas ESP32 diretamente do terminal no seiu computador, selecione de acordo com o seu sistema operacional:
+Para o procedimento manual, compilando e transferindo coódigos para placas ESP32 **usando terminal** no seiu computador (prático e usual para usuário Linux/MacOS 😉), selecione de acordo com o seu sistema operacional:
 
 - [Instalador do Windows](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/windows-setup.html)
 - [Linux e macOS](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html)
