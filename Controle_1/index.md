@@ -100,7 +100,7 @@
 ## Avaliações:
 
 * [Trabalho 1](trabalho_1.pdf): Transformada de Laplace, gráficos de funções (respostas temporais), uso de Transformada de Laplace. <!-- (trabalho_1_controle_1.pdf)--></br>Deadline: ==19/04/2024==
-* **Trabalho 2**: Diagramas de Bode, Resposta de Filtros, Série de Fourier (onda Quadrada), Simulando filtro passa-baixas aplicado sobre onda quadrada → [~~versão de 2022/2~~](trabalho_2.pdf), [==versão de 2024/1==](trabalho_2_2024_1.pdf). 
+* **Trabalho 2**: Diagramas de Bode, Resposta de Filtros, Série de Fourier (onda Quadrada), Simulando filtro passa-baixas aplicado sobre onda quadrada → [~~versão de 2022/2~~](trabalho_2.pdf), [==versão de 2024/1==] (trabalho_2_2024_1.pdf) ← *documento sendo temporariamente revisado*)
 
 Outros:
 
