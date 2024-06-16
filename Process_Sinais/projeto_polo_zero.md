@@ -4,6 +4,15 @@
 
 # Projeto usando Alocação Pólo-Zero
 
+- [Projeto usando Alocação Pólo-Zero](#projeto-usando-alocação-pólo-zero)
+  - [Intro](#intro)
+    - [Exemplo 1: Filtro Notch - Parte 1/2](#exemplo-1-filtro-notch---parte-12)
+    - [Exemplo 2: Filtro Notch - Parte 2/2 (sem atrasos desnecessários)](#exemplo-2-filtro-notch---parte-22-sem-atrasos-desnecessários)
+  - [Filtro Notch Melhorado](#filtro-notch-melhorado)
+
+
+## Intro
+
 <!--pág. 42/99 de 5-TheZ-transform-Apracticaloverview.pdf - em 07/05/2024
 ![clockwork-gears](figuras/clockwork-gears.gif)-->
 
@@ -334,11 +343,119 @@ E então temos o resultado:
 
 Você pode ver nos gráficos no domínio do tempo do ECG e nos sinais de ECG filtrados acima que o “ruído” foi reduzido. **Mas...**, a amplitude do sinal também foi alterada. A relação entre a amplitude do pico dominante da "onda R" e da "onda T" vizinha também foi ligeiramente alterada.
 
-<!--Pág. 56/99 de 5-TheZ-transform-Apracticaloverview.pdf-->
+<!--Até pág. 45 de 5-TheZ-transform-Apracticaloverview.pdf-->
 
 <!--save filtro_notch1; até aqui em 13/05/2024-->
 
 ![dog_ufa.gif](dog_ufa.gif)
+
+## Filtro Notch Melhorado
+
+Um filtro notch melhorado pode ser obtido posicionando um par de pólos “muito próximo” dos zeros. Adicionar os pólos desta forma tem o efeito de “compensar” a contribuição de zero para a forma da superfície H(z) para a maior parte do plano z, exceto nas regiões muito próximas dos zeros. 
+
+Isso pode ser melhor compreendido considerando o que aconteceria se um pólo fosse posicionado exatamente no local do zero; você deve perceber que o pólo cancelaria completamente a contribuição do zero e a superfície $H(z)$ seria plana para todo o plano z. 
+
+Quando os pólos e os zeros são colocados próximos uns dos outros, eles tendem a se anular na maioria das regiões do plano z, exceto nas regiões que estão muito próximas do pólo ou do zero.
+
+A título de exemplo, vamos posicionar ==pólos no mesmo ângulo dos zeros==, mas distantes 0,9 da origem, como ilustrado adiante. Estes pólos seriam localizados em: $z=0,9\;\angle\,\pm150^o = -0,77942 \pm j0,45$; ver cálculos à seguir:
+
+```matlab
+>> % Os zeros estão em:
+>> [Re Im]=pol2cart(deg2rad(150), 1)
+Re =
+     -0.86603
+Im =
+          0.5
+>> ze = [Re+i*Im   Re-i*Im]
+ze =
+     -0.86603 +        0.5i     -0.86603 -        0.5i
+>> % Localizando os pólos em raio = 0,9 teremos:
+>> [Re_p Im_p]=pol2cart(deg2rad(150), 0.9)
+Re_p =
+     -0.77942
+Im_p =
+         0.45
+>> po = [Re_p+i*Im_p   Re_p-i*Im_p]
+po =
+     -0.77942 +       0.45i     -0.77942 -       0.45i
+>> % Montando a nova função transferência:
+>> fs=120;
+>> H2=tf(poly(ze), poly(po), 1/fs)
+
+H2 =
+ 
+   z^2 + 1.732 z + 1
+  --------------------
+  z^2 + 1.559 z + 0.81
+ 
+Sample time: 0.0083333 seconds
+Discrete-time transfer function.
+```
+
+Ou seja, terminamos por obter a seguinte função transferência:
+
+$H(z)=\dfrac{(z+0,86603+j0.5)(z+0,86603+j0.5)}{(z+0.77942+j0.45)(z+0.77942-j0.45)}=\dfrac{z^2 + 1.732 z + 1}{z^2 + 1.559 z + 0.81}$
+
+Verificando como ficou o ROC e resposta espectral:
+
+```matlab
+>> % Diagrama ROC
+>> figure;
+>> pzmap(H2)
+>> th=0:2*pi/360:2*pi;
+>> x=0.9*sin(th);
+>> y=0.9*cos(th);
+>> axis equal
+>> hold on;
+>> plot(x,y,'LineStyle','--', 'color',[0.7 0.7 0.7])
+```
+
+<img src="figuras/ROC_Notch_melhorado.png" alt="ROC_Notch_melhorado.png" style="zoom:48%;" />
+
+```matlab
+>> figure;
+>> h=bodeplot(H, H2);
+>> setoptions(h,'FreqUnits','Hz','FreqScale','linear')
+>> xlim([30 fs/2])
+>> grid
+>> legend('H(z)', 'H2(z)')
+```
+
+![boded_Notch_melhorado.png](figuras/boded_Notch_melhorado.png)
+
+Pode-se perceber as diferenças, principalmente no diagrama de Fase. Desta vez, maiores defasagens no sinal serão acrescentadas nas frequências próximas da frequência de corte deste filtro (50 Hz).
+
+Aplicando-se sobre o sinal de ECG resulta:
+
+```matlab
+>> [num2, den2]=tfdata(H2,'v')
+num2 =
+            1       1.7321            1
+den2 =
+            1       1.5588         0.81
+>> a2=den2;
+>> b2=num2;
+>> x=load('noisy_ecg.txt');
+>> y2=filter(b2,a2,x);
+>> figure;
+>> subplot(311);
+>> plot(x); title('Sinal de ECG ruidoso'); xlim([0 1000])
+>> xlabel('Amostras'); ylabel('Amplitude');
+>> subplot(312);
+>> plot(y); title('Sinal de ECG filtrado (Notch #1)'); xlim([0 1000])
+>> xlabel('Amostras'); ylabel('Amplitude');
+>> subplot(313);
+>> plot(y2); title('Sinal de ECG filtrado (Notch #2)'); xlim([0 1000])
+>> xlabel('Amostras'); ylabel('Amplitude');
+```
+
+<img src="figuras/filter_Notch_melhorado.png" alt="filter_Notch_melhorado.png" style="zoom:48%;" />
+
+Note que desta vez, o filtro Notch melhorado além de reduzir atrasos em certos componentes frequenciais próximos de 50 Hz, também não distorceu tanto as amplitudes originais do sinal.
+
+<!-- até pág. 49/99 de 5-TheZ-transform-Apracticaloverview.pdf -->
+
+Fim.
 
 ---
 
