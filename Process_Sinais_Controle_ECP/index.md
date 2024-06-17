@@ -110,9 +110,11 @@ Eng. de Computação.
 
    3. Projeto usando alocação pólo-zero: [Filtro Notch sobre sinal de ECG](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html) (Eletrocardiograma).
 
-   
+10. [Convolução e Reverberação de Sinais](https://fpassold.github.io/Lab_Processa\_Sinais/Lab_2/lab_2_convolucao.pdf)
 
-10. 🚧 Conteúdo sendo atualizado...
+    
+
+11. 🚧 Conteúdo sendo atualizado...
 
 ![separation_line](separation_line.png)
 
@@ -127,14 +129,24 @@ Eng. de Computação.
 ## 🎢 Formas de Avaliação
 
 - Provas teóricas abordando os conceitos fundamentais.
+  
   - **Prova (Individual) #1**: Projeto de Controladores Digitais $\longrightarrow$ 10/06/2024.
 - Avaliação de projetos de filtros e controladores digitais.
 - Relatórios de experimentos realizados em laboratório.
 - Participação em discussões e atividades em sala de aula.
 - Trabalhos individuais e em grupo.
   - [Trabalho #1)](trabalho_1_2024_1.html) Sobre sinais amostrados (Teorema de Amostragem) -- Deadline: 01/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).
+  
   - **Trabalho #2**) Levantar o espectro de um sinal de ECG (Eletrocardiograma).
-    O tópico  [Filtro Notch sobre sinal de ECG](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html), mostra a aplicação de um filtro especial para tentar eliminar componentes (ruído) na frequênica de 50 Hz. O objetivo neste trabalho é, aplicar a teoria mostrada no tópico: [Algoritmo de FFT para obter Espectro de um Sinal](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html), para apresentar o diagrama espectral de magnitude de um típico sinal de ECG antes da sua filtragem (usando o arquivo [noisy\_ecg.txt](https://fpassold.github.io/Process_Sinais/noisy_ecg.txt): resultado de amostragem de um sinal de ECG usando frequência de amostragem de $f_s=$ 120 Hz). **Deadline**: 17/06/2024. 
+    O tópico  [Filtro Notch sobre sinal de ECG](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html), mostra a aplicação de um filtro especial para tentar eliminar componentes (ruído) na frequênica de 50 Hz. O objetivo neste trabalho é, aplicar a teoria mostrada no tópico: [Algoritmo de FFT para obter Espectro de um Sinal](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html), para apresentar o diagrama espectral de magnitude de um típico sinal de ECG antes da sua filtragem (usando o arquivo [noisy\_ecg.txt](https://fpassold.github.io/Process_Sinais/noisy_ecg.txt): resultado de amostragem de um sinal de ECG usando frequência de amostragem de $f_s=$ 120 Hz). **Deadline**: 17/06/2024.
+    
+    Obs.: pode ser realizada a FFT apenas sobre as primeiras 1000 amostras. Gráfico do sinal de ECG "bruto":
+    
+    ![noisy_ecg_1000.png](https://fpassold.github.io/Process_Sinais/figuras/noisy_ecg_1000.png)
+    
+    Cuja FFT rende:
+    
+    ![fft_ECG_noisy.png](https://fpassold.github.io/Process_Sinais/figuras/fft_ECG_noisy.png) 
 
 ---
 

@@ -26,7 +26,7 @@ Tópicos previstos:
 
 
 * [Sistema de Aquecimento para Xícara de Café](https://fpassold.github.io/Lab_Controle_2/Aquecer_cafe/aquecer_cafe.html) ☕ (21/05/2024).
-  **Trabalho #1**: 
+  **==Trabalho #1==**: 
   O algoritmo de controle deve ser baseado em ISR (rodando a 1 ou 10 Hz; não nos 100 Hz do PID exemplo!).
   Este algoritmo de controle deve ser do tipo Proporcional.
   Alguma "sintonização" deve ter sido realizada.
@@ -36,7 +36,7 @@ Tópicos previstos:
   A equipe pode apresentar um pequeno documento (de até 3 páginas) intitulado "**Memorial do Projeto**" que deve ressaltar detalhes do algoritmo implementado, como o controlador foi sintonizado, modificações realizadas no código exemplo do PID (fornecido na página WEB da disciplina) e eventualmente gráficos com resultados obtidos. Mas lembrem-se: são apenas 3 páginas, fonte tamanho mínimo de 9 pontos. 
   O código (arquivo .ino ou .cpp) deve ser enviado para o professor por email.
 
-* **Trabalho #2**: Controle de Luminosidade (04/06/2024).
+* **==Trabalho #2==**: Controle de Luminosidade (04/06/2024).
   O algoritmo de controle deve ser baseado em ISR (rodando a 1 ou 10 Hz; não nos 100 Hz do código exemplo para um PID).
   🫵 **Atenção**: Este algoritmo de controle deve ser do tipo **PI** ou **PID**. ⚠️ 
   Deve ser implementando um **Filtro de Média Móvel** (variando de 4 à 10 passos) para as informações adquiridas por parte do sensor (LDR).
@@ -47,8 +47,6 @@ Tópicos previstos:
   A equipe pode apresentar um pequeno documento (de até 3 páginas) intitulado "**Memorial do Projeto**" que deve ressaltar detalhes do algoritmo implementado, como o controlador foi sintonizado, modificações realizadas no código exemplo do PID (fornecido na página WEB da disciplina) e eventualmente gráficos com resultados obtidos. Mas lembrem-se: são apenas 3 páginas, fonte tamanho mínimo de 9 pontos. 
   O código (arquivo .ino ou .cpp) deve ser enviado para o professor por email.
 
-
-
 * 🧑‍💻 [Configurando uma placa ESP32](ESP32_Dev_Kit.html).
 * [Programando ESP32 no Terminal](iniciando_ESP32.html);
 * [Usando VSCode com ESP32](ESP32_VSCode.html);
@@ -58,20 +56,27 @@ Tópicos previstos:
   * Uso da função [vTaskDelayUntil();](https://fpassold.github.io/FreeRTOS/vTaskDelayUntil.html)
   * Definição de [prioridades](https://fpassold.github.io/FreeRTOS/prioridades.html);
   * [Exemplo 1](https://fpassold.github.io/FreeRTOS/controle_digital_ex1.html) de Controle Digital usando tasks síncronas.
-
-
+  * Obs.: Infelzimente o FreeRTOS não possibilita task síncrona com $f_s>$ 1 KHz. Motivo pelo qual não será usada para atividades práticas envolvendo processamento digital de sinais na fáixa de audio.
 
 **Parte de Processamento Digital de Sinais**:
 
 * Filtro Passa-Baixas exponencial: [teoria](https://fpassold.github.io/Lab_Processa_Sinais/Filtro/filtro_exponencial.html);
+
 * [Filtro de Média Móvel](https://fpassold.github.io/Process_Sinais/media_movel.html);
    	* [Função `filter()` no Matlab](https://fpassold.github.io/Process_Sinais/funcao_filter.html);
-      	* [Usando algoritmo FFT](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html) (no Matlab);
-	* [Convolução e Reverberação de Sinais](https://fpassold.github.io/Lab_Processa_Sinais/Lab_2/lab_2_convolucao.pdf);
+      * [Usando algoritmo FFT](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html) (no Matlab);
+	  	* [Exemplo de uso de Espectro de um Sinal](exe_uso_fft.html) (Espectro de sinal de bateria; tentativa de recomposição do sinal).
 
-* Sintetizando senoides usando $f_s=$ 2 KHz e placa Arduino Uno (previsão);
+<!--* [Convolução e Reverberação de Sinais]
+   	(https://fpassold.github.io/Lab_Processa\_Sinais/Lab_2/lab_2_convolucao.pdf)-->   	
 
+* Projeto de Filtros:
 
+    1. "Projeto por emulação" → [Transformações biliares: Método de Tustin](https://fpassold.github.io/Process_Sinais/metodo_tustin.html).
+       1. [Filtro Passa Baixas](https://fpassold.github.io/Process_Sinais/FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin): Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
+    2. Projeto usando alocação pólo-zero: [Filtro Notch sobre sinal de ECG](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html) (Eletrocardiograma). 
+
+    
 
 <font size="2"> * [Lista de compras](lista_compras_ini_2024.pdf) (solicitada em 14/03/2024).</font> 
 

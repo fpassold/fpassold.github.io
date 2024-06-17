@@ -32,7 +32,11 @@ for i=1:u
         per=(P1(i)*100)/maximo;
         P1_aux(i)=P1(i);
         fprintf('| %u | %.2f | %.5f | %.1f | %.2f |\n', cont, f(i), P1(i), per, Y_phase_deg(i)); 
+        % Seperando dados para eventual futura série de Fourier
         maior_freq=f(i);
+        g(cont)=P1(i);
+        ff(cont)=f(i);
+        phase(cont)=Y_phase(i);
     end
 end
 fprintf('Encontrados %u componentes\n', cont)
