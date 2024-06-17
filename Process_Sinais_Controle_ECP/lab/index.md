@@ -23,8 +23,6 @@ Tópicos previstos:
 * [Como trabalhar com módulo MPC725](https://fpassold.github.io/Lab_Controle_2/PID_Digital/modulo_DAC.html) (DAC I2C para Arduino/Raspberry);
 * [Exemplo de sintonia de PID analógico](https://fpassold.github.io/Lab_Controle_2/controle_posicao.html) no controle de posição angular usando Kit Feedback.
 
-
-
 * [Sistema de Aquecimento para Xícara de Café](https://fpassold.github.io/Lab_Controle_2/Aquecer_cafe/aquecer_cafe.html) ☕ (21/05/2024).
   **==Trabalho #1==**: 
   O algoritmo de controle deve ser baseado em ISR (rodando a 1 ou 10 Hz; não nos 100 Hz do PID exemplo!).
@@ -52,11 +50,16 @@ Tópicos previstos:
 * [Usando VSCode com ESP32](ESP32_VSCode.html);
 * **FreeRTOS**:
   * [Introdução à FreeRTOS](https://fpassold.github.io/FreeRTOS/intro_FreeRTOS.html);
+  
   * Criação de tasks síncronas → uso da função [xTaskCreate();](https://fpassold.github.io/FreeRTOS/xTaskCreate.html)
+  
   * Uso da função [vTaskDelayUntil();](https://fpassold.github.io/FreeRTOS/vTaskDelayUntil.html)
+  
   * Definição de [prioridades](https://fpassold.github.io/FreeRTOS/prioridades.html);
+  
   * [Exemplo 1](https://fpassold.github.io/FreeRTOS/controle_digital_ex1.html) de Controle Digital usando tasks síncronas.
-  * Obs.: Infelzimente o FreeRTOS não possibilita task síncrona com $f_s>$ 1 KHz. Motivo pelo qual não será usada para atividades práticas envolvendo processamento digital de sinais na fáixa de audio.
+  
+    Obs.: Infelzimente o FreeRTOS não possibilita task síncrona com $f_s>$ 1 KHz. Motivo pelo qual não será usada para atividades práticas envolvendo processamento digital de sinais na fáixa de audio.
 
 **Parte de Processamento Digital de Sinais**:
 
