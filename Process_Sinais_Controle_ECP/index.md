@@ -102,11 +102,13 @@ Eng. de Computação.
 
 9. Projeto de Filtros:
 
-   1. "Projeto por emulação" → [Transformações biliares: Método de Tustin](https://fpassold.github.io/Process_Sinais/metodo_tustin.html).
+   1. [Filtro Passa-Baixas Exponencial](https://fpassold.github.io/Lab_Processa_Sinais/Filtro/filtro_exponencial.html);
 
-   2. [Filtro Passa Baixas](https://fpassold.github.io/Process_Sinais/FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
+   2. "Projeto por emulação" → [Transformações biliares: Método de Tustin](https://fpassold.github.io/Process_Sinais/metodo_tustin.html).
 
-      Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
+      1. [Filtro Passa Baixas](https://fpassold.github.io/Process_Sinais/FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
+
+         Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
 
    3. Projeto usando alocação pólo-zero: [Filtro Notch sobre sinal de ECG](https://fpassold.github.io/Process_Sinais/projeto_polo_zero.html) (Eletrocardiograma).
 

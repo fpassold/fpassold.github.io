@@ -60,6 +60,8 @@ Tópicos previstos:
   * [Exemplo 1](https://fpassold.github.io/FreeRTOS/controle_digital_ex1.html) de Controle Digital usando tasks síncronas.
   
     Obs.: Infelzimente o FreeRTOS não possibilita task síncrona com $f_s>$ 1 KHz. Motivo pelo qual não será usada para atividades práticas envolvendo processamento digital de sinais na fáixa de audio.
+  
+* [Tentando gerar onda quadrada à 10 KHz](https://fpassold.github.io/FreeRTOS/onda_quadrada_10KHz) (usando timer de alta-resolução; não mais FreeRTOS).
 
 **Parte de Processamento Digital de Sinais**:
 

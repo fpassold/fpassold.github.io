@@ -1,16 +1,22 @@
 # Onda Quadrada à 10 KHz no ESP32
 
-> Sugira uma task síncrona usando FreeRTOS para esp32, programada usando IDE Eclipse, para gerar uma onda quadrada na frequência de 10 KHz simplesmente alternando o nível lógico de um pino da GPIO. Esta task deve usar o timer de alta-resolução das placas ESP32. Implementar outra task que roda a cada 100 ms mostrando o nível lógico da onda. A rotina ainda deve ler o botão built-in da placa ESP para permitir pausar o sinal (nível lógico vai à zero) ou executar novamente a onda, cada vez que é pressionado.
+**Objetivos**
+
+1. Programar uma task síncrona usando FreeRTOS para ESP32 (ambiente IDE Eclipse), para gerar uma onda quadrada na frequência de 10 KHz simplesmente alternando o nível lógico de um pino da GPIO. Esta task deve usar o timer de alta-resolução das placas ESP32. 
+2. Implementar outra task que roda a cada 100 ms mostrando o nível lógico da onda. A rotina ainda deve ler o botão built-in da placa ESP para permitir pausar o sinal (nível lógico vai à zero) ou executar novamente a onda, cada vez que é pressionado.
 
 **Solução possível**:
 
 Para implementar uma task síncrona usando FreeRTOS para gerar uma onda quadrada na frequência de 10 KHz e outra task que roda a cada 100 ms mostrando o nível lógico da onda, vamos usar a IDE Eclipse e programar para a placa ESP32. Além disso, vamos usar o botão built-in para pausar e retomar o sinal.
 
+Nota: é fácil gerar uma onda quadrada, simplesmente alternando o nível lógico de certo pino. Neste caso, supondo duty-cycle de 50%, metade do período de tempo estaremos em nível lógico alto ou biaox, o que significa que para gerar a onda quadrada com $f=$ 10 KHz, metade do período corresponde à: $T=1/f=0,0001$ segundos $=$ 0,1 mili-segundos $=$ 100 $\mu$s. Metade deste valor corresponde à 50 micro-secundos, ou seja, devemos alternar o sinal na frequência de $1/50\times10^{-6}=$ 20 KHz. Então necessitamos programar a task síncrona para ser interrompida na frequência de 20 KHz. Lembrar que o clock comum de uma placa ESP32 é de 80 MHz ou $T=12,5\;n$s $= 12.500 \mu$s; se for considerado que o ESP32 consegue executar uma insfrução à cada ciclo de máquin ou 4 pulsos de clock, resulta no período de tempo de: 50 ns (ou frequência de 20 MHz).
+
 ### Passo 1: Configurar o ambiente de desenvolvimento
+
 Certifique-se de ter a ESP-IDF (Espressif IoT Development Framework) instalada e configurada com Eclipse IDE. Este guia assume que você já tem o ambiente configurado.
 
 ### Passo 2: Código para gerar a onda quadrada e monitorar o botão
-A seguir está o código completo em C:
+A seguir segue código completo para IDE Eclipse ou Terminal de comandos:
 
 ```c
 #include <stdio.h>
@@ -161,7 +167,7 @@ Para modificar a task `button_task` para ativar o LED built-in da placa ESP32 qu
 1. **Identificar o pino do LED built-in**. Na maioria das placas ESP32, o LED built-in está no pino GPIO 2.
 2. **Modificar a task `button_task` para alternar o estado do LED conforme o estado da flag `is_running`**.
 
-A seguir está o código atualizado:
+A seguir segue código para Eclipse (ou terminal de comandos):
 
 ```c
 #include <stdio.h>
@@ -386,3 +392,12 @@ void loop() {
 - Abra o Monitor Serial na IDE do Arduino para visualizar os níveis lógicos da onda quadrada.
 
 Essa adaptação deve funcionar de maneira semelhante ao código original, agora dentro da interface do Arduino, tornando o desenvolvimento e a depuração mais acessíveis para quem está acostumado com esse ambiente.
+
+**Atenção**: Falta testar estas rotinas. Parece que usam versões atrasadas das API's da Espressif. 
+
+---
+
+<font size="2">🌊 [Fernando Passold](https://fpassold.github.io/)[ 📬 ](mailto:fpassold@gmail.com), <script language="JavaScript"><!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("página criada em 12/06/2024; atualizada em " + LastUpdated); // End Hiding -->
+</script></font>
