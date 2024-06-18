@@ -32,14 +32,15 @@
 8. [Impacto dos pólos e zeros](papel_polos_zeros.html) na magnitude da resposta frequencial de um sistema.
 9. Projeto de Filtros:
 1. [Filtro Passa-Baixas Exponencial](https://fpassold.github.io/Lab_Processa_Sinais/Filtro/filtro_exponencial.html);
-   2. "Projeto por emulação" → [Transformações biliares: Método de Tustin](metodo_tustin.html).
+   2. [Filtros Butterworth digitais](butter1.html);
+   3. "Projeto por emulação" → [Transformações biliares: Método de Tustin](metodo_tustin.html).
       2. [Filtro Passa Baixas](FPB_Arduino.html) de 1a-ordem e Butterworth de 2a-ordem (uso do método de Tustin):
-         Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
-3. Projeto usando alocação pólo-zero: [Filtro Notch sobre sinal de ECG](projeto_polo_zero.html) (Eletrocardiograma). 
+      Revisando Diagrama de Bode, Funções Transferência e FFT - baseado em: [How to design and implement a digital low-pass filter on an Arduino](https://www.youtube.com/watch?v=HJ-C4Incgpw), (de 20/06/2021, [Curio Res](https://www.youtube.com/@curiores111)) - (material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas) - (Acessado em 20/05/2024).
+   4. Projeto usando alocação pólo-zero: [Filtro Notch sobre sinal de ECG](projeto_polo_zero.html) (Eletrocardiograma). 
       <!-- projeto_polo_zero.md (em edição> 27/05/2024) -->
 10. [Reverberação](https://fpassold.github.io/Lab_Processa_Sinais/Lab_2/lab_2_convolucao.pdf) (baseado em [Teoria da Convolução](https://fpassold.github.io/Lab_Processa_Sinais/Convolucao/convolucao.html)).
 
-<!--🚧 Conteúdo sendo atualizado...-->
+<!--🚧 Conteúdo atualizado até 18/06/2024 -->
 
 **Formas de Avaliação:**
 
@@ -52,7 +53,7 @@
     - Média Móvel;
     - Filtro Notch (projeto por emulação);
     - Filtro Notch (projeto por alocação de pólos-zeros),  e;
-    - Filtro Butterworth de 2a-ordem.
+    - Filtro Butterworth de 5a-ordem.
 
 ---
 
