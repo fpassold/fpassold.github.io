@@ -49,11 +49,8 @@
 - Trabalhos individuais e em grupo.
   - [Trabalho #1)](trabalho_1_2024_1.html) Sobre sinais amostrados (Teorema de Amostragem) Deadline: 15/04/2024. (Equipes de no máximo 2 alunos + 1 equipe de 3 alunos).
   - ~~[Trabalho #2)](guitar.html) Resinstetizando sinal de guitarra~~ (não exigido em 2024/1) ⚠︎.
-  - Trabalho #3) Filtrando sinal de ECG usando: 
-    - Média Móvel;
-    - Filtro Notch (projeto por emulação);
-    - Filtro Notch (projeto por alocação de pólos-zeros),  e;
-    - Filtro Butterworth de 5a-ordem.
+  - [**Trabalho #3**) Projeto de Filtros](trabalho/trabalho_final_EEL.html).
+    Deadline: 27/06/2024.
 
 ---
 
