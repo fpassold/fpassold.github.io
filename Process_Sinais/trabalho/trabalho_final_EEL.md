@@ -50,7 +50,7 @@ Em todos os projetos, apresente:
 
 **Entrega**: enviar arquivo **PDF** para o e-mail do professor: [fpassold@upf.br](mailto:fpassold@upf.br?subject=[Trabalho Processamento Sinais EEL]).
 
-Trabalho proposto e solucionado em aproximadamente 3,5 horas.
+<font size="2">Trabalho proposto e solucionado em aproximadamente 3,5 horas (com excessão do filtro para item 6).</font>
 
 ----
 
