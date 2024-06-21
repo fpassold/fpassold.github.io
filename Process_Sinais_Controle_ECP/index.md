@@ -116,8 +116,6 @@ Eng. de Computação.
 
     
 
-11. 🚧 Conteúdo sendo atualizado...
-
 ![separation_line](separation_line.png)
 
 🧪 Parte Prática da disciplina: Aulas de **[Laboratório](lab/index.html)** (a partir de 30/04/2024).
@@ -149,6 +147,12 @@ Eng. de Computação.
     Cuja FFT rende:
     
     ![fft_ECG_noisy.png](https://fpassold.github.io/Process_Sinais/figuras/fft_ECG_noisy.png) 
+    
+  - [**Trabalho #3**) Projeto de Filtros](https://fpassold.github.io/Process_Sinais/trabalho/trabalho_final_ECP.html).
+    Deadline: 27/06/2024.
+  
+  
+
 
 ---
 
