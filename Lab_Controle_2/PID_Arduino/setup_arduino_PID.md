@@ -1,5 +1,16 @@
 # Setup para uso de PID em Arduino Uno
 
+- [Setup para uso de PID em Arduino Uno](#setup-para-uso-de-pid-em-arduino-uno)
+  - [Introdução](#introdução)
+  - [Módulo DAC MPC4725](#módulo-dac-mpc4725)
+  - [Placa de Condicionamento de Sinal para o DAC](#placa-de-condicionamento-de-sinal-para-o-dac)
+  - [Placa de Acondicionamento de sinal de ADC](#placa-de-acondicionamento-de-sinal-de-adc)
+  - [Placa do Filtro Passa Baixas](#placa-do-filtro-passa-baixas)
+  - [Instruções de Uso](#instruções-de-uso)
+
+
+## Introdução
+
 Para as aulas de controle digital usando kits Feedback ainda presentes no Laboratório de Controle do Curso de Engenharia Elétrica da UPF, foram desenvolvidas algumas placas extras para possibilitar a ligação de uma placa Arduino Uno à estes kits.
 
 A figura abaixo mostra a montagem de uma malha-fechada de [controle de posição angular usando kits da marca inglesa Feedback com PID analógico](https://fpassold.github.io/Lab_Controle_2/controle_posicao.html):
@@ -100,7 +111,14 @@ Circuito interno:
 
 <img src="placa_filtro_passa_baixas_50Hz_LM358.png" alt="placa_filtro_passa_baixas_50Hz_LM358" style="zoom:25%;" />
 
+## Instruções de Uso
+
+👉 A versão final e instruções sobre uso das placas extras pode ser visto [aqui](https://fpassold.github.io/Lab_Controle_2/placas_extras/placas_extras.html).
+
 ---
 
-Fernando Passold, em 08/04/2024.
+<font size="2">🌊 [Fernando Passold](https://fpassold.github.io/)[ 📬 ](mailto:fpassold@gmail.com), <script language="JavaScript"><!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("página criada em 08/04/2024; atualizada em " + LastUpdated); // End Hiding -->
+</script></font>
 

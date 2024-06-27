@@ -41,6 +41,7 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 <!--&nbsp;-->
 * Teste de [PID Digital usando Arduino Uno](PID_Arduino/PID_no_Arduino.html), (algoritmo de controle executado à taxa de 100 Hz; interface com usuário via comunicação serial/USB).
 * [Setup previsto para placa Arduino Uno + kits Feedback](PID_Arduino/setup_arduino_PID.html);
+* Placas extras para uso de Arduino Uno com kits MS150 da Feedback (🪛 👉 [instruções de uso](placas_extras/placas_extras.html) ).
 
 
 
@@ -53,5 +54,10 @@ Photo by <a href="https://unsplash.com/@marcwieland95?utm_source=unsplash&utm_me
 
 -----
 
-<font size="1">[♫](https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days) Fernando Passold, em 22/10/2022, 02/12/2022, 11/04/2023</font> .
+<font size="2">[♫](https://soundcloud.com/prmdmusic/sets/hotel-garuda-ft-violet-days)</font> 
+
+<font size="2">🌊 [Fernando Passold](https://fpassold.github.io/)[ 📬 ](mailto:fpassold@gmail.com), <script language="JavaScript"><!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("página criada em 22/10/2022; atualizada em " + LastUpdated); // End Hiding -->
+</script></font>
 
