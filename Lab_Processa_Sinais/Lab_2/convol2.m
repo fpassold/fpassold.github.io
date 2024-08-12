@@ -1,17 +1,17 @@
 % convol2.m
-% Fernando Passold, em 31/08/2023
+% Fernando Passold, em 31/08/2023, revisado em 09.08.2024
 clear x h x_mono h_mono
 
-%% Carregar um sinal de áudio e uma resposta ao impulso
-disp('Teste de convolução (reverberação) de sinais')
+%% Carregar um sinal de audio e uma resposta ao impulso
+disp('Teste de convolucao (reverberacao) de sinais')
 disp(' ');
 file_x = input('Informe nome arquivo audio de entrada ? ', 's');
 % audio_signal = audioread('audio_file.wav');
 [x, Fs_x] = audioread(file_x);
 fprintf('Freq. de amostragem adotada: %.2f [KHz]\n\n', Fs_x/1000);
 
-%% Eventualmente o arquivo de entrada é stereo (2 canais)
-% se faz necessário converter de stereo --> mono
+%% Eventualmente o arquivo de entrada eh stereo (2 canais)
+% se faz necessario converter de stereo --> mono
 % Ref.: https://la.mathworks.com/matlabcentral/answers/345155-how-to-check-number-of-channels-of-a-sound-file-and-convert-stereo-file-in-mono-in-matlab
 [L_x, n_x] = size(x); % n_x = numero de canais
 if n_x >= 2
@@ -37,8 +37,8 @@ file_h = input('Informe nome arquivo audio de IR ? ', 's');
 [h, Fs_h] = audioread(file_h);
 fprintf('Freq. de amostragem adotada: %.2f [KHz]\n\n', Fs_h/1000);
 
-%% Eventualmente o arquivo de entrada é stereo (2 canais)
-% se faz necessário converter de stereo --> mono
+%% Eventualmente o arquivo de entrada eh stereo (2 canais)
+% se faz necessario converter de stereo --> mono
 % Ref.: https://la.mathworks.com/matlabcentral/answers/345155-how-to-check-number-of-channels-of-a-sound-file-and-convert-stereo-file-in-mono-in-matlab
 [L_h, n_h] = size(h); % n_h = numero de canais
 if n_h >= 2
@@ -57,10 +57,12 @@ else
     h_mono = h;
 end
 
+menor_Fs = min([Fs_x Fs_h]);
+    
 %% Compatibiliza Fs's se diferentes...
 if Fs_x ~= Fs_h
-    fprintf('ATENÇÃO: Freq. de amostragem do sinal de entrada\n');
-    disp('é diferente do sinal de IR');
+    fprintf('ATENCAO: Freq. de amostragem do sinal de entrada\n');
+    disp('Eh diferente do sinal de IR');
     fprintf('Reduzindo Sampling rate do sinal ');
     menor_Fs = min([Fs_x Fs_h]);
     maior_Fs = max([Fs_x Fs_h]);
@@ -79,28 +81,28 @@ if Fs_x ~= Fs_h
     fprintf('Para nova taxa de amostragem: %.2f [KHz]\n\n', menor_Fs/1000);
 end
 
-%% Realizar a convolução em tempo real
+%% Realizar a convolucao em tempo real
 % output_signal = conv(audio_signal, impulse_response);
-disp('Realizando convolução... ')
+disp('Realizando convolucao... ')
 L = max([L_x+L_h-1, L_x, L_h]); % estimando qtdade de amostras geradas...
-fprintf('%i amostras serão geradas (%.2f segundos).\nAguarde...\n', L, L/menor_Fs);
+fprintf('%i amostras serao geradas (%.2f segundos).\nAguarde...\n', L, L/menor_Fs);
 output_signal = conv(x_mono, h_mono);
 
-% Normalizando o vetor de saida obtido, senão ocorre eventualmente:
+% Normalizando o vetor de saida obtido, senao ocorre eventualmente:
 % Warning: Data clipped when writing file.
 % Ocasionado porque:
-% For 16 bit precision, the values are limited to –1.0 <= y < +1.0, 
+% For 16 bit precision, the values are limited to -1.0 <= y < +1.0, 
 % when the signal is provided as floating point format. 
 % A workaround is to convert the data manually before calling wavwrite()
 
 output_signal = output_signal ./ max(abs(output_signal(:)));
 
-%% Reproduzir o sinal de saída
-disp('Normalizando amplitudes vetor de saída...')
-sound(output_signal, menor_Fs);  % 'Fs' é a taxa de amostragem do áudio
+%% Reproduzir o sinal de saida
+disp('Normalizando amplitudes vetor de saida...')
+sound(output_signal, menor_Fs);  % 'Fs' eh a taxa de amostragem do audio
 
 filename = 'output_signal.wav';
 audiowrite(filename, output_signal, menor_Fs);
 fprintf('\nGravado arquivo <<%s>>...\n', filename);
-disp('Para repetir saída gerada, digite:');
+disp('Para repetir saida gerada, digite:');
 fprintf('\tsound(output_signal, menor_Fs);\n\n')
