@@ -37,8 +37,11 @@ Experimentos previstos:
 
 &nbsp;
 
-:construction_worker_man: Página ainda sendo atualizada.
+:construction_worker_man: 
 
 ---
 
-Fernando Passold, 1a-versão em 02/11/2023, atualizado em 12.08.2024.
+<font size="2">🌊 [Fernando Passold](https://fpassold.github.io/)[ 📬 ](mailto:fpassold@gmail.com), <script language="JavaScript"><!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("página criada em 02/11/2023; atualizada em " + LastUpdated); // End Hiding -->
+</script></font>
