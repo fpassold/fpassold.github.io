@@ -1,0 +1,130 @@
+/***
+ Testando filtro de média móvel de NUM_SAMPLES passos
+ Fernando Passold, em 18/06/2024
+
+ Dado de entrada: valor lido por um LDR em série com resistor de 10 KOhms,
+ o ponto central está conectado à entrada analógica A0; a outra ponta do
+ resistor está no GND e a outra ponta do LDR está em 5 Volts (Vcc)
+ Este LDR está "acoplado" com um led externo conectado no pino 5 (saída PWM),
+ cujo duty-cycle poderia ser controlado
+****/
+#include <EEPROM.h>
+
+const int maxReadings = 1000; // Ajustado para uma quantidade segura inicialmente
+const byte analogPin = A0;    // pino (A/D) que recebe sinal analógico
+const byte PIN_LED = 5;       // Led à ser "controlado", no pino 5 (ou 6)
+// const int numReadings = 10000;
+/**
+const int numReadings = 10000; // 10 segundos com intervalos de 1 milissegundo
+Sketch uses 4038 bytes (12%) of program storage space. Maximum is 32256 bytes.
+Global variables use 10378 bytes (506%) of dynamic memory, leaving -8330 bytes for local variables. Maximum is 2048 bytes.
+**/
+
+int *x; // Ponteiro para armazenar as leituras dinamicamente
+int numReadings = 0;
+int memAvailable;
+int maxSamples;
+int i;
+unsigned long startTime; // Variável para armazenar o tempo de início
+unsigned long endTime;   // Variável para armazenar o tempo de término
+unsigned long totalTime;
+float samplingPeriod;
+
+// Função para calcular a memória livre disponível
+/***
+int freeMemory() {
+  char top;
+  return __brkval ? &top - __brkval : &top - __malloc_heap_start;
+}
+Compilation error: '__brkval' was not declared in this scope
+***/
+int freeMemory() {
+  extern int __heap_start, *__brkval;
+  int v;
+  return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval);
+}
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(PIN_LED, OUTPUT);
+  Serial.begin(115200);     //  setup serial
+  while (!Serial) {
+    ;  // Aguarda até que a porta serial esteja pronta - normalmente 10 ms
+  }
+
+  // Calcula a memória livre disponível
+  memAvailable = freeMemory();
+  maxSamples = memAvailable / sizeof(int); // Calcula o número máximo de amostras possíveis
+
+  // Exibir a memória disponível e o número máximo de leituras possíveis
+  Serial.print("Memória livre disponível (bytes): ");
+  Serial.println(memAvailable);
+  Serial.print("Número máximo de leituras possíveis: ");
+  Serial.println(maxSamples);
+
+  // Ajustar o número de leituras baseado na memória disponível
+  numReadings = maxSamples < maxReadings ? maxSamples : maxReadings;
+
+  // Alocar memória dinamicamente para as leituras
+  /***
+  x = (int*) malloc(numReadings * sizeof(int));
+  Número máximo de leituras possíveis: 774
+Erro ao alocar memória!
+***/  
+  numReadings = (int)(maxSamples*0.9);
+  Serial.print("Vamos tentar realizar: ");
+  Serial.print(numReadings);
+  Serial.println(" leituras");  
+  x = (int*) malloc((numReadings) * sizeof(int));
+  if (x == NULL) {
+    Serial.println("Erro ao alocar memória!");
+    while (1); // Parar o programa se não for possível alocar memória
+  }
+
+  // Exibir uma mensagem indicando que o programa começou
+
+  Serial.println("Iniciando a captura de dados...");
+  digitalWrite(PIN_LED, HIGH); // led inicia aceso
+  startTime = millis();
+  // Captura as leituras
+  for (i = 0; i < numReadings; i++) {
+    x[i] = analogRead(analogPin); // *(5.0/1024.0);  // converte para faixa 0 á 5 Volts
+    delay(1); // Delay de 1 milissegundo - não garante período de amostragem de 1 ms, mas vamos verificar...
+  }
+  endTime = millis();
+  digitalWrite(PIN_LED, HIGH); // led inicia aceso
+  // Calcula o período de amostragem
+  totalTime = endTime - startTime;
+  samplingPeriod = (float)totalTime / numReadings;
+  // Exibir os tempos e o período de amostragem
+  Serial.print("Tempo de início (ms): ");
+  Serial.println(startTime);
+  Serial.print("Tempo de término (ms): ");
+  Serial.println(endTime);
+  Serial.print("Tempo total (ms): ");
+  Serial.println(totalTime);
+  Serial.print("Período de amostragem (ms): ");
+  Serial.println(samplingPeriod, 4); // Três casas decimais
+  Serial.println(" ");
+  // Exibir as leituras capturadas
+  Serial.println("Leituras capturadas:");
+  Serial.println(" ");  
+  for (int i = 0; i < numReadings; i++) {
+    Serial.println(x[i]);
+  }
+  Serial.println(" ");
+  Serial.println("Captura concluída.");
+
+  // Liberar a memória alocada dinamicamente
+  free(x);
+}
+
+void loop() {
+  // Nada para fazer no loop
+}
+
+/***
+Sketch uses 5078 bytes (15%) of program storage space. Maximum is 32256 bytes.
+Global variables use 494 bytes (24%) of dynamic memory, leaving 1554 bytes for local variables. 
+Maximum is 2048 bytes.
+****/

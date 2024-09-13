@@ -21,16 +21,21 @@ Experimentos previstos:
 
   <!--[Gerador Onda Senoidal](lab_4/lab_4_gerador_senoidal.html) usando Arduíno, conversor DAC I2C e ISR.-->
 
-* [Experimento 1](2024_2/exp_1_sintese_senoide.html) ) com placa Arduíno: **Síntese de Onda Senoidal**.
-
-
+* [Lab 3) **Síntese de Onda Senoidal**](2024_2/exp_1_sintese_senoide.html) (usando ISR em placa Arduíno).
 
 <!--* [Lab 3) trabalho 3 para 2023.2](Lab_3/lab3_trabalho_2023_2.html).-->
 
 
 * Revisão sobre Cálculo de [FFT usando Matlab](https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html) (Levantamento do espectro de um sinal).
-* Teoria/Equações do [Filtro Passa-Baixas Exponencial](Filtro/filtro_exponencial.html).
+
 * Filtro de Média Móvel: [Teoria](https://fpassold.github.io/Process_Sinais/media_movel.html) & Aplicação.
+
+* [Lab 4) **Filtro de Média Móvel**](2024_2/LDR/exp_media_movel_LDR.html) (usando LDR, Arduíno e eventualmente Matlab para análise de dados).
+
+  
+
+* Teoria/Equações do [Filtro Passa-Baixas Exponencial](Filtro/filtro_exponencial.html).
+
 * Filtro Passa-Baixas Butterworth usando Matlab: [Teoria](https://fpassold.github.io/Process_Sinais/butter1.html) & Aplicação.
 
 <!--* [Explorando o Espectro com a Transformada de Fourier](lab_5_transf_fourier/lab_5_trans_fourier.html)-->
