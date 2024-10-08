@@ -1,105 +1,27 @@
 <!-- ttitle: Controle Automático II -->
 
-![Photo by David Watkis, Golden Gate Bridge](https://images.unsplash.com/photo-1566153580922-16a9709fff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80) 
+![Photo by David Watkis, Golden Gate Bridge](https://images.unsplash.com/photo-1566153580922-16a9709fff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80)
+
 <font size="1"> Photo by David Watkis on https://unsplash.com/images/feelings/cool?</font> 
 
 # Curso de Controle Automático II
 
-<details><summary>Sequência prevista para aulas...</summary>
-<p>
-
-![gráfico](1_intro/sequencia_aulas.png)
-
-</p>
+<details>
+	<summary>Clique aqui para: Sequência prevista para aulas</summary>
+	<img src="1_intro/sequencia_aulas.png" alt "Gráfico sequência aulas">
 </details>
 
-<details><summary>Referências Bibliográficas</summary>
-<p>
-
-* **NISE**, Norman S. **Engenharia de sistemas de controle**. 7. ed. Rio de Janeiro: LTC, 2017. xiv, 751 p. ISBN 9788521634355. Número de chamada: 681.5 N724e 7.ed.-2017.  
-
-* **NISE**, Norman S. **Engenharia de sistemas de controle**. 7. Rio de Janeiro LTC 2017 1 [Acesso online (via UPF)](https://secure.upf.br/pergamum/biblioteca_s/acesso_login.php?cod_acervo_acessibilidade=5014181&acesso=aHR0cHM6Ly9pbnRlZ3JhZGEubWluaGFiaWJsaW90ZWNhLmNvbS5ici9ib29rcy85Nzg4NTIxNjM0Mzc5&label=acesso%20restrito). ISBN 9788521634379. Acervo BU/UPF: 5014181.
-
-</p>
+<details>
+	<summary>Clique aqui para: Referências Bibliográficas</summary>
+    <blockquote>
+	<ul>
+		<li>NISE, Norman S. Engenharia de sistemas de controle. 7. ed. Rio de Janeiro: LTC, 2017. xiv, 751 p. ISBN 9788521634355. Número de chamada: 681.5 N724e 7.ed.-2017. </li> 
+		<li> NISE, Norman S. Engenharia de sistemas de controle. 7. Rio de Janeiro LTC 2017, <a href="https://secure.upf.br/pergamum/biblioteca_s/acesso_login.php?cod_acervo_acessibilidade=5014181&acesso=aHR0cHM6Ly9pbnRlZ3JhZGEubWluaGFiaWJsaW90ZWNhLmNvbS5ici9ib29rcy85Nzg4NTIxNjM0Mzc5&label=acesso%20restrito">[Acesso online (via UPF); ISBN 9788521634379; Acervo BU/UPF: 5014181]</a></li>
+	</ul>
+    </blockquote>
 </details>
 
-<details><summary>Dicas instalação do MATLAB (toolboxes necessários)...</summary>
-<p>
-
-> Para os propósitos desta disciplina (Controle Automático I, Controle Automático II e Controle Automático III), é altamente desejável o uso do Matlab/Simulink.
->
-> O software Matlab/Simulink normalmente vêm acompanhado de vários "toolboxes" (bibliotecas extras que complementam suas funções), em tal quantidade que sua instalação completa (todos os toolboxes), facilmente pode exigir mais de 30 GBytes de espaço em disco!
-> 
-> Sugere-se no momento da instalação do Matlab/Simulink, optar-se pela instalação dos seguintes pacotes:
->
-> Products:
-> MATLAB (**>= Matlab R2017b**)</br>
-> [x] **Simulink**</br> 
-> [x] **Control System Toolbox**</br>
-> [x] **Curve Fitting Toolbox**</br>
->
-> A lista acima envolvendo instalação do Matlab versão 2017B realizada num MacOS exigiu:
-> Installation Size: 5,759 MB (5,7 Gbytes) 
-> (Espaço ocupado numa máquina executando MacOS Monterey; o espaço final pode variar um pouco para sistemas Linux ou Windows)
-> 
-> Recomenda-se também: </br>
-> [x] Symbolic Math Toolbox </br>
-> [x] SimEvents </br>
-> [x] Simscape </br>
-> [x] Simscape Driveline </br>
-> [x] Simscape Electronics </br>
-> [x] Simscape Fluids </br>
-> [x] Simscape Multibody </br>
-> 
-> **Exemplo real**: Instalação do MATLAB Version: 9.5.0.944444 (R2018b) em Windows 11,com os seguintes toolboxes:
-> 
-```bash
-MATLAB                                                Version 9.5         (R2018b)
-Simulink                                              Version 9.2         (R2018b)
-Computer Vision System Toolbox                        Version 8.2         (R2018b)
-Control System Toolbox                                Version 10.5        (R2018b)
-Curve Fitting Toolbox                                 Version 3.5.8       (R2018b)
-Data Acquisition Toolbox                              Version 3.14        (R2018b)
-Database Toolbox                                      Version 9.0         (R2018b)
-Deep Learning Toolbox                                 Version 12.0        (R2018b)
-Fixed-Point Designer                                  Version 6.2         (R2018b)
-Fuzzy Logic Toolbox                                   Version 2.4         (R2018b)
-Image Acquisition Toolbox                             Version 5.5         (R2018b)
-Image Processing Toolbox                              Version 10.3        (R2018b)
-MATLAB Coder                                          Version 4.1         (R2018b)
-MATLAB Distributed Computing Server                   Version 6.13        (R2018b)
-Optimization Toolbox                                  Version 8.2         (R2018b)
-Parallel Computing Toolbox                            Version 6.13        (R2018b)
-Partial Differential Equation Toolbox                 Version 3.1         (R2018b)
-Robotics System Toolbox                               Version 2.1         (R2018b)
-Sensor Fusion and Tracking Toolbox                    Version 1.0         (R2018b)
-Signal Processing Toolbox                             Version 8.1         (R2018b)
-SimEvents                                             Version 5.5         (R2018b)
-Simscape                                              Version 4.5         (R2018b)
-Simscape Driveline                                    Version 2.15        (R2018b)
-Simscape Electrical                                   Version 7.0         (R2018b)
-Simscape Fluids                                       Version 2.5         (R2018b)
-Simscape Multibody                                    Version 6.0         (R2018b)
-Simulink 3D Animation                                 Version 8.1         (R2018b)
-Simulink Check                                        Version 4.2         (R2018b)
-Simulink Coder                                        Version 9.0         (R2018b)
-Simulink Control Design                               Version 5.2         (R2018b)
-Simulink Coverage                                     Version 4.2         (R2018b)
-Simulink Desktop Real-Time                            Version 5.7         (R2018b)
-Simulink PLC Coder                                    Version 2.6         (R2018b)
-Simulink Real-Time                                    Version 6.9         (R2018b)
-Simulink Requirements                                 Version 1.2         (R2018b)
-Simulink Test                                         Version 2.5         (R2018b)
-Stateflow                                             Version 9.2         (R2018b)
-Statistics and Machine Learning Toolbox               Version 11.4        (R2018b)
-Symbolic Math Toolbox                                 Version 8.2         (R2018b)
-System Identification Toolbox                         Version 9.9         (R2018b)
-```
-
-> Exigiu: 15,7 Gbytes de espaço em disco!
-</p>
-</details>
-
+* [Instalação (recomendada) do Matlab/Simulink e *toolboxes*](https://fpassold.github.io/Matlab/instalacao_matlab.html).
 * [Tutorial (rápido) sobre o Matlab](https://fpassold.github.io/Matlab/tutorial.html);
 * [Tutorial (rápido) sobre o Octave](https://fpassold.github.io/Octave/octave_inicio.html);
 
@@ -114,84 +36,18 @@ System Identification Toolbox                         Version 9.9         (R2018
 * Ações de Controle (teoria/slides) --> [acoes_controle.pdf](2_acoes/acoes_controle.pdf);
 * Material complementar sobre Açôes de Controle Básicas --> [acoes_controle_basicas.pdf](2_acoes/acoes_controle_basicas.pdf);
 * Exemplo de [Controle de Velocidade de motor CC](Testes_Velocidade_Motor_CC/modelagem_motor_cc.html) (diferentes controladores), incluindo sua modelagem.
-    * Arquivos SLX para Simulações de ações de controle de velocidade do motor CC (para uso com Matlab/Simulink) + imagens e HTML em formato Zipado ([Motor_CC.zip](2_acoes/Motor_CC.zip), 5 MB).
-    
-<details><summary>Clique aqui para ver conteúdo de "Motor_CC.zip"</summary>
-<p>
+    * Arquivos SLX para Simulações de ações de controle de velocidade do motor CC (para uso com Matlab/Simulink) + imagens e HTML em formato Zipado ([Motor_CC.zip](2_acoes/Motor_CC.zip), 5 MB -- [Detalhes/Instruções de Uso](motor_CC_zip.html).
 
-```bash
-Downloads % unzip -l Motor_CC.zip
-Archive:  Motor_CC.zip
-  Length      Date    Time    Name
----------  ---------- -----   ----
-        0  08-02-2023 17:07   Motor_CC/
-   532911  08-31-2020 16:00   Motor_CC/Armature Controlled DC Motor - Wikipedia.pdf
-   616785  08-31-2020 17:40   Motor_CC/Control Tutorials for MATLAB and Simulink - Motor Speed: Simulink Control.pdf
-   496414  08-31-2020 17:39   Motor_CC/Control Tutorials for MATLAB and Simulink - Motor Speed: Simulink Modeling.pdf
-   672037  08-31-2020 15:53   Motor_CC/Creating a High-Fidelity Model of an Electric Motor for Control System Design and Verification - MATLAB & Simulink.pdf
-   196291  08-31-2020 15:52   Motor_CC/DC Motor Model.pdf
-   148642  09-01-2020 22:34   Motor_CC/modelagem_motor_cc.html
-    11871  09-01-2020 22:34   Motor_CC/modelagem_motor_cc.md
-  1456599  09-01-2020 22:34   Motor_CC/modelagem_motor_cc.pdf
-    32883  08-31-2020 17:21   Motor_CC/monitoracao_motor_cont_Prop.png
-    22922  08-31-2020 17:31   Motor_CC/monitoramento_cont_PD.png
-    27987  08-31-2020 17:27   Motor_CC/monitoramento_cont_PI.png
-    34142  08-31-2020 17:35   Motor_CC/Motor_CC_Velocidade-modelo_interno.pdf
-   154191  08-31-2020 18:55   Motor_CC/Motor_CC_Velocidade-modelo_interno.png
-    23847  08-31-2020 17:33   Motor_CC/motor_cc_velocidade-subsistema.pdf
-    52161  08-31-2020 18:56   Motor_CC/motor_cc_velocidade-subsistema.png
-    38708  08-31-2020 17:28   Motor_CC/motor_cc_velocidade_cont_PD.pdf
-   131721  08-31-2020 19:20   Motor_CC/motor_cc_velocidade_cont_PD.png
-    37639  08-31-2020 17:23   Motor_CC/motor_cc_velocidade_cont_PI.pdf
-    43061  08-31-2020 19:25   Motor_CC/motor_cc_velocidade_cont_PID.pdf
-   194239  08-31-2020 19:25   Motor_CC/motor_cc_velocidade_cont_PID.png
-    34534  08-31-2020 17:17   Motor_CC/motor_cc_velocidade_cont_Prop.pdf
-   129720  08-31-2020 19:06   Motor_CC/motor_cc_velocidade_cont_Prop.png
-    28247  08-31-2020 17:16   Motor_CC/motor_cc_velocidade_teste_MA.pdf
-    71860  08-31-2020 18:59   Motor_CC/motor_cc_velocidade_teste_MA.png
-    15737  08-31-2020 17:47   Motor_CC/motor_phisic_setup.png
-    31648  08-31-2020 18:05   Motor_CC/Picture1.png
-    34539  08-31-2020 18:15   Motor_CC/Picture2.png
-    36338  08-31-2020 18:19   Motor_CC/Picture3.png
-    39880  08-31-2020 18:49   Motor_CC/Picture4.png
-    30494  08-31-2020 18:51   Motor_CC/Picture44.png
-    35633  08-31-2020 17:11   Motor_CC/resposta_PID.png
-    25237  08-31-2020 17:30   Motor_CC/resultado_cont_PD.png
-    30466  08-31-2020 17:24   Motor_CC/resultado_cont_PI.png
-    33204  08-31-2020 17:19   Motor_CC/resultado_cont_Prop.png
-    40831  08-31-2020 17:15   Motor_CC/resultado_MA.png
-        0  08-02-2023 17:07   Motor_CC/Simulink/
-    23960  08-31-2020 17:35   Motor_CC/Simulink/motor_cc_velocidade.slx
-    23849  08-31-2020 17:32   Motor_CC/Simulink/motor_cc_velocidade_cont_PD.slx
-    23722  08-31-2020 17:27   Motor_CC/Simulink/motor_cc_velocidade_cont_PI.slx
-    24127  08-31-2020 17:12   Motor_CC/Simulink/motor_cc_velocidade_cont_PID.slx
-    23685  08-31-2020 17:22   Motor_CC/Simulink/motor_cc_velocidade_cont_Prop.slx
-    23048  08-31-2020 17:15   Motor_CC/Simulink/motor_cc_velocidade_teste_MA.slx
----------                     -------
-  5685810                     43 files
-```
-
-Instruções:
-
-* Baixar apenas o arquivo Motor_CC.zio (quase 5 Mbytes);
-* Depois descompactar arquivo Motor_CC.zip. 
-* Serão gerados vários arquivos a partir da pasta "\Motor_CC"; 
-* Nesta pasta busque pelo arquivo "modelagem_motor_cc.html". Abra este arquivo no seu browser preferido. 
-* É criando ainda um subdiretório à partir da pasta anterior: \Motor_CC\Simulink", contendo todos os arquivos SLX (diagramas de blocos para Matlab/Simulink). Indique este "path" no Matlab para pode acessar estes arquivos.
-* **Obs.:** Executar script `motor.m` ANTES de rodar rotinas SLX do Simulink. Senão Simulink será paralizado com mensagem de erro questionando sobre variáveis desconhecidas). Na janela de console (comandos) do Matlab, basta digitar: `>> motor`.
-
-</p>
-</details>
 
 ## 3) Teoria do Erro
 
-* Teoria do erro (ou da Precisão): slides --> [erros.pdf](3_erros/erros.pdf);
+* Teoria do erro (ou da Precisão): slides → [erros.pdf](3_erros/erros.pdf);
 * [Exemplos de sistemas à serem simulados](Simulink_Erros/Readme.html) (Matlab/Simulink: arquivos disponibilizados);
 * Avaliação quanto à Teoria do Erro: [Google Forms: Avaliação Teoria do Erro](https://docs.google.com/forms/d/e/1FAIpQLSf1dYZ52eQAYvpfKVSjnaPG8YJSuukig0y84F19SRApwe4Rsw/viewform)
 
 ## 4) Estabilidade
 
-- Slides/teoria --> [Estabilidade.pdf](4_estabilidade/Estabilidade.pdf);
+- Slides/teoria → [Estabilidade.pdf](4_estabilidade/Estabilidade.pdf);
 - [Parte 1](estabilidade.html) (Conceitos e simulações)
 - [Parte 2](estabilidade2.html) (Incompleto)
 - Vídeos (YouTube) Recomendados:
@@ -211,7 +67,8 @@ Instruções:
 
 ## 6) Respostas de Sistemas Lineares
 
-* Revisão sobre Respostas de Sistemas Lineares (plantas de 1a-ordem, um polo simples real, múltiplos polos reais, polos dominantes, sistemas 2a-ordem com polos reais e polos complexos) --> [Root_Locus_3a_parte_pt_2019_1.pdf](5_respostas/Root_Locus_3a_parte_pt_2019_1.pdf)
+* Revisão sobre Respostas de Sistemas Lineares (plantas de 1a-ordem, um polo simples real, múltiplos polos reais, polos dominantes, sistemas 2a-ordem com polos reais e polos complexos):
+  → [Root_Locus_3a_parte_pt_2019_1.pdf](5_respostas/Root_Locus_3a_parte_pt_2019_1.pdf)
 
 ## 7) Projeto de Controladores usando Root Locus
 
@@ -275,36 +132,35 @@ Instruções:
 * [PID: Métodos de sintonia (dicas)](8_Ajuste_PID/PID_metodos_sintonia.pdf);
 * Exemplo: arquivo [`sintonia_PID_exemplo.slx`](8_Ajuste_PID/sintonia_PID_exemplo.slx) (Matlab/Simulink)
 
+## Aulas passadas
+
+* [Semestre 2024/2](2024_2/aulas_2024_2.html).
+
 ## Trabalhos
 
 * :boom: [Turma de 2023/1](trabalho_2023_1/trabalho_2023_1.html) 
 
 ## FAQs
 
-<details><summary>Dúvida em Projeto de PI usando Root Locus e Contribuição Angular...</summary>
-<p>
-
-> Dúvida associada com posição do zero do controlador, o qual achamos por contribuição angular. No arquivo, há dois tipos de tentativa: a primeira seguindo à risca o que estava no material do senhor quanto ao processo de achar o local do zero, e a segunda mudando a equação das somatórias dos polos e zeros, como o senhor poderá ver no arquivo. 
->
-> Gostaríamos de saber como podemos proceder nesse caso, e se ele se encaixa na observação feita pelo senhor no material sobre amplitudes excessivas para a ação de controle.
->
-> Segue [PDF](FAQ/Dvuidas%20Controlador_PI.pdf) original com a dúvida, acrescido de comentários no próprio PDF.
-</p>
+<details>
+	<summary>Dúvida em Projeto de PI usando Root Locus e Contribuição Angular...</summary>
+	<blockquote>Dúvida associada com posição do zero do controlador, o qual achamos por contribuição angular. No arquivo, há dois tipos de tentativa: a primeira seguindo à risca o que estava no material do senhor quanto ao processo de achar o local do zero, e a segunda mudando a equação das somatórias dos polos e zeros, como o senhor poderá ver no arquivo.
+    <p>Gostaríamos de saber como podemos proceder nesse caso, e se ele se encaixa na observação feita pelo senhor no material sobre amplitudes excessivas para a ação de controle.</p>
+        <p>Segue <a href="FAQ/Dvuidas%20Controlador_PI.pdf">[Aquivo PDF Dúvidas Controlador PI]</a>, com a dúvida, acrescido de comentários no próprio PDF.</p>
+	<blockquote>
 </details>
 
-<details><summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
-<p>
 
-> Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular... --> [PDF](FAQ/observacoes_cuidados_contribuicao_angular.pdf)
-</p>
+<details>
+	<summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
+    <blockquote>Segue: <a href="FAQ/observacoes_cuidados_contribuicao_angular.pdf"> [PDF com FAQ/observações & cuidados associados com cálculos de contribuicao angular]</a></blockquote>
 </details>
 
-<details><summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
-<p>
-
-> Dúvida sobre PD e Lead (simulações com Bloco Saturador)... --> [PDF](FAQ/cópia%20de%20Duvida_Controlador_PD_LEAD.pdf)
-</p>
+<details>
+	<summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
+    <blockquote><a href="FAQ/cópia%20de%20Duvida_Controlador_PD_LEAD.pdf">[PDF]</a>: Dúvida sobre PD e Lead (simulações com Bloco Saturador)</blockquote>
 </details>
+
 
 
 ## :speech_balloon: Anexos
@@ -316,11 +172,7 @@ Instruções:
 
 <font size="1">[:musical_note:](https://soundcloud.com/paolitachan/paul-mccartney-wings-live-and) Prof. Fernando Passold</font>
 
-<script language="JavaScript">
-<!-- Hide JavaScript...
+<font size="2">🌊 [Fernando Passold](https://fpassold.github.io/)[ 📬 ](mailto:fpassold@gmail.com), <script language="JavaScript"><!-- Hide JavaScript...
 var LastUpdated = document.lastModified;
-<font size="1">
-document.writeln ("Last updated: " + LastUpdated);
-</font>
-// End Hiding -->
-</script>
+document.writeln ("página criada em Março/2020; Atualizada em " + LastUpdated); // End Hiding -->
+</script></font>

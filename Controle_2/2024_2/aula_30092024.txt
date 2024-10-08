@@ -1,0 +1,227 @@
+
+pwd
+ans =
+    '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_2/2024_2'
+load planta
+
+% ## Projeto de PD
+
+% Lembrando da planta:
+zpk(G)
+
+ans =
+ 
+          20
+  ------------------
+  (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+
+% Seguem esboços de RL para diferentes opções de locais para
+% o zero do PD.
+
+% Opções:
+
+% * **Opçao 1**: $0 < z_{PD} < -1$: mas neste caso teremos um
+% pólo de MF mais próximo do eixo $j\omega$;
+% * **Opção 2**: $-1 < z_{PD} < -4$: resulta um pólo de real de
+% MF mais afastado do eixo $j\omega.$ Na prática, seria a melhor
+% opção.
+% * **Opção 3**: $z_{PD}=-4$ (cancelando o 2o-pólo mais lento 
+% da planta). Resulta num sistema em MF de 2a-ordem (redução
+% de complexidade do sistema).
+% * **Opção 4**: $z_{PD}= -1$ (cancelando o pólo mais lento da
+% planta). Resulta num sistema em MF de 2a-ordem e mais rápido
+% que opção 3, ao menos teoricamente (supondo que os pólos
+% estejam realmente em $s=-1$, $s=-4$...
+
+% ### PD Opção 2
+
+% Neste caso o $-4 < z_{PD} < -1$, arbitrando um local gemétrico
+% intermediário
+
+(1+4)/2
+ans =
+          2.5
+
+PD2 = tf( [1 2.5], 1)
+
+PD2 =
+ 
+  s + 2.5
+ 
+Continuous-time transfer function.
+
+ftma_PD2 = PD2*G;
+zpk(ftma_PD2)
+
+ans =
+ 
+      20 (s+2.5)
+  ------------------
+  (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+rlocus(ftma_PD2)
+hold on; sgrid(zeta,0)
+[K_PD2,polosMF]=rlocfind(ftmf_PD2)
+{Unrecognized function or variable 'ftmf_PD2'.} 
+[K_PD2,polosMF]=rlocfind(ftma_PD2)
+Select a point in the graphics window
+selected_point =
+      -6.3768 +     8.6378i
+K_PD2 =
+        4.509
+polosMF =
+      -6.3444 +     8.6372i
+      -6.3444 -     8.6372i
+      -2.3112 +          0i
+
+% ![RL_PD2.png](RL_PD2.png)
+
+ftmf_PD2=feedback(K_PD2*ftma_PD2, 1);
+figure; step(ftmf_PD2, ftmf)
+[Warning: Error occurred while executing the listener callback
+for event TextComplete defined for class codegen.codeprogram:
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('waitbar', '/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/waitbar.m', 100)" style="font-weight:bold">waitbar</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/waitbar.m',100,0)">line 100</a>)
+The second argument must be a message character vector or a
+handle to an existing waitbar.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode>local_update_wait_bar', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 216)" style="font-weight:bold">makemcode>local_update_wait_bar</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',216,0)">line 216</a>)
+    waitbar(val,hwait,string);
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode>@(e,d)local_update_wait_bar(e,d,hwait,.95,getString(message(''MATLAB:codetools:makemcode:GeneratingFinalTextRep'')),show_status_bar)', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 126)" style="font-weight:bold">makemcode>@(e,d)local_update_wait_bar(e,d,hwait,.95,getString(message('MATLAB:codetools:makemcode:GeneratingFinalTextRep')),show_status_bar)</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',126,0)">line 126</a>)
+addlistener(hProgram,'TextComplete',@(e,d)local_update_wait_bar(e,d,hwait,.95,...
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('codegen.codeprogram/toMCode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/+codegen/@codeprogram/toMCode.m', 18)" style="font-weight:bold">codegen.codeprogram/toMCode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/+codegen/@codeprogram/toMCode.m',18,0)">line 18</a>)
+notify(hCodeProgram,'TextComplete');
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 135)" style="font-weight:bold">makemcode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',135,0)">line 135</a>)
+        mcode_str = hProgram.toMCode(options);
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('filemenufcn', '/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m', 62)" style="font-weight:bold">filemenufcn</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m',62,0)">line 62</a>)
+        makemcode(hfig,'Output','-editor');] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('codegen.codeprogram/toMCode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/+codegen/@codeprogram/toMCode.m', 18)" style="font-weight:bold">codegen.codeprogram/toMCode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/+codegen/@codeprogram/toMCode.m',18,0)">line 18</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 135)" style="font-weight:bold">makemcode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',135,0)">line 135</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('filemenufcn', '/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m', 62)" style="font-weight:bold">filemenufcn</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m',62,0)">line 62</a>)] 
+{Error using close
+Invalid figure handle.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 143)" style="font-weight:bold">makemcode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',143,0)">line 143</a>)
+if show_status_bar, close(hwait); end
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('filemenufcn', '/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m', 62)" style="font-weight:bold">filemenufcn</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m',62,0)">line 62</a>)
+        makemcode(hfig,'Output','-editor');} 
+Error while evaluating Menu Callback.
+
+% ![step_PD2.png](step_PD2.png)
+
+% Comentários:
+
+% * Poderia aumentar ganho deste PD, já que o $\%OS$ ficou
+% abaixo dos 10% em relação à entrada degrau;
+% * Mais interessante seria deslocar o zero do PD para mais
+% próximo do pólo da planta em $s = -4$, o que resultaria num
+% pólo de MF real dominante mais afastado do eixo $j\omega
+% (mais rápido).
+
+% ### Projeto do PD (pção 4)
+
+% O PD mais rápido, em teoria, seria obtido fazendo o zero do PD
+% propositalmente cancelar o pólo mais lento da planta em $s=-1$.
+
+PD4 = tf( [1 1], 1)
+
+PD4 =
+ 
+  s + 1
+ 
+Continuous-time transfer function.
+
+ftma_PD4=PD4*G;
+zpk(ftma_PD4)
+
+ans =
+ 
+       20 (s+1)
+  ------------------
+  (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+ftma_PD4aux=minreal(ftma_PD4);
+zpk(ftmf_PD4aux)
+{Unrecognized function or variable 'ftmf_PD4aux'.} 
+zpk(ftma_PD4aux)
+
+ans =
+ 
+       20
+  ------------
+  (s+10) (s+4)
+ 
+Continuous-time zero/pole/gain model.
+
+figure; rlocus(ftma_PD4)
+hold on; sgrid(zeta,0)
+hold on; sgrid(zeta,0)
+ylim([-15 15])
+[K_PD4,polosMF]=rlocfind(ftma_PD4)
+Select a point in the graphics window
+selected_point =
+      -1.1019 -     13.746i
+K_PD4 =
+       11.502
+polosMF =
+           -7 +     14.867i
+           -7 -     14.867i
+           -1 +          0i
+[K_PD4,polosMF]=rlocfind(ftma_PD4)
+Select a point in the graphics window
+selected_point =
+      -7.0071 +     9.5666i
+K_PD4 =
+        5.026
+polosMF =
+           -7 +     9.5666i
+           -7 -     9.5666i
+           -1 +          0i
+
+% ![RL_PD4.png](RL_PD4.png)
+
+ftmf_PD4=feedback(K_PD4*ftma_PD4, 1);
+figure; step(ftmf_PD2, ftmf_PD4)
+legend('PD2', 'PD4')
+
+% ![step_PD4.png](step_PD4.png)
+
+save planta
+diary off
+% **Comentários:**
+
+% * Poderia aumentar ainda mais o ganho do PD4, neste caso,
+% acompanhando o que acontece no RL, vamos perceber que
+% reduzimos o valor de $t_p$ (parte imaginária dos pólos
+% complexos de MF "sobe"), $t_s$ se mantêm no mesmo valor, já
+% que a parte real dos pólos de MF não varia de valor, **mas**
+% o erro de regime permante deve ser sensivelmente reduzido.
+% * Note que o erro do PD4 é maior que o erro do PD2. O PD4
+% pode ser mais rápido que o PD2, mas com o ganho no valor
+% que está, resulta num erro muito maior:
+
+erro_PD4= ((1-dcgain(ftmf_PD4))/1)*100
+erro_PD4 =
+       28.466
+erro_PD2= ((1-dcgain(ftmf_PD2))/1)*100
+erro_PD2 =
+       15.069
+
+% * Para próxima aula, podermos usar o aplicativo "Control System
+% Desginer" do Matlab, para facilitar e acelerar o projeto de
+% controladores. Neste caso, podemos melhorar o PD2, testando seu
+% zero mais próximo de $s=-4$, para intencionalmente fazer o
+% pólo real de MF se afastar ainda mais do eixo $j\omega$ (menor
+% tempo de resposta) e ainda encontrar um valor de ganho
+% elevado que permita fazer $y(\infty)\vert_{t_p} \le 1,1$ (10% de
+% overshoot em relação à entrada degrau). E assim estaríamos
+% projetando o melhor PD prático para este tipo de sistema.
+
+save planta
+diary off

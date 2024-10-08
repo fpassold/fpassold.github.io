@@ -40,6 +40,8 @@ Experimentos previstos:
 
 <!--* [Explorando o Espectro com a Transformada de Fourier](lab_5_transf_fourier/lab_5_trans_fourier.html)-->
 
+* [Projeto de um **Sensor de Pulsação**](2024_2/projeto_pulse_monitor.html)  (iniciado em 03/10/2024).
+
 &nbsp;
 
 :construction_worker_man: 

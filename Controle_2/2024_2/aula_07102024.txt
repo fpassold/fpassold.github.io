@@ -1,0 +1,259 @@
+
+% Recuperando dados aula passada
+
+load planta
+zpk(G)
+
+ans =
+ 
+          20
+  ------------------
+  (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+who
+
+Your variables are:
+
+C_I               detal_x           ftmf_PI_ang       
+G                 erro              limite            
+K                 erro_Lag          numerador         
+K2                erro_PD2          polosMF           
+K3                erro_PD4          polos_MFd         
+K_I               ftma_I            sigma             
+K_Lag             ftma_Lag          sum_th_polos      
+K_PD2             ftma_PD2          sum_th_polos_deg  
+K_PD4             ftma_PD4          th1               
+K_PI1             ftma_PD4aux       th1_deg           
+K_PI3             ftma_PI1          th2               
+K_PI5             ftma_PI3          th2_deg           
+K_PI_ang          ftma_PI5          th3               
+Kp                ftma_PI_ang       th3_deg           
+Lag               ftmf              th4               
+OS                ftmf2             th4_deg           
+PD2               ftmf_I            th_zero           
+PD2b              ftmf_I2           tout              
+PD4               ftmf_K3           ts                
+PI1               ftmf_Lag          wd                
+PI3               ftmf_PD2          wn                
+PI5               ftmf_PD4          zero_PI           
+PI_ang            ftmf_PI1          zeta              
+ans               ftmf_PI3          
+delta_x           ftmf_PI5          
+
+zpk(PD2)
+
+ans =
+ 
+  (s+2.5)
+ 
+Continuous-time zero/pole/gain model.
+
+zpk(PD2b)
+
+ans =
+ 
+  9.7 (s+2.5)
+ 
+Name: C
+Continuous-time zero/pole/gain model.
+
+
+% Projeto usado App Control System Designer:
+
+% ![projeto_PD2b](projeto_PD2b.png)
+
+% Seção de trabalho no Control System Designer salvo como:
+% [PD2b_ControlSystemDesignerSession.mat](PD2b_ControlSystemDesignerSession.mat)
+
+save planta
+diary off
+
+% Continuando projeto de PDs usando Contribuição angular e
+% script disponibilizado em:
+% [Projeto de PD (Aula de 03/10/2019; Uso de Contribuição angular)](https://fpassold.github.io/Controle_2/aula_PD_03out2019.html) 
+% script:
+% Usando o script: [find_polo_zero.m](https://fpassold.github.io/Controle_2/find_polo_zero.m)
+
+help find_polo_zero.m
+
+find_polo_zero.m not found.
+
+Use the Help browser search field to <a href="matlab:docsearch find_polo_zero.m">search the documentation</a>, or
+type "<a href="matlab:help help">help help</a>" for help command options, such as help for methods.
+
+what
+
+MAT-files in the current folder /Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_2/2024_2
+
+PD2b_ControlSystemDesignerSession  
+planta                             
+rlocus1_02092024                   
+
+
+
+ls find*
+find_polo_zero.m-2.download:
+find_polo_zero.m
+
+find_polo_zero.m.download:
+find_polo_zero.m
+
+ls find*
+find_polo_zero.m-2.download:
+find_polo_zero.m
+
+find_polo_zero.m.download:
+find_polo_zero.m
+
+help find_polo_zero
+  <strong>find_polo_zero</strong>.m
+  
+  Angular contribution routine to find out where to locate pole or zero 
+  of the controller depending on the desired location for MF poles
+ 
+  Use:
+  This routine already expects a tf named "ftma_aux"
+    ftma_aux(s)=C(s)'*G(s);
+  where: C(s)' is almost the full tf of the controller, 
+         except for the pole or zero that this routine is expected to 
+         determine using angular contribution.
+  
+  This routine uses angular contribution to find the position of the pole
+  or the zero that is necessary to complete the tf of the controller.
+  It asks almost at the end, whether the user wants to find out the 
+  position of the pole or the zero that is missing.
+ 
+  Fernando Passold, 14/10/2020, 20/10/2020, 30/10/2022, 30/11/2022.
+
+% Supondo que queira projetar um Lead. Neste caso, temos 3 incognitas:
+
+% * Zero do Lead?
+% * Pólo do Lead?
+% * Ganho do Lead. <-- resolve-se usando RL
+
+% No caso do Lead, sabe-se que o polo do lead é mais rápido que o pólo mais
+% rápido da planta. Na maioria das vezes pólo fica em $s \to -\infty$.
+
+p_Lead=20;
+C_aux=tf(1, [1 p_Lead])
+
+C_aux =
+ 
+    1
+  ------
+  s + 20
+ 
+Continuous-time transfer function.
+
+ftma_aux=C_aux*G;
+zpk(ftma_aux)
+
+ans =
+ 
+             20
+  -------------------------
+  (s+20) (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+find_polo_zero
+
+Routine to determine the position of the pole or zero
+that is missing to complete controller design
+
+%OS$ (desired Overshoot, in %): ? 10
+  ts_d (desired settling time): ? 0.7
+Desired MF poles must be located at:
+	s = -5.71429 � j7.79644
+
+Evaluating the pole(s) contribution angle(s):
+  Pole 1) in s=-20 + j(0)	| angle: 28.62^o
+  Pole 2) in s=-10 + j(0)	| angle: 61.20^o
+  Pole 3) in s=-4 + j(0)	| angle: 102.40^o
+  Pole 4) in s=-1 + j(0)	| angle: 121.16^o
+			Sum(angle{poles}) = 313.39^o
+
+Evaluating the zero(s) contribution angle(s):
+			Sum(angle{zeros}) = 0.00^o
+
+Determining pole or zero location of the controller:
+Select: [p]=pole or [z]=zero, for the controller ? z
+
+Angle contribution required for controller: 133.39^o
+This means that the controller 
+	ZERO must be at s = 1.65507
+
+To finish the project, note that:
+
+ftma =
+ 
+        20 (s-1.655)
+  -------------------------
+  (s+20) (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+Find the controller gain with the command:
+
+	>> K_ = rlocfind(ftma)
+
+find_polo_zero
+
+Routine to determine the position of the pole or zero
+that is missing to complete controller design
+
+%OS$ (desired Overshoot, in %): ? 10
+  ts_d (desired settling time): ? 0.9
+Desired MF poles must be located at:
+	s = -4.44444 � j6.06389
+
+Evaluating the pole(s) contribution angle(s):
+  Pole 1) in s=-20 + j(0)	| angle: 21.30^o
+  Pole 2) in s=-10 + j(0)	| angle: 47.51^o
+  Pole 3) in s=-4 + j(0)	| angle: 94.19^o
+  Pole 4) in s=-1 + j(0)	| angle: 119.60^o
+			Sum(angle{poles}) = 282.59^o
+
+Evaluating the zero(s) contribution angle(s):
+			Sum(angle{zeros}) = 0.00^o
+
+Determining pole or zero location of the controller:
+Select: [p]=pole or [z]=zero, for the controller ? z
+
+Angle contribution required for controller: 102.59^o
+This means that the controller 
+	ZERO must be at s = -3.08994
+
+To finish the project, note that:
+
+ftma =
+ 
+         20 (s+3.09)
+  -------------------------
+  (s+20) (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+Find the controller gain with the command:
+
+	>> K_ = rlocfind(ftma)
+
+
+ftma_Lead=ftma;
+K_Lead=rlocfind(ftma)
+Select a point in the graphics window
+selected_point =
+      -4.4639 +     6.0242i
+K_Lead =
+        46.32
+
+ftmf_Lead=feedback(K_Lead*ftma,1);
+figure; step(ftmf_Lead, ftmf_PD2)
+legend('Lead', 'PD2')
+
+save planta
+[Warning: Figure is saved in planta.mat. Saving graphics handle variables can
+cause the creation of very large files. To save graphics figures, use <a  href="matlab:helpview([docroot,'/techdoc/ref/savefig.html'])">savefig</a>.] 
+diary off

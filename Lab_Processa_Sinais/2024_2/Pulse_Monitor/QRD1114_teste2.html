@@ -1,0 +1,543 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>QRD1114_teste2</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; font-size-adjust: none; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
+
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
+
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
+}
+
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+
+</style>
+</head>
+<body class='typora-export'>
+<div id='write'  class=''><h1><a name="sensor-pulsação---teste-2" class="md-header-anchor"></a><span>Sensor Pulsação - Teste #2</span></h1><p><span>O primeiro teste usando o QRD1114 não alcançou resultados promissores (ver </span><a href='QRD1114.html'><span>Teste 1</span></a><span>).</span></p><p><span>Modificando a configuração elétrica para:</span></p><p><span>Inspirado em: </span><a href='https://learn.sparkfun.com/tutorials/qrd1114-optical-detector-hookup-guide/all'><span>QRD1114 Optical Detector Hookup Guide - SparkFun Learn</span></a><span>:</span></p><p><img src="sparkfun_example_circuit_schem.png" referrerpolicy="no-referrer" alt="sparkfun_example_circuit_schem"></p><p><span>Com ligeiras modificações:</span></p><ul><li><span>R1 foi mantido em 220 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.677ex" height="1.881ex" viewBox="0 -757.4 722 809.7" role="img" focusable="false" style="vertical-align: -0.122ex;"><defs><path stroke-width="0" id="E2-MJMAIN-3A9" d="M55 454Q55 503 75 546T127 617T197 665T272 695T337 704H352Q396 704 404 703Q527 687 596 615T666 454Q666 392 635 330T559 200T499 83V80H543Q589 81 600 83T617 93Q622 102 629 135T636 172L637 177H677V175L660 89Q645 3 644 2V0H552H488Q461 0 456 3T451 20Q451 89 499 235T548 455Q548 512 530 555T483 622T424 656T361 668Q332 668 303 658T243 626T193 560T174 456Q174 380 222 233T270 20Q270 7 263 0H77V2Q76 3 61 89L44 175V177H84L85 172Q85 171 88 155T96 119T104 93Q109 86 120 84T178 80H222V83Q206 132 162 199T87 329T55 454Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMAIN-3A9" x="0" y="0"></use></g></svg></span><script type="math/tex">\Omega</script><span> (vermelho, vermelho, marrom, dourado);</span></li><li><span>R2 continua sendo de 10 K</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.677ex" height="1.881ex" viewBox="0 -757.4 722 809.7" role="img" focusable="false" style="vertical-align: -0.122ex;"><defs><path stroke-width="0" id="E2-MJMAIN-3A9" d="M55 454Q55 503 75 546T127 617T197 665T272 695T337 704H352Q396 704 404 703Q527 687 596 615T666 454Q666 392 635 330T559 200T499 83V80H543Q589 81 600 83T617 93Q622 102 629 135T636 172L637 177H677V175L660 89Q645 3 644 2V0H552H488Q461 0 456 3T451 20Q451 89 499 235T548 455Q548 512 530 555T483 622T424 656T361 668Q332 668 303 658T243 626T193 560T174 456Q174 380 222 233T270 20Q270 7 263 0H77V2Q76 3 61 89L44 175V177H84L85 172Q85 171 88 155T96 119T104 93Q109 86 120 84T178 80H222V83Q206 132 162 199T87 329T55 454Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMAIN-3A9" x="0" y="0"></use></g></svg></span><script type="math/tex">\Omega</script><span> (marrom, preto, laranja, dourado).</span></li></ul><p><span>Considerando detalhes do QRD1114:</span></p><p><img src="QRD1114_pinagem.jpeg" referrerpolicy="no-referrer" alt="QRD1114_pinagem"></p><p><span>E pinagem de um led comum:</span></p><p><img src="led_3.jpg" referrerpolicy="no-referrer" alt="led_3"></p><p><span>O código para captura dos dados será refeito, usando interrupção com taxa de amostragem correspondendo à 50 pontos/ciclo de sinal máximo de 5 Hz, o que resulta </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.593ex" height="2.465ex" viewBox="0 -757.4 1977.4 1061.5" role="img" focusable="false" style="vertical-align: -0.706ex;"><defs><path stroke-width="0" id="E3-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E3-MJMATHI-73" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path stroke-width="0" id="E3-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E3-MJMATHI-66" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E3-MJMATHI-73" x="692" y="-213"></use><use xlink:href="#E3-MJMAIN-3D" x="1199" y="0"></use></g></svg></span><script type="math/tex">f_s=</script><span> 250 Hz, ou </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.087ex" height="1.881ex" viewBox="0 -757.4 1759.8 809.7" role="img" focusable="false" style="vertical-align: -0.122ex; max-width: 3500px;"><defs><path stroke-width="0" id="E4-MJMATHI-54" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path stroke-width="0" id="E4-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E4-MJMATHI-54" x="0" y="0"></use><use xlink:href="#E4-MJMAIN-3D" x="981" y="0"></use></g></svg></span><script type="math/tex">T=</script><span> 0,004 segundos.</span></p><p><strong><span>Primeiro teste</span></strong></p><p><span>Sem taxa de amostragem, mais para capturar dados e perceber se quando o dedo está pressionado contra o sensor, se é possível detectar ondulação na luminosidade como resposta às pulsações.</span></p><p><span>Usando mesmo código simples já testado anteriormente: </span><code>QRD1114_teste1.ino</code><span>. Este código juntamente com o o script em Python </span><code>capture_serial_data.py</code><span>, permite caputar um arquivo texto com dados reais. Estes últimos arquivos estão na pasta: </span><code>/Volumes/DADOS/Users/fpassold/Documents/UPF/Lab_Processa_Sinais/2024_2/Pulse_Monitor/..</code><span>. Detalhe, o script </span><code>capture_serial_data.py</code><span> </span><strong><span>não</span></strong><span> funciona se o IDE do Arduíno também estiver ativo (diferentes aplicativos tentando acessar o mesmo recurso, no caso de um Mac: </span><code>/dev/cu.usbmodem14201</code><span>).</span></p><p><span>Neste caso, obtemos um resultado como:</span></p><p><span>Sem o dedo no sensor:</span></p><p><img src="captura_2_sem_dedo_03102024.gif" referrerpolicy="no-referrer" alt="captura_2_sem_dedo_03102024"></p><p><span>O </span><code>value2</code><span> , única variável mostrada no gráfico do &quot;Serial Plotter&quot; da IDE do Arduino só mostra (intencionalemente), o dado bruto assim como medido pelo A/D de 10-bits do Arduino (possibilitando leituras na faixa [0  1024]).</span></p><p><span>Perceber a faixa de variação dos valores. Ocorre uma alteração no meio deste teste porque intencionalmente é desligada uma lámpada/projetor sobre o sensor, o que mostra a sensibilidade deste circuito quanto à ruídos na linha de alimentação mas nem tanto em relação à iluminação externa.</span></p><p><span>Colocando o dedo no sensor:</span></p><p><img src="captura_2_colocando_dedo_03102024.gif" referrerpolicy="no-referrer" alt="captura_2_colocando_dedo_03102024"></p><p><span>Perceba que este circuito é capaz de detecgar a aproximação do dedo no sensor. E que o sinal (oscilatório) só se estabiliza depois que o usuário mantêm certa pressão de contato contra o sensor! Isto confirma que este sensor é mais adequado para medir distância que variações de transmissão de luz infra-vermelha!</span></p><p><span>Mantendo o dedo pressionado contra o sensor, obtemos algo como:</span></p><p><img src="captura_2_dedo_pressionado_03102024.gif" referrerpolicy="no-referrer" alt="captura_2_dedo_pressionado_03102024"></p><p><span>Percebe-se em alguns casos, uma pequena variação no sinal, mas há casos em que o mesmo varia apenas no intervalo [49  50] e depois salta para [49  51] e pode se manter na faixa [53  55]. O provável problema é que o sinal oscila apenas entre 1 ou 2 passos (</span><em><span>steps</span></em><span>) do próprio A/D, o que provavelmente inviabiliza a detecção do BPM neste sinal.</span></p><p><strong><span>Teste 2</span></strong><span>: Ativar um led vermelho ao lado do dedo pressionado contra o sensor aumenta a faixa de excursão do sinal enquanto o dedo está pressionado contra o sensor?</span></p><p><img src="captura_2_dedo_pressionado_ledIR_paralelo_ativado_03102024.gif" referrerpolicy="no-referrer" alt="captura_2_dedo_pressionado_ledIR_paralelo_ativado_03102024"></p><p><span>Neste caso, percebe-se que baixa o intervalo de varição do sinal medido: [33  34], mas a faixa de esxcursão do sinal infelizmente não aumenta!</span></p><p><strong><span>Conclusão</span></strong><span>: Muito provavelmente o sensor QRD1141 não é útil sozinho para capturar pulsação. Ele se sai melhor até detectando aproximações que pulsações.</span></p><p><strong><span>Provavel solução</span></strong><span>: Propor outro circuito baseado no MRD500 (foto-transístor) com led IR apontando contra o mesmo, interceptado pelo dedo.</span></p><p><span>&gt;</span><span>&gt; Partindo para teste_com_MRD500.</span></p><hr /><p><span>Fernando Passold, em 03/10/2024.</span></p><p>&nbsp;</p></div>
+</body>
+</html>
