@@ -2,9 +2,9 @@
 
 # Laboratório de Circuitos Digitais I
 
-Semestre 2020.1
+<!--Semestre 2020.1-->
 
-Opções disponíveis:
+**Material disponível**:
 
 * [Tutorial para uso do LogiSim](Uso_LogiSim.html);
 * [Exercícios](exe_mapas_K_2021_1/exemplos_mapas_K3.html) iniciais usando Mapas de Karnaugh envolvendo 3 variáveis;
@@ -13,6 +13,8 @@ Opções disponíveis:
 * [Exemplo de efeito visual usando DEC 3/8](Lab_9_Efeito_Visual/Lab_9_Efeito_Visual_Usando_DEC.html);
 
 
+
+* [Laboratórios Semestre 2024/2](lab_2024_2/lab_2024_2.html) 
 
 ---
 
