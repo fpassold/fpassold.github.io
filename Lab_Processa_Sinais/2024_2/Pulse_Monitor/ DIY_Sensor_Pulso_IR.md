@@ -184,7 +184,7 @@ A equação acima é a que dever ser implementada num código C++ no Arduíno.
 
 Falta acrescentar detector de picos (usando derivada sobre o sinal filtrado) e determinação/cálculo dos períodos entre os picos para só então terminar determinando o BPM atual.
 
-🛠️ Página ainda em construção.
+[Parte 2](DIY_parte2.html) |
 
 ----
 

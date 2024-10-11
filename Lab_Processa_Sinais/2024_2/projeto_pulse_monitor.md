@@ -16,8 +16,9 @@ Etapas:
 4. 1o-Teste usando MRD1114 →  [Sensor Pulsação - Teste #1](Pulse_Monitor/QRD1114.html)  (inclui códigos Arduino e Python para captura de dados)
 5. 2o-Teste usando MRD1114 (outra configuração elétrica) →  [Sensor Pulsação - Teste #2](Pulse_Monitor/QRD1114_teste2.html) 
 6. 3o-Teste usando MRD500 →  [DIY Sensor de Pulso IR](Pulse_Monitor/ DIY_Sensor_Pulso_IR.html). Inclui considerações e projeto de Filtro Passa-Faixa usando Matlab.
-7. Mediana, Normalização, Detector de Picos.
-8. Resultados Finais.
+7. Teste usando foto-receptor ([DiY Sensor de Pulso IR: Parte 2](Pulse_Monitor/DIY_parte2.html)).
+8. Mediana, Normalização, Detector de Picos.
+9. Resultados Finais.
 
 ----
 
