@@ -245,7 +245,11 @@ Resultado obtido:
 
 Obs.: durante os primeiros 3/4 da captura mostrada na figura anteiror, o dedo "oscilava" entre o led emissor verde e o foto acoplador. Propositalmente para testar se o filtro digital e derivada estão funcionando. Apenas os últimos segundos do gráfico correspondem ao dedo bloqueando estaticamente o fluxo de luz. E nesta condição, se percebe pelo sinal filtrado que não parece ser possível recuperar a informação esperada.
 
-Mostrando apenas o sinal bruto e o sinal filtrado com o dedo posicionado de forma estática bloqueando o fluxo luminoso:
+Através do osciloscópio (conectado ao pino 7, `monitor_isr`) se comprova que a ISR está sendo executada obdecendo à $f_s$ estilpulada e que ainda "sobra" poder de processamento. Ela levou $\Delta t = $1,4 mili-segundos para ser executada, resultando um "duty-cycle" de 7,22%:
+
+![F0029TEK](F0029TEK.BMP)
+
+Mostrando apenas o sinal bruto e o sinal filtrado com o dedo posicionado de forma estática bloqueando o fluxo luminoso temos:
 
 ![captura_foto_detector_3_fpb2](captura_foto_detector_3_fpb2.gif)
 
