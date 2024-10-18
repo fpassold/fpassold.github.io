@@ -36,7 +36,18 @@ Etapas:
    
 
 10. Resultados Finais.
+    **Deadline**: entrega do projeto: 08/11/2024.
+
+ANEXOS:
+
+1. [Captura de Dados de Porta Serial](Pulse_Monitor/captura_dados_serial.html)   (*script* em Python, com instruções).
+
+   
 
 ----
 
-Fernando Passold, em 04/10/2024.
+<font size="2">🌊 [Fernando Passold](https://fpassold.github.io/)[ 📬 ](mailto:fpassold@gmail.com), <script language="JavaScript"><!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("página criada em Oct 04, 2024; atualizada em " + LastUpdated); // End Hiding -->
+</script></font>
+
