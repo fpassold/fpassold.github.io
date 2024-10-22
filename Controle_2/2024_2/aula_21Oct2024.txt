@@ -1,0 +1,538 @@
+
+pwd
+ans =
+    '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_2/2024_2'
+
+% # Projeto de Controladores usando RL
+
+% ## PID
+
+% Teoria, ver: [Exemplo de projeto de PID](https://fpassold.github.io/Controle_2/PID/examplo_9_5_PID.html).
+
+% Baixar: [example_9_5.m](https://fpassold.github.io/Controle_2/PID/example_9_5.m).
+
+example_9_5
+Este script resolve o exemplo 9.5:
+PID Controller Design, do livro:
+Nise, Norman S., Control System Engineering,
+6th ed. 2011, John Wiley & Sons, Inc.
+Planta a ser compensada:
+
+ans =
+ 
+        (s+8)
+  ------------------
+  (s+10) (s+6) (s+3)
+ 
+Continuous-time zero/pole/gain model.
+
+Maximo percentual overshoot tolerado (%OS): ? 20
+Fator de amortecimento (zeta): 0.4559
+
+Observe o RL da FTMA(s) do Contr. Prop. + Planta... (Figure 1)...
+Realize um zoom sobre a area de interesse e
+pressione qualquer tecla para continuar 
+Select a point in the graphics window
+selected_point =
+      -5.4147 +     10.526i
+k =
+       120.61
+poles =
+      -5.4149 +     10.526i
+      -5.4149 -     10.526i
+      -8.1702 +          0i
+Estimando tempo de assentamento, t_s: 0.7387
+Estimando tempo do pico, t_p: 0.2985
+
+Novo tempo de tipo (desejado), t_p: 0.1990
+
+theta (cos(zeta)): 62.8739^o
+180^o-theta: 117.1261^o
+
+Polos de MF desejados em: s = -8.0889 +j15.7895
+
+Contribuicoes angulares dos polos do sistema em malha-aberta:
+p(1) = -10 --> 83.0989^o
+p(2) = -6 --> 97.5365^o
+p(3) = -3 --> 107.8641^o
+Soma das contribuicoes dos polos: 288.4994^o
+
+Contribuicoes angulares dos zero do sistema em malha-aberta:
+z(1) = -8 --> 90.3228^o
+
+Somatorio total das contribuicoes angulares (polos e zeros): 198.1767^o
+
+Angulo resultante para o zero do PD: 18.1767^o
+Posicao do zero do PD: em s = -40.0009
+Equacao do PD (variavel "c"):
+
+ans =
+ 
+  (s+40)
+ 
+Continuous-time zero/pole/gain model.
+
+Levantando RL da FTMA(s) do sistema com o PD...
+Observe o RL da FTMA(s) do PD + planta (Figure 4)...
+Realize um zoom sobre a area de interesse e
+pressione qualquer tecla para continuar 
+Select a point in the graphics window
+selected_point =
+      -10.456 +     17.717i
+K_pd =
+         10.1
+poles_pd =
+      -10.519 +     17.679i
+      -10.519 -     17.679i
+      -8.0627 +          0i
+Equacao do PD:
+
+ans =
+ 
+  10.1 (s+40)
+ 
+Continuous-time zero/pole/gain model.
+
+Selecione uma posicao para o zero do PI (em: -3 <= s < 0) [-0.5]: ? -2
+Equacao do PID (ainda sem ganho):
+
+ans =
+ 
+  (s+40) (s+2)
+  ------------
+       s
+ 
+Continuous-time zero/pole/gain model.
+
+FTMA(s) do PID + Planta (variavel "PIDg"): 
+
+ans =
+ 
+   (s+40) (s+8) (s+2)
+  --------------------
+  s (s+10) (s+6) (s+3)
+ 
+Continuous-time zero/pole/gain model.
+
+Observe o RL da FTMA(s) do PID + planta (Figure 6)...
+Realize um zoom sobre a area de interesse e
+pressione qualquer tecla para continuar 
+Select a point in the graphics window
+selected_point =
+      -9.0519 +     16.849i
+k_PIDg =
+       9.1068
+poles_PIDg =
+      -9.0227 +     16.865i
+      -9.0227 -     16.865i
+      -8.0929 +          0i
+      -1.9685 +          0i
+Equacao final (completa) do PID (variaval "PID2"):
+
+PID2 =
+ 
+  9.107 s^2 + 382.5 s + 728.6
+  ---------------------------
+               s
+ 
+Continuous-time transfer function.
+
+Kp =
+       382.49
+Ki =
+       728.56
+Kd =
+       9.1068
+
+diary off
+
+% ## Projeto do PID Planta Estudo de Caso
+
+% Revisando de requisitos de controle:
+
+% * $\%OS \le 10\%$;
+% * $0,5 < t_s < 0,827 \quad \leftarrow \quad t_s \le 0,8$; 
+% * $e(\infty) \le 10\%$.
+
+% ### 1a-etapa: projeto de PD
+
+% Usando `find_polo_zero.m``
+
+help find_polo_zero
+  <strong>find_polo_zero</strong>.m
+  
+  Angular contribution routine to find out where to locate pole or zero 
+  of the controller depending on the desired location for MF poles
+ 
+  Use:
+  This routine already expects a tf named "ftma_aux"
+    ftma_aux(s)=C(s)'*G(s);
+  where: C(s)' is almost the full tf of the controller, 
+         except for the pole or zero that this routine is expected to 
+         determine using angular contribution.
+  
+  This routine uses angular contribution to find the position of the pole
+  or the zero that is necessary to complete the tf of the controller.
+  It asks almost at the end, whether the user wants to find out the 
+  position of the pole or the zero that is missing.
+ 
+  Fernando Passold, 14/10/2020, 20/10/2020, 30/10/2022, 30/11/2022.
+
+load planta
+zpk(G)
+
+ans =
+ 
+          20
+  ------------------
+  (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+ftma_aux = G;
+find_polo_zero
+
+Routine to determine the position of the pole or zero
+that is missing to complete controller design
+
+%OS$ (desired Overshoot, in %): ? 10
+  ts_d (desired settling time): ? 0.8
+Desired MF poles must be located at:
+	s = -5 � j6.82188
+
+Evaluating the pole(s) contribution angle(s):
+  Pole 1) in s=-10 + j(0)	| angle: 53.76^o
+  Pole 2) in s=-4 + j(0)	| angle: 98.34^o
+  Pole 3) in s=-1 + j(0)	| angle: 120.39^o
+			Sum(angle{poles}) = 272.49^o
+
+Evaluating the zero(s) contribution angle(s):
+			Sum(angle{zeros}) = 0.00^o
+
+Determining pole or zero location of the controller:
+Select: [p]=pole or [z]=zero, for the controller ? z
+
+Angle contribution required for controller: 92.49^o
+This means that the controller 
+	ZERO must be at s = -4.70387
+
+To finish the project, note that:
+
+ftma =
+ 
+     20 (s+4.704)
+  ------------------
+  (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+Find the controller gain with the command:
+
+	>> K_ = rlocfind(ftma)
+
+% Descobrindo `tf` do controlador (PD) recém criado:
+
+zpk(c)
+
+ans =
+ 
+  (s+40)
+ 
+Continuous-time zero/pole/gain model.
+
+C_PD1a_etapa = c;
+
+% ### 2a-etapa: Projeto do PI
+
+% Lembrando eq. do PI:
+
+% $C_{PI}(s) = \dfrac{K(s+z_1}{s}$
+
+% Incognita: $z_1$ (zero do PI).
+
+% $ftma\_aux(s)=\dfrac{K}{s} \cdot G(s) \cdot (s + 4.7)$
+
+C_PD1a_etapa = tf( [1 -zero_c], 1)
+
+C_PD1a_etapa =
+ 
+  s + 4.704
+ 
+Continuous-time transfer function.
+
+C_aux = tf(1, [1 0]); % somente um integrador (parte do PI)
+ftma_aux = C_aux*G*C_PD1a_etapa;
+zpk(ftma_aux) % para verificação
+
+ans =
+ 
+      20 (s+4.704)
+  --------------------
+  s (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+find_polo_zero
+
+Routine to determine the position of the pole or zero
+that is missing to complete controller design
+
+%OS$ (desired Overshoot, in %): ? 10
+  ts_d (desired settling time): ? 0.8
+Desired MF poles must be located at:
+	s = -5 � j6.82188
+
+Evaluating the pole(s) contribution angle(s):
+  Pole 1) in s=0 + j(0)	| angle: 126.24^o
+  Pole 2) in s=-10 + j(0)	| angle: 53.76^o
+  Pole 3) in s=-4 + j(0)	| angle: 98.34^o
+  Pole 4) in s=-1 + j(0)	| angle: 120.39^o
+			Sum(angle{poles}) = 398.72^o
+
+Evaluating the zero(s) contribution angle(s):
+  Zero 1) in s=-4.70387 + j(0)	| angle: 92.49^o
+			Sum(angle{zeros}) = 92.49^o
+
+Determining pole or zero location of the controller:
+Select: [p]=pole or [z]=zero, for the controller ? z
+
+Angle contribution required for controller: 126.24^o
+This means that the controller 
+	ZERO must be at s = 0
+
+To finish the project, note that:
+
+ftma =
+ 
+     20 s (s+4.704)
+  --------------------
+  s (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+Find the controller gain with the command:
+
+	>> K_ = rlocfind(ftma)
+
+% Resultado interessante... Note que o zero do PI cancelou o
+% próprio pólo do PI, ou seja, não existe mais ação "PI", restou
+% apenas ação "PD". Isto é, este controlador, não é um PID
+% e sim apenas um PD.
+
+% Provavelmente isto ocorreu porque o $t_s$ especificado e
+% adotado para o PI é muito baixo, fazendo com o zero do PI
+% acabasse por ser colocado sobre o próprio pólo integrador.
+
+% **Solução**: refazer projeto do PD usando $t_s$ mais baixo
+% que o especificado.
+
+% ### Refazendo PD
+
+ftma_aux = G;
+find_polo_zero
+
+Routine to determine the position of the pole or zero
+that is missing to complete controller design
+
+%OS$ (desired Overshoot, in %): ? 10
+  ts_d (desired settling time): ? 0.65
+Desired MF poles must be located at:
+	s = -6.15385 � j8.39616
+
+Evaluating the pole(s) contribution angle(s):
+  Pole 1) in s=-10 + j(0)	| angle: 65.39^o
+  Pole 2) in s=-4 + j(0)	| angle: 104.39^o
+  Pole 3) in s=-1 + j(0)	| angle: 121.54^o
+			Sum(angle{poles}) = 291.32^o
+
+Evaluating the zero(s) contribution angle(s):
+			Sum(angle{zeros}) = 0.00^o
+
+Determining pole or zero location of the controller:
+Select: [p]=pole or [z]=zero, for the controller ? z
+
+Angle contribution required for controller: 111.32^o
+This means that the controller 
+	ZERO must be at s = -2.87713
+
+To finish the project, note that:
+
+ftma =
+ 
+     20 (s+2.877)
+  ------------------
+  (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+Find the controller gain with the command:
+
+	>> K_ = rlocfind(ftma)
+
+C_PD1a_etapa = tf( [1 -zero_c], 1)
+
+C_PD1a_etapa =
+ 
+  s + 2.877
+ 
+Continuous-time transfer function.
+
+% ### Refazendo o PI
+
+% Terminando 2a-etapa do projeto do PID.
+
+ftma_aux = C_aux*G*C_PD1a_etapa;
+zpm(ftma_aux)
+{Unrecognized function or variable 'zpm'.} 
+zpk(ftma_aux)
+
+ans =
+ 
+      20 (s+2.877)
+  --------------------
+  s (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+find_polo_zero
+
+Routine to determine the position of the pole or zero
+that is missing to complete controller design
+
+%OS$ (desired Overshoot, in %): ? 10
+  ts_d (desired settling time): ? 0.8
+Desired MF poles must be located at:
+	s = -5 � j6.82188
+
+Evaluating the pole(s) contribution angle(s):
+  Pole 1) in s=0 + j(0)	| angle: 126.24^o
+  Pole 2) in s=-10 + j(0)	| angle: 53.76^o
+  Pole 3) in s=-4 + j(0)	| angle: 98.34^o
+  Pole 4) in s=-1 + j(0)	| angle: 120.39^o
+			Sum(angle{poles}) = 398.72^o
+
+Evaluating the zero(s) contribution angle(s):
+  Zero 1) in s=-2.87713 + j(0)	| angle: 107.29^o
+			Sum(angle{zeros}) = 107.29^o
+
+Determining pole or zero location of the controller:
+Select: [p]=pole or [z]=zero, for the controller ? z
+
+Angle contribution required for controller: 111.44^o
+This means that the controller 
+	ZERO must be at s = -2.32115
+
+To finish the project, note that:
+
+ftma =
+ 
+  20 (s+2.877) (s+2.321)
+  ----------------------
+   s (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+Find the controller gain with the command:
+
+	>> K_ = rlocfind(ftma)
+
+C_PI2a_etapa=C_aux*tf( [1 -zero_c], 1)
+
+C_PI2a_etapa =
+ 
+  s + 2.321
+  ---------
+      s
+ 
+Continuous-time transfer function.
+
+PID1 = C_PD1a_etapa * C_PI2a_etapa;
+zpk(PID1)
+
+ans =
+ 
+  (s+2.877) (s+2.321)
+  -------------------
+           s
+ 
+Continuous-time zero/pole/gain model.
+
+zpk(ftma)
+
+ans =
+ 
+  20 (s+2.877) (s+2.321)
+  ----------------------
+   s (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+ftma_PID1 = ftma; % fazendo "backup"
+[K_PID1,polosMF] = rlocfind(ftma)
+Select a point in the graphics window
+selected_point =
+      -4.9834 +     6.7802i
+K_PID1 =
+       3.6967
+polosMF =
+      -5.0015 +     6.7808i
+      -5.0015 -     6.7808i
+      -2.4985 +    0.84389i
+      -2.4985 -    0.84389i
+rlocfind
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('rlocfind', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlobsolete/rlocfind.m', 50)" style="font-weight:bold">rlocfind</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlobsolete/rlocfind.m',50,0)">line 50</a>)
+Not enough input arguments.} 
+ftmf_PID1 = feedback(K_PID1*ftma_PID1, 1);
+figure; step(ftmf_PID1)
+
+% ![step_PID1.png](step_PID1.png)
+
+% Para melhorar este PID teríamos que "arrastar" o zero do PD
+% e o zero do PI para a direção $s \to \infty$. Mais fácil fazer
+% isto usando o App Control System Designer.
+
+save planta
+[Warning: Figure is saved in planta.mat. Saving graphics handle
+variables can cause the creation of very large files. To save
+graphics figures, use <a  href="matlab:helpview([docroot,'/techdoc/ref/savefig.html'])">savefig</a>.] 
+diary off
+
+% ---
+
+% Salvando figuras da aula:
+% Fig 16 --> step_PID1
+% Fig 15 --> RL_PID1
+
+% ![RL_PID1.png](RL_PID1.png) % fig15
+
+% [!RL_PD1a_etapa_2.png](RL_PD1a_etapa_2.png) % Fig13
+
+% [contrib_angular_PID1.png](contrib_angular_PID1.png) % Fig14
+
+% ![contrib_angular_PD1a_etapa_2.png](contrib_angular_PD1a_etapa_2.png) % Fig12
+
+% ![RL_PID1_1a_tentativa.png](RL_PID1_1a_tentativa.png) % Fig11
+
+% ![contrib_angular_PID1_1a_tentativa.png](contrib_angular_PID1_1a_tentativa.png) % Fig10
+
+% ![RL_PD1a_etapa_1a_tentativa.png](RL_PD1a_etapa_1a_tentativa.png) % Fig9
+
+% ![contrib_angular_PD1a_etapa_1a_tentativa.png](contrib_angular_PD1a_etapa_1a_tentativa.png) % Fig8
+
+% ----
+
+% ![step_PID_example_9_5.png](step_PID_example_9_5.png)
+
+% ![RL_PID_example_9_5.png](RL_PID_example_9_5.png) % Fig6
+
+% ![step_PD_example_9_5.png](step_PD_example_9_5.png) % Fig5
+
+% ![RL_PD_example_9_5.png](RL_PD_example_9_5.png) % Fig4
+
+% ![contrib_angular_PD_example_9_5.png](contrib_angular_PD_example_9_5.png) % Fig3
+
+% ![RL_PD_example_9_5-fig2.png](RL_PD_example_9_5-fig2.png) % Fig2
+
+% ![RL_K_ini_example_9_5.png](RL_K_ini_example_9_5.png) % Fig1
+
+diary off

@@ -27,14 +27,14 @@
 
 ## 1) Introdução
 
-* História da Área de Controle Automático (clássico) --> [intro_controle_2.pdf](1_intro/intro_controle_2.pdf);
+* História da Área de Controle Automático (clássico) → [intro_controle_2.pdf](1_intro/intro_controle_2.pdf);
 * [Artigo da Scientific American](1_intro/The%20Origins%20of%20Feedback%20Control.pdf) sobre as origens do Controle por realimentação (artigo em inglês, de Out/1970);
 * [Artigo IEEE Control Systems Magazine](1_intro/IEEE%20Xplore%20Full-Text%20PDF%20-%20Feeback%20Control-%20An%20Invisible%20Thread%20in%20the%20History%20of%20Technology.pdf) sobre a história da área de Controle Automático (artigo em inglês, de Abril/2002);
 
 ## 2) Ações de Controle
 
-* Ações de Controle (teoria/slides) --> [acoes_controle.pdf](2_acoes/acoes_controle.pdf);
-* Material complementar sobre Açôes de Controle Básicas --> [acoes_controle_basicas.pdf](2_acoes/acoes_controle_basicas.pdf);
+* Ações de Controle (teoria/slides) → [acoes_controle.pdf](2_acoes/acoes_controle.pdf);
+* Material complementar sobre Açôes de Controle Básicas → [acoes_controle_basicas.pdf](2_acoes/acoes_controle_basicas.pdf);
 * Exemplo de [Controle de Velocidade de motor CC](Testes_Velocidade_Motor_CC/modelagem_motor_cc.html) (diferentes controladores), incluindo sua modelagem.
     * Arquivos SLX para Simulações de ações de controle de velocidade do motor CC (para uso com Matlab/Simulink) + imagens e HTML em formato Zipado ([Motor_CC.zip](2_acoes/Motor_CC.zip), 5 MB -- [Detalhes/Instruções de Uso](motor_CC_zip.html).
 
@@ -58,10 +58,10 @@
 
 ## 5) Root Locus
 
-* Introdução sobre Root Locus --> [intro_root_locus.pdf](6_RL/intro_root_locus.pdf)
+* Introdução sobre Root Locus → [intro_root_locus.pdf](6_RL/intro_root_locus.pdf)
   * Rotina [`intro_rlocus.m`](6_RL/intro_rlocus.m) (aprendendo root-locus);
-* Regras e exemplos sobre traçados de RLs --> [Root_Locus_2a_parte_pt.pdf](6_RL/Root_Locus_2a_parte_pt.pdf);
-* **Resumo** sobre Root Locus --> [root_locus_resumo.pdf](6_RL/root_locus_resumo.pdf);
+* Regras e exemplos sobre traçados de RLs → [Root_Locus_2a_parte_pt.pdf](6_RL/Root_Locus_2a_parte_pt.pdf);
+* **Resumo** sobre Root Locus → [root_locus_resumo.pdf](6_RL/root_locus_resumo.pdf);
 * Vídeo (YouTube) recomendado: [Root Locus (ELT009, ELT013, ELT035) - Prof. Luis Antonio Aguirre (UFMG)](https://www.youtube.com/watch?v=OQgDXdpZfXE&authuser=1) + [Adendo sobre Álgebra de Diagrama de Blocos deste professor](6_RL/AdendoaoVideoAlgebradeDiagramadeBlocos.pdf)
 * Vídeos (YouTube) recomendados sobre **Álgebra de Diagrama de Blocos** do Prof. Cleiton Vaz: [Simplificações - parte 1](https://www.youtube.com/watch?v=aj7CTW8rHOA&authuser=1) e [Simplificações - parte 2](https://www.youtube.com/watch?v=HOdfgqtAL4c&authuser=1).
 
@@ -111,7 +111,7 @@
 - [Projeto de Controlador Proporcional (Ajuste de Ganho)](projeto_bode_01.html);
 - [Projeto de Controlador por Atraso de Fase (Lag)](lag_bode.html);
 - [Projeto de Controlador por Avanço de Fase (Lead)](lead_bode.html);
-- Projeto de Compensador Lead-Lag (arquivos PDF) --> [Teoria](10_bode/Projeto_baseado_Resposta_Frequencia_Lag_Lead.pdf) + [Resumo](10_bode/projetos_lead_lag.pdf)
+- Projeto de Compensador Lead-Lag (arquivos PDF) → [Teoria](10_bode/Projeto_baseado_Resposta_Frequencia_Lag_Lead.pdf) + [Resumo](10_bode/projetos_lead_lag.pdf)
 
 - Vídeos (YouTube) recomendados do Prof. Luis Antonio Aguirre (UFMG):
   - [Projeto no Domínio Frequência](https://www.youtube.com/watch?v=TicWSrtXMvU&authuser=1);
@@ -122,7 +122,7 @@
 - Videos (em inglês) do Prof. Brian Douglas:
   - [Designing a Lag Compensator](https://www.youtube.com/watch?v=-4bY4W0hvFA&authuser=1);
   - [Designing a Lead Compensator](https://www.youtube.com/watch?v=rH44ttR3G4Q&authuser=1);
-  - "[Engineering Media](https://engineeringmedia.com)" --> Site do Prof. Brian Douglas (desde 2018)
+  - "[Engineering Media](https://engineeringmedia.com)" → Site do Prof. Brian Douglas (desde 2018)
 
 
 ## 9) Sintonia (prática) de PIDs
@@ -132,7 +132,7 @@
 * [PID: Métodos de sintonia (dicas)](8_Ajuste_PID/PID_metodos_sintonia.pdf);
 * Exemplo: arquivo [`sintonia_PID_exemplo.slx`](8_Ajuste_PID/sintonia_PID_exemplo.slx) (Matlab/Simulink)
 
-## Aulas passadas
+## Aulas
 
 * [Semestre 2024/2](2024_2/aulas_2024_2.html).
 
@@ -149,8 +149,6 @@
         <p>Segue <a href="FAQ/Dvuidas%20Controlador_PI.pdf">[Aquivo PDF Dúvidas Controlador PI]</a>, com a dúvida, acrescido de comentários no próprio PDF.</p>
 	<blockquote>
 </details>
-
-
 <details>
 	<summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
     <blockquote>Segue: <a href="FAQ/observacoes_cuidados_contribuicao_angular.pdf"> [PDF com FAQ/observações & cuidados associados com cálculos de contribuicao angular]</a></blockquote>
@@ -160,7 +158,6 @@
 	<summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
     <blockquote><a href="FAQ/cópia%20de%20Duvida_Controlador_PD_LEAD.pdf">[PDF]</a>: Dúvida sobre PD e Lead (simulações com Bloco Saturador)</blockquote>
 </details>
-
 
 
 ## :speech_balloon: Anexos
