@@ -1,0 +1,403 @@
+load planta
+zpk(G)
+
+ans =
+ 
+          20
+  ------------------
+  (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+close all
+
+% ## Sintonia Prática de PID
+
+% Usando Ziegler-Nichols
+
+% Buscando o $K_u$:
+
+rlocus(G)
+
+% ![RL_Ku.png](RL_Ku.png)
+
+% $32 < K_u < 38,6$.
+
+Ku=38;
+ftmf_Ku=feedback(Ku*G,1);
+figure; step(ftmf_Ku)
+title('K_u = 38 (Step Response)')
+
+% ![step_Ku_38.png](step_Ku_38.png0
+
+Ku=38.5;
+ftmf_Ku=feedback(Ku*G,1);
+figure; step(ftmf_Ku)
+title('K_u = 38.5 (Step Response)')
+
+% ![step_Ku_38_5.png](step_Ku_38_5.png)
+
+xlim([0 20])
+T_ini
+T_ini = 
+  1×2 <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> array with fields:
+    Target
+    Position
+    DataIndex
+T_ini.Position
+ans =
+       9.0507       1.8016
+ans =
+      0.48508       1.8037
+
+% Determinando valores para $T_u$
+
+% ![step_Ku_38_5.png](step_Ku_38_5.png)
+
+delta_T=0.90507-0.48508
+delta_T =
+      0.41999
+Tu=delta_T/10
+Tu =
+     0.041999
+
+% Consultando tabela de Ziegler-Nichols:
+% https://en.wikipedia.org/wiki/Ziegler–Nichols_method
+
+delta_T=9.0507-0.48508
+delta_T =
+       8.5656
+Tu=delta_T/10
+Tu =
+      0.85656
+
+% Coletando valores para PID no formato
+% "ISA"
+
+Kp_ZH=0.6*Ku
+Kp_ZH =
+         23.1
+Ti_ZH=0.5*Tu
+Ti_ZH =
+      0.42828
+Td_ZH=0.125*Tu
+Td_ZH =
+      0.10707
+
+% Abrir [`sintonia_PID_exemplo.slx`](https://fpassold.github.io/Controle_2/8_Ajuste_PID/sintonia_PID_exemplo.slx):
+
+simulink
+
+1-0.02
+ans =
+         0.98
+1+0.02
+ans =
+         1.02
+
+% ![step_PID_ZH.png](step_PID_ZH.png)
+
+% Realizando "ajuste fino"
+
+Kp_PID2=0.33*Ku
+Kp_PID2 =
+       12.705
+Td_PID2=0.33*Tu
+Td_PID2 =
+      0.28267
+Ti_PID2=Ti_ZH
+Ti_PID2 =
+      0.42828
+Kp_PID2=0.20*Ku
+Kp_PID2 =
+          7.7
+Td_PID2=0.4; % provavelmente reduz %OS
+
+% ![step_PID2.png](step_PID2.png)
+
+% Testando PID no formato paralelo:
+% [`sintonia_PID_paralelo.slx`](sintonia_PID_paralelo.slx)
+
+Ki_PID3 = 7.7/0.975
+Ki_PID3 =
+       7.8974
+Kd_PID3 = 7.7/0.1
+Kd_PID3 =
+    77
+
+Kp_PID3=0.2*Ku
+Kp_PID3 =
+          7.7
+Ki_PID3 = 0.4*Ku/Tu
+Ki_PID3 =
+       17.979
+Kd_PID3 = 0.066*Ku*Tu
+Kd_PID3 =
+       2.1765
+[Warning: Error occurred while executing the
+listener callback for event TextComplete
+defined for class codegen.codeprogram:
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('waitbar', '/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/waitbar.m', 100)" style="font-weight:bold">waitbar</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/waitbar.m',100,0)">line 100</a>)
+The second argument must be a message
+character vector or a handle to an existing
+waitbar.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode>local_update_wait_bar', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 216)" style="font-weight:bold">makemcode>local_update_wait_bar</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',216,0)">line 216</a>)
+    waitbar(val,hwait,string);
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode>@(e,d)local_update_wait_bar(e,d,hwait,.95,getString(message(''MATLAB:codetools:makemcode:GeneratingFinalTextRep'')),show_status_bar)', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 126)" style="font-weight:bold">makemcode>@(e,d)local_update_wait_bar(e,d,hwait,.95,getString(message('MATLAB:codetools:makemcode:GeneratingFinalTextRep')),show_status_bar)</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',126,0)">line 126</a>)
+addlistener(hProgram,'TextComplete',@(e,d)local_update_wait_bar(e,d,hwait,.95,...
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('codegen.codeprogram/toMCode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/+codegen/@codeprogram/toMCode.m', 18)" style="font-weight:bold">codegen.codeprogram/toMCode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/+codegen/@codeprogram/toMCode.m',18,0)">line
+18</a>)
+notify(hCodeProgram,'TextComplete');
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 135)" style="font-weight:bold">makemcode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',135,0)">line 135</a>)
+        mcode_str =
+        hProgram.toMCode(options);
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('filemenufcn', '/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m', 62)" style="font-weight:bold">filemenufcn</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m',62,0)">line 62</a>)
+        makemcode(hfig,'Output','-editor');] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('codegen.codeprogram/toMCode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/+codegen/@codeprogram/toMCode.m', 18)" style="font-weight:bold">codegen.codeprogram/toMCode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/+codegen/@codeprogram/toMCode.m',18,0)">line 18</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 135)" style="font-weight:bold">makemcode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',135,0)">line 135</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('filemenufcn', '/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m', 62)" style="font-weight:bold">filemenufcn</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m',62,0)">line 62</a>)] 
+{Error using close
+Invalid figure handle.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('makemcode', '/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m', 143)" style="font-weight:bold">makemcode</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/codetools/makemcode.m',143,0)">line 143</a>)
+if show_status_bar, close(hwait); end
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('filemenufcn', '/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m', 62)" style="font-weight:bold">filemenufcn</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/uitools/filemenufcn.m',62,0)">line 62</a>)
+        makemcode(hfig,'Output','-editor');} 
+Error while evaluating Menu Callback.
+
+% ![step_PID3.png](step_PID3.png)
+
+help savefig
+ savefig Save figures to a MATLAB figure file
+   
+   savefig(FILENAME) saves the current figure to a file named FILENAME  
+ 
+   savefig(H, FILENAME) saves the figures identified by the graphics
+   handle array H to a MATLAB figure file called FILENAME.  MATLAB figure
+   files allow you to store entire figures and open them again later or
+   share them with others.  If H is not specified, the current figure is
+   saved.  If FILENAME is not specified, savefig saves to a file called
+   Untitled.fig.  If FILENAME does not include an extension, MATLAB appends
+   .fig.
+ 
+   savefig(H,FILENAME,'compact') saves the figures identified by the graphics 
+   handle array H to a MATLAB figure file called FILENAME. This MATLAB figure 
+   file can be opened only in R2014b or later version of MATLAB. Using the 
+   'compact' option reduces the size of the MATLAB figure file and the 
+   time required to create the file.
+ 
+   To save just a part of a figure (for example a specific axes), or to
+   save graphics handles alongside data, use the SAVE command to create a
+   MAT-file.
+ 
+   Example:
+     peaks;
+     savefig('PeaksFile');
+     close(gcf);
+     ...
+     openfig('PeaksFile');
+ 
+   See also <a href="matlab:help openfig">openfig</a>, <a href="matlab:help open">open</a>, <a href="matlab:help save">save</a>, <a href="matlab:help load">load</a>.
+
+help save
+ <strong>save</strong> Save workspace variables to file. 
+    <strong>save</strong>(FILENAME) stores all variables from the current workspace in a
+    MATLAB formatted binary file (MAT-file) called FILENAME. Specify 
+    FILENAME as a character vector or a string scalar. For example, specify
+    FILENAME as 'myFile.mat' or "myFile.mat".
+ 
+    <strong>save</strong>(FILENAME,VARIABLES) stores only the specified variables. Specify 
+    FILENAME and VARIABLES as character vectors or string scalars.
+ 
+    <strong>save</strong>(FILENAME,'-struct',STRUCTNAME,FIELDNAMES) stores the fields of the
+    specified scalar structure as individual variables in the file. If you 
+    include the optional FIELDNAMES, the <strong>save</strong> function stores only the
+    specified fields of the structure.  You cannot specify VARIABLES and 
+    the '-struct' keyword in the same call to <strong>save</strong>.
+ 
+    <strong>save</strong>(FILENAME, ..., '-append') adds new variables to an existing file.
+    You can specify '-append' with additional inputs such as VARIABLES,
+    '-struct', FORMAT, or VERSION.
+ 
+    <strong>save</strong>(FILENAME, ..., FORMAT) saves in the specified format: '-mat' or
+    '-ascii'.
+    You can specify FORMAT with additional inputs such as VARIABLES,
+    '-struct', '-append', or VERSION.
+ 
+    <strong>save</strong>(FILENAME, ..., VERSION) saves to MAT-files in the specified
+    version: '-v4', '-v6', '-v7', or '-v7.3'.
+    You can specify VERSION with additional inputs such as VARIABLES,
+    '-struct', '-append', '-nocompression', or FORMAT.
+ 
+    <strong>save</strong>(FILENAME, ..., '-nocompression', '-v7.3') saves to MAT-files version 7.3
+    without compression.
+    You can specify '-nocompression' with additional inputs such as VARIABLES and
+    '-append'. The '-nocompression' option is only supported for MAT-files version 7.3.
+ 
+    <strong>save</strong> FILENAME ... is the command form of the syntax, for convenient 
+    saving from the command line.  With command syntax, you do not need to
+    enclose FILENAME in single or double quotation marks.  Separate inputs 
+    with spaces instead of commas.  Do not use command syntax if inputs 
+    such as FILENAME are variables.
+ 
+    Inputs:
+ 
+    FILENAME: If you do not specify FILENAME, the <strong>save</strong> function saves to a
+    file named matlab.mat.  If FILENAME does not include an extension and 
+    the value of format is '-mat' (the default), MATLAB appends .mat. If 
+    filename does not include a full path, MATLAB saves in the current
+    folder. You must have permission to write to the file.
+ 
+    VARIABLES:  Save only selected variables from the workspace.
+    Use one of the following forms:
+ 
+        V1, V2, ...              Save the listed variables. Use the '*'
+                                 wildcard to match patterns.  For example,
+                                 save('A*') saves all variables that start
+                                 with A.
+        '-regexp', EXPRESSIONS   Save only the variables that match the
+                                 specified regular expressions. <strong>save</strong> treats
+                                 all inputs as regular expressions except
+                                 the optional FILENAME and STRUCTNAME.  The
+                                 FILENAME input must appear first.  For
+                                 more information on regular expressions,
+                                 type "doc regexp" at the command prompt.
+ 
+    '-struct', STRUCTNAME, FIELDNAMES:  Save the fields of a scalar
+    structure as individual variables in the file.  FIELDNAMES is optional; 
+    specify to save only selected fields.  FIELDNAMES use the same forms as
+    VARIABLES.
+ 
+    '-append': Add data to an existing file.  For MAT-files, '-append' adds
+    new variables to the file or replaces the saved values of existing
+    variables with values in the workspace.  For ASCII files, '-append'
+    adds data to the end of the file.
+ 
+    FORMAT: Specify the format of the file, regardless of any specified
+    extension.  Use one of the following combinations:
+ 
+        '-mat'                        Binary MAT-file format (default).
+        '-ascii'                      8-digit ASCII format.
+        '-ascii', '-tabs'             Tab-delimited 8-digit ASCII format.
+        '-ascii', '-double'           16-digit ASCII format.
+        '-ascii', '-double', '-tabs'  Tab-delimited 16-digit ASCII format.
+ 
+        For ASCII file formats, the <strong>save</strong> function has the following
+        limitations:
+        * Each variable must be a two-dimensional double or char array.
+        * MATLAB translates characters to their corresponding internal
+          ASCII codes.  For example, 'abc' appears in an ASCII file as:
+              9.7000000e+001  9.8000000e+001  9.9000000e+001
+        * The output includes only the real component of complex numbers.
+        * If you plan to use the LOAD function to read the file, all
+          variables must have the same number of columns.
+ 
+    '-nocompression': Save data to a MAT-file without compression. The
+    '-nocompression' option is only supported for MAT-files version 7.3.
+ 
+    VERSION: Create a MAT-file that you can load into an earlier version of
+    MATLAB or that supports specific features.  The following table shows 
+    the available MAT-file version options and the corresponding supported
+    features.
+ 
+             | Can Load in  |
+    Option   | Versions     | Supported Features
+    ---------+--------------+----------------------------------------------
+    '-v7.3'  | 7.3 or later | Version 7.0 features plus support for
+             |              | data items greater than or equal to 2GB on
+             |              | 64-bit systems. This version also supports 
+             |              | saving variables without compression using 
+             |              | the '-nocompression' flag. 
+    ---------+--------------+----------------------------------------------
+    '-v7'    | 7.0 or later | Version 6 features plus data compression and
+             |              | Unicode character encoding
+    ---------+--------------+----------------------------------------------
+    '-v6'    | 5 or later   | Version 4 features plus N-dimensional arrays,
+             |              | cell and structure arrays, and variable names
+             |              | greater than 19 characters
+    ---------+--------------+----------------------------------------------
+    '-v4'    | all          | Two-dimensional double, character, and
+             |              | sparse arrays
+ 
+    If any data items require features that the specified version does not
+    support, MATLAB does not save those items and issues a warning. You 
+    cannot specify a version later than your version of MATLAB software.
+ 
+    To view or set the default version for MAT-files, select
+    File > Preferences > General > MAT-Files.
+ 
+    Examples:
+ 
+    % Save all variables from the workspace to test.mat:
+    save test.mat
+ 
+    % Save two variables, where FILENAME is a variable:
+    savefile = 'pqfile.mat';
+    p = rand(1, 10);
+    q = ones(10);
+    save(savefile, 'p', 'q');
+ 
+    % Save the fields of a structure as individual variables:
+    s1.a = 12.7;
+    s1.b = {'abc', [4 5; 6 7]};
+    s1.c = 'Hello!';
+    save('newstruct.mat', '-struct', 's1');
+ 
+    % Save variables whose names contain digits:
+    save myfile.mat -regexp \d
+ 
+    See also <a href="matlab:help load">load</a>, <a href="matlab:help matfile">matfile</a>, <a href="matlab:help whos">whos</a>, <a href="matlab:help regexp">regexp</a>, <a href="matlab:help hgsave">hgsave</a>, <a href="matlab:help saveas">saveas</a>, <a href="matlab:help workspace">workspace</a>, <a href="matlab:help clear">clear</a>.
+
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('save')">Other functions named save</a>
+
+matlab.internal.language.introspective.overloads.displayOverloads('save')
+       <a href="matlab:help COM/save">COM/save</a>    <a href="matlab:help cstprefs.tbxprefs/save">cstprefs.tbxprefs/save</a>    <a href="matlab:help vrworld/save">vrworld/save</a>
+
+print(['-s', 'sintonia_PID_paralelo'], '-dpng', [ModelName, '.png'])
+{Unrecognized function or variable 'ModelName'.} 
+help print
+    <strong>print</strong> Print or save a figure or model.
+      A subset of the available options is presented below. For more details
+      see <a href="matlab:helpview([docroot '/matlab/ref/print.html'])" />the documentation</a>.
+ 
+      <strong>print</strong>, by itself, prints the current figure to your default printer.
+      Use the -s option to print the current model instead of the current figure.
+        print         % print the current figure to the default printer
+        print -s      % print the current model to the default printer
+ 
+      <strong>print</strong>(filename, formattype) saves the current figure to a file in the
+      specified format. Vector graphics, such as PDF ('-dpdf'), and encapsulated
+      PostScript ('-depsc'), as well as images such as JPEG ('-djpeg') and PNG ('-dpng')
+      can be created. Use '-d' to specify the formattype option
+        print(fig, '-dpdf', 'myfigure.pdf'); % save to the 'myfigure.pdf' file
+      The full list of formats is <a href="matlab:helpview([docroot '/matlab/ref/print.html#inputarg_formattype'])" />documented here</a>.
+ 
+      <strong>print</strong>(printer, ...) prints the figure or model to the specified printer.
+      Use '-P' to specify the printer option.
+        print(fig, '-Pmyprinter'); % print to the printer named 'myprinter'
+ 
+      <strong>print</strong>(resize,...) resizes the figure to fit the page when printing.
+      The resize options are valid only for figures, and only for page
+      formats (PDF, and PS) and printers. Specify resize as either
+        '-bestfit'  to preserve the figure's aspect ratio or
+        '-fillpage' to ignore the aspect ratio.
+ 
+    <a href="matlab:helpview([docroot '/matlab/ref/print.html'])" />The documentation</a> contains additonal details and examples, including how to
+    specify the figure or model to print, adjust the output size and
+    resolution, save to the clipboard, and specify the renderer to use.
+ 
+    See also <a href="matlab:help saveas">saveas</a>, <a href="matlab:help printpreview">printpreview</a>, <a href="matlab:help savefig">savefig</a>.
+
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('print')">Other functions named print</a>
+
+print -ssintonia_PID_paralelo
+print ('-ssintonia_PID_paralelo', '-dpng', 'sintonia_PID_paralelo.png')
+print ('-ssintonia_PID_paralelo', '-dpng', '-r150', 'sintonia_PID_paralelo.png')
+
+% ![sintonia_PID_paralelo.png](sintonia_PID_paralelo.png)
+
+print ('-ssintonia_PID_paralelo', '-dpng', '-r150', 'sintonia_PID_paralelo.png')
+
+diary off
