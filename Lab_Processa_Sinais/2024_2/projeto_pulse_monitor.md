@@ -1,3 +1,7 @@
+---
+Title: Projeto de um Sensor de Pulsação
+---
+
 # Projeto de um Sensor de Pulsação
 
 O objetivo é tentar realizar um sistema para medição da pulsação ou batimentos cardíacos por minuto (BPM) usando abordagem fotométrica.
@@ -24,14 +28,14 @@ Etapas:
 
 7. Teste usando foto-diodo ([DiY Sensor de Pulso IR: Parte 2](Pulse_Monitor/DIY_parte2.html)).
 
-8. Outro teste com foto-diodo (outro setup físico, outro circuito, melhores resultados)
-   ( [teste_pulse_monitor_3](Pulse_Monitor/teste_pulse_monitor_3_3.html) ).
-
-9. Pós-processamento:
+8. Outro teste (funcional) com foto-diodo (outro setup físico, outro circuito, melhores resultados) ⇒ ( [**teste_pulse_monitor_3**](Pulse_Monitor/teste_pulse_monitor_3_3.html) ).
+   
+9. **Pós-processamento**:
 
    1. [Filtro Passa-Baixas de 1a-ordem](Pulse_Monitor/fpb1a-ordem_digital.html) 
    2. Calculos de [Média $\times$ Mediana](Pulse_Monitor/media_mediana.html) ;
    3. [Detecção de Picos](Pulse_Monitor/picos.html) (Método "Simples" $\times$ Usando Derivadas).
+   4. [Testes de Rotinas de Detecção de Picos](Pulse_Monitor/detector_picos.html) baseados em Derivadas.
 
    
 
