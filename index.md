@@ -1,4 +1,6 @@
-<!--title: Prof Fernando Passold -->
+---
+Title: Cursos Prof. Fernando Passold
+---
 
 # Cursos Prof. Fernando Passold
 
@@ -37,4 +39,7 @@ Maori proverb</font>
 
 ----
 
-<font size="2">*Página iniciada em Abr/2020, Última atualização: April/2024.*</font> 
+<font size="2">🌊 [Fernando Passold](https://fpassold.github.io/)[ 📬 ](mailto:fpassold@gmail.com), <script language="JavaScript"><!-- Hide JavaScript...
+var LastUpdated = document.lastModified;
+document.writeln ("página criada em Abril de 2020; atualizada em " + LastUpdated); // End Hiding -->
+</script></font>
