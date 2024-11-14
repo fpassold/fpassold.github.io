@@ -1,4 +1,6 @@
-<!-- ttitle: Controle Automático II -->
+---
+title: Controle Automático II
+---
 
 ![Photo by David Watkis, Golden Gate Bridge](https://images.unsplash.com/photo-1566153580922-16a9709fff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80)
 
@@ -107,12 +109,12 @@
 
 - Teoria inicial/slides (arquivos PDF):
   - [Parte 1: Revisão Diagramas de Bode + Conceitos Área Controle](10_bode/Cap_10_Tecnicas_Resposta_Frecuencia_parte_1-ptbr.pdf);
-  - [Parte 2](10_bode/Cap_10_Tecnicas_Resposta_Frecuencia_2a_parte.pdf);
-- [Projeto de Controlador Proporcional (Ajuste de Ganho)](projeto_bode_01.html);
+  - [Parte 2](10_bode/Cap_10_Tecnicas_Resposta_Frecuencia_2a_parte.pdf): Revisão Margem de Ganho ($G_M$), Margem de Fase ($\Phi_M$), Projeto Controlador Proporcional -- Ajuste de Ganho (baseado em $e(\infty)$);
+- [Projeto de Controlador Proporcional (Ajuste de Ganho)](projeto_bode_01.html) (atualizado em 04/11/2024);
 - [Projeto de Controlador por Atraso de Fase (Lag)](lag_bode.html);
+  - [Exemplo de Projeto](10_bode/aula_bode_lag.html) com planta do "estudo de caso" ( [aula de 11/11/2024](10_bode/aula_bode_lag.html) ).
 - [Projeto de Controlador por Avanço de Fase (Lead)](lead_bode.html);
 - Projeto de Compensador Lead-Lag (arquivos PDF) → [Teoria](10_bode/Projeto_baseado_Resposta_Frequencia_Lag_Lead.pdf) + [Resumo](10_bode/projetos_lead_lag.pdf)
-
 - Vídeos (YouTube) recomendados do Prof. Luis Antonio Aguirre (UFMG):
   - [Projeto no Domínio Frequência](https://www.youtube.com/watch?v=TicWSrtXMvU&authuser=1);
   - [Marges de Ganho e de Fase](https://www.youtube.com/watch?v=NqlbKB8bm6Q&authuser=1);
@@ -149,17 +151,17 @@
         <p>Segue <a href="FAQ/Dvuidas%20Controlador_PI.pdf">[Aquivo PDF Dúvidas Controlador PI]</a>, com a dúvida, acrescido de comentários no próprio PDF.</p>
 	<blockquote>
 </details>
+
 <details>
 	<summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
-    <blockquote>Segue: <a href="FAQ/observacoes_cuidados_contribuicao_angular.pdf"> [PDF com FAQ/observações & cuidados associados com cálculos de contribuicao angular]</a></blockquote>
+    <blockquote>Segue: <a href="FAQ/observacoes_cuidados_contribuicao_angular.pdf"> [PDF com FAQ/observações & cuidados associados com cálculos de contribuicao angular]</a>		     </blockquote>
 </details>
+
 
 <details>
 	<summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
     <blockquote><a href="FAQ/cópia%20de%20Duvida_Controlador_PD_LEAD.pdf">[PDF]</a>: Dúvida sobre PD e Lead (simulações com Bloco Saturador)</blockquote>
 </details>
-
-
 ## :speech_balloon: Anexos
 
 - [Como obter gráficos de $u(t)$ e $e(t)$](Acoes_Controle_Erro/acoes_controle_erro.html) na linha de comandos do Matlab.
