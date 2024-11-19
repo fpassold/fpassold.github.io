@@ -75,8 +75,11 @@ title: Controle Automático II
 ## 7) Projeto de Controladores usando Root Locus
 
 - [Projeto de Controladores usando Root Locus (Parte I) --> Controlador Proporcional](projeto_usando_root_locus_parte_1.html);
+
 - [Melhorias em Controlador Proporcional !?](Melhora_Kp/melhorias_controlador_proporcional.html) (aula de 04/06/2021)
+
 - [**Projeto de Controladores Prooporcional e com Ação Integral**](PI_parte1.html)
+
 - [Projeto de Controlador Proporcional (Aula #1: 2022/2)](control2inf_2020_2/aula_10102022.html) (aula de 10/10/2022; cálculo de $Kp$ em função do $e(\infty)$ desejado);
 
 - Projeto de Controladores com **Ação Integral**:
@@ -105,26 +108,45 @@ title: Controle Automático II
 
 - [Sintonia de PID](8_Ajuste_PID/Sintonia_PIDs_usando_ZN.html) (usando Ziegler-Nichols e Método do Relé)
 
+  
+
 ## 8) Projeto de Controladores no Domínio Frequência
 
 - Teoria inicial/slides (arquivos PDF):
   - [Parte 1: Revisão Diagramas de Bode + Conceitos Área Controle](10_bode/Cap_10_Tecnicas_Resposta_Frecuencia_parte_1-ptbr.pdf);
   - [Parte 2](10_bode/Cap_10_Tecnicas_Resposta_Frecuencia_2a_parte.pdf): Revisão Margem de Ganho ($G_M$), Margem de Fase ($\Phi_M$), Projeto Controlador Proporcional -- Ajuste de Ganho (baseado em $e(\infty)$);
+  
 - [Projeto de Controlador Proporcional (Ajuste de Ganho)](projeto_bode_01.html) (atualizado em 04/11/2024);
-- [Projeto de Controlador por Atraso de Fase (Lag)](lag_bode.html);
-  - [Exemplo de Projeto](10_bode/aula_bode_lag.html) com planta do "estudo de caso" ( [aula de 11/11/2024](10_bode/aula_bode_lag.html) ).
-- [Projeto de Controlador por Avanço de Fase (Lead)](lead_bode.html);
-- Projeto de Compensador Lead-Lag (arquivos PDF) → [Teoria](10_bode/Projeto_baseado_Resposta_Frequencia_Lag_Lead.pdf) + [Resumo](10_bode/projetos_lead_lag.pdf)
-- Vídeos (YouTube) recomendados do Prof. Luis Antonio Aguirre (UFMG):
-  - [Projeto no Domínio Frequência](https://www.youtube.com/watch?v=TicWSrtXMvU&authuser=1);
-  - [Marges de Ganho e de Fase](https://www.youtube.com/watch?v=NqlbKB8bm6Q&authuser=1);
-  - [Compensadores: Avanço, Atraso e Avanço Atraso](https://www.youtube.com/watch?v=M9klBSezRQA&authuser=1).
 
+- [Projeto de Controlador por Atraso de Fase (*Lag*)](lag_bode.html);
+  
+  - [Exemplo de Projeto de *Lag*](10_bode/aula_bode_lag.html) com planta do "estudo de caso" ( [aula de 11/11/2024](10_bode/aula_bode_lag.html) ).
+  
+- [Projeto de Controlador por Avanço de Fase (*Lead*)](lead_bode.html);
 
-- Videos (em inglês) do Prof. Brian Douglas:
-  - [Designing a Lag Compensator](https://www.youtube.com/watch?v=-4bY4W0hvFA&authuser=1);
-  - [Designing a Lead Compensator](https://www.youtube.com/watch?v=rH44ttR3G4Q&authuser=1);
-  - "[Engineering Media](https://engineeringmedia.com)" → Site do Prof. Brian Douglas (desde 2018)
+  - [Exemplo de Projeto de *Lead*](2024_2/lead_bode_18112024.html) com planta do "estudo de caso" ( [aula de 18/11/2024](2024_2/lead_bode_18112024.html) ).
+
+- Projeto de Compensador *Lead-Lag* → [Teoria](https://fpassold.github.io/Controle_2/10_bode/Projeto_baseado_Resposta_Frequencia_Lag_Lead.pdf) + [Resumo](https://fpassold.github.io/Controle_2/10_bode/projetos_lead_lag.pdf) (arquivos PDF).
+
+  - Aula de 25/11/2024. 
+
+- Material de Apoio:
+
+  - Vídeos (YouTube) recomendados do Prof. Luis Antonio Aguirre (UFMG):
+
+    - [Projeto no Domínio Frequência](https://www.youtube.com/watch?v=TicWSrtXMvU&authuser=1);
+    - [Marges de Ganho e de Fase](https://www.youtube.com/watch?v=NqlbKB8bm6Q&authuser=1);
+    - [Compensadores: Avanço, Atraso e Avanço Atraso](https://www.youtube.com/watch?v=M9klBSezRQA&authuser=1).
+
+  - Videos (em inglês) do Prof. Brian Douglas:
+
+    - [Designing a Lag Compensator](https://www.youtube.com/watch?v=-4bY4W0hvFA&authuser=1);
+
+    - [Designing a Lead Compensator](https://www.youtube.com/watch?v=rH44ttR3G4Q&authuser=1);
+
+    - "[Engineering Media](https://engineeringmedia.com)" → Site do Prof. Brian Douglas (desde 2018)
+
+      
 
 
 ## 9) Sintonia (prática) de PIDs
@@ -156,8 +178,6 @@ title: Controle Automático II
 	<summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
     <blockquote>Segue: <a href="FAQ/observacoes_cuidados_contribuicao_angular.pdf"> [PDF com FAQ/observações & cuidados associados com cálculos de contribuicao angular]</a>		     </blockquote>
 </details>
-
-
 <details>
 	<summary>Dúvidas Projeto de PD e cálculo do seu zero usando contribuição angular...</summary>
     <blockquote><a href="FAQ/cópia%20de%20Duvida_Controlador_PD_LEAD.pdf">[PDF]</a>: Dúvida sobre PD e Lead (simulações com Bloco Saturador)</blockquote>

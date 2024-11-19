@@ -1,0 +1,183 @@
+# Compensador Lead
+
+Aula de 18/11/2024
+
+Warning: "/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_2/2024_2"
+selected using the Last Working Folder preference could not be accessed.
+Using "/Users/fernandopassold/Documents/MATLAB" as the initial working folder
+instead. 
+>> G1=tf(40, poly([ 0 -2]));
+>> bode (G1)
+>> grid
+>> 18.0512/4.4872
+ans =
+       4.0228
+>> 1/0.2486
+ans =
+       4.0225
+>> zero=4.4872;
+>> polo=18.0512;
+>> C=tf( [1  zero], [1  polo] );
+>> C=tf( 40*.228[1  zero], [1  polo] );
+ C=tf( 40*.228[1  zero], [1  polo] );
+              ↑
+Error: Invalid expression. When calling a function
+or indexing a variable, use parentheses. Otherwise,
+check for mismatched delimiters.
+ 
+>> alpha=0.2486;
+>> 1/alpha
+ans =
+       4.0225
+>> K_C=1/alpha
+K_C =
+       4.0225
+>> C=tf( K_C*.228[1  zero], [1  polo] );
+ C=tf( K_C*.228[1  zero], [1  polo] );
+               ↑
+Error: Invalid expression. When calling a function
+or indexing a variable, use parentheses. Otherwise,
+check for mismatched delimiters.
+ 
+>> C=tf( K_C*[1  zero], [1  polo] );
+>> zpk(C)
+
+ans =
+ 
+  4.0225 (s+4.487)
+  ----------------
+     (s+18.05)
+ 
+Continuous-time zero/pole/gain model.
+
+>> hold on
+>> bode(C)
+>> 
+>> % ![bode_led_contribuicao.png](bode_led_contribuicao.png)
+>> 
+
+
+----
+
+Projeto do Lead para planta do estudo de caso:
+
+>> load planta
+>> zpk(G)
+
+ans =
+ 
+          20
+  ------------------
+  (s+10) (s+4) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+>> % Especificações de controle:
+>> 
+>> % * $P_m$ desejado: $58^o$;
+>> % * margem de ganho desejada de 6 dB.
+>> 
+>> % * erro de 17%.
+>> 
+>> Kp=(1-0.17)/0.17
+Kp =
+       4.8824
+>> 
+>> dcgain(G)
+ans =
+          0.5
+>> K=Kp/dcgain(G)
+K =
+       9.7647
+>> 
+>> 
+>> G1=K*G;
+>> figure; bode(G1)
+>> 
+>> % Margem de fase de G1(2) = 47.5 graus
+>> 58-47.5
+ans =
+         10.5
+>> 10.5+5
+ans =
+         15.5
+>> % 15,5 graus avanço de fase requerido do Lead
+>> aux=sin(15.5*pi/180)
+aux =
+      0.26724
+>> alpha=(1-aux)/(1+aux)
+alpha =
+      0.57824
+>> % distância entre zero e polo de Lead = 1/alpha
+>> 1/alpha
+ans =
+       1.7294
+>> % Com este alpha qual o incremente de ganho causado pelo Lead?
+>> ganho=1/sqrt(alpha)
+ganho =
+       1.3151
+>> 20*log10(ganho)
+ans =
+        2.379
+>> % Buscando onde |G1(s)| "cai" 2,379 dB:
+>> 
+>> % ![bode_lead_1.png](bode_lead_1.png)
+>> 
+>> xlim([1 10])
+>> 
+>> % Frequência do wc ou wm (da contribuição angular):
+>> % 3,99 < w_m < 4,67
+>> wm=4.25;
+>> zero=sqrt(alpha)*wm
+zero =
+       3.2318
+>> polo=wm/sqrt(alpha)
+polo =
+        5.589
+>> 
+>> % ![bode_lead_2.png](bode_lead_2.png)
+>> 
+>> C=tf( [1  zero], [1  polo] );
+>> zpk(C)
+
+ans =
+ 
+  (s+3.232)
+  ---------
+  (s+5.589)
+ 
+Continuous-time zero/pole/gain model.
+
+>> % Por curiosidade:
+>> dcgain(C)
+ans =
+      0.57824
+>> % Definindo ganho final do controlador
+>> Kc=K/alpha
+Kc =
+       16.887
+>> C=tf( Kc*[1  zero], [1  polo] );
+>> % calculando FTMA(s) final com controlador...
+>> ftma=C*G;
+>> figure; bode(G, C, ftma)
+>> zlim([1 10])
+>> figure; bode(G, C, ftma)
+>> xlim([1 10])
+>> legend('G(s)', 'Lead', 'FTMA(s)')
+>> 
+>> % Margem final alcançada = 52,4 graus
+>> 
+>> % ![bode_lead_final.png](bode_lead_final.png)
+>> 
+>> % Confirmando erro em regime permanente:
+>> ftmf=feedback(ftma, 1);
+>> figure; step(ftmf)
+>> erro = ((1-dcgain(ftmf))/1)*100
+erro =
+           17
+>> 
+>> % ![step_lead_bode.png](step_lead_bode.png)
+>> 
+>> % $\%OS = 27,3\%$ equivale a $P_m \cong 41,23^o$ (desejado $56^o$).
+>> save planta
+>> 
