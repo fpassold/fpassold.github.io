@@ -1,0 +1,616 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>TensorFlow Lite</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; font-size-adjust: none; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: medium !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
+
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
+
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
+}
+
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+
+</style>
+</head>
+<body class='typora-export'>
+<div id='write'  class=''><h1><a name="tensorflow-lite" class="md-header-anchor"></a><span>TensorFlow Lite</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n556"><a class="md-toc-inner" style="" href="#tensorflow-lite">TensorFlow Lite</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2"><a class="md-toc-inner" style="" href="#intro">Intro</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6"><a class="md-toc-inner" style="" href="#tensorflow">TensorFlow</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n51"><a class="md-toc-inner" style="" href="#tensorflow-lite-n51"><strong>TensorFlow Lite</strong></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n79"><a class="md-toc-inner" style="" href="#diferenças-e-implicações-em-sistemas-microcontrolados">Diferenças e implicações em sistemas microcontrolados</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n112"><a class="md-toc-inner" style="" href="#resumo">Resumo</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n122"><a class="md-toc-inner" style="" href="#otimizações-no-tensorflow-lite">Otimizações no TensorFlow Lite</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n125"><a class="md-toc-inner" style="" href="#1-quantização">1. Quantização</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n147"><a class="md-toc-inner" style="" href="#2-redução-do-tamanho-do-modelo">2. Redução do tamanho do modelo</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n167"><a class="md-toc-inner" style="" href="#3-operadores-específicos-para-dispositivos-móveis">3. Operadores específicos para dispositivos móveis</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n187"><a class="md-toc-inner" style="" href="#4-uso-de-hardware-acelerado">4. Uso de hardware acelerado</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n207"><a class="md-toc-inner" style="" href="#5-tensorflow-lite-for-microcontrollers-tflm">5. TensorFlow Lite for Microcontrollers (TFLM)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n227"><a class="md-toc-inner" style="" href="#6-conversão-de-modelos">6. Conversão de modelos</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n247"><a class="md-toc-inner" style="" href="#7-suporte-a-modelos-pré-treinados">7. Suporte a modelos pré-treinados</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n267"><a class="md-toc-inner" style="" href="#resumo-das-otimizações">Resumo das otimizações</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n302"><a class="md-toc-inner" style="" href="#conclusão"><strong>Conclusão</strong></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n305"><a class="md-toc-inner" style="" href="#a-técnica-de-pruning">A técnica de Pruning</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n311"><a class="md-toc-inner" style="" href="#o-que-é-eliminado-neurônios-ou-conexões">O que é eliminado: neurônios ou conexões?</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n314"><a class="md-toc-inner" style="" href="#como-o-pruning-funciona">Como o pruning funciona?</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n342"><a class="md-toc-inner" style="" href="#ganho-real-durante-a-multiplicação-dos-pesos">Ganho real durante a multiplicação dos pesos</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n361"><a class="md-toc-inner" style="" href="#como-as-multiplicações-por-zero-são-evitadas">Como as multiplicações por zero são evitadas?</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n382"><a class="md-toc-inner" style="" href="#exemplo-prático">Exemplo prático</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n394"><a class="md-toc-inner" style="" href="#vantagens-do-pruning">Vantagens do pruning</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n417"><a class="md-toc-inner" style="" href="#desafios-do-pruning">Desafios do pruning</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n426"><a class="md-toc-inner" style="" href="#resumo-n426">Resumo</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n429"><a class="md-toc-inner" style="" href="#tpus">TPU's</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n432"><a class="md-toc-inner" style="" href="#características-principais-das-tpus">Características principais das TPUs</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n455"><a class="md-toc-inner" style="" href="#como-as-tpus-funcionam">Como as TPUs funcionam?</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n462"><a class="md-toc-inner" style="" href="#comparação-com-gpus-e-cpus">Comparação com GPUs e CPUs</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n495"><a class="md-toc-inner" style="" href="#vantagens-das-tpus">Vantagens das TPUs</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n513"><a class="md-toc-inner" style="" href="#limitações-das-tpus">Limitações das TPUs</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n531"><a class="md-toc-inner" style="" href="#exemplos-de-uso-de-tpus">Exemplos de uso de TPUs</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n549"><a class="md-toc-inner" style="" href="#conclusão-n549">Conclusão</a></span></p></div><hr /><h2><a name="intro" class="md-header-anchor"></a><span>Intro</span></h2><p><span>Quais as diferenças entre TensorFlow e LiteFlow? Qual sua implicação em sistemas microcontrolados?</span></p><p><span>TensorFlow e LiteFlow são frameworks de machine learning, mas possuem diferenças significativas em termos de funcionalidades, uso e aplicações, especialmente em sistemas microcontrolados. Vamos explorar essas diferenças e suas implicações:</span></p><hr /><h2><a name="tensorflow" class="md-header-anchor"></a><span>TensorFlow</span></h2><ol start='' ><li><p><strong><span>O que é?</span></strong></p><ul><li><span>TensorFlow é um framework de machine learning de código aberto desenvolvido pelo Google, amplamente utilizado para treinar e implantar modelos de deep learning.</span></li><li><span>Oferece suporte a uma ampla gama de aplicações, desde redes neurais profundas até modelos de visão computacional, processamento de linguagem natural e muito mais.</span></li></ul></li><li><p><strong><span>Características principais:</span></strong></p><ul><li><span>Suporte a GPUs e TPUs para aceleração de cálculos.</span></li><li><span>Escalabilidade para grandes conjuntos de dados e modelos complexos.</span></li><li><span>Ferramentas como TensorFlow Extended (TFX) para produção e TensorFlow.js para aplicações web.</span></li><li><span>Flexibilidade para trabalhar com diferentes linguagens, como Python, C++ e JavaScript.</span></li></ul></li><li><p><strong><span>Uso em sistemas microcontrolados:</span></strong></p><ul><li><span>O TensorFlow tradicional é pesado para sistemas microcontrolados devido ao seu alto consumo de memória e poder de processamento.</span></li><li><span>No entanto, o </span><strong><span>TensorFlow Lite</span></strong><span> (uma versão otimizada do TensorFlow) foi desenvolvido especificamente para dispositivos embarcados e sistemas com recursos limitados, como microcontroladores.</span></li></ul></li></ol><hr /><h2><a name="tensorflow-lite-n51" class="md-header-anchor"></a><strong><span>TensorFlow Lite</span></strong></h2><ol start='' ><li><p><strong><span>O que é?</span></strong></p><ul><li><span>TensorFlow Lite é uma versão otimizada do TensorFlow projetada para dispositivos móveis e embarcados, incluindo microcontroladores.</span></li><li><span>Focado em </span><strong><span>inferência</span></strong><span> (execução de modelos pré-treinados) em dispositivos com recursos limitados.</span></li></ul></li><li><p><strong><span>Características principais:</span></strong></p><ul><li><span>Leve e eficiente em termos de memória e processamento.</span></li><li><span>Suporte a microcontroladores através do </span><strong><span>TensorFlow Lite for Microcontrollers</span></strong><span> (TFLM).</span></li><li><span>Otimizado para operações de baixa latência e baixo consumo de energia.</span></li><li><span>Compatível com modelos reduzidos e quantizados para melhor desempenho em hardware limitado.</span></li></ul></li><li><p><strong><span>Uso em sistemas microcontrolados:</span></strong></p><ul><li><span>Ideal para aplicações como reconhecimento de voz, detecção de gestos, classificação de sensores e outras tarefas de IoT.</span></li><li><span>Requer modelos pré-treinados e quantizados para funcionar eficientemente em microcontroladores.</span></li></ul></li></ol><hr /><h2><a name="diferenças-e-implicações-em-sistemas-microcontrolados" class="md-header-anchor"></a><span>Diferenças e implicações em sistemas microcontrolados</span></h2><figure><table><thead><tr><th><span>Característica</span></th><th><span>TensorFlow (original)</span></th><th><span>TensorFlow Lite (TFLite)</span></th><th><span>LiteFlow (se aplicável)</span></th></tr></thead><tbody><tr><td><strong><span>Complexidade</span></strong></td><td><span>Alta</span></td><td><span>Baixa</span></td><td><span>Possivelmente baixa</span></td></tr><tr><td><strong><span>Uso principal</span></strong></td><td><span>Treinamento e inferência</span></td><td><span>Inferência</span></td><td><span>Inferência (suposição)</span></td></tr><tr><td><strong><span>Requisitos de hardware</span></strong></td><td><span>GPUs/TPUs, alta memória</span></td><td><span>Baixo consumo de recursos</span></td><td><span>Baixo consumo de recursos</span></td></tr><tr><td><strong><span>Aplicações típicas</span></strong></td><td><span>Data centers, servidores</span></td><td><span>Dispositivos móveis, IoT</span></td><td><span>Microcontroladores (sup.)</span></td></tr><tr><td><strong><span>Suporte a microcontroladores</span></strong></td><td><span>Não</span></td><td><span>Sim (TFLM)</span></td><td><span>Possivelmente sim</span></td></tr></tbody></table></figure><hr /><h2><a name="resumo" class="md-header-anchor"></a><span>Resumo</span></h2><ul><li><strong><span>TensorFlow</span></strong><span> é mais adequado para treinamento de modelos e aplicações em servidores ou dispositivos com recursos robustos.</span></li><li><strong><span>TensorFlow Lite</span></strong><span> é a escolha ideal para sistemas microcontrolados, pois é leve, eficiente e otimizado para inferência em dispositivos com recursos limitados.</span></li></ul><p><span>Para sistemas microcontrolados, o </span><strong><span>TensorFlow Lite for Microcontrollers</span></strong><span> é a solução mais consolidada e amplamente adotada.</span></p><hr /><h2><a name="otimizações-no-tensorflow-lite" class="md-header-anchor"></a><span>Otimizações no TensorFlow Lite</span></h2><p><span>O TensorFlow Lite (TFLite) é otimizado para dispositivos com recursos limitados, como smartphones, dispositivos IoT e microcontroladores. Essas otimizações visam reduzir o consumo de memória, o tempo de execução (latência) e o uso de energia, mantendo a precisão e a funcionalidade dos modelos de machine learning. Vamos detalhar as principais otimizações e fornecer exemplos:</span></p><hr /><h3><a name="1-quantização" class="md-header-anchor"></a><span>1. Quantização</span></h3><ul><li><p><strong><span>O que é?</span></strong></p><ul><li><span>A quantização é uma técnica que reduz a precisão dos números usados nos cálculos do modelo. Em vez de usar números de ponto flutuante de 32 bits (float32), o TFLite pode usar inteiros de 8 bits (int8) ou outros formatos compactos.</span></li></ul></li><li><p><strong><span>O que é otimizado?</span></strong></p><ul><li><strong><span>Memória:</span></strong><span> Modelos quantizados ocupam menos espaço na memória.</span></li><li><strong><span>Velocidade:</span></strong><span> Operações com inteiros são mais rápidas do que com números de ponto flutuante.</span></li><li><strong><span>Energia:</span></strong><span> Menos cálculos complexos significam menor consumo de energia.</span></li></ul></li><li><p><strong><span>Exemplo:</span></strong></p><ul><li><span>Um modelo de classificação de imagens que originalmente usa float32 pode ser quantizado para int8, reduzindo o tamanho do modelo em até 75% e acelerando a inferência.</span></li></ul></li></ul><hr /><h3><a name="2-redução-do-tamanho-do-modelo" class="md-header-anchor"></a><span>2. Redução do tamanho do modelo</span></h3><ul><li><p><strong><span>O que é?</span></strong></p><ul><li><span>O TFLite usa técnicas como </span><strong><span>pruning</span></strong><span> (podagem) e </span><strong><span>weight sharing</span></strong><span> (compartilhamento de pesos) para reduzir o tamanho do modelo sem sacrificar significativamente a precisão.</span></li></ul></li><li><p><strong><span>O que é otimizado?</span></strong></p><ul><li><strong><span>Memória:</span></strong><span> Modelos menores ocupam menos espaço na memória e são mais adequados para dispositivos com recursos limitados.</span></li><li><strong><span>Latência:</span></strong><span> Menos parâmetros significam menos cálculos, o que acelera a inferência.</span></li></ul></li><li><p><strong><span>Exemplo:</span></strong></p><ul><li><span>Um modelo de reconhecimento de voz pode ter seus pesos menos importantes removidos (pruning), reduzindo o tamanho do arquivo de 50 MB para 10 MB.</span></li></ul></li></ul><hr /><h3><a name="3-operadores-específicos-para-dispositivos-móveis" class="md-header-anchor"></a><span>3. Operadores específicos para dispositivos móveis</span></h3><ul><li><p><strong><span>O que é?</span></strong></p><ul><li><span>O TFLite inclui operadores (kernels) otimizados para hardware móvel e embarcado, como CPUs ARM e DSPs.</span></li></ul></li><li><p><strong><span>O que é otimizado?</span></strong></p><ul><li><strong><span>Velocidade:</span></strong><span> Operadores especializados são mais eficientes do que os genéricos usados no TensorFlow original.</span></li><li><strong><span>Energia:</span></strong><span> Operações mais rápidas consomem menos energia.</span></li></ul></li><li><p><strong><span>Exemplo:</span></strong></p><ul><li><span>Um operador de convolução (usado em redes neurais convolucionais) é otimizado para rodar em CPUs ARM, acelerando a inferência em smartphones.</span></li></ul></li></ul><hr /><h3><a name="4-uso-de-hardware-acelerado" class="md-header-anchor"></a><span>4. Uso de hardware acelerado</span></h3><ul><li><p><strong><span>O que é?</span></strong></p><ul><li><span>O TFLite suporta aceleradores de hardware, como GPUs, </span><strong><span>NPUs</span></strong><span> (Neural Processing Units) e DSPs (Digital Signal Processors), que são comuns em dispositivos móveis e embarcados.</span></li></ul></li><li><p><strong><span>O que é otimizado?</span></strong></p><ul><li><strong><span>Velocidade:</span></strong><span> O hardware dedicado acelera drasticamente a inferência.</span></li><li><strong><span>Energia:</span></strong><span> Aceleradores são mais eficientes em termos de energia do que CPUs para tarefas de machine learning.</span></li></ul></li><li><p><strong><span>Exemplo:</span></strong></p><ul><li><span>Um </span><mark><span>smartphone com uma NPU</span></mark><span> (ou </span><em><span>Neural Engine</span></em><span>) pode usar o TFLite para executar um modelo de detecção de objetos em tempo real, com </span><mark><span>baixa latência</span></mark><span> e </span><mark><span>baixo consumo de energia</span></mark><span>.</span></li></ul></li></ul><hr /><h3><a name="5-tensorflow-lite-for-microcontrollers-tflm" class="md-header-anchor"></a><span>5. TensorFlow Lite for Microcontrollers (TFLM)</span></h3><ul><li><p><strong><span>O que é?</span></strong></p><ul><li><span>Uma versão ainda mais leve do TFLite, projetada especificamente para microcontroladores com poucos kilobytes de memória.</span></li></ul></li><li><p><strong><span>O que é otimizado?</span></strong></p><ul><li><strong><span>Memória:</span></strong><span> O TFLM é extremamente compacto, ocupando apenas alguns kilobytes.</span></li><li><strong><span>Energia:</span></strong><span> Projetado para operar com baixo consumo de energia, ideal para dispositivos IoT alimentados por bateria.</span></li></ul></li><li><p><strong><span>Exemplo:</span></strong></p><ul><li><span>Um microcontrolador como o ESP32 ou Arduino pode rodar um modelo de reconhecimento de gestos usando o TFLM, com consumo de energia mínimo.</span></li></ul></li></ul><hr /><h3><a name="6-conversão-de-modelos" class="md-header-anchor"></a><span>6. Conversão de modelos</span></h3><ul><li><p><strong><span>O que é?</span></strong></p><ul><li><span>O TFLite usa o </span><strong><span>TensorFlow Lite Converter</span></strong><span> para converter modelos treinados no TensorFlow (geralmente em formato SavedModel ou Keras) para o formato TFLite (.tflite), aplicando otimizações automáticas durante o processo.</span></li></ul></li><li><p><strong><span>O que é otimizado?</span></strong></p><ul><li><strong><span>Tamanho do modelo:</span></strong><span> O conversor remove operações desnecessárias e aplica técnicas como quantização.</span></li><li><strong><span>Compatibilidade:</span></strong><span> O modelo convertido é otimizado para rodar em dispositivos móveis e embarcados.</span></li></ul></li><li><p><strong><span>Exemplo:</span></strong></p><ul><li><span>Um modelo de detecção de objetos treinado no TensorFlow é convertido para TFLite, reduzindo seu tamanho e tornando-o compatível com smartphones.</span></li></ul></li></ul><hr /><h3><a name="7-suporte-a-modelos-pré-treinados" class="md-header-anchor"></a><span>7. Suporte a modelos pré-treinados</span></h3><ul><li><p><strong><span>O que é?</span></strong></p><ul><li><span>O TFLite oferece uma variedade de modelos pré-treinados e otimizados para tarefas comuns, como classificação de imagens, detecção de objetos e reconhecimento de fala.</span></li></ul></li><li><p><strong><span>O que é otimizado?</span></strong></p><ul><li><strong><span>Tempo de desenvolvimento:</span></strong><span> Desenvolvedores podem usar modelos prontos, sem precisar treinar do zero.</span></li><li><strong><span>Desempenho:</span></strong><span> Esses modelos já estão otimizados para dispositivos com recursos limitados.</span></li></ul></li><li><p><strong><span>Exemplo:</span></strong></p><ul><li><span>O modelo MobileNet (para classificação de imagens) está disponível em versões otimizadas para TFLite, permitindo sua execução em dispositivos móveis com alta eficiência.</span></li></ul></li></ul><hr /><h3><a name="resumo-das-otimizações" class="md-header-anchor"></a><span>Resumo das otimizações</span></h3><figure><table><thead><tr><th><span>Técnica de otimização</span></th><th><span>O que é otimizado?</span></th><th><span>Exemplo de aplicação</span></th></tr></thead><tbody><tr><td><span>Quantização</span></td><td><span>Memória, velocidade, energia</span></td><td><span>Classificação de imagens com int8</span></td></tr><tr><td><span>Redução do tamanho do modelo</span></td><td><span>Memória, latência</span></td><td><span>Reconhecimento de voz com pruning</span></td></tr><tr><td><span>Operadores específicos</span></td><td><span>Velocidade, energia</span></td><td><span>Convoluções em CPUs ARM</span></td></tr><tr><td><span>Hardware acelerado</span></td><td><span>Velocidade, energia</span></td><td><span>Detecção de objetos em NPUs</span></td></tr><tr><td><span>TFLite for Microcontrollers</span></td><td><span>Memória, energia</span></td><td><span>Reconhecimento de gestos em Arduino</span></td></tr><tr><td><span>Conversão de modelos</span></td><td><span>Tamanho, compatibilidade</span></td><td><span>Detecção de objetos em smartphones</span></td></tr><tr><td><span>Modelos pré-treinados</span></td><td><span>Tempo de desenvolvimento</span></td><td><span>Classificação de imagens com MobileNet</span></td></tr></tbody></table></figure><hr /><h3><a name="conclusão" class="md-header-anchor"></a><strong><span>Conclusão</span></strong></h3><p><span>O TensorFlow Lite é otimizado para ser leve, rápido e eficiente em termos de energia, tornando-o ideal para dispositivos com recursos limitados. Essas otimizações permitem que modelos de machine learning rodem em microcontroladores, smartphones e outros dispositivos embarcados, abrindo portas para aplicações inovadoras em IoT, wearables e muito mais.</span></p><hr /><h2><a name="a-técnica-de-pruning" class="md-header-anchor"></a><span>A técnica de Pruning</span></h2><ul><li><span>Me explique melhor como funciona a técnica de pruning? São eliminados neurônios ou conexões (sinápticas)? No caso de redução nas conexões, qual seria o ganho real durante o processo de multiplicação dos pesos? São usados IF´s para evitar multiplicações por zero?</span></li></ul><p><span>A técnica de </span><strong><span>pruning</span></strong><span> (ou &quot;podagem&quot; em português) é uma abordagem de otimização de modelos de machine learning que visa reduzir o número de parâmetros (pesos) em uma rede neural, eliminando aqueles que têm pouco impacto no desempenho do modelo. Vamos detalhar como isso funciona, o que é eliminado (neurônios ou conexões), os ganhos reais e como as multiplicações por zero são tratadas.</span></p><hr /><h3><a name="o-que-é-eliminado-neurônios-ou-conexões" class="md-header-anchor"></a><span>O que é eliminado: neurônios ou conexões?</span></h3><p><span>No pruning, geralmente são eliminadas </span><strong><span>conexões sinápticas</span></strong><span> (pesos) entre neurônios, e não os neurônios em si. Isso significa que os pesos menos importantes são definidos como zero, efetivamente &quot;podando&quot; a rede. Em alguns casos, neurônios inteiros podem ser removidos se todas as suas conexões forem podadas, mas o foco principal é nas conexões.</span></p><hr /><h3><a name="como-o-pruning-funciona" class="md-header-anchor"></a><span>Como o pruning funciona?</span></h3><ol start='' ><li><p><strong><span>Treinamento inicial:</span></strong></p><ul><li><span>Primeiro, o modelo é treinado normalmente até atingir um bom desempenho.</span></li></ul></li><li><p><strong><span>Identificação de pesos menos importantes:</span></strong></p><ul><li><p><span>Após o treinamento, os pesos da rede são analisados para determinar quais têm menos impacto no desempenho do modelo. Isso pode ser feito com base em:</span></p><ul><li><span>Magnitude dos pesos: pesos próximos de zero são considerados menos importantes.</span></li><li><span>Sensibilidade: como a remoção de um peso afeta a saída do modelo.</span></li></ul></li></ul></li><li><p><strong><span>Podagem (pruning):</span></strong></p><ul><li><span>Os pesos identificados como menos importantes são definidos como zero, efetivamente removendo essas conexões da rede.</span></li></ul></li><li><p><strong><span>Retreinamento (opcional):</span></strong></p><ul><li><span>Após a podagem, o modelo pode ser retreinado para ajustar os pesos restantes e compensar a perda de conexões.</span></li></ul></li></ol><hr /><h3><a name="ganho-real-durante-a-multiplicação-dos-pesos" class="md-header-anchor"></a><span>Ganho real durante a multiplicação dos pesos</span></h3><p><span>Quando os pesos são podados (definidos como zero), há ganhos significativos em termos de:</span></p><ol start='' ><li><p><strong><span>Redução de operações matemáticas:</span></strong></p><ul><li><span>Multiplicar um valor por zero resulta em zero, e somar zero não altera o resultado. Portanto, essas operações podem ser </span><strong><span>ignoradas</span></strong><span> durante a inferência, reduzindo o número de cálculos necessários.</span></li></ul></li><li><p><strong><span>Eficiência de memória:</span></strong></p><ul><li><span>Pesos podados (zeros) não precisam ser armazenados explicitamente. Técnicas como </span><strong><span>armazenamento esparso</span></strong><span> (sparse storage) podem ser usadas para representar apenas os pesos não nulos, economizando memória.</span></li></ul></li><li><p><strong><span>Aceleração de hardware:</span></strong></p><ul><li><span>Muitos hardwares modernos (como GPUs e TPUs) são otimizados para operações esparsas, onde multiplicações por zero são evitadas, acelerando a inferência.</span></li></ul></li></ol><hr /><h3><a name="como-as-multiplicações-por-zero-são-evitadas" class="md-header-anchor"></a><span>Como as multiplicações por zero são evitadas?</span></h3><p><span>Em vez de usar instruções </span><code>IF</code><span> para verificar se um peso é zero (o que pode adicionar overhead), as seguintes abordagens são comuns:</span></p><ol start='' ><li><p><strong><span>Armazenamento esparso:</span></strong></p><ul><li><span>Apenas os pesos não nulos são armazenados, junto com seus índices. Durante a multiplicação de matrizes (operação comum em redes neurais), apenas os valores não nulos são processados.</span></li></ul></li><li><p><strong><span>Bibliotecas e hardware especializados:</span></strong></p><ul><li><span>Bibliotecas como o TensorFlow Lite e frameworks de deep learning são otimizadas para operações esparsas. Elas usam estruturas de dados eficientes (como CSR - Compressed Sparse Row) para evitar cálculos desnecessários.</span></li><li><span>Hardwares como GPUs e NPUs têm suporte nativo para operações esparsas, onde multiplicações por zero são automaticamente ignoradas.</span></li></ul></li><li><p><strong><span>Compilação e otimização:</span></strong></p><ul><li><span>Durante a conversão de um modelo para TensorFlow Lite, por exemplo, o compilador pode aplicar técnicas para eliminar operações redundantes, como multiplicações por zero.</span></li></ul></li></ol><hr /><h3><a name="exemplo-prático" class="md-header-anchor"></a><span>Exemplo prático</span></h3><p><span>Suponha uma camada densa (</span><em><span>fully connected</span></em><span>) de uma rede neural com 4 neurônios de entrada e 3 neurônios de saída. A matriz de pesos pode ser representada como:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">W = [[0.1, 0.0, 0.3, 0.0],</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; [0.0, 0.2, 0.0, 0.4],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; [0.5, 0.0, 0.0, 0.6]]</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 60px;"></div><div class="CodeMirror-gutters" style="display: none; height: 60px;"></div></div></div></pre><p><span>Após o pruning, os pesos menos importantes são definidos como zero:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">W_pruned = [[0.1, 0.0, 0.3, 0.0],</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [0.0, 0.2, 0.0, 0.4],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [0.5, 0.0, 0.0, 0.6]]</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 60px;"></div><div class="CodeMirror-gutters" style="display: none; height: 60px;"></div></div></div></pre><p><span>Durante a inferência, apenas os pesos não nulos são considerados:</span></p><ul><li><span>Multiplicações por zero são ignoradas.</span></li><li><span>A estrutura esparsa reduz o número de operações e o uso de memória.</span></li></ul><hr /><h3><a name="vantagens-do-pruning" class="md-header-anchor"></a><span>Vantagens do pruning</span></h3><ol start='' ><li><p><strong><span>Redução do tamanho do modelo:</span></strong></p><ul><li><span>Modelos podados ocupam menos espaço em memória, o que é crucial para dispositivos com recursos limitados.</span></li></ul></li><li><p><strong><span>Aceleração da inferência:</span></strong></p><ul><li><span>Menos operações significam inferência mais rápida.</span></li></ul></li><li><p><strong><span>Eficiência energética:</span></strong></p><ul><li><span>Menos cálculos resultam em menor consumo de energia, ideal para dispositivos móveis e IoT.</span></li></ul></li><li><p><strong><span>Manutenção da precisão:</span></strong></p><ul><li><span>Com técnicas adequadas, a precisão do modelo pode ser mantida mesmo após a podagem.</span></li></ul></li></ol><hr /><h3><a name="desafios-do-pruning" class="md-header-anchor"></a><span>Desafios do pruning</span></h3><ul><li><strong><span>Seleção de pesos:</span></strong><span> Identificar quais pesos podar sem prejudicar o desempenho do modelo requer cuidado.</span></li><li><strong><span>Retreinamento:</span></strong><span> Em alguns casos, o modelo precisa ser retreinado após a podagem para ajustar os pesos restantes.</span></li><li><strong><span>Hardware especializado:</span></strong><span> Para maximizar os ganhos, é ideal usar hardware que suporte operações esparsas.</span></li></ul><hr /><h3><a name="resumo-n426" class="md-header-anchor"></a><span>Resumo</span></h3><p><span>O pruning é uma técnica poderosa para otimizar modelos de machine learning, reduzindo o número de conexões (pesos) sem sacrificar significativamente a precisão. Ao eliminar multiplicações por zero e usar estruturas esparsas, é possível alcançar ganhos reais em termos de velocidade, memória e eficiência energética, especialmente em dispositivos com recursos limitados.</span></p><hr /><h2><a name="tpus" class="md-header-anchor"></a><span>TPU&#39;s</span></h2><p><strong><span>TPU</span></strong><span> significa </span><strong><span>Tensor Processing Unit</span></strong><span> (Unidade de Processamento de Tensores, em português). É um acelerador de hardware especializado desenvolvido pelo Google especificamente para acelerar operações de machine learning, especialmente aquelas envolvendo redes neurais e cálculos com tensores (estruturas de dados multidimensionais usadas em deep learning).</span></p><hr /><h3><a name="características-principais-das-tpus" class="md-header-anchor"></a><span>Características principais das TPUs</span></h3><ol start='' ><li><p><strong><span>Projetadas para machine learning:</span></strong></p><ul><li><span>As TPUs são otimizadas para operações comuns em redes neurais, como multiplicação de matrizes, convoluções e ativações.</span></li></ul></li><li><p><strong><span>Alto desempenho:</span></strong></p><ul><li><span>Elas oferecem uma capacidade de processamento massivamente paralela, permitindo que grandes volumes de cálculos sejam realizados rapidamente.</span></li></ul></li><li><p><strong><span>Eficiência energética:</span></strong></p><ul><li><span>As TPUs são projetadas para serem mais eficientes em termos de energia do que GPUs (Unidades de Processamento Gráfico) para tarefas específicas de machine learning.</span></li></ul></li><li><p><strong><span>Uso em data centers:</span></strong></p><ul><li><span>As TPUs são usadas principalmente em data centers do Google Cloud, onde estão disponíveis para treinamento e inferência de modelos de machine learning em grande escala.</span></li></ul></li></ol><hr /><h3><a name="como-as-tpus-funcionam" class="md-header-anchor"></a><span>Como as TPUs funcionam?</span></h3><ul><li><span>As TPUs são baseadas em uma arquitetura chamada </span><strong><span>systolic array</span></strong><span>, que permite a execução eficiente de operações matriciais (como multiplicação de matrizes) em paralelo.</span></li><li><span>Elas são integradas ao ecossistema do TensorFlow, o framework de machine learning do Google, e podem ser acessadas diretamente por meio de APIs do TensorFlow.</span></li></ul><hr /><h3><a name="comparação-com-gpus-e-cpus" class="md-header-anchor"></a><span>Comparação com GPUs e CPUs</span></h3><figure><table><thead><tr><th><span>Característica</span></th><th><span>TPU</span></th><th><span>GPU</span></th><th><span>CPU</span></th></tr></thead><tbody><tr><td><strong><span>Foco</span></strong></td><td><span>Machine learning (tensores)</span></td><td><span>Gráficos e computação geral</span></td><td><span>Computação geral</span></td></tr><tr><td><strong><span>Paralelismo</span></strong></td><td><span>Altamente paralela</span></td><td><span>Altamente paralela</span></td><td><span>Limitado</span></td></tr><tr><td><strong><span>Eficiência energética</span></strong></td><td><span>Muito eficiente para ML</span></td><td><span>Eficiente para ML e gráficos</span></td><td><span>Menos eficiente para ML</span></td></tr><tr><td><strong><span>Custo</span></strong></td><td><span>Alto (especializada)</span></td><td><span>Moderado</span></td><td><span>Baixo</span></td></tr><tr><td><strong><span>Uso típico</span></strong></td><td><span>Treinamento e inferência em ML</span></td><td><span>Treinamento em ML, jogos, etc.</span></td><td><span>Tarefas gerais</span></td></tr></tbody></table></figure><hr /><h3><a name="vantagens-das-tpus" class="md-header-anchor"></a><span>Vantagens das TPUs</span></h3><ol start='' ><li><p><strong><span>Velocidade:</span></strong></p><ul><li><span>As TPUs podem acelerar drasticamente o treinamento de modelos de deep learning, reduzindo o tempo de semanas para horas ou minutos.</span></li></ul></li><li><p><strong><span>Escalabilidade:</span></strong></p><ul><li><span>Podem ser usadas em clusters para treinar modelos extremamente grandes, como redes neurais com bilhões de parâmetros.</span></li></ul></li><li><p><strong><span>Integração com TensorFlow:</span></strong></p><ul><li><span>O suporte nativo ao TensorFlow facilita o uso de TPUs sem grandes mudanças no código.</span></li></ul></li></ol><hr /><h3><a name="limitações-das-tpus" class="md-header-anchor"></a><span>Limitações das TPUs</span></h3><ol start='' ><li><p><strong><span>Especialização:</span></strong></p><ul><li><span>As TPUs são otimizadas para tarefas específicas de machine learning e não são tão versáteis quanto CPUs ou GPUs para outras tarefas.</span></li></ul></li><li><p><strong><span>Custo:</span></strong></p><ul><li><span>O acesso a TPUs geralmente requer o uso de serviços em nuvem, como o Google Cloud, o que pode ser caro para pequenos projetos.</span></li></ul></li><li><p><strong><span>Disponibilidade:</span></strong></p><ul><li><span>As TPUs não estão amplamente disponíveis para consumidores finais, sendo mais comuns em data centers.</span></li></ul></li></ol><hr /><h3><a name="exemplos-de-uso-de-tpus" class="md-header-anchor"></a><span>Exemplos de uso de TPUs</span></h3><ol start='' ><li><p><strong><span>Treinamento de modelos grandes:</span></strong></p><ul><li><span>Modelos como o </span><strong><span>BERT</span></strong><span> (usado em processamento de linguagem natural) e o </span><strong><span>EfficientNet</span></strong><span> (usado em visão computacional) foram treinados usando TPUs.</span></li></ul></li><li><p><strong><span>Inferência em tempo real:</span></strong></p><ul><li><span>Serviços como o </span><strong><span>Google Translate</span></strong><span> e o </span><strong><span>Google Photos</span></strong><span> usam TPUs para realizar inferência rápida e eficiente.</span></li></ul></li><li><p><strong><span>Pesquisa em deep learning:</span></strong></p><ul><li><span>Muitos avanços recentes em IA, como modelos generativos (ex: </span><strong><span>ChatGPT</span></strong><span>, </span><strong><span>DALL-E</span></strong><span>), foram possibilitados pelo uso de TPUs para treinamento.</span></li></ul></li></ol><hr /><h3><a name="conclusão-n549" class="md-header-anchor"></a><span>Conclusão</span></h3><p><span>As TPUs são uma tecnologia revolucionária no campo do machine learning, oferecendo desempenho e eficiência energética superiores para tarefas específicas de deep learning. Embora sejam mais caras e menos acessíveis do que GPUs e CPUs, seu impacto no treinamento e inferência de modelos de IA é significativo, especialmente em aplicações de grande escala.</span></p><hr /><p><span>17/02/2025</span></p></div>
+</body>
+</html>
