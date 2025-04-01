@@ -1,0 +1,309 @@
+% Ingressando com a planta (mundo contínuo)
+G=tf(1, polyval([-1 -2 -10]))
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('polyval', '/Applications/Matlab_R2019b.app/toolbox/matlab/polyfun/polyval.m', 53)" style="font-weight:bold">polyval</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/polyfun/polyval.m',53,0)">line 53</a>)
+if isscalar(x) && nargin < 3 && nc > 0 && isfinite(x) &&
+all(isfinite(p),'all')
+} 
+G=tf(1, poly([-1 -2 -10]))
+
+G =
+ 
+             1
+  ------------------------
+  s^3 + 13 s^2 + 32 s + 20
+ 
+Continuous-time transfer function.
+
+zpk(G)
+
+ans =
+ 
+          1
+  ------------------
+  (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+T=0.1; % periodo de amostragem
+BoG= c2d(G, T)
+
+BoG =
+ 
+  0.0001222 z^2 + 0.0003591 z + 6.391e-05
+  ---------------------------------------
+    z^3 - 2.091 z^2 + 1.375 z - 0.2725
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% # Controlador Proporcional
+
+K=1;
+ftmf=feedbak(K*BoG, 1)
+{Unrecognized function or variable 'feedbak'.
+} 
+ftmf=feedback(K*BoG, 1)
+
+ftmf =
+ 
+  0.0001222 z^2 + 0.0003591 z + 6.391e-05
+  ---------------------------------------
+    z^3 - 2.091 z^2 + 1.375 z - 0.2725
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+% fechando malha com degrau unitário
+step(ftmf)
+% ![step_K_1.png](step_K_1.png)
+
+% Levantando o RL do sistema
+rlocus(BoG)
+xlim([-8 2])
+% ![rl_BoG.png](rl_BoG.png)
+
+% Interpretando o RL
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Realizando zoom na região de interesse
+axis([0.5 1.1 -0.6 0.6])
+axis([0.5 1.1 -0.6 0.6])
+
+OS=15;
+zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+
+zeta =
+
+    0.5169
+
+hold on; zgrid(zeta,0)
+
+% ![rl_BoG_zoom.png](rl_BoG_zoom.png)
+
+% Comentários
+
+% * Se for adotado $K \cong 2$, terei 2 pólos de MF
+% dominantes ainda com parte imaginária nula, o que
+% significa resposta super-amortecida (sem overshoot);
+% * Se for adotado $K \cong 35$, terei 2 pólos de MF
+% dominantes com parte imaginária não nula, isto
+% implica em resposta sub-amortecida (com oveshoot), no
+% caso, com $\%OS \cong 15\%$.
+% * O ganho máximo, $K_u \cong 245$, o que significa que
+% $K > 245$, teremos um sistema instável em MF.
+
+save dados
+diary off
+
+% ## Controle Proporcional com resposta super-amortecida
+
+K=2;
+ftmf=feedback(K*BoG, 1)
+
+ftmf =
+ 
+  0.0002445 z^2 + 0.0007181 z + 0.0001278
+  ---------------------------------------
+    z^3 - 2.091 z^2 + 1.376 z - 0.2724
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+pole(ftmf)
+
+ans =
+
+   0.8625 + 0.0050i
+   0.8625 - 0.0050i
+   0.3661 + 0.0000i
+
+figure; step(ftmf)
+% ![step_K_2.png](step_K_2.png)
+
+dcgain(ftmf)
+
+ans =
+
+    0.0909
+
+erro=((1-dcgain(ftmf))/1)*100
+
+erro =
+
+   90.9091
+
+% Lembrar que o ganho DC da planta é baixo:
+dcgain(BoG)
+
+ans =
+
+    0.0500
+
+% Deveria aumentar ganho para reduzir o erro.
+% Mas com certeza teremos pólos de MF complexos, isto é,
+% resposta oscilatória (com overshoot).
+
+% ## Controlador Proporcional para %OS = 15%
+
+K=35;
+ftmf=feedback(K*BoG, 1);
+figure(2); title('Controlador Proporcional (sem overshoot)')
+figure;
+step(ftmf)
+title('Controlador Proporcional (%OS=15%)')
+
+% ![step_K_35.png](step_K_35.png)
+
+erro=((1-dcgain(ftmf))/1)*100
+
+erro =
+
+   36.3636
+
+% Questão: - Este erro é aceitável?
+
+stepinfo(ftmf)
+
+ans = 
+
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 0.8000
+    SettlingTime: 3.6000
+     SettlingMin: 0.5955
+     SettlingMax: 0.7290
+       Overshoot: 14.5639
+      Undershoot: 0
+            Peak: 0.7290
+        PeakTime: 1.7000
+
+% Repare que o %OS=15% é em relação à $y[\infty]$ e não
+% em relação à $r[\infty]=1,0$ (degrau unitário).
+
+% Isto quer dizer que posso aumentar o ganho para forçar
+% $Max{y[\infty]} \cong 1,15$ que corresponde à 15% de
+% overshoot em relação à entrada degrau.
+
+% Mais facil para enconrar este valor é ativar o
+% App Control System Designer
+
+% ![step_K_86.png](step_K_86.png)
+
+K=86;
+ftmf=feedback(K*BoG, 1);
+figure; step(ftmf)
+title('Controlador Proporcional (%OS=15% para r[\infty])')
+
+% ![step_K_86_melhor.png](step_K_86_melhor.png)
+
+erro=((1-dcgain(ftmf))/1)*100
+
+erro =
+
+   18.8679
+
+% Questão: - E se o requisito de controle fosse manter
+% erro de regime permanente abaixo de 10%?
+
+[Warning: Error occurred while executing the listener callback
+for the
+ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor class
+Container property PostSet event:
+Invalid or deleted object.
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/getlist', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m', 53)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/getlist</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m',53,0)">line 53</a>)
+                        hasConstr(ct) =
+                        ~isempty(plotconstr.findConstrOnAxis(List(ct).Axes.getaxes));
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/refresh', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/refresh.m', 13)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/refresh</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/refresh.m',13,0)">line 13</a>)
+    List = this.getlist('ActiveContainers');
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/show>LocalContainer', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/show.m', 60)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/show>LocalContainer</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/show.m',60,0)">line 60</a>)
+    eventData.AffectedObject.refresh('Containers');
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/target', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m', 94)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/target</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m',94,0)">line 94</a>)
+            this.Container = Container;
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/show', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/show.m', 22)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/show</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/show.m',22,0)">line 22</a>)
+this.target(varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.plot.internal.ResponsePlot/createView>LocalDesignConstr', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+plot/+internal/@ResponsePlot/createView.m', 104)" style="font-weight:bold">ctrlguis.csdesignerapp.plot.internal.ResponsePlot/createView>LocalDesignConstr</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+plot/+internal/@ResponsePlot/createView.m',104,0)">line 104</a>)
+          Viewer.ConstraintEditor.show(View);] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal/ConstraintEditor/target', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m', 94)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal/ConstraintEditor/target</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m',94,0)">line 94</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/show', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/show.m', 22)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/show</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/show.m',22,0)">line 22</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.plot.internal.ResponsePlot/createView>LocalDesignConstr', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+plot/+internal/@ResponsePlot/createView.m', 104)" style="font-weight:bold">ctrlguis.csdesignerapp.plot.internal.ResponsePlot/createView>LocalDesignConstr</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+plot/+internal/@ResponsePlot/createView.m',104,0)">line 104</a>)] 
+[Warning: Error occurred while executing the listener callback
+for the
+ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor class
+Container property PostSet event:
+Invalid or deleted object.
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/getlist', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m', 53)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/getlist</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m',53,0)">line 53</a>)
+                        hasConstr(ct) =
+                        ~isempty(plotconstr.findConstrOnAxis(List(ct).Axes.getaxes));
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/refresh', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/refresh.m', 13)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/refresh</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/refresh.m',13,0)">line 13</a>)
+    List = this.getlist('ActiveContainers');
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/show>LocalContainer', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/show.m', 60)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/show>LocalContainer</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/show.m',60,0)">line 60</a>)
+    eventData.AffectedObject.refresh('Containers');
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/target', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m', 94)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/target</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m',94,0)">line 94</a>)
+            this.Container = Container;
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/build>localSetConstr', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/build.m', 103)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/build>localSetConstr</a>
+(<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/build.m',103,0)">line 103</a>)
+   this.target(this.Container, List(index));] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal/ConstraintEditor/target', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m', 94)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal/ConstraintEditor/target</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/ConstraintEditor.m',94,0)">line 94</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/build>localSetConstr', '/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/build.m', 103)" style="font-weight:bold">ctrlguis.csdesignerapp.dialogs.internal.ConstraintEditor/build>localSetConstr</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/control/ctrlguis/+ctrlguis/+csdesignerapp/+dialogs/+internal/@ConstraintEditor/build.m',103,0)">line 103</a>)] 
+
+
+% Para isto $K \cong 170$ que leva a resposta:
+
+% ![step_K_170.png](step_K_170.png)
+
+save dados
+diary off
