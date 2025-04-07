@@ -1,0 +1,607 @@
+% Recuperando dados da aula passada
+
+load dados
+who
+
+Your variables are:
+
+BoG   G     K     OS    T     ans   erro  ftmf  zeta  
+
+zpk*G)
+ zpk*G)
+      
+{Error: Invalid expression. When calling a function or indexing
+a variable, use parentheses. Otherwise, check for mismatched
+delimiters.
+} 
+zpk(G)
+
+ans =
+ 
+          1
+  ------------------
+  (s+10) (s+2) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+% Revisão da [Teoria do erro](https://fpassold.github.io/Controle_3/Controle3_2021_2/aula_1.html) no projeto de Conbtroladores Proporcionais.
+
+% Suponha que queira definir o ganho do controlar para
+% limitar erro em 15%.
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Calculando $K_p =$ ganho de posição:
+
+dcgain(BoG)
+
+ans =
+
+         0.05
+
+1-15/100
+
+ans =
+
+         0.85
+
+% Equação do erro:
+
+% $0,15 = \dfrac{1}{1+K_p}$
+
+% $K_{p_necessario}=\dfrac{1-0.15}{0.15}$
+
+Kp_d=(1-0.15)/0.15
+
+Kp_d =
+
+       5.6667
+
+% $K_p = \lim_{z \to 1} FTMA(z) = dcgain(BoG) = 0,05$
+
+% $5,6667 = K * 0,05$
+
+% $K=5,6667/0,05$
+
+K = Kp_d/dcgain(BoG)
+
+K =
+
+       113.33
+
+% Comparando com $K_u \cong 243$.
+
+ftmf_K = feedback(K*BoG, 1);
+step(ftmf_K)
+stepinfo(ftmf_K)
+
+ans = 
+
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 0.3
+    SettlingTime: 6.1
+     SettlingMin: 0.60898
+     SettlingMax: 1.289
+       Overshoot: 51.648
+      Undershoot: 0
+            Peak: 1.289
+        PeakTime: 1
+
+% Valor de $y[\infty]$:
+
+dcgain(ftmf_K)
+
+ans =
+
+         0.85
+
+% ![step_K.png](step_K.png)
+
+% O overshoot em relação ao degrau (unitário) foi de 29%.
+
+% Próximo objetivo: zerar erro de regime permanente.
+
+% ## Acrescentando Ação Integral
+
+C_I = tf(1, [1 -1])
+
+C_I =
+ 
+    1
+  -----
+  s - 1
+ 
+Continuous-time transfer function.
+
+C_I = tf(1, [1 -1], T)
+
+C_I =
+ 
+    1
+  -----
+  z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_I = C_I*BoG;
+zpk(ftma_I)
+
+ans =
+ 
+     0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------------
+  (z-1) (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+figure; rlocus(ftma_I)
+axis equal
+
+% ![rl_I.png](rl_I.png)
+
+% Fazendo "zoom" na região de interesse:
+
+axis([0.7 1.1 -0.25 0.25])
+
+hold on
+zgrid(zeta,0) % zeta para %OS=15%
+
+% ![rl_I_zoom.png](rl_I_zoom.png)
+
+[K_I,polosMF]=rlocfind(ftma_I)
+Select a point in the graphics window
+
+selected_point =
+
+      0.96845 +   0.049356i
+
+
+K_I =
+
+      0.85046
+
+
+polosMF =
+
+      0.96854 +   0.049328i
+      0.96854 -   0.049328i
+      0.78529 +          0i
+      0.36907 +          0i
+
+ftmf_I = feedback(K_I*ftma_I, 1); % fechando a malha
+figure; step(ftmf_I, ftmf_K)
+legend('Integrador Puro (%OS=15%)', 'Proporcional (e[\infty]=15%)')
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+
+% ![step_I_K.png](step_I_K.png)
+
+% Anulei o erro, $e[\infty]=0$, mas $t_s = 13,7$ segundos
+% é muito elevado.
+
+% Para "consertar" este efeito, temos que acrescentar ação
+% de controle Proporcional à (pura) ação Integral.
+
+% ## Controlador PI
+
+% O diagrama de blocos do controlador PI aparece abaixo:
+
+% ![https://fpassold.github.io/Controle_3/aula_14_05_2020/PI_blocos.drawio.png](https://fpassold.github.io/Controle_3/aula_14_05_2020/PI_blocos.drawio.png)
+
+% Dedução da eq. do PI, ver [Controlador PI (aula de 14/05/2020)](https://fpassold.github.io/Controle_3/aula_14_05_2020.html)
+
+% Equação genérica do PI fica:
+
+% $C_{PI}(z)=\dfrac{K(z-z_{PI})}{(z-1)}$
+
+% Surge uma incógnica extra que é: - onde posicionar o zero do PI ($z_{PI}$)?
+
+% Alguma discussão aparece na [Aula de 05/05/2021](https://fpassold.github.io/Controle_3/2021_1/aula_05_05_2021.html).
+
+
+% Testando 2 opções para $z_{PI}$:
+% * **Opção 1**: $z_PI = 0,91$;
+% * **Opção 2**: $z_{PI} = 0,83$.
+
+% ### Controlador PI (Opção 1)
+
+C_PI=tf([1 -0.91],[1 -1],T)
+
+C_PI =
+ 
+  z - 0.91
+  --------
+   z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+C_PI1=tf([1 -0.91],[1 -1],T)
+
+C_PI1 =
+ 
+  z - 0.91
+  --------
+   z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_PI1=C_PI1*BoG;
+zpk(fma_PI1)
+{Unrecognized function or variable 'fma_PI1'.
+} 
+zpk(ftma_PI1)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z-0.91) (z+0.1903)
+  ----------------------------------------
+   (z-1) (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+figure; rlocus(ftma_PI1)
+hold on; zgrid(zeta,0)
+
+% ![rl_PI1.png](rl_PI1.png)
+
+% Fazendo zooom na região de interesse:
+
+axis([0.2 1.1 -0.5 0.5])
+axis([0.7 1.1 -0.5 0.5])
+
+% ![rl_PI1_zoom.png](rl_PI1_zoom.png)
+
+[K_PI1,polosMF]=rlocfind(ftma_PI1)
+Select a point in the graphics window
+
+selected_point =
+
+       0.9128 +    0.12384i
+
+
+K_PI1 =
+
+       26.538
+
+
+polosMF =
+
+      0.91281 +    0.12384i
+      0.91281 -    0.12384i
+      0.91268 +          0i
+      0.34991 +          0i
+
+ftmf_PI1=feedback(K_PI1*ftma_PI1, 1);
+figure; step(ftmf_PI1)
+stepinfo(ftmf_PI1)
+
+ans = 
+
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 1.2
+    SettlingTime: 5
+     SettlingMin: 0.9502
+     SettlingMax: 1.1345
+       Overshoot: 13.447
+      Undershoot: 0
+            Peak: 1.1345
+        PeakTime: 2.5
+
+% ![step_PI1.png](step_PI1.png)
+
+% ### Projeto do PI (Opção 2)
+
+C_PI2=tf([1 -0.83],[1 -1],T)
+
+C_PI2 =
+ 
+  z - 0.83
+  --------
+   z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_PI2=C_PI2*BoG;
+zpk(ftma_PI2)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z-0.83) (z+0.1903)
+  ----------------------------------------
+   (z-1) (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+figure; rlocus(ftma_PI2)
+
+% ![rl_PI2.png](rl_PI2.png)
+
+% Fazendo zoom na região de interesse
+axis([0.7 1.1 -0.5 0.5])
+hold on; zgrid(zeta,0)
+
+% ![rl_PI2_zoom.png](rl_PI2_zoom.png)
+
+ftmf_PI2=feedback(K_PI2*ftma_PI2, 1);
+{Unrecognized function or variable 'K_PI2'.
+} 
+[K_PI2,polosMF]=rlocfind(ftma_PI2)
+Select a point in the graphics window
+
+selected_point =
+
+      0.95355 -   0.074303i
+
+
+K_PI2 =
+
+       9.4628
+
+
+polosMF =
+
+      0.95259 +   0.074322i
+      0.95259 -   0.074322i
+      0.82311 +          0i
+        0.362 +          0i
+
+ftmf_PI2=feedback(K_PI2*ftma_PI2, 1);
+figure; step(ftmf_PI1, ftmf_PI2)
+legend('PI_1', 'PI_2')
+
+% ![step_PI1_PI2.png](step_PI1_PI2.png)
+
+% **Conclusão final**: O PI1 se saiu melhor que o PI2 ($t_s$ é menor para PI1).
+
+save dados
+diary off
+
+% ## Outros PIs
+
+% Podemos projetar PI fazendo:
+% * Cancelando o pólo mais lento da planta fazendo o $z_{PI}$ recair sobre ele
+% (cancelamento pólo-zero - improvável no mundo real);
+% * Posso definir a posição do $z_{PI}$ usando Contribuição Angular, mas neste
+% caso, necessitamos de algum requisito de controle temporal ($t_s$, $t_r$ ou $t_p$)
+% * Posso usar o App Control System Designer.
+
+% ### PI usando Contribuição Angular
+
+% Neste caso, temos que definir algum critério temporal.
+
+% Antes fizemos o projeto de um Controlador Proporcional com $t_s = 3,54$ segundos
+% mas com $e[\infty]=36,36%$. Será que é possível realizar um PI (erro nulo para
+% entrada degrau), responder em até 4 segundos ($t_s \le 4$ segundos)?
+
+% Usando App Control System Designer...
+
+% Seguem telas capturadas do App...
+
+% Equação encontrada para o controlador:
+
+zpk(C_PI1a)
+
+ans =
+ 
+  13.5 (z-0.91)
+  -------------
+      (z-1)
+ 
+Name: C
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_PI1a=C_PI1a*BoG;
+ftmf_PI1a=feedback(ftma_PI1a, 1);
+figure; step(ftmf_PI1a)
+
+% ![step_PI1a.png](step_PI1a.png)
+
+% Faltou testar cancelamento pólo-zero do pólo dominante da planta:
+
+% ### PI mais rápido!?
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Seguem telas usando o App...
+
+% Equação encontrada para o controlador:
+
+zpk(C_PI3)
+
+ans =
+ 
+  13.2 (z-0.9048)
+  ---------------
+       (z-1)
+ 
+Name: C
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_PI3=C_PI3*BoG;
+ftmf_PI3=feedback(ftma_PI3, 1);
+step(ftma_PI3)
+stepinfo(ftmf_PI3)
+
+ans = 
+
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 2.2
+    SettlingTime: 3.5
+     SettlingMin: 0.901
+     SettlingMax: 1.0151
+       Overshoot: 1.5137
+      Undershoot: 0
+            Peak: 1.0151
+        PeakTime: 4.8
+
+zpk(ftma_PI3)
+
+ans =
+ 
+  0.0016135 (z-0.9048) (z+2.747) (z+0.1903)
+  -----------------------------------------
+   (z-1) (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+figure; step(ftmf_PI3)
+
+% ![step_PI3.png](step_PI3.png)
+
+save dados
+diary off
