@@ -1,0 +1,130 @@
+load dados # recuperar dados da aula passada
+[Warning: Variable '#' not found.] 
+[Warning: Variable 'recuperar' not found.] 
+[Warning: Variable 'dados' not found.] 
+[Warning: Variable 'da' not found.] 
+[Warning: Variable 'aula' not found.] 
+[Warning: Variable 'passada' not found.] 
+load dados % recuperar dados da aula passada
+
+% Continuando da aula passada. Faltou integrador por "Atraso de Fase", ou simplemente "Lag".
+% Ver [Projeto de Lag (com teoria) (PDF)](https://fpassold.github.io/Controle_3/estudo_caso/aula_controlador_Lag.pdf).
+
+% ## Projeto do Lag
+
+% Lembrando da eq. da planta, $BoG(z)$:
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+p_Lag=(1+0.9048)/2
+p_Lag =
+       0.9524
+
+% Localizando o zero do Lag no mesmo local do zero do PI1a feito anteriormente.
+
+C_Lag1=tf( [1 -0.92], [1 -0.95], T )
+
+C_Lag1 =
+ 
+  z - 0.92
+  --------
+  z - 0.95
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_Lag1=C_Lag1*BoG;
+rlocus(ftma_Lag1)
+
+% ![rl_Lag1.png](rl_Lag1.png)
+
+% Realizando o zoom na região de interesse:
+
+axis([0.6 1.1 -0.6 0.6])
+hold on; zgrid(zeta,0) % OS=15%
+
+% ![rl_Lag1_zoom.png](rl_Lag1_zoom.png)
+
+[K_Lag1,polosMF]=rlocfind(ftma_Lag1)
+Select a point in the graphics window
+selected_point =
+      0.88614 +    0.15604i
+K_Lag1 =
+       31.574
+polosMF =
+      0.92173 +          0i
+      0.88544 +    0.15611i
+      0.88544 -    0.15611i
+      0.34499 +          0i
+ftmf_Lag1=feedback(K_Lag1*ftma_Lag1, 1);
+figure; step(ftmf_PI1a, ftmf_Lag1)
+legend('PI1a', 'Lag1')
+
+% ![step_PI1a_Lag1.png](step_PI1a_Lag1.png)
+
+erro_Lag1=((1-dcgain(ftmf_Lag1))/1)*100
+erro_Lag1 =
+       28.362
+
+% Realizando o projeto melhorado do "Lag2", usando o App
+% Control System Designer
+
+% ## Projeto do Lag2
+
+% Repare que poderiámos ter ampliado o ganho do Lag1 para
+% forçar $\%OS \cong 15\%$:
+
+zpk(C_Lag1b)
+
+ans =
+ 
+  68 (z-0.92)
+  -----------
+   (z-0.95)
+ 
+Name: C
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Projeto do controlador até este ponto:
+
+% ![C_Lag1b](C_Lag1b.png)
+
+% Melhorando este controlador...
+
+% ![C_Lag2](C_Lag2.png)
+
+% Equação do Lag2:
+
+zpk(C_Lag2)
+
+ans =
+ 
+  39.7 (z-0.9048)
+  ---------------
+     (z-0.975)
+ 
+Name: C
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Se o ganho deste controlador for reduzido para $K\cong22,442$,
+% reduzimos o $t_s$ para 3,79 segundos, mas o erro em
+% regime permanente aumenta para quase 20% ($y[\infty]=0,81$).
+
+
+% Tentando outro Lag: Lag3, mas note que $t_s$ aumenta
+% às custas de erro mais baixo:
+
+% ![C_Lag3](C_Lag3.png)
+
+diary off
