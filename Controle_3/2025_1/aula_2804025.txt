@@ -1,0 +1,381 @@
+% Recuperando dados da aula anterior
+what
+
+MATLAB Code files in the current folder /Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_3/2025_1
+
+find_polo_zero_d  
+
+MAT-files in the current folder /Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_3/2025_1
+
+ControlSystemDesignerSession-PI3   
+ControlSystemDesignerSession_PI1a  
+dados                              
+
+
+
+load dados
+close all
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% ## Projeto Controladores Ação Derivativa
+
+% ### PD No. 1
+
+% Ref: [Projeto de Controlador PD (Aula de 28/05/2020)](https://fpassold.github.io/Controle_3/projeto_PD_lead_2020.html).
+
+
+% Analisando 3 opções para o zero do PD:
+
+% ![RL_PD](https://fpassold.github.io/Controle_3/figuras_acao_der/opcoes_zero_controlador_PD.jpg)
+
+% Cados sendo analisados:
+
+% a) Figura XX
+% b) ![Caso b](https://fpassold.github.io/Controle_3/figuras_acao_der/projeto_PD_opcao_b.jpg)
+% c) Figura ZZ (recém escaneada).
+
+% Iniciando pelo controlador do caso (b):
+
+C_PDb = tf([1 -0.85], [1 0], T)
+
+C_PDb =
+ 
+  z - 0.85
+  --------
+     z
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+% Completando projeto no App Control System Designer
+
+OS
+OS =
+    15
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener
+callback for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+
+% 1a-versão do PDb:
+
+% ![PDb_1](PDb_1.jpg)
+
+% Aumentando o ganho para $\Max\{ y[kT]\} \cong 1,15$
+% ($\%OS \cong 15\%$):
+
+% O tempo de assentamento deste PD em comparação ao
+% Controlador Proporcianal é de xxx vezes menor.
+% O controlador Proporcinal permitiu:
+% $3,54 <t_s< 4,7$ (segundos)
+
+% Aumentando ganho deste PD:
+
+% ![PDb_2.jpg](PDb_2.jpg)
+
+% Supondo que a "meta" seja projetar um controlador
+% o "dobro" mais rápido que um Controlador Proporcional
+% ou seja, algo como $t_s < 2,0$ (segundos).
+
+% Falta testar:
+% * Falta testar PD(c);
+% * Falta testar PD(d): o zero do PD cancela o 2o-pólo
+% mais lento da planta
+
+save dados
+diary off
+
+% ### Projeto do PD (c)
+
+% A idéia deste PD é alocar o zero do PD entre os 2 pólos 
+% dominantes da planta: $0,3679 < z_{PDc} < 0,8187$
+
+zero_PDc=(0.8187+0.3679)/2
+zero_PDc =
+       0.5933
+
+% Completando o projeto no App Control System Designer
+
+% ![PDc_1.png](PDc_1.png)
+
+% Arrastando zero do controlador para mais próximo do
+% pólo em $z = 0,8187$:
+
+% ![PDc_2.png](PDc_2.png)
+
+% Comparando este PD com o anterior:
+
+% | Parâmentros | PD (b) | PD (c) |
+% | :--- | :---: | :---: |
+% | $t_s$ | 1,8 | 1,8 |
+% | $Max\{y[kT]\}$ | 1,13 | 1,15 |
+% | $y[\infty]$ | 0,835 | 0,864 |
+% | $e[\infty]$ | 16,5% | 13,6% |
+% | $Max\{u[kT]\}$ | 254 | 530 |
+
+% Este PD é similar em desempenho ao PD anterior, **mas...***
+% o PD anterior (b), gera uma "pressão de controle" (amplitude
+% do sinal de controle) mais baixa que este PD.
+
+% Resta testar um PD que cancelar o 2o-pólo mais lento da planta.
+
+% ### PD Opção (d)
+
+% Alocar o zero do PD exatamente sobre o 2o-pólo mais lento da planta.
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Controlador sintonizado
+
+zpk(PDd)
+
+ans =
+ 
+  630 (z-0.8187)
+  --------------
+        z
+ 
+Name: C
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% ![PDd.png](PDd.png)
+
+% Note:
+% * com o cancelamento do 2o-pólo mais lento da planta, reduzimos
+% a complexidade do sistema em MF (de 4a-ordem em MF, passou para
+% 3a-ordem em MF);
+% * Este é o PD mais rápido possível para esta planta.
+
+save dados
+diary off
