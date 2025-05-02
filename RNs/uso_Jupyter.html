@@ -233,385 +233,638 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 }
 
 
-import url(https://fonts.googleapis.com/css?family=Open%20Sans);
 :root {
-    --code-block-bg-color: inherit;//#f8f8f8;
+    --base-font: "思源宋体 CN Medium", "Helvetica Neue", "Noto Sans", -apple-system, Ubuntu,
+    "Microsoft YaHei", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans",
+    "Noto Sans CJK SC", "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC",
+    "Source Han Sans CN", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti",
+    SimHei, "WenQuanYi Zen Hei Sharp", "Source Sans Pro", sans-serif;
+    --title-font: "思源宋体 CN Medium", "EB Garamond", Georgia, "Noto Serif", "Noto Serif CJK SC",
+    "Nimbus Roman No9 L", "Songti SC", "Source Han Serif SC",
+    "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun,
+    SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN",
+    "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU,
+    "Ubuntu", "Source Sans Pro", serif;
+    --monospace: "JetBrains Mono", "Fira Code", "Cascadia Code", "Sarasa Term SC",
+    Monaco, "Deja Vu Sans Mono", Consolas, "Lucida Console", "Andale Mono",
+    "Roboto Mono", Courier, Monospace !important;
+}
+  
 
-    --item-hover-bg-color: #0a0d16;
-    --control-text-color: #b7b7b7;
-    --control-text-hover-color: #eee;
-    --window-border: 1px dashed #9b9b9b;
+/* 日间 */
+/* light */
+:root {
+    --title-color: #6f79ff;
+    --text-color: #353535;
+    --light-text-color: #666666;
+    --link-color: #55d3e4;
+    --code-color: #937fce;
 
-    --active-file-bg-color: #0070E0;
-    --active-file-border-color: #8d8df0;
+    --shadow-color: rgba(128, 107, 192, 0.1);
+    --blue: #559CE4;
+    --Mica: #f3f3f3;
+    --border: rgb(179, 179, 179);
+    --shadow: 0.4rem 0.8rem 1.6rem var(--shadow-color);
 
-    --primary-color: #a3d5fe;
+    --table-background-color: #fcfcfc;
 
-    --active-file-text-color: #0070e0;
-    --item-hover-bg-color: #70717d;
-    --item-hover-text-color: white;
-    --primary-color: #6dc1e7;
+    --side-bar-bg-color: var(--Mica);
+    --control-text-color: var(var(--light-text-color));
+    --active-file-text-color: var(--title-color);
+    --active-file-bg-color: var(--shadow-color);
+    --item-hover-bg-color: var(--shadow-color);
+    --active-file-border-color: var(var(--title-color));
 }
 
-html,
-body,
-#write{
-	color: #5e676d;
-	font-family: "Open Sans", "Clear Sans", sans-serif;
+.cm-s-inner {
+    padding: 0.25rem;
+    border-radius: 20px 20px 20px 20px;
 }
+
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+    color: #3a3432 !important;
+    border: none;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+    color: #6d8a88;
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+    padding: 0 0.1rem 0 0.3rem;
+    color: #b8b5b4;
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+    background: var(--shadow-color);
+}
+
+.md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
+    background: var(--shadow-color);
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: #a34e8f !important;
+}
+
+#fences-auto-suggest .active {
+    background: #ddd;
+}
+
+.cm-s-inner span.cm-comment {
+    color: #9daab6;
+}
+
+.cm-s-inner span.cm-builtin {
+    color: #0451a5;
+}
+
+
+/* 打印 */
+/* print */
+@media print {
+    html {
+        font-size: 0.9rem;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+
+    #write {
+        max-width: 100%;
+    }
+
+    @page {
+        size: A4; /* PDF A4 */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: initial;
+}
+
+
+/* 页边距 和 页面大小 */
+#write {
+    font-family: var(--base-font);
+    /* max-width: 914px; */
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    padding-bottom: 100px;
+}
+
+#write p {
+    line-height: 1.6rem;
+    word-spacing: 0.05rem;
+}
+
+body {
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    overflow-x: hidden;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+
+/* 标题 */
+/* title */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-	/*font-weight: lighter;*/
-	font-weight: 100;
-	color: #5e676d;
-	font-family: "Open Sans", sans-serif;
-	margin: 0.5rem 0;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    cursor: text;
+    color: var(--title-color);
+    font-family: var(--title-font);
 }
 
-html {
-	font-size:16px;
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+    background: linear-gradient(to bottom, #43CBFF, #9708CC);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    caret-color: var(--text-color);
 }
 
-#write {
-	max-width: 914px;
-	text-align: justify;
-}
-
-#write>h1:first-child {
-	margin-top: 2.75rem;
-}
-#write>h2:first-child {
-	margin-top: 1.75rem;
-}
-#write>h3:first-child {
-	margin-top: 1rem;
-}
-#write>h4:first-child {
-	margin-top: 0.5rem;
-}
 h1 {
-	margin: 1rem 0;
-	/*line-height: 4rem;
-	padding: 5px 30px;
-	text-align: center;
-	margin-top: 4rem;*/
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 2rem;
 }
+
+h1:after {
+    content: "";
+    display: block;
+    margin: 0.2em auto 0;
+    width: 6rem;
+    height: 2.4px;
+    border-bottom: 2px solid var(--title-color);
+}
+
 h2 {
-	margin: 0.8rem 0;
-	/*
-	line-height: 3rem;
-	padding: 0 30px;
-	text-align: center;
-	margin-top: 3rem
-	*/
+    padding-left: 0.4em;
+    font-size: 1.6em;
+    border-left: 0.4em solid var(--title-color);
+    border-bottom: 1px solid var(--title-color);
 }
+
 h3 {
+    font-size: 1.6em;
 }
+
 h4 {
+    font-size: 1.4em;
 }
+
 h5 {
-	font-size: 1.125rem;
+    font-size: 1.2em;
 }
+
 h6 {
-	font-size: 1.1rem;
+    font-size: 1.0em;
 }
-p {
-	color: #5e676d;
-	font-size: 1rem;
-	line-height: 1.5rem;
-	margin: 0 0 1.25rem;
+
+
+/* 超链接 */
+/* hyperlink */
+a {
+    color: var(--link-color);
+    text-decoration: none;
 }
-#write>h3.md-focus:before {
-	left: -1.875rem;
-	top: 0.5rem;
-	padding: 2px;
+
+#write a {
+    border-bottom: none;
+    background: linear-gradient(to bottom, #3C8CE7, #00EAFF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    caret-color: var(--text-color);
 }
-#write>h4.md-focus:before {
-	left: -1.875rem;
-	top: 0.3125rem;
-	padding: 2px;
+
+#write a:hover {
+    border-bottom: 1px solid var(--link-color);
+    color: var(--link-color);
+    text-decoration: none;
 }
-#write>h5.md-focus:before {
-	left: -1.875rem;
-	top: 0.25rem;
-	padding: 2px;
+
+.md-content {
+    color: var(--light-text-color);
 }
-#write>h6.md-focus:before {
-	left: -1.875rem;
-	top: .125rem;
-	padding: 2px;
-}
-/*@media screen and (min-width: 48em) {
-	.h1,
-	h1 {
-		font-size: 3.250rem;
-	}
-	.h2,
-	h2 {
-		font-size: 2.298rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.625rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-	#write>h4.md-focus:before,
-	#write>h5.md-focus:before,
-	#write>h6.md-focus:before {
-		top: 1px;
-	}
-	p {
-		font-size: 1.25rem;
-		line-height: 1.8;
-	}
-	table {
-		font-size: 1.25rem;
-	}
-}*/
-@media screen and (max-width: 48em) {
-	blockquote {
-		margin-left: 1rem;
-		margin-right: 0;
-		padding: 0.5em;
-	}
-	.h1,
-	h1 {
-		font-size: 2.827rem;
-	}
-	.h2,
-	h2 {
-		font-size: 1.999rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.413rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-}
-a,
-.md-def-url {
-	color: #007ee5;
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
-}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
 table {
-	border: 1px solid #e2e2e2;
-	margin-bottom: 20px
+    margin: 0.8em 0;
 }
+
+/* horizontal rule */
+hr {
+    margin: 1em auto;
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+/* 列表 */
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 2rem;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+#write ol li,
+ul li {
+    padding-left: 0.1rem;
+}
+
+
+/* 表格 */
+table {
+    margin-bottom: 1.25rem;
+}
+
 table th,
 table td {
-	padding: 8px;
-	line-height: 1.5rem;
-	vertical-align: top;
-	border: 1px solid #e2e2e2;
+    padding: 8px;
+    line-height: 1.25rem;
+    vertical-align: middle;
+    border: 1px solid #ddd;
 }
+
 table th {
-	font-weight: normal;
-	background-color: #f0f7fd;
+    font-weight: bold;
 }
+
 table thead th {
-	vertical-align: bottom
-}
-table caption+thead tr:first-child th,
-table caption+thead tr:first-child td,
-table colgroup+thead tr:first-child th,
-table colgroup+thead tr:first-child td,
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-	border-top: 0
-}
-table tbody+tbody {
-	border-top: 2px solid #ddd
-}
-code, .md-fences {
-	padding: .5em;
-	background: #f6f9fc;
-	border: 1px solid #d0d4d9;
-	border-radius: 3px;
-	padding: .1em;
-	font-size: 0.9rem !important;
-	margin-left: 0.2em;
-	margin-right: 0.2em;
-}
-.md-fences {
-	margin: 0 0 20px;
-	font-size: 1em;
-	padding: 0.3em 1em;
-  	padding-top: 0.4em;
-}
-.task-list{
-	padding-left: 0;
+    vertical-align: middle;
 }
 
-.task-list-item {
-	padding-left:2.125rem;
+table tr:nth-child(2n),
+thead {
+    background-color: var(--table-background-color);
 }
 
-/* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  and (min-resolution:.001dpcm) {
-    .task-list-item input:before {
-    	margin-top: -0.2rem;
-    }
 
-    .task-list-item input:checked:before,
-	.task-list-item input[checked]:before {
-		margin-top: -0.2rem;
-	}
-}
-
+/* 引用 */
 blockquote {
-	margin: 0 0 1.11111rem;
-	padding: 0.5rem 1.11111rem 0 1.05556rem;
-	border-left: 2px solid rgba(0, 112, 224, 0.32);
+    border-left: 0.2em solid var(--blue);
+    padding-left: 1em;
+    color: var(--light-text-color);
+    font-family: var(--base-font);
 }
-blockquote,
-blockquote p {
-	line-height: 1.6;
-	color: #8f8f8f;
+
+
+/* 文字样式 */
+strong,
+em,
+code,
+tt,
+mark {
+    padding: 0 4px;
+    border-radius: 8px 8px 8px 8px;
+    margin: 0 2px;
+    color: var(--text-color);
+    background-color: var(--Mica);
 }
+
+/* 粗体 */
+#write strong {
+    font-weight: bold;
+
+}
+
+/* 斜体 */
+#write em {
+
+}
+
+/* 行间公式 */
+/* inline code */
+#write code,
+tt {
+    font-family: var(--monospace);
+    color: var(--code-color);
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    color: var(--code-color);
+    background-color: #f4f2f9;
+}
+
+/* 高亮 */
+/* highlight */
+#write mark {
+    background-color: #FDEEBB;
+    color: #e9781e;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
 #write pre.md-meta-block {
-	min-height: 30px;
-	background: #f8f8f8;
-	padding: 1.5em;
-	font-weight: 300;
-	font-size: 1em;
-	padding-bottom: 1.5em;
-	padding-top: 3em;
-    margin-top: -1.5em;
-	color: #999;
-	border-left: 1000px #f8f8f8 solid;
-	margin-left: -1000px;
-	border-right: 1000px #f8f8f8 solid;
-	margin-right: -1000px;
-	margin-bottom: 2em;
-}
-.MathJax_Display {
-	font-size: 0.9em;
-	margin-top: 0.5em;
-	margin-bottom: 0;
-}
-p.mathjax-block,
-.mathjax-block {
-	padding-bottom: 0;
-}
-.mathjax-block>.code-tooltip {
-	bottom: 5px;
-	box-shadow: none;
-}
-.md-image>.md-meta {
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-}
-.md-image>img {
-	margin-top: 2px;
-}
-.md-image>.md-meta:first-of-type:before {
-	padding-left: 4px;
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: var(--Mica);
+    border: 0;
+    border-radius: 20px 20px 20px 20px;
+    color: #777777;
+    margin-top: 0 !important;
 }
 
-#typora-source {
-	color: #555;
+.mathjax-block > .code-tooltip {
+    bottom: 0.375rem;
 }
 
-/** ui for windows **/
-#md-searchpanel {
-    border-bottom: 1px solid #ccc;
+/* 图片 */
+/* imag */
+.md-image > .md-meta {
+    border-radius: 20px 20px 20px 20px;
+    font-family: var(--monospace);
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
 }
 
-#md-searchpanel .btn {
-    border: 1px solid #ccc;
+/* 图片靠左显示 */
+/* p .md-image:only-child {
+  width: auto;
+  text-align: left;
+  margin-left: 2rem;
+} */
+
+/* 写![shadow-...]() 显示图片阴影 */
+img[alt|="shadow"] {
+    box-shadow: 0.4rem 0.8rem 1.6rem var(--shadow-color);
 }
 
-#md-notification:before {
-	top: 14px;
+/* 目录 */
+/* TOC */
+#write .md-toc {
+    background-color: var(--Mica);
+    border-radius: 20px 20px 20px 20px;
+    padding: 2px 4px;
+    margin: 0 2px;
 }
 
-#md-notification {
-	background: #eee;
+#write a.md-toc-inner {
+    line-height: 1.5;
+    white-space: pre-line;
+    border-bottom: none;
+    font-size: 1rem;
 }
 
-.megamenu-menu-panel .btn {
-	border: 1px solid #ccc;
+.md-toc-h1 {
+    display: none;
 }
 
-.mac-seamless-mode #typora-sidebar {
-  background-color: #f7f9fa;
+#write .md-toc-h2 .md-toc-inner {
+    font-size: 1.2rem;
 }
 
-.pin-outline .outline-active {
-  color: #0070E0; 
+#write .md-toc-h3 .md-toc-inner {
+    font-size: 1.1rem;
 }
 
-.file-list-item {
-  border-bottom: 1px solid;
-  border-color: #E6E8EB;
+#write .md-toc-item:before {
+    display: block;
+    color: rgb(65, 131, 196);
 }
 
-.file-list-item-summary {
-  font-weight: 400;
-  color: #637282; 
+#write .md-toc-h2 .md-toc-inner {
+    font-weight: bold;
 }
 
-.file-list-item.active {
-  color: #0070E0;
-  background-color: #E6E8EB;
+.md-toc-h5,
+.md-toc-h6 {
+    display: none;
 }
 
-.file-tree-node.active>.file-node-background {
-  background-color: #E6E8EB;
-} 
-
-.file-tree-node.active>.file-node-content {
-  color: #0070E0;
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--base-font);
 }
 
-.file-node-content {
-  color: #5e676d;
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
 }
 
-.sidebar-tab.active {
-  font-weight: 400;
+.md-lang {
+    color: #b4654d;
 }
 
-code, kbd, pre, samp {
-  font-family: "Roboto Mono", Menlo, monospace;
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #e6f0fe;
 }
+
+/* 代码段 背景 */
+pre {
+    --select-text-bg-color: #e4d4f5;
+}
+
+/* border and bg */
+.md-fences {
+    border-radius: 20px 20px 20px 20px;
+    background: var(--Mica);
+    backdrop-filter: blur(15px);
+}
+
+#write pre.md-fences {
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: var(--shadow);
+}
+
+
+/* language tip */
+#write .code-tooltip {
+    border: 1px solid var(--border);
+    border-radius: 24px 24px 24px 24px;
+    padding: 8px 12px 8px 12px;
+    margin: 8px 12px 8px 12px;
+}
+
+
+.auto-suggest-container {
+    border-color: #b4b4b4;
+}
+
+.auto-suggest-container .autoComplt-hint.active {
+    background: #b4b4b4;
+    color: inherit;
+}
+
+/* task list */
+#write .md-task-list-item > input {
+    -webkit-appearance: initial;
+    display: block;
+    position: absolute;
+    border: 1px solid #b4b4b4;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 0.3rem;
+    height: 1rem;
+    width: 1rem;
+    transition: background 0.3s;
+}
+
+
+#write .md-task-list-item > input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#write .md-task-list-item > input:hover {
+    background: #ddd;
+}
+
+#write .md-task-list-item > input[checked]::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    height: 60%;
+    width: 2px;
+    transform: rotate(40deg);
+    background: #333;
+}
+
+#write .md-task-list-item > input[checked]::after {
+    content: "";
+    position: absolute;
+    top: 46%;
+    left: 25%;
+    height: 30%;
+    width: 2px;
+    transform: rotate(-40deg);
+    background: #333;
+}
+
+#write .md-task-list-item > p {
+    transition: color 0.3s, opacity 0.3s;
+}
+
+#write .md-task-list-item.task-list-done > p {
+    color: #b4b4b4;
+    text-decoration: line-through;
+}
+
+#write .md-task-list-item.task-list-done > p > .md-emoji {
+    opacity: 0.5;
+}
+
+#write .md-task-list-item.task-list-done > p > .md-link > a {
+    opacity: 0.6;
+}
+
+
+/* 侧栏 */
+/* sidebar */
+#typora-sidebar,
+.typora-node #typora-sidebar {
+    box-shadow: 3px 0px 10px var(--shadow-color);
+    color: var(--text-color);
+}
+
+.sidebar-content-content {
+    font-size: 0.9rem;
+}
+
+/* 选中的文字 */
+::selection {
+    background: #ccc;
+    color: var(--blue);
+}
+
+::-moz-selection {
+    background: #ccc;
+    color: var(--blue);
+}
+
+::-webkit-selection {
+    background: #ccc;
+    color: var(--blue);
+}
+
+
+
+
+
+
 
 
 
 </style>
 </head>
 <body class='typora-export'>
-<div id='write'  class=''><h1><a name="uso-de-jupyter" class="md-header-anchor"></a><span>Uso de Jupyter</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n263"><a class="md-toc-inner" style="" href="#uso-de-jupyter">Uso de Jupyter</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" style="" href="#alternar-entre-comando-python-e-markdown">Alternar entre comando <strong>Python e Markdown</strong></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n298"><a class="md-toc-inner" style="" href="#métodos-para-executar-comandos-do-sistema-no-jupyter">Métodos para <strong>executar comandos do sistema no Jupyter</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n5"><a class="md-toc-inner" style="" href="#1-usando--exclamação">1. Usando <code>!</code> (exclamação)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n10"><a class="md-toc-inner" style="" href="#2-usando-bash-para-scripts-multi-linha">2. Usando <code>%%bash</code> (para scripts multi-linha)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n18"><a class="md-toc-inner" style="" href="#3-usando-ossystem-módulo-os-do-python">3. Usando <code>os.system</code> (módulo <code>os</code> do Python)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n20"><a class="md-toc-inner" style="" href="#4-usando-subprocess-para-controle-mais-avançado">4. Usando <code>subprocess</code> (para controle mais avançado)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n22"><a class="md-toc-inner" style="" href="#exemplo-prático-para-instalar-bibliotecas-python">Exemplo prático para <strong>instalar bibliotecas Python</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n34"><a class="md-toc-inner" style="" href="#verificando-pacotes-instalados-usando-conda">Verificando pacotes instalados (usando conda)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n38"><a class="md-toc-inner" style="" href="#atualizar-pacoes-usando-conda">Atualizar pacoes (usando conda)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n42"><a class="md-toc-inner" style="" href="#para-descobrir-opções-para-baixar-pacote">Para descobrir opções para baixar pacote</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n46"><a class="md-toc-inner" style="" href="#resumo-dos-comandos-úteis-conda--pip">Resumo dos <strong>comandos úteis (conda &amp; pip)</strong></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n69"><a class="md-toc-inner" style="" href="#significado-de--no-prompt-do-jupyter">Significado de <code>[*]</code> no prompt do Jupyter</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n71"><a class="md-toc-inner" style="" href="#possíveis-significados">Possíveis significados:</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n84"><a class="md-toc-inner" style="" href="#como-sair-do-modo-execução-de-comandos-do-sistema-após-usar-">Como sair do "modo execução de comandos do sistema" após usar <code>!</code>?</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n86"><a class="md-toc-inner" style="" href="#outras-opções-cancelar-comando-retornar-ao-prompt-restart">Outras opções: cancelar comando, retornar ao prompt, restart</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n106"><a class="md-toc-inner" style="" href="#exportando-conteúdo-à-partir-do-jupyter-notebook">Exportando conteúdo à partir do Jupyter Notebook</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n109"><a class="md-toc-inner" style="" href="#1-exportar-apenas-o-código-executado-sem-células-incompletaserros">1. Exportar apenas o código executado (sem células incompletas/erros)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n110"><a class="md-toc-inner" style="" href="#opção-a-usando-nbconvert-via-linha-de-comando-ou-direto-no-jupyter">Opção A: <strong>Usando <code>nbconvert</code></strong> (via linha de comando ou direto no Jupyter)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n120"><a class="md-toc-inner" style="" href="#opção-b-exportar-manualmente-pelo-jupyter">Opção B: <strong>Exportar manualmente</strong> pelo Jupyter</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n130"><a class="md-toc-inner" style="" href="#2-filtrar-células-específicas-incluindo-saídas-de-execução">2. Filtrar células específicas (incluindo saídas de execução)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n132"><a class="md-toc-inner" style="" href="#método-1-usando-writefile-dentro-do-próprio-notebook">Método 1: Usando <code>%%writefile</code> (dentro do próprio notebook)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n140"><a class="md-toc-inner" style="" href="#método-2-extrair-células-executadas-programaticamente">Método 2: Extrair células executadas programaticamente</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n144"><a class="md-toc-inner" style="" href="#3-juntar-células-corretas--saídas-para-documentação">3. Juntar células corretas + saídas (para documentação)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n146"><a class="md-toc-inner" style="" href="#gerar-um-htmlpdf-filtrado"><strong>Gerar um HTML/PDF filtrado</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n152"><a class="md-toc-inner" style="" href="#4-ferramentas-avançadas-para-limpeza-automática">4. Ferramentas avançadas para limpeza automática</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n160"><a class="md-toc-inner" style="" href="#resumo-das-opções">Resumo das opções:</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n191"><a class="md-toc-inner" style="" href="#encerrando-operações-no-jupyter">Encerrando operações no Jupyter</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n194"><a class="md-toc-inner" style="" href="#1-se-uma-célula-está-travada-em--e-você-quer-interrompê-la">1. Se uma <strong>célula está travada (em <code>[*]</code>)</strong> e você quer interrompê-la</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n208"><a class="md-toc-inner" style="" href="#2-se-você-quer-parar-o-kernel-temporariamente-sem-fechar-o-notebook">2. Se você quer <strong>"parar" o kernel temporariamente</strong> (sem fechar o notebook)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n218"><a class="md-toc-inner" style="" href="#3-como-reiniciar-o-kernel-sem-perder-dados">3. Como <strong>reiniciar o kernel sem perder dados</strong>  </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n234"><a class="md-toc-inner" style="" href="#4-se-você-quer-encerrar-o-jupyter-completamente">4. Se você quer <strong>encerrar o Jupyter completamente</strong>  </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n243"><a class="md-toc-inner" style="" href="#dica-extra-autoreload-para-evitar-perdas">Dica extra: <strong>Autoreload para evitar perdas</strong>  </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n247"><a class="md-toc-inner" style="" href="#resumo-das-opções-n247"><strong>Resumo das opções:</strong>  </a></span></p></div><hr /><h2><a name="alternar-entre-comando-python-e-markdown" class="md-header-anchor"></a><span>Alternar entre comando </span><strong><span>Python e Markdown</span></strong></h2><p><span>O Jupyter normalmente entra no &quot;modo interpretador Pytohn&quot;, tentando excutar comandos Python tão logo seja usada a commbinação de teclas </span><code>SHIFT</code><span> + </span><code>ENTER</code><span>. Teclar apenas </span><code>ENTER</code><span> só muda de linha numa célula do Python.</span></p><p><span>Para sair deste &quot;modo interpretador Python&quot;, e mudar para modo de edição Markdonw, use a combinação de teclas </span><code>ESC</code><span> + </span><code>M</code><span>. Digite a sentença Markdown e use a combinação </span><code>SHIFT</code><span>+ </span><code>ENTER</code><span> para que a sentença seja renderizadas. Note que em seguina, o Jupyter volta para o &quot;modo interpretador Python&quot;, sem necessidade de alguma outra combinação de teclas.</span></p><h2><a name="métodos-para-executar-comandos-do-sistema-no-jupyter" class="md-header-anchor"></a><span>Métodos para </span><strong><span>executar comandos do sistema no Jupyter</span></strong><span>:</span></h2><p><span>É possível executar comandos do sistema diretamente de dentro do Jupyter Notebook, tanto em MacOS quanto em outros sistemas operacionais. Você não precisa sair do Jupyter para instalar bibliotecas ou executar comandos do terminal.</span></p><h3><a name="1-usando--exclamação" class="md-header-anchor"></a><span>1. Usando </span><code>!</code><span> (exclamação)</span></h3><p><span>Você pode executar qualquer comando do terminal precedendo-o com </span><code>!</code><span>. Por exemplo:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">!</span><span class="cm-variable">ls</span> <span class="cm-operator">-</span><span class="cm-variable">l</span> &nbsp;<span class="cm-comment"># Lista arquivos no diretório atual (MacOS/Linux)</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">!</span><span class="cm-variable">pwd</span> &nbsp; &nbsp;<span class="cm-comment"># Mostra o diretório atual</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre><p><span>Para instalar uma biblioteca Python (como </span><code>pandas</code><span> se estiver faltando):</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">!</span><span class="cm-variable">pip</span> <span class="cm-variable">install</span> <span class="cm-variable">pandas</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><h3><a name="2-usando-bash-para-scripts-multi-linha" class="md-header-anchor"></a><span>2. Usando </span><code>%%bash</code><span> (para scripts multi-linha)</span></h3><p><span>Se precisar executar vários comandos bash em sequência:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%%</span><span class="cm-variable">bash</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">echo</span> <span class="cm-string">"Hello from bash"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pip</span> <span class="cm-variable">install</span> <span class="cm-operator">--</span><span class="cm-variable">upgrade</span> <span class="cm-variable">numpy</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ls</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 80px;"></div><div class="CodeMirror-gutters" style="display: none; height: 80px;"></div></div></div></pre><p><strong><span>Dica extra</span></strong><span>:</span></p><p><span>Se você quer </span><strong><span>interagir com o terminal por mais tempo</span></strong><span> (ex: navegar em diretórios), use:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%%</span><span class="cm-variable">bash</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">cd</span> <span class="cm-operator">~/</span><span class="cm-variable">Documents</span> &nbsp;<span class="cm-comment"># Muda o diretório</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ls</span> <span class="cm-operator">-</span><span class="cm-variable">l</span> &nbsp;<span class="cm-comment"># Lista arquivos</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pwd</span> &nbsp;<span class="cm-comment"># Mostra o diretório atual</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 80px;"></div><div class="CodeMirror-gutters" style="display: none; height: 80px;"></div></div></div></pre><p><span>Mas lembre-se: alterações no terminal (como </span><code>cd</code><span>) </span><strong><span>não afetam</span></strong><span> o ambiente Python do Jupyter após a execução. Para isso, use os comandos do Python (ex: </span><code>os.chdir()</code><span>).  </span></p><h3><a name="3-usando-ossystem-módulo-os-do-python" class="md-header-anchor"></a><span>3. Usando </span><code>os.system</code><span> (módulo </span><code>os</code><span> do Python)</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">os</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">os</span>.<span class="cm-property">system</span>(<span class="cm-string">"say 'Hello from MacOS'"</span>) &nbsp;<span class="cm-comment"># Fará o MacOS falar a frase (se estiver no Mac)</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre><h3><a name="4-usando-subprocess-para-controle-mais-avançado" class="md-header-anchor"></a><span>4. Usando </span><code>subprocess</code><span> (para controle mais avançado)</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">subprocess</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">result</span> = <span class="cm-variable">subprocess</span>.<span class="cm-property">run</span>([<span class="cm-string">"ls"</span>, <span class="cm-string">"-l"</span>], <span class="cm-variable">capture_output</span>=<span class="cm-keyword">True</span>, <span class="cm-variable">text</span>=<span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">result</span>.<span class="cm-property">stdout</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 60px;"></div><div class="CodeMirror-gutters" style="display: none; height: 60px;"></div></div></div></pre><h3><a name="exemplo-prático-para-instalar-bibliotecas-python" class="md-header-anchor"></a><span>Exemplo prático para </span><strong><span>instalar bibliotecas Python</span></strong><span>:</span></h3><p><span>Se seu código Python gerar um erro como </span><code>ModuleNotFoundError: No module named &#39;seaborn&#39;</code><span>, você pode instalar diretamente no notebook:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">try</span>:</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">import</span> <span class="cm-variable">seaborn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">except</span> <span class="cm-variable">ImportError</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-operator">!</span><span class="cm-variable">pip</span> <span class="cm-variable">install</span> <span class="cm-variable">seaborn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">import</span> <span class="cm-variable">seaborn</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><p><strong><span>Observações importantes:</span></strong></p><ul><li><mark><span>O Jupyter executa os comandos no ambiente Python em que está rodando</span></mark><span>. Se você estiver usando um ambiente virtual, os comandos afetarão apenas esse ambiente.</span></li><li><span>Para comandos específicos do MacOS (como </span><code>open</code><span>, </span><code>say</code><span>, </span><code>brew</code><span>, etc.), basta usar com </span><code>!</code><span>.</span></li><li><span>Alguns comandos podem requerer </span><code>sudo</code><span> (cuidado ao usar isso em notebooks).</span></li></ul><p><span>Isso elimina a necessidade de abrir um terminal separado na maioria dos casos!</span></p><h3><a name="verificando-pacotes-instalados-usando-conda" class="md-header-anchor"></a><span>Verificando pacotes instalados (usando conda)</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">!conda list &lt;nome_do_pacote&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>Se o pacote não estiver instalado, o retorno não mostrará nada ou indicará # packages in environment at </span><caminho><span> sem listar o pacote.</span></p><p><span>É similar ao comando </span><code>pip list</code><span>.</span></p><h3><a name="atualizar-pacoes-usando-conda" class="md-header-anchor"></a><span>Atualizar pacoes (usando conda)</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">!conda update &lt;nome_do_pacote&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>Isso atualizará o </span><code>&lt;nome_do_pacote&gt;</code><span> para a última versão compatível com ambiente atual de trabalho.</span></p><h3><a name="para-descobrir-opções-para-baixar-pacote" class="md-header-anchor"></a><span>Para descobrir opções para baixar pacote</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">!conda search &lt;nome_do_pacote&gt; <span class="cm-attribute">--info</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>Atenção: várias linhas texto podem ser geradas!</span></p><hr /><h3><a name="resumo-dos-comandos-úteis-conda--pip" class="md-header-anchor"></a><span>Resumo dos </span><strong><span>comandos úteis (conda &amp; pip)</span></strong></h3><figure><table><thead><tr><th><span>Ação</span></th><th><span>Comando Conda</span></th><th><span>Comando Pip (se necessário)</span></th></tr></thead><tbody><tr><td><span>Verificar pacote</span></td><td><code>!conda list pandas</code></td><td><code>!pip show pandas</code></td></tr><tr><td><span>Instalar pacote</span></td><td><code>!conda install pandas</code></td><td><code>!pip install pandas</code></td></tr><tr><td><span>Atualizar pacote</span></td><td><code>!conda update pandas</code></td><td><code>!pip install --upgrade pandas</code></td></tr><tr><td><span>Listar todos os pacotes</span></td><td><code>!conda list</code></td><td><code>!pip list</code></td></tr></tbody></table></figure><hr /><h2><a name="significado-de--no-prompt-do-jupyter" class="md-header-anchor"></a><span>Significado de </span><code>[*]</code><span> no prompt do Jupyter</span></h2><p><span>O símbolo </span><code>[*]</code><span> ao lado do número da célula no Jupyter Notebook (ex: </span><code>In [*]:</code><span>) indica que a célula está </span><strong><span>em execução</span></strong><span> (processamento). Quando o código terminar de rodar, o </span><code>*</code><span> será substituído por um número sequencial (ex: </span><code>In [1]:</code><span>).  </span></p><h4><a name="possíveis-significados" class="md-header-anchor"></a><span>Possíveis significados:</span></h4><ul><li><p><code>In [*]:</code><span> → Célula rodando no momento.  </span></p></li><li><p><code>In [1]:</code><span>, </span><code>In [2]:</code><span>, etc. → Célula já executada (o número indica a ordem de execução).  </span></p></li><li><p><span>Se ficar travado em </span><code>[*]</code><span> por muito tempo, pode ser que:  </span></p><ul><li><span>O código está demorando (ex: um loop infinito!?).  </span></li><li><span>O kernel travou (nesse caso, reinicie-o em </span><strong><span>Kernel &gt; Restart</span></strong><span>).</span>
-<span>Antenção: no caso de Restart do Kernel, os comandos/ações anteriores já realizadas, são todas perdidas!  </span></li></ul></li></ul><h2><a name="como-sair-do-modo-execução-de-comandos-do-sistema-após-usar-" class="md-header-anchor"></a><span>Como sair do &quot;modo execução de comandos do sistema&quot; após usar </span><code>!</code><span>?</span></h2><p><span>Quando você executa um comando do sistema com </span><code>!</code><span> (ex: </span><code>!ls</code><span>), o Jupyter </span><strong><span>não entra em um &quot;modo terminal&quot; permanente</span></strong><span>—ele apenas roda aquele comando específico e volta para o ambiente Python imediatamente.  </span></p><h3><a name="outras-opções-cancelar-comando-retornar-ao-prompt-restart" class="md-header-anchor"></a><span>Outras opções: cancelar comando, retornar ao prompt, restart</span></h3><ul><li><p><strong><span>Cancelar um comando em execução</span></strong><span>:  </span></p><ul><li><span>Use o botão </span><strong><span>■ (Interrupt Kernel)</span></strong><span> na barra de ferramentas do Jupyter.  </span></li><li><span>Ou pressione </span><code>I</code><span> duas vezes seguidas no teclado (modo de comando do Jupyter).  </span></li></ul></li><li><p><strong><span>Voltar ao prompt normal do Python</span></strong><span>:  </span></p><ul><li><span>Após executar </span><code>!comando</code><span>, o Jupyter já retorna automaticamente ao modo Python. Basta digitar código Python na próxima célula.  </span></li></ul></li><li><p><strong><span>Se o kernel travou</span></strong><span>:  </span></p><ul><li><span>Reinicie-o em </span><strong><span>Kernel &gt; Restart</span></strong><span>.  </span></li></ul></li></ul><hr /><h2><a name="exportando-conteúdo-à-partir-do-jupyter-notebook" class="md-header-anchor"></a><span>Exportando conteúdo à partir do Jupyter Notebook</span></h2><p><span>Existem várias maneiras de </span><strong><span>exportar</span></strong><span> o conteúdo do Jupyter Notebook, filtrando apenas as partes relevantes (código executado com sucesso, saídas, comentários, etc.) para um script Python limpo. Aqui estão os métodos mais eficientes:</span></p><h3><a name="1-exportar-apenas-o-código-executado-sem-células-incompletaserros" class="md-header-anchor"></a><span>1. Exportar apenas o código executado (sem células incompletas/erros)</span></h3><h4><a name="opção-a-usando-nbconvert-via-linha-de-comando-ou-direto-no-jupyter" class="md-header-anchor"></a><span>Opção A: </span><strong><span>Usando </span><code>nbconvert</code></strong><span> (via linha de comando ou direto no Jupyter)</span></h4><ul><li><p><span>Exporta </span><strong><span>apenas células executadas com sucesso</span></strong><span> para um arquivo </span><code>.py</code><span>:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">jupyter nbconvert <span class="cm-attribute">--to</span> script SEU_NOTEBOOK.ipynb <span class="cm-attribute">--output-dir</span><span class="cm-operator">=</span>SAIDA <span class="cm-attribute">--TemplateExporter</span><span class="cm-def">.exclude_markdown</span><span class="cm-operator">=</span>True</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre><ul><li><span>Isso gera um arquivo </span><code>.py</code><span> com </span><strong><span>apenas o código das células que rodaram sem erros</span></strong><span>.</span></li><li><strong><span>Observação</span></strong><span>: Se uma célula foi executada parcialmente (ex: erro no meio do código), ela </span><strong><span>não</span></strong><span> será incluída.</span></li></ul></li></ul><h4><a name="opção-b-exportar-manualmente-pelo-jupyter" class="md-header-anchor"></a><span>Opção B: </span><strong><span>Exportar manualmente</span></strong><span> pelo Jupyter</span></h4><ol start='' ><li><p><span>No Jupyter, vá em </span><strong><span>File &gt; Download as &gt; Python (.py)</span></strong><span>.</span></p></li><li><p><span>Isso gera um arquivo com </span><strong><span>todo o código</span></strong><span> (incluindo células não executadas ou com erros).  </span></p><ul><li><span>Para filtrar apenas o código válido, abra o arquivo gerado e delete manualmente as partes indesejadas.</span></li></ul></li></ol><p>&nbsp;</p><h3><a name="2-filtrar-células-específicas-incluindo-saídas-de-execução" class="md-header-anchor"></a><span>2. Filtrar células específicas (incluindo saídas de execução)</span></h3><p><span>Se você quer </span><strong><span>selecionar apenas células específicas</span></strong><span> (ex: as que rodaram corretamente) e gerar um script consolidado:</span></p><h4><a name="método-1-usando-writefile-dentro-do-próprio-notebook" class="md-header-anchor"></a><span>Método 1: Usando </span><code>%%writefile</code><span> (dentro do próprio notebook)</span></h4><ul><li><p><span>Adicione esta célula no final do notebook para </span><strong><span>exportar o código filtrado</span></strong><span>:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%%</span><span class="cm-variable">writefile</span> <span class="cm-variable">script_limpo</span>.<span class="cm-property">py</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Código válido (copie e cole apenas as células que funcionaram)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">pandas</span> <span class="cm-keyword">as</span> <span class="cm-variable">pd</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">df</span> = <span class="cm-variable">pd</span>.<span class="cm-property">read_csv</span>(<span class="cm-string">"dados.csv"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">df</span>.<span class="cm-property">head</span>())</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><ul><li><span>Isso criará um arquivo </span><code>script_limpo.py</code><span> com o conteúdo selecionado.</span></li></ul></li></ul><h4><a name="método-2-extrair-células-executadas-programaticamente" class="md-header-anchor"></a><span>Método 2: Extrair células executadas programaticamente</span></h4><p><span>Use este código para </span><strong><span>exportar apenas células executadas sem erros</span></strong><span>:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">import</span> <span class="cm-variable">nbformat</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword cm-error">from</span> <span class="cm-variable">nbformat</span> <span class="cm-keyword">import</span> <span class="cm-variable">v4</span> <span class="cm-keyword">as</span> <span class="cm-variable">nb</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment"># Carrega o notebook</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable cm-error">notebook</span> = <span class="cm-variable">nbformat</span>.<span class="cm-property">read</span>(<span class="cm-string">"SEU_NOTEBOOK.ipynb"</span>, <span class="cm-variable">as_version</span>=<span class="cm-number">4</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment"># Filtra células executadas sem erros</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable cm-error">codigo_limpo</span> = []</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">cell</span> <span class="cm-keyword">in</span> <span class="cm-variable">notebook</span>.<span class="cm-property">cells</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-keyword cm-error">if</span> <span class="cm-variable">cell</span>.<span class="cm-property">cell_type</span> == <span class="cm-string">"code"</span> <span class="cm-keyword">and</span> <span class="cm-string">"execution_count"</span> <span class="cm-keyword">in</span> <span class="cm-variable">cell</span>: &nbsp;<span class="cm-comment"># Rodou sem erro?</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">codigo_limpo</span>.<span class="cm-property">append</span>(<span class="cm-variable">cell</span>.<span class="cm-property">source</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment"># Salva em um arquivo .py</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">with</span> <span class="cm-builtin">open</span>(<span class="cm-string">"codigo_filtrado.py"</span>, <span class="cm-string">"w"</span>) <span class="cm-keyword">as</span> <span class="cm-variable">f</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable cm-error">f</span>.<span class="cm-property">write</span>(<span class="cm-string">"\n\n"</span>.<span class="cm-property">join</span>(<span class="cm-variable">codigo_limpo</span>))</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 300px;"></div><div class="CodeMirror-gutters" style="display: none; height: 300px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="3-juntar-células-corretas--saídas-para-documentação" class="md-header-anchor"></a><span>3. Juntar células corretas + saídas (para documentação)</span></h3><p><span>Se você quer </span><strong><span>preservar saídas de execução</span></strong><span> (ex: resultados de </span><code>print()</code><span>, gráficos) em um relatório:</span></p><h4><a name="gerar-um-htmlpdf-filtrado" class="md-header-anchor"></a><strong><span>Gerar um HTML/PDF filtrado</span></strong></h4><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  jupyter nbconvert <span class="cm-attribute">--to</span> html <span class="cm-attribute">--output</span> relatorio.html SEU_NOTEBOOK.ipynb <span class="cm-attribute">--TagRemovePreprocessor</span><span class="cm-def">.remove_cell_tags</span><span class="cm-operator">=</span><span class="cm-string">'{"errors", "incomplete"}'</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre><ul><li><span>Isso remove células com erros ou não executadas do HTML/PDF gerado.</span></li></ul><hr /><h3><a name="4-ferramentas-avançadas-para-limpeza-automática" class="md-header-anchor"></a><span>4. Ferramentas avançadas para limpeza automática</span></h3><ul><li><p><strong><code>jupyter-clean</code></strong><span>: Biblioteca para remover células vazias, saídas, etc.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install jupyter-clean</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">jupyter-clean SEU_NOTEBOOK.ipynb</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre></li><li><p><strong><span>VS Code + Extensão Jupyter</span></strong><span>: Permite selecionar células específicas e exportar como </span><code>.py</code><span>.</span></p></li></ul><p>&nbsp;</p><h3><a name="resumo-das-opções" class="md-header-anchor"></a><span>Resumo das opções:</span></h3><figure><table><thead><tr><th><span>Objetivo</span></th><th><span>Ferramenta/Método</span></th></tr></thead><tbody><tr><td><span>Exportar </span><strong><span>código executado</span></strong></td><td><code>nbconvert --to script</code><span> ou </span><code>%%writefile</code></td></tr><tr><td><span>Filtrar </span><strong><span>apenas células válidas</span></strong></td><td><span>Script com </span><code>nbformat</code><span> (método 2 acima)</span></td></tr><tr><td><span>Manter </span><strong><span>código + saídas</span></strong></td><td><code>nbconvert --to html</code><span> com tags de filtro</span></td></tr><tr><td><span>Limpeza automática</span></td><td><code>jupyter-clean</code><span> ou extensões de IDE (VS Code, PyCharm)</span></td></tr></tbody></table></figure><p><strong><span>Dica final:</span></strong></p><ul><li><p><span>Se você quer um </span><strong><span>script 100% limpo</span></strong><span>, o melhor fluxo é:  </span></p><ol start='' ><li><span>Rodar o notebook inteiro.  </span></li><li><span>Usar </span><code>nbconvert</code><span> para extrair apenas o código executado.  </span></li><li><span>Editar manualmente o arquivo </span><code>.py</code><span> gerado para remover redundâncias.  </span></li></ol></li></ul><p><span>Assim, você evita retrabalho e mantém um código funcional!</span></p><p><span>Se quiser agilizar ainda mais a limpeza de notebooks, experimente o </span><code>nbstripout</code><span> (remove saídas e metadados) ou o </span><code>jupyterlab-code-formatter</code><span> (para organizar o código automaticamente).</span></p><hr /><h2><a name="encerrando-operações-no-jupyter" class="md-header-anchor"></a><span>Encerrando operações no Jupyter</span></h2><p><span>Para encerrar operações no Jupyter Notebook </span><strong><span>sem perder os dados já processados</span></strong><span>, você pode usar uma das seguintes abordagens, dependendo da situação:</span></p><p>&nbsp;</p><h3><a name="1-se-uma-célula-está-travada-em--e-você-quer-interrompê-la" class="md-header-anchor"></a><span>1. Se uma </span><strong><span>célula está travada (em </span><code>[*]</code><span>)</span></strong><span> e você quer interrompê-la</span></h3><ul><li><p><strong><span>Método 1:</span></strong><span></span><br/><span>Clique no botão </span><strong><span>■ (Interrupt Kernel)</span></strong><span> na barra de ferramentas do Jupyter.  </span></p><ul><li><span>Isso para a execução da célula atual, mas </span><strong><span>mantém todas as variáveis já calculadas</span></strong><span> na memória.  </span></li></ul></li><li><p><strong><span>Método 2:</span></strong><span></span><br/><span>Pressione </span><strong><code>I</code><span> duas vezes</span></strong><span> (modo de comando do Jupyter) para interromper o kernel.  </span></p></li></ul><p><span>⚠️ </span><strong><span>Cuidado</span></strong><span>:  </span></p><ul><li><span>Se o kernel estiver completamente travado, talvez seja necessário reiniciá-lo (veja abaixo como fazer isso sem perder dados).  </span></li></ul><p>&nbsp;</p><h3><a name="2-se-você-quer-parar-o-kernel-temporariamente-sem-fechar-o-notebook" class="md-header-anchor"></a><span>2. Se você quer </span><strong><span>&quot;parar&quot; o kernel temporariamente</span></strong><span> (sem fechar o notebook)</span></h3><ul><li><p><strong><span>Opção 1:</span></strong><span></span><br/><span>Use </span><strong><span>Kernel &gt; Restart Kernel</span></strong><span> (reinicia o kernel, mas </span><strong><span>você perderá variáveis não salvas</span></strong><span>).  </span></p><ul><li><mark><span>Para evitar perda de dados</span></mark><span>, salve as variáveis em arquivos antes (ex: </span><code>pd.to_pickle()</code><span> para DataFrames).  </span></li></ul></li><li><p><strong><span>Opção 2 (recomendada para manter dados):</span></strong><span></span><br/><span>Salve o estado do notebook com </span><strong><span>File &gt; Save and Checkpoint</span></strong><span> e depois reinicie o kernel.  </span></p></li></ul><p>&nbsp;</p><h3><a name="3-como-reiniciar-o-kernel-sem-perder-dados" class="md-header-anchor"></a><span>3. Como </span><strong><span>reiniciar o kernel sem perder dados</span></strong><span>  </span></h3><p><span>Se você quer recarregar o kernel mas </span><strong><span>manter as variáveis já calculadas</span></strong><span>, siga este fluxo:  </span></p><ol start='' ><li><p><strong><span>Salve os dados processados</span></strong><span> em arquivos temporários:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">pandas</span> <span class="cm-keyword">as</span> <span class="cm-variable">pd</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pd</span>.<span class="cm-property">to_pickle</span>(<span class="cm-variable">df</span>, <span class="cm-string">'temp_data.pkl'</span>) &nbsp;<span class="cm-comment"># Para DataFrames</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre><p><span>Ou para outras variáveis:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">pickle</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">with</span> <span class="cm-builtin">open</span>(<span class="cm-string">'temp_vars.pkl'</span>, <span class="cm-string">'wb'</span>) <span class="cm-keyword">as</span> <span class="cm-variable">f</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">pickle</span>.<span class="cm-property">dump</span>([<span class="cm-variable">var1</span>, <span class="cm-variable">var2</span>], <span class="cm-variable">f</span>) &nbsp;<span class="cm-comment"># Salva múltiplas variáveis</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 60px;"></div><div class="CodeMirror-gutters" style="display: none; height: 60px;"></div></div></div></pre></li><li><p><strong><span>Reinicie o kernel</span></strong><span> em </span><strong><span>Kernel &gt; Restart</span></strong><span>.  </span></p></li><li><p><strong><span>Recarregue os dados</span></strong><span> após a reinicialização:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">df</span> = <span class="cm-variable">pd</span>.<span class="cm-property">read_pickle</span>(<span class="cm-string">'temp_data.pkl'</span>) &nbsp;<span class="cm-comment"># Carrega o DataFrame</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>Ou:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">with</span> <span class="cm-builtin">open</span>(<span class="cm-string">'temp_vars.pkl'</span>, <span class="cm-string">'rb'</span>) <span class="cm-keyword">as</span> <span class="cm-variable">f</span>:</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">var1</span>, <span class="cm-variable">var2</span> = <span class="cm-variable">pickle</span>.<span class="cm-property">load</span>(<span class="cm-variable">f</span>) &nbsp;<span class="cm-comment"># Recupera variáveis</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre></li></ol><p>&nbsp;</p><h3><a name="4-se-você-quer-encerrar-o-jupyter-completamente" class="md-header-anchor"></a><span>4. Se você quer </span><strong><span>encerrar o Jupyter completamente</span></strong><span>  </span></h3><ul><li><strong><span>Salve o notebook</span></strong><span> (Ctrl+S / Cmd+S).  </span></li><li><strong><span>Feche a aba do navegador</span></strong><span> (os dados em memória serão perdidos, mas o notebook salvo mantém o código e saídas).  </span></li><li><span>Para garantir que nada seja perdido, exporte os resultados para um arquivo (ex: CSV, JSON) antes de sair.  </span></li></ul><p>&nbsp;</p><h3><a name="dica-extra-autoreload-para-evitar-perdas" class="md-header-anchor"></a><span>Dica extra: </span><strong><span>Autoreload para evitar perdas</span></strong><span>  </span></h3><p><span>Se você está desenvolvendo código e quer evitar reinicializações frequentes, use o </span><strong><code>autoreload</code></strong><span> para recarregar módulos automaticamente:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%</span><span class="cm-variable">load_ext</span> <span class="cm-variable">autoreload</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%</span><span class="cm-variable">autoreload</span> <span class="cm-number">2</span> &nbsp;<span class="cm-comment"># Recarrega todos os módulos sempre que uma célula é executada</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="resumo-das-opções-n247" class="md-header-anchor"></a><strong><span>Resumo das opções:</span></strong><span>  </span></h3><figure><table><thead><tr><th><span>Objetivo</span></th><th><span>Ação Recomendada</span></th></tr></thead><tbody><tr><td><span>Parar uma célula travada</span></td><td><strong><span>■ Interrupt Kernel</span></strong><span> ou </span><code>I</code><span> + </span><code>I</code><span> (mantém dados na memória).</span></td></tr><tr><td><span>Reiniciar o kernel sem perder dados</span></td><td><span>Salve variáveis em arquivos → </span><strong><span>Restart Kernel</span></strong><span> → Recarregue os dados.</span></td></tr><tr><td><span>Fechar o notebook com segurança</span></td><td><span>Salve o notebook + exporte dados para arquivos.</span></td></tr></tbody></table></figure><hr /><p><span>Fernando Passold, 02/04/2025</span></p></div>
+<div id='write'  class=''><h1><a name="uso-de-jupyter" class="md-header-anchor"></a><span>Uso de Jupyter</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n309"><a class="md-toc-inner" href="#uso-de-jupyter">Uso de Jupyter</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n312"><a class="md-toc-inner" href="#instalando-o-jupyter">Instalando o Jupyter</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n321"><a class="md-toc-inner" href="#para-abrir-um-notebook-pré-existente">Para abrir um notebook pré-existente</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n326"><a class="md-toc-inner" href="#alternar-entre-comando-python-e-markdown">Alternar entre comando <strong>Python e Markdown</strong></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n329"><a class="md-toc-inner" href="#métodos-para-executar-comandos-do-sistema-no-jupyter">Métodos para <strong>executar comandos do sistema no Jupyter</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n331"><a class="md-toc-inner" href="#1-usando--exclamação">1. Usando <code>!</code> (exclamação)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n336"><a class="md-toc-inner" href="#2-usando-bash-para-scripts-multi-linha">2. Usando <code>%%bash</code> (para scripts multi-linha)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n343"><a class="md-toc-inner" href="#3-usando-ossystem-módulo-os-do-python">3. Usando <code>os.system</code> (módulo <code>os</code> do Python)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n345"><a class="md-toc-inner" href="#4-usando-subprocess-para-controle-mais-avançado">4. Usando <code>subprocess</code> (para controle mais avançado)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n347"><a class="md-toc-inner" href="#exemplo-prático-para-instalar-bibliotecas-python">Exemplo prático para <strong>instalar bibliotecas Python</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n359"><a class="md-toc-inner" href="#verificando-pacotes-instalados-usando-conda">Verificando pacotes instalados (usando conda)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n363"><a class="md-toc-inner" href="#atualizar-pacoes-usando-conda">Atualizar pacoes (usando conda)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n366"><a class="md-toc-inner" href="#para-descobrir-opções-para-baixar-pacote">Para descobrir opções para baixar pacote</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n370"><a class="md-toc-inner" href="#resumo-dos-comandos-úteis-conda--pip">Resumo dos <strong>comandos úteis (conda &amp; pip)</strong></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n393"><a class="md-toc-inner" href="#significado-de--no-prompt-do-jupyter">Significado de <code>[*]</code> no prompt do Jupyter</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n395"><a class="md-toc-inner" href="#possíveis-significados">Possíveis significados:</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n408"><a class="md-toc-inner" href="#como-sair-do-modo-execução-de-comandos-do-sistema-após-usar-">Como sair do "modo execução de comandos do sistema" após usar <code>!</code>?</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n410"><a class="md-toc-inner" href="#outras-opções-cancelar-comando-retornar-ao-prompt-restart">Outras opções: cancelar comando, retornar ao prompt, restart</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n430"><a class="md-toc-inner" href="#exportando-conteúdo-à-partir-do-jupyter-notebook">Exportando conteúdo à partir do Jupyter Notebook</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n432"><a class="md-toc-inner" href="#1-exportar-apenas-o-código-executado-sem-células-incompletaserros">1. Exportar apenas o código executado (sem células incompletas/erros)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n433"><a class="md-toc-inner" href="#opção-a-usando-nbconvert-via-linha-de-comando-ou-direto-no-jupyter">Opção A: <strong>Usando <code>nbconvert</code></strong> (via linha de comando ou direto no Jupyter)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n443"><a class="md-toc-inner" href="#opção-b-exportar-manualmente-pelo-jupyter">Opção B: <strong>Exportar manualmente</strong> pelo Jupyter</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n453"><a class="md-toc-inner" href="#2-filtrar-células-específicas-incluindo-saídas-de-execução">2. Filtrar células específicas (incluindo saídas de execução)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n455"><a class="md-toc-inner" href="#método-1-usando-writefile-dentro-do-próprio-notebook">Método 1: Usando <code>%%writefile</code> (dentro do próprio notebook)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n463"><a class="md-toc-inner" href="#método-2-extrair-células-executadas-programaticamente">Método 2: Extrair células executadas programaticamente</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n467"><a class="md-toc-inner" href="#3-juntar-células-corretas--saídas-para-documentação">3. Juntar células corretas + saídas (para documentação)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n469"><a class="md-toc-inner" href="#gerar-um-htmlpdf-filtrado"><strong>Gerar um HTML/PDF filtrado</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n475"><a class="md-toc-inner" href="#4-ferramentas-avançadas-para-limpeza-automática">4. Ferramentas avançadas para limpeza automática</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n483"><a class="md-toc-inner" href="#resumo-das-opções">Resumo das opções:</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n514"><a class="md-toc-inner" href="#encerrando-operações-no-jupyter">Encerrando operações no Jupyter</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n517"><a class="md-toc-inner" href="#1-se-uma-célula-está-travada-em--e-você-quer-interrompê-la">1. Se uma <strong>célula está travada (em <code>[*]</code>)</strong> e você quer interrompê-la</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n531"><a class="md-toc-inner" href="#2-se-você-quer-parar-o-kernel-temporariamente-sem-fechar-o-notebook">2. Se você quer <strong>"parar" o kernel temporariamente</strong> (sem fechar o notebook)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n541"><a class="md-toc-inner" href="#3-como-reiniciar-o-kernel-sem-perder-dados">3. Como <strong>reiniciar o kernel sem perder dados</strong>  </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n557"><a class="md-toc-inner" href="#4-se-você-quer-encerrar-o-jupyter-completamente">4. Se você quer <strong>encerrar o Jupyter completamente</strong>  </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n566"><a class="md-toc-inner" href="#dica-extra-autoreload-para-evitar-perdas">Dica extra: <strong>Autoreload para evitar perdas</strong>  </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n570"><a class="md-toc-inner" href="#resumo-das-opções-n570"><strong>Resumo das opções:</strong>  </a></span></p></div><hr /><h2><a name="instalando-o-jupyter" class="md-header-anchor"></a><span>Instalando o Jupyter</span></h2><p><span>Você pode começar a testar pequenos </span><em><span>scripts</span></em><span> Python usando </span><mark><span>Jupyter</span></mark><span> através do comando: </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993103px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">% jupyter notebook</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>para criar um novo notebook.</span></p><p><span>Se ocorrer um erro como:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993103px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">(base) fernandopassold@MacBook-Pro-de-Fernando OpenCV % jupyter notebook</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">zsh</span>: command not found: jupyter</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><p><span>É porque você ainda falta instalar o Jupyter, fazendo algo como: </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993103px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">% conda install jupyter<span class="cm-quote">` </span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>Para saber mais você pode acessar </span><a href='https://docs.jupyter.org/pt-br/latest/install/notebook-classic.html'><span>Installing the classic Jupyter Notebook interface</span></a><span>.</span></p><h2><a name="para-abrir-um-notebook-pré-existente" class="md-header-anchor"></a><span>Para abrir um notebook pré-existente</span></h2><p><span>Pode ser usado o comando: </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">% jupyter notebook notebook.ipynb</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>para abrir o notebook notebook.ipynb já pré-existente.</span></p><p><span>Para acesso à mais informações oficiais sobre como usar Jupyter veja: </span><a href='https://docs.jupyter.org/pt-br/latest/running.html'><span>Executando o Notebook</span></a><span>.</span></p><h2><a name="alternar-entre-comando-python-e-markdown" class="md-header-anchor"></a><span>Alternar entre comando </span><strong><span>Python e Markdown</span></strong></h2><p><span>O Jupyter normalmente entra no &quot;modo interpretador Pytohn&quot;, tentando excutar comandos Python tão logo seja usada a commbinação de teclas </span><code>SHIFT</code><span> + </span><code>ENTER</code><span>. Teclar apenas </span><code>ENTER</code><span> só muda de linha numa célula do Python.</span></p><p><span>Para sair deste &quot;modo interpretador Python&quot;, e mudar para modo de edição Markdonw, use a combinação de teclas </span><code>ESC</code><span> + </span><code>M</code><span>. Digite a sentença Markdown e use a combinação </span><code>SHIFT</code><span>+ </span><code>ENTER</code><span> para que a sentença seja renderizadas. Note que em seguina, o Jupyter volta para o &quot;modo interpretador Python&quot;, sem necessidade de alguma outra combinação de teclas.</span></p><h2><a name="métodos-para-executar-comandos-do-sistema-no-jupyter" class="md-header-anchor"></a><span>Métodos para </span><strong><span>executar comandos do sistema no Jupyter</span></strong><span>:</span></h2><p><span>É possível executar comandos do sistema diretamente de dentro do Jupyter Notebook, tanto em MacOS quanto em outros sistemas operacionais. Você não precisa sair do Jupyter para instalar bibliotecas ou executar comandos do terminal.</span></p><h3><a name="1-usando--exclamação" class="md-header-anchor"></a><span>1. Usando </span><code>!</code><span> (exclamação)</span></h3><p><span>Você pode executar qualquer comando do terminal precedendo-o com </span><code>!</code><span>. Por exemplo:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.986115px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">!</span><span class="cm-variable">ls</span> <span class="cm-operator">-</span><span class="cm-variable">l</span> &nbsp;<span class="cm-comment"># Lista arquivos no diretório atual (MacOS/Linux)</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">!</span><span class="cm-variable">pwd</span> &nbsp; &nbsp;<span class="cm-comment"># Mostra o diretório atual</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><p><span>Para instalar uma biblioteca Python (como </span><code>pandas</code><span> se estiver faltando):</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.986115px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">!</span><span class="cm-variable">pip</span> <span class="cm-variable">install</span> <span class="cm-variable">pandas</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><h3><a name="2-usando-bash-para-scripts-multi-linha" class="md-header-anchor"></a><span>2. Usando </span><code>%%bash</code><span> (para scripts multi-linha)</span></h3><p><span>Se precisar executar vários comandos bash em sequência:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%%</span><span class="cm-variable">bash</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">echo</span> <span class="cm-string">"Hello from bash"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pip</span> <span class="cm-variable">install</span> <span class="cm-operator">--</span><span class="cm-variable">upgrade</span> <span class="cm-variable">numpy</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ls</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 102px;"></div><div class="CodeMirror-gutters" style="display: none; height: 102px;"></div></div></div></pre><p><strong><span>Dica extra</span></strong><span>:</span></p><p><span>Se você quer </span><strong><span>interagir com o terminal por mais tempo</span></strong><span> (ex: navegar em diretórios), use:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.99292px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%%</span><span class="cm-variable">bash</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">cd</span> <span class="cm-operator">~/</span><span class="cm-variable">Documents</span> &nbsp;<span class="cm-comment"># Muda o diretório</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ls</span> <span class="cm-operator">-</span><span class="cm-variable">l</span> &nbsp;<span class="cm-comment"># Lista arquivos</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pwd</span> &nbsp;<span class="cm-comment"># Mostra o diretório atual</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 102px;"></div><div class="CodeMirror-gutters" style="display: none; height: 102px;"></div></div></div></pre><p><span>Mas lembre-se: alterações no terminal (como </span><code>cd</code><span>) </span><strong><span>não afetam</span></strong><span> o ambiente Python do Jupyter após a execução. Para isso, use os comandos do Python (ex: </span><code>os.chdir()</code><span>).  </span></p><h3><a name="3-usando-ossystem-módulo-os-do-python" class="md-header-anchor"></a><span>3. Usando </span><code>os.system</code><span> (módulo </span><code>os</code><span> do Python)</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.99292px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;" tabindex="0"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">os</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">os</span>.<span class="cm-property">system</span>(<span class="cm-string">"say 'Hello from MacOS'"</span>) &nbsp;<span class="cm-comment"># Fará o MacOS falar a frase (se estiver no Mac)</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><h3><a name="4-usando-subprocess-para-controle-mais-avançado" class="md-header-anchor"></a><span>4. Usando </span><code>subprocess</code><span> (para controle mais avançado)</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.99292px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;" tabindex="0"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">subprocess</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">result</span> = <span class="cm-variable">subprocess</span>.<span class="cm-property">run</span>([<span class="cm-string">"ls"</span>, <span class="cm-string">"-l"</span>], <span class="cm-variable">capture_output</span>=<span class="cm-keyword">True</span>, <span class="cm-variable">text</span>=<span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">result</span>.<span class="cm-property">stdout</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 77px;"></div><div class="CodeMirror-gutters" style="display: none; height: 77px;"></div></div></div></pre><h3><a name="exemplo-prático-para-instalar-bibliotecas-python" class="md-header-anchor"></a><span>Exemplo prático para </span><strong><span>instalar bibliotecas Python</span></strong><span>:</span></h3><p><span>Se seu código Python gerar um erro como </span><code>ModuleNotFoundError: No module named &#39;seaborn&#39;</code><span>, você pode instalar diretamente no notebook:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.99292px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;" tabindex="0"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">try</span>:</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">import</span> <span class="cm-variable">seaborn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">except</span> <span class="cm-variable">ImportError</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-operator">!</span><span class="cm-variable">pip</span> <span class="cm-variable">install</span> <span class="cm-variable">seaborn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">import</span> <span class="cm-variable">seaborn</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 128px;"></div><div class="CodeMirror-gutters" style="display: none; height: 128px;"></div></div></div></pre><p><strong><span>Observações importantes:</span></strong></p><ul><li><mark><span>O Jupyter executa os comandos no ambiente Python em que está rodando</span></mark><span>. Se você estiver usando um ambiente virtual, os comandos afetarão apenas esse ambiente.</span></li><li><span>Para comandos específicos do MacOS (como </span><code>open</code><span>, </span><code>say</code><span>, </span><code>brew</code><span>, etc.), basta usar com </span><code>!</code><span>.</span></li><li><span>Alguns comandos podem requerer </span><code>sudo</code><span> (cuidado ao usar isso em notebooks).</span></li></ul><p><span>Isso elimina a necessidade de abrir um terminal separado na maioria dos casos!</span></p><h3><a name="verificando-pacotes-instalados-usando-conda" class="md-header-anchor"></a><span>Verificando pacotes instalados (usando conda)</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993164px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;" tabindex="0"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">!conda list &lt;nome_do_pacote&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>Se o pacote não estiver instalado, o retorno não mostrará nada ou indicará # packages in environment at </span><caminho><span> sem listar o pacote.</span></p><p><span>É similar ao comando </span><code>pip list</code><span>.</span></p><h3><a name="atualizar-pacoes-usando-conda" class="md-header-anchor"></a><span>Atualizar pacoes (usando conda)</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993164px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;" tabindex="0"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">!conda update &lt;nome_do_pacote&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>Isso atualizará o </span><code>&lt;nome_do_pacote&gt;</code><span> para a última versão compatível com ambiente atual de trabalho.</span></p><h3><a name="para-descobrir-opções-para-baixar-pacote" class="md-header-anchor"></a><span>Para descobrir opções para baixar pacote</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.99292px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;" tabindex="0"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">!conda search &lt;nome_do_pacote&gt; <span class="cm-attribute">--info</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>Atenção: várias linhas texto podem ser geradas!</span></p><hr /><h3><a name="resumo-dos-comandos-úteis-conda--pip" class="md-header-anchor"></a><span>Resumo dos </span><strong><span>comandos úteis (conda &amp; pip)</span></strong></h3><figure><table><thead><tr><th><span>Ação</span></th><th><span>Comando Conda</span></th><th><span>Comando Pip (se necessário)</span></th></tr></thead><tbody><tr><td><span>Verificar pacote</span></td><td><code>!conda list pandas</code></td><td><code>!pip show pandas</code></td></tr><tr><td><span>Instalar pacote</span></td><td><code>!conda install pandas</code></td><td><code>!pip install pandas</code></td></tr><tr><td><span>Atualizar pacote</span></td><td><code>!conda update pandas</code></td><td><code>!pip install --upgrade pandas</code></td></tr><tr><td><span>Listar todos os pacotes</span></td><td><code>!conda list</code></td><td><code>!pip list</code></td></tr></tbody></table></figure><hr /><h2><a name="significado-de--no-prompt-do-jupyter" class="md-header-anchor"></a><span>Significado de </span><code>[*]</code><span> no prompt do Jupyter</span></h2><p><span>O símbolo </span><code>[*]</code><span> ao lado do número da célula no Jupyter Notebook (ex: </span><code>In [*]:</code><span>) indica que a célula está </span><strong><span>em execução</span></strong><span> (processamento). Quando o código terminar de rodar, o </span><code>*</code><span> será substituído por um número sequencial (ex: </span><code>In [1]:</code><span>).  </span></p><h4><a name="possíveis-significados" class="md-header-anchor"></a><span>Possíveis significados:</span></h4><ul><li><p><code>In [*]:</code><span> → Célula rodando no momento.  </span></p></li><li><p><code>In [1]:</code><span>, </span><code>In [2]:</code><span>, etc. → Célula já executada (o número indica a ordem de execução).  </span></p></li><li><p><span>Se ficar travado em </span><code>[*]</code><span> por muito tempo, pode ser que:  </span></p><ul><li><span>O código está demorando (ex: um loop infinito!?).  </span></li><li><span>O kernel travou (nesse caso, reinicie-o em </span><strong><span>Kernel &gt; Restart</span></strong><span>).</span>
+<span>Antenção: no caso de Restart do Kernel, os comandos/ações anteriores já realizadas, são todas perdidas!  </span></li></ul></li></ul><h2><a name="como-sair-do-modo-execução-de-comandos-do-sistema-após-usar-" class="md-header-anchor"></a><span>Como sair do &quot;modo execução de comandos do sistema&quot; após usar </span><code>!</code><span>?</span></h2><p><span>Quando você executa um comando do sistema com </span><code>!</code><span> (ex: </span><code>!ls</code><span>), o Jupyter </span><strong><span>não entra em um &quot;modo terminal&quot; permanente</span></strong><span>—ele apenas roda aquele comando específico e volta para o ambiente Python imediatamente.  </span></p><h3><a name="outras-opções-cancelar-comando-retornar-ao-prompt-restart" class="md-header-anchor"></a><span>Outras opções: cancelar comando, retornar ao prompt, restart</span></h3><ul><li><p><strong><span>Cancelar um comando em execução</span></strong><span>:  </span></p><ul><li><span>Use o botão </span><strong><span>■ (Interrupt Kernel)</span></strong><span> na barra de ferramentas do Jupyter.  </span></li><li><span>Ou pressione </span><code>I</code><span> duas vezes seguidas no teclado (modo de comando do Jupyter).  </span></li></ul></li><li><p><strong><span>Voltar ao prompt normal do Python</span></strong><span>:  </span></p><ul><li><span>Após executar </span><code>!comando</code><span>, o Jupyter já retorna automaticamente ao modo Python. Basta digitar código Python na próxima célula.  </span></li></ul></li><li><p><strong><span>Se o kernel travou</span></strong><span>:  </span></p><ul><li><span>Reinicie-o em </span><strong><span>Kernel &gt; Restart</span></strong><span>.  </span></li></ul></li></ul><hr /><h2><a name="exportando-conteúdo-à-partir-do-jupyter-notebook" class="md-header-anchor"></a><span>Exportando conteúdo à partir do Jupyter Notebook</span></h2><p><span>Existem várias maneiras de </span><strong><span>exportar</span></strong><span> o conteúdo do Jupyter Notebook, filtrando apenas as partes relevantes (código executado com sucesso, saídas, comentários, etc.) para um script Python limpo. Aqui estão os métodos mais eficientes:</span></p><h3><a name="1-exportar-apenas-o-código-executado-sem-células-incompletaserros" class="md-header-anchor"></a><span>1. Exportar apenas o código executado (sem células incompletas/erros)</span></h3><h4><a name="opção-a-usando-nbconvert-via-linha-de-comando-ou-direto-no-jupyter" class="md-header-anchor"></a><span>Opção A: </span><strong><span>Usando </span><code>nbconvert</code></strong><span> (via linha de comando ou direto no Jupyter)</span></h4><ul><li><p><span>Exporta </span><strong><span>apenas células executadas com sucesso</span></strong><span> para um arquivo </span><code>.py</code><span>:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">jupyter nbconvert <span class="cm-attribute">--to</span> script SEU_NOTEBOOK.ipynb <span class="cm-attribute">--output-dir</span><span class="cm-operator">=</span>SAIDA <span class="cm-attribute">--TemplateExporter</span><span class="cm-def">.exclude_markdown</span><span class="cm-operator">=</span>True</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><ul><li><span>Isso gera um arquivo </span><code>.py</code><span> com </span><strong><span>apenas o código das células que rodaram sem erros</span></strong><span>.</span></li><li><strong><span>Observação</span></strong><span>: Se uma célula foi executada parcialmente (ex: erro no meio do código), ela </span><strong><span>não</span></strong><span> será incluída.</span></li></ul></li></ul><h4><a name="opção-b-exportar-manualmente-pelo-jupyter" class="md-header-anchor"></a><span>Opção B: </span><strong><span>Exportar manualmente</span></strong><span> pelo Jupyter</span></h4><ol start='' ><li><p><span>No Jupyter, vá em </span><strong><span>File &gt; Download as &gt; Python (.py)</span></strong><span>.</span></p></li><li><p><span>Isso gera um arquivo com </span><strong><span>todo o código</span></strong><span> (incluindo células não executadas ou com erros).  </span></p><ul><li><span>Para filtrar apenas o código válido, abra o arquivo gerado e delete manualmente as partes indesejadas.</span></li></ul></li></ol><p>&nbsp;</p><h3><a name="2-filtrar-células-específicas-incluindo-saídas-de-execução" class="md-header-anchor"></a><span>2. Filtrar células específicas (incluindo saídas de execução)</span></h3><p><span>Se você quer </span><strong><span>selecionar apenas células específicas</span></strong><span> (ex: as que rodaram corretamente) e gerar um script consolidado:</span></p><h4><a name="método-1-usando-writefile-dentro-do-próprio-notebook" class="md-header-anchor"></a><span>Método 1: Usando </span><code>%%writefile</code><span> (dentro do próprio notebook)</span></h4><ul><li><p><span>Adicione esta célula no final do notebook para </span><strong><span>exportar o código filtrado</span></strong><span>:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%%</span><span class="cm-variable">writefile</span> <span class="cm-variable">script_limpo</span>.<span class="cm-property">py</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Código válido (copie e cole apenas as células que funcionaram)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">pandas</span> <span class="cm-keyword">as</span> <span class="cm-variable">pd</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">df</span> = <span class="cm-variable">pd</span>.<span class="cm-property">read_csv</span>(<span class="cm-string">"dados.csv"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">df</span>.<span class="cm-property">head</span>())</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 128px;"></div><div class="CodeMirror-gutters" style="display: none; height: 128px;"></div></div></div></pre><ul><li><span>Isso criará um arquivo </span><code>script_limpo.py</code><span> com o conteúdo selecionado.</span></li></ul></li></ul><h4><a name="método-2-extrair-células-executadas-programaticamente" class="md-header-anchor"></a><span>Método 2: Extrair células executadas programaticamente</span></h4><p><span>Use este código para </span><strong><span>exportar apenas células executadas sem erros</span></strong><span>:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.986115px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">import</span> <span class="cm-variable">nbformat</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword cm-error">from</span> <span class="cm-variable">nbformat</span> <span class="cm-keyword">import</span> <span class="cm-variable">v4</span> <span class="cm-keyword">as</span> <span class="cm-variable">nb</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment"># Carrega o notebook</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable cm-error">notebook</span> = <span class="cm-variable">nbformat</span>.<span class="cm-property">read</span>(<span class="cm-string">"SEU_NOTEBOOK.ipynb"</span>, <span class="cm-variable">as_version</span>=<span class="cm-number">4</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment"># Filtra células executadas sem erros</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable cm-error">codigo_limpo</span> = []</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">cell</span> <span class="cm-keyword">in</span> <span class="cm-variable">notebook</span>.<span class="cm-property">cells</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-keyword cm-error">if</span> <span class="cm-variable">cell</span>.<span class="cm-property">cell_type</span> == <span class="cm-string">"code"</span> <span class="cm-keyword">and</span> <span class="cm-string">"execution_count"</span> <span class="cm-keyword">in</span> <span class="cm-variable">cell</span>: &nbsp;<span class="cm-comment"># Rodou sem erro?</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">codigo_limpo</span>.<span class="cm-property">append</span>(<span class="cm-variable">cell</span>.<span class="cm-property">source</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment"># Salva em um arquivo .py</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">with</span> <span class="cm-builtin">open</span>(<span class="cm-string">"codigo_filtrado.py"</span>, <span class="cm-string">"w"</span>) <span class="cm-keyword">as</span> <span class="cm-variable">f</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable cm-error">f</span>.<span class="cm-property">write</span>(<span class="cm-string">"\n\n"</span>.<span class="cm-property">join</span>(<span class="cm-variable">codigo_limpo</span>))</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 383px;"></div><div class="CodeMirror-gutters" style="display: none; height: 383px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="3-juntar-células-corretas--saídas-para-documentação" class="md-header-anchor"></a><span>3. Juntar células corretas + saídas (para documentação)</span></h3><p><span>Se você quer </span><strong><span>preservar saídas de execução</span></strong><span> (ex: resultados de </span><code>print()</code><span>, gráficos) em um relatório:</span></p><h4><a name="gerar-um-htmlpdf-filtrado" class="md-header-anchor"></a><strong><span>Gerar um HTML/PDF filtrado</span></strong></h4><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  jupyter nbconvert <span class="cm-attribute">--to</span> html <span class="cm-attribute">--output</span> relatorio.html SEU_NOTEBOOK.ipynb <span class="cm-attribute">--TagRemovePreprocessor</span><span class="cm-def">.remove_cell_tags</span><span class="cm-operator">=</span><span class="cm-string">'{"errors", "incomplete"}'</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><ul><li><span>Isso remove células com erros ou não executadas do HTML/PDF gerado.</span></li></ul><hr /><h3><a name="4-ferramentas-avançadas-para-limpeza-automática" class="md-header-anchor"></a><span>4. Ferramentas avançadas para limpeza automática</span></h3><ul><li><p><strong><code>jupyter-clean</code></strong><span>: Biblioteca para remover células vazias, saídas, etc.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install jupyter-clean</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">jupyter-clean SEU_NOTEBOOK.ipynb</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre></li><li><p><strong><span>VS Code + Extensão Jupyter</span></strong><span>: Permite selecionar células específicas e exportar como </span><code>.py</code><span>.</span></p></li></ul><p>&nbsp;</p><h3><a name="resumo-das-opções" class="md-header-anchor"></a><span>Resumo das opções:</span></h3><figure><table><thead><tr><th><span>Objetivo</span></th><th><span>Ferramenta/Método</span></th></tr></thead><tbody><tr><td><span>Exportar </span><strong><span>código executado</span></strong></td><td><code>nbconvert --to script</code><span> ou </span><code>%%writefile</code></td></tr><tr><td><span>Filtrar </span><strong><span>apenas células válidas</span></strong></td><td><span>Script com </span><code>nbformat</code><span> (método 2 acima)</span></td></tr><tr><td><span>Manter </span><strong><span>código + saídas</span></strong></td><td><code>nbconvert --to html</code><span> com tags de filtro</span></td></tr><tr><td><span>Limpeza automática</span></td><td><code>jupyter-clean</code><span> ou extensões de IDE (VS Code, PyCharm)</span></td></tr></tbody></table></figure><p><strong><span>Dica final:</span></strong></p><ul><li><p><span>Se você quer um </span><strong><span>script 100% limpo</span></strong><span>, o melhor fluxo é:  </span></p><ol start='' ><li><span>Rodar o notebook inteiro.  </span></li><li><span>Usar </span><code>nbconvert</code><span> para extrair apenas o código executado.  </span></li><li><span>Editar manualmente o arquivo </span><code>.py</code><span> gerado para remover redundâncias.  </span></li></ol></li></ul><p><span>Assim, você evita retrabalho e mantém um código funcional!</span></p><p><span>Se quiser agilizar ainda mais a limpeza de notebooks, experimente o </span><code>nbstripout</code><span> (remove saídas e metadados) ou o </span><code>jupyterlab-code-formatter</code><span> (para organizar o código automaticamente).</span></p><hr /><h2><a name="encerrando-operações-no-jupyter" class="md-header-anchor"></a><span>Encerrando operações no Jupyter</span></h2><p><span>Para encerrar operações no Jupyter Notebook </span><strong><span>sem perder os dados já processados</span></strong><span>, você pode usar uma das seguintes abordagens, dependendo da situação:</span></p><p>&nbsp;</p><h3><a name="1-se-uma-célula-está-travada-em--e-você-quer-interrompê-la" class="md-header-anchor"></a><span>1. Se uma </span><strong><span>célula está travada (em </span><code>[*]</code><span>)</span></strong><span> e você quer interrompê-la</span></h3><ul><li><p><strong><span>Método 1:</span></strong><span></span><br/><span>Clique no botão </span><strong><span>■ (Interrupt Kernel)</span></strong><span> na barra de ferramentas do Jupyter.  </span></p><ul><li><span>Isso para a execução da célula atual, mas </span><strong><span>mantém todas as variáveis já calculadas</span></strong><span> na memória.  </span></li></ul></li><li><p><strong><span>Método 2:</span></strong><span></span><br/><span>Pressione </span><strong><code>I</code><span> duas vezes</span></strong><span> (modo de comando do Jupyter) para interromper o kernel.  </span></p></li></ul><p><span>⚠️ </span><strong><span>Cuidado</span></strong><span>:  </span></p><ul><li><span>Se o kernel estiver completamente travado, talvez seja necessário reiniciá-lo (veja abaixo como fazer isso sem perder dados).  </span></li></ul><p>&nbsp;</p><h3><a name="2-se-você-quer-parar-o-kernel-temporariamente-sem-fechar-o-notebook" class="md-header-anchor"></a><span>2. Se você quer </span><strong><span>&quot;parar&quot; o kernel temporariamente</span></strong><span> (sem fechar o notebook)</span></h3><ul><li><p><strong><span>Opção 1:</span></strong><span></span><br/><span>Use </span><strong><span>Kernel &gt; Restart Kernel</span></strong><span> (reinicia o kernel, mas </span><strong><span>você perderá variáveis não salvas</span></strong><span>).  </span></p><ul><li><mark><span>Para evitar perda de dados</span></mark><span>, salve as variáveis em arquivos antes (ex: </span><code>pd.to_pickle()</code><span> para DataFrames).  </span></li></ul></li><li><p><strong><span>Opção 2 (recomendada para manter dados):</span></strong><span></span><br/><span>Salve o estado do notebook com </span><strong><span>File &gt; Save and Checkpoint</span></strong><span> e depois reinicie o kernel.  </span></p></li></ul><p>&nbsp;</p><h3><a name="3-como-reiniciar-o-kernel-sem-perder-dados" class="md-header-anchor"></a><span>3. Como </span><strong><span>reiniciar o kernel sem perder dados</span></strong><span>  </span></h3><p><span>Se você quer recarregar o kernel mas </span><strong><span>manter as variáveis já calculadas</span></strong><span>, siga este fluxo:  </span></p><ol start='' ><li><p><strong><span>Salve os dados processados</span></strong><span> em arquivos temporários:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">pandas</span> <span class="cm-keyword">as</span> <span class="cm-variable">pd</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pd</span>.<span class="cm-property">to_pickle</span>(<span class="cm-variable">df</span>, <span class="cm-string">'temp_data.pkl'</span>) &nbsp;<span class="cm-comment"># Para DataFrames</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><p><span>Ou para outras variáveis:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">pickle</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">with</span> <span class="cm-builtin">open</span>(<span class="cm-string">'temp_vars.pkl'</span>, <span class="cm-string">'wb'</span>) <span class="cm-keyword">as</span> <span class="cm-variable">f</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">pickle</span>.<span class="cm-property">dump</span>([<span class="cm-variable">var1</span>, <span class="cm-variable">var2</span>], <span class="cm-variable">f</span>) &nbsp;<span class="cm-comment"># Salva múltiplas variáveis</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 77px;"></div><div class="CodeMirror-gutters" style="display: none; height: 77px;"></div></div></div></pre></li><li><p><strong><span>Reinicie o kernel</span></strong><span> em </span><strong><span>Kernel &gt; Restart</span></strong><span>.  </span></p></li><li><p><strong><span>Recarregue os dados</span></strong><span> após a reinicialização:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">df</span> = <span class="cm-variable">pd</span>.<span class="cm-property">read_pickle</span>(<span class="cm-string">'temp_data.pkl'</span>) &nbsp;<span class="cm-comment"># Carrega o DataFrame</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>Ou:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.326393px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">with</span> <span class="cm-builtin">open</span>(<span class="cm-string">'temp_vars.pkl'</span>, <span class="cm-string">'rb'</span>) <span class="cm-keyword">as</span> <span class="cm-variable">f</span>:</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">var1</span>, <span class="cm-variable">var2</span> = <span class="cm-variable">pickle</span>.<span class="cm-property">load</span>(<span class="cm-variable">f</span>) &nbsp;<span class="cm-comment"># Recupera variáveis</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre></li></ol><p>&nbsp;</p><h3><a name="4-se-você-quer-encerrar-o-jupyter-completamente" class="md-header-anchor"></a><span>4. Se você quer </span><strong><span>encerrar o Jupyter completamente</span></strong><span>  </span></h3><ul><li><strong><span>Salve o notebook</span></strong><span> (Ctrl+S / Cmd+S).  </span></li><li><strong><span>Feche a aba do navegador</span></strong><span> (os dados em memória serão perdidos, mas o notebook salvo mantém o código e saídas).  </span></li><li><span>Para garantir que nada seja perdido, exporte os resultados para um arquivo (ex: CSV, JSON) antes de sair.  </span></li></ul><p>&nbsp;</p><h3><a name="dica-extra-autoreload-para-evitar-perdas" class="md-header-anchor"></a><span>Dica extra: </span><strong><span>Autoreload para evitar perdas</span></strong><span>  </span></h3><p><span>Se você está desenvolvendo código e quer evitar reinicializações frequentes, use o </span><strong><code>autoreload</code></strong><span> para recarregar módulos automaticamente:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.993042px; left: 7.986115px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%</span><span class="cm-variable">load_ext</span> <span class="cm-variable">autoreload</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%</span><span class="cm-variable">autoreload</span> <span class="cm-number">2</span> &nbsp;<span class="cm-comment"># Recarrega todos os módulos sempre que uma célula é executada</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="resumo-das-opções-n570" class="md-header-anchor"></a><strong><span>Resumo das opções:</span></strong><span>  </span></h3><figure><table><thead><tr><th><span>Objetivo</span></th><th><span>Ação Recomendada</span></th></tr></thead><tbody><tr><td><span>Parar uma célula travada</span></td><td><strong><span>■ Interrupt Kernel</span></strong><span> ou </span><code>I</code><span> + </span><code>I</code><span> (mantém dados na memória).</span></td></tr><tr><td><span>Reiniciar o kernel sem perder dados</span></td><td><span>Salve variáveis em arquivos → </span><strong><span>Restart Kernel</span></strong><span> → Recarregue os dados.</span></td></tr><tr><td><span>Fechar o notebook com segurança</span></td><td><span>Salve o notebook + exporte dados para arquivos.</span></td></tr></tbody></table></figure><hr /><p><span>Fernando Passold, 02/04/2025</span></p></div>
 </body>
 </html>
