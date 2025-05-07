@@ -1,0 +1,378 @@
+% Continuação da aula anterior
+
+% ## Projeto de Lead 
+
+% Lembrando da planta
+
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Mantendo o zero do lead na mesma posição
+% do zero dos PD's anteriores.
+
+Lead=tf([1 -0.76],[1 -0.15],T)
+
+Lead =
+ 
+  z - 0.76
+  --------
+  z - 0.15
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+ftma_Lead=Lead*BoG;
+rlocus(ftma_Lead)
+axis equal
+axis([-8 1 -4 4])
+
+% ![rl_Lead.png](rl_Lead.png)
+
+% "Sintonizando controlador"...
+
+axis([-0.15 1 -0.2 0.6])
+hold on
+zgrid(zera,0)
+{Unrecognized function or variable 'zera'.} 
+zgrid(zeta,0)
+[K_lead,polosMF]=rlocfind(ftma_Lead)
+Select a point in the graphics window
+selected_point =
+      0.70705 +    0.31889i
+K_lead =
+       290.24
+polosMF =
+      0.70646 +    0.31885i
+      0.70646 -    0.31885i
+      0.73216 +          0i
+     0.060893 +          0i
+
+% ![rl_Lead_zoom.png](rl_Lead_zoom.png)
+
+ftmf_Lead=feedback(K_lead*ftma_Lead, 1);
+figure; step(ftmf_Lead, ftmf_PDc)
+legend('Lead', 'Pd (c)')
+
+% ![step_lead.png](step_lead.png)
+
+erro_Lead=((1-dcgain(ftmf_Lead))/1)*100
+erro_Lead =
+       19.618
+
+% Versão 2 do lead usando o App Control
+% System Designer
+
+% ![lead2.png](lead2.png)
+
+zpk(Lead2)
+
+ans =
+ 
+  394 (z-0.76)
+  ------------
+    (z-0.15)
+ 
+Name: C
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% ## Projeto do Lead 3
+
+% No App Control System Designer, vamos
+% aproveitar e modificar posição do zero do
+% Lead, colocando próximo de z = 0,8187.
+
+% ![Lead3.png](Lead3.png)
+
+zpk(Lead3)
+
+ans =
+ 
+  430 (z-0.79)
+  ------------
+    (z-0.15)
+ 
+Name: C
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+save dados
+diary off
+
+% ## Exemplo de Deadbeat - Intro
+
+% Ref.: [Projeto de controlador deadbeat - Aula de 04/06/2020](https://fpassold.github.io/Controle_3/deadbeat_08out2019.html).
+
+clear all
+
+% Testando um cado simples...
+
+G=tf(10,poly([-1 -10]));
+T=0.1;
+BoG=c2d(G, T);
+zpk(BoG)
+
+ans =
+ 
+   0.035501 (z+0.6945)
+  ---------------------
+  (z-0.9048) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+zeros_BoG=zero(BoG)
+zeros_BoG =
+     -0.69446
+polos_BoG=pole(BoG)
+polos_BoG =
+      0.90484
+      0.36788
+C_dead=tf(poly(polos_BoG), poly(zeros_BoG), T)
+
+C_dead =
+ 
+  z^2 - 1.273 z + 0.3329
+  ----------------------
+        z + 0.6945
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+C_dead=tf(poly(polos_BoG), poly([zeros_BoG  1]), T)
+
+C_dead =
+ 
+  z^2 - 1.273 z + 0.3329
+  -----------------------
+  z^2 - 0.3055 z - 0.6945
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+zpk(C_dead)
+
+ans =
+ 
+  (z-0.9048) (z-0.3679)
+  ---------------------
+    (z-1) (z+0.6945)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_dead=C_dead*BoG;
+zpk(ftma_dead)
+
+ans =
+ 
+  0.035501 (z+0.6945) (z-0.9048) (z-0.3679)
+  -----------------------------------------
+   (z+0.6945) (z-0.9048) (z-1) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_dead_r=minreal(ftma_dead)
+
+ftma_dead_r =
+ 
+  0.0355
+  ------
+  z - 1
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+close all
+rlocos(ftma_dead)
+{Unrecognized function or variable 'rlocos'.} 
+rlocus(ftma_dead)
+
+% ![RL_dead_exemplo.png](RL_dead_exemplo.png0
+
+K_dead=1/dcgain(BoG)
+K_dead =
+            1
+K_dead=1/0.035501
+K_dead =
+       28.168
+ftmf_dead=feedbacK(K_dead*ftma_dead, 1)
+{Cannot find an exact (case-sensitive) match for 'feedbacK'
+
+The closest match is: feedback in
+/Applications/Matlab_R2019b.app/toolbox/control/ctrlobsolete/feedback.m} 
+ftmf_dead=feedback(K_dead*ftma_dead, 1)
+
+ftmf_dead =
+ 
+          z^3 - 0.5783 z^2 - 0.551 z + 0.2312
+  ---------------------------------------------------
+  z^4 - 0.5783 z^3 - 0.551 z^2 + 0.2312 z - 2.705e-06
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+zpk(ftmf_dead)
+
+ans =
+ 
+        (z+0.6945) (z-0.9048) (z-0.3679)
+  ---------------------------------------------
+  (z+0.6945) (z-0.9048) (z-0.3679) (z-1.17e-05)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+figure; step(ftmf_dead)
+
+% Calculando amplitudes do sinal de controle, $u[kT]$...
+
+% Ref. [Como obter gráficos de  e  na linha de comandos do Matlab](https://fpassold.github.io/Controle_2/index.html).
+
+u_aux = (K_dead*C_dead)/(1+K_dead*ftma_dead);
+zpk(u_aux)
+
+ans =
+ 
+    28.168 (z+0.6945) (z-0.9048)^2 (z-1) (z-0.3679)^2
+  -----------------------------------------------------
+  (z+0.6945)^2 (z-0.9048) (z-1) (z-0.3679) (z-1.17e-05)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+figure; step(u_aux)
+
+% ![u_dead_exemplo.png](u_dead_exemplo.png)
+
+save dead
+
+% Voltando para nossa planta
+
+clear all; close all;
+load dados
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+polos_BoG=pole(BoG)
+polos_BoG =
+      0.90484
+      0.81873
+      0.36788
+zeros_BoG=zero(BoG)
+zeros_BoG =
+      -2.7471
+     -0.19031
+
+% O controlador não pode incluir pólos e zeros instáveis.
+
+C_dead=tf(poly(polos_BoG), poly([zeros_BoG(2)  1]), T);
+zpk(C_dead)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+          (z-1) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Grau do numerador > grau do denominador ==> sistema antecipativo...
+
+% Falta acrescentar um pólo no controlador acima...
+
+C_dead=tf(poly(polos_BoG), poly([zeros_BoG(2)  1 -0.5]), T);
+zpk(C_dead)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+      (z-1) (z+0.5) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_dead=C_dead*BoG;
+zpk(ftma_dead)
+
+ans =
+ 
+                                                              
+  0.00012224 (z+2.747) (z-0.9048) (z-0.8187) (z-0.3679)       
+                                                              
+                                                    (z+0.1903)
+                                                              
+  ------------------------------------------------------------
+                                                            
+   (z-1) (z-0.9048) (z-0.8187) (z-0.3679) (z+0.5) (z+0.1903)
+                                                            
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+zpk(ftma_dead)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z-0.9048) (z-0.8187) (z-0.3679) (z+0.1903)
+  ----------------------------------------------------------------
+     (z-1) (z-0.9048) (z-0.8187) (z-0.3679) (z+0.5) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_dead_r=minreal(ftma_dead);
+zpk(ftma_dead)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z-0.9048) (z-0.8187) (z-0.3679) (z+0.1903)
+  ----------------------------------------------------------------
+     (z-1) (z-0.9048) (z-0.8187) (z-0.3679) (z+0.5) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_dead_r=minreal(ftma_dead, 1E-4);
+zpk(ftma_dead_r)
+
+ans =
+ 
+  0.00012224 (z+2.747)
+  --------------------
+     (z-1) (z+0.5)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+rlocus(ftma_dead)
+
+% ![RL_dead.png](RL_dead.png)
+
+% Note que foi arbitrado o pólo extra do controlador em $z=-0,5$. Notamos
+% pelo RL anterior que seria melhor que este pólo "extra" estivesse em:
+% $-1 < z_{extra} < = -0.5$.
+
+% finalizando na próxima aula...
+
+save dados
+diary off
