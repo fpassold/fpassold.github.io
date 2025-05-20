@@ -1,0 +1,121 @@
+load dados
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+polos_BoG
+polos_BoG =
+      0.90484
+      0.81873
+      0.36788
+zeros_BoG
+zeros_BoG =
+      -2.7471
+     -0.19031
+C_dead1=tf(poly(polos_BoG), poly([zeros_BoG(2)  1]), T);   % montando C(z)
+zpk(C_dead1)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+          (z-1) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+C_dead2=tf(poly(polos_BoG), poly([zeros_BoG(2)  1  -0.5]), T);   % montando C(z)
+zpk(C_dead2)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+      (z-1) (z+0.5) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+zpk(Cdead3)
+
+ans =
+ 
+  2188 (z-0.9048) (z-0.8187) (z-0.3679)
+  -------------------------------------
+       (z-1) (z+0.735) (z+0.1903)
+ 
+Name: C
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% ![ControlSystemDesigner_Cdead3.mat](ControlSystemDesigner_Cdead3.mat)
+
+ftma_dead3=Cdead3*BoG;
+ftmf_dead3=feedback(Cdead3*BoG,1);
+pole(ftmf_dead3)
+ans =
+     -0.19031
+      0.90484
+      0.81873
+    -0.017698
+     0.015242
+      0.36788
+zpk(ftma_dead3)
+
+ans =
+ 
+  0.26746 (z-0.9048) (z-0.8187) (z-0.3679) (z+0.1903) (z+2.747)
+  -------------------------------------------------------------
+   (z-1) (z-0.9048) (z-0.8187) (z-0.3679) (z+0.735) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+minreal(ftma_dead3)
+
+ans =
+ 
+  0.26746 (z+2.747)
+  -----------------
+   (z-1) (z+0.735)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_dead3r=minreal(ftma_dead3);
+ftmf_dead3r=feedback(ftma_dead3r,1);
+pole(ftmf_dead3r) % mostrando os pólos de MF que realmente interessam
+ans =
+    -0.017698
+     0.015242
+% Notamos 2 pólos reais quase concentrados na origem do plano-z
+figure; step(ftmf_dead3r)
+% Nota-se um quase imperceptível overshoot
+grid
+
+% ![step_dead3r.png](step_dead3r.png)
+
+% Mas com certeza com expressivas amplitudes para ação de controle:
+
+% Deduzindo tf auxiliar para mostrar gráfico de u[kT]:
+% aux = C(z)/(1+C(z)*BoG(z))
+aux=Cdead3/(1+ftma_dead3);
+figure; step(aux)
+
+% [dead3_u_controle.png](dead3_u_controle.png)
+
+% Note ações de controle iniciais entre $+2190$ e $-2810$ convergindo depois de 0,7 segundos para $u[kT] \approx 20$.
+% Ou seja, este tipo de controlador "cobra seu preço" para fazer o sistema convergir tão
+% rápido ao valor desejado de regime permanente: gera sinais de controle iniciais mais de
+% 140 vezes maior que o valor à ser adotado em regime permanente. Algo provavelmente 
+% improvável de ser realizado na prática.
+grid
+save dados
+diary off

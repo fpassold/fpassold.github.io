@@ -1,0 +1,182 @@
+load dados
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+zeros_BoG = zero(BoG)
+zeros_BoG =
+      -2.7471
+     -0.19031
+polos_BoG = pole(BoG)
+polos_BoG =
+      0.90484
+      0.81873
+      0.36788
+C_dead=tf( poly([polos_BoG]), poly([zeros_BoG(2) 1]),T)
+
+C_dead =
+ 
+  z^3 - 2.091 z^2 + 1.375 z - 0.2725
+  ----------------------------------
+       z^2 - 0.8097 z - 0.1903
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+zpk(C_dead)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+          (z-1) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% repare que o grau numerador é maior que o grau do denominador, o que
+% significa um sistema "antecipativo"... Este $C(z)$ não é fisicamente realizável.
+% Necessito acrescentar um pólo em $C(z)$.
+% Colocando este pólo na origem do plano-z:
+C_dead=tf( poly([polos_BoG]), poly([zeros_BoG(2) 1 0]),T);
+zpk(C_dead)
+
+ans =
+ 
+  (z-0.9048) (z-0.8187) (z-0.3679)
+  --------------------------------
+         z (z-1) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+% Estudando o RL para este sistema...
+
+ftma_dead=C_dead*BoG;
+zpk(ftma_dead)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z-0.9048) (z-0.8187) (z-0.3679) (z+0.1903)
+  ----------------------------------------------------------------
+        z (z-1) (z-0.9048) (z-0.8187) (z-0.3679) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+rlocus(ftma_dead)
+
+% ![RL_dead.png](RL_dead.png)
+
+axis([-0.4 1.1 -0.2 1.2])
+
+% ![RL_dead_zoom.png](RL_dead_zoom.png)
+
+% Terminar o projeto no App Control System Designer
+zpk(BoG)
+
+ans =
+ 
+  0.00012224 (z+2.747) (z+0.1903)
+  --------------------------------
+  (z-0.9048) (z-0.8187) (z-0.3679)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+1/0.00012224
+ans =
+       8180.6
+
+% ![projeto_dead2.png](projeto_dead2.png)
+
+% Controlador exportado como C_dead2
+
+zpk(C_dead2)
+
+ans =
+ 
+  2203 (z-0.9048) (z-0.8187) (z-0.3679)
+  -------------------------------------
+        (z+0.74) (z-1) (z+0.1903)
+ 
+Name: C
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_C_dead2=C_dead2*BoG;
+zpk(ftma_C_dead2)
+
+ans =
+ 
+  0.26929 (z-0.9048) (z-0.8187) (z-0.3679) (z+0.1903) (z+2.747)
+  -------------------------------------------------------------
+   (z+0.74) (z-0.8187) (z-0.9048) (z-1) (z-0.3679) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+C_dead2aux=C_dead2/2203;
+ftma_C_dead2=C_dead2aux*BoG;
+zpk(ftma_C_dead2)
+
+ans =
+ 
+  0.00012224 (z-0.9048) (z-0.8187) (z-0.3679) (z+0.1903) (z+2.747)
+  ----------------------------------------------------------------
+     (z+0.74) (z-0.8187) (z-0.9048) (z-1) (z-0.3679) (z+0.1903)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+ftma_C_dead2r = minreal(ftma_C_dead2);
+zpk(ftma_C_dead2r)
+
+ans =
+ 
+  0.00012224 (z+2.747)
+  --------------------
+     (z+0.74) (z-1)
+ 
+Sample time: 0.1 seconds
+Discrete-time zero/pole/gain model.
+
+figure; rlocus(ftma_C_dead2r)
+
+% ![RL_dead2.png](RL_dead2.png)
+
+ftmf_dead2=feedback(C_dead2*BoG, 1);
+figure; step(ftmf_dead2)
+pole(ftmf_dead2)
+ans =
+     -0.19031
+      0.90484
+      0.81873
+    -0.020592
+     0.011303
+      0.36788
+stepinfo(ftmf_dead2)
+ans = 
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 0.1
+    SettlingTime: 0.2
+     SettlingMin: 0.99977
+     SettlingMax: 1.0066
+       Overshoot: 0.6555
+      Undershoot: 0
+            Peak: 1.0066
+        PeakTime: 0.2
+
+% ![step_dead2.png](step_dead2.png)
+
+close all
+save dados
+diary off
