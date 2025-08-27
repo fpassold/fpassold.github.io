@@ -1,0 +1,620 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Gerador Senoidal usando DAC</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; font-size-adjust: none; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: medium !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+:root {
+    --code-block-bg-color: inherit;//#f8f8f8;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+}
+
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
+p {
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
+}
+table th {
+	font-weight: normal;
+	background-color: #f0f7fd;
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
+
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
+
+.file-list-item {
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
+}
+
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+
+</style>
+</head>
+<body class='typora-export'>
+<div id='write'  class=''><p><img src="https://fpassold.github.io/Lab_Controle_2/PID_Digital/MCP4725.webp" alt="DAC" style="zoom: 40%;" /></p><h1><a name="lab-3-gerador-de-senóide-usando-dac" class="md-header-anchor"></a><span>Lab 3) Gerador de Senóide usando DAC</span></h1><p><span>A idéia agora é usar um DAC real, placa sugerida: módulo DAC MPC 4725 que é de 12-bits. Isto implica que esta placa aceita valores variando na faixa ìnt de 0 até 4025 (</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.489ex" height="2.636ex" viewBox="0 -954.4 4085.3 1134.9" role="img" focusable="false" style="vertical-align: -0.419ex;"><defs><path stroke-width="0" id="E14-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E14-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E14-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E14-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E14-MJMAIN-3D" x="0" y="0"></use><g transform="translate(1055,0)"><use xlink:href="#E14-MJMAIN-32" x="0" y="0"></use><g transform="translate(500,392)"><use transform="scale(0.707)" xlink:href="#E14-MJMAIN-31"></use><use transform="scale(0.707)" xlink:href="#E14-MJMAIN-32" x="500" y="0"></use></g></g><use xlink:href="#E14-MJMAIN-2212" x="2585" y="0"></use><use xlink:href="#E14-MJMAIN-31" x="3585" y="0"></use></g></svg></span><script type="math/tex">=2^{12}-1</script><span>). Esta placa trabalha com comunicação I2C. Ver página </span><a href='https://fpassold.github.io/Lab_Controle_2/PID_Digital/modulo_DAC.html'><span>Trabalhar com o Módulo DAC</span></a><span>, para ver maiores detalhes e saber como instalar o driver para esta placa na IDE do Arduino.</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n613"><a class="md-toc-inner" href="#lab-3-gerador-de-senóide-usando-dac">Lab 3) Gerador de Senóide usando DAC</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n469"><a class="md-toc-inner" href="#objetivo">Objetivo</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n471"><a class="md-toc-inner" href="#procedimento">Procedimento</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n495"><a class="md-toc-inner" href="#hardware-necessario">Hardware necessario</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n513"><a class="md-toc-inner" href="#montagem-sugerida">Montagem sugerida</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n540"><a class="md-toc-inner" href="#detalhes-de-software">Detalhes de Software</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n559"><a class="md-toc-inner" href="#dicas">Dicas</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n575"><a class="md-toc-inner" href="#dica-2">Dica #2</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n579"><a class="md-toc-inner" href="#teste-de-desempenho-puro">Teste de "Desempenho Puro"</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n588"><a class="md-toc-inner" href="#anexos">Anexos</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n618"><a class="md-toc-inner" href="#a-instalação-da-biblioteca-adafruit-mcp4725">A. Instalação da Biblioteca Adafruit MCP4725</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n589"><a class="md-toc-inner" href="#b-em-caso-de-erro-associado-com-adafruitbusioregisterh">B. Em caso de erro associado com "Adafruit_BusIO_Register.h"</a></span></p></div><hr /><h2><a name="objetivo" class="md-header-anchor"></a><span>Objetivo</span></h2><p><span>Tentar gerar uma onda senoidal o mais rápido possível usando placa Arduino Uno e ISR para garantir sua frequência.</span></p><h2><a name="procedimento" class="md-header-anchor"></a><span>Procedimento</span></h2><ol start='' ><li><p><span>Programar uma ISR para rodar com taxa de amostragem de </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.593ex" height="2.498ex" viewBox="0 -775.8 1977.4 1075.4" role="img" focusable="false" style="vertical-align: -0.696ex;"><defs><path stroke-width="0" id="E22-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E22-MJMATHI-73" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path stroke-width="0" id="E22-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E22-MJMATHI-66" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E22-MJMATHI-73" x="692" y="-213"></use><use xlink:href="#E22-MJMAIN-3D" x="1199" y="0"></use></g></svg></span><script type="math/tex">f_s=</script><span> 10 KHz.</span></p></li><li><p><span>Programar a rotina ISR para gerar 20 ou 10 pontos de uma seníde.</span></p></li><li><p><span>Comprovar usando osciloscópio:</span></p><ol start='' ><li><span>A frequência da seníde sendo gerada (Canal 1 do osciloscópio);</span></li><li><span>O tempo de processamento decorrido com a ISR.</span>
+<span>Para tanto, no início da ISR &quot;subir&quot; o nível lógico de certo pino do Arduíno e uma vez saindo da ISR, &quot;baixar&quot; o nível lógico neste pino. Se esta saída for verificada no osciloscópio (Canal 2), deve ser comprovada a frequência de amostragem de 10 KHz e o correspondente &quot;duty-cycle&quot; vai corresponder ao tempo de processamento dedicado à ISR. Tentar medir este valor.</span></li></ol></li><li><p><span>Montar relatório final documentando:</span></p><ol start='' ><li><span>Ligações elétricas efetuadas;</span></li><li><span>Cálculos dos registradores/timers associados com a ISR para gerar a taxa de interrupção à 10 KHz.</span></li><li><span>Explicar a forma como foram sintetizados os pontos da senóide;</span></li><li><span>Mostrar os gráficos capturados via osciloscópio.</span></li></ol></li></ol><h2><a name="hardware-necessario" class="md-header-anchor"></a><span>Hardware necessario</span></h2><ul><li><span>Placa Arduino Uno;</span></li><li><span>Módulo DAC MCP4725;</span></li><li><span>Resistor de 10 K</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.677ex" height="1.94ex" viewBox="0 -774 722 835.4" role="img" focusable="false" style="vertical-align: -0.143ex;"><defs><path stroke-width="0" id="E82-MJMAIN-3A9" d="M55 454Q55 503 75 546T127 617T197 665T272 695T337 704H352Q396 704 404 703Q527 687 596 615T666 454Q666 392 635 330T559 200T499 83V80H543Q589 81 600 83T617 93Q622 102 629 135T636 172L637 177H677V175L660 89Q645 3 644 2V0H552H488Q461 0 456 3T451 20Q451 89 499 235T548 455Q548 512 530 555T483 622T424 656T361 668Q332 668 303 658T243 626T193 560T174 456Q174 380 222 233T270 20Q270 7 263 0H77V2Q76 3 61 89L44 175V177H84L85 172Q85 171 88 155T96 119T104 93Q109 86 120 84T178 80H222V83Q206 132 162 199T87 329T55 454Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E82-MJMAIN-3A9" x="0" y="0"></use></g></svg></span><script type="math/tex">\Omega</script><span>;</span></li><li><span>Capacitor de 3,3 nF;</span></li><li><span>Transistor IRF640;</span></li><li><span>Alto-falante de 8 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.677ex" height="1.94ex" viewBox="0 -774 722 835.4" role="img" focusable="false" style="vertical-align: -0.143ex;"><defs><path stroke-width="0" id="E82-MJMAIN-3A9" d="M55 454Q55 503 75 546T127 617T197 665T272 695T337 704H352Q396 704 404 703Q527 687 596 615T666 454Q666 392 635 330T559 200T499 83V80H543Q589 81 600 83T617 93Q622 102 629 135T636 172L637 177H677V175L660 89Q645 3 644 2V0H552H488Q461 0 456 3T451 20Q451 89 499 235T548 455Q548 512 530 555T483 622T424 656T361 668Q332 668 303 658T243 626T193 560T174 456Q174 380 222 233T270 20Q270 7 263 0H77V2Q76 3 61 89L44 175V177H84L85 172Q85 171 88 155T96 119T104 93Q109 86 120 84T178 80H222V83Q206 132 162 199T87 329T55 454Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E82-MJMAIN-3A9" x="0" y="0"></use></g></svg></span><script type="math/tex">\Omega</script><span> </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.807ex" height="1.527ex" viewBox="0 -595.9 778 657.3" role="img" focusable="false" style="vertical-align: 0.021ex; margin-bottom: -0.163ex;"><defs><path stroke-width="0" id="E114-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E114-MJMAIN-D7" x="0" y="0"></use></g></svg></span><script type="math/tex">\times</script><span> 250 mW;</span></li><li><span>Cabos conectores;</span></li><li><span>Mini proto-board.</span></li></ul><h2><a name="montagem-sugerida" class="md-header-anchor"></a><span>Montagem sugerida</span></h2><ol start='' ><li><p><span>Fixar o módulo DAC no Proto-board;</span></p></li><li><p><span>Realizar as devidas conexões ao DAC:</span></p><figure><table><thead><tr><th><span>Pino no</span><br><strong><span>DAC</span></strong></th><th><span>Pino no</span><br><strong><span>Arduíno</span></strong></th></tr></thead><tbody><tr><td><span>Vcc</span></td><td><span>Algum pino Vcc</span></td></tr><tr><td><span>GND</span></td><td><span>GND</span></td></tr><tr><td><span>SDA (Data)</span></td><td><span>A4</span></td></tr><tr><td><span>SCL (Clock)</span></td><td><span>A5 *</span></td></tr><tr><td><span>VOUT</span></td><td><span>Saída analógica</span><br><span>[0 .. 5 Volts ]</span></td></tr></tbody></table></figure></li></ol><p><span>*</span><span> pino A5 do Arduino (aparentemente já contêm resistor pullup de 10K</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.677ex" height="1.94ex" viewBox="0 -774 722 835.4" role="img" focusable="false" style="vertical-align: -0.143ex;"><defs><path stroke-width="0" id="E82-MJMAIN-3A9" d="M55 454Q55 503 75 546T127 617T197 665T272 695T337 704H352Q396 704 404 703Q527 687 596 615T666 454Q666 392 635 330T559 200T499 83V80H543Q589 81 600 83T617 93Q622 102 629 135T636 172L637 177H677V175L660 89Q645 3 644 2V0H552H488Q461 0 456 3T451 20Q451 89 499 235T548 455Q548 512 530 555T483 622T424 656T361 668Q332 668 303 658T243 626T193 560T174 456Q174 380 222 233T270 20Q270 7 263 0H77V2Q76 3 61 89L44 175V177H84L85 172Q85 171 88 155T96 119T104 93Q109 86 120 84T178 80H222V83Q206 132 162 199T87 329T55 454Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E82-MJMAIN-3A9" x="0" y="0"></use></g></svg></span><script type="math/tex">\Omega</script><span> para 5 Volts no DAC, e esta saída já trabalha com um sinal de 440 KHz).</span></p><p><strong><span>Diagrama elétrico</span></strong><span>:</span></p><p><img src="gerador_senoidal_DAC_Esquemático.png" referrerpolicy="no-referrer" alt="gerador_senoidal_DAC_Esquemático"></p><p><span>Detalhe da ligação do IRF640 ao alto-falante:</span></p><p><img src="ligacao_speaker_IRF640_bb.png" alt="ligacao_speaker_IRF640_bb" style="zoom: 67%;" /></p><p>&nbsp;</p><h2><a name="detalhes-de-software" class="md-header-anchor"></a><span>Detalhes de Software</span></h2><ol start='' ><li><p><span>Será necessário programar a ISR para ser chamada na taxa de 10 KHz, ou a cada: </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="18.711ex" height="2.774ex" viewBox="0 -835.3 8056.2 1194.5" role="img" focusable="false" style="vertical-align: -0.834ex;"><defs><path stroke-width="0" id="E47-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E47-MJMAIN-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path stroke-width="0" id="E47-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E47-MJMAIN-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path stroke-width="0" id="E47-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E47-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E47-MJMAIN-31" x="0" y="0"></use><use xlink:href="#E47-MJMAIN-2F" x="500" y="0"></use><g transform="translate(1000,0)"><use xlink:href="#E47-MJMAIN-31"></use><use xlink:href="#E47-MJMAIN-30" x="500" y="0"></use><use xlink:href="#E47-MJMAIN-2E" x="1000" y="0"></use><use xlink:href="#E47-MJMAIN-30" x="1278" y="0"></use><use xlink:href="#E47-MJMAIN-30" x="1778" y="0"></use><use xlink:href="#E47-MJMAIN-30" x="2278" y="0"></use></g><use xlink:href="#E47-MJMAIN-3D" x="4055" y="0"></use><use xlink:href="#E47-MJMAIN-30" x="5111" y="0"></use><use xlink:href="#E47-MJMAIN-2C" x="5611" y="0"></use><g transform="translate(6056,0)"><use xlink:href="#E47-MJMAIN-30"></use><use xlink:href="#E47-MJMAIN-30" x="500" y="0"></use><use xlink:href="#E47-MJMAIN-30" x="1000" y="0"></use><use xlink:href="#E47-MJMAIN-31" x="1500" y="0"></use></g></g></svg></span><script type="math/tex">1/10.000=0,0001</script><span> segundos ou à cada 0,1 ms. Lembre que o clock do Arduíno Uno normalmente é de 16 MHz e considere que seu uP gasta 4 ciclos de clock para executar uma instrução (típico de processadores RISC), o que significa que cada instrução mínima leva </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="26.841ex" height="2.774ex" viewBox="0 -835.3 11556.7 1194.5" role="img" focusable="false" style="vertical-align: -0.834ex;"><defs><path stroke-width="0" id="E74-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E74-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E74-MJMAIN-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path stroke-width="0" id="E74-MJMAIN-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path stroke-width="0" id="E74-MJMAIN-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path stroke-width="0" id="E74-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E74-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E74-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E74-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path stroke-width="0" id="E74-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E74-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E74-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path stroke-width="0" id="E74-MJMAIN-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path stroke-width="0" id="E74-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E74-MJMAIN-28" x="0" y="0"></use><use xlink:href="#E74-MJMAIN-31" x="389" y="0"></use><use xlink:href="#E74-MJMAIN-2F" x="889" y="0"></use><g transform="translate(1389,0)"><use xlink:href="#E74-MJMAIN-31"></use><use xlink:href="#E74-MJMAIN-36" x="500" y="0"></use><use xlink:href="#E74-MJMAIN-2E" x="1000" y="0"></use><use xlink:href="#E74-MJMAIN-30" x="1278" y="0"></use><use xlink:href="#E74-MJMAIN-30" x="1778" y="0"></use><use xlink:href="#E74-MJMAIN-30" x="2278" y="0"></use></g><use xlink:href="#E74-MJMAIN-29" x="4167" y="0"></use><use xlink:href="#E74-MJMAIN-D7" x="4778" y="0"></use><use xlink:href="#E74-MJMAIN-34" x="5778" y="0"></use><use xlink:href="#E74-MJMAIN-3D" x="6556" y="0"></use><use xlink:href="#E74-MJMAIN-30" x="7612" y="0"></use><use xlink:href="#E74-MJMAIN-2C" x="8112" y="0"></use><g transform="translate(8556,0)"><use xlink:href="#E74-MJMAIN-30"></use><use xlink:href="#E74-MJMAIN-30" x="500" y="0"></use><use xlink:href="#E74-MJMAIN-30" x="1000" y="0"></use><use xlink:href="#E74-MJMAIN-33" x="1500" y="0"></use><use xlink:href="#E74-MJMAIN-37" x="2000" y="0"></use><use xlink:href="#E74-MJMAIN-35" x="2500" y="0"></use></g></g></svg></span><script type="math/tex">(1/16.000)\times4=0,000375</script><span> segundos para ser executada ou 0,375 ms. Ou seja, </span><strong><span>sim</span></strong><span>, estamos tentando colocar o Arduíno no limite de sua capacidade de processamento.</span></p></li><li><p><span>A fim de reduzir custos computacionais, se sugere que o próprio Arduíno no bloco </span><code>void setup() {...}</code><span> calcule os NPOINTS necessários para gerar os pontos da senóide e os armazene num </span><strong><span>array</span></strong><span> (deverá ser uma variável global). Considerar que devem ser gerados valores </span><code>int</code><span> na faixa de [0, 4095] que correspondem aos 12-bits do DAC sendo usado.</span></p></li><li><p><span>A rotina ISR deve bem &quot;enxuta&quot;, isto é, exigir o menor esforço computacional possível e realizar apenas 3 coisas:</span></p><ol start='' ><li><span>Enviar para o DAC o valor atual do vetor que armazena os pontos da senóide;</span></li><li><span>Incrementar o índice que aponta para a próxima posição neste vetor;</span></li><li><span>Testar se alcançou o fim do vetor (NPOINTS) e se sim, voltar o (valor do) índice à zero.</span></li><li><span>Não esquecer de alternar o nível lógico de um pino qualquer do Arduíno para verificar com auxílio do osciloscópio se a rotina ISR está realmente sendo executada na taxa requerida e quanto de processamento ocupa a mesma.</span></li></ol></li><li><p><span>Realizar testes, documentando os resultados. O ideal seria apresentar um gráfico obtido com auxílio do osciloscópio que mostre no canal 1, a onda senoidal sendo gerada e no canal 2, o pino que muda de estado indicando a execução da ISR.</span></p></li></ol><h3><a name="dicas" class="md-header-anchor"></a><span>Dicas</span></h3><p><span>Para minimizar o esforço computacional dentro da ISR, é melhor evitar </span><code>if</code><span> pesados e usar o operador </span><strong><span>módulo</span></strong><span> (</span><code>%</code><span>) apenas se o compilador não transformar isso em instruções mais simples. Outra alternativa é um </span><strong><span>teste condicional simples</span></strong><span> (que tende a ser mais rápido em uC&#39;s sem divisão rápida).</span></p><p><span>Segue sugestão de código compacto em C:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="c" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#include &lt;stdint.h&gt;</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Suponha que esta seja a interface do DAC</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">extern</span> <span class="cm-variable-3">void</span> <span class="cm-def">dac_setVoltage</span>(<span class="cm-variable-3">uint16_t</span> <span class="cm-variable">valor</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Vetor de até 20 pontos</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#define MAX_POINTS 20</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">volatile</span> <span class="cm-variable-3">uint16_t</span> <span class="cm-variable">vetor</span>[<span class="cm-variable">MAX_POINTS</span>];<span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">// variável global</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">volatile</span> <span class="cm-variable-3">uint8_t</span> <span class="cm-variable">NPOINTS</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; &nbsp;<span class="cm-comment">// quantidade de pontos válidos</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Índice atual</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">volatile</span> <span class="cm-variable-3">uint8_t</span> <span class="cm-variable">index</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;<span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">// variável global</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --- Rotina de interrupção (ISR) ---</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">ISR_timer</span>(<span class="cm-variable-3">void</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">// 1. Envia valor atual para o DAC</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dac_setVoltage</span>(<span class="cm-variable">vetor</span>[<span class="cm-variable">index</span>]);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">// 2. Incrementa índice</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">index</span><span class="cm-operator">++</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">// 3. Se chegou no fim, volta para zero</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> (<span class="cm-variable">index</span> <span class="cm-operator">&gt;=</span> <span class="cm-variable">NPOINTS</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">index</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 520px;"></div><div class="CodeMirror-gutters" style="display: none; height: 520px;"></div></div></div></pre><p><span>Observações:</span></p><ul><li><span>O código acima é apenas um exemplo e não pode, assim como foi apresentado, ser diretamente aplicado no Arduino! Use como exemplo.</span></li><li><code>index</code><span> e </span><code>NPOINTS</code><span> foram definidos como </span><code>uint8_t</code><span> porque o vetor tem no máximo 20 pontos. Assim, evita-se variáveis maiores que o necessário.</span></li><li><span>A checagem do &quot;overflow&quot; (</span><code>if (index &gt;= NPOINTS)</code><span>) é muito leve e geralmente mais rápida que usar:</span>
+<code>index = (index+1) % NPOINTS;</code>
+<span>principalmente em uC&#39;s pequenos (como AVR do Arduino).</span></li><li><code>volatile</code><span> foi usado porque tanto </span><code>index</code><span> quanto </span><code>NPOINTS</code><span> podem ser acessados dentro e fora da ISR.</span></li><li><span>A ISR deve ser </span><strong><span>o mais curta possível, sempre</span></strong><span>, sem chamadas extras nem operações desnecessárias.</span></li></ul><h3><a name="dica-2" class="md-header-anchor"></a><span>Dica #2</span></h3><p><span>Existe uma forma ainda mais rápida de exceutar a ISR, mas envolve o uso de &quot;</span><strong><span>máscara binária</span></strong><span>&quot; e só funciona se NPOINTS for compatível com potência de 2. Por exemplo, suponha que </span><code>NPOINT = 16</code><span>, então podemos fazer algo como:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="C"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#define NPOINTS 16 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="cm-comment">// potência de 2</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#define MASK &nbsp;  (NPOINTS - 1)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">volatile</span> <span class="cm-variable-3">uint16_t</span> <span class="cm-variable">vetor</span>[<span class="cm-variable">NPOINTS</span>];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">volatile</span> <span class="cm-variable-3">uint8_t</span> <span class="cm-variable">index</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">ISR_timer</span>(<span class="cm-variable-3">void</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dac_setVoltage</span>(<span class="cm-variable">vetor</span>[<span class="cm-variable">index</span>]);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">index</span> <span class="cm-operator">=</span> (<span class="cm-variable">index</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>) <span class="cm-operator">&amp;</span> <span class="cm-variable">MASK</span>; &nbsp; <span class="cm-comment">// volta automaticamente para 0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 200px;"></div><div class="CodeMirror-gutters" style="display: none; height: 200px;"></div></div></div></pre><p><span>Nesse caso não há </span><code>if</code><span> nem divisão, só uma operação </span><strong><span>AND bit a bit</span></strong><span>. Mas para isto </span><strong><span>NPOINTS deve ser potência de 2</span></strong><span>. </span></p><h2><a name="teste-de-desempenho-puro" class="md-header-anchor"></a><span>Teste de &quot;Desempenho Puro&quot;</span></h2><p><span>Outro teste que poderia ser realizado, mas que não garante nenhum compromisso com a taxa de amostragem, seria usar a seção </span><code>void loop() {..}</code><span> do Arduíno apenas para comandar o DAC e atualizar a variável índice do vetor. Eventualmente se poderia acrescentar neste código, instrução para alternar o nível de algum pino de &quot;controle&quot; do Arduino, assim, usando o osciloscópio, se poderia comprovar a máxima frequência da senóide possível de ser gerada (canal 1). E no canal 2 do osciliscópio, conectado no pino de controle seria observada uma onda quadrada cujos ciclos (em nível lógico baixo e em nível lógico alto) corresponderiam ao tempo gasto pela Arduíno para processar esta seção de código. Este teste resultaria algo como:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="c" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Fernando Passold, em 27.08.2025</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#include &lt;Wire.h&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="cm-comment">// biblioteca I2C</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#include &lt;Adafruit_MCP4725.h&gt; &nbsp;</span><span class="cm-comment">// necessário para acessar o DAC</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Pino de controle (por ex. 8)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#define PINO_CONTROLE 8</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">bool</span> <span class="cm-variable">estado</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Vetor da senoide</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#define MAXVAL 4095 &nbsp;</span><span class="cm-comment">// associado com os 12-bits do DAC: 2^12-1=4095</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#define NPOINTS 20 &nbsp; </span><span class="cm-comment">// qtdade de pontos usados para sintetizar ciclo completo senóide</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">int</span> <span class="cm-variable">senoide</span>[<span class="cm-variable">NPOINTS</span>] <span class="cm-operator">=</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">2047</span>, <span class="cm-number">2682</span>, <span class="cm-number">3274</span>, <span class="cm-number">3784</span>, <span class="cm-number">4094</span>, <span class="cm-number">4094</span>, <span class="cm-number">3784</span>, <span class="cm-number">3274</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">2682</span>, <span class="cm-number">2047</span>, <span class="cm-number">1412</span>, <span class="cm-number">820</span>, <span class="cm-number">310</span>, <span class="cm-number">0</span>, <span class="cm-number">0</span>, <span class="cm-number">310</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">820</span>, <span class="cm-number">1412</span>, <span class="cm-number">2047</span>, <span class="cm-number">2682</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}; &nbsp;<span class="cm-comment">// a inicialização deste vetor é opcional</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// variáveis associadas com o DAC</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Adafruit_MCP4725</span> <span class="cm-variable">dac</span>; &nbsp; &nbsp;<span class="cm-comment">// para instanciar o objeto "dac" pertencente a classe "Adafruit_MCP4725"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">int</span> <span class="cm-variable">ender_DAC</span> <span class="cm-operator">=</span> <span class="cm-number">0x60</span>; &nbsp; &nbsp;<span class="cm-comment">// endereço I2C do DAC</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">bool</span> <span class="cm-variable">DAC_found</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>; &nbsp;<span class="cm-comment">// indica problemas para acessar DAC</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Índice do vetor</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">int</span> <span class="cm-variable">index</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// função para identificar DAC</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Retorna true se módulo encontrado</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// caso contrário retorna false</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">bool</span> <span class="cm-def">found_DAC</span>(<span class="cm-variable-3">void</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">""</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Buscando Módulo DAC MCP4725"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">for</span> (<span class="cm-variable">ender_DAC</span> <span class="cm-operator">=</span> <span class="cm-number">0x60</span>; <span class="cm-variable">ender_DAC</span> <span class="cm-operator">&lt;=</span> <span class="cm-number">0x65</span>; <span class="cm-variable">ender_DAC</span><span class="cm-operator">++</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">print</span>(<span class="cm-string">"Testando endereço: 0x"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">print</span>(<span class="cm-variable">ender_DAC</span>, <span class="cm-variable">HEX</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">DAC_found</span> <span class="cm-operator">=</span> <span class="cm-variable">dac</span>.<span class="cm-variable">begin</span>(<span class="cm-variable">ender_DAC</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> (<span class="cm-variable">DAC_found</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">" &lt;-- Encontrado, Ok"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">digitalWrite</span>(<span class="cm-variable">PINO_CONTROLE</span>, <span class="cm-variable">HIGH</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-keyword">break</span>; &nbsp;<span class="cm-comment">// sai do for</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">""</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-atom">true</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable">DAC_found</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Ops... Modulo DAC MCP4725 não encontrado"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-atom">false</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Função que calcula pontos da senóide</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Armazena no vetor senoide[] seus NPOINTS</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">gera_senoide</span>() {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Gerando pontos da Senoide:"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">for</span> (<span class="cm-variable-3">int</span> <span class="cm-variable">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">NPOINTS</span>; <span class="cm-variable">i</span><span class="cm-operator">++</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-3">double</span> <span class="cm-variable">ang</span> <span class="cm-operator">=</span> <span class="cm-number">2.0</span> <span class="cm-operator">*</span> <span class="cm-variable">M_PI</span> <span class="cm-operator">*</span> <span class="cm-variable">i</span> <span class="cm-operator">/</span> <span class="cm-variable">NPOINTS</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">senoide</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> (<span class="cm-variable-3">int</span>)(((<span class="cm-variable">sin</span>(<span class="cm-variable">ang</span>) <span class="cm-operator">+</span> <span class="cm-number">1.0</span>) <span class="cm-operator">*</span> <span class="cm-number">0.5</span>) <span class="cm-operator">*</span> <span class="cm-variable">MAXVAL</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">print</span>(<span class="cm-variable">senoide</span>[<span class="cm-variable">i</span>]); &nbsp;<span class="cm-comment">// Mostra valor gerado</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">print</span>(<span class="cm-string">", "</span>); &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">// para próximo valor</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> ((<span class="cm-variable">i</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>) <span class="cm-operator">%</span> <span class="cm-number">8</span> <span class="cm-operator">==</span> <span class="cm-number">0</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(); &nbsp;<span class="cm-comment">// quebra linha a cada 8 valores</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">print</span>(<span class="cm-string">"\b\b"</span>); &nbsp;<span class="cm-comment">// backspace para apagar ", "</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(); &nbsp; &nbsp; &nbsp;<span class="cm-comment">// Fim</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">setup</span>() {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">begin</span>(<span class="cm-number">115200</span>); &nbsp;<span class="cm-comment">// ativa porta serial</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">delay</span>(<span class="cm-number">100</span>); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">// espera porta inicializar</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">""</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Programa para gerar  Senoide"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">"* Teste de Desempenho Puro *"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">pinMode</span>(<span class="cm-variable">PINO_CONTROLE</span>, <span class="cm-variable">OUTPUT</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">digitalWrite</span>(<span class="cm-variable">PINO_CONTROLE</span>, <span class="cm-variable">HIGH</span>); &nbsp;<span class="cm-comment">//indica que estamos dentro da seção setup</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">DAC_found</span> <span class="cm-operator">=</span> <span class="cm-variable">found_DAC</span>();</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable">DAC_found</span>) { &nbsp;<span class="cm-comment">// Modulo DAC MCP4725 não encontrado</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Programa sendo encerrado.. Sorry!"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span>; &nbsp;<span class="cm-comment">// encerra setup() e não segue para loop()</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">gera_senoide</span>(); &nbsp;<span class="cm-comment">// prepara vetor da senoide</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">index</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; &nbsp; &nbsp; &nbsp; <span class="cm-comment">// garante que inicia no primeiro ponto</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Iniciando senóide..."</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">digitalWrite</span>(<span class="cm-variable">PINO_CONTROLE</span>, <span class="cm-variable">LOW</span>); &nbsp;<span class="cm-comment">// indica saída da seção setup</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">loop</span>() {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// Alterna o pino de controle</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">estado</span> <span class="cm-operator">=</span> <span class="cm-operator">!</span><span class="cm-variable">estado</span>; &nbsp;<span class="cm-comment">// faz "toggle" no nível lógico do pino de controle</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">digitalWrite</span>(<span class="cm-variable">PINO_CONTROLE</span>, <span class="cm-variable">estado</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">DAC_found</span> <span class="cm-operator">=</span> <span class="cm-variable">dac</span>.<span class="cm-variable">setVoltage</span>(<span class="cm-variable">senoide</span>[<span class="cm-variable">index</span>], <span class="cm-atom">false</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable">DAC_found</span>) { &nbsp;<span class="cm-comment">// Modulo DAC MCP4725 desconectado!</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">digitalWrite</span>(<span class="cm-variable">PINO_CONTROLE</span>, <span class="cm-variable">LOW</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Modulo DAC MCP4725 foi desconectado"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Serial</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Programa sendo encerrado.. Sorry!"</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">exit</span>(<span class="cm-number">0</span>); &nbsp;<span class="cm-comment">// finaliza programa, não garantido no Arduíno</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-comment">/*** ou você pode tentar usar:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-comment">set_sleep_mode(SLEEP_MODE_PWR_DOWN);</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-comment">sleep_enable();</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-comment">sleep_cpu(); &nbsp; // entra em modo de baixo consumo e só volta com reset/interrupção</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-comment">***/</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// Incrementa índice</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">index</span><span class="cm-operator">++</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">if</span> (<span class="cm-variable">index</span> <span class="cm-operator">&gt;=</span> <span class="cm-variable">NPOINTS</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">index</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; &nbsp;<span class="cm-comment">// retorna ao início</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 2160px;"></div><div class="CodeMirror-gutters" style="display: none; height: 2160px;"></div></div></div></pre><p><span>A execução deste código gera a seguine saída no terminal (porta serial):</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt; falta completar &gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>E gerou a seguinte forma de onda:</span></p><p><span>&lt;</span><span> faltou capturar tela </span><span>&gt;</span></p><p><span>Fim.</span></p><hr /><h2><a name="anexos" class="md-header-anchor"></a><span>Anexos</span></h2><h3><a name="a-instalação-da-biblioteca-adafruit-mcp4725" class="md-header-anchor"></a><span>A. Instalação da Biblioteca Adafruit MCP4725</span></h3><p><span>Vá até a página </span><a href='https://github.com/adafruit/Adafruit_MCP4725' target='_blank' class='url'>https://github.com/adafruit/Adafruit_MCP4725</a><span>, acesse o botão verde contendo &quot; &lt;&gt; Code v &quot; e com o botão direito do mouse sobre este botão, faça abrir um menu pull-down e selecione: , como mostra a figura abaixo:</span></p><p><img src="baixar_Adafruit_MCP4725.png" referrerpolicy="no-referrer" alt="baixar_Adafruit_MCP4725"></p><p><span>Cliando em &quot;Download ZIP&quot; será baixado um arquivo compactado ZIP.</span></p><p><span>Basta ir para a IDE do Arduíno e buscar por: Menu &gt;&gt; Rascunho &gt; Incluir Biblioteca &gt; Adicionar biblioteca .ZIP..., como mostra a figura abaixo:</span></p><p><img src="instalar_biblioteca_IDE_Arduino.png" referrerpolicy="no-referrer" alt="instalar_biblioteca_IDE_Arduino"></p><p><span>E então selecionar a pasta (provavelmente /Downloads) onde antes você baixou o arquivo zipado.</span></p><p><span>Pronto.</span></p><h3><a name="b-em-caso-de-erro-associado-com-adafruitbusioregisterh" class="md-header-anchor"></a><span>B. Em caso de erro associado com &quot;Adafruit_BusIO_Register.h&quot;</span></h3><p><span>Em caso de erro do tipo:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="c"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ResolveLibrary</span>(<span class="cm-variable">Adafruit_MCP4725</span>.<span class="cm-variable">h</span>)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-operator">-&gt;</span> <span class="cm-variable">candidates</span>: [<span class="cm-variable">Adafruit</span> <span class="cm-variable">MCP4725@2</span>.<span class="cm-number">0.2</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">fatal</span> <span class="cm-variable">error</span>: <span class="cm-variable">Adafruit_BusIO_Register</span>.<span class="cm-variable">h</span>: <span class="cm-variable">No</span> <span class="cm-variable">such</span> <span class="cm-variable">file</span> <span class="cm-variable">or</span> <span class="cm-variable">directory</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-meta">#include &lt;Adafruit_BusIO_Register.h&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">^~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">compilation</span> <span class="cm-variable">terminated</span>.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Alternatives</span> <span class="cm-keyword">for</span> <span class="cm-variable">Adafruit_BusIO_Register</span>.<span class="cm-variable">h</span>: []</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">ResolveLibrary</span>(<span class="cm-variable">Adafruit_BusIO_Register</span>.<span class="cm-variable">h</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-operator">-&gt;</span> <span class="cm-variable">candidates</span>: []</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">exit</span> <span class="cm-variable">status</span> <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Compilation</span> <span class="cm-variable">error</span>: <span class="cm-variable">exit</span> <span class="cm-variable">status</span> <span class="cm-number">1</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 220px;"></div><div class="CodeMirror-gutters" style="display: none; height: 220px;"></div></div></div></pre><p><span>Esta mensagem de erro:  </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="text"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="text"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#include &lt;Adafruit_BusIO_Register.h&gt; </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ^~~~~~~~~~~~~~~~~~~~~~~~~~~~ </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">compilação encerrada. </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Alternativas para Adafruit_BusIO_Register.h: [] </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ResolveLibrary(Adafruit_BusIO_Register.h)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><p><span>indica que o IDE do Arduino não conseguiu localizar o arquivo de cabeçalho especificado, </span><code>Adafruit_BusIO_Register.h</code><span>. Isso normalmente ocorre quando uma biblioteca necessária não está instalada ou não é reconhecida corretamente pela IDE.</span></p><p><strong><span>Faltaria instalar a biblioteca faltante</span></strong><span>:</span></p><ul><li><span>Abra o IDE do Arduino.</span></li><li><span>Navegue até Menu &gt;&gt; Rascunho &gt; Incluir Biblioteca &gt; Gerenciar Bibliotecas...</span></li><li><span>Na janela Gerenciador de Bibliotecas, procure por &quot;Adafruit BusIO&quot;.</span></li><li><span>Localize a biblioteca &quot;Adafruit BusIO&quot; nos resultados da pesquisa e clique no botão &quot;Instalar&quot;:</span>
+<img src="arduino_erro_Adafruit_BusIO.png" referrerpolicy="no-referrer" alt="arduino_erro_Adafruit_BusIO"></li><li><span>Se recomenda re-iniciar o Arduino IDE e recompilar o código.</span></li></ul><p>&nbsp;</p><hr /><p><span>Fernando Passold, em 27/08/2025</span></p></div>
+</body>
+</html>
