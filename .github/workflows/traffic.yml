@@ -1,0 +1,39 @@
+name: Capture Traffic
+on:
+  schedule:
+    - cron: "17 2 * * *"   # diariamente 02:17 UTC
+  workflow_dispatch:
+jobs:
+  fetch-traffic:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch traffic via API
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: your-user
+          REPO: your-repo
+        run: |
+          mkdir -p metrics
+          date=$(date -u +"%Y-%m-%d")
+          curl -s -H "Accept: application/vnd.github+json" \
+               -H "Authorization: Bearer $GH_TOKEN" \
+               https://api.github.com/repos/$OWNER/$REPO/traffic/views > metrics/views-$date.json
+          curl -s -H "Accept: application/vnd.github+json" \
+               -H "Authorization: Bearer $GH_TOKEN" \
+               https://api.github.com/repos/$OWNER/$REPO/traffic/clones > metrics/clones-$date.json
+          curl -s -H "Accept: application/vnd.github+json" \
+               -H "Authorization: Bearer $GH_TOKEN" \
+               https://api.github.com/repos/$OWNER/$REPO/traffic/popular/referrers > metrics/referrers-$date.json
+          curl -s -H "Accept: application/vnd.github+json" \
+               -H "Authorization: Bearer $GH_TOKEN" \
+               https://api.github.com/repos/$OWNER/$REPO/traffic/popular/paths > metrics/paths-$date.json
+      - name: Commit metrics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics/*.json
+          git commit -m "chore(metrics): snapshot $(date -u +"%Y-%m-%d")" || echo "No changes"
+          git push
