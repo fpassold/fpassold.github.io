@@ -17,8 +17,6 @@ Lemas pessoais:
 * *Impossível não existe*
 * *Quem fica parado é poste*
 
-[![Hits](https://hits.sh/fpassold.github.io.svg)](https://hits.sh/fpassold.github.io/)
-
 ----
 
 🌊 [Fernando Passold](https://fpassold.github.io/) 👉 [email 📬](mailto:fpassold@gmail.com)<br />
