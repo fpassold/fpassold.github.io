@@ -1,0 +1,101 @@
+
+G2=tf(1*5*7*[1 3],3*poly([-1 -5 -7]))
+
+G2 =
+ 
+           35 s + 105
+  ----------------------------
+  3 s^3 + 39 s^2 + 141 s + 105
+ 
+Continuous-time transfer function.
+
+zpk(G2)
+
+ans =
+ 
+    11.667 (s+3)
+  -----------------
+  (s+7) (s+5) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+
+close all % limpar janelas gráficas
+rlocus(G2)
+
+% ![RL_G2.png](RL_G2.png)
+
+% Tentando uma resposta criticamente amortecida
+% 2 pólos reais iguais, com $K \cong 0.25$>
+
+K1b=0.25;
+ftmfG2K1b=feedback(K1b*G2,1)
+
+ftmfG2K1b =
+ 
+           8.75 s + 26.25
+  --------------------------------
+  3 s^3 + 39 s^2 + 149.8 s + 131.2
+ 
+Continuous-time transfer function.
+
+pole(ftmfG2K1b)
+ans =
+      -5.8814 +    0.87936i
+      -5.8814 -    0.87936i
+      -1.2371 +          0i
+K1b=0.2;
+ftmfG2K1b=feedback(K1b*G2,1);
+pole(ftmfG2K1b)
+ans =
+      -5.9046 +    0.63778i
+      -5.9046 -    0.63778i
+      -1.1908 +          0i
+K1b=0.16;
+ftmfG2K1b=feedback(K1b*G2,1);
+pole(ftmfG2K1b)
+ans =
+      -5.9234 +     0.3434i
+      -5.9234 -     0.3434i
+      -1.1533 +          0i
+K1b=0.15;
+ftmfG2K1b=feedback(K1b*G2,1);
+pole(ftmfG2K1b)
+ans =
+      -5.9281 +    0.21519i
+      -5.9281 -    0.21519i
+      -1.1438 +          0i
+figure; step(ftmfG2K1b)
+
+% ![step_K1b_G2.png](step_K1b_G2.png)
+
+OS=10;
+zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+zeta =
+      0.59116
+figure(1)
+hold on
+sgrid(zeta,0)
+
+% ![RL_G2b.png](RL_G2b.png)
+
+K2b=4.6;
+ftmfG2K2b=feedback(K2b*G2,1);
+pole(ftmfG2K2b)
+ans =
+      -5.1568 +     6.8094i
+      -5.1568 -     6.8094i
+      -2.6864 +          0i
+figure; step(ftmfG2K2b);
+
+% ![step_K2b_G2.png](step_K2b_G2.png)
+
+% G_3(s)=\dfrac{K(s+7)}{(s+1)(s+3)}
+
+% G_4(2)=\dfrac{K(s+5)}{(s+1)(s+3)(s+7)}
+
+% Respostas:
+% * criticamente amortecida
+% % subamortecida com $\%OS=20\%$
+
+save aula_16042026
+diary off

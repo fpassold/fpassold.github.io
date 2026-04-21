@@ -2,14 +2,16 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>Controle Automático 1</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
 #write.first-line-indent p { text-indent: 2em; }
 #write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
 #write.first-line-indent li { margin-left: 2em; }
@@ -65,7 +67,7 @@ div.hr:focus { cursor: none; }
 #write pre.ty-contain-cm { white-space: normal; }
 .CodeMirror-gutters { margin-right: 4px; }
 .md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
 #write .md-fences.mock-cm { white-space: pre-wrap; }
 .md-fences.md-fences-with-lineno { padding-left: 0px; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
@@ -77,6 +79,7 @@ div.hr:focus { cursor: none; }
 li div { padding-top: 0px; }
 blockquote { margin: 1rem 0px; }
 li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
 li { margin: 0px; position: relative; }
 blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child, li > :first-child { margin-top: 0px; }
@@ -86,10 +89,10 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
   #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
   .typora-export * { print-color-adjust: exact; }
-  html.blink-to-pdf { font-size: 13px; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
   .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
@@ -100,6 +103,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
 .md-math-block { width: 100%; }
 .md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
 [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
 .md-task-list-item { position: relative; list-style-type: none; }
 .task-list-item.md-task-list-item { padding-left: 0px; }
@@ -130,18 +134,9 @@ a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; 
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
 kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
 code { text-align: left; vertical-align: initial; }
 a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; font-size-adjust: none; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
 [lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
@@ -150,402 +145,540 @@ table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom
 video { max-width: 100%; display: block; margin: 0px auto; }
 iframe { max-width: 100%; width: 100%; border: medium; }
 .highlight td, .highlight tr { border: 0px; }
-svg[id^="mermaidChart"] { line-height: 1em; }
 mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
 .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
 @media print {
   .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
 }
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
 
+
+/* =============================================================
+   DROPBOX THEME — Typora
+   Fonte do corpo: Open Sans (Google Fonts)
+   Fonte de código: Roboto Mono / Menlo (sistema)
+   Nota: "import" sem "@" é intencional — o Typora aceita
+         esta sintaxe proprietária para carregar fontes externas.
+   ============================================================= */
 
 import url(https://fonts.googleapis.com/css?family=Open%20Sans);
-:root {
-    --code-block-bg-color: inherit;//#f8f8f8;
 
-    --item-hover-bg-color: #0a0d16;
+
+/* -------------------------------------------------------------
+   VARIÁVEIS DE TEMA (cores da interface do Typora)
+   Usadas pela UI do editor (barra lateral, arquivo ativo, etc.)
+   ------------------------------------------------------------- */
+:root {
+    --code-block-bg-color: inherit;
+
     --control-text-color: #b7b7b7;
     --control-text-hover-color: #eee;
     --window-border: 1px dashed #9b9b9b;
 
     --active-file-bg-color: #0070E0;
     --active-file-border-color: #8d8df0;
-
-    --primary-color: #a3d5fe;
-
     --active-file-text-color: #0070e0;
+
     --item-hover-bg-color: #70717d;
     --item-hover-text-color: white;
+
     --primary-color: #6dc1e7;
 }
 
-html,
-body,
-#write{
-	color: #5e676d;
-	font-family: "Open Sans", "Clear Sans", sans-serif;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	/*font-weight: lighter;*/
-	font-weight: 100;
-	color: #5e676d;
-	font-family: "Open Sans", sans-serif;
-	margin: 0.5rem 0;
-}
 
+/* -------------------------------------------------------------
+   BASE — corpo geral e fonte padrão
+   ------------------------------------------------------------- */
 html {
-	font-size:16px;
+    font-size: 16px;
 }
 
+html, body, #write {
+    color: #5e676d;
+    font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+
+
+/* -------------------------------------------------------------
+   ÁREA DE ESCRITA — largura e alinhamento
+   ------------------------------------------------------------- */
 #write {
-	max-width: 914px;
-	text-align: justify;
+    max-width: none;    /* sem limite de largura — ocupa toda a janela */
+    text-align: justify;
 }
 
-#write>h1:first-child {
-	margin-top: 2.75rem;
-}
-#write>h2:first-child {
-	margin-top: 1.75rem;
-}
-#write>h3:first-child {
-	margin-top: 1rem;
-}
-#write>h4:first-child {
-	margin-top: 0.5rem;
-}
-h1 {
-	margin: 1rem 0;
-	/*line-height: 4rem;
-	padding: 5px 30px;
-	text-align: center;
-	margin-top: 4rem;*/
-}
-h2 {
-	margin: 0.8rem 0;
-	/*
-	line-height: 3rem;
-	padding: 0 30px;
-	text-align: center;
-	margin-top: 3rem
-	*/
-}
-h3 {
-}
-h4 {
-}
-h5 {
-	font-size: 1.125rem;
-}
-h6 {
-	font-size: 1.1rem;
-}
+
+/* -------------------------------------------------------------
+   PARÁGRAFOS
+   ------------------------------------------------------------- */
 p {
-	color: #5e676d;
-	font-size: 1rem;
-	line-height: 1.5rem;
-	margin: 0 0 1.25rem;
+    color: #5e676d;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0 0 1.25rem;
 }
-#write>h3.md-focus:before {
-	left: -1.875rem;
-	top: 0.5rem;
-	padding: 2px;
+
+
+/* -------------------------------------------------------------
+   TÍTULOS — H1 a H6
+   ------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 100;
+    color: #5e676d;
+    font-family: "Open Sans", sans-serif;
+    margin: 0.5rem 0;
 }
-#write>h4.md-focus:before {
-	left: -1.875rem;
-	top: 0.3125rem;
-	padding: 2px;
+
+/* H1, H2 e H3 em azul Aqua (macOS) — apenas a cor é sobrescrita */
+h1, h2, h3 {
+    color: #0066CC;
 }
-#write>h5.md-focus:before {
-	left: -1.875rem;
-	top: 0.25rem;
-	padding: 2px;
-}
-#write>h6.md-focus:before {
-	left: -1.875rem;
-	top: .125rem;
-	padding: 2px;
-}
-/*@media screen and (min-width: 48em) {
-	.h1,
-	h1 {
-		font-size: 3.250rem;
-	}
-	.h2,
-	h2 {
-		font-size: 2.298rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.625rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-	#write>h4.md-focus:before,
-	#write>h5.md-focus:before,
-	#write>h6.md-focus:before {
-		top: 1px;
-	}
-	p {
-		font-size: 1.25rem;
-		line-height: 1.8;
-	}
-	table {
-		font-size: 1.25rem;
-	}
-}*/
+
+h1 { margin: 1rem 0; }
+h2 { margin: 0.8rem 0; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1.1rem; }
+
+/* Margem do primeiro título no documento */
+#write > h1:first-child { margin-top: 2.75rem; }
+#write > h2:first-child { margin-top: 1.75rem; }
+#write > h3:first-child { margin-top: 1rem; }
+#write > h4:first-child { margin-top: 0.5rem; }
+
+/* Posição do marcador de foco nos títulos (modo edição) */
+#write > h3.md-focus:before { left: -1.875rem; top: 0.5rem;    padding: 2px; }
+#write > h4.md-focus:before { left: -1.875rem; top: 0.3125rem; padding: 2px; }
+#write > h5.md-focus:before { left: -1.875rem; top: 0.25rem;   padding: 2px; }
+#write > h6.md-focus:before { left: -1.875rem; top: .125rem;   padding: 2px; }
+
+
+/* -------------------------------------------------------------
+   TÍTULOS — tamanhos responsivos (telas pequenas, <= 48em)
+   ------------------------------------------------------------- */
 @media screen and (max-width: 48em) {
-	blockquote {
-		margin-left: 1rem;
-		margin-right: 0;
-		padding: 0.5em;
-	}
-	.h1,
-	h1 {
-		font-size: 2.827rem;
-	}
-	.h2,
-	h2 {
-		font-size: 1.999rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.413rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
+    h1 { font-size: 2.827rem; }
+    h2 { font-size: 1.999rem; }
+    h3 { font-size: 1.413rem; }
+    h4 { font-size: 1.250rem; }
+    h5 { font-size: 1.150rem; }
+    h6 { font-size: 1rem; }
+
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
 }
-a,
-.md-def-url {
-	color: #007ee5;
-	text-decoration: none;
+
+
+/* -------------------------------------------------------------
+   LINKS
+   ------------------------------------------------------------- */
+a, .md-def-url {
+    color: #007ee5;
+    text-decoration: none;
 }
 a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
+
+
+/* -------------------------------------------------------------
+   TABELAS
+   ------------------------------------------------------------- */
 table {
-	border: 1px solid #e2e2e2;
-	margin-bottom: 20px
+    border: 1px solid #e2e2e2;
+    margin-bottom: 20px;
 }
-table th,
-table td {
-	padding: 8px;
-	line-height: 1.5rem;
-	vertical-align: top;
-	border: 1px solid #e2e2e2;
+table th, table td {
+    padding: 8px;
+    line-height: 1.5rem;
+    vertical-align: top;
+    border: 1px solid #e2e2e2;
 }
 table th {
-	font-weight: normal;
-	background-color: #f0f7fd;
+    font-weight: normal;
+    background-color: #f0f7fd;
+    vertical-align: bottom;
 }
-table thead th {
-	vertical-align: bottom
-}
-table caption+thead tr:first-child th,
-table caption+thead tr:first-child td,
-table colgroup+thead tr:first-child th,
-table colgroup+thead tr:first-child td,
+table caption + thead tr:first-child th,
+table caption + thead tr:first-child td,
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
 table thead:first-child tr:first-child th,
 table thead:first-child tr:first-child td {
-	border-top: 0
+    border-top: 0;
 }
-table tbody+tbody {
-	border-top: 2px solid #ddd
+table tbody + tbody {
+    border-top: 2px solid #ddd;
 }
+
+
+/* -------------------------------------------------------------
+   CÓDIGO — inline (`código`) e blocos (``` ... ```)
+   ------------------------------------------------------------- */
+
+/* Estilo base compartilhado entre inline e bloco */
 code, .md-fences {
-	padding: .5em;
-	background: #f6f9fc;
-	border: 1px solid #d0d4d9;
-	border-radius: 3px;
-	padding: .1em;
-	font-size: 0.9rem !important;
-	margin-left: 0.2em;
-	margin-right: 0.2em;
+    background: #f6f9fc;
+    border: 1px solid #d0d4d9;
+    border-radius: 3px;
+    font-size: 0.9rem !important;
+    padding: .1em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
 }
+
+/* Blocos de código (```) — sobrescreve/complementa o estilo base */
 .md-fences {
-	margin: 0 0 20px;
-	font-size: 1em;
-	padding: 0.3em 1em;
-  	padding-top: 0.4em;
-}
-.task-list{
-	padding-left: 0;
+    margin: 0 0 20px;
+    font-size: 1em;
+    padding: 0.3em 1em;
+    padding-top: 0.4em;
 }
 
+/* Fonte monoespaçada para todo contexto de código */
+code, kbd, pre, samp {
+    font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+/* -------------------------------------------------------------
+   LISTAS DE TAREFAS (- [ ] e - [x])
+   ------------------------------------------------------------- */
+.task-list {
+    padding-left: 0;
+}
 .task-list-item {
-	padding-left:2.125rem;
+    padding-left: 2.125rem;
 }
 
-/* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  and (min-resolution:.001dpcm) {
-    .task-list-item input:before {
-    	margin-top: -0.2rem;
-    }
-
+/* Ajuste de alinhamento do checkbox no Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
+    .task-list-item input:before,
     .task-list-item input:checked:before,
-	.task-list-item input[checked]:before {
-		margin-top: -0.2rem;
-	}
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
 }
 
+
+/* -------------------------------------------------------------
+   CITAÇÕES (blockquote)
+   ------------------------------------------------------------- */
 blockquote {
-	margin: 0 0 1.11111rem;
-	padding: 0.5rem 1.11111rem 0 1.05556rem;
-	border-left: 2px solid rgba(0, 112, 224, 0.32);
+    margin: 0 0 1.11111rem;
+    padding: 0.5rem 1.11111rem 0 1.05556rem;
+    border-left: 2px solid rgba(0, 112, 224, 0.32);
 }
-blockquote,
-blockquote p {
-	line-height: 1.6;
-	color: #8f8f8f;
+blockquote, blockquote p {
+    line-height: 1.6;
+    color: #8f8f8f;
 }
+
+
+/* -------------------------------------------------------------
+   BLOCO DE METADADOS YAML (front matter)
+   ------------------------------------------------------------- */
 #write pre.md-meta-block {
-	min-height: 30px;
-	background: #f8f8f8;
-	padding: 1.5em;
-	font-weight: 300;
-	font-size: 1em;
-	padding-bottom: 1.5em;
-	padding-top: 3em;
+    min-height: 30px;
+    background: #f8f8f8;
+    font-weight: 300;
+    font-size: 1em;
+    color: #999;
+    padding: 3em 1.5em 1.5em;
     margin-top: -1.5em;
-	color: #999;
-	border-left: 1000px #f8f8f8 solid;
-	margin-left: -1000px;
-	border-right: 1000px #f8f8f8 solid;
-	margin-right: -1000px;
-	margin-bottom: 2em;
+    margin-bottom: 2em;
+    /* extensão lateral para cobrir as margens do #write */
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
 }
+
+
+/* -------------------------------------------------------------
+   MATEMÁTICA (MathJax)
+   ------------------------------------------------------------- */
 .MathJax_Display {
-	font-size: 0.9em;
-	margin-top: 0.5em;
-	margin-bottom: 0;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
 }
-p.mathjax-block,
-.mathjax-block {
-	padding-bottom: 0;
+p.mathjax-block, .mathjax-block {
+    padding-bottom: 0;
 }
-.mathjax-block>.code-tooltip {
-	bottom: 5px;
-	box-shadow: none;
-}
-.md-image>.md-meta {
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-}
-.md-image>img {
-	margin-top: 2px;
-}
-.md-image>.md-meta:first-of-type:before {
-	padding-left: 4px;
+.mathjax-block > .code-tooltip {
+    bottom: 5px;
+    box-shadow: none;
 }
 
-#typora-source {
-	color: #555;
+
+/* -------------------------------------------------------------
+   IMAGENS
+   ------------------------------------------------------------- */
+.md-image > .md-meta {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+.md-image > img {
+    margin-top: 2px;
+}
+.md-image > .md-meta:first-of-type:before {
+    padding-left: 4px;
 }
 
-/** ui for windows **/
-#md-searchpanel {
-    border-bottom: 1px solid #ccc;
-}
 
-#md-searchpanel .btn {
-    border: 1px solid #ccc;
-}
+/* -------------------------------------------------------------
+   INTERFACE DO TYPORA — painel de busca, notificações, menus
+   ------------------------------------------------------------- */
+#typora-source { color: #555; }
 
-#md-notification:before {
-	top: 14px;
-}
+#md-searchpanel { border-bottom: 1px solid #ccc; }
+#md-searchpanel .btn { border: 1px solid #ccc; }
 
-#md-notification {
-	background: #eee;
-}
+#md-notification { background: #eee; }
+#md-notification:before { top: 14px; }
 
-.megamenu-menu-panel .btn {
-	border: 1px solid #ccc;
-}
+.megamenu-menu-panel .btn { border: 1px solid #ccc; }
 
-.mac-seamless-mode #typora-sidebar {
-  background-color: #f7f9fa;
-}
 
-.pin-outline .outline-active {
-  color: #0070E0; 
-}
+/* -------------------------------------------------------------
+   INTERFACE DO TYPORA — barra lateral e árvore de arquivos
+   ------------------------------------------------------------- */
+.mac-seamless-mode #typora-sidebar { background-color: #f7f9fa; }
+
+.pin-outline .outline-active { color: #0070E0; }
+
+.sidebar-tab.active { font-weight: 400; }
+
+.file-node-content { color: #5e676d; }
 
 .file-list-item {
-  border-bottom: 1px solid;
-  border-color: #E6E8EB;
+    border-bottom: 1px solid;
+    border-color: #E6E8EB;
 }
-
 .file-list-item-summary {
-  font-weight: 400;
-  color: #637282; 
+    font-weight: 400;
+    color: #637282;
 }
-
 .file-list-item.active {
-  color: #0070E0;
-  background-color: #E6E8EB;
+    color: #0070E0;
+    background-color: #E6E8EB;
 }
 
-.file-tree-node.active>.file-node-background {
-  background-color: #E6E8EB;
-} 
+.file-tree-node.active > .file-node-background { background-color: #E6E8EB; }
+.file-tree-node.active > .file-node-content    { color: #0070E0; }
 
-.file-tree-node.active>.file-node-content {
-  color: #0070E0;
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
 }
 
-.file-node-content {
-  color: #5e676d;
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
 }
 
-.sidebar-tab.active {
-  font-weight: 400;
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
 }
 
-code, kbd, pre, samp {
-  font-family: "Roboto Mono", Menlo, monospace;
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
 
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
 
-</style>
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Controle Automático 1</title>
 </head>
-<body class='typora-export'>
-<div id='write'  class=''><p><img src="6c723b94-0dd4-414d-a523-3e2647bd0ee8.jpeg" referrerpolicy="no-referrer" alt="6c723b94-0dd4-414d-a523-3e2647bd0ee8"></p><p><font size="1"><strong><span>Gerado com IA</span></strong><span>, Copilot | Designer </span><a href='https://copilot.microsoft.com/images/create/grc3a1ficos-e-diagramas-de-anc3a1lise-de-sinais-e-sistem/1-666bc82660234f5dabb6ad23ec0e7236?id=tZBUcPruq9EvIffTmjcjEg%3d%3d&amp;view=detailv2&amp;idpp=genimg&amp;idpclose=1&amp;thId=OIG4.mjxEuoUKNuQh0HPTjY8y&amp;FORM=SYDBIC'><span>*</span></a></font><span> </span></p><h1><a name="controle-automático-1" class="md-header-anchor"></a><span>Controle Automático 1</span></h1><p><span>(ou &quot;Análise de Sinais e de Sistemas, Modelagem de Sistemas&quot;)</span></p><h2><a name="conteúdo-previsto" class="md-header-anchor"></a><span>Conteúdo Previsto</span></h2><ol start='' ><li><p><span>Introdução.</span></p><ol start='' ><li><p><a href='intro_controle_1.pdf'><span>Parte 1</span></a><span>: História da área de controle automático e automação industrial.</span></p></li><li><p><a href='Intro2.pdf'><span>Parte 2</span></a><span>: Conceitos iniciais: modelagem &quot;DC&quot; (regime permanente) x &quot;AC&quot; (transitórios), malha-aberta x malha-fechada.</span></p><p>&nbsp;</p></li></ol></li><li><p><span>Modelagem Matemática de Sistemas (ainda sem usar Laplace)</span></p><ol start='' ><li><p><a href='2_modelagem_matematica.pdf'><span>Parte 1</span></a><span>: Intro (funções transferência, caixas de redução, sitemas lineares x não-lineares, resposta de sensor, sistema estável x instável, malha-aberta x malha-fechada, dinâmica de um sistema), Sistemas mecânicos (elementos básicos), equações associadas com forças (movimentos translacionais), equações associadas com torques (forças rotacionais), alguns sistemas mecânicos translacionais (equacionamento), sistemas mecânicos rotacionais (equacionamentos), momento de inércia, modelagem de alguns sistemas mecânicos, modelagem considerando Energia/Potência (elementos mecânicos que armazenam/dissipam energia).</span></p></li><li><p><a href='2_modelagem_matematica_2.pdf'><span>Parte 2</span></a><span>: Equacionamentos considerando Energia/Potência, Comparando sistemas elétricos x mecânicos, modelagem de sistemas elétricos, modelagem sistema térmico. </span></p><p>&nbsp;</p></li></ol></li><li><p><a href='3_transformada_laplace.pdf'><span>Transformada de Laplace</span></a><span> (voltado para modelagem de sistemas).</span></p><ol start='' ><li><p><span>Expansão em frações parciais --&gt; </span><a href='https://lpsa.swarthmore.edu/LaplaceXform/InvLaplace/InvLaplaceXformPFE.html'><span>The Inverse Laplace Transform by Partial Fraction Expansion</span></a><span> (+ soluções </span><a href='https://lpsa.swarthmore.edu/LaplaceXform/InvLaplace/PFE1Matlab/html/PFE1.html'><span>usando Matlab</span></a><span>).</span></p><p>&nbsp;</p></li></ol></li><li><p><span>Modelagem usando Transformada de Laplace</span></p><ol start='' ><li><p><a href='4_modelagem_laplace.pdf'><span>Modelagem usando Transformada de Laplace</span></a><span>:</span></p><ol start='' ><li><p><span>Arquivos associados com modelagem de circuito RL ( </span><a href='circuito_RL.slx'><span>circuito_RL.slx</span></a><span> ) (tensão de entrada x corrente x ddp</span><span>_</span><span>resistor x ddp</span><span>_</span><span>indutor):</span></p><figure><table><thead><tr><th><span>Modelo</span></th><th><span>Scope (resultado)</span></th></tr></thead><tbody><tr><td><img src="circuito_RL.png" referrerpolicy="no-referrer" alt="circuito_RL"></td><td><img src="circuito_RL_scope.png" referrerpolicy="no-referrer" alt="circuito_RL_scope"></td></tr></tbody></table></figure><p>&nbsp;</p></li><li><p><span>Arquivos associados com modelagem motor CC usando Matlab/Simulink (tensão de entrada x velocidade);</span>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><p><img src="6c723b94-0dd4-414d-a523-3e2647bd0ee8.jpeg" referrerpolicy="no-referrer" alt="6c723b94-0dd4-414d-a523-3e2647bd0ee8"></p><p><font size="1"><strong><span>Gerado com IA</span></strong><span>, Copilot | Designer </span><a href='https://copilot.microsoft.com/images/create/grc3a1ficos-e-diagramas-de-anc3a1lise-de-sinais-e-sistem/1-666bc82660234f5dabb6ad23ec0e7236?id=tZBUcPruq9EvIffTmjcjEg%3d%3d&amp;view=detailv2&amp;idpp=genimg&amp;idpclose=1&amp;thId=OIG4.mjxEuoUKNuQh0HPTjY8y&amp;FORM=SYDBIC'><span>*</span></a></font><span> </span></p><h1 id='controle-automático-1'><span>Controle Automático 1</span></h1><p><span>(ou &quot;Análise de Sinais e de Sistemas, Modelagem de Sistemas&quot;)</span></p><h2 id='conteúdo-previsto'><span>Conteúdo Previsto</span></h2><ol start='' ><li><p><span>Introdução.</span></p><ol start='' ><li><p><a href='intro_controle_1.pdf'><span>Parte 1</span></a><span>: História da área de controle automático e automação industrial.</span></p></li><li><p><a href='Intro2.pdf'><span>Parte 2</span></a><span>: Conceitos iniciais: modelagem &quot;DC&quot; (regime permanente) x &quot;AC&quot; (transitórios), malha-aberta x malha-fechada.</span></p><p>&nbsp;</p></li></ol></li><li><p><span>Modelagem Matemática de Sistemas (ainda sem usar Laplace)</span></p><ol start='' ><li><p><a href='2_modelagem_matematica.pdf'><span>Parte 1</span></a><span>: Intro (funções transferência, caixas de redução, sitemas lineares x não-lineares, resposta de sensor, sistema estável x instável, malha-aberta x malha-fechada, dinâmica de um sistema), Sistemas mecânicos (elementos básicos), equações associadas com forças (movimentos translacionais), equações associadas com torques (forças rotacionais), alguns sistemas mecânicos translacionais (equacionamento), sistemas mecânicos rotacionais (equacionamentos), momento de inércia, modelagem de alguns sistemas mecânicos, modelagem considerando Energia/Potência (elementos mecânicos que armazenam/dissipam energia).</span></p></li><li><p><a href='2_modelagem_matematica_2.pdf'><span>Parte 2</span></a><span>: Equacionamentos considerando Energia/Potência, Comparando sistemas elétricos x mecânicos, modelagem de sistemas elétricos, modelagem sistema térmico. </span></p><p>&nbsp;</p></li></ol></li><li><p><a href='3_transformada_laplace.pdf'><span>Transformada de Laplace</span></a><span> (voltado para modelagem de sistemas).</span></p><ol start='' ><li><p><span>Expansão em frações parciais --&gt; </span><a href='https://lpsa.swarthmore.edu/LaplaceXform/InvLaplace/InvLaplaceXformPFE.html'><span>The Inverse Laplace Transform by Partial Fraction Expansion</span></a><span> (+ soluções </span><a href='https://lpsa.swarthmore.edu/LaplaceXform/InvLaplace/PFE1Matlab/html/PFE1.html'><span>usando Matlab</span></a><span>).</span></p><p>&nbsp;</p></li></ol></li><li><p><span>Modelagem usando Transformada de Laplace</span></p><ol start='' ><li><p><a href='4_modelagem_laplace.pdf'><span>Modelagem usando Transformada de Laplace</span></a><span>:</span></p><ol start='' ><li><p><span>Arquivos associados com modelagem de circuito RL ( </span><a href='circuito_RL.slx'><span>circuito_RL.slx</span></a><span> ) (tensão de entrada x corrente x ddp</span><span>_</span><span>resistor x ddp</span><span>_</span><span>indutor):</span></p><figure><table><thead><tr><th><span>Modelo</span></th><th><span>Scope (resultado)</span></th></tr></thead><tbody><tr><td><img src="circuito_RL.png" referrerpolicy="no-referrer" alt="circuito_RL"></td><td><img src="circuito_RL_scope.png" referrerpolicy="no-referrer" alt="circuito_RL_scope"></td></tr></tbody></table></figure><p>&nbsp;</p></li><li><p><span>Arquivos associados com modelagem motor CC usando Matlab/Simulink (tensão de entrada x velocidade);</span>
 <span>( </span><a href='motor_DC_Vel.slx'><span>motor_DC_Vel.slx</span></a><span>  +  </span><a href='init_motor_velocidade.m'><span>init_motor_velocidade.m</span></a><span> + </span><a href='motor_DC_Vel_teste_degrau.slx'><span>motor_DC_Vel_teste_degrau.slx</span></a><span> )</span></p></li><li><p><span>Arquivos associados com modelagem motor CC (tensão de entrada x posição angular).</span>
 <span>( +  </span><a href='init_motor_posicao.m'><span>init_motor_posicao.m</span></a><span> )</span></p></li></ol></li><li><p><span>Usando </span><strong><span>MATLAB</span></strong></p><ol start='' ><li><p><a href='https://fpassold.github.io/Matlab/instalacao_matlab.html'><span>Sugestão de Instalação</span></a><span> (direcionado para área de Controle Automátoico);</span></p></li><li><p><a href='https://fpassold.github.io/Matlab/Matlab_guide.pdf'><strong><span>MATLAB Guide</span></strong></a><span> (13,4 Mbytes, 44 pp.)</span></p><!--[Intro Matlab, PDF](https://fpassold.github.io/Matlab/1_Introducao_MATLAB.pdf) (bem inicial/curto, 1,2 Mbytes, 24 pp., de 2010);--></li><li><p><a href='https://fpassold.github.io/Matlab/tutorial.html'><span>😃 MATLAB fácil (página WEB)</span></a><span> ou versão </span><a href='https://fpassold.github.io/Matlab/Usando_Matlab_2.pdf'><span>PDF</span></a><span> (438 Kbytes, 11 pp.);</span></p></li><li><p><a href='https://fpassold.github.io/Matlab/2_Produzindo_graficos.pdf'><span>📈 Gráficos usando MATLAB</span></a><span> (922 Kbytes, 9 pp.);</span></p></li><li><p><a href='https://fpassold.github.io/Matlab/3_Operacoes_com_Matrizes.pdf'><span>Operações com Matrizes</span></a><span> (1,7 Mbytes, 16 pp.)</span></p></li></ol></li><li><p><a href='4_modelagem_simulink.pdf'><span>Modelagem usando Matlab/Simulink</span></a><span> </span></p></li><li><p><span>Exemplos usando Matlab/Simulink: </span><a href='https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&amp;section=SystemModeling'><span>System Modeling (Michigan/Carnegie Melon/Detroit Mercy)</span></a><span>.</span></p></li><li><p><span>Modelagem Aproximada de Processos Industriais (</span><em><span>em edição</span></em><span> 🚧)</span>
-<em><span>Baseado no Cap. 3 de: GARCIA, Claudio. </span><strong><span>Controle de processos industriais: estratégias convencionais</span></strong><span>. Editora Blucher, 2017. Amostra: </span><a href='https://storage.blucher.com.br/book/pdf_preview/bcb27f69-774b-4fab-a45b-69731a4707f9-baixe-uma-amostra.pdf'><span>Cap. 1: Introdução e definições gerais</span></a></em><span>).</span></p></li><li><p><span>Modelagem de circuitos baseados em Amplificadores Operacionais:</span></p><ol start='' ><li><span>Material do Prof. Dr. Victor da Fonte Dias, Professor Auxiliar no Instituto Superior Técnico (IST), Lisboa, de 1999: disciplina de </span><strong><span>Circuitos e Sistemas Electrónicos</span></strong><span> (</span><a href='https://www.ufrgs.br/eng04030/Aulas/teoria/cap_00/indice.htm'><span>Índice</span></a><span>) --&gt; </span><a href='https://www.ufrgs.br/eng04030/Aulas/teoria/cap_15/circampo.htm#:~:text=Em'><span>Cap 15: Circuitos cm AmpOps</span></a><span>):</span></li><li><a href='Funcao_transferancia_amp_op-1.pdf'><span>Exemplo 1</span></a><span>: circuito RC com 1 pólo + 1 zero (material da StackExchange: Electrical Engineering).</span></li><li><a href='Funcao_transferancia_amp_op-2.pdf'><span>Exemplo 2</span></a><span>: circuito com cascateamento de Amp. Op.´s + A.I. (material da StackExchange: Electrical Engineering). </span></li><li><a href='Funcao_transferancia_amp_op-3.pdf'><span>Exemplo 3</span></a><span>: Levantando função transferência resolvendo sistema de equações usando Matlab (material da StackExchange: Electrical Engineering).</span></li></ol><p>&nbsp;</p></li></ol></li><li><p><a href='5_Respostas_Sistemas.pdf'><span>Respostas Transitórias de Sistemas Lineares</span></a></p><ol start='' ><li><p><span>Exemplo de </span><a href='Levantando_Modelo_Planta Termica.pdf'><span>modelagem de sistema térmico</span></a><span>.</span></p></li><li><p><span>Trabalho: Modelagem Aproximada de um Sistema de Automação Industrial.</span></p></li><li><p><a href='https://lpsa.swarthmore.edu/SecondOrder/SOI.html'><span>Second Order Systems, Interactive</span></a><span> (Swarthmore College, Dept. of Eng., acessado em 13/06/2024).</span></p><p><img src="bodeMag.svg" alt="bodeMag" style="zoom:67%;" /></p></li><li><p><a href='Pade/pade1.html'><span>Aproximação de </span><strong><span>Padé</span></strong></a><span>  (atrasos no tempo em sistemas de controle).</span></p></li><li><p><a href='trabalhos/trabalho_5_respostas_sistemas.html'><strong><span>Trabalho deste item</span></strong></a><span> (Avaliação: </span><mark><span>2025/1</span></mark><span>).</span></p><p>&nbsp;</p></li></ol></li><li><p><a href='6_intro_root_locus.pdf'><span>Lugar Geométrico das Raízes</span></a><span> (ou </span><em><span>root-locus</span></em><span>)</span></p><ol start='' ><li><p><span>📈 </span><a href='aula_26042024.html'><span>Simulações usando Matlab</span></a><span> para enteder </span><strong><span>relação </span><em><span>Root-Locus</span></em><span> </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.807ex" height="1.413ex" viewBox="0 -555.9 778 608.3" role="img" focusable="false" style="vertical-align: 0.021ex; margin-bottom: -0.143ex;"><defs><path stroke-width="0" id="E1-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMAIN-D7" x="0" y="0"></use></g></svg></span><script type="math/tex">\times</script><span> Resposta temporal</span></strong><span> de um sistema (aula de 26/04/2024)</span></p></li><li><p>😯<span> </span><a href='RL_exemplos.html'><span>Mais exemplos (incluindo </span><strong><span>animação gráfica</span></strong><span>)</span></a><span> de traçados de </span><em><span>Root-Loucs</span></em><span> e cálculos dos ângulos de partida das assíntotas, ponto de partida da assíntota, pontos de partida e de chegada num </span><em><span>Root-Loucs</span></em><span> (aula de 03/05/2024).</span></p></li><li><p><a href='https://lpsa.swarthmore.edu/Root_Locus/DeriveRootLocusRules.html#RuleImag'><span>Derivation of Root Locus Rules</span></a><span> (Swarthmore College, Dept. of Eng., acessado em 13/06/2024).</span></p><p><img src="img63.gif" referrerpolicy="no-referrer" alt="img63"></p></li><li><p><a href='https://lpsa.swarthmore.edu/Root_Locus/RLDraw.html'><span>Drawing the root locus</span></a><span> (Swarthmore College, Dept. of Eng., acessado em 13/06/2024).</span></p></li><li><p><a href='trabalhos/trabalho_6_RL.html'><strong><span>Trabalho associado com </span><em><span>Root Locus</span></em></strong></a><span>  (Avaliação: </span><mark><span>2025/1</span></mark><span>).</span></p><p>&nbsp;</p></li></ol></li><li><p><a href='Diagramas_Bode_1.pdf'><span>Diagramas de Bode</span></a><span>;</span></p><ol start='' ><li><p><a href='testes_bode_1.html'><span>Exemplo de uso com Matlab</span></a><span>;</span></p></li><li><p><a href='https://lpsa.swarthmore.edu/Bode/BodePlotGui.html'><span>BodePlotGui</span></a><span>: A Tool for Generating Asymptotic Bode Diagrams.</span></p><p><img src="BodeGui1.jpg" alt="BodeGui1" style="zoom:50%;" /></p></li><li><p><span>Exemplo de uso/aplicação de Diagrama de Bode (ver trecho do video: [0:00 - 13:00] minutos):</span>
-<a href='https://www.youtube.com/watch?v=HJ-C4Incgpw'><span>How to design and implement a digital low-pass filter on an Arduino</span></a><span>, 20/06/2021, de </span><a href='https://www.youtube.com/@curiores111'><span>Curio Res</span></a><span> - material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas (usado como exemplo) (Acessado em 20/05/2024).</span></p></li><li><p><a href='https://controlsystemsacademy.com/bode_x.html'><span>Bode Plot Engine</span></a><span> (MIT) (acessível em 13/06/2024).</span></p><p><img src="bode_3.png" alt="bode_3" style="zoom:75%;" /></p><ol start='5' ><li><a href='trab6_bode/trab6_bode.html'><strong><span>Trabalho associado com Diagramas de Bode</span></strong></a><span>   (avaliação </span><mark><span>2025/1</span></mark><span>).</span></li></ol><p>&nbsp;</p></li></ol></li><li><p><a href='https://fpassold.github.io/Sinais_Sistemas/4_fourier/4_serie_fourier.html'><span>Série de Fourier</span></a><span>.</span></p><ol start='' ><li><p><span>Demo (com simulações) do MIT: </span><a href='https://controlsystemsacademy.com/0018/0018.html'><span>FOURIER SERIES DEMO</span></a><span> (acessado em 13/06/2024).</span></p></li><li><p><a href='http://www2.clarku.edu/~djoyce/trig/identities.html'><span>Sumário de Identidades Trigonométricas</span></a><span> (Clark University) (acessado em 13/06/2024).</span></p></li><li><p><span>Wikipédia: </span><a href='https://en.wikipedia.org/wiki/Fourier_series'><span>Série de Fourier</span></a><span>:</span></p><p><img src="Fourier_series_and_transform.gif" referrerpolicy="no-referrer" alt="Fourier_series_and_transform"></p></li><li><p><a href='trab_fourier/trab_fourier.html'><strong><span>Trabalho sobre Série de Fourier</span></strong></a><span>  (avaliação de </span><mark><span>2025/1</span></mark><span>).</span></p></li></ol></li></ol><hr /><h2><a name="avaliações" class="md-header-anchor"></a><span>Avaliações:</span></h2><ul><li><a href='trabalho_1_2025_1.pdf'><strong><span>Trabalho 1</span></strong></a><span>: Transformada de Laplace, gráficos de funções (respostas temporais), uso de Transformada de Laplace. </span><!-- (trabalho_1_controle_1.pdf)--></br><span>Deadline: </span><mark><span>09/05/2025</span></mark><span> 🚩</span></li><li><del><strong><span>Trabalho 2</span></strong><span>: Diagramas de Bode, Resposta de Filtros, Série de Fourier (onda Quadrada), Simulando filtro passa-baixas aplicado sobre onda quadrada (</span><em><span>sendo editado</span></em><span> 🚧; Trabalho de 2024.1).</span></del>
+<em><span>Baseado no Cap. 3 de: GARCIA, Claudio. </span><strong><span>Controle de processos industriais: estratégias convencionais</span></strong><span>. Editora Blucher, 2017. Amostra: </span><a href='https://storage.blucher.com.br/book/pdf_preview/bcb27f69-774b-4fab-a45b-69731a4707f9-baixe-uma-amostra.pdf'><span>Cap. 1: Introdução e definições gerais</span></a></em><span>).</span></p></li><li><p><span>Modelagem de circuitos baseados em Amplificadores Operacionais:</span></p><ol start='' ><li><span>Material do Prof. Dr. Victor da Fonte Dias, Professor Auxiliar no Instituto Superior Técnico (IST), Lisboa, de 1999: disciplina de </span><strong><span>Circuitos e Sistemas Electrónicos</span></strong><span> (</span><a href='https://www.ufrgs.br/eng04030/Aulas/teoria/cap_00/indice.htm'><span>Índice</span></a><span>) --&gt; </span><a href='https://www.ufrgs.br/eng04030/Aulas/teoria/cap_15/circampo.htm#:~:text=Em'><span>Cap 15: Circuitos cm AmpOps</span></a><span>):</span></li><li><a href='Funcao_transferancia_amp_op-1.pdf'><span>Exemplo 1</span></a><span>: circuito RC com 1 pólo + 1 zero (material da StackExchange: Electrical Engineering).</span></li><li><a href='Funcao_transferancia_amp_op-2.pdf'><span>Exemplo 2</span></a><span>: circuito com cascateamento de Amp. Op.´s + A.I. (material da StackExchange: Electrical Engineering). </span></li><li><a href='Funcao_transferancia_amp_op-3.pdf'><span>Exemplo 3</span></a><span>: Levantando função transferência resolvendo sistema de equações usando Matlab (material da StackExchange: Electrical Engineering).</span></li></ol><p>&nbsp;</p></li></ol></li><li><p><a href='5_Respostas_Sistemas.pdf'><span>Respostas Transitórias de Sistemas Lineares</span></a></p><ol start='' ><li><p><span>Exemplo de </span><a href='Levantando_Modelo_Planta Termica.pdf'><span>modelagem de sistema térmico</span></a><span>.</span></p></li><li><p><span>Trabalho: Modelagem Aproximada de um Sistema de Automação Industrial.</span></p></li><li><p><a href='https://lpsa.swarthmore.edu/SecondOrder/SOI.html'><span>Second Order Systems, Interactive</span></a><span> (Swarthmore College, Dept. of Eng., acessado em 13/06/2024).</span></p><p><img src="bodeMag.svg" alt="bodeMag" style="zoom:67%;" /></p></li><li><p><a href='Pade/pade1.html'><span>Aproximação de </span><strong><span>Padé</span></strong></a><span>  (atrasos no tempo em sistemas de controle).</span></p></li><li><p><a href='trabalhos/trabalho_5_respostas_sistemas.html'><strong><span>Trabalho deste item</span></strong></a><span> (Avaliação: </span><mark><span>2025/1</span></mark><span>).</span></p><p>&nbsp;</p></li></ol></li><li><p><a href='6_intro_root_locus.pdf'><span>Lugar Geométrico das Raízes</span></a><span> (ou </span><em><span>root-locus</span></em><span>)</span></p><ol start='' ><li><p><span>📈 </span><a href='aula_26042024.html'><span>Simulações usando Matlab</span></a><span> para enteder </span><strong><span>relação </span><em><span>Root-Locus</span></em><span> </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.09ex" role="img" focusable="false" viewBox="0 -491 778 482" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0.02ex;"><defs><path id="MJX-2-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="D7" xlink:href="#MJX-2-TEX-N-D7"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>×</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\times</script><span> Resposta temporal</span></strong><span> de um sistema (aula de 26/04/2024)</span></p></li><li><p>😯<span> </span><a href='RL_exemplos.html'><span>Mais exemplos (incluindo </span><strong><span>animação gráfica</span></strong><span>)</span></a><span> de traçados de </span><em><span>Root-Loucs</span></em><span> e cálculos dos ângulos de partida das assíntotas, ponto de partida da assíntota, pontos de partida e de chegada num </span><em><span>Root-Loucs</span></em><span> (aula de 03/05/2024).</span></p></li><li><p><a href='https://lpsa.swarthmore.edu/Root_Locus/DeriveRootLocusRules.html#RuleImag'><span>Derivation of Root Locus Rules</span></a><span> (Swarthmore College, Dept. of Eng., acessado em 13/06/2024).</span></p><p><img src="img63.gif" referrerpolicy="no-referrer" alt="img63"></p></li><li><p><a href='https://lpsa.swarthmore.edu/Root_Locus/RLDraw.html'><span>Drawing the root locus</span></a><span> (Swarthmore College, Dept. of Eng., acessado em 13/06/2024).</span></p></li><li><p><strong><span>Exercícios/Trabalho Extra-Classe</span></strong><span> sobre </span><a href='2026_1/aula_16042026.html'><strong><span>Aplicação de Root-Locus</span></strong></a><span> (16/04/2026).</span></p></li><li><p><a href='trabalhos/trabalho_6_RL.html'><strong><span>Trabalho associado com </span><em><span>Root Locus</span></em></strong></a><span>  (Avaliação: </span><mark><span>2025/1</span></mark><span>).</span></p><p>&nbsp;</p></li></ol></li><li><p><a href='Diagramas_Bode_1.pdf'><span>Diagramas de Bode</span></a><span>;</span></p><ol start='' ><li><p><a href='testes_bode_1.html'><span>Exemplo de uso com Matlab</span></a><span>;</span></p></li><li><p><a href='https://lpsa.swarthmore.edu/Bode/BodePlotGui.html'><span>BodePlotGui</span></a><span>: A Tool for Generating Asymptotic Bode Diagrams.</span></p><p><img src="BodeGui1.jpg" alt="BodeGui1" style="zoom:50%;" /></p></li><li><p><span>Exemplo de uso/aplicação de Diagrama de Bode (ver trecho do video: [0:00 - 13:00] minutos):</span>
+<a href='https://www.youtube.com/watch?v=HJ-C4Incgpw'><span>How to design and implement a digital low-pass filter on an Arduino</span></a><span>, 20/06/2021, de </span><a href='https://www.youtube.com/@curiores111'><span>Curio Res</span></a><span> - material em inglês, mas ótimas animações enfatizando uso, papel da magnitude e do atraso num filtro passa-baixas (usado como exemplo) (Acessado em 20/05/2024).</span></p></li><li><p><a href='https://controlsystemsacademy.com/bode_x.html'><span>Bode Plot Engine</span></a><span> (MIT) (acessível em 13/06/2024).</span></p><p><img src="bode_3.png" alt="bode_3" style="zoom:75%;" /></p><ol start='5' ><li><a href='trab6_bode/trab6_bode.html'><strong><span>Trabalho associado com Diagramas de Bode</span></strong></a><span>   (avaliação </span><mark><span>2025/1</span></mark><span>).</span></li></ol><p>&nbsp;</p></li></ol></li><li><p><a href='https://fpassold.github.io/Sinais_Sistemas/4_fourier/4_serie_fourier.html'><span>Série de Fourier</span></a><span>.</span></p><ol start='' ><li><p><span>Demo (com simulações) do MIT: </span><a href='https://controlsystemsacademy.com/0018/0018.html'><span>FOURIER SERIES DEMO</span></a><span> (acessado em 13/06/2024).</span></p></li><li><p><a href='http://www2.clarku.edu/~djoyce/trig/identities.html'><span>Sumário de Identidades Trigonométricas</span></a><span> (Clark University) (acessado em 13/06/2024).</span></p></li><li><p><span>Wikipédia: </span><a href='https://en.wikipedia.org/wiki/Fourier_series'><span>Série de Fourier</span></a><span>:</span></p><p><img src="Fourier_series_and_transform.gif" referrerpolicy="no-referrer" alt="Fourier_series_and_transform"></p></li><li><p><a href='trab_fourier/trab_fourier.html'><strong><span>Trabalho sobre Série de Fourier</span></strong></a><span>  (avaliação de </span><mark><span>2025/1</span></mark><span>).</span></p></li></ol></li></ol><hr /><h2 id='avaliações'><span>Avaliações:</span></h2><ul><li><a href='trabalho_1_2025_1.pdf'><strong><span>Trabalho 1</span></strong></a><span>: Transformada de Laplace, gráficos de funções (respostas temporais), uso de Transformada de Laplace. </span><!-- (trabalho_1_controle_1.pdf)--></br><span>Deadline: </span><mark><span>09/05/2025</span></mark><span> 🚩</span></li><li><del><strong><span>Trabalho 2</span></strong><span>: Diagramas de Bode, Resposta de Filtros, Série de Fourier (onda Quadrada), Simulando filtro passa-baixas aplicado sobre onda quadrada (</span><em><span>sendo editado</span></em><span> 🚧; Trabalho de 2024.1).</span></del>
 <!--→ [~~versão de 2022/2~~](trabalho_2.pdf), [==versão de 2024/1==](trabalho_2_2024_1.pdf) ← **Atenção:** *sendo revisadas as questões 3 e 4; questões 1 e 2 confirmadas* (@14/06/2024).--></li></ul><p><span>Outros:</span></p><ul><li>📒<span> ​Uso de </span><strong><span>Diary()</span></strong><span> no Matlab e edição de arquivos </span><strong><span>Markdown</span></strong><span>, ver </span><a href='https://fpassold.github.io/Controle_2/sugestao_uso_matlab_em_controle.html'><span>aqui</span></a><span>.</span></li></ul><hr /><p><font size="2"><span>🌊 </span><a href='https://fpassold.github.io/'><span>Fernando Passold</span></a><a href='mailto:fpassold@gmail.com'><span> 📬 </span></a><span>, </span><script language="JavaScript"><!-- Hide JavaScript...
 var LastUpdated = document.lastModified;
 document.writeln ("página criada em 01/08/2022; atualizada em " + LastUpdated); // End Hiding -->
-</script></font></p><p>&nbsp;</p></div>
+</script></font></p><p>&nbsp;</p></div></div>
 </body>
 </html>
