@@ -519,12 +519,160 @@ p.mathjax-block, .mathjax-block {
 .file-tree-node.active > .file-node-content    { color: #0070E0; }
 
 
- @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>Laboratório de Circuitos Sequenciais</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
 <div id='write'  class=''><h1 id='lab-circuitos-sequenciais'><span>Lab Circuitos Sequenciais</span></h1><p><span>267004 - EEE323 - LABORATÓRIO DE CIRCUITOS SEQUENCIAIS</span>
 <span>ENGENHARIA ELÉTRICA (B) (7831) - CAMPUS I - PASSO FUNDO</span>
-<span>Nível: III</span></p><h2 id='calendáriocronograma-previsto'><span>Calendário/Cronograma Previsto</span></h2><p><span>Obs.: A apostila contendo uma lista de experimentos pode ser baixada </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf'><span>[aqui]</span></a><span> (PDF de 80 páginas, 15 experimetntos; 18.5 Mbytes).</span></p><figure><table><thead><tr><th><span>No.</span></th><th><span>Data</span></th><th><span>Conteúdo Previsto</span></th></tr></thead><tbody><tr><td><span>1</span></td><td><span>29/04</span></td><td><span>Aula 1) Lab 1. </span><strong><span>Biestável RS Básico</span></strong><span> com portas NAND, </span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=7'><span>[7, 8]</span></a><span>.</span></td></tr><tr><td><span>2</span></td><td><span>06/05</span></td><td><span>Aula 2) Lab 3. </span><strong><span>Contador Assíncrono</span></strong><span> usando Flip-Flop tipo D (74LS74), </span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=15'><span>[15, 22]</span></a><span>.</span></td></tr><tr><td><span>3</span></td><td><span>13/05</span></td><td><span>Aula 3) Lab 4. </span><strong><span>Contador Assíncrono</span></strong><span> Módulo−n com Reset Manual</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=23'><span>[23, 26]</span></a><span>.</span><br><span>=&gt; Aval1: mostrar 100% funcionando.</span><!--3) Lab. Contador Assíncrono de módulo programável (uso de 74LS76 + 74LS85 =LS 11.914,00 Comparador de Magnitude).<br />=> Trabalho final da aula -- Aval1--></td></tr><tr><td><span>4</span></td><td><span>20/05</span></td><td><span>Aula 4) Lab 6. </span><strong><span>Divisor de frequência usando CI 74LS90</span></strong><span>: (contador decimal assíncrono)</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=29'><span>[29, 30]</span></a><span>.</span><br><span>=&gt; Aval2: mostrar 100% funcionando o divisor de frequência por 38.</span></td></tr><tr><td><span>5</span></td><td><span>27/05</span></td><td><span>Aula 5) Lab 8. Uso </span><strong><span>Contador Decimal Síncrono Bidirecional 74LS190</span></strong><span>;</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=35'><span>[35, 41]</span></a><span>.</span><br><span>Lab 9. </span><strong><span>Aplicação de Contador Síncrono 74190</span></strong><span>.</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=43'><span>[43, 46]</span></a><span>.</span></td></tr><tr><td><span>6</span></td><td><span>03/06</span></td><td><span>Aula 6) </span><a href='maq_sinc_2026_1.html'><strong><span>Projeto Máquina Síncrona</span></strong></a><span>.</span><br><span>Atenção: Apresentação do circuito: 03/06;</span><br><span>Relatório: até 24/06.</span></td></tr><tr><td><span>7</span></td><td><span>10/06</span></td><td><span>Aula 7) Lab 12. </span><strong><span>Contador Johnson</span></strong><span> usando Reg. de Deslocamento 74LS164 (Reg. Deslocamento de 8-bits).</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=61'><span>[61, 65]</span></a><span>.</span><br><span>=&gt; Aval3: mostrar 100% funcionando.</span></td></tr><tr><td><span>8</span></td><td><span>17/06</span></td><td><span>Aula 8) Lab 13. </span><strong><span>Contador em Anel bidirecional</span></strong><span> usando Registrador de Deslocamento 74194 (Reg. Deslocamento universal)</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=67'><span>[67, 72]</span></a><span>.</span><br><span>=&gt; Aval4: mostrar 100% funcionando.</span></td></tr><tr><td><span>9</span></td><td><span>24/06</span></td><td><span>Aula 9) Lab 14. </span><strong><span>Contador Johnson Bidirecional</span></strong><span> usando Registrador Bidirecional (usando CI 74LS194).</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=73'><span>[73, 76]</span></a><span>.</span><br><span>=&gt; Aval5: monstrar 100% funcionando.</span></td></tr><tr><td><span>10</span></td><td><span>01/07</span></td><td><strong><span>Prova Prática</span></strong><span> Final (individual).</span></td></tr></tbody></table></figure><p>&nbsp;</p><h2 id='avaliação'><span>Avaliação:</span></h2><ul><li><span>Circuitos Funcionando 100% (média aritmética de: [Aval1, Aval5]): 25%;</span></li><li><span>Projeto: 25%;</span></li><li><span>Prova Prática individual: 50%.</span></li><li><span>Sem prova de recuperação,</span></li><li><span>Sem exame (média final = 5,0).</span></li></ul><p>&nbsp;</p><hr /><p><span>Fernando Passold, em 26/04/2026.</span></p></div></div>
+<span>Nível: III</span></p><h2 id='calendáriocronograma-previsto'><span>Calendário/Cronograma Previsto</span></h2><p><span>Obs.: A apostila contendo uma lista de experimentos pode ser baixada </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf'><span>[aqui]</span></a><span> (PDF de 80 páginas, 15 experimetntos; 18.5 Mbytes).</span></p><figure><table><thead><tr><th><span>No.</span></th><th><span>Data</span></th><th><span>Conteúdo Previsto</span></th></tr></thead><tbody><tr><td><span>1</span></td><td><span>29/04</span></td><td><span>Aula 1) Lab 1. </span><strong><span>Biestável RS Básico</span></strong><span> com portas NAND, </span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=7'><span>[7, 8]</span></a><span>.</span></td></tr><tr><td><span>2</span></td><td><span>06/05</span></td><td><span>Aula 2) Lab 3. </span><strong><span>Contador Assíncrono</span></strong><span> usando Flip-Flop tipo D (74LS74), </span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=15'><span>[15, 22]</span></a><span>.</span></td></tr><tr><td><span>3</span></td><td><span>13/05</span></td><td><span>Aula 3) Lab 4. </span><strong><span>Contador Assíncrono</span></strong><span> Módulo−n com Reset Manual</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=23'><span>[23, 26]</span></a><span>.</span><br><span>=&gt; Aval1: mostrar 100% funcionando.</span><!--3) Lab. Contador Assíncrono de módulo programável (uso de 74LS76 + 74LS85 =LS 11.914,00 Comparador de Magnitude).<br />=> Trabalho final da aula -- Aval1--></td></tr><tr><td><span>4</span></td><td><span>20/05</span></td><td><span>Aula 4) Lab 6. </span><strong><span>Divisor de frequência usando CI 74LS90</span></strong><span>: (contador decimal assíncrono)</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=29'><span>[29, 30]</span></a><span>.</span><br><span>=&gt; Aval2: mostrar 100% funcionando o divisor de frequência por 38.</span></td></tr><tr><td><span>5</span></td><td><span>27/05</span></td><td><span>Aula 5) Lab 8. Uso </span><strong><span>Contador Decimal Síncrono Bidirecional 74LS190</span></strong><span>;</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=35'><span>[35, 41]</span></a><span>.</span><br><span>Lab 9. </span><strong><span>Aplicação de Contador Síncrono 74190</span></strong><span>.</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=43'><span>[43, 46]</span></a><span>.</span></td></tr><tr><td><span>6</span></td><td><span>03/06</span></td><td><span>Aula 6) </span><a href='maq_sinc_2026_1.html'><strong><span>Projeto Máquina Síncrona</span></strong></a><span>.</span><br><span>Atenção: Apresentação do circuito: 03/06;</span><br><span>Relatório: até 24/06.</span></td></tr><tr><td><span>7</span></td><td><span>10/06</span></td><td><span>Aula 7) Lab 12. </span><strong><span>Contador Johnson</span></strong><span> usando Reg. de Deslocamento 74LS164 (Reg. Deslocamento de 8-bits).</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=61'><span>[61, 65]</span></a><span>.</span><br><span>=&gt; Aval3: mostrar 100% funcionando.</span></td></tr><tr><td><span>8</span></td><td><span>17/06</span></td><td><span>Aula 8) Lab 13. </span><strong><span>Contador em Anel bidirecional</span></strong><span> usando Registrador de Deslocamento 74194 (Reg. Deslocamento universal)</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=67'><span>[67, 72]</span></a><span>.</span><br><span>=&gt; Aval4: mostrar 100% funcionando.</span></td></tr><tr><td><span>9</span></td><td><span>24/06</span></td><td><span>Aula 9) Lab 14. </span><strong><span>Contador Johnson Bidirecional</span></strong><span> usando Registrador Bidirecional (usando CI 74LS194).</span><br><span>páginas ➠ </span><a href='https://fpassold.github.io/Digitais_2/apostila_lab_digitais_2.pdf#page=73'><span>[73, 76]</span></a><span>.</span><br><span>=&gt; Aval5: monstrar 100% funcionando.</span></td></tr><tr><td><span>10</span></td><td><span>01/07</span></td><td><strong><span>Prova Prática</span></strong><span> Final (individual).</span></td></tr></tbody></table></figure><p>&nbsp;</p><h2 id='avaliação'><span>Avaliação:</span></h2><ul><li><span>Circuitos Funcionando 100% (média aritmética de: [Aval1, Aval5]): 25%;</span></li><li><span>Projeto: 25%;</span></li><li><span>Prova Prática individual: 50%.</span></li><li><span>Sem prova de recuperação,</span></li><li><span>Sem exame (média final = 5,0).</span></li></ul><p>&nbsp;</p><p><strong><span>Sobre a Prova Prática</span></strong><span>:</span></p><ul><li><span>Período disponível para avaliar </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.283ex" role="img" focusable="false" viewBox="0 -589 778 567" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0.05ex;"><defs><path id="MJX-5-TEX-N-2245" d="M55 388Q55 463 101 526T222 589Q260 589 296 571T362 526T421 474T484 430T554 411Q616 411 655 458T694 560Q694 572 698 580T708 589Q722 589 722 556Q722 482 677 419T562 356H554Q517 356 481 374T414 418T355 471T292 515T223 533Q179 533 145 508Q109 479 96 440T80 378T69 355Q55 355 55 388ZM56 236Q56 249 70 256H707Q722 248 722 236Q722 225 708 217L390 216H72Q56 221 56 236ZM56 42Q56 57 72 62H708Q722 52 722 42Q722 30 707 22H70Q56 29 56 42Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2245" xlink:href="#MJX-5-TEX-N-2245"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>≅</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\cong</script><span> 20 alunos: das 19h20 até 22h20, ou </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.283ex" role="img" focusable="false" viewBox="0 -589 778 567" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0.05ex;"><defs><path id="MJX-5-TEX-N-2245" d="M55 388Q55 463 101 526T222 589Q260 589 296 571T362 526T421 474T484 430T554 411Q616 411 655 458T694 560Q694 572 698 580T708 589Q722 589 722 556Q722 482 677 419T562 356H554Q517 356 481 374T414 418T355 471T292 515T223 533Q179 533 145 508Q109 479 96 440T80 378T69 355Q55 355 55 388ZM56 236Q56 249 70 256H707Q722 248 722 236Q722 225 708 217L390 216H72Q56 221 56 236ZM56 42Q56 57 72 62H708Q722 52 722 42Q722 30 707 22H70Q56 29 56 42Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2245" xlink:href="#MJX-5-TEX-N-2245"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>≅</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\cong</script><span> 3 horas (180 minutos);</span></li><li><span>A prova prática é individual e estão sendo consideradas 10 bancadas 100% funcionais;</span></li><li><span>A turma de </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.283ex" role="img" focusable="false" viewBox="0 -589 778 567" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0.05ex;"><defs><path id="MJX-5-TEX-N-2245" d="M55 388Q55 463 101 526T222 589Q260 589 296 571T362 526T421 474T484 430T554 411Q616 411 655 458T694 560Q694 572 698 580T708 589Q722 589 722 556Q722 482 677 419T562 356H554Q517 356 481 374T414 418T355 471T292 515T223 533Q179 533 145 508Q109 479 96 440T80 378T69 355Q55 355 55 388ZM56 236Q56 249 70 256H707Q722 248 722 236Q722 225 708 217L390 216H72Q56 221 56 236ZM56 42Q56 57 72 62H708Q722 52 722 42Q722 30 707 22H70Q56 29 56 42Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2245" xlink:href="#MJX-5-TEX-N-2245"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>≅</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\cong</script><span> 20 estudantes, será dividida em 2 grupos de até 10 estudantes. Cada grupo será sorteado apenas no início das aulas às 19h20.</span></li><li><span>Cada estudante realiza sua prova prática numa bancada individual dentro de um período máximo de 90 minutos. </span></li><li><span>Cada estudante pode consultar exclusivamente seu próprio material. Consultas externas (conversas) são vetadas ou podem implicar em anulação da prova.</span></li><li><span>Considerar que os últimos 10 minutos finalizando o período previsto para realização da prova prática fica reservado para apresentar ao professor o circuito funcionando e responder a no mínimo 3 de até 5 perguntas sobre o circuito realizado.</span></li><li><span>Esta prova implica eventual projeto pequeno e simples (não se trata de repetir exatamente algum experimento já realizado). Este projeto compõe no máximo 50% da avaliação. Os outros 50% dependem do circuito funcionar e da resposta correta das questões realizadas pelo professor.</span></li><li><span>Estudante que abandonar a prova SEM apresentar circuito funcionando terá sua prova anulada (zerada).</span></li></ul><p>&nbsp;</p><hr /><p><span>Fernando Passold, em 26/04/2026.</span></p></div></div>
 </body>
 </html>
