@@ -1,0 +1,2192 @@
+t_fim=5;
+f=[164.81  261.63  392.00];
+size(f)
+ans =
+     1     3
+f=[164.81,  261.63,  392.00];
+size(f)
+ans =
+     1     3
+fs=48E3;
+T=1/fs;
+pontos=t_fim/T
+pontos =
+      240000
+y=zeros(pontos,1);
+size(y)
+ans =
+      240000           1
+edit sintese.m
+t=[0:T:t_fim];
+size(t)
+ans =
+           1      240001
+t=[0:T:t_fim-T];
+size(t)
+ans =
+           1      240000
+size(y)
+ans =
+      240000           1
+t=t';
+size(t)
+ans =
+      240000           1
+size(f)
+ans =
+     1     3
+help for
+ <strong>for</strong>    Repeat statements a specific number of times.
+    The general form of a <strong>for</strong> statement is:
+  
+       <strong>for</strong> variable = expr, statement, ..., statement END
+  
+    The columns of the expression are stored one at a time in
+    the variable and then the following statements, up to the
+    END, are executed. The expression is often of the form X:Y,
+    in which case its columns are simply scalars. Some examples
+    (assume N has already been assigned a value).
+  
+         for R = 1:N
+             for C = 1:N
+                 A(R,C) = 1/(R+C-1);
+             end
+         end
+  
+    Step S with increments of -0.1
+         for S = 1.0: -0.1: 0.0, do_some_task(S), end
+ 
+    Set E to the unit N-vectors
+         for E = eye(N), do_some_task(E), end
+ 
+    Long loops are more memory efficient when the colon expression appears
+    in the <strong>for</strong> statement since the index vector is never created.
+ 
+    The BREAK statement can be used to terminate the loop prematurely.
+ 
+    See also <a href="matlab:help parfor">parfor</a>, <a href="matlab:help if">if</a>, <a href="matlab:help while">while</a>, <a href="matlab:help switch">switch</a>, <a href="matlab:help break">break</a>, <a href="matlab:help continue">continue</a>, <a href="matlab:help end">end</a>, <a href="matlab:help colon">colon</a>.
+
+    <a href="matlab:doc for">Documentation for for</a>
+
+size(y)
+ans =
+      240000           1
+length(f)
+ans =
+     3
+maior_freq=max(f)
+maior_freq =
+   392
+menor_freq=min(f)
+menor_freq =
+       164.81
+intervalo_tempo=10*(1/menor_freq)
+intervalo_tempo =
+     0.060676
+intervalo_tempo=6*(1/menor_freq)
+intervalo_tempo =
+     0.036406
+amotras=intervalo_tempo/T
+amotras =
+       1747.5
+amotras=int(intervalo_tempo/T)
+{Undefined function 'int' for input arguments of
+type 'double'.} 
+amotras=round(intervalo_tempo/T)
+amotras =
+        1747
+size(t)
+ans =
+      240000           1
+sintese
+{Unrecognized function or variable 'yy'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 19)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',19,0)">line 19</a>)
+        y(tt, freq+1) = y(tt,freq+1) + yy(tt,
+        freq); % somar amplitudes das notas} 
+sintese
+intervalo_tempo =
+     0.036406
+{Unrecognized function or variable 'amostras'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 28)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',28,0)">line 28</a>)
+plot( t(1:amostras,1), y(1:amostras, 1));} 
+amostras
+{Unrecognized function or variable 'amostras'.} 
+amotras
+amotras =
+        1747
+sintese
+intervalo_tempo =
+     0.036406
+{Index in position 2 exceeds array bounds (must
+not exceed 1).
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 31)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',31,0)">line 31</a>)
+    plot( t(1:amostras, freq), y(1:amostras,
+    freq));} 
+close all
+sintese
+intervalo_tempo =
+     0.036406
+ylim([-1 1]);
+y(1:10,:)
+ans =
+  Columns 1 through 3
+     -0.92978     -0.72897  -2.6654e-13
+     -0.92978     -0.72897  -2.6654e-13
+     -0.92978     -0.72897  -2.6654e-13
+     -0.92978     -0.72897  -2.6654e-13
+     -0.92978     -0.72897  -2.6654e-13
+     -0.92978     -0.72897  -2.6654e-13
+     -0.92978     -0.72897  -2.6654e-13
+     -0.92978     -0.72897  -2.6654e-13
+     -0.92978     -0.72897  -2.6654e-13
+     -0.92978     -0.72897  -2.6654e-13
+  Column 4
+  -2.6654e-13
+  -2.6654e-13
+  -2.6654e-13
+  -2.6654e-13
+  -2.6654e-13
+  -2.6654e-13
+  -2.6654e-13
+  -2.6654e-13
+  -2.6654e-13
+  -2.6654e-13
+
+size(t)
+ans =
+      240000           1
+close all
+sintese
+intervalo_tempo =
+     0.036406
+num2str(freq(1))
+ans =
+    '4'
+num2str(f(1))
+ans =
+    '164.81'
+sintese
+msg =
+    '164.81'
+{Unrecognized function or variable 'legenda'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 6)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',6,0)">line 6</a>)
+    legenda = [legenda, aux];} 
+sintese
+msg =
+    '164.81'
+{Unable to perform assignment because the indices on the
+left side are not compatible with the size of the right
+side.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 6)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',6,0)">line 6</a>)
+    legenda(freq) = msg;} 
+msg
+msg =
+    '164.81'
+freq
+freq =
+     1
+legenda
+{Unrecognized function or variable 'legenda'.} 
+sintese
+intervalo_tempo =
+     0.036406
+{Unrecognized function or variable 'legenda'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 39)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',39,0)">line 39</a>)
+lengend(legenda);} 
+legend(1)='a';
+legend(2)='b';
+legend
+legend =
+    'ab'
+clear legend
+sintese
+intervalo_tempo =
+     0.036406
+{Unrecognized function or variable 'legenda'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 43)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',43,0)">line 43</a>)
+lengend(legenda);} 
+maximo=max(y(:, length(f)+1))
+maximo =
+       2.9998
+min(y(:, length(f)+1))
+ans =
+      -2.9979
+minimo=min(y(:, length(f)+1))
+minimo =
+      -2.9979
+abs(minimo)
+ans =
+       2.9979
+yy=y(:, length(f)+1)*(1/maximo);
+help sound
+ <strong>sound</strong> Play vector as sound.
+    <strong>sound</strong>(Y,FS) sends the signal in vector Y (with sample frequency
+    FS) out to the speaker on platforms that support sound. Values in
+    Y are assumed to be in the range -1.0 <= y <= 1.0. Values outside
+    that range are clipped.  Stereo sounds are played, on platforms
+    that support it, when Y is an N-by-2 matrix.
+ 
+    <strong>sound</strong>(Y) plays the sound at the default sample rate of 8192 Hz.
+ 
+    <strong>sound</strong>(Y,FS,BITS) plays the sound using BITS bits/sample if
+    possible.  Most platforms support BITS=8 or 16.
+ 
+    Example:
+      load handel
+      sound(y,Fs)
+    You should hear a snippet of Handel's Hallelujah Chorus.
+ 
+    See also <a href="matlab:help soundsc">soundsc</a>, <a href="matlab:help audioplayer">audioplayer</a>.
+
+    <a href="matlab:doc sound">Documentation for sound</a>
+
+sintese
+intervalo_tempo =
+     0.036406
+{Unrecognized function or variable 'legenda'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 43)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',43,0)">line 43</a>)
+lengend(legenda);} 
+close al
+{Error using close
+Specified window does not exist.} 
+close all
+sintese
+intervalo_tempo =
+     0.036406
+sintese
+intervalo_tempo =
+     0.036406
+sintese
+intervalo_tempo =
+     0.022933
+legenda=["1"; "22"; "333"]
+legenda = 
+  3×1 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+    "1"
+    "22"
+    "333"
+size(legenda)
+ans =
+     3     1
+legenda(2)
+ans = 
+    "22"
+msg="1";
+legenda(1)=msg;
+msg="22";
+legenda(2)=msg
+legenda = 
+  3×1 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+    "1"
+    "22"
+    "333"
+length(f)
+ans =
+     3
+sintese
+msg =
+    '659.26'
+msg =
+    '659.26'
+msg =
+    '659.26'
+legenda = 
+  4×1 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+    "659.26"
+    "659.26"
+    "659.26"
+    "Composição Final"
+intervalo_tempo =
+     0.022933
+help legend
+  <strong>legend</strong> Create legend
+  
+  <strong>legend</strong> creates a legend with descriptive labels for each plotted data
+  series. For the labels, the legend uses the text from the DisplayName
+  properties of the data series. If the DisplayName property is empty, then
+  the legend uses a label of the form 'dataN'. The legend automatically
+  updates when you add or delete data series from the axes. This command
+  creates a legend for the current axes or chart returned by gca. If the
+  current axes is empty, then the legend is empty. If axes do not exist,
+  then this command creates one.
+ 
+  <strong>legend</strong>(label1,...,labelN) sets the labels. Specify the labels as a
+  list of character vectors, such as legend('Jan','Feb','Mar').
+ 
+  <strong>legend</strong>(labels) sets the labels using a cell array of character vectors or
+  a character matrix, such as legend({'Jan','Feb','Mar'}).
+ 
+  <strong>legend</strong>(subset,__) only includes items in the legend for the data series
+  listed in subset. Specify subset as a vector of graphics objects.
+ 
+  <strong>legend</strong>(target,__) uses the axes, polar axes, or chart specified by target
+  instead of the current axes or chart. Specify the target as the first
+  input argument. 
+ 
+  <strong>legend</strong>(__,'Location',lcn) sets the legend location. For example,
+  'Location','northeast' positions the legend in the upper right corner of
+  the axes. Specify the location after other input arguments.
+ 
+  <strong>legend</strong>(__,'Orientation',ornt), where ornt is 'horizontal', displays the
+  legend items side-by-side. The default for ornt is 'vertical', which
+  stacks the items vertically. 
+ 
+  <strong>legend</strong>(__,Name,Value) sets legend properties using one or more name-value
+  pair arguments. When setting properties, include the labels in a cell
+  array, such as legend({'A','B'},'FontSize',12). If you do not want to
+  specify labels, then include an empty cell array, such as
+  legend({},'FontSize',12). Reissuing the legend command retains
+  modifications that you previously specified.
+ 
+  <strong>legend</strong>(bkgd), where bkgd is 'boxoff', removes the legend background and
+  outline. The default for bkgd is 'boxon', which displays the legend
+  background and outline. 
+ 
+  lgd = <strong>legend</strong>(__) returns the Legend object. Use lgd to query and set
+  properties of the legend after it is created. For a list of properties,
+  see Legend. 
+ 
+  [lgd,icons,plots,txt] = <strong>legend</strong>(__) additionally returns the objects used
+  to create the legend icons, the objects plotted in the graph, and an
+  array of the label text. This syntax is not recommended. Some
+  functionality is not supported. Instead, use the lgd = legend(__) syntax
+  to return the Legend object and set Legend Properties.
+ 
+  <strong>legend</strong>(vsbl) controls the visibility of the legend, where vsbl is 'hide',
+  'show', or 'toggle'. 
+ 
+  <strong>legend</strong>('off') deletes the legend.
+ 
+   
+      Examples:
+          x = 0:.2:12;
+          Y = [besselj(1,x); besselj(2,x); besselj(3,x)];
+          plot(x,Y);
+          legend('First','Second','Third','Location','NorthEastOutside')
+   
+          b = bar(rand(10,5),'stacked'); 
+          hold on
+          ln = plot(1:10,5*rand(10,1),'-o'); 
+          hold off
+          legend([b,ln],'Carrots','Peas','Peppers','Green Beans',...
+                    'Cucumbers','Eggplant')
+
+    <a href="matlab:doc legend">Documentation for legend</a>
+
+close all
+sintese
+msg =
+    '659.26'
+msg =
+    '261.63'
+msg =
+    '392'
+intervalo_tempo =
+     0.022933
+{Unrecognized function or variable 'lengend'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 59)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',59,0)">line 59</a>)
+lengend(legenda);} 
+legend(legenda);
+intervalo_tempo
+intervalo_tempo =
+     0.022933
+close all
+sintese
+msg =
+    '659.26'
+msg =
+    '261.63'
+msg =
+    '392'
+intervalo_tempo =
+     0.022933
+close all
+sintese
+intervalo_tempo =
+     0.022933
+close all
+sintese
+intervalo_tempo =
+     0.022933
+close all
+sintese
+help fplot
+ <strong>fplot</strong>   Plot 2-D function
+    <strong>fplot</strong>(FUN) plots the function FUN between the limits of the current
+    axes, with a default of [-5 5].
+ 
+    <strong>fplot</strong>(FUN,LIMS) plots the function FUN between the x-axis limits
+    specified by LIMS = [XMIN XMAX]. 
+ 
+    <strong>fplot</strong>(...,'LineSpec') plots with the given line specification.
+ 
+    <strong>fplot</strong>(X,Y,LIMS) plots the parameterized curve with coordinates
+    X(T), Y(T) for T between the values specified by LIMS = [TMIN TMAX].
+ 
+    H = <strong>fplot</strong>(...) returns a handle to the function line object created by <strong>fplot</strong>.
+ 
+    <strong>fplot</strong>(AX,...) plots into the axes AX instead of the current axes.
+ 
+    Examples:
+        fplot(@sin)
+        fplot(@(x) x.^2.*sin(1./x),[-1,1])
+        fplot(@(x) sin(1./x), [0 0.1])
+ 
+    If your function cannot be evaluated for multiple x values at once,
+    you will get a warning and somewhat reduced speed:
+        f = @(x,n) abs(exp(-1j*x*(0:n-1))*ones(n,1));
+        fplot(@(x) f(x,10),[0 2*pi])
+ 
+    See also <a href="matlab:help fplot3">fplot3</a>, <a href="matlab:help fsurf">fsurf</a>, <a href="matlab:help fcontour">fcontour</a>, <a href="matlab:help fimplicit">fimplicit</a>, <a href="matlab:help plot">plot</a>, <a href="matlab:help function_handle">function_handle</a>.
+
+    <a href="matlab:doc fplot">Documentation for fplot</a>
+
+fplot(@(x) exp(-2*x), [0 2])
+fplot(@(x) exp(-x/2), [0 2])
+fplot(@(x) exp(-x/2), [0 2])
+fplot(@(x) exp(-2*x), [0 2])
+close all
+clear all
+sintese
+{Unable to perform assignment because the indices on the left side are not compatible with the
+size of the right side.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 22)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,0)">line 22</a>)
+    legenda(freq) = [ 'f(' msg1 ') = ' msg2 ' Hz'];} 
+freq
+freq =
+     1
+msg1
+msg1 =
+    '1'
+msg2
+msg2 =
+    '659.26'
+clear all
+sintese
+{Unable to perform assignment because the size of the left side is 1-by-16 and the size of the
+right side is 1-by-13.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 22)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,0)">line 22</a>)
+    legenda(freq,:) = [ 'f(' msg1 ') = ' msg2 ' Hz'];} 
+teste=[ 'f(' msg1 ') = ' msg2 ' Hz']
+teste =
+    'f(3) = 392 Hz'
+legenda
+legenda =
+  2×16 <a href="matlab:helpPopup char" style="font-weight:bold">char</a> array
+    'f(1) = 659.26 Hz'
+    'f(2) = 261.63 Hz'
+clear legenda
+clear all
+sintese
+{Unable to perform assignment because the indices on the left side are not compatible with the
+size of the right side.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 22)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,0)">line 22</a>)
+    legenda(freq) = [ 'f(' msg1 ') = ' msg2 ' Hz'];} 
+freq
+freq =
+     1
+legenda
+{Unrecognized function or variable 'legenda'.} 
+clear all;
+sintese
+{Error: <a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,20)">File: sintese.m Line: 22 Column: 20
+</a>Invalid expression. When calling a function or indexing a variable, use parentheses. Otherwise,
+check for mismatched delimiters.} 
+clear all
+sintese
+{Unable to perform assignment because the size of the left side is 1-by-16 and the size of the
+right side is 1-by-13.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 22)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,0)">line 22</a>)
+    legenda(freq,:) = [ 'f(' msg1 ') = ' msg2 ' Hz'];} 
+freq
+freq =
+     3
+legenda
+legenda =
+  2×16 <a href="matlab:helpPopup char" style="font-weight:bold">char</a> array
+    'f(1) = 659.26 Hz'
+    'f(2) = 261.63 Hz'
+msg2=string(f(freq))
+msg2 = 
+    "392"
+clear all
+sintese
+Constante de decaimento, tau:
+tau =
+         1.25
+[Warning: Ignoring extra legend entries.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend>process_inputs', '/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m', 594)" style="font-weight:bold">legend>process_inputs</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m',594,0)">line 594</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend>make_legend', '/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m', 335)" style="font-weight:bold">legend>make_legend</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m',335,0)">line 335</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend', '/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m', 279)" style="font-weight:bold">legend</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m',279,0)">line 279</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 70)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',70,0)">line 70</a>)] 
+legenda
+legenda = 
+  3×5 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+    "f"    "Composição Final"    ") = "    "659.26"    " Hz"
+    "f"    "2"                   ") = "    "261.63"    " Hz"
+    "f"    "3"                   ") = "    "392"       " Hz"
+clear all
+close all
+sintese
+Constante de decaimento, tau:
+tau =
+         1.25
+[Warning: Ignoring extra legend entries.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend>process_inputs', '/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m', 594)" style="font-weight:bold">legend>process_inputs</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m',594,0)">line 594</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend>make_legend', '/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m', 335)" style="font-weight:bold">legend>make_legend</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m',335,0)">line 335</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend', '/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m', 279)" style="font-weight:bold">legend</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/scribe/legend.m',279,0)">line 279</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 70)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',70,0)">line 70</a>)] 
+legenda
+legenda = 
+  3×5 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+    "f"    "Composição Final"    ") = "    "659.26"    " Hz"
+    "f"    "2"                   ") = "    "261.63"    " Hz"
+    "f"    "3"                   ") = "    "392"       " Hz"
+clear all
+sintese
+{Error: <a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,34)">File: sintese.m Line: 22 Column: 34
+</a>Invalid expression. Check for missing multiplication operator, missing or unbalanced delimiters,
+or other syntax error. To construct matrices, use brackets instead of parentheses.} 
+clear all
+sintese
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('plus')" style="font-weight:bold"> + </a>
+Matrix dimensions must agree.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 22)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,0)">line 22</a>)
+    legenda(freq,:) = 'f' + msg1 + ') = ' + msg2 + 'Hz';} 
+legenda
+{Unrecognized function or variable 'legenda'.} 
+frreq
+{Unrecognized function or variable 'frreq'.} 
+freq
+freq =
+     1
+clear all; sintese
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('plus')" style="font-weight:bold"> + </a>
+Matrix dimensions must agree.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 22)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,0)">line 22</a>)
+    legenda(freq) = 'f' + msg1 + ') = ' + msg2 + 'Hz';} 
+clear all; sintese
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('plus')" style="font-weight:bold"> + </a>
+Matrix dimensions must agree.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 22)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,0)">line 22</a>)
+    legenda(freq) = ['f' + msg1 + ') = ' + msg2 + 'Hz'];} 
+clear all; sintese
+{Unable to perform assignment because the indices on the left side are not compatible with the
+size of the right side.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 22)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,0)">line 22</a>)
+    legenda(freq) = ['f' msg1 ') = ' msg2 ' Hz'];} 
+freq
+freq =
+     1
+clear all; sintese
+{Error: <a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,30)">File: sintese.m Line: 22 Column: 30
+</a>Invalid expression. Check for missing multiplication operator, missing or unbalanced
+delimiters, or other syntax error. To construct matrices, use brackets instead of
+parentheses.} 
+clear all; sintese
+{Unable to perform assignment because the indices on the left side are not compatible with the
+size of the right side.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 22)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',22,0)">line 22</a>)
+    legenda(freq) = char('f', msg1, ') = ', msg2, ' Hz');} 
+freq
+freq =
+     1
+clear all
+chr = 'Greetings, friend'
+chr =
+    'Greetings, friend'
+str = string(chr)
+str = 
+    "Greetings, friend"
+clear all; sintese
+msg3 =
+    'f1) = 659.26 Hz'
+msg3 =
+    'f2) = 261.63 Hz'
+msg3 =
+    'f3) = 392 Hz'
+Constante de decaimento, tau:
+tau =
+         1.25
+close all
+clear all; sintese
+msg3 =
+    'f(1) = 659.26 Hz'
+msg3 =
+    'f(2) = 261.63 Hz'
+msg3 =
+    'f(3) = 392 Hz'
+Constante de decaimento, tau:
+tau =
+         1.25
+legenda
+legenda = 
+  1×4 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+    "f(1) = 659.26 Hz"    "f(2) = 261.63 Hz"    "f(3) = 392 Hz"    "Composição Final"
+4/5
+ans =
+          0.8
+clear all; close all
+fplot(@(x) exp(-x), [0 2])
+tau=5/4
+tau =
+         1.25
+fplot(@(x) exp(-x/tau), [0 5])
+sintese
+Constante de decaimento:
+tau =
+         1.25
+close all
+sintese
+Constante de decaimento:
+tau =
+         1.25
+sintese
+Constante de decaimento:
+tau =
+         1.25
+sintese
+Constante de decaimento:
+tau =
+         1.25
+sintese
+Constante de decaimento:
+tau =
+         1.25
+sintese
+Constante de decaimento:
+tau =
+     1
+sintese
+Constante de decaimento:
+tau =
+     1
+close all
+sintese
+maximo =
+       3.2959
+minimo =
+      -3.2959
+Constante de decaimento:
+tau =
+     1
+plot(t,yy)
+close all
+fplot(@(x) 1-exp(-x/tau), [0 5])
+fplot(@(x) 2-exp(-x/tau), [0 5])
+fplot(@(x) -exp(-x/tau), [0 5])
+help plot
+ <strong>plot</strong>   Linear plot. 
+    <strong>plot</strong>(X,Y) plots vector Y versus vector X. If X or Y is a matrix,
+    then the vector is plotted versus the rows or columns of the matrix,
+    whichever line up.  If X is a scalar and Y is a vector, disconnected
+    line objects are created and plotted as discrete points vertically at
+    X.
+ 
+    <strong>plot</strong>(Y) plots the columns of Y versus their index.
+    If Y is complex, <strong>plot</strong>(Y) is equivalent to <strong>plot</strong>(real(Y),imag(Y)).
+    In all other uses of <strong>plot</strong>, the imaginary part is ignored.
+ 
+    Various line types, plot symbols and colors may be obtained with
+    <strong>plot</strong>(X,Y,S) where S is a character string made from one element
+    from any or all the following 3 columns:
+ 
+           b     blue          .     point              -     solid
+           g     green         o     circle             :     dotted
+           r     red           x     x-mark             -.    dashdot 
+           c     cyan          +     plus               --    dashed   
+           m     magenta       *     star             (none)  no line
+           y     yellow        s     square
+           k     black         d     diamond
+           w     white         v     triangle (down)
+                               ^     triangle (up)
+                               <     triangle (left)
+                               >     triangle (right)
+                               p     pentagram
+                               h     hexagram
+                          
+    For example, <strong>plot</strong>(X,Y,'c+:') plots a cyan dotted line with a plus 
+    at each data point; <strong>plot</strong>(X,Y,'bd') plots blue diamond at each data 
+    point but does not draw any line.
+ 
+    <strong>plot</strong>(X1,Y1,S1,X2,Y2,S2,X3,Y3,S3,...) combines the plots defined by
+    the (X,Y,S) triples, where the X's and Y's are vectors or matrices 
+    and the S's are strings.  
+ 
+    For example, <strong>plot</strong>(X,Y,'y-',X,Y,'go') plots the data twice, with a
+    solid yellow line interpolating green circles at the data points.
+ 
+    The <strong>plot</strong> command, if no color is specified, makes automatic use of
+    the colors specified by the axes ColorOrder property.  By default,
+    <strong>plot</strong> cycles through the colors in the ColorOrder property.  For
+    monochrome systems, <strong>plot</strong> cycles over the axes LineStyleOrder property.
+ 
+    Note that RGB colors in the ColorOrder property may differ from
+    similarly-named colors in the (X,Y,S) triples.  For example, the 
+    second axes ColorOrder property is medium green with RGB [0 .5 0],
+    while <strong>plot</strong>(X,Y,'g') plots a green line with RGB [0 1 0].
+ 
+    If you do not specify a marker type, <strong>plot</strong> uses no marker. 
+    If you do not specify a line style, <strong>plot</strong> uses a solid line.
+ 
+    <strong>plot</strong>(AX,...) plots into the axes with handle AX.
+ 
+    <strong>plot</strong> returns a column vector of handles to lineseries objects, one
+    handle per plotted line. 
+ 
+    The X,Y pairs, or X,Y,S triples, can be followed by 
+    parameter/value pairs to specify additional properties 
+    of the lines. For example, <strong>plot</strong>(X,Y,'LineWidth',2,'Color',[.6 0 0]) 
+    will create a plot with a dark red line width of 2 points.
+ 
+    Example
+       x = -pi:pi/10:pi;
+       y = tan(sin(x)) - sin(tan(x));
+       plot(x,y,'--rs','LineWidth',2,...
+                       'MarkerEdgeColor','k',...
+                       'MarkerFaceColor','g',...
+                       'MarkerSize',10)
+ 
+    See also <a href="matlab:help plottools">plottools</a>, <a href="matlab:help semilogx">semilogx</a>, <a href="matlab:help semilogy">semilogy</a>, <a href="matlab:help loglog">loglog</a>, <a href="matlab:help plotyy">plotyy</a>, <a href="matlab:help plot3">plot3</a>, <a href="matlab:help grid">grid</a>,
+    <a href="matlab:help title">title</a>, <a href="matlab:help xlabel">xlabel</a>, <a href="matlab:help ylabel">ylabel</a>, <a href="matlab:help axis">axis</a>, <a href="matlab:help axes">axes</a>, <a href="matlab:help hold">hold</a>, <a href="matlab:help legend">legend</a>, <a href="matlab:help subplot">subplot</a>, <a href="matlab:help scatter">scatter</a>.
+
+    <a href="matlab:doc plot">Documentation for plot</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('plot')">Other functions named plot</a>
+
+close all
+sintese
+maximo =
+       3.2959
+minimo =
+      -3.2959
+Constante de decaimento:
+tau =
+     1
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m', 89)" style="font-weight:bold">sintese</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',89,0)">line 89</a>)} 
+{Operation terminated by user} 
+close all
+sintese
+{Error: <a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',86,10)">File: sintese.m Line: 86 Column: 10
+</a>Invalid expression. When calling a function or indexing a variable, use parentheses.
+Otherwise, check for mismatched delimiters.} 
+sintese
+{Error: <a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese.m',86,11)">File: sintese.m Line: 86 Column: 11
+</a>Invalid expression. When calling a function or indexing a variable, use parentheses.
+Otherwise, check for mismatched delimiters.} 
+sintese
+maximo =
+       3.2959
+minimo =
+      -3.2959
+Constante de decaimento:
+tau =
+     1
+sintese
+maximo =
+       3.2959
+minimo =
+      -3.2959
+Constante de decaimento:
+tau =
+     1
+close all
+sintese
+maximo =
+       3.2959
+minimo =
+      -3.2959
+Constante de decaimento:
+tau =
+     1
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+sintese
+maximo =
+       3.2959
+minimo =
+      -3.2959
+Constante de decaimento:
+tau =
+     1
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+close all
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sintese
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+maximo =
+       3.2959
+minimo =
+      -3.2959
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+f
+f =
+       659.26       261.63          392
+sintese
+Frequências das notas:
+f =
+       659.26       261.63          392
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       2.9963
+minimo =
+      -2.9963
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+f
+f =
+       659.26       261.63          392
+size(f)
+ans =
+     1     3
+f= f + 2*f
+f =
+       1977.8       784.89         1176
+f=[659.26  261.63  392.00];
+size(f)
+ans =
+     1     3
+sintese2
+Frequências das notas:
+f =
+       659.26       261.63          392
+f =
+  Columns 1 through 7
+       659.26       261.63          392       5274.1         2093         3136        42193
+  Columns 8 through 12
+        16744        25088   3.3754e+05   1.3395e+05    2.007e+05
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       9.7603
+minimo =
+      -9.7534
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Frequências sintetizadas:
+f =
+       659.26       261.63          392       5274.1         2093         3136
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       5.9114
+minimo =
+      -5.9028
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+f(1:3)*2
+ans =
+       1318.5       523.26          784
+h
+h =
+     3
+componente
+componente =
+     3
+fim
+fim =
+     3
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências sintetizadas:
+f =
+  Columns 1 through 7
+       659.26       261.63          392         2637       1046.5         1568       3955.6
+  Columns 8 through 12
+       1569.8         2352       5274.1         2093         3136
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+        8.964
+minimo =
+      -8.9593
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+f(1:3)*2
+ans =
+       1318.5       523.26          784
+f(1:3)*4
+ans =
+         2637       1046.5         1568
+f(1:3)*8
+ans =
+       5274.1         2093         3136
+close all
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências sintetizadas:
+f =
+  Columns 1 through 7
+       659.26       261.63          392       1318.5       523.26          784         2637
+  Columns 8 through 12
+       1046.5         1568       5274.1         2093         3136
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       7.4719
+minimo =
+      -7.4216
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+f(1:3)*2
+ans =
+       1318.5       523.26          784
+f(1:3)*4
+ans =
+         2637       1046.5         1568
+f(1:3)*8
+ans =
+       5274.1         2093         3136
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+help bar
+ <strong>bar</strong> Bar graph.
+    <strong>bar</strong>(X,Y) draws the columns of the M-by-N matrix Y as M groups of N
+    vertical bars.  The vector X must not have duplicate values.
+ 
+    <strong>bar</strong>(Y) uses the default value of X=1:M.  For vector inputs, <strong>bar</strong>(X,Y)
+    or <strong>bar</strong>(Y) draws LENGTH(Y) bars.  The colors are set by the colormap.
+ 
+    <strong>bar</strong>(X,Y,WIDTH) or <strong>bar</strong>(Y,WIDTH) specifies the width of the bars. Values
+    of WIDTH > 1, produce overlapped bars.  The default value is WIDTH=0.8
+ 
+    <strong>bar</strong>(...,'grouped') produces the default vertical grouped bar chart.
+ 
+    <strong>bar</strong>(...,'stacked') produces a vertical stacked bar chart.
+ 
+    <strong>bar</strong>(...,COLOR) uses the line color specified.  Specify the color as one of
+    these values: 'r', 'g', 'b', 'y', 'm', 'c', 'k', or 'w'.
+ 
+    <strong>bar</strong>(AX,...) plots into AX instead of GCA.
+ 
+    H = <strong>bar</strong>(...) returns a vector of handles to Bar objects.
+ 
+    Examples: subplot(3,1,1), bar(rand(10,5),'stacked')
+              subplot(3,1,2), bar(0:.25:1,rand(5),1)
+              subplot(3,1,3), bar(rand(2,3),.75,'grouped')
+ 
+    See also <a href="matlab:help histogram">histogram</a>, <a href="matlab:help plot">plot</a>, <a href="matlab:help barh">barh</a>, <a href="matlab:help bar3">bar3</a>, <a href="matlab:help bar3h">bar3h</a>.
+
+    <a href="matlab:doc bar">Documentation for bar</a>
+
+figure; bar(f)
+stem(f)
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências sintetizadas:
+f =
+  Columns 1 through 7
+       659.26       261.63          392       1318.5       523.26          784         2637
+  Columns 8 through 12
+       1046.5         1568       5274.1         2093         3136
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ones')" style="font-weight:bold">ones</a>
+Size inputs must be scalar.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese2', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese2.m', 28)" style="font-weight:bold">sintese2</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese2.m',28,0)">line 28</a>)
+y=ones(f,1);} 
+y
+{Unrecognized function or variable 'y'.} 
+f
+f =
+  Columns 1 through 7
+       659.26       261.63          392       1318.5       523.26          784         2637
+  Columns 8 through 12
+       1046.5         1568       5274.1         2093         3136
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências sintetizadas:
+f =
+  Columns 1 through 7
+       659.26       261.63          392       1318.5       523.26          784         2637
+  Columns 8 through 12
+       1046.5         1568       5274.1         2093         3136
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       7.4719
+minimo =
+      -7.4216
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+figure;
+fplot(@(x) -log(-x/tau), [0 5])
+fplot(@(x) log(-x/tau), [0 5])
+fplot(@(x) exp(-x/tau), [0 5])
+fplot(@(x) 1-exp(-x/tau), [0 5])
+fplot(@(x) exp(-x/tau), [0 5])
+fplot(@(x) exp(-x/tau)-1, [0 5])
+fplot(@(x) ln(-x/tau)-1, [0 5])
+[Warning: Error updating FunctionLine.
+
+ The following error was reported evaluating the function in FunctionLine update: Undefined
+ function 'ln' for input arguments of type 'double'.
+] 
+fplot(@(x) log(x/tau)-1, [0 5])
+fplot(@(x) exp(-x/tau)-1, [0 5])
+fplot(@(x) -log(x/tau)-1, [0 5])
+fplot(@(x) log(1/x)-1, [0 5])
+[Warning: Function behaves unexpectedly on array inputs. To improve performance, properly
+vectorize your function to return an output with the same size and shape as the input
+arguments.] 
+[> In matlab.graphics.function.FunctionLine>getFunction
+  In matlab.graphics.function/FunctionLine/updateFunction
+  In matlab.graphics.function.FunctionLine.set.Function_I
+  In matlab.graphics.function.FunctionLine.set.Function
+  In matlab.graphics.function.FunctionLine
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('fplot>singleFplot', '/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m', 245)" style="font-weight:bold">fplot>singleFplot</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m',245,0)">line 245</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('fplot>@(f)singleFplot(cax,{f},limits,extraOpts,args)', '/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m', 200)" style="font-weight:bold">fplot>@(f)singleFplot(cax,{f},limits,extraOpts,args)</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m',200,0)">line 200</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('fplot>vectorizeFplot', '/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m', 200)" style="font-weight:bold">fplot>vectorizeFplot</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m',200,0)">line 200</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('fplot', '/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m', 166)" style="font-weight:bold">fplot</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m',166,0)">line 166</a>)] 
+fplot(@(x) log(1/x), [0 5])
+[Warning: Function behaves unexpectedly on array inputs. To improve performance, properly
+vectorize your function to return an output with the same size and shape as the input
+arguments.] 
+[> In matlab.graphics.function.FunctionLine>getFunction
+  In matlab.graphics.function/FunctionLine/updateFunction
+  In matlab.graphics.function.FunctionLine.set.Function_I
+  In matlab.graphics.function.FunctionLine.set.Function
+  In matlab.graphics.function.FunctionLine
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('fplot>singleFplot', '/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m', 245)" style="font-weight:bold">fplot>singleFplot</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m',245,0)">line 245</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('fplot>@(f)singleFplot(cax,{f},limits,extraOpts,args)', '/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m', 200)" style="font-weight:bold">fplot>@(f)singleFplot(cax,{f},limits,extraOpts,args)</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m',200,0)">line 200</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('fplot>vectorizeFplot', '/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m', 200)" style="font-weight:bold">fplot>vectorizeFplot</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m',200,0)">line 200</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('fplot', '/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m', 166)" style="font-weight:bold">fplot</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/graphics/function/fplot.m',166,0)">line 166</a>)] 
+fplot(@(x) -log(x), [0 5])
+close all
+fplot(@(x) -log(x), [0 5])
+fplot(@(x) -log10(x), [0 5])
+fplot(@(x) -log10(x), [1 5])
+fplot(@(x) log10(x), [1 5])
+fplot(@(x) -log10(x), [1 5])
+fplot(@(x) -log10(12*x), [1 5])
+log10(1)
+ans =
+     0
+log10(2)
+ans =
+      0.30103
+log10(3)
+ans =
+      0.47712
+log10(10)
+ans =
+     1
+freq[1:100];
+ freq[1:100];
+     ↑
+{Error: Invalid expression. When calling a function or indexing a variable, use parentheses.
+Otherwise, check for mismatched delimiters.
+} 
+freq=[1:100];
+G=-20*log10(freq);
+help plot
+ <strong>plot</strong>   Linear plot. 
+    <strong>plot</strong>(X,Y) plots vector Y versus vector X. If X or Y is a matrix,
+    then the vector is plotted versus the rows or columns of the matrix,
+    whichever line up.  If X is a scalar and Y is a vector, disconnected
+    line objects are created and plotted as discrete points vertically at
+    X.
+ 
+    <strong>plot</strong>(Y) plots the columns of Y versus their index.
+    If Y is complex, <strong>plot</strong>(Y) is equivalent to <strong>plot</strong>(real(Y),imag(Y)).
+    In all other uses of <strong>plot</strong>, the imaginary part is ignored.
+ 
+    Various line types, plot symbols and colors may be obtained with
+    <strong>plot</strong>(X,Y,S) where S is a character string made from one element
+    from any or all the following 3 columns:
+ 
+           b     blue          .     point              -     solid
+           g     green         o     circle             :     dotted
+           r     red           x     x-mark             -.    dashdot 
+           c     cyan          +     plus               --    dashed   
+           m     magenta       *     star             (none)  no line
+           y     yellow        s     square
+           k     black         d     diamond
+           w     white         v     triangle (down)
+                               ^     triangle (up)
+                               <     triangle (left)
+                               >     triangle (right)
+                               p     pentagram
+                               h     hexagram
+                          
+    For example, <strong>plot</strong>(X,Y,'c+:') plots a cyan dotted line with a plus 
+    at each data point; <strong>plot</strong>(X,Y,'bd') plots blue diamond at each data 
+    point but does not draw any line.
+ 
+    <strong>plot</strong>(X1,Y1,S1,X2,Y2,S2,X3,Y3,S3,...) combines the plots defined by
+    the (X,Y,S) triples, where the X's and Y's are vectors or matrices 
+    and the S's are strings.  
+ 
+    For example, <strong>plot</strong>(X,Y,'y-',X,Y,'go') plots the data twice, with a
+    solid yellow line interpolating green circles at the data points.
+ 
+    The <strong>plot</strong> command, if no color is specified, makes automatic use of
+    the colors specified by the axes ColorOrder property.  By default,
+    <strong>plot</strong> cycles through the colors in the ColorOrder property.  For
+    monochrome systems, <strong>plot</strong> cycles over the axes LineStyleOrder property.
+ 
+    Note that RGB colors in the ColorOrder property may differ from
+    similarly-named colors in the (X,Y,S) triples.  For example, the 
+    second axes ColorOrder property is medium green with RGB [0 .5 0],
+    while <strong>plot</strong>(X,Y,'g') plots a green line with RGB [0 1 0].
+ 
+    If you do not specify a marker type, <strong>plot</strong> uses no marker. 
+    If you do not specify a line style, <strong>plot</strong> uses a solid line.
+ 
+    <strong>plot</strong>(AX,...) plots into the axes with handle AX.
+ 
+    <strong>plot</strong> returns a column vector of handles to lineseries objects, one
+    handle per plotted line. 
+ 
+    The X,Y pairs, or X,Y,S triples, can be followed by 
+    parameter/value pairs to specify additional properties 
+    of the lines. For example, <strong>plot</strong>(X,Y,'LineWidth',2,'Color',[.6 0 0]) 
+    will create a plot with a dark red line width of 2 points.
+ 
+    Example
+       x = -pi:pi/10:pi;
+       y = tan(sin(x)) - sin(tan(x));
+       plot(x,y,'--rs','LineWidth',2,...
+                       'MarkerEdgeColor','k',...
+                       'MarkerFaceColor','g',...
+                       'MarkerSize',10)
+ 
+    See also <a href="matlab:help plottools">plottools</a>, <a href="matlab:help semilogx">semilogx</a>, <a href="matlab:help semilogy">semilogy</a>, <a href="matlab:help loglog">loglog</a>, <a href="matlab:help plotyy">plotyy</a>, <a href="matlab:help plot3">plot3</a>, <a href="matlab:help grid">grid</a>,
+    <a href="matlab:help title">title</a>, <a href="matlab:help xlabel">xlabel</a>, <a href="matlab:help ylabel">ylabel</a>, <a href="matlab:help axis">axis</a>, <a href="matlab:help axes">axes</a>, <a href="matlab:help hold">hold</a>, <a href="matlab:help legend">legend</a>, <a href="matlab:help subplot">subplot</a>, <a href="matlab:help scatter">scatter</a>.
+
+    <a href="matlab:doc plot">Documentation for plot</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('plot')">Other functions named plot</a>
+
+loglog(freq, G)
+freq
+freq =
+  Columns 1 through 15
+     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15
+  Columns 16 through 30
+    16    17    18    19    20    21    22    23    24    25    26    27    28    29    30
+  Columns 31 through 45
+    31    32    33    34    35    36    37    38    39    40    41    42    43    44    45
+  Columns 46 through 60
+    46    47    48    49    50    51    52    53    54    55    56    57    58    59    60
+  Columns 61 through 75
+    61    62    63    64    65    66    67    68    69    70    71    72    73    74    75
+  Columns 76 through 90
+    76    77    78    79    80    81    82    83    84    85    86    87    88    89    90
+  Columns 91 through 100
+    91    92    93    94    95    96    97    98    99   100
+G
+G =
+  Columns 1 through 7
+            0      -6.0206      -9.5424      -12.041      -13.979      -15.563      -16.902
+  Columns 8 through 14
+      -18.062      -19.085          -20      -20.828      -21.584      -22.279      -22.923
+  Columns 15 through 21
+      -23.522      -24.082      -24.609      -25.105      -25.575      -26.021      -26.444
+  Columns 22 through 28
+      -26.848      -27.235      -27.604      -27.959      -28.299      -28.627      -28.943
+  Columns 29 through 35
+      -29.248      -29.542      -29.827      -30.103       -30.37       -30.63      -30.881
+  Columns 36 through 42
+      -31.126      -31.364      -31.596      -31.821      -32.041      -32.256      -32.465
+  Columns 43 through 49
+      -32.669      -32.869      -33.064      -33.255      -33.442      -33.625      -33.804
+  Columns 50 through 56
+      -33.979      -34.151       -34.32      -34.486      -34.648      -34.807      -34.964
+  Columns 57 through 63
+      -35.117      -35.269      -35.417      -35.563      -35.707      -35.848      -35.987
+  Columns 64 through 70
+      -36.124      -36.258      -36.391      -36.521       -36.65      -36.777      -36.902
+  Columns 71 through 77
+      -37.025      -37.147      -37.266      -37.385      -37.501      -37.616       -37.73
+  Columns 78 through 84
+      -37.842      -37.953      -38.062       -38.17      -38.276      -38.382      -38.486
+  Columns 85 through 91
+      -38.588       -38.69       -38.79       -38.89      -38.988      -39.085      -39.181
+  Columns 92 through 98
+      -39.276       -39.37      -39.463      -39.554      -39.645      -39.735      -39.825
+  Columns 99 through 100
+      -39.913          -40
+[f(1:10) G(1:10)]
+ans =
+  Columns 1 through 7
+       659.26       261.63          392       1318.5       523.26          784         2637
+  Columns 8 through 14
+       1046.5         1568       5274.1            0      -6.0206      -9.5424      -12.041
+  Columns 15 through 20
+      -13.979      -15.563      -16.902      -18.062      -19.085          -20
+[f(1:10) G(1:10)]'
+ans =
+       659.26
+       261.63
+          392
+       1318.5
+       523.26
+          784
+         2637
+       1046.5
+         1568
+       5274.1
+            0
+      -6.0206
+      -9.5424
+      -12.041
+      -13.979
+      -15.563
+      -16.902
+      -18.062
+      -19.085
+          -20
+[f(1:10)' G(1:10)']
+ans =
+       659.26            0
+       261.63      -6.0206
+          392      -9.5424
+       1318.5      -12.041
+       523.26      -13.979
+          784      -15.563
+         2637      -16.902
+       1046.5      -18.062
+         1568      -19.085
+       5274.1          -20
+[freq(1:10)' G(1:10)']
+ans =
+            1            0
+            2      -6.0206
+            3      -9.5424
+            4      -12.041
+            5      -13.979
+            6      -15.563
+            7      -16.902
+            8      -18.062
+            9      -19.085
+           10          -20
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências sintetizadas:
+f =
+  Columns 1 through 7
+       659.26       261.63          392       1318.5       523.26          784         2637
+  Columns 8 through 12
+       1046.5         1568       5274.1         2093         3136
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       7.4719
+minimo =
+      -7.4216
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+stem(x,y)
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stem', '/Applications/Matlab_R2019b.app/toolbox/matlab/specgraph/stem.m', 43)" style="font-weight:bold">stem</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/specgraph/stem.m',43,0)">line 43</a>)
+The length of X must match the number of rows of Y.} 
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências sintetizadas:
+f =
+  Columns 1 through 7
+       659.26       261.63          392       1318.5       523.26          784         2637
+  Columns 8 through 12
+       1046.5         1568       5274.1         2093         3136
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       7.4719
+minimo =
+      -7.4216
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+close all
+stem(x,g)
+help stem
+ <strong>stem</strong>   Discrete sequence or "stem" plot.
+    <strong>stem</strong>(Y) plots the data sequence Y as stems from the x axis
+    terminated with circles for the data value. If Y is a matrix then
+    each column is plotted as a separate series.
+ 
+    <strong>stem</strong>(X,Y) plots the data sequence Y at the values specified
+    in X.
+ 
+    <strong>stem</strong>(...,'filled') produces a stem plot with filled markers.
+ 
+    <strong>stem</strong>(...,'LINESPEC') uses the linetype specified for the stems and
+    markers.  See PLOT for possibilities.
+ 
+    <strong>stem</strong>(AX,...) plots into axes with handle AX. Use GCA to get the
+    handle to the current axes or to create one if none exist.
+ 
+    H = <strong>stem</strong>(...) returns a vector of stemseries handles in H, one handle
+    per column of data in Y.
+ 
+    See also <a href="matlab:help plot">plot</a>, <a href="matlab:help bar">bar</a>, <a href="matlab:help stairs">stairs</a>.
+
+    <a href="matlab:doc stem">Documentation for stem</a>
+
+log10(1)
+ans =
+     0
+figure;
+stem(log10(x),g)
+f
+f =
+  Columns 1 through 7
+       659.26       261.63          392       1318.5       523.26          784         2637
+  Columns 8 through 12
+       1046.5         1568       5274.1         2093         3136
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+{Unrecognized function or variable 'g'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese2', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese2.m', 26)" style="font-weight:bold">sintese2</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese2.m',26,0)">line 26</a>)
+[f' g']} 
+[f' G']
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.9
+       523.26          0.9
+          784          0.9
+         2637         0.81
+       1046.5         0.81
+         1568         0.81
+       5274.1        0.729
+         2093        0.729
+         3136        0.729
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.6
+       523.26          0.6
+          784          0.6
+         2637         0.36
+       1046.5         0.36
+         1568         0.36
+       5274.1        0.216
+         2093        0.216
+         3136        0.216
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       7.4719
+minimo =
+      -7.4216
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.6
+       523.26          0.6
+          784          0.6
+         2637         0.36
+       1046.5         0.36
+         1568         0.36
+       5274.1        0.216
+         2093        0.216
+         3136        0.216
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       7.4719
+minimo =
+      -7.4216
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.6
+       523.26          0.6
+          784          0.6
+         2637         0.36
+       1046.5         0.36
+         1568         0.36
+       5274.1        0.216
+         2093        0.216
+         3136        0.216
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+       4.1302
+minimo =
+       -4.129
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+10^(-6/20)
+ans =
+      0.50119
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+         3.77
+minimo =
+      -3.7722
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+  sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+
+sound(yy,fs)
+sound(yy,fs)
+close all
+help plot
+ <strong>plot</strong>   Linear plot. 
+    <strong>plot</strong>(X,Y) plots vector Y versus vector X. If X or Y is a matrix,
+    then the vector is plotted versus the rows or columns of the matrix,
+    whichever line up.  If X is a scalar and Y is a vector, disconnected
+    line objects are created and plotted as discrete points vertically at
+    X.
+ 
+    <strong>plot</strong>(Y) plots the columns of Y versus their index.
+    If Y is complex, <strong>plot</strong>(Y) is equivalent to <strong>plot</strong>(real(Y),imag(Y)).
+    In all other uses of <strong>plot</strong>, the imaginary part is ignored.
+ 
+    Various line types, plot symbols and colors may be obtained with
+    <strong>plot</strong>(X,Y,S) where S is a character string made from one element
+    from any or all the following 3 columns:
+ 
+           b     blue          .     point              -     solid
+           g     green         o     circle             :     dotted
+           r     red           x     x-mark             -.    dashdot 
+           c     cyan          +     plus               --    dashed   
+           m     magenta       *     star             (none)  no line
+           y     yellow        s     square
+           k     black         d     diamond
+           w     white         v     triangle (down)
+                               ^     triangle (up)
+                               <     triangle (left)
+                               >     triangle (right)
+                               p     pentagram
+                               h     hexagram
+                          
+    For example, <strong>plot</strong>(X,Y,'c+:') plots a cyan dotted line with a plus 
+    at each data point; <strong>plot</strong>(X,Y,'bd') plots blue diamond at each data 
+    point but does not draw any line.
+ 
+    <strong>plot</strong>(X1,Y1,S1,X2,Y2,S2,X3,Y3,S3,...) combines the plots defined by
+    the (X,Y,S) triples, where the X's and Y's are vectors or matrices 
+    and the S's are strings.  
+ 
+    For example, <strong>plot</strong>(X,Y,'y-',X,Y,'go') plots the data twice, with a
+    solid yellow line interpolating green circles at the data points.
+ 
+    The <strong>plot</strong> command, if no color is specified, makes automatic use of
+    the colors specified by the axes ColorOrder property.  By default,
+    <strong>plot</strong> cycles through the colors in the ColorOrder property.  For
+    monochrome systems, <strong>plot</strong> cycles over the axes LineStyleOrder property.
+ 
+    Note that RGB colors in the ColorOrder property may differ from
+    similarly-named colors in the (X,Y,S) triples.  For example, the 
+    second axes ColorOrder property is medium green with RGB [0 .5 0],
+    while <strong>plot</strong>(X,Y,'g') plots a green line with RGB [0 1 0].
+ 
+    If you do not specify a marker type, <strong>plot</strong> uses no marker. 
+    If you do not specify a line style, <strong>plot</strong> uses a solid line.
+ 
+    <strong>plot</strong>(AX,...) plots into the axes with handle AX.
+ 
+    <strong>plot</strong> returns a column vector of handles to lineseries objects, one
+    handle per plotted line. 
+ 
+    The X,Y pairs, or X,Y,S triples, can be followed by 
+    parameter/value pairs to specify additional properties 
+    of the lines. For example, <strong>plot</strong>(X,Y,'LineWidth',2,'Color',[.6 0 0]) 
+    will create a plot with a dark red line width of 2 points.
+ 
+    Example
+       x = -pi:pi/10:pi;
+       y = tan(sin(x)) - sin(tan(x));
+       plot(x,y,'--rs','LineWidth',2,...
+                       'MarkerEdgeColor','k',...
+                       'MarkerFaceColor','g',...
+                       'MarkerSize',10)
+ 
+    See also <a href="matlab:help plottools">plottools</a>, <a href="matlab:help semilogx">semilogx</a>, <a href="matlab:help semilogy">semilogy</a>, <a href="matlab:help loglog">loglog</a>, <a href="matlab:help plotyy">plotyy</a>, <a href="matlab:help plot3">plot3</a>, <a href="matlab:help grid">grid</a>,
+    <a href="matlab:help title">title</a>, <a href="matlab:help xlabel">xlabel</a>, <a href="matlab:help ylabel">ylabel</a>, <a href="matlab:help axis">axis</a>, <a href="matlab:help axes">axes</a>, <a href="matlab:help hold">hold</a>, <a href="matlab:help legend">legend</a>, <a href="matlab:help subplot">subplot</a>, <a href="matlab:help scatter">scatter</a>.
+
+    <a href="matlab:doc plot">Documentation for plot</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('plot')">Other functions named plot</a>
+
+semilogx(f, G)
+semilogx(f, G)
+x=log10(f);
+stem(x,G)
+close all
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+         3.77
+minimo =
+      -3.7722
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+  sound(yy,fs)
+help stem
+ <strong>stem</strong>   Discrete sequence or "stem" plot.
+    <strong>stem</strong>(Y) plots the data sequence Y as stems from the x axis
+    terminated with circles for the data value. If Y is a matrix then
+    each column is plotted as a separate series.
+ 
+    <strong>stem</strong>(X,Y) plots the data sequence Y at the values specified
+    in X.
+ 
+    <strong>stem</strong>(...,'filled') produces a stem plot with filled markers.
+ 
+    <strong>stem</strong>(...,'LINESPEC') uses the linetype specified for the stems and
+    markers.  See PLOT for possibilities.
+ 
+    <strong>stem</strong>(AX,...) plots into axes with handle AX. Use GCA to get the
+    handle to the current axes or to create one if none exist.
+ 
+    H = <strong>stem</strong>(...) returns a vector of stemseries handles in H, one handle
+    per column of data in Y.
+ 
+    See also <a href="matlab:help plot">plot</a>, <a href="matlab:help bar">bar</a>, <a href="matlab:help stairs">stairs</a>.
+
+    <a href="matlab:doc stem">Documentation for stem</a>
+
+bar(x, G)
+stem(x,G)
+min(f)
+ans =
+       261.63
+max(f)
+ans =
+       5274.1
+close all
+semilog(f, G)
+{Unrecognized function or variable 'semilog'.} 
+semilogx(f, G)
+[f' G']
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+semilogx(f, G, 'bo')
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+{Unrecognized function or variable 'x'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese2', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese2.m', 33)" style="font-weight:bold">sintese2</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese2.m',33,0)">line 33</a>)
+stem(x,G, 'LineWidth', 3, 'MarkerSize', 8) % mas escala freq é linear} 
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+         3.77
+minimo =
+      -3.7722
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+  sound(yy,fs)
+close all
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+{Unrecognized function or variable 'ganho'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sintese2', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese2.m', 35)" style="font-weight:bold">sintese2</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/Trabalho2/sintese2.m',35,0)">line 35</a>)
+stem( f(1:qtdade_freqs_originais), ganho(1:qtdade_freqs_originais), ':', 'Color', [1, 0.5, 0],
+'LineWidth', 2);} 
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+         3.77
+minimo =
+      -3.7722
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+  sound(yy,fs)
+close all
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+         3.77
+minimo =
+      -3.7722
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+  sound(yy,fs)
+close all
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+         3.77
+minimo =
+      -3.7722
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+  sound(yy,fs)
+nomeArquivo = 'sintese2.mp3';
+audiowrite(nomeArquivo, y, fs);
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('audiowrite>validateFilename', '/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m', 329)" style="font-weight:bold">audiowrite>validateFilename</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m',329,0)">line 329</a>)
+Incorrect file extension for file sintese2.mp3.
+Supported extensions are:
+	.flac
+	.m4a
+	.mp4
+	.oga
+	.ogg
+	.wav
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('audiowrite', '/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m', 113)" style="font-weight:bold">audiowrite</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m',113,0)">line 113</a>)
+[props.filename, fileExisted] = validateFilename( props.filename );} 
+nomeArquivo = 'sintese2.m4a';
+audiowrite(nomeArquivo, y, fs);
+[Warning: Data clipped when writing file.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('audiowrite>clipInputData', '/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m', 407)" style="font-weight:bold">audiowrite>clipInputData</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m',407,0)">line 407</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('audiowrite', '/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m', 187)" style="font-weight:bold">audiowrite</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m',187,0)">line 187</a>)] 
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('audiowrite', '/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m', 203)" style="font-weight:bold">audiowrite</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m',203,0)">line 203</a>)
+Unsupported number of channels.} 
+audiowrite('sintese2.wav', y, fs);
+[Warning: Data clipped when writing file.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('audiowrite>clipInputData', '/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m', 407)" style="font-weight:bold">audiowrite>clipInputData</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m',407,0)">line 407</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('audiowrite', '/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m', 187)" style="font-weight:bold">audiowrite</a> (<a href="matlab: opentoline('/Applications/Matlab_R2019b.app/toolbox/matlab/audiovideo/audiowrite.m',187,0)">line 187</a>)] 
+audiowrite('sintese2.wav', yy, fs);
+close all
+sintese2
+Frequências originais das notas:
+f =
+       659.26       261.63          392
+Total frequências sintetizadas:
+cont =
+    12
+Frequências x Ganhos
+ans =
+       659.26            1
+       261.63            1
+          392            1
+       1318.5          0.5
+       523.26          0.5
+          784          0.5
+         2637         0.25
+       1046.5         0.25
+         1568         0.25
+       5274.1        0.125
+         2093        0.125
+         3136        0.125
+Quantidade de pontos (amostras) geradas:
+pontos =
+      336000
+Picos de amplitudes sinal composto:
+maximo =
+         3.77
+minimo =
+      -3.7722
+Constante de decaimento:
+tau =
+          1.4
+Se quiser ouvir novamente, digite:
+  sound(yy,fs)
+memory
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('memory')" style="font-weight:bold">memory</a>
+Function MEMORY is not available on this platform.} 
+who
+
+Your variables are:
+
+G                       har                     t                       
+T                       intervalo_tempo         t_fim                   
+amostras                legenda                 tau                     
+ans                     maximo                  tt                      
+componente              menor_freq              y                       
+cont                    minimo                  y1                      
+f                       msg1                    y2                      
+fim                     msg2                    yy                      
+freq                    msg3                    
+fs                      pontos                  
+h                       qtdade_freqs_originais  
+
+whos
+  Name                             Size                   Bytes  Class     Attributes
+
+  G                                1x12                      96  double              
+  T                                1x1                        8  double              
+  amostras                         1x1                        8  double              
+  ans                             12x2                      192  double              
+  componente                       1x1                        8  double              
+  cont                             1x1                        8  double              
+  f                                1x12                      96  double              
+  fim                              1x1                        8  double              
+  freq                             1x1                        8  double              
+  fs                               1x1                        8  double              
+  h                                1x1                        8  double              
+  har                              1x1                        8  double              
+  intervalo_tempo                  1x1                        8  double              
+  legenda                          1x13                    1046  string              
+  maximo                           1x1                        8  double              
+  menor_freq                       1x1                        8  double              
+  minimo                           1x1                        8  double              
+  msg1                             1x2                        4  char                
+  msg2                             1x4                        8  char                
+  msg3                             1x15                      30  char                
+  pontos                           1x1                        8  double              
+  qtdade_freqs_originais           1x1                        8  double              
+  t                           336000x1                  2688000  double              
+  t_fim                            1x1                        8  double              
+  tau                              1x1                        8  double              
+  tt                               1x1                        8  double              
+  y                           336000x13                34944000  double              
+  y1                               1x336000             2688000  double              
+  y2                               1x336000             2688000  double              
+  yy                          336000x1                  2688000  double              
+
+sound(yy,fs)
+sound(yy,fs)
+
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+sound(yy,fs)
+who
+
+Your variables are:
+
+G                       har                     t                       
+T                       intervalo_tempo         t_fim                   
+amostras                legenda                 tau                     
+ans                     maximo                  tt                      
+componente              menor_freq              y                       
+cont                    minimo                  y1                      
+f                       msg1                    y2                      
+fim                     msg2                    yy                      
+freq                    msg3                    
+fs                      pontos                  
+h                       qtdade_freqs_originais  
+
+who
+
+Your variables are:
+
+G                       har                     t                       
+T                       intervalo_tempo         t_fim                   
+amostras                legenda                 tau                     
+ans                     maximo                  tt                      
+componente              menor_freq              y                       
+cont                    minimo                  y1                      
+f                       msg1                    y2                      
+fim                     msg2                    yy                      
+freq                    msg3                    
+fs                      pontos                  
+h                       qtdade_freqs_originais  
+
+who
+
+Your variables are:
+
+G                       har                     t                       
+T                       intervalo_tempo         t_fim                   
+amostras                legenda                 tau                     
+ans                     maximo                  tt                      
+componente              menor_freq              y                       
+cont                    minimo                  y1                      
+f                       msg1                    y2                      
+fim                     msg2                    yy                      
+freq                    msg3                    
+fs                      pontos                  
+h                       qtdade_freqs_originais  
+
+who
+
+Your variables are:
+
+G                       har                     t                       
+T                       intervalo_tempo         t_fim                   
+amostras                legenda                 tau                     
+ans                     maximo                  tt                      
+componente              menor_freq              y                       
+cont                    minimo                  y1                      
+f                       msg1                    y2                      
+fim                     msg2                    yy                      
+freq                    msg3                    
+fs                      pontos                  
+h                       qtdade_freqs_originais  
+
+exit

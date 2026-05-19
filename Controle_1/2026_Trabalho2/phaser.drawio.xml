@@ -1,0 +1,105 @@
+<mxGraphModel dx="1034" dy="622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <!-- AmpOp TL072 -->
+    <mxCell id="ampop" value="TL072" style="triangle;whiteSpace=wrap;html=1;rotation=0;align=left;spacingLeft=15;" vertex="1" parent="1">
+      <mxGeometry x="360" y="240" width="100" height="80" as="geometry" />
+    </mxCell>
+    <!-- Entrada Inversora (-) -->
+    <mxCell id="lbl_inv" value="-" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="365" y="245" width="20" height="20" as="geometry" />
+    </mxCell>
+    <!-- Entrada Não-Inversora (+) -->
+    <mxCell id="lbl_no_inv" value="+" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="365" y="275" width="20" height="20" as="geometry" />
+    </mxCell>
+    <!-- Alimentação V+ (+5V) -->
+    <mxCell id="v_plus" value="+5V" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="410" y="210" width="30" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="wire_v_plus" style="edgeStyle=none;html=1;endArrow=none;" edge="1" parent="1" source="v_plus">
+      <mxPoint x="425" y="250" as="targetPoint" />
+    </mxCell>
+    <!-- Alimentação V- (-5V) -->
+    <mxCell id="v_minus" value="-5V" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="410" y="330" width="30" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="wire_v_minus" style="edgeStyle=none;html=1;endArrow=none;" edge="1" parent="1" source="v_minus">
+      <mxPoint x="425" y="310" as="targetPoint" />
+    </mxCell>
+    <!-- Nodo de Entrada Vi -->
+    <mxCell id="vi" value="Vi (iPod/PC)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="60" y="260" width="80" height="40" as="geometry" />
+    </mxCell>
+    <!-- Resistor R1 de Entrada Inversora -->
+    <mxCell id="r1_in" value="R1&lt;br&gt;10 kΩ" style="whiteSpace=wrap;html=1;shape=rectangle;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="220" y="210" width="60" height="20" as="geometry" />
+    </mxCell>
+    <!-- Resistor R1 de Realimentação -->
+    <mxCell id="r1_fb" value="R1&lt;br&gt;10 kΩ" style="whiteSpace=wrap;html=1;shape=rectangle;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="380" y="150" width="60" height="20" as="geometry" />
+    </mxCell>
+    <!-- Resistor R do filtro RC -->
+    <mxCell id="r_filter" value="R&lt;br&gt;3.6 kΩ" style="whiteSpace=wrap;html=1;shape=rectangle;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="220" y="285" width="60" height="20" as="geometry" />
+    </mxCell>
+    <!-- Capacitor C do filtro RC -->
+    <mxCell id="c_filter" value="C&lt;br&gt;100 nF" style="whiteSpace=wrap;html=1;shape=rectangle;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="310" y="350" width="20" height="40" as="geometry" />
+    </mxCell>
+    <!-- Terra (GND) -->
+    <mxCell id="gnd" value="GND" style="line;strokeWidth=2;html=1;" vertex="1" parent="1">
+      <mxGeometry x="300" y="410" width="40" height="10" as="geometry" />
+    </mxCell>
+    <!-- Saída Vo -->
+    <mxCell id="vo" value="Vo" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="530" y="260" width="50" height="40" as="geometry" />
+    </mxCell>
+    <!-- Conexões Elétricas (Fios) -->
+    <mxCell id="w1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="vi" target="r1_in">
+      <mxGeometry relative="1" as="geometry">
+        <Array points="170,280;170,220" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="w2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="vi" target="r_filter">
+      <mxGeometry relative="1" as="geometry">
+        <Array points="170,280;170,295" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="w3" style="edgeStyle=none;html=1;endArrow=none;" edge="1" parent="1" source="r1_in">
+      <mxPoint x="340" y="220" as="targetPoint" />
+    </mxCell>
+    <mxCell id="w4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1">
+      <mxPoint x="340" y="220" as="sourcePoint" />
+      <mxPoint x="360" y="255" as="targetPoint" />
+      <Array points="340,255" />
+    </mxCell>
+    <mxCell id="w5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1">
+      <mxPoint x="340" y="220" as="sourcePoint" />
+      <mxPoint x="380" y="160" as="targetPoint" />
+      <Array points="340,160" />
+    </mxCell>
+    <mxCell id="w6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="r1_fb">
+      <mxPoint x="490" y="280" as="targetPoint" />
+      <Array points="490,160" />
+    </mxCell>
+    <mxCell id="w7" style="edgeStyle=none;html=1;endArrow=none;" edge="1" parent="1" source="ampop" target="vo">
+      <mxPoint x="460" y="280" as="sourcePoint" />
+    </mxCell>
+    <mxCell id="w8" style="edgeStyle=none;html=1;endArrow=none;" edge="1" parent="1" source="r_filter">
+      <mxPoint x="320" y="295" as="targetPoint" />
+    </mxCell>
+    <mxCell id="w9" style="edgeStyle=none;html=1;endArrow=none;" edge="1" parent="1">
+      <mxPoint x="320" y="295" as="sourcePoint" />
+      <mxPoint x="360" y="295" as="targetPoint" />
+    </mxCell>
+    <mxCell id="w10" style="edgeStyle=none;html=1;endArrow=none;" edge="1" parent="1">
+      <mxPoint x="320" y="295" as="sourcePoint" />
+      <mxPoint x="320" y="350" as="targetPoint" />
+    </mxCell>
+    <mxCell id="w11" style="edgeStyle=none;html=1;endArrow=none;" edge="1" parent="1" source="c_filter" target="gnd">
+      <mxPoint x="320" y="390" as="sourcePoint" />
+    </mxCell>
+  </root>
+</mxGraphModel>
