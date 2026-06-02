@@ -1,0 +1,153 @@
+cd('/Users/fernandopassold/Documents/MATLAB/matlab-schemer-master')
+schemer_import
+Imported color scheme WITHOUT boolean options from
+/Users/fernandopassold/Documents/MATLAB/matlab-schemer-master/schemes/oblivion.prf
+Some changes require MATLAB to be restarted to be activated.
+schemer_import
+Imported color scheme WITHOUT boolean options from
+/Users/fernandopassold/Documents/MATLAB/matlab-schemer-master/schemes/default.prf
+Some changes require MATLAB to be restarted to be activated.
+what
+
+MAT-files in the current folder /Volumes/DADOS/Users/fpassold/Documents/UPF/Sistemas de Controle/2026_1/Matlab_2026_1
+
+matlab  planta  
+
+
+% Embasamento teórico:
+% * [Ação Derivativa Pura](https://fpassold.github.io/Controle_2/Acao_Derivativa.html);
+% * [PD]()
+
+% Equação do PD
+
+% $C_{PD}(s)=K_p + K_d s = K_d \left( s+ \dfrac{K_p}{K_d} \right)$
+
+% Embasamento teórico: opções para o zero do PD:
+% https://fpassold.github.io/Controle_2/aula_PD_03out2019.html
+
+% Melhores opções: caso 2 ou caso 3.
+
+% Se usar contribuição angular, temos o script:
+% [find_polo_zero.m](https://fpassold.github.io/Controle_2/find_polo_zero.m)
+
+load planta
+zpk(G)
+
+ans =
+ 
+          72
+  ------------------
+  (s+12) (s+6) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+help find_polo_zero
+  <strong>find_polo_zero</strong>.m
+  
+  Angular contribution routine to find out where to locate pole or zero 
+  of the controller depending on the desired location for MF poles
+ 
+  Use:
+  This routine already expects a tf named "ftma_aux"
+    ftma_aux(s)=C(s)'*G(s);
+  where: C(s)' is almost the full tf of the controller, 
+         except for the pole or zero that this routine is expected to 
+         determine using angular contribution.
+  
+  This routine uses angular contribution to find the position of the pole
+  or the zero that is necessary to complete the tf of the controller.
+  It asks almost at the end, whether the user wants to find out the 
+  position of the pole or the zero that is missing.
+ 
+  Fernando Passold, 14/10/2020, 20/10/2020, 30/10/2022, 30/11/2022.
+
+% Arbitra um $t_s$ para o PD
+ts = 1.5/2
+ts =
+         0.75
+ftma_aux=G;
+find_polo_zero
+
+Routine to determine the position of the pole or zero
+that is missing to complete controller design
+
+%OS$ (desired Overshoot, in %): ? 15
+  ts_d (desired settling time): ? 0.75
+Desired MF poles must be located at:
+	s = -5.33333 � j8.83189
+
+Evaluating the pole(s) contribution angle(s):
+  Pole 1) in s=-12 + j(0)	| angle: 52.95^o
+  Pole 2) in s=-6 + j(0)	| angle: 85.68^o
+  Pole 3) in s=-2 + j(0)	| angle: 110.68^o
+			Sum(angle{poles}) = 249.31^o
+
+Evaluating the zero(s) contribution angle(s):
+			Sum(angle{zeros}) = 0.00^o
+
+Determining pole or zero location of the controller:
+Select: [p]=pole or [z]=zero, for the controller ? 
+--------------------------------------------------------------------------------
+       Segmentation violation detected at Thu May 28 20:14:15 2026 -0300
+--------------------------------------------------------------------------------
+
+Configuration:
+  Crash Decoding           : Disabled - No sandbox or build area path
+  Crash Mode               : continue (default)
+  Default Encoding         : UTF-8
+  Deployed                 : false
+  Graphics Driver          : Intel Inc. Intel(R) UHD Graphics 617 Version 2.1 INTEL-23.0.22
+  Java Version             : Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+  MATLAB Architecture      : maci64
+  MATLAB Entitlement ID    : 6257193
+  MATLAB Root              : /Applications/Matlab_R2019b.app
+  MATLAB Version           : 9.7.0.1190202 (R2019b)
+  OpenGL                   : hardware
+  Operating System         : Mac OS Version 15.3.2 (Build 24D81)
+  Process ID               : 15946
+  Processor ID             : x86 Family 6 Model 142 Stepping 10, GenuineIntel
+  Session Key              : d47c6c0b-0946-4652-8366-23af0232beee
+  Window System            : Quartz
+
+Fault Count: 1
+
+
+Abnormal termination:
+Segmentation violation
+
+Register State (from fault):
+  RAX = 000070000e6407a0  RBX = 00000002d903aeb1
+  RCX = 0000000000000041  RDX = 00007f9d7f26de10
+  RSP = 0000000000000000  RBP = 000000010ca580f0
+  RSI = 000000010c9b0d09  RDI = 000070000e640790
+
+   R8 = 00020d0000020d00   R9 = 0000600001914101
+  R10 = 000070000e6407a0  R11 = 00007f9d760e6fc0
+  R12 = 000070000e6407f0  R13 = 00000002d904cc9a
+  R14 = 0000600001914120  R15 = 00007f9d7f26dfd8
+
+  RIP = 000070000e640701  RFL = 0000600001914120
+
+   CS = 0000600009e3d780   FS = 0000600009e3d780   GS = 0000600001914120
+
+Stack Trace (from fault):
+[  0] 0x00000002d1e8d519 /Applications/Matlab_R2019b.app/bin/maci64/libmwfl.dylib+00005401 _ZN10foundation4core4diag15stacktrace_base7captureERKNS1_14thread_contextEm+00000057
+[  1] 0x00000002d1e91968 /Applications/Matlab_R2019b.app/bin/maci64/libmwfl.dylib+00022888 _ZN10foundation4core4test17terminate_handledERKNSt3__112basic_stringIcNS2_11char_traitsIcEENS2_9allocatorIcEEEE+00006488
+[  2] 0x00000002d1e8fd55 /Applications/Matlab_R2019b.app/bin/maci64/libmwfl.dylib+00015701 _ZN10foundation4core4diag13terminate_logEPKcPK17__darwin_ucontext+00000149
+[  3] 0x00000002d938f097 /Applications/Matlab_R2019b.app/bin/maci64/libmwmcr.dylib+00688279 _Z19mnPrintErrorMessageRKNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE+00012887
+[  4] 0x00000002d938cd54 /Applications/Matlab_R2019b.app/bin/maci64/libmwmcr.dylib+00679252 _Z19mnPrintErrorMessageRKNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE+00003860
+[  5] 0x00000002d938a494 /Applications/Matlab_R2019b.app/bin/maci64/libmwmcr.dylib+00668820 mnFatalSignalHandler+00000148
+[  6] 0x00007ff80234ee1d           /usr/lib/system/libsystem_platform.dylib+00015901 _sigtramp+00000029
+[  7] 0x000000079026edf8                                   <unknown-module>+00000000
+[  8] 0x0000000302ab20e2 /Applications/Matlab_R2019b.app/bin/maci64/libnativecmdwin.dylib+00032994 _ZN12nativecmdwin18JavaCmdWinSinkImpl23isInputRequestNecessaryEv+00000034
+[  9] 0x000000010c88f302 /Applications/Matlab_R2019b.app/bin/maci64/libmwservices.dylib+00148226 _ZN10CmdWinSink14inputRequestedEv+00000018
+[ 10] 0x000000010c890561 /Applications/Matlab_R2019b.app/bin/maci64/libmwservices.dylib+00152929 _ZN8services2io16CmdWinSinkHandle27inputRequestedEventHappenedERKN6mlutil5utils17InputRequestEventE+00000065
+[ 11] 0x000000010c891a72 /Applications/Matlab_R2019b.app/bin/maci64/libmwservices.dylib+00158322 _ZN7mwboost6detail8function26void_function_obj_invoker1IZN10foundation7msg_svc8eventmgr8EventMgr9subscribeIN6mlutil5utils17InputRequestEventEPFvRKSA_EEENSt3__110unique_ptrINS5_10ConnectionENSF_14default_deleteISH_EEEERKT0_EUlRKNS5_9BaseEventEE_vSQ_E6invokeERNS1_15function_bufferESQ_+00000034
+[ 12] 0x00000002d1aae527 /Applications/Matlab_R2019b.app/bin/maci64/libmwms.dylib+00333095 _ZN10foundation7msg_svc8eventmgr6detail10UserCbPack6invokeERKNS1_9BaseEventE+00000311
+[ 13] 0x00000002d1ad60d5 /Applications/Matlab_R2019b.app/bin/maci64/libmwms.dylib+00495829 _ZN10foundation7msg_svc8eventmgr19EventDispatcherImpl19PendingDeliveryType15dispatchPendingERNS2_7SafeBoxE+00000581
+[ 14] 0x00000002d1ad78ea /Applications/Matlab_R2019b.app/bin/maci64/libmwms.dylib+00501994 _ZN10foundation7msg_svc8eventmgr19EventDispatcherImpl7deliverENSt3__14pairIN7mwboost10shared_ptrIKNS1_9BaseEventEEENS1_4EmIDEEENS_3usm10management10ContextSetENS6_INS0_10threadutil12CountedMutexEEE+00000410
+[ 15] 0x00000002d1af4adf /Applications/Matlab_R2019b.app/bin/maci64/libmwms.dylib+00621279 _ZN10foundation7msg_svc8eventmgr7SyncApi7deliverEv+00000175
+[ 16] 0x00000002d1af7b9c /Applications/Matlab_R2019b.app/bin/maci64/libmwms.dylib+00633756 _ZNK10foundation7msg_svc8eventmgr11SyncWaitUsm9isHandledEv+00000972
+[ 17] 0x00000002d1af78e5 /Applications/Matlab_R2019b.app/bin/maci64/libmwms.dylib+00633061 _ZNK10foundation7msg_svc8eventmgr11SyncWaitUsm9isHandledEv+00000277
+[ 18] 0x00000002d1af7427 /Applications/Matlab_R2019b.app/bin/maci64/libmwms.dylib+00631847 _ZN10foundation7msg_svc8eventmgr11SyncWaitUsm7deliverEv+00000151
+[ 19] 0x00000002d1ad379d /Applications/Matlab_R2019b.app/bin/maci64/libmwms.dylib+00485277 _ZN10

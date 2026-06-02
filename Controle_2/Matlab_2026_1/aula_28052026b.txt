@@ -1,0 +1,488 @@
+
+load plabta
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('load')" style="font-weight:bold">load</a>
+Unable to read file 'plabta'. No such file or directory.} 
+load planta
+ftma_aux=G;
+find_polo_zero
+
+Routine to determine the position of the pole or zero
+that is missing to complete controller design
+
+%OS$ (desired Overshoot, in %): ? 15
+  ts_d (desired settling time): ? 0.75
+Desired MF poles must be located at:
+	s = -5.33333 � j8.83189
+
+Evaluating the pole(s) contribution angle(s):
+  Pole 1) in s=-12 + j(0)	| angle: 52.95^o
+  Pole 2) in s=-6 + j(0)	| angle: 85.68^o
+  Pole 3) in s=-2 + j(0)	| angle: 110.68^o
+			Sum(angle{poles}) = 249.31^o
+
+Evaluating the zero(s) contribution angle(s):
+			Sum(angle{zeros}) = 0.00^o
+
+Determining pole or zero location of the controller:
+Select: [p]=pole or [z]=zero, for the controller ? z
+
+Angle contribution required for controller: 69.31^o
+This means that the controller 
+	ZERO must be at s = -8.66819
+
+To finish the project, note that:
+
+ftma =
+ 
+     72 (s+8.668)
+  ------------------
+  (s+12) (s+6) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+Find the controller gain with the command:
+
+	>> K_ = rlocfind(ftma)
+
+ftma_PD=ftma;
+zpk(ftma_PD)
+
+ans =
+ 
+     72 (s+8.668)
+  ------------------
+  (s+12) (s+6) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+K_PD = rlocfind(ftma)
+Select a point in the graphics window
+selected_point =
+      -5.3519 +     8.8928i
+K_PD =
+       1.3768
+
+% ![contrib_angular_PD.png](contrib_angular_PD.png)
+
+% ![RL_PD.png](RL_PD.png)
+
+ftmf_PD=feedback(K_PD*ftma, 1);
+pole(ftmf_PD)
+ans =
+      -5.3373 +     8.8937i
+      -5.3373 -     8.8937i
+      -9.3254 +          0i
+figure; step(ftmf_PD)
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+[Warning: Error occurred while executing the listener callback
+for event WindowMouseMotion defined for class
+matlab.ui.Figure:
+Invalid or deleted object.
+Error in
+matlab.graphics.shape.internal.PointDataTipController.dragOrientation] 
+
+% ![step_PD.png](step_PD.png)
+
+dcgain(ftmf_PD)
+ans =
+      0.85647
+erro_PD=(1-dcgain(ftmf_PD))/1*100
+erro_PD =
+       14.353
+K_PD
+K_PD =
+       1.3768
+
+% E se fizermos $t_s=$ 0,5 segundos
+1.5/3
+ans =
+          0.5
+
+% Outro PD (mais rápido)...
+
+find_polo_zero
+
+Routine to determine the position of the pole or zero
+that is missing to complete controller design
+
+%OS$ (desired Overshoot, in %): ? 15
+  ts_d (desired settling time): ? 0.5
+Desired MF poles must be located at:
+	s = -8 � j13.2478
+
+Evaluating the pole(s) contribution angle(s):
+  Pole 1) in s=-12 + j(0)	| angle: 73.20^o
+  Pole 2) in s=-6 + j(0)	| angle: 98.59^o
+  Pole 3) in s=-2 + j(0)	| angle: 114.37^o
+			Sum(angle{poles}) = 286.15^o
+
+Evaluating the zero(s) contribution angle(s):
+			Sum(angle{zeros}) = 0.00^o
+
+Determining pole or zero location of the controller:
+Select: [p]=pole or [z]=zero, for the controller ? z
+
+Angle contribution required for controller: 106.15^o
+This means that the controller 
+	ZERO must be at s = -4.16368
+
+To finish the project, note that:
+
+ftma =
+ 
+     72 (s+4.164)
+  ------------------
+  (s+12) (s+6) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+Find the controller gain with the command:
+
+	>> K_ = rlocfind(ftma)
+
+ftma_PD2=ftma;
+K_PD2=rlocfind(ftma)
+Select a point in the graphics window
+selected_point =
+      -7.9969 +     13.246i
+K_PD2 =
+       2.7148
+
+% ![RL_PD2.png](RL_PD2.png)
+
+ftmf_PD2=feedback(K_PD2*ftma, 1);
+figure; step(ftmf_k2,ftmt_PD,ftmf_PD2)
+{Unrecognized function or variable 'ftmt_PD'.} 
+figure; step(ftmf_k2,ftmf_PD,ftmf_PD2)
+legend('Prop (K_2)', 'PD', 'PD_2')
+
+% ![step_K2_PD_PD2.png](step_K2_PD_PD2.png)
+
+save planta
+[Warning: Figure is saved in planta.mat. Saving graphics handle
+variables can cause the creation of very large files. To save
+graphics figures, use <a  href="matlab:helpview([docroot,'/techdoc/ref/savefig.html'])">savefig</a>.] 
+diary off
+% ## Projeto do PI 
+
+% Usando script `example_9_5.m` do NISE...
+
+zpk(G)
+
+ans =
+ 
+          72
+  ------------------
+  (s+12) (s+6) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+edit example_9_5
+Este script resolve o exemplo 9.5:
+PID Controller Design, do livro:
+Nise, Norman S., Control System Engineering,
+6th ed. 2011, John Wiley & Sons, Inc.
+Unrecognized function or variable 'num'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('example_9_5', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Sistemas de Controle/2026_1/Matlab_2026_1/example_9_5.m', 37)" style="font-weight:bold">example_9_5</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Sistemas de Controle/2026_1/Matlab_2026_1/example_9_5.m',37,0)">line 37</a>)
+g=tf(num,den);
+
+close all
+example_9_5
+Este script resolve o exemplo 9.5:
+PID Controller Design, do livro:
+Nise, Norman S., Control System Engineering,
+6th ed. 2011, John Wiley & Sons, Inc.
+Planta a ser compensada:
+
+ans =
+ 
+          72
+  ------------------
+  (s+12) (s+6) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+Maximo percentual overshoot tolerado (%OS): ? 15
+Fator de amortecimento (zeta): 0.5169
+
+Observe o RL da FTMA(s) do Contr. Prop. + Planta... (Figure 1)...
+Realize um zoom sobre a area de interesse e
+pressione qualquer tecla para continuar 
+Select a point in the graphics window
+selected_point =
+      -2.7367 +     4.5517i
+k =
+       3.7019
+poles =
+      -14.506 +          0i
+      -2.7471 +     4.5558i
+      -2.7471 -     4.5558i
+Estimando tempo de assentamento, t_s: 1.4561
+Estimando tempo do pico, t_p: 0.6896
+
+Novo tempo de tipo (desejado), t_p: 0.4597
+
+theta (cos(zeta)): 58.8734^o
+180^o-theta: 121.1266^o
+
+Polos de MF desejados em: s = -4.1266 +j6.8336
+
+Contribuicoes angulares dos polos do sistema em malha-aberta:
+p(1) = -12 --> 40.9562^o
+p(2) = -6 --> 74.6697^o
+p(3) = -2 --> 107.2863^o
+Soma das contribuicoes dos polos: 222.9122^o
+
+Contribuicoes angulares dos zero do sistema em malha-aberta:
+
+Somatorio total das contribuicoes angulares (polos e zeros): 222.9122^o
+
+Angulo resultante para o zero do PD: 42.9122^o
+Posicao do zero do PD: em s = -3.2241
+Equacao do PD (variavel "c"):
+
+ans =
+ 
+  (s+3.224)
+ 
+Continuous-time zero/pole/gain model.
+
+Levantando RL da FTMA(s) do sistema com o PD...
+Observe o RL da FTMA(s) do PD + planta (Figure 4)...
+Realize um zoom sobre a area de interesse e
+pressione qualquer tecla para continuar 
+Select a point in the graphics window
+selected_point =
+      -8.4455 +     14.025i
+K_pd =
+       2.9506
+poles_pd =
+      -8.4545 +     14.025i
+      -8.4545 -     14.025i
+       -3.091 +          0i
+Equacao do PD:
+
+ans =
+ 
+  2.9506 (s+3.224)
+ 
+Continuous-time zero/pole/gain model.
+
+Selecione uma posicao para o zero do PI (em: -2 <= s < 0) [-0.5]: ? -1.5
+Equacao do PID (ainda sem ganho):
+
+ans =
+ 
+  (s+3.224) (s+1.5)
+  -----------------
+          s
+ 
+Continuous-time zero/pole/gain model.
+
+FTMA(s) do PID + Planta (variavel "PIDg"): 
+
+ans =
+ 
+  72 (s+3.224) (s+1.5)
+  --------------------
+  s (s+12) (s+6) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+Observe o RL da FTMA(s) do PID + planta (Figure 6)...
+Realize um zoom sobre a area de interesse e
+pressione qualquer tecla para continuar 
+Select a point in the graphics window
+selected_point =
+      -7.8292 +     12.937i
+k_PIDg =
+       2.6762
+poles_PIDg =
+      -7.8353 +     12.937i
+      -7.8353 -     12.937i
+      -2.9474 +          0i
+       -1.382 +          0i
+Equacao final (completa) do PID (variaval "PID2"):
+
+PID2 =
+ 
+  2.676 s^2 + 12.64 s + 12.94
+  ---------------------------
+               s
+ 
+Continuous-time transfer function.
+
+Kp =
+       12.643
+Ki =
+       12.942
+Kd =
+       2.6762
+PID2
+
+PID2 =
+ 
+  2.676 s^2 + 12.64 s + 12.94
+  ---------------------------
+               s
+ 
+Continuous-time transfer function.
+
+zpk(PID2)
+
+ans =
+ 
+  2.6762 (s+3.224) (s+1.5)
+  ------------------------
+             s
+ 
+Continuous-time zero/pole/gain model.
+
+save planta
+[Warning: Figure is saved in planta.mat. Saving graphics handle
+variables can cause the creation of very large files. To save
+graphics figures, use <a  href="matlab:helpview([docroot,'/techdoc/ref/savefig.html'])">savefig</a>.] 
+diary off

@@ -34,10 +34,10 @@ close all % close all previous figures
 
 % Edit the lines below to specify the numerator and denominator of the
 % plant's transfer function. 
-num=[1 8]; 
-den=poly([-3 -6 -10]);
-% num = 72;
-% den = poly([-2 -6 -12]);
+% num=[1 8]; 
+% den=poly([-3 -6 -10]);
+num = 72;
+den = poly([-2 -6 -12]);
 
 g=tf(num,den);
 disp('Plant to be compensated:')
