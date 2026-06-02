@@ -62,7 +62,7 @@ pause
 % First graphical window: RL for proportional controller tuning
 % selecting a point in RL...
 figure(fig.Number); % refocus on the correct window
-[k,poles]=rlocfind(g);
+[k,poles]=rlocfind(g)
 
 fprintf('\nBased on the tuned Proportional Controller:\n')
 % Calculando t_s original...
@@ -167,7 +167,7 @@ end
 fprintf('\nSum of total angular contributions: %.2f^o\n', sum*180/pi)
 final_angle = abs(pi-sum);
 fprintf('Final Resulting angle for the PD zero: %.2f^o\n', final_angle*180/pi)
-zc = -new_sigma - new_wd/tan(final_angle); 
+zc = new_sigma - new_wd/tan(final_angle); 
 fprintf('\nPosition of the zero of the PD: in s =%g\n', zc)
 
 % Plot the line down to the zero of the PD (result of the angular
@@ -199,9 +199,9 @@ rlocus(cg); hold on; sgrid(zeta,0);
 title('RL for the system with the PD');
 % plotting desired poles of MF
 plot( [new_sigma new_sigma], [new_wd -new_wd], 'ms')
-text(real(desired_MF_poles), imag(desired_MF_poles), msg1);
+text(real(desired_MF_poles)*0.95, imag(desired_MF_poles), msg1);
 msg = ['t_p=' num2str(new_t_p, '%.2f')];
-text(new_sigma*1.075, -new_wd-0.075, msg)
+text(new_sigma*0.95, -new_wd-0.075, msg)
 text( zc*1.05, -new_wd*0.15, 'z_{PD}')
 
 fprintf('Figure %d shows the direct-loop RL of the system with the PD.\n', fig.Number);
@@ -209,8 +209,8 @@ disp('Do a zoom over the area of interest and press any bottom to continue...')
 pause
 
 figure(fig.Number); % ensuring focus on the correct window
-[K_pd,poles_pd]=rlocfind(cg);
-title('RL of system + PD (1st-stage design)')
+title('Root Locus: PD (1st-stage design)')
+[K_pd,poles_pd]=rlocfind(cg)
 
 PD = K_pd*c;
 fprintf('\nComplete PD equation:\n')
@@ -261,14 +261,17 @@ fig = figure();
 rlocus(PIDg); hold on; zgrid(zeta,0)
 % plotando polos desejados de MF
 plot([new_sigma new_sigma],[new_wd -new_wd],'m*')
-title('RL FTMA(s): PID + plant')
+text( new_sigma*0.95, new_wd, msg1)
+text( zc*1.05, -new_wd*0.15, 'z_{PD}')
+text( zero_PI*1.05, -new_wd*0,15, 'z_{PI}')
+title('Root Locus: PID + plant')
 disp('PID overall gain tuning:');
 fprintf ('Figure %d shows the RL of PID + plant (for PID tuning)...\n', fig.Number);
 disp('Do a zoom over the area of interest and press any bottom to continue...')
 pause
 
 figure(fig.Number); 
-[k_PIDg,poles_PIDg]=rlocfind(PIDg);
+[k_PIDg,poles_PIDg]=rlocfind(PIDg)
 
 fprintf('\nFinal (complete) equation of the PID (variable "PID2"):\n');
 PID2 = k_PIDg*PID;
