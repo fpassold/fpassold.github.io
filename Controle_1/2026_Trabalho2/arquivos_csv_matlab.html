@@ -1,0 +1,615 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: medium !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+/* =============================================================
+   DROPBOX THEME — Typora
+   Fonte do corpo: Open Sans (Google Fonts)
+   Fonte de código: Roboto Mono / Menlo (sistema)
+   Nota: "import" sem "@" é intencional — o Typora aceita
+         esta sintaxe proprietária para carregar fontes externas.
+   ============================================================= */
+
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+
+
+/* -------------------------------------------------------------
+   VARIÁVEIS DE TEMA (cores da interface do Typora)
+   Usadas pela UI do editor (barra lateral, arquivo ativo, etc.)
+   ------------------------------------------------------------- */
+:root {
+    --code-block-bg-color: inherit;
+
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+    --active-file-text-color: #0070e0;
+
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+
+    --primary-color: #6dc1e7;
+}
+
+
+/* -------------------------------------------------------------
+   BASE — corpo geral e fonte padrão
+   ------------------------------------------------------------- */
+html {
+    font-size: 16px;
+}
+
+html, body, #write {
+    color: #5e676d;
+    font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+
+
+/* -------------------------------------------------------------
+   ÁREA DE ESCRITA — largura e alinhamento
+   ------------------------------------------------------------- */
+#write {
+    max-width: none;    /* sem limite de largura — ocupa toda a janela */
+    text-align: justify;
+}
+
+
+/* -------------------------------------------------------------
+   PARÁGRAFOS
+   ------------------------------------------------------------- */
+p {
+    color: #5e676d;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0 0 1.25rem;
+}
+
+
+/* -------------------------------------------------------------
+   TÍTULOS — H1 a H6
+   ------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 100;
+    color: #5e676d;
+    font-family: "Open Sans", sans-serif;
+    margin: 0.5rem 0;
+}
+
+/* H1, H2 e H3 em azul Aqua (macOS) — apenas a cor é sobrescrita */
+h1, h2, h3 {
+    color: #0066CC;
+}
+
+h1 { margin: 1rem 0; }
+h2 { margin: 0.8rem 0; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1.1rem; }
+
+/* Margem do primeiro título no documento */
+#write > h1:first-child { margin-top: 2.75rem; }
+#write > h2:first-child { margin-top: 1.75rem; }
+#write > h3:first-child { margin-top: 1rem; }
+#write > h4:first-child { margin-top: 0.5rem; }
+
+/* Posição do marcador de foco nos títulos (modo edição) */
+#write > h3.md-focus:before { left: -1.875rem; top: 0.5rem;    padding: 2px; }
+#write > h4.md-focus:before { left: -1.875rem; top: 0.3125rem; padding: 2px; }
+#write > h5.md-focus:before { left: -1.875rem; top: 0.25rem;   padding: 2px; }
+#write > h6.md-focus:before { left: -1.875rem; top: .125rem;   padding: 2px; }
+
+
+/* -------------------------------------------------------------
+   TÍTULOS — tamanhos responsivos (telas pequenas, <= 48em)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 48em) {
+    h1 { font-size: 2.827rem; }
+    h2 { font-size: 1.999rem; }
+    h3 { font-size: 1.413rem; }
+    h4 { font-size: 1.250rem; }
+    h5 { font-size: 1.150rem; }
+    h6 { font-size: 1rem; }
+
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+}
+
+
+/* -------------------------------------------------------------
+   LINKS
+   ------------------------------------------------------------- */
+a, .md-def-url {
+    color: #007ee5;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* -------------------------------------------------------------
+   TABELAS
+   ------------------------------------------------------------- */
+table {
+    border: 1px solid #e2e2e2;
+    margin-bottom: 20px;
+}
+table th, table td {
+    padding: 8px;
+    line-height: 1.5rem;
+    vertical-align: top;
+    border: 1px solid #e2e2e2;
+}
+table th {
+    font-weight: normal;
+    background-color: #f0f7fd;
+    vertical-align: bottom;
+}
+table caption + thead tr:first-child th,
+table caption + thead tr:first-child td,
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+    border-top: 0;
+}
+table tbody + tbody {
+    border-top: 2px solid #ddd;
+}
+
+
+/* -------------------------------------------------------------
+   CÓDIGO — inline (`código`) e blocos (``` ... ```)
+   ------------------------------------------------------------- */
+
+/* Estilo base compartilhado entre inline e bloco */
+code, .md-fences {
+    background: #f6f9fc;
+    border: 1px solid #d0d4d9;
+    border-radius: 3px;
+    font-size: 0.9rem !important;
+    padding: .1em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+/* Blocos de código (```) — sobrescreve/complementa o estilo base */
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 1em;
+    padding: 0.3em 1em;
+    padding-top: 0.4em;
+}
+
+/* Fonte monoespaçada para todo contexto de código */
+code, kbd, pre, samp {
+    font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+/* -------------------------------------------------------------
+   LISTAS DE TAREFAS (- [ ] e - [x])
+   ------------------------------------------------------------- */
+.task-list {
+    padding-left: 0;
+}
+.task-list-item {
+    padding-left: 2.125rem;
+}
+
+/* Ajuste de alinhamento do checkbox no Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
+    .task-list-item input:before,
+    .task-list-item input:checked:before,
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
+}
+
+
+/* -------------------------------------------------------------
+   CITAÇÕES (blockquote)
+   ------------------------------------------------------------- */
+blockquote {
+    margin: 0 0 1.11111rem;
+    padding: 0.5rem 1.11111rem 0 1.05556rem;
+    border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote, blockquote p {
+    line-height: 1.6;
+    color: #8f8f8f;
+}
+
+
+/* -------------------------------------------------------------
+   BLOCO DE METADADOS YAML (front matter)
+   ------------------------------------------------------------- */
+#write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    font-weight: 300;
+    font-size: 1em;
+    color: #999;
+    padding: 3em 1.5em 1.5em;
+    margin-top: -1.5em;
+    margin-bottom: 2em;
+    /* extensão lateral para cobrir as margens do #write */
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+}
+
+
+/* -------------------------------------------------------------
+   MATEMÁTICA (MathJax)
+   ------------------------------------------------------------- */
+.MathJax_Display {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+p.mathjax-block, .mathjax-block {
+    padding-bottom: 0;
+}
+.mathjax-block > .code-tooltip {
+    bottom: 5px;
+    box-shadow: none;
+}
+
+
+/* -------------------------------------------------------------
+   IMAGENS
+   ------------------------------------------------------------- */
+.md-image > .md-meta {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+.md-image > img {
+    margin-top: 2px;
+}
+.md-image > .md-meta:first-of-type:before {
+    padding-left: 4px;
+}
+
+
+/* -------------------------------------------------------------
+   INTERFACE DO TYPORA — painel de busca, notificações, menus
+   ------------------------------------------------------------- */
+#typora-source { color: #555; }
+
+#md-searchpanel { border-bottom: 1px solid #ccc; }
+#md-searchpanel .btn { border: 1px solid #ccc; }
+
+#md-notification { background: #eee; }
+#md-notification:before { top: 14px; }
+
+.megamenu-menu-panel .btn { border: 1px solid #ccc; }
+
+
+/* -------------------------------------------------------------
+   INTERFACE DO TYPORA — barra lateral e árvore de arquivos
+   ------------------------------------------------------------- */
+.mac-seamless-mode #typora-sidebar { background-color: #f7f9fa; }
+
+.pin-outline .outline-active { color: #0070E0; }
+
+.sidebar-tab.active { font-weight: 400; }
+
+.file-node-content { color: #5e676d; }
+
+.file-list-item {
+    border-bottom: 1px solid;
+    border-color: #E6E8EB;
+}
+.file-list-item-summary {
+    font-weight: 400;
+    color: #637282;
+}
+.file-list-item.active {
+    color: #0070E0;
+    background-color: #E6E8EB;
+}
+
+.file-tree-node.active > .file-node-background { background-color: #E6E8EB; }
+.file-tree-node.active > .file-node-content    { color: #0070E0; }
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Trabalhando com arquivos CSV no Matlab</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='trabalhando-com-arquivos-csv-no-matlab'><span>Trabalhando com arquivos CSV no Matlab</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n50"><a class="md-toc-inner" href="#trabalhando-com-arquivos-csv-no-matlab">Trabalhando com arquivos CSV no Matlab</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#criando-e-exportando-dados">Criando e Exportando dados</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n12"><a class="md-toc-inner" href="#exportando-dados-de-forma-correta">Exportando Dados de forma correta</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n16"><a class="md-toc-inner" href="#recuperando-os-dados">Recuperando os dados...</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n19"><a class="md-toc-inner" href="#acessando-dados-da-tabela">Acessando dados da tabela</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n20"><a class="md-toc-inner" href="#separando-dados-de-uma-coluna">Separando dados de uma coluna</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#percorrendo-a-tabela-num-loop">Percorrendo a tabela num loop</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n26"><a class="md-toc-inner" href="#alterando-dados-específicos">Alterando dados específicos</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n31"><a class="md-toc-inner" href="#informações-adicionais">Informações Adicionais</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n32"><a class="md-toc-inner" href="#undefined">Especificando delimitador (se não for vírgula)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n35"><a class="md-toc-inner" href="#ignorando-primeira-linha-se-não-for-cabeçalho">Ignorando primeira linha se não for cabeçalho</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n37"><a class="md-toc-inner" href="#lendo-colunas-específicas">Lendo colunas específicas</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n39"><a class="md-toc-inner" href="#referências">Referências</a></span></p></div><hr /><h2 id='criando-e-exportando-dados'><span>Criando e Exportando dados</span></h2><p><span>Suponha que vamos criar alguns vetores de dados:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">index</span>=<span class="cm-number">1</span>:<span class="cm-number">10</span>;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">freq</span>=<span class="cm-number">220</span><span class="cm-operator">*</span><span class="cm-variable">index</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">amp</span>=<span class="cm-variable">index</span><span class="cm-operator">*</span><span class="cm-number">2</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">phase</span>=<span class="cm-variable">index</span><span class="cm-operator">*</span><span class="cm-number">30</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-comment">% criando tabela de dados</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">tabela_dados</span> = <span class="cm-variable">table</span>(<span class="cm-variable">Index</span>,<span class="cm-variable">Freq</span>,<span class="cm-variable">Amp</span>,<span class="cm-variable">Phase</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Unrecognized</span> <span class="cm-builtin">function</span> <span class="cm-variable">or</span> <span class="cm-variable">variable</span> <span class="cm-string">'Index'</span><span class="cm-error">.</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">tabela_dados</span> = <span class="cm-variable">table</span>(<span class="cm-variable">index</span>, <span class="cm-variable">freq</span>, <span class="cm-variable">amp</span>, <span class="cm-variable">phase</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tabela_dados</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">1</span><span class="cm-variable">×4</span> <span class="cm-variable">table</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">index</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">freq</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">amp</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">phase</span> &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">_____________</span> &nbsp; &nbsp;<span class="cm-variable">_____________</span> &nbsp; &nbsp;<span class="cm-variable">_____________</span> &nbsp; &nbsp;<span class="cm-variable">_____________</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  [<span class="cm-number">1</span><span class="cm-variable">×10</span> <span class="cm-variable">double</span>] &nbsp;  [<span class="cm-number">1</span><span class="cm-variable">×10</span> <span class="cm-variable">double</span>] &nbsp;  [<span class="cm-number">1</span><span class="cm-variable">×10</span> <span class="cm-variable">double</span>] &nbsp;  [<span class="cm-number">1</span><span class="cm-variable">×10</span> <span class="cm-variable">double</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-comment">% gerando arquivo:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">writetable</span>(<span class="cm-variable">tabela_dados</span>, <span class="cm-string">'dados_espectro1.csv'</span>);</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 300px;"></div><div class="CodeMirror-gutters" style="display: none; height: 300px;"></div></div></div></pre><p><span>Foi criado o arquivo CSV, mas no formato errado (incorreto) de 2 linhas:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">type</span> <span class="cm-variable">dados_espectro1</span><span class="cm-error">.</span><span class="cm-variable">csv</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">index_1</span>,<span class="cm-variable">index_2</span>,<span class="cm-variable">index_3</span>,<span class="cm-variable">index_4</span>,<span class="cm-variable">index_5</span>,<span class="cm-variable">index_6</span>,<span class="cm-variable">index_7</span>,<span class="cm-variable">index_8</span>,<span class="cm-variable">index_9</span>,<span class="cm-variable">index_10</span>,<span class="cm-variable">freq_1</span>,<span class="cm-variable">freq_2</span>,<span class="cm-variable">freq_3</span>,<span class="cm-variable">freq_4</span>,<span class="cm-variable">freq_5</span>,<span class="cm-variable">freq_6</span>,<span class="cm-variable">freq_7</span>,<span class="cm-variable">freq_8</span>,<span class="cm-variable">freq_9</span>,<span class="cm-variable">freq_10</span>,<span class="cm-variable">amp_1</span>,<span class="cm-variable">amp_2</span>,<span class="cm-variable">amp_3</span>,<span class="cm-variable">amp_4</span>,<span class="cm-variable">amp_5</span>,<span class="cm-variable">amp_6</span>,<span class="cm-variable">amp_7</span>,<span class="cm-variable">amp_8</span>,<span class="cm-variable">amp_9</span>,<span class="cm-variable">amp_10</span>,<span class="cm-variable">phase_1</span>,<span class="cm-variable">phase_2</span>,<span class="cm-variable">phase_3</span>,<span class="cm-variable">phase_4</span>,<span class="cm-variable">phase_5</span>,<span class="cm-variable">phase_6</span>,<span class="cm-variable">phase_7</span>,<span class="cm-variable">phase_8</span>,<span class="cm-variable">phase_9</span>,<span class="cm-variable">phase_10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>,<span class="cm-number">2</span>,<span class="cm-number">3</span>,<span class="cm-number">4</span>,<span class="cm-number">5</span>,<span class="cm-number">6</span>,<span class="cm-number">7</span>,<span class="cm-number">8</span>,<span class="cm-number">9</span>,<span class="cm-number">10</span>,<span class="cm-number">220</span>,<span class="cm-number">440</span>,<span class="cm-number">660</span>,<span class="cm-number">880</span>,<span class="cm-number">1100</span>,<span class="cm-number">1320</span>,<span class="cm-number">1540</span>,<span class="cm-number">1760</span>,<span class="cm-number">1980</span>,<span class="cm-number">2200</span>,<span class="cm-number">2</span>,<span class="cm-number">4</span>,<span class="cm-number">6</span>,<span class="cm-number">8</span>,<span class="cm-number">10</span>,<span class="cm-number">12</span>,<span class="cm-number">14</span>,<span class="cm-number">16</span>,<span class="cm-number">18</span>,<span class="cm-number">20</span>,<span class="cm-number">30</span>,<span class="cm-number">60</span>,<span class="cm-number">90</span>,<span class="cm-number">120</span>,<span class="cm-number">150</span>,<span class="cm-number">180</span>,<span class="cm-number">210</span>,<span class="cm-number">240</span>,<span class="cm-number">270</span>,<span class="cm-number">300</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 160px;"></div><div class="CodeMirror-gutters" style="display: none; height: 160px;"></div></div></div></pre><p><span>A primeira linha com &quot;headers&quot;, mas os campos da tabela concatenados um com o outro formando uma longa coluna &quot;header&quot; de uma forma não desejada.</span></p><p><span>A segunda linha: conteúdo numérico de cada campo.</span></p><p><span>Na prática foi gerada uma espécie de matriz de 2 linhas x n-colunas, enquanto que o desejado era uma tabela/matriz de n linhas x 4 colunas</span></p><h2 id='exportando-dados-de-forma-correta'><span>Exportando Dados de forma correta</span></h2><p><span>Transformando todos os vetores anteriores em </span><strong><span>vetores linha</span></strong><span>:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-builtin">size</span>(<span class="cm-variable">index</span>)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ans</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">1</span> &nbsp; &nbsp;<span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-comment">% talvez transformando os vetores anteriores em vetores linha!?</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">index</span>=<span class="cm-variable">index</span><span class="cm-operator">'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-builtin">size</span>(<span class="cm-variable">index</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ans</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">10</span> &nbsp; &nbsp; <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">freq</span>=<span class="cm-variable">freq</span><span class="cm-operator">'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">amp</span>=<span class="cm-variable">amp</span><span class="cm-operator">'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">phase</span>=<span class="cm-variable">phase</span><span class="cm-operator">'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">tabela_dados</span> = <span class="cm-variable">table</span>(<span class="cm-variable">index</span>, <span class="cm-variable">freq</span>, <span class="cm-variable">amp</span>, <span class="cm-variable">phase</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tabela_dados</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">10</span><span class="cm-variable">×4</span> <span class="cm-variable">table</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">index</span> &nbsp; &nbsp;<span class="cm-variable">freq</span> &nbsp; &nbsp;<span class="cm-variable">amp</span> &nbsp; &nbsp;<span class="cm-variable">phase</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">_____</span> &nbsp; &nbsp;<span class="cm-variable">____</span> &nbsp; &nbsp;<span class="cm-variable">___</span> &nbsp; &nbsp;<span class="cm-variable">_____</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">1</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">220</span> &nbsp; &nbsp; <span class="cm-number">2</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">30</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">2</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">440</span> &nbsp; &nbsp; <span class="cm-number">4</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">60</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">3</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">660</span> &nbsp; &nbsp; <span class="cm-number">6</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">90</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">4</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">880</span> &nbsp; &nbsp; <span class="cm-number">8</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">120</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">5</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1100</span> &nbsp; &nbsp;<span class="cm-number">10</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">150</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">6</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1320</span> &nbsp; &nbsp;<span class="cm-number">12</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">180</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">7</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1540</span> &nbsp; &nbsp;<span class="cm-number">14</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">210</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">8</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1760</span> &nbsp; &nbsp;<span class="cm-number">16</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">240</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">9</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1980</span> &nbsp; &nbsp;<span class="cm-number">18</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">270</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">10</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">2200</span> &nbsp; &nbsp;<span class="cm-number">20</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">300</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-comment">% Hum... agora parece coincidir com o desejado</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-comment">% Salvando dados...</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">writetable</span>(<span class="cm-variable">tabela_dados</span>, <span class="cm-string">'dados_espectro2.csv'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-comment">% Coincide com o desejado:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">type</span> <span class="cm-variable">dados_espectro2</span><span class="cm-error">.</span><span class="cm-variable">csv</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">index</span>,<span class="cm-variable">freq</span>,<span class="cm-variable">amp</span>,<span class="cm-variable">phase</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>,<span class="cm-number">220</span>,<span class="cm-number">2</span>,<span class="cm-number">30</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>,<span class="cm-number">440</span>,<span class="cm-number">4</span>,<span class="cm-number">60</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>,<span class="cm-number">660</span>,<span class="cm-number">6</span>,<span class="cm-number">90</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>,<span class="cm-number">880</span>,<span class="cm-number">8</span>,<span class="cm-number">120</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">5</span>,<span class="cm-number">1100</span>,<span class="cm-number">10</span>,<span class="cm-number">150</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">6</span>,<span class="cm-number">1320</span>,<span class="cm-number">12</span>,<span class="cm-number">180</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">7</span>,<span class="cm-number">1540</span>,<span class="cm-number">14</span>,<span class="cm-number">210</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8</span>,<span class="cm-number">1760</span>,<span class="cm-number">16</span>,<span class="cm-number">240</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">9</span>,<span class="cm-number">1980</span>,<span class="cm-number">18</span>,<span class="cm-number">270</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">10</span>,<span class="cm-number">2200</span>,<span class="cm-number">20</span>,<span class="cm-number">300</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 880px;"></div><div class="CodeMirror-gutters" style="display: none; height: 880px;"></div></div></div></pre><p><span>Este tipo de arquivo de dados (.csv) pode ser editado a mão eventualmente.</span></p><h2 id='recuperando-os-dados'><span>Recuperando os dados...</span></h2><p><span>Continuando de antes...</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">save</span> <span class="cm-variable">dados</span> <span class="cm-comment">% apenas por "garantia"</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-builtin">clear</span> <span class="cm-variable">all</span> <span class="cm-comment">% limpando todos os dados</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">who</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-comment">% tudo "vazio"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">dados_lidos</span> = <span class="cm-variable">readtable</span>(<span class="cm-string">'dados_espectro2.csv'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-keyword">disp</span>(<span class="cm-variable">dados_lidos</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">index</span> &nbsp; &nbsp;<span class="cm-variable">freq</span> &nbsp; &nbsp;<span class="cm-variable">amp</span> &nbsp; &nbsp;<span class="cm-variable">phase</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">_____</span> &nbsp; &nbsp;<span class="cm-variable">____</span> &nbsp; &nbsp;<span class="cm-variable">___</span> &nbsp; &nbsp;<span class="cm-variable">_____</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">1</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">220</span> &nbsp; &nbsp; <span class="cm-number">2</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">30</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">2</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">440</span> &nbsp; &nbsp; <span class="cm-number">4</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">60</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">3</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">660</span> &nbsp; &nbsp; <span class="cm-number">6</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">90</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">4</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">880</span> &nbsp; &nbsp; <span class="cm-number">8</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">120</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">5</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1100</span> &nbsp; &nbsp;<span class="cm-number">10</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">150</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">6</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1320</span> &nbsp; &nbsp;<span class="cm-number">12</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">180</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">7</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1540</span> &nbsp; &nbsp;<span class="cm-number">14</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">210</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">8</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1760</span> &nbsp; &nbsp;<span class="cm-number">16</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">240</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">9</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1980</span> &nbsp; &nbsp;<span class="cm-number">18</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">270</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">10</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">2200</span> &nbsp; &nbsp;<span class="cm-number">20</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">300</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">dados_lidos</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dados_lidos</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">10</span><span class="cm-variable">×4</span> <span class="cm-variable">table</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">index</span> &nbsp; &nbsp;<span class="cm-variable">freq</span> &nbsp; &nbsp;<span class="cm-variable">amp</span> &nbsp; &nbsp;<span class="cm-variable">phase</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">_____</span> &nbsp; &nbsp;<span class="cm-variable">____</span> &nbsp; &nbsp;<span class="cm-variable">___</span> &nbsp; &nbsp;<span class="cm-variable">_____</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">1</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">220</span> &nbsp; &nbsp; <span class="cm-number">2</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">30</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">2</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">440</span> &nbsp; &nbsp; <span class="cm-number">4</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">60</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">3</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">660</span> &nbsp; &nbsp; <span class="cm-number">6</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">90</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">4</span> &nbsp; &nbsp; &nbsp; <span class="cm-number">880</span> &nbsp; &nbsp; <span class="cm-number">8</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">120</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">5</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1100</span> &nbsp; &nbsp;<span class="cm-number">10</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">150</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">6</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1320</span> &nbsp; &nbsp;<span class="cm-number">12</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">180</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">7</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1540</span> &nbsp; &nbsp;<span class="cm-number">14</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">210</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">8</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1760</span> &nbsp; &nbsp;<span class="cm-number">16</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">240</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">9</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">1980</span> &nbsp; &nbsp;<span class="cm-number">18</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">270</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">10</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">2200</span> &nbsp; &nbsp;<span class="cm-number">20</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">300</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 700px;"></div><div class="CodeMirror-gutters" style="display: none; height: 700px;"></div></div></div></pre><h2 id='acessando-dados-da-tabela'><span>Acessando dados da tabela</span></h2><h3 id='separando-dados-de-uma-coluna'><span>Separando dados de uma coluna</span></h3><p><span>Continuando dos comandos anteriores...</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">Freq</span> = <span class="cm-variable">dados_lidos</span><span class="cm-error">.</span><span class="cm-variable">freq</span>;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-builtin">size</span>(<span class="cm-variable">Freq</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ans</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">10</span> &nbsp; &nbsp; <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">Freq</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Freq</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">220</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">440</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">660</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">880</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">1100</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">1320</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">1540</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">1760</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">1980</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">2200</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">whos</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Name</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">Size</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">Bytes</span> &nbsp;<span class="cm-variable">Class</span> &nbsp; &nbsp; <span class="cm-variable">Attributes</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">Freq</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">10</span><span class="cm-variable">x1</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">80</span> &nbsp;<span class="cm-variable">double</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">dados_lidos</span> &nbsp; &nbsp; &nbsp;<span class="cm-number">10</span><span class="cm-variable">x4</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">2058</span> &nbsp;<span class="cm-variable">table</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 460px;"></div><div class="CodeMirror-gutters" style="display: none; height: 460px;"></div></div></div></pre><h3 id='percorrendo-a-tabela-num-loop'><span>Percorrendo a tabela num loop</span></h3><p><span>Se você precisa processar os dados linha por linha, combine a propriedade .Variables ou o tamanho da tabela com um loop.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-comment">% Descobre o número total de linhas da tabela</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">num_linhas</span> = <span class="cm-variable">height</span>(<span class="cm-variable">dados_lidos</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">num_linhas</span> =</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% Percorre linha por linha</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">i</span> = <span class="cm-number">1</span>:<span class="cm-variable">num_linhas</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">freq_atual</span>  = <span class="cm-variable">dados_lidos</span>{<span class="cm-variable">i</span>, <span class="cm-string">'freq'</span>};</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">amp_atual</span> &nbsp; = <span class="cm-variable">dados_lidos</span>{<span class="cm-variable">i</span>, <span class="cm-string">'amp'</span>};</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">phase_atual</span> = <span class="cm-variable">dados_lidos</span>{<span class="cm-variable">i</span>, <span class="cm-string">'phase'</span>};</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">fprintf</span>(<span class="cm-string">'Componente %i: f = %g, amp = %g, phase = %g\n'</span>, <span class="cm-variable">i</span>, <span class="cm-variable">freq_atual</span>, <span class="cm-variable">amp_atual</span>, <span class="cm-variable">phase_atual</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">end</span> &nbsp; &nbsp;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 240px;"></div><div class="CodeMirror-gutters" style="display: none; height: 240px;"></div></div></div></pre><h3 id='alterando-dados-específicos'><span>Alterando dados específicos</span></h3><p><span>Você pode cruzar a informação da linha (número) e da coluna (nome ou número) usando parênteses () ou chaves {}.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% Pega o dado da linha 1, coluna 'Notas' (retorna o número 8.5)</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">nota_ana</span> = <span class="cm-variable">dados_importados</span>{<span class="cm-number">1</span>, <span class="cm-string">'Notas'</span>}; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% Também funciona usando o número da coluna (linha 1, coluna 2)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">nota_ana</span> = <span class="cm-variable">dados_importados</span>{<span class="cm-number">1</span>, <span class="cm-number">2</span>}; </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><p><span>Para alterar um valor, basta usar a mesma lógica de acesso com chaves {} e atribuir o novo valor.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">% Altera a nota do aluno da linha 1 para 9.5</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dados_importados</span>{<span class="cm-number">1</span>, <span class="cm-string">'Notas'</span>} = <span class="cm-number">9.5</span>; </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 40px;"></div><div class="CodeMirror-gutters" style="display: none; height: 40px;"></div></div></div></pre><h2 id='informações-adicionais'><span>Informações Adicionais</span></h2><h3 ><span>Especificando delimitador (se não for vírgula)</span></h3><p><span>O MATLAB é inteligente e, por padrão, já identifica a primeira linha do arquivo CSV como o cabeçalho (nome das colunas). Caso você precise ajustar a leitura, você pode passar parâmetros adicionais:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dados</span> = <span class="cm-variable">readtable</span>(<span class="cm-string">'dados.csv'</span>, <span class="cm-string">'Delimiter'</span>, <span class="cm-string">';'</span>);</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><h3 id='ignorando-primeira-linha-se-não-for-cabeçalho'><span>Ignorando primeira linha se não for cabeçalho</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dados</span> = <span class="cm-variable">readtable</span>(<span class="cm-string">'dados.csv'</span>, <span class="cm-string">'ReadVariableNames'</span>, <span class="cm-variable">false</span>);</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><h3 id='lendo-colunas-específicas'><span>Lendo colunas específicas</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 3.333332px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dados</span> = <span class="cm-variable">readtable</span>(<span class="cm-string">'dados.csv'</span>, <span class="cm-string">'SelectedVariableNames'</span>, {<span class="cm-string">'amp'</span>});</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><h2 id='referências'><span>Referências</span></h2><ol start='' ><li><span>Matlab Help Center &gt; </span><a href='https://www-mathworks-com.translate.goog/help/matlab/matlab_prog/access-data-in-a-table.html?_x_tr_sl=en&amp;_x_tr_tl=pt&amp;_x_tr_hl=pt&amp;_x_tr_pto=tc'><span>Access Data in Tables</span></a></li></ol><hr /><p><span>Fernando Passold, em 02/06/2026</span></p></div></div>
+</body>
+</html>

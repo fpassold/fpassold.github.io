@@ -1,0 +1,448 @@
+f_c=440; % freq do filtro = 440 Hz.
+w_c=2*pi*f_c;
+H1=tf(-[1 -w_c], [1 w_c])
+
+H1 =
+ 
+  -s + 2765
+  ---------
+  s + 2765
+ 
+Continuous-time transfer function.
+
+zpk(H1)
+
+ans =
+ 
+  - (s-2765)
+  ----------
+   (s+2765)
+ 
+Continuous-time zero/pole/gain model.
+
+close all
+bode(H1)
+% H1 = implementação usado filtro passa-baixa
+% Ref: Wikipédia: https://en-wikipedia-org.translate.goog/wiki/All-pass_filter?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc
+
+H2=tf([1 -w_c], [1 w_c])
+
+H2 =
+ 
+  s - 2765
+  --------
+  s + 2765
+ 
+Continuous-time transfer function.
+
+zpk(H2)
+
+ans =
+ 
+  (s-2765)
+  --------
+  (s+2765)
+ 
+Continuous-time zero/pole/gain model.
+
+figure; bode(H2)
+% H2 = implementação usando filtro passa-alta conectado na entrada não-inversora.
+
+% Diagramas de Bode usando freq em Hz...
+opcoes = bodeoptions;
+opcoes.FreqUnits = 'Hz';
+opcoes.MagUnits = 'dB';
+figure; bodeplot(H1, opcoes); grid
+% gráfico:
+
+% ![bode_phaser_H1.png](bode_phaser_H1.png)
+
+figure; bodeplot(H2, opcoes); grid
+
+% ![bode_phaser_H2.png](bode_phaser_H2.png)
+
+% opcoes.MagUnits = 'dB';      % Ou use 'abs' para magnitude linear
+zpk(H2)
+
+ans =
+ 
+  (s-2765)
+  --------
+  (s+2765)
+ 
+Continuous-time zero/pole/gain model.
+
+phaser=H2*H2*H2*H2
+
+phaser =
+ 
+  s^4 - 1.106e04 s^3 + 4.586e07 s^2 - 8.452e10 s + 5.842e13
+  ---------------------------------------------------------
+  s^4 + 1.106e04 s^3 + 4.586e07 s^2 + 8.452e10 s + 5.842e13
+ 
+Continuous-time transfer function.
+
+zpk(phaser)
+
+ans =
+ 
+  (s-2765)^4
+  ----------
+  (s+2765)^4
+ 
+Continuous-time zero/pole/gain model.
+
+figure; bodeplot(phaser, opcoes); grid
+opcoes.MagUnits = 'abs';
+figure; bodeplot(phaser, opcoes); grid
+zpk(phaser)
+
+ans =
+ 
+  (s-2765)^4
+  ----------
+  (s+2765)^4
+ 
+Continuous-time zero/pole/gain model.
+
+H=phaser;
+bode2
+{Unrecognized function or variable 'mag_dB'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('bode2', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/2026_Trabalho2/bode2.m', 17)" style="font-weight:bold">bode2</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/2026_Trabalho2/bode2.m',17,0)">line 17</a>)
+semilogx(f, mag_dB, 'b', 'LineWidth', 2); % Substitua mag_dB por mag_abs} 
+bode2
+bode3
+{Unrecognized function or variable 'sys'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('bode3', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/2026_Trabalho2/bode3.m', 23)" style="font-weight:bold">bode3</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/2026_Trabalho2/bode3.m',23,0)">line 23</a>)
+bodeplot(sys, opts);} 
+bode3
+{Unrecognized function or variable 'sys'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('bode3', '/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/2026_Trabalho2/bode3.m', 23)" style="font-weight:bold">bode3</a> (<a href="matlab: opentoline('/Volumes/DADOS/Users/fpassold/Documents/UPF/Controle_1/2026_1/2026_Trabalho2/bode3.m',23,0)">line 23</a>)
+bodeplot(sys, opts);} 
+bode3
+
+H4=phaser
+
+H4 =
+ 
+  s^4 - 1.106e04 s^3 + 4.586e07 s^2 - 8.452e10 s + 5.842e13
+  ---------------------------------------------------------
+  s^4 + 1.106e04 s^3 + 4.586e07 s^2 + 8.452e10 s + 5.842e13
+ 
+Continuous-time transfer function.
+
+help parallel
+  Parallel Computing Toolbox
+  Version 7.1 (R2019b) 18-Jul-2019
+ 
+  Toolbox Functions For Clusters
+     <a href="matlab:help batch">batch</a>              - Run MATLAB function or script on worker
+     <a href="matlab:help fetchCloudClusters">fetchCloudClusters</a> - Returns an array of your cloud clusters
+     <a href="matlab:help gcp">gcp</a>                - Returns the current parallel pool
+     <a href="matlab:help parcluster">parcluster</a>         - Build a Cluster from a cluster profile
+     <a href="matlab:help parfeval">parfeval</a>           - Execute function on worker in parallel pool
+     <a href="matlab:help parfor">parfor</a>             - Execute for loop in parallel on workers in parallel pool
+     <a href="matlab:help parpool">parpool</a>            - Create a parallel pool of workers on a cluster and return a pool object
+     <a href="matlab:help spmd">spmd</a>               - Single Program Multiple Data 
+ 
+  Other Toolbox Contents
+     <a href="matlab:help parallel.cluster">parallel.cluster</a>    - Use a cluster
+     <a href="matlab:help parallel.gpu">parallel.gpu</a>        - Use your computer's graphics processing unit (GPU)
+     <a href="matlab:help parallel/lang">parallel/lang</a>       - Parallel computing programming language constructs
+     <a href="matlab:help parallel/mpi">parallel/mpi</a>        - Using the Message Passing Interface
+     <a href="matlab:help parallel">parallel/parallel</a>   - Parallel Algorithms
+
+  Parallel Algorithms
+ 
+  Distributed Array Functions
+    <a href="matlab:help distributed">distributed</a>          - construct from local data
+    <a href="matlab:help isdistributed">isdistributed</a>        - return true for distributed arrays
+    <a href="matlab:help gather">gather</a>               - retrieve data from the labs to the client
+    <a href="matlab:help distributed/classUnderlying">classUnderlying</a>      - return the class of the elements
+    <a href="matlab:help distributed/isaUnderlying">isaUnderlying</a>        - return true if elements are of a given class
+ 
+    <a href="matlab:help distributed.cell">distributed.cell</a>     - build distributed cell array
+    <a href="matlab:help distributed.colon">distributed.colon</a>    - build distributed vector of form a:[d:]b
+    <a href="matlab:help distributed.eye">distributed.eye</a>      - build distributed identity matrix
+    <a href="matlab:help distributed.false">distributed.false</a>    - build distributed array containing 'false'
+    <a href="matlab:help distributed.inf">distributed.inf</a>      - build distributed array containing 'Inf'
+    <a href="matlab:help distributed.linspace">distributed.linspace</a> - build distributed vector of linearly equally spaced values
+    <a href="matlab:help distributed.logspace">distributed.logspace</a> - build distributed vector of logarithmically equally spaced values
+    <a href="matlab:help distributed.nan">distributed.nan</a>      - build distributed array containing 'NaN'
+    <a href="matlab:help distributed.ones">distributed.ones</a>     - build distributed array containing ones
+    <a href="matlab:help distributed.rand">distributed.rand</a>     - build distributed array containing rand
+    <a href="matlab:help distributed.randi">distributed.randi</a>    - build distributed array containing randi
+    <a href="matlab:help distributed.randn">distributed.randn</a>    - build distributed array containing randn
+    <a href="matlab:help distributed.spalloc">distributed.spalloc</a>  - build empty sparse distributed array
+    <a href="matlab:help distributed.speye">distributed.speye</a>    - build sparse distributed identity matrix
+    <a href="matlab:help distributed.sprand">distributed.sprand</a>   - build sparse distributed array containing rand
+    <a href="matlab:help distributed.sprandn">distributed.sprandn</a>  - build sparse distributed array containing randn
+    <a href="matlab:help distributed.true">distributed.true</a>     - build distributed array containing 'true'
+    <a href="matlab:help distributed.zeros">distributed.zeros</a>    - build distributed array containing zeros%
+ 
+    <a href="matlab:help dload">dload</a>                - Load distributed arrays and composite objects
+                           from disk
+    <a href="matlab:help dsave">dsave</a>                - Save workspace distributed arrays and composite 
+                           objects to disk
+ 
+  Codistributed Array Functions
+    <a href="matlab:help codistributed">codistributed</a>               - Create a codistributed array from replicated 
+                                  data
+    <a href="matlab:help codistributed.build">codistributed.build</a>         - Create a codistributed array from local parts
+                                  that can be different on each lab
+    <a href="matlab:help codistributed/gather">codistributed/gather</a>        - Convert a codistributed array into a 
+                                  replicated or variant array
+    <a href="matlab:help codistributed/getLocalPart">codistributed/getLocalPart</a>  - Local portion of a codistributed array
+    <a href="matlab:help codistributed/globalIndices">codistributed/globalIndices</a> - Global indices of local part of a 
+                                  codistributed array
+    <a href="matlab:help codistributed/redistribute">codistributed/redistribute</a>  - Redistribute a codistributed array with 
+                                  another codistributor
+ 
+    <a href="matlab:help codistributor1d">codistributor1d</a>                  - Distribution scheme that partitions 
+                                       array in a single specified dimension
+    <a href="matlab:help codistributor1d/Dimension">codistributor1d/Dimension</a>        - Distributed dimension of codistributor
+    <a href="matlab:help codistributor1d/Partition">codistributor1d/Partition</a>        - Partition of a 1d codistributor
+    <a href="matlab:help codistributor1d.defaultPartition">codistributor1d.defaultPartition</a> - Default partition in 1d for a 
+                                       codistributed array
+ 
+  General Parallel Functions
+    <a href="matlab:help gop">gop</a>                         - Apply a global operation across all labs
+    <a href="matlab:help gcat">gcat</a>                        - Apply global concatenation across all labs
+    <a href="matlab:help gplus">gplus</a>                       - Apply global addition across all labs
+ 
+    <a href="matlab:help spmd">spmd</a>                        - Single Program Multiple Data block allows 
+                                  more control over distributed arrays by 
+                                  providing access to them as codistributed 
+                                  arrays within the block  
+    <a href="matlab:help labindex">labindex</a>                    - Return the ID for this lab
+    <a href="matlab:help numlabs">numlabs</a>                     - Return the number of labs operating in 
+                                  parallel
+    <a href="matlab:help mapreduce">mapreduce</a>                   - Solve out-of-memory problems with the MapReduce framework.
+ 
+  Parallel Communication Functions
+    <a href="matlab:help labSend">labSend</a>                  - Send data to another lab
+    <a href="matlab:help labReceive">labReceive</a>               - Receive data from another lab
+    <a href="matlab:help labSendReceive">labSendReceive</a>           - Simultaneously send to and receive from other 
+                               labs
+    <a href="matlab:help labBroadcast">labBroadcast</a>             - Send data to all labs
+    <a href="matlab:help labBarrier">labBarrier</a>               - Block until all labs have entered the barrier
+    <a href="matlab:help labProbe">labProbe</a>                 - Test to see if messages are ready to labReceive
+    <a href="matlab:help mpiLibConf">mpiLibConf</a>               - Location of MPI implementation
+    <a href="matlab:help mpiSettings">mpiSettings</a>              - Set various options for MPI communication
+ 
+  See also <a href="matlab:help distcomp">distcomp</a>, <a href="matlab:help distributed">distributed</a>, <a href="matlab:help spmd">spmd</a>, <a href="matlab:help codistributed">codistributed</a>, <a href="matlab:help codistributor1d">codistributor1d</a>, <a href="matlab:help mapreduce">mapreduce</a>.
+
+
+parallel is both a directory and a function.
+
+ <strong>parallel</strong>  Parallel connection of two input/output models.
+ 
+                           +------+
+             v1 ---------->|      |----------> z1
+                           |  M1  |
+                    u1 +-->|      |---+ y1
+                       |   +------+   |
+              u ------>+              O------> y
+                       |   +------+   |
+                    u2 +-->|      |---+ y2
+                           |  M2  |
+             v2 ---------->|      |----------> z2
+                           +------+
+ 
+    M = <strong>parallel</strong>(M1,M2,IN1,IN2,OUT1,OUT2) connects the input/output models
+    M1 and M2 in parallel. The inputs specified by IN1 and IN2 are connected
+    and the outputs specified by OUT1 and OUT2 are summed. The resulting
+    model M maps [v1;u;v2] to [z1;y;z2]. The vectors IN1 and IN2 contain
+    indices into the input vectors of M1 and M2, respectively, and define
+    the input channels u1 and u2 in the diagram. Similarly, the vectors
+    OUT1 and OUT2 contain indexes into the outputs of M1 and M2.
+ 
+    If IN1,IN2,OUT1,OUT2 are jointly omitted, <strong>parallel</strong> forms the standard
+    parallel interconnection of M1 and M2 and returns M = M1 + M2.
+ 
+    If M1 and M2 are arrays of models, <strong>parallel</strong> returns a model array M of
+    the same size where
+       M(:,:,k) = <strong>parallel</strong>(M1(:,:,k),M2(:,:,k),IN1,...) .
+ 
+    For dynamic systems SYS1 and SYS2,
+       SYS = <strong>parallel</strong>(SYS1,SYS2,'name')
+    connects SYS1 and SYS2 by matching their I/O names. All I/O names of
+    SYS1 and SYS2 must be defined and the matching names appear in SYS in
+    the same order as in SYS1.
+ 
+    See also <a href="matlab:help append">append</a>, <a href="matlab:help series">series</a>, <a href="matlab:help feedback">feedback</a>, <a href="matlab:help InputOutputModel">InputOutputModel</a>, <a href="matlab:help DynamicSystem">DynamicSystem</a>.
+
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('parallel')">Other functions named parallel</a>
+    <a href="matlab:helpUtils.displayFoldersList('parallel')">Folders named parallel</a>
+
+phaser=parallel(0.5*1, 0.5*H4)
+
+phaser =
+ 
+                s^4 + 4.586e07 s^2 + 5.842e13
+  ---------------------------------------------------------
+  s^4 + 1.106e04 s^3 + 4.586e07 s^2 + 8.452e10 s + 5.842e13
+ 
+Continuous-time transfer function.
+
+zpk(phaser)
+
+ans =
+ 
+  (s^2 + 1.311e06) (s^2 - 2.274e-13s + 4.455e07)
+  ----------------------------------------------
+                    (s+2765)^4
+ 
+Continuous-time zero/pole/gain model.
+
+H=phaser;
+zero(phaser)
+ans =
+   1.1369e-13 +     6674.3i
+   1.1369e-13 -     6674.3i
+   2.8422e-14 +     1145.1i
+   2.8422e-14 -     1145.1i
+polo(phaser)
+{Unrecognized function or variable 'polo'.} 
+pole(phaser)
+ans =
+      -2765.2 +          0i
+      -2764.6 +    0.58242i
+      -2764.6 -    0.58242i
+        -2764 +          0i
+bode3
+
+bode3
+bode3
+bode3
+zpk(H)
+
+ans =
+ 
+  (s^2 + 1.311e06) (s^2 - 2.274e-13s + 4.455e07)
+  ----------------------------------------------
+                    (s+2765)^4
+ 
+Continuous-time zero/pole/gain model.
+
+H8=H2*H2*H2*H2*H2*H2*H2*H2;
+zpk(H8)
+
+ans =
+ 
+  (s-2765)^8
+  ----------
+  (s+2765)^8
+ 
+Continuous-time zero/pole/gain model.
+
+phaser8=parallel(0.5*1, 0.5*H8);
+zpk(phaser8)
+
+ans =
+ 
+                                                                               
+  (s^2 + 3.024e05) (s^2 - 5.471e-13s + 3.412e06) (s^2 + 9.095e-13s + 1.712e07) 
+                                                                               
+                                                          (s^2 + 1.932e08)     
+                                                                               
+  -----------------------------------------------------------------------------
+                                             
+                                   (s+2765)^8
+                                             
+ 
+Continuous-time zero/pole/gain model.
+
+zero(phaser8)
+ans =
+   2.8422e-14 +      13899i
+   2.8422e-14 -      13899i
+  -4.5475e-13 +     4137.5i
+  -4.5475e-13 -     4137.5i
+   2.7356e-13 +     1847.2i
+   2.7356e-13 -     1847.2i
+  -7.1054e-15 +     549.91i
+  -7.1054e-15 -     549.91i
+pole(phaser8)
+ans =
+      -2809.6 +     18.722i
+      -2809.6 -     18.722i
+        -2783 +     44.971i
+        -2783 -     44.971i
+      -2745.9 +     44.671i
+      -2745.9 -     44.671i
+      -2719.9 +     18.421i
+      -2719.9 -     18.421i
+phaser8b=parallel(1, H8);
+zero(phaser8b)
+ans =
+   2.8422e-14 +      13899i
+   2.8422e-14 -      13899i
+  -4.5475e-13 +     4137.5i
+  -4.5475e-13 -     4137.5i
+   2.7356e-13 +     1847.2i
+   2.7356e-13 -     1847.2i
+  -7.1054e-15 +     549.91i
+  -7.1054e-15 -     549.91i
+pole(phaser8b)
+ans =
+      -2809.6 +     18.722i
+      -2809.6 -     18.722i
+        -2783 +     44.971i
+        -2783 -     44.971i
+      -2745.9 +     44.671i
+      -2745.9 -     44.671i
+      -2719.9 +     18.421i
+      -2719.9 -     18.421i
+zpk(phaser8)
+
+ans =
+ 
+                                                                               
+  (s^2 + 3.024e05) (s^2 - 5.471e-13s + 3.412e06) (s^2 + 9.095e-13s + 1.712e07) 
+                                                                               
+                                                          (s^2 + 1.932e08)     
+                                                                               
+  -----------------------------------------------------------------------------
+                                             
+                                   (s+2765)^8
+                                             
+ 
+Continuous-time zero/pole/gain model.
+
+H=phaser8
+
+H =
+ 
+                                                                  
+         s^8 + 2.14e08 s^6 + 4.089e15 s^4 + 1.25e22 s^2 + 3.412e27
+                                                                  
+  ------------------------------------------------------------------------
+                                                                          
+  s^8 + 2.212e04 s^7 + 2.14e08 s^6 + 1.183e12 s^5 + 4.089e15 s^4          
+                                                                          
+                      + 9.044e18 s^3 + 1.25e22 s^2 + 9.875e24 s + 3.412e27
+                                                                          
+ 
+Continuous-time transfer function.
+
+w_c
+w_c =
+       2764.6
+bode3
+figure;
+bodeplot(H)
+grid
+
+opts.FreqUnits = 'Hz';
+opts.MagUnits = 'abs';
+figure; bodeplot(H,opts)
+opts.PhaseWrapping = 'off';
+figure; bodeplot(H,opts)
+opts.MagUnits = 'dB';
+figure; bodeplot(H,opts)
+grid
+
+
+save phaser
+diary off
