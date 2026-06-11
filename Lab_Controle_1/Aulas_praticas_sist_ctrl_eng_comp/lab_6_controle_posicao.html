@@ -1,0 +1,676 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/* =============================================================
+   DROPBOX THEME — Typora
+   Fonte do corpo: Open Sans (Google Fonts)
+   Fonte de código: Roboto Mono / Menlo (sistema)
+   Nota: "import" sem "@" é intencional — o Typora aceita
+         esta sintaxe proprietária para carregar fontes externas.
+   ============================================================= */
+
+import url(https://fonts.googleapis.com/css?family=Open%20Sans);
+
+
+/* -------------------------------------------------------------
+   VARIÁVEIS DE TEMA (cores da interface do Typora)
+   Usadas pela UI do editor (barra lateral, arquivo ativo, etc.)
+   ------------------------------------------------------------- */
+:root {
+    --code-block-bg-color: inherit;
+
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px dashed #9b9b9b;
+
+    --active-file-bg-color: #0070E0;
+    --active-file-border-color: #8d8df0;
+    --active-file-text-color: #0070e0;
+
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+
+    --primary-color: #6dc1e7;
+}
+
+
+/* -------------------------------------------------------------
+   BASE — corpo geral e fonte padrão
+   ------------------------------------------------------------- */
+html {
+    font-size: 16px;
+}
+
+html, body, #write {
+    color: #5e676d;
+    font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+
+
+/* -------------------------------------------------------------
+   ÁREA DE ESCRITA — largura e alinhamento
+   ------------------------------------------------------------- */
+#write {
+    max-width: none;    /* sem limite de largura — ocupa toda a janela */
+    text-align: justify;
+}
+
+
+/* -------------------------------------------------------------
+   PARÁGRAFOS
+   ------------------------------------------------------------- */
+p {
+    color: #5e676d;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0 0 1.25rem;
+}
+
+
+/* -------------------------------------------------------------
+   TÍTULOS — H1 a H6
+   ------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 100;
+    color: #5e676d;
+    font-family: "Open Sans", sans-serif;
+    margin: 0.5rem 0;
+}
+
+/* H1, H2 e H3 em azul Aqua (macOS) — apenas a cor é sobrescrita */
+h1, h2, h3 {
+    color: #0066CC;
+}
+
+h1 { margin: 1rem 0; }
+h2 { margin: 0.8rem 0; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1.1rem; }
+
+/* Margem do primeiro título no documento */
+#write > h1:first-child { margin-top: 2.75rem; }
+#write > h2:first-child { margin-top: 1.75rem; }
+#write > h3:first-child { margin-top: 1rem; }
+#write > h4:first-child { margin-top: 0.5rem; }
+
+/* Posição do marcador de foco nos títulos (modo edição) */
+#write > h3.md-focus:before { left: -1.875rem; top: 0.5rem;    padding: 2px; }
+#write > h4.md-focus:before { left: -1.875rem; top: 0.3125rem; padding: 2px; }
+#write > h5.md-focus:before { left: -1.875rem; top: 0.25rem;   padding: 2px; }
+#write > h6.md-focus:before { left: -1.875rem; top: .125rem;   padding: 2px; }
+
+
+/* -------------------------------------------------------------
+   TÍTULOS — tamanhos responsivos (telas pequenas, <= 48em)
+   ------------------------------------------------------------- */
+@media screen and (max-width: 48em) {
+    h1 { font-size: 2.827rem; }
+    h2 { font-size: 1.999rem; }
+    h3 { font-size: 1.413rem; }
+    h4 { font-size: 1.250rem; }
+    h5 { font-size: 1.150rem; }
+    h6 { font-size: 1rem; }
+
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+}
+
+
+/* -------------------------------------------------------------
+   LINKS
+   ------------------------------------------------------------- */
+a, .md-def-url {
+    color: #007ee5;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* -------------------------------------------------------------
+   TABELAS
+   ------------------------------------------------------------- */
+table {
+    border: 1px solid #e2e2e2;
+    margin-bottom: 20px;
+}
+table th, table td {
+    padding: 8px;
+    line-height: 1.5rem;
+    vertical-align: top;
+    border: 1px solid #e2e2e2;
+}
+table th {
+    font-weight: normal;
+    background-color: #f0f7fd;
+    vertical-align: bottom;
+}
+table caption + thead tr:first-child th,
+table caption + thead tr:first-child td,
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+    border-top: 0;
+}
+table tbody + tbody {
+    border-top: 2px solid #ddd;
+}
+
+
+/* -------------------------------------------------------------
+   CÓDIGO — inline (`código`) e blocos (``` ... ```)
+   ------------------------------------------------------------- */
+
+/* Estilo base compartilhado entre inline e bloco */
+code, .md-fences {
+    background: #f6f9fc;
+    border: 1px solid #d0d4d9;
+    border-radius: 3px;
+    font-size: 0.9rem !important;
+    padding: .1em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+/* Blocos de código (```) — sobrescreve/complementa o estilo base */
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 1em;
+    padding: 0.3em 1em;
+    padding-top: 0.4em;
+}
+
+/* Fonte monoespaçada para todo contexto de código */
+code, kbd, pre, samp {
+    font-family: "Roboto Mono", Menlo, monospace;
+}
+
+
+/* -------------------------------------------------------------
+   LISTAS DE TAREFAS (- [ ] e - [x])
+   ------------------------------------------------------------- */
+.task-list {
+    padding-left: 0;
+}
+.task-list-item {
+    padding-left: 2.125rem;
+}
+
+/* Ajuste de alinhamento do checkbox no Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
+    .task-list-item input:before,
+    .task-list-item input:checked:before,
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
+}
+
+
+/* -------------------------------------------------------------
+   CITAÇÕES (blockquote)
+   ------------------------------------------------------------- */
+blockquote {
+    margin: 0 0 1.11111rem;
+    padding: 0.5rem 1.11111rem 0 1.05556rem;
+    border-left: 2px solid rgba(0, 112, 224, 0.32);
+}
+blockquote, blockquote p {
+    line-height: 1.6;
+    color: #8f8f8f;
+}
+
+
+/* -------------------------------------------------------------
+   BLOCO DE METADADOS YAML (front matter)
+   ------------------------------------------------------------- */
+#write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    font-weight: 300;
+    font-size: 1em;
+    color: #999;
+    padding: 3em 1.5em 1.5em;
+    margin-top: -1.5em;
+    margin-bottom: 2em;
+    /* extensão lateral para cobrir as margens do #write */
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+}
+
+
+/* -------------------------------------------------------------
+   MATEMÁTICA (MathJax)
+   ------------------------------------------------------------- */
+.MathJax_Display {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+p.mathjax-block, .mathjax-block {
+    padding-bottom: 0;
+}
+.mathjax-block > .code-tooltip {
+    bottom: 5px;
+    box-shadow: none;
+}
+
+
+/* -------------------------------------------------------------
+   IMAGENS
+   ------------------------------------------------------------- */
+.md-image > .md-meta {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+.md-image > img {
+    margin-top: 2px;
+}
+.md-image > .md-meta:first-of-type:before {
+    padding-left: 4px;
+}
+
+
+/* -------------------------------------------------------------
+   INTERFACE DO TYPORA — painel de busca, notificações, menus
+   ------------------------------------------------------------- */
+#typora-source { color: #555; }
+
+#md-searchpanel { border-bottom: 1px solid #ccc; }
+#md-searchpanel .btn { border: 1px solid #ccc; }
+
+#md-notification { background: #eee; }
+#md-notification:before { top: 14px; }
+
+.megamenu-menu-panel .btn { border: 1px solid #ccc; }
+
+
+/* -------------------------------------------------------------
+   INTERFACE DO TYPORA — barra lateral e árvore de arquivos
+   ------------------------------------------------------------- */
+.mac-seamless-mode #typora-sidebar { background-color: #f7f9fa; }
+
+.pin-outline .outline-active { color: #0070E0; }
+
+.sidebar-tab.active { font-weight: 400; }
+
+.file-node-content { color: #5e676d; }
+
+.file-list-item {
+    border-bottom: 1px solid;
+    border-color: #E6E8EB;
+}
+.file-list-item-summary {
+    font-weight: 400;
+    color: #637282;
+}
+.file-list-item.active {
+    color: #0070E0;
+    background-color: #E6E8EB;
+}
+
+.file-tree-node.active > .file-node-background { background-color: #E6E8EB; }
+.file-tree-node.active > .file-node-content    { color: #0070E0; }
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Controle de Posição (MF)</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='controle-de-posição'><span>Controle de Posição</span></h1><h2 id='1-detalhes-sobre-alguns-blocos'><span>1. Detalhes sobre Alguns Blocos</span></h2><p><span>A idéia é realizar um controle de posição em malha-fechada tal como mostra a próxima figura:</span></p><p><img src="fig-3-3-2.jpg" alt="fig-3-3-2" style="zoom:30%;" /></p><p><span>Segue uma breve descrição dos módulos usados neste experimento.</span></p><p><span>O ângulo deseado de giro (ou referência de entrada) é estabelecido analógicamente estabelecendo um divisor de tensão sobre um potenciômetro. Assim, conforme o mesmo gira, é possível se variar a tensão de saída sendo gerada. Neste caso, usaremos um potenciômetro já graduado (com marcações angulares em graus) para facilitar o estabelecimento da uma referência angular. Será usado o módulo IP150H:</span></p><p><img src="modulo_IP150H.drawio.png" alt="modulo_IP150H.drawio" style="zoom:50%;" /></p><p><span>Da mesma forma, nosso sensor de posição é constituído por um potenciômetro montado de tal forma mecânmica, que seu eixo curso é acomplado ao eixo de saída do motor e seus terminais também são usados para trabalhar como um divisores de tensão, gerando no seu terminal central, uma tensão de saída que acaba sendo proporcional ao ângulo de giro do motor (módulo OP150K):</span></p><p><img src="modulo_OP150K.drawio.png" alt="modulo_OP150K.drawio" style="zoom:50%;" /></p><p><span>O módulo OA150A (Amp. Op.) somador inversor é usado para analogicamente obter o equivalente à:</span></p><p><img src="fig-4-1.jpg" referrerpolicy="no-referrer" alt="fig-4-1"></p><p><span>Foto do módulo OA150A:</span></p><p><img src="modulo_OA150A.drawio.png" alt="modulo_OA150A.drawio" style="zoom:40%;" /></p><p><span>Note que este módulo da forma como foi disponibilizado, não é capaz de realizar analogicamente a diferença entre 2 sinais de entrada. Ele apenas é capaz de realizar soma das tensões presentes nas suas entradas: </span></p><p><img src="fig-3-2-4.jpg" alt="fig-3-2-4" style="zoom: 25%;" /></p><p><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="27.244ex" height="5.428ex" role="img" focusable="false" viewBox="0 -1449.5 12041.8 2399" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.148ex;"><defs><path id="MJX-107-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-107-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-107-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-107-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-107-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-107-TEX-S3-28" d="M701 -940Q701 -943 695 -949H664Q662 -947 636 -922T591 -879T537 -818T475 -737T412 -636T350 -511T295 -362T250 -186T221 17T209 251Q209 962 573 1361Q596 1386 616 1405T649 1437T664 1450H695Q701 1444 701 1441Q701 1436 681 1415T629 1356T557 1261T476 1118T400 927T340 675T308 359Q306 321 306 250Q306 -139 400 -430T690 -924Q701 -936 701 -940Z"></path><path id="MJX-107-TEX-I-1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path><path id="MJX-107-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-107-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-107-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-107-TEX-S3-29" d="M34 1438Q34 1446 37 1448T50 1450H56H71Q73 1448 99 1423T144 1380T198 1319T260 1238T323 1137T385 1013T440 864T485 688T514 485T526 251Q526 134 519 53Q472 -519 162 -860Q139 -885 119 -904T86 -936T71 -949H56Q43 -949 39 -947T34 -937Q88 -883 140 -813Q428 -430 428 251Q428 453 402 628T338 922T245 1146T145 1309T46 1425Q44 1427 42 1429T39 1433T36 1436L34 1438Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-107-TEX-I-1D449"></use></g><g data-mml-node="mi" transform="translate(616,-150) scale(0.707)"><use data-c="1D45C" xlink:href="#MJX-107-TEX-I-1D45C"></use></g></g><g data-mml-node="mo" transform="translate(1286.7,0)"><use data-c="3D" xlink:href="#MJX-107-TEX-N-3D"></use></g><g data-mml-node="mo" transform="translate(2342.5,0)"><use data-c="2212" xlink:href="#MJX-107-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(3120.5,0)"><use data-c="1D434" xlink:href="#MJX-107-TEX-I-1D434"></use></g><g data-mml-node="mrow" transform="translate(4037.2,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="28" xlink:href="#MJX-107-TEX-S3-28"></use></g><g data-mml-node="mstyle" transform="translate(736,0)"><g data-mml-node="mfrac"><g data-mml-node="msub" transform="translate(220,676)"><g data-mml-node="mi"><use data-c="1D445" xlink:href="#MJX-107-TEX-I-1D445"></use></g><g data-mml-node="mn" transform="translate(792,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-107-TEX-N-31"></use></g></g><g data-mml-node="msub" transform="translate(220,-686)"><g data-mml-node="mi"><use data-c="1D445" xlink:href="#MJX-107-TEX-I-1D445"></use></g><g data-mml-node="mn" transform="translate(792,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-107-TEX-N-32"></use></g></g><rect width="1395.6" height="60" x="120" y="220"></rect></g></g><g data-mml-node="msub" transform="translate(2371.6,0)"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-107-TEX-I-1D449"></use></g><g data-mml-node="mn" transform="translate(616,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-107-TEX-N-31"></use></g></g><g data-mml-node="mo" transform="translate(3613.3,0)"><use data-c="2B" xlink:href="#MJX-107-TEX-N-2B"></use></g><g data-mml-node="mstyle" transform="translate(4613.6,0)"><g data-mml-node="mfrac"><g data-mml-node="msub" transform="translate(220,676)"><g data-mml-node="mi"><use data-c="1D445" xlink:href="#MJX-107-TEX-I-1D445"></use></g><g data-mml-node="mn" transform="translate(792,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-107-TEX-N-31"></use></g></g><g data-mml-node="msub" transform="translate(220,-686)"><g data-mml-node="mi"><use data-c="1D445" xlink:href="#MJX-107-TEX-I-1D445"></use></g><g data-mml-node="mn" transform="translate(792,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-107-TEX-N-32"></use></g></g><rect width="1395.6" height="60" x="120" y="220"></rect></g></g><g data-mml-node="msub" transform="translate(6249.1,0)"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-107-TEX-I-1D449"></use></g><g data-mml-node="mn" transform="translate(616,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-107-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(7268.7,0) translate(0 -0.5)"><use data-c="29" xlink:href="#MJX-107-TEX-S3-29"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>V</mi><mi>o</mi></msub><mo>=</mo><mo>−</mo><mi>A</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><msub><mi>R</mi><mn>1</mn></msub><msub><mi>R</mi><mn>2</mn></msub></mfrac></mstyle><msub><mi>V</mi><mn>1</mn></msub><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><msub><mi>R</mi><mn>1</mn></msub><msub><mi>R</mi><mn>2</mn></msub></mfrac></mstyle><msub><mi>V</mi><mn>2</mn></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">V_o = -A \left( \dfrac{R_1}{R_2} V_1 + \dfrac{R_1}{R_2} V_2 \right)</script></p><p><span>Além disto, apos a soma, o módulo OA150A ainda inverte a fase do sinal resultante (</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="6.118ex" height="1.78ex" role="img" focusable="false" viewBox="0 -704.9 2703.9 786.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-32-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-32-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-32-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path id="MJX-32-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-32-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-32-TEX-N-2212"></use></g><g data-mml-node="msup" transform="translate(778,0)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-32-TEX-N-31"></use><use data-c="38" xlink:href="#MJX-32-TEX-N-38" transform="translate(500,0)"></use><use data-c="30" xlink:href="#MJX-32-TEX-N-30" transform="translate(1000,0)"></use></g><g data-mml-node="mi" transform="translate(1533,393.1) scale(0.707)"><use data-c="1D45C" xlink:href="#MJX-32-TEX-I-1D45C"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>−</mo><msup><mn>180</mn><mi>o</mi></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">-180^o</script><span>). Isto significa que para desempenhar o cálculo analógico do sinal do erro, se faz necessário entrar com os sinais defasados entre si, e ainda considerar esta inversão do sinal de saída. Para tanto, a referência é conectada ao kit em “contra-fase” (reversamente polarizada) e o sinal de saída (medição angular do sistema) entra neste módulo em fase reversa em comparação com o sinal anterior. Assim, obtemos o sinal do erro, </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.631ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1605 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-37-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-37-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-37-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-37-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D452" xlink:href="#MJX-37-TEX-I-1D452"></use></g><g data-mml-node="mo" transform="translate(466,0)"><use data-c="28" xlink:href="#MJX-37-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(855,0)"><use data-c="1D461" xlink:href="#MJX-37-TEX-I-1D461"></use></g><g data-mml-node="mo" transform="translate(1216,0)"><use data-c="29" xlink:href="#MJX-37-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>e</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">e(t)</script><span> da forma correta. Guiar-se pela próxima figura para entender o procedimento:</span></p><p><img src="fig-4-2.jpg" referrerpolicy="no-referrer" alt="fig-4-2"></p><p><span>Por fim, estamos tentando realizar controle proporcional de posição angular usando este kit:</span></p><p><img src="fig-4-7.jpg" referrerpolicy="no-referrer" alt="fig-4-7"></p><p><span>Já o módulo PA150C (figura abaixo) apenas separa os ciclos positivos e negativos do somatório de seus sinais de entrada:</span></p><p><img src="funcionamento_modulo_PA150C.png" alt="funcionamento_modulo_PA150C" style="zoom: 40%;" /></p><p><span>Obs.: Ao usar este módulo, manter a chave de seleção na posição </span><strong><span>Normal</span></strong><span>.</span></p><p><span>Estes sinais “A” e “B” como apareceram na figura anterior, são conectados às 2 entradas, pinos 1 e 2 do módulo SA150  (separadas e distintas do driver do potência do motor):</span></p><p><img src="modulo_SA150.drawio.png" alt="modulo_SA150.drawio" style="zoom:33%;" /></p><p><span>Este módulo (SA150D) atua sobre o controle do motor diretamente sobre suas armaduras, por isto é chamado de </span><strong><span>controle por armadura</span></strong><span>. Transístores de potência são usados para modular a corrente (e não a tensão) sobre os terminais (pinos 3 e 4) do motor. O próprio motor contrabalança as correntes nas suas entradas e com base no resultado final, gira no sentido horário ou anti-horário, atingindo um torque diretamente proporcional à corrente efetiva final liberada para o mesmo. Este tipo de controle permite controle direto sobre o torque o motor ao contrário de controladores que variam que a tensão de alimentação nos terminais do motor:</span></p><p><img src="fig-3-1.jpg" referrerpolicy="no-referrer" alt="fig-3-1"></p><p>&nbsp;</p><h2 id='2-montagem-ou-diagrama-de-fiação'><span>2. Montagem (ou Diagrama de Fiação)</span></h2><p><span>Esta prevista a seguinte montagem neste laboratório (corresponde à </span><a href='https://fpassold.github.io/Lab_Controle_1/apostila_lab_controle_1.pdf#page=70'><span>Fig. 6.5, pág. 70 do </span><strong><span>Lab 6</span></strong></a><span> ):</span></p><p><img src="fig-6-4.png" referrerpolicy="no-referrer" alt="fig-6-4"></p><p><span>Para entender no que implica as ligações elétricas anterior, o próximo item mostra um diagrama em blocos equivalente ao que foi realizado através desta figura.</span></p><p>&nbsp;</p><h2 id='3-diagrama-em-blocos'><span>3. Diagrama em Blocos</span></h2><p><span>A figura abaixo “traduz” o que está sendo realizado através das ligações elétricas mostradas na figura anterior:</span></p><p><img src="controle_posicao_kit_feedback.drawio.png" referrerpolicy="no-referrer" alt="controle_posicao_kit_feedback.drawio"></p><p>&nbsp;</p><h2 id='4-alternativa-sugerida'><span>4. Alternativa Sugerida</span></h2><p><span>Se você quiser alcançar resultados práticos mais semelhantes aos encontrados na aula teórica simulando um sistema de controle e observando resultados obtidos através do comando </span><code>step(ftmf)</code><span>, sugere-se conectar um gerador de sinais (ou funções) e um osciloscópio à montagem anterior. </span></p><p><span>Para tanto:</span></p><ol start='' ><li><span>Nesta caso, ao invés da referência ser um sinal analógico de entrada gerado manualmente girando o potenciômetro IP150H, vamos usar um gerador de sinais para isto.</span></li><li><span>Desconecte o pino 1 no OA150A (Amp. Op. do Canal de Erro) do potenciômetro IP150H (referência angular de posição). O pino 1 deve ser conectado à saída do gerador de sinais.</span></li><li><span>Ajustar o gerador de sinais para gerar uma onda quadrada, com níveis de tensão oscilando entre </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 1278 748" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-9-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-9-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-9-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(778,0)"><use data-c="35" xlink:href="#MJX-9-TEX-N-35"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>−</mo><mn>5</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">-5</script><span> Volts até </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 1278 748" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-12-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-12-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2B" xlink:href="#MJX-12-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(778,0)"><use data-c="35" xlink:href="#MJX-12-TEX-N-35"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>+</mo><mn>5</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">+5</script><span> Volts, com frequência abaixo de 1 Hz. Este nível de tensão equivale a estabelecer ângulos de referência oscilando rapidamente entre </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.986ex" height="1.78ex" role="img" focusable="false" viewBox="0 -704.9 2203.9 786.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-18-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-18-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-18-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-18-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-18-TEX-N-2212"></use></g><g data-mml-node="msup" transform="translate(778,0)"><g data-mml-node="mn"><use data-c="36" xlink:href="#MJX-18-TEX-N-36"></use><use data-c="30" xlink:href="#MJX-18-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mi" transform="translate(1033,393.1) scale(0.707)"><use data-c="1D45C" xlink:href="#MJX-18-TEX-I-1D45C"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>−</mo><msup><mn>60</mn><mi>o</mi></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">-60^o</script><span> à </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.986ex" height="1.78ex" role="img" focusable="false" viewBox="0 -704.9 2203.9 786.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-26-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-26-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-26-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-26-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2B" xlink:href="#MJX-26-TEX-N-2B"></use></g><g data-mml-node="msup" transform="translate(778,0)"><g data-mml-node="mn"><use data-c="36" xlink:href="#MJX-26-TEX-N-36"></use><use data-c="30" xlink:href="#MJX-26-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mi" transform="translate(1033,393.1) scale(0.707)"><use data-c="1D45C" xlink:href="#MJX-26-TEX-I-1D45C"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>+</mo><msup><mn>60</mn><mi>o</mi></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">+60^o</script><span>. A idéia é que a onda quadrada permaneça em cada semi-ciclo por ium período de tempo maior que 5 segundos, de forma a dar tempo para o kit estabilizar (atingir seu regime permanente). Na pr´taica implica frequências tão baixas quanto: 0,1 Hz (5 segundos em cada semi-ciclo) à 0,05 Hz (10 segundos em cada semi-ciclo).</span></li><li><span>Concetar o canal 1 do osciloscópio no pino 1 do OA150A (entrada de referência). Este canal vai mostrar como a referência está mudando seus níveis a cada semi-ciclo da onda quadrada.</span></li><li><span>Conectar o canal 2 do osciloscópio no pino 2 do OA150A (ou pino 3 do OP150K). Este sinal corresponde à saída angular desta planta (sistema).</span></li><li><span>Sugere-se capturar as telas obtidas no osciloscópio usando algum pendrive formatado em FAT32.</span></li><li><span>Sugere-se variar o ganho proporcional, girando o potenciômetro AU150B. Repare no que acontece quando se usar baixos ou altos valores de ganho.</span></li><li><span>Você pode ainda acrescentar “carga” ao sistema, ajustando o ângulo do disco de inércia LA150L. Ajuste em 50% por exemplo e veja como provavelmente será necessário aumentar o valor do ganho para reduzir o erro em regime permanente.</span></li></ol><p><span>Se tudo foi feito da forma correta, são esperados resultados como os mostrados no próximo item.</span></p><p>&nbsp;</p><h2 id='5-resultados-esperados'><span>5. Resultados Esperados</span></h2><p><span>Se o canal 1 do osciloscópio for conectado à saída do gerador de sinais e o canal 2 na saída do sensor de posição, devemos obter gráficos como os mostrados abaixo na tela no mesmo:</span></p><ul><li><p><span>Respostado do sistema com ganho baixo:</span></p><p><img src="F0008TEK.jpg" referrerpolicy="no-referrer" alt="F0008TEK"></p></li><li><p><span>Resposta com ganho </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="8.297ex" height="1.984ex" role="img" focusable="false" viewBox="0 -683 3667.2 877" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.439ex;"><defs><path id="MJX-6-TEX-I-1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path><path id="MJX-6-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-6-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-6-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-6-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43E" xlink:href="#MJX-6-TEX-I-1D43E"></use></g><g data-mml-node="mo" transform="translate(1166.8,0)"><use data-c="3D" xlink:href="#MJX-6-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(2222.6,0)"><use data-c="30" xlink:href="#MJX-6-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(2722.6,0)"><use data-c="2C" xlink:href="#MJX-6-TEX-N-2C"></use></g><g data-mml-node="mn" transform="translate(3167.2,0)"><use data-c="33" xlink:href="#MJX-6-TEX-N-33"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi><mo>=</mo><mn>0</mn><mo>,</mo><mn>3</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">K=0,3</script><span>:</span></p><p><img src="F0000TEK.jpg" referrerpolicy="no-referrer" alt="F0000TEK"></p></li><li><p><span>Aumentando mais o ganho:</span></p><p><img src="F0004TEK.jpg" referrerpolicy="no-referrer" alt="F0004TEK"></p><p><span>Obs.: O sistema parece entrar em oscilação, mas isto se deve à não-linearidades no sistema (folga em engrenagens, erro/sinal de atuação demasiado para vencer atrito estático).</span></p></li><li><p><span>Aumentando ainda mais o ganho:</span></p><p><img src="F0006TEK.jpg" referrerpolicy="no-referrer" alt="F0006TEK"></p><p><span>Obs.: Neste caso, o ganho realmente está bastante elevando mostrando resposta oscilatóro com oveshoots.</span></p></li></ul><p><span>Note que persiste um erro em regime permanente tal como:</span></p><p><img src="fig-3-8-4-a-lab8.png" referrerpolicy="no-referrer" alt="fig-3-8-4-a-lab8"></p><p>&nbsp;</p><h2 id='6-referência'><span>6. Referência</span></h2><ul><li><p><a href='https://fpassold.github.io/Lab_Controle_1/apostila_lab_controle_1.pdf#page=65'><span>Lab 6</span></a><span>: Fechando malha com controle de posição angular usando controlador Proporcional.</span></p><p>&nbsp;</p></li></ul><hr /><p><span>Fernando Passold, em 11/05/2026</span></p><p>&nbsp;</p></div></div>
+</body>
+</html>
