@@ -16,6 +16,7 @@ Maori proverb
 Lemas pessoais:
 * *Impossível não existe*
 * *Quem fica parado é poste*
+* *Não existe almoço grátis*
 
 ----
 
