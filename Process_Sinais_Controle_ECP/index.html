@@ -201,329 +201,385 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .md-inline-math-container mjx-container { zoom: 0.95; }
 
 
-/* =============================================================
-   DROPBOX THEME — Typora
-   Fonte do corpo: Open Sans (Google Fonts)
-   Fonte de código: Roboto Mono / Menlo (sistema)
-   Nota: "import" sem "@" é intencional — o Typora aceita
-         esta sintaxe proprietária para carregar fontes externas.
-   ============================================================= */
-
 import url(https://fonts.googleapis.com/css?family=Open%20Sans);
-
-
-/* -------------------------------------------------------------
-   VARIÁVEIS DE TEMA (cores da interface do Typora)
-   Usadas pela UI do editor (barra lateral, arquivo ativo, etc.)
-   ------------------------------------------------------------- */
 :root {
-    --code-block-bg-color: inherit;
+    --code-block-bg-color: inherit;//#f8f8f8;
 
+    --item-hover-bg-color: #0a0d16;
     --control-text-color: #b7b7b7;
     --control-text-hover-color: #eee;
     --window-border: 1px dashed #9b9b9b;
 
     --active-file-bg-color: #0070E0;
     --active-file-border-color: #8d8df0;
-    --active-file-text-color: #0070e0;
 
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: #0070e0;
     --item-hover-bg-color: #70717d;
     --item-hover-text-color: white;
-
     --primary-color: #6dc1e7;
 }
 
+html,
+body,
+#write{
+	color: #5e676d;
+	font-family: "Open Sans", "Clear Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/*font-weight: lighter;*/
+	font-weight: 100;
+	color: #5e676d;
+	font-family: "Open Sans", sans-serif;
+	margin: 0.5rem 0;
+}
 
-/* -------------------------------------------------------------
-   BASE — corpo geral e fonte padrão
-   ------------------------------------------------------------- */
 html {
-    font-size: 16px;
+	font-size:16px;
 }
 
-html, body, #write {
-    color: #5e676d;
-    font-family: "Open Sans", "Clear Sans", sans-serif;
-}
-
-
-/* -------------------------------------------------------------
-   ÁREA DE ESCRITA — largura e alinhamento
-   ------------------------------------------------------------- */
 #write {
-    max-width: none;    /* sem limite de largura — ocupa toda a janela */
-    text-align: justify;
+	max-width: 914px;
+	text-align: justify;
 }
 
-
-/* -------------------------------------------------------------
-   PARÁGRAFOS
-   ------------------------------------------------------------- */
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	margin: 1rem 0;
+	/*line-height: 4rem;
+	padding: 5px 30px;
+	text-align: center;
+	margin-top: 4rem;*/
+}
+h2 {
+	margin: 0.8rem 0;
+	/*
+	line-height: 3rem;
+	padding: 0 30px;
+	text-align: center;
+	margin-top: 3rem
+	*/
+}
+h3 {
+}
+h4 {
+}
+h5 {
+	font-size: 1.125rem;
+}
+h6 {
+	font-size: 1.1rem;
+}
 p {
-    color: #5e676d;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin: 0 0 1.25rem;
+	color: #5e676d;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0 0 1.25rem;
 }
-
-
-/* -------------------------------------------------------------
-   TÍTULOS — H1 a H6
-   ------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 100;
-    color: #5e676d;
-    font-family: "Open Sans", sans-serif;
-    margin: 0.5rem 0;
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
 }
-
-/* H1, H2 e H3 em azul Aqua (macOS) — apenas a cor é sobrescrita */
-h1, h2, h3 {
-    color: #0096FF;
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
 }
-
-h1 { margin: 1rem 0; }
-h2 { margin: 0.8rem 0; }
-h5 { font-size: 1.125rem; }
-h6 { font-size: 1.1rem; }
-
-/* Margem do primeiro título no documento */
-#write > h1:first-child { margin-top: 2.75rem; }
-#write > h2:first-child { margin-top: 1.75rem; }
-#write > h3:first-child { margin-top: 1rem; }
-#write > h4:first-child { margin-top: 0.5rem; }
-
-/* Posição do marcador de foco nos títulos (modo edição) */
-#write > h3.md-focus:before { left: -1.875rem; top: 0.5rem;    padding: 2px; }
-#write > h4.md-focus:before { left: -1.875rem; top: 0.3125rem; padding: 2px; }
-#write > h5.md-focus:before { left: -1.875rem; top: 0.25rem;   padding: 2px; }
-#write > h6.md-focus:before { left: -1.875rem; top: .125rem;   padding: 2px; }
-
-
-/* -------------------------------------------------------------
-   TÍTULOS — tamanhos responsivos (telas pequenas, <= 48em)
-   ------------------------------------------------------------- */
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
 @media screen and (max-width: 48em) {
-    h1 { font-size: 2.827rem; }
-    h2 { font-size: 1.999rem; }
-    h3 { font-size: 1.413rem; }
-    h4 { font-size: 1.250rem; }
-    h5 { font-size: 1.150rem; }
-    h6 { font-size: 1rem; }
-
-    blockquote {
-        margin-left: 1rem;
-        margin-right: 0;
-        padding: 0.5em;
-    }
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
 }
-
-
-/* -------------------------------------------------------------
-   LINKS
-   ------------------------------------------------------------- */
-a, .md-def-url {
-    color: #007ee5;
-    text-decoration: none;
+a,
+.md-def-url {
+	color: #007ee5;
+	text-decoration: none;
 }
 a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
-
-
-/* -------------------------------------------------------------
-   TABELAS
-   ------------------------------------------------------------- */
 table {
-    border: 1px solid #e2e2e2;
-    margin-bottom: 20px;
+	border: 1px solid #e2e2e2;
+	margin-bottom: 20px
 }
-table th, table td {
-    padding: 8px;
-    line-height: 1.5rem;
-    vertical-align: top;
-    border: 1px solid #e2e2e2;
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.5rem;
+	vertical-align: top;
+	border: 1px solid #e2e2e2;
 }
 table th {
-    font-weight: normal;
-    background-color: #f0f7fd;
-    vertical-align: bottom;
+	font-weight: normal;
+	background-color: #f0f7fd;
 }
-table caption + thead tr:first-child th,
-table caption + thead tr:first-child td,
-table colgroup + thead tr:first-child th,
-table colgroup + thead tr:first-child td,
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
 table thead:first-child tr:first-child th,
 table thead:first-child tr:first-child td {
-    border-top: 0;
+	border-top: 0
 }
-table tbody + tbody {
-    border-top: 2px solid #ddd;
+table tbody+tbody {
+	border-top: 2px solid #ddd
 }
-
-
-/* -------------------------------------------------------------
-   CÓDIGO — inline (`código`) e blocos (``` ... ```)
-   ------------------------------------------------------------- */
-
-/* Estilo base compartilhado entre inline e bloco */
 code, .md-fences {
-    background: #f6f9fc;
-    border: 1px solid #d0d4d9;
-    border-radius: 3px;
-    font-size: 0.9rem !important;
-    padding: .1em;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+	padding: .5em;
+	background: #f6f9fc;
+	border: 1px solid #d0d4d9;
+	border-radius: 3px;
+	padding: .1em;
+	font-size: 0.9rem !important;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
 }
-
-/* Blocos de código (```) — sobrescreve/complementa o estilo base */
 .md-fences {
-    margin: 0 0 20px;
-    font-size: 1em;
-    padding: 0.3em 1em;
-    padding-top: 0.4em;
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
 }
 
-/* Fonte monoespaçada para todo contexto de código */
-code, kbd, pre, samp {
-    font-family: "Roboto Mono", Menlo, monospace;
-}
-
-
-/* -------------------------------------------------------------
-   LISTAS DE TAREFAS (- [ ] e - [x])
-   ------------------------------------------------------------- */
-.task-list {
-    padding-left: 0;
-}
 .task-list-item {
-    padding-left: 2.125rem;
+	padding-left:2.125rem;
 }
 
-/* Ajuste de alinhamento do checkbox no Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
-    .task-list-item input:before,
-    .task-list-item input:checked:before,
-    .task-list-item input[checked]:before {
-        margin-top: -0.2rem;
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
     }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
 }
 
-
-/* -------------------------------------------------------------
-   CITAÇÕES (blockquote)
-   ------------------------------------------------------------- */
 blockquote {
-    margin: 0 0 1.11111rem;
-    padding: 0.5rem 1.11111rem 0 1.05556rem;
-    border-left: 2px solid rgba(0, 112, 224, 0.32);
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 2px solid rgba(0, 112, 224, 0.32);
 }
-blockquote, blockquote p {
-    line-height: 1.6;
-    color: #8f8f8f;
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #8f8f8f;
 }
-
-
-/* -------------------------------------------------------------
-   BLOCO DE METADADOS YAML (front matter)
-   ------------------------------------------------------------- */
 #write pre.md-meta-block {
-    min-height: 30px;
-    background: #f8f8f8;
-    font-weight: 300;
-    font-size: 1em;
-    color: #999;
-    padding: 3em 1.5em 1.5em;
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
     margin-top: -1.5em;
-    margin-bottom: 2em;
-    /* extensão lateral para cobrir as margens do #write */
-    border-left: 1000px #f8f8f8 solid;
-    margin-left: -1000px;
-    border-right: 1000px #f8f8f8 solid;
-    margin-right: -1000px;
+	color: #999;
+	border-left: 1000px #f8f8f8 solid;
+	margin-left: -1000px;
+	border-right: 1000px #f8f8f8 solid;
+	margin-right: -1000px;
+	margin-bottom: 2em;
 }
-
-
-/* -------------------------------------------------------------
-   MATEMÁTICA (MathJax)
-   ------------------------------------------------------------- */
 .MathJax_Display {
-    font-size: 0.9em;
-    margin-top: 0.5em;
-    margin-bottom: 0;
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
 }
-p.mathjax-block, .mathjax-block {
-    padding-bottom: 0;
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
 }
-.mathjax-block > .code-tooltip {
-    bottom: 5px;
-    box-shadow: none;
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
 }
-
-
-/* -------------------------------------------------------------
-   IMAGENS
-   ------------------------------------------------------------- */
-.md-image > .md-meta {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 }
-.md-image > img {
-    margin-top: 2px;
+.md-image>img {
+	margin-top: 2px;
 }
-.md-image > .md-meta:first-of-type:before {
-    padding-left: 4px;
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
 }
 
+#typora-source {
+	color: #555;
+}
 
-/* -------------------------------------------------------------
-   INTERFACE DO TYPORA — painel de busca, notificações, menus
-   ------------------------------------------------------------- */
-#typora-source { color: #555; }
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
 
-#md-searchpanel { border-bottom: 1px solid #ccc; }
-#md-searchpanel .btn { border: 1px solid #ccc; }
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
 
-#md-notification { background: #eee; }
-#md-notification:before { top: 14px; }
+#md-notification:before {
+	top: 14px;
+}
 
-.megamenu-menu-panel .btn { border: 1px solid #ccc; }
+#md-notification {
+	background: #eee;
+}
 
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
 
-/* -------------------------------------------------------------
-   INTERFACE DO TYPORA — barra lateral e árvore de arquivos
-   ------------------------------------------------------------- */
-.mac-seamless-mode #typora-sidebar { background-color: #f7f9fa; }
+.mac-seamless-mode #typora-sidebar {
+  background-color: #f7f9fa;
+}
 
-.pin-outline .outline-active { color: #0070E0; }
-
-.sidebar-tab.active { font-weight: 400; }
-
-.file-node-content { color: #5e676d; }
+.pin-outline .outline-active {
+  color: #0070E0; 
+}
 
 .file-list-item {
-    border-bottom: 1px solid;
-    border-color: #E6E8EB;
-}
-.file-list-item-summary {
-    font-weight: 400;
-    color: #637282;
-}
-.file-list-item.active {
-    color: #0070E0;
-    background-color: #E6E8EB;
+  border-bottom: 1px solid;
+  border-color: #E6E8EB;
 }
 
-.file-tree-node.active > .file-node-background { background-color: #E6E8EB; }
-.file-tree-node.active > .file-node-content    { color: #0070E0; }
+.file-list-item-summary {
+  font-weight: 400;
+  color: #637282; 
+}
+
+.file-list-item.active {
+  color: #0070E0;
+  background-color: #E6E8EB;
+}
+
+.file-tree-node.active>.file-node-background {
+  background-color: #E6E8EB;
+} 
+
+.file-tree-node.active>.file-node-content {
+  color: #0070E0;
+}
+
+.file-node-content {
+  color: #5e676d;
+}
+
+.sidebar-tab.active {
+  font-weight: 400;
+}
+
+code, kbd, pre, samp {
+  font-family: "Roboto Mono", Menlo, monospace;
+}
 
 
  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>ECP176: Processamento de Sinais e Controle Digital</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><p><img src="close-up-monitor-hospital.jpg" referrerpolicy="no-referrer" alt="close-up-monitor-hospital"></p><!-- https://www.freepik.com/premium-ai-image/close-up-monitor-hospital_201809557.htm#from_view=detail_alsolike --><h1 id='ecp176-processamento-de-sinais-e-controle-digital'><span>ECP176: Processamento de Sinais e Controle Digital</span></h1><p><span>Eng. de Computação (2026/2)</span></p><p><strong><span>Ementa</span></strong></p><p><span>Teoria da amostragem e aquisição de dados. Análise de sinais e sistemas discretos nos domínios do tempo e da frequência. Transformada discreta de Fourier (DFT/FFT). Transformada Z. Análise da transformada Z aplicada a filtros. Filtros digitais. Análise no plano Z de sistemas de controle discreto. Mapeamento entre planos S e Z. Análise de estabilidade e regime transitório. Controladores digitais. Projeto com lugar das raízes e resposta em frequência. </span><em><span>Implementação de algoritmos de processamento digital de sinais e controle digital em microcontroladores de uso geral</span></em><span>.</span></p><hr /><h2 id='cronograma-previsto'><span>Cronograma Previsto</span></h2><p><span>Seguem conteúdo e atividades previstas.</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>Encontro</span></th><th><span>Conteúdo Previsto</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>1) </span><br><span>27/07</span></td><td><span>Apresentação, ementa e critérios de avaliação. </span><br><span>Introdução ao Controle Digital e PDS: revisão de sinais contínuos e discretos.</span><br><a href='https://fpassold.github.io/Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf'><span>Teoria da Amostragem</span></a><span>: Teorema de Nyquist-Shannon, Aliasing e Conversores A/D e D/A. </span><br><a href='https://fpassold.github.io/Controle_3/2_sampling/From%20Analog%20to%20Digital%20–%20Part%202:%20The%20Conversion%20Process%20'><span>Material Adicional (em inglês)</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>2) </span><br><span>03/08</span></td><td><span>Análise de Sinais e Sistemas Discretos no Domínio do Tempo. Equações de Diferenças.</span><br><span>Introdução à Transformada Z, Transformadas de alguns sinais, Propriedades da Transformada Z, Métodos de Transformada Inversa de Z. Exemplos/exercícios.</span><br><a href='https://fpassold.github.io/Controle_3/3_transformada/transformada_Z.pdf'><span>Parte 1</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Controle_3/3_transformada/transformada_Z_parte2.pdf'><span>Parte 2</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Controle_3/3_transformada/transformada_Z_parte_3.pdf'><span>Parte 3</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>3) </span><br><span>10/08</span></td><td><span>Transformada-Z: Região de Convergência (ROC). Mapeamento do plano-s para o plano-z.</span><br><a href='https://fpassold.github.io/Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf'><span>Resumo Transformada Z</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>4) </span><br><span>17/08</span></td><td><a href='https://fpassold.github.io/Process_Sinais/intro_process_sinal.html'><span>Introdução à Filtros Digitais</span></a><span>;</span><br><a href='https://fpassold.github.io/Process_Sinais/media_movel.html'><span>Filtro de Média Móvel</span></a><span>;</span><br><a href='https://fpassold.github.io/Lab_Processa_Sinais/Filtro/filtro_exponencial.html'><span>Filtro Exponencial de 1a-ordem</span></a><span>;</span><br><span>Transformação bi-linear (do plano-s p/plano-z): Método de Tustin;</span><br><a href='https://fpassold.github.io/Process_Sinais/butter1.html'><span>Filtros Butterworth digitais</span></a><span>;</span></td></tr><tr><td style='text-align:left;' ><span>5) </span><br><span>24/08</span></td><td><span>Modelagem de Sistemas Dinâmicos Discretos e Resposta Transitória no Plano Z</span><br><a href='https://fpassold.github.io/Process_Sinais/funcao_transferencia.html'><span>Função Transferência no plano-z</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Process_Sinais/estabilidade.html'><span>Estabilidade de Sistemas Discretos</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Process_Sinais/papel_polos_zeros.html'><span>Pólos e Zeros no plano-z e impacto na resposta frequencial</span></a><span>. ⇐ Previsão.</span></td></tr><tr><td style='text-align:left;' ><span>6) </span><br><span>31/08</span></td><td><span>Parte Prática:</span><br><strong><span>Prática 1</span></strong><span>: Configuração de amostragem via Interrupção de Timer (ESP32/Arduino) lendo LDR.</span><br><strong><span>Prática 2</span></strong><span>: Implementação de Filtro Passa-Baixas em C no ESP32 para atenuação de ruído no LDR.</span><br><strong><span>Prática 3</span></strong><span>: Implementação de Filtro de Média-Móvel em C no ESP32 para atenuação de ruído no LDR.</span></td></tr><tr><td style='text-align:left;' ><span>7) </span><br><span>14/09</span></td><td><span>Prova 1</span></td></tr><tr><td style='text-align:left;' ><span>8) </span><br><span>21/09</span></td><td><span>Série de Fourier (</span><a href='https://fpassold.github.io/Sinais_Sistemas/4_fourier/4_serie_fourier.html'><span>introdução</span></a><span>). Exemplos: </span><a href='https://fpassold.github.io/Controle_3/estudo_dirigido/Síntese_Onda_Quadrada.html'><span>Síntese da Onda Quadrada</span></a><span> (exercícios).</span><br><a href='https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html'><span>Algoritmo FFT</span></a><span>. Uso do algoritmo FFT para levantamento Espectro de um Sinal (Análise de Espectro) − </span><a href='https://fpassold.github.io/Process_Sinais/exe_uso_fft.html'><span>exemplos</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>9) </span><br><span>28/09</span></td><td><span>Discretização de Controladores Contínuos (P, PI e PID Discretos). Algoritmo de posição e incremental.</span></td></tr><tr><td style='text-align:left;' ><span>10) </span><br><span>05/10</span></td><td><span>Análise de Estabilidade no Plano Z (Mapeamento do Círculo Unitário e Critério de Jury).</span><br><span>Método do Lugar das Raízes (Root Locus) no Plano Z. Projeto de Compensadores Digitais.</span></td></tr><tr><td style='text-align:left;' ><span>11) </span><br><span>19/10</span></td><td><span>Método do Lugar das Raízes (Root Locus) no Plano Z. Projeto de Compensadores Digitais.</span></td></tr><tr><td style='text-align:left;' ><span>12) </span><br><span>26/10</span></td><td><span>Parte Prática:</span><br><strong><span>Prática 4:</span></strong><span> Montagem do elemento aquecedor (resistor/transístor), sensor NTC/LM35 e acionamento PWM.</span><br><strong><span>Prática 5:</span></strong><span> Coleta de dados do controle de temperatura da xícara em malha fechada.</span></td></tr><tr><td style='text-align:left;' ><span>13) </span><br><span>09/11</span></td><td><span>Método do Lugar das Raízes (Root Locus) no Plano Z. Projeto de Compensadores Digitais.</span><br><span>PID Digitais: Arquiteturas, implementações.</span></td></tr><tr><td style='text-align:left;' ><span>14) </span><br><span>16/11</span></td><td><span>PID Digitais: Arquiteturas, implementações. </span><br><span>Métodos de sintonia.</span></td></tr><tr><td style='text-align:left;' ><span>15) </span><br><span>23/11</span></td><td><span>Parte Prática:</span><br><strong><span>Prática 6:</span></strong><span> (aula demonstrativa) Controle de Posição Angular usando PID Digital -- Lab. de Controle Eng. Elétrica (kits Feedback MS150)</span></td></tr><tr><td style='text-align:left;' ><span>16) </span><br><span>30/11</span></td><td><span>Avaliação Final parte Prática: Apresentação de Protótipos</span><br><strong><span>Prática 7:</span></strong><span> Controle de temperatura com demonstrações gráficas.</span></td></tr><tr><td style='text-align:left;' ><span>17) </span><br><span>07/12</span></td><td><span>Prova 2.</span></td></tr></tbody></table></figure><h2 id='método-de-avaliação'><span>Método de Avaliação</span></h2><p><span>Previsão:</span></p><ul><li><p><span>Parte Teórica (40%):</span></p><ul><li><span>Prova 1: Conceitos de amostragem, equações de diferenças, Transformada Z e filtros digitais.</span></li><li><span>Prova 2: Controladores digitais (PID), estabilidade no plano Z e Lugar das Raízes.</span></li></ul></li><li><p><span>Parte Prática (50%): Protótipo e Apresentação: Controle de Temperatura e/ou Sintonia de PID Controle de Posição Angular.</span></p></li><li><p><span>Atividades Assíncronas (10%): Entregas de simulações em Python/MATLAB, códigos de fixação e resolução de problemas práticos.</span></p></li></ul><h2 id='material-usado-parte-prática'><span>Material Usado (Parte Prática)</span></h2><p><span>Previsto:</span></p><ul><li><span>Placas ESP32;</span></li><li><span>Eventualmente Arduino Uno/Nano;</span></li><li><span>Raspberry (se disponveis A/D e D/A externos -- menos provável);</span></li><li><span>LDR (sensor de luminosidade);</span></li><li><span>Elemento resistivo (ou transistorizado) de aquecimento;</span></li><li><span>NTC ou LM35 (sensor de temperatura)</span></li></ul><p><a id="soft"></a></p><h2 id='softwares-usados'><span>Softwares Usados</span></h2><ul><li><p><span>MATLAB/Simulink para análise, simulação e projeto de sistemas de controle digital e filtros digitais.</span>
+<div id='write'  class=''><p><img src="close-up-monitor-hospital.jpg" referrerpolicy="no-referrer" alt="close-up-monitor-hospital"></p><!-- https://www.freepik.com/premium-ai-image/close-up-monitor-hospital_201809557.htm#from_view=detail_alsolike --><h1 id='ecp176-processamento-de-sinais-e-controle-digital'><span>ECP176: Processamento de Sinais e Controle Digital</span></h1><p><span>Eng. de Computação (2026/2)</span></p><p><strong><span>Ementa</span></strong></p><p><span>Teoria da amostragem e aquisição de dados. Análise de sinais e sistemas discretos nos domínios do tempo e da frequência. Transformada discreta de Fourier (DFT/FFT). Transformada Z. Análise da transformada Z aplicada a filtros. Filtros digitais. Análise no plano Z de sistemas de controle discreto. Mapeamento entre planos S e Z. Análise de estabilidade e regime transitório. Controladores digitais. Projeto com lugar das raízes e resposta em frequência. </span><em><span>Implementação de algoritmos de processamento digital de sinais e controle digital em microcontroladores de uso geral</span></em><span>.</span></p><hr /><h2 id='cronograma-previsto'><span>Cronograma Previsto</span></h2><p><span>Seguem conteúdo e atividades previstas.</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>Encontro</span></th><th><span>Conteúdo Previsto</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>1) 27/07</span></td><td><span>Apresentação, ementa e critérios de avaliação. </span><br><span>Introdução ao Controle Digital e PDS: revisão de sinais contínuos e discretos.</span><br><a href='https://fpassold.github.io/Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf'><span>Teoria da Amostragem</span></a><span>: Teorema de Nyquist-Shannon, Aliasing e Conversores A/D e D/A. </span><br><a href='https://fpassold.github.io/Controle_3/2_sampling/From%20Analog%20to%20Digital%20–%20Part%202:%20The%20Conversion%20Process%20'><span>Material Adicional (em inglês)</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>2) 03/08</span></td><td><span>Análise de Sinais e Sistemas Discretos no Domínio do Tempo. Equações de Diferenças.</span><br><span>Introdução à Transformada Z, Transformadas de alguns sinais, Propriedades da Transformada Z, Métodos de Transformada Inversa de Z. Exemplos/exercícios.</span><br><a href='https://fpassold.github.io/Controle_3/3_transformada/transformada_Z.pdf'><span>Parte 1</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Controle_3/3_transformada/transformada_Z_parte2.pdf'><span>Parte 2</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Controle_3/3_transformada/transformada_Z_parte_3.pdf'><span>Parte 3</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>3) 10/08</span></td><td><span>Transformada-Z: Região de Convergência (ROC). Mapeamento do plano-s para o plano-z.</span><br><a href='https://fpassold.github.io/Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf'><span>Resumo Transformada Z</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>4) 17/08</span></td><td><a href='https://fpassold.github.io/Process_Sinais/intro_process_sinal.html'><span>Introdução à Filtros Digitais</span></a><span>;</span><br><a href='https://fpassold.github.io/Process_Sinais/media_movel.html'><span>Filtro de Média Móvel</span></a><span>;</span><br><a href='https://fpassold.github.io/Lab_Processa_Sinais/Filtro/filtro_exponencial.html'><span>Filtro Exponencial de 1a-ordem</span></a><span>;</span><br><a href='https://fpassold.github.io/Process_Sinais/metodo_tustin.html'><span>Transformação bilinear (do plano-s p/plano-z): Método de Tustin</span></a><span>;</span><br><a href='https://fpassold.github.io/Process_Sinais/butter1.html'><span>Filtros Butterworth digitais</span></a><span>;</span></td></tr><tr><td style='text-align:left;' ><span>5) 24/08</span></td><td><span>Modelagem de Sistemas Dinâmicos Discretos e Resposta Transitória no Plano Z</span><br><a href='https://fpassold.github.io/Process_Sinais/funcao_transferencia.html'><span>Função Transferência no plano-z</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Process_Sinais/estabilidade.html'><span>Estabilidade de Sistemas Discretos</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Process_Sinais/papel_polos_zeros.html'><span>Pólos e Zeros no plano-z e impacto na resposta frequencial</span></a><span>. ⇐ Previsão.</span></td></tr><tr><td style='text-align:left;' ><span>6) 31/08</span></td><td><strong><span>Série de Fourier</span></strong><span> (</span><a href='https://fpassold.github.io/Sinais_Sistemas/4_fourier/4_serie_fourier.html'><span>introdução</span></a><span>). Exemplos: </span><a href='https://fpassold.github.io/Controle_3/estudo_dirigido/Síntese_Onda_Quadrada.html'><span>Síntese da Onda Quadrada</span></a><span> (exercícios).</span><br><a href='https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html'><span>Algoritmo FFT</span></a><span>. Uso do </span><strong><span>algoritmo FFT</span></strong><span> para levantamento Espectro de um Sinal (Análise de Espectro) − </span><a href='https://fpassold.github.io/Process_Sinais/exe_uso_fft.html'><span>exemplos</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>07/09</span></td><td><span>Sem aula (Feriado Nacional)</span></td></tr><tr><td style='text-align:left;' ><span>7) 14/09</span></td><td><strong><span>Atividade Prática</span></strong><span>:</span><br><strong><span>Prática 1</span></strong><span>: Configuração de amostragem via Interrupção de Timer (ESP32/Arduino) lendo LDR.</span><br><strong><span>Prática 2</span></strong><span>: Implementação de Filtro Passa-Baixas em C no ESP32 para atenuação de ruído no LDR.</span><br><strong><span>Prática 3</span></strong><span>: Implementação de Filtro de Média-Móvel em C no ESP32 para atenuação de ruído no LDR.</span></td></tr><tr><td style='text-align:left;' ><span>8) 21/09</span></td><td><span>Prova 1</span></td></tr><tr><td style='text-align:left;' ><span>9) 28/09</span></td><td><span>Discretização de Controladores Contínuos (P, PI e PID Discretos). Algoritmo de posição e incremental.</span></td></tr><tr><td style='text-align:left;' ><span>10) 05/10</span></td><td><span>Análise de Estabilidade no Plano Z (Mapeamento do Círculo Unitário e Critério de Jury).</span><br><span>Método do Lugar das Raízes (Root Locus) no Plano Z. Projeto de Compensadores Digitais.</span></td></tr><tr><td style='text-align:left;' ><span>11) 19/10</span></td><td><span>Método do Lugar das Raízes (Root Locus) no Plano Z. Projeto de Compensadores Digitais.</span></td></tr><tr><td style='text-align:left;' ><span>12) 26/10</span></td><td><span>Parte Prática:</span><br><strong><span>Prática 4:</span></strong><span> Montagem do elemento aquecedor (resistor/transístor), sensor NTC/LM35 e acionamento PWM.</span><br><strong><span>Prática 5:</span></strong><span> Coleta de dados do controle de temperatura da xícara em malha fechada.</span></td></tr><tr><td style='text-align:left;' ><span>13) 09/11</span></td><td><span>Método do Lugar das Raízes (Root Locus) no Plano Z. Projeto de Compensadores Digitais.</span><br><span>PID Digitais: Arquiteturas, implementações.</span></td></tr><tr><td style='text-align:left;' ><span>14) 16/11</span></td><td><span>PID Digitais: Arquiteturas, implementações. </span><br><span>Métodos de sintonia.</span></td></tr><tr><td style='text-align:left;' ><span>15) 23/11</span></td><td><span>Parte Prática:</span><br><strong><span>Prática 6:</span></strong><span> (aula demonstrativa) Controle de Posição Angular usando PID Digital -- Lab. de Controle Eng. Elétrica (kits Feedback MS150)</span></td></tr><tr><td style='text-align:left;' ><span>16)30/11</span></td><td><span>Avaliação Final parte Prática: Apresentação de Protótipos</span><br><strong><span>Prática 7:</span></strong><span> Controle de temperatura com demonstrações gráficas.</span></td></tr><tr><td style='text-align:left;' ><span>17) 07/12</span></td><td><span>Prova 2.</span></td></tr></tbody></table></figure><h2 id='método-de-avaliação'><span>Método de Avaliação</span></h2><p><span>Previsão:</span></p><ul><li><p><span>Parte Teórica (40%):</span></p><ul><li><span>Prova 1: Conceitos de amostragem, equações de diferenças, Transformada Z e filtros digitais.</span></li><li><span>Prova 2: Controladores digitais (PID), estabilidade no plano Z e Lugar das Raízes.</span></li></ul></li><li><p><span>Parte Prática (50%): Protótipo e Apresentação: Controle de Temperatura e/ou Sintonia de PID Controle de Posição Angular.</span></p></li><li><p><span>Atividades Assíncronas (10%): Entregas de simulações em Python/MATLAB, códigos de fixação e resolução de problemas práticos.</span></p></li></ul><h2 id='material-usado-parte-prática'><span>Material Usado (Parte Prática)</span></h2><p><span>Previsto:</span></p><ul><li><span>Placas ESP32;</span></li><li><span>Eventualmente Arduino Uno/Nano;</span></li><li><span>Raspberry (se disponveis A/D e D/A externos -- menos provável);</span></li><li><span>LDR (sensor de luminosidade);</span></li><li><span>Elemento resistivo (ou transistorizado) de aquecimento;</span></li><li><span>NTC ou LM35 (sensor de temperatura)</span></li></ul><p><a id="soft"></a></p><h2 id='softwares-usados'><span>Softwares Usados</span></h2><ul><li><p><span>MATLAB/Simulink para análise, simulação e projeto de sistemas de controle digital e filtros digitais.</span>
 <span>Opcionalmente uso do </span><strong><span>Octave on-line</span></strong><span>:  </span><a href='http://octave-online.net/' target='_blank' class='url'>http://octave-online.net/</a><span>.</span></p></li><li><p><span>Provável uso de Pyhon + Jupyter (projeto de filtros/controladores; simulações).</span></p><p><span>Bibliotecas Python: python-control, scipy.signal, lumpy, matplotlib, pyserial, jupyter/notebook.</span>
 <span>(Instalação recomendada usando Miniconda)</span>
 <span>Para baixar o Python: </span><a href='https://wiki.python.org/moin/BeginnersGuide/Download' target='_blank' class='url'>https://wiki.python.org/moin/BeginnersGuide/Download</a><span>;</span>
