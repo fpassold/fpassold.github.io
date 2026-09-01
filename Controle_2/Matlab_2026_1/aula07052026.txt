@@ -1,0 +1,283 @@
+% # Estudo de caso
+
+% ## Planta
+
+% $G(s)=\dfrac{72}{(s+2)(s+6)(s+12)}$
+
+% ## Objetivos 
+
+% 2 tipos de resposta:
+% * Criticamente amortecido ($\zeta=1$);
+% * Sub-amortecido ($0< \zeta < 1$) $\Rightarrow \%OS=$15%.
+
+% Vamos comporar $t_s$ (tempo de assentamento).
+
+% ## 1) Controlador Proporcional
+
+% Equação do controlador: $C(s)=K$.
+
+% ingressando a planta:
+
+G=tf(72,poly([-2 -6 -12]));
+zpk(G) % para verificação
+
+ans =
+ 
+          72
+  ------------------
+  (s+12) (s+6) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+dcgain(G) % por curiosidade
+ans =
+          0.5
+rlocus(G)
+OS=15;
+zeta=(-log(OS/100))/(sqrt(pi^2+(log(OS/100)^2)))
+zeta =
+      0.51693
+hold on; sgrid(zeta,0)
+
+% ![rl_planta.png](rl_planta.png)
+
+% Sintonizando para resposta criticamente amortecida
+axis([-8 1 -2 8])
+[K1,polosMF]=rlocfind(G)
+Select a point in the graphics window
+selected_point =
+      -3.7666 -   0.003096i
+K1 =
+      0.45118
+polosMF =
+      -12.479
+      -3.7657
+      -3.7558
+axis([-13 1 -2 8])
+
+% ![rl_k1.png](rl_k1.png)
+
+ftmf_k1=feedback(K1*G, 1);
+pole(ftmf_k1) % opcional
+ans =
+      -12.479
+      -3.7657
+      -3.7558
+figure; step(ftmf_k1)
+
+% ![step_k1.png](step_k1.png)
+
+stepinfo(ftmf_k1)
+ans = 
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+        RiseTime: 0.91839
+    SettlingTime: 1.6433
+     SettlingMin: 0.16585
+     SettlingMax: 0.18406
+       Overshoot: 0
+      Undershoot: 0
+            Peak: 0.18406
+        PeakTime: 3.421
+step(ftmf_k1)
+
+dcgain(ftmf_k1)
+ans =
+      0.18407
+erro_k1=(1-dcgain(ftmf_k1))/1*100
+erro_k1 =
+       81.593
+81.593
+ans =
+       81.593
+
+% ## Controle Proporcinal para resposta sub-amortecida
+
+[K2,polosMF]=rlocfind(G)
+Select a point in the graphics window
+selected_point =
+      -2.7322 +      4.517i
+K2 =
+       3.6531
+polosMF =
+      -14.484 +          0i
+      -2.7582 +     4.5271i
+      -2.7582 -     4.5271i
+
+% ![rl_k2.png](rl_k2.png)
+
+ftmf_k2=feedback(K2*G, 1);
+pole(ftmf_k2)
+ans =
+      -14.484 +          0i
+      -2.7582 +     4.5271i
+      -2.7582 -     4.5271i
+figure; step(ftmf_k2)
+ylim([0 1.1])
+
+% ![step_k2.png](step_k2.png)
+save planta
+diary off
+
+% ## Controle Proporcional para certo Erro 
+
+% O objetivo agora é manter erro abaixo de 10%.
+
+% Base teórica: https://fpassold.github.io/Controle_2/3_erros/erros.pdf
+
+% $e(\infty)=\dfrac{1}{1+K_p}$
+
+% Isolando $K_p$ da equação:
+
+% $K_p=\dfrac{1-e(\infty)}{e(\infty)}$
+
+% Neste caso, erro de 10% $\rightarrow e(\infty)=$ 0,1.
+
+Kp=(1-0.1)/0.1
+Kp =
+     9
+
+% $K_p=$ Constante de erro estático de Posição.
+
+% Mas como calculo $K_p$:
+
+% $K_p=\lim_{s \to 0} FTMA(s)$.
+
+% $FTMA(s)=C(s) \cdot G(s)$.
+
+% $K_p=\lim_{s \to 0} K_3 \cdot \dfrac{72}{(s+2)(s+6)(s+12)}$
+
+% $K_p=K_3*\dfrac{72}{(2)(6)(12)}
+
+2*6*12
+ans =
+   144
+
+% como $K_p=9$:
+
+% $9 = K_3 \cdot \dfrac{72}{144}$
+
+% $9 = K_3 \cdot \dfrac{1}{2}$
+
+% Resolvendo:
+
+% $K_3=\dfrac{9 \cdot 2}{1}$
+
+K3=18;
+
+figure; rlocus(G)
+ftmf_k3=feedback(K3*G, 1);
+polos_MF=pole(ftmf_k3)
+polos_MF =
+      -18.386 +          0i
+     -0.80711 +     8.8131i
+     -0.80711 -     8.8131i
+figure(4)
+hold on;
+plot(real(polos_MF), imag(polos_MF), "r+", 'MarkerSize', 12)
+
+% ![rl_k3.png](rl_k3.png)
+
+% Fechando malha com este ganho
+
+figure; step(ftmf_k3)
+
+% ![step_k3.png](step_k3.png)
+
+% Reparo que:
+
+% * Erro limitado à 10%;
+% * $\%OS$=50% (em relação ao degrau unitário);
+% * $t_s=$ 4,73 segundos;
+
+% Resumo gráfico:
+
+figure; step(ftmf_k2, ftmf_k3)
+
+% !{step_K2_k3.png](step_K2_k3.png)
+
+% ## Controlador Somente Ação Integral
+
+% Equação: $C_{i}(s)=\dfrac{K_i}{s}$
+
+C_I=tf(1,[1 0])
+
+C_I =
+ 
+  1
+  -
+  s
+ 
+Continuous-time transfer function.
+
+ftma_i=C_I*G
+
+ftma_i =
+ 
+                72
+  ------------------------------
+  s^4 + 20 s^3 + 108 s^2 + 144 s
+ 
+Continuous-time transfer function.
+
+zpk(ftma_i)
+
+ans =
+ 
+           72
+  --------------------
+  s (s+12) (s+6) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+close all % fechar janelas gráficas
+rlocus(ftma_i)
+hold on; sgrid(zeta,0)
+
+% ![rl_ftma_i.png](rl_ftma_i.png)
+
+% Realizando zoom na região de interesse
+
+axis([-3 1 -2 5])
+
+[K_i1,polosMF]=rlocfind(ftma_i)
+Select a point in the graphics window
+selected_point =
+     -0.86256 +   0.004644i
+K_i1 =
+       0.7797
+polosMF =
+       -11.92 +          0i
+       -6.359 +          0i
+     -0.86059 +  0.0042019i
+     -0.86059 -  0.0042019i
+[K_i2,polosMF]=rlocfind(ftma_i) % overshoot de 15%
+Select a point in the graphics window
+selected_point =
+     -0.68246 +     1.1316i
+K_i2 =
+       1.9711
+polosMF =
+      -11.787 +          0i
+      -6.8319 +          0i
+     -0.69035 +     1.1339i
+     -0.69035 -     1.1339i
+
+% ![rl_ftma_i12.png](rl_ftma_i12.png)
+
+ftmf_i1=feedback(K_i1*ftma_i, 1);
+ftmf_i2=feedback(K_i2*ftma_i, 1);
+
+figure; step(ftmf_i1, ftmf_i2)
+
+% ![step_i1_i2.png](step_i1_i2.png)
+
+% Comparando com controlador proporcional (erro de 10%):
+
+figure; step(ftmf_k3, ftmf_i1, ftmf_i2)
+legend('Kp (erro 10%)', 'I_1 (sem overshoot)', 'I_2 (com overshoot)')
+
+% ![step_k3_i1_i2.png](step_k3_i1_i2.png)
+
+save planta
+diary off
