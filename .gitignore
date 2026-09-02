@@ -1,2 +1,16 @@
+*.ipynb_checkpoints
+*.bak
+*.ofig
+*.pptx
+*.rtf
+*.drawio
+* db
+*.DBK
+*.numbers
+*.key
+*.fig
+*.xcf
 *.DS_Store
 *.md
+*.fseventsd
+*.Spotlight-V100
