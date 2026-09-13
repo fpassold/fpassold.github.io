@@ -519,21 +519,160 @@ p.mathjax-block, .mathjax-block {
 .file-tree-node.active > .file-node-content    { color: #0070E0; }
 
 
- @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
-</style><title>ECP176: Processamento de Sinais e Controle Digital</title>
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Parte Prática Processamento Digital de Sinais &amp; Controle</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><p><img src="close-up-monitor-hospital.jpg" referrerpolicy="no-referrer" alt="close-up-monitor-hospital"></p><!-- https://www.freepik.com/premium-ai-image/close-up-monitor-hospital_201809557.htm#from_view=detail_alsolike --><h1 id='ecp176-processamento-de-sinais-e-controle-digital'><span>ECP176: Processamento de Sinais e Controle Digital</span></h1><p><span>Eng. de Computação (2026/2)</span></p><p><strong><span>Ementa</span></strong></p><p><span>Teoria da amostragem e aquisição de dados. Análise de sinais e sistemas discretos nos domínios do tempo e da frequência. Transformada discreta de Fourier (DFT/FFT). Transformada Z. Análise da transformada Z aplicada a filtros. Filtros digitais. Análise no plano Z de sistemas de controle discreto. Mapeamento entre planos S e Z. Análise de estabilidade e regime transitório. Controladores digitais. Projeto com lugar das raízes e resposta em frequência. </span><em><span>Implementação de algoritmos de processamento digital de sinais e controle digital em microcontroladores de uso geral</span></em><span>.</span></p><hr /><h2 id='cronograma-previsto'><span>Cronograma Previsto</span></h2><p><span>Seguem conteúdo e atividades previstas.</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>Encontro</span></th><th><span>Conteúdo Previsto</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>1) 27/07</span></td><td><span>Apresentação, ementa e critérios de avaliação. </span><br><span>Introdução ao Controle Digital e PDS: revisão de sinais contínuos e discretos.</span><br><a href='https://fpassold.github.io/Controle_3/2_sampling/01_Sistema_Amostrado_no_Tempo.pdf'><span>Teoria da Amostragem</span></a><span>: Teorema de Nyquist-Shannon, Aliasing e Conversores A/D e D/A. </span><br><a href='https://fpassold.github.io/Controle_3/2_sampling/From%20Analog%20to%20Digital%20–%20Part%202:%20The%20Conversion%20Process%20'><span>Material Adicional (em inglês)</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>2) 03/08</span></td><td><span>Análise de Sinais e Sistemas Discretos no Domínio do Tempo. Equações de Diferenças.</span><br><span>Introdução à Transformada Z, Transformadas de alguns sinais, Propriedades da Transformada Z, Métodos de Transformada Inversa de Z. Exemplos/exercícios.</span><br><a href='https://fpassold.github.io/Controle_3/3_transformada/transformada_Z.pdf'><span>Parte 1</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Controle_3/3_transformada/transformada_Z_parte2.pdf'><span>Parte 2</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Controle_3/3_transformada/transformada_Z_parte_3.pdf'><span>Parte 3</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>3) 10/08</span></td><td><span>Transformada-Z: Região de Convergência (ROC). Mapeamento do plano-s para o plano-z.</span><br><a href='https://fpassold.github.io/Controle_3/3_transformada/revisao_partes_importantes_transformada_Z.pdf'><span>Resumo Transformada Z</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>4) 17/08</span></td><td><a href='https://fpassold.github.io/Process_Sinais/intro_process_sinal.html'><span>Introdução à Filtros Digitais</span></a><span>;</span><br><a href='https://fpassold.github.io/Process_Sinais/media_movel.html'><span>Filtro de Média Móvel</span></a><span>;</span><br><a href='https://fpassold.github.io/Lab_Processa_Sinais/Filtro/filtro_exponencial.html'><span>Filtro Exponencial de 1a-ordem</span></a><span>;</span><br><a href='https://fpassold.github.io/Process_Sinais/metodo_tustin.html'><span>Transformação bilinear (do plano-s p/plano-z): Método de Tustin</span></a><span>;</span><br><a href='https://fpassold.github.io/Process_Sinais/butter1.html'><span>Filtros Butterworth digitais</span></a><span>;</span></td></tr><tr><td style='text-align:left;' ><span>5) 24/08</span></td><td><span>Modelagem de Sistemas Dinâmicos Discretos e Resposta Transitória no Plano Z</span><br><a href='https://fpassold.github.io/Process_Sinais/funcao_transferencia.html'><span>Função Transferência no plano-z</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Process_Sinais/estabilidade.html'><span>Estabilidade de Sistemas Discretos</span></a><span> </span><span>|</span><span> </span><a href='https://fpassold.github.io/Process_Sinais/papel_polos_zeros.html'><span>Pólos e Zeros no plano-z e impacto na resposta frequencial</span></a><span>. ⇐ Previsão.</span></td></tr><tr><td style='text-align:left;' ><span>6) 31/08</span></td><td><strong><span>Série de Fourier</span></strong><span> (</span><a href='https://fpassold.github.io/Sinais_Sistemas/4_fourier/4_serie_fourier.html'><span>introdução</span></a><span>). Exemplos: </span><a href='https://fpassold.github.io/Controle_3/estudo_dirigido/Síntese_Onda_Quadrada.html'><span>Síntese da Onda Quadrada</span></a><span> (versão 1), Série de Fourier: Síntese da </span><a href='serie_fourier.html'><span>Onda Quadrada (versão 2: com </span><mark><span>animação ao final</span></mark><span>)</span></a><span>.</span><br><a href='https://fpassold.github.io/Process_Sinais/usando_fft_matlab.html'><span>Algoritmo FFT</span></a><span>. Uso do </span><strong><span>algoritmo FFT</span></strong><span> para levantamento Espectro de um Sinal (Análise de Espectro) − </span><a href='https://fpassold.github.io/Process_Sinais/exe_uso_fft.html'><span>exemplos</span></a><span>.</span></td></tr><tr><td style='text-align:left;' ><span>07/09</span></td><td><span>Sem aula (Feriado Nacional)</span></td></tr><tr><td style='text-align:left;' ><span>7) 14/09</span></td><td><a href='lab/lab_2026.html'><strong><span>Laboratório 2026/2</span></strong></a><span> </span><br><strong><span>Atividades Previstas</span></strong><span>:</span><br><strong><span>Prática 1</span></strong><span>: Configuração de amostragem via Interrupção de Timer (ESP32/Arduino) lendo LDR.</span><br><strong><span>Prática 2</span></strong><span>: Implementação de Filtro Passa-Baixas em C no ESP32 para atenuação de ruído no LDR.</span><br><strong><span>Prática 3</span></strong><span>: Implementação de Filtro de Média-Móvel em C no ESP32 para atenuação de ruído no LDR.</span></td></tr><tr><td style='text-align:left;' ><span>8) 21/09</span></td><td><span>Prova 1</span></td></tr><tr><td style='text-align:left;' ><span>9) 28/09</span></td><td><span>Discretização de Controladores Contínuos (P, PI e PID Discretos). Algoritmo de posição e incremental.</span></td></tr><tr><td style='text-align:left;' ><span>10) 05/10</span></td><td><span>Análise de Estabilidade no Plano Z (Mapeamento do Círculo Unitário e Critério de Jury).</span><br><span>Método do Lugar das Raízes (Root Locus) no Plano Z. Projeto de Compensadores Digitais.</span></td></tr><tr><td style='text-align:left;' ><span>11) 19/10</span></td><td><span>Método do Lugar das Raízes (Root Locus) no Plano Z. Projeto de Compensadores Digitais.</span></td></tr><tr><td style='text-align:left;' ><span>12) 26/10</span></td><td><span>Parte Prática:</span><br><strong><span>Prática 4:</span></strong><span> Montagem do elemento aquecedor (resistor/transístor), sensor NTC/LM35 e acionamento PWM.</span><br><strong><span>Prática 5:</span></strong><span> Coleta de dados do controle de temperatura da xícara em malha fechada.</span></td></tr><tr><td style='text-align:left;' ><span>13) 09/11</span></td><td><span>Método do Lugar das Raízes (Root Locus) no Plano Z. Projeto de Compensadores Digitais.</span><br><span>PID Digitais: Arquiteturas, implementações.</span></td></tr><tr><td style='text-align:left;' ><span>14) 16/11</span></td><td><span>PID Digitais: Arquiteturas, implementações. </span><br><span>Métodos de sintonia.</span></td></tr><tr><td style='text-align:left;' ><span>15) 23/11</span></td><td><span>Parte Prática:</span><br><strong><span>Prática 6:</span></strong><span> (aula demonstrativa) Controle de Posição Angular usando PID Digital -- Lab. de Controle Eng. Elétrica (kits Feedback MS150)</span></td></tr><tr><td style='text-align:left;' ><span>16)30/11</span></td><td><span>Avaliação Final parte Prática: Apresentação de Protótipos</span><br><strong><span>Prática 7:</span></strong><span> Controle de temperatura com demonstrações gráficas.</span></td></tr><tr><td style='text-align:left;' ><span>17) 07/12</span></td><td><span>Prova 2.</span></td></tr></tbody></table></figure><h2 id='método-de-avaliação'><span>Método de Avaliação</span></h2><p><span>Previsão:</span></p><ul><li><p><span>Parte Teórica (40%):</span></p><ul><li><span>Prova 1: Conceitos de amostragem, equações de diferenças, Transformada Z e filtros digitais.</span></li><li><span>Prova 2: Controladores digitais (PID), estabilidade no plano Z e Lugar das Raízes.</span></li></ul></li><li><p><span>Parte Prática (50%): Protótipo e Apresentação: Controle de Temperatura e/ou Sintonia de PID Controle de Posição Angular.</span></p></li><li><p><span>Atividades Assíncronas (10%): Entregas de simulações em Python/MATLAB, códigos de fixação e resolução de problemas práticos.</span></p></li></ul><h2 id='material-usado-parte-prática'><span>Material Usado (Parte Prática)</span></h2><p><span>Previsto:</span></p><ul><li><span>Placas ESP32;</span></li><li><span>Eventualmente Arduino Uno/Nano;</span></li><li><span>Raspberry (se disponveis A/D e D/A externos -- menos provável);</span></li><li><span>LDR (sensor de luminosidade);</span></li><li><span>Elemento resistivo (ou transistorizado) de aquecimento;</span></li><li><span>NTC ou LM35 (sensor de temperatura)</span></li></ul><p><a id="soft"></a></p><h2 id='softwares-usados'><span>Softwares Usados</span></h2><ul><li><p><span>MATLAB/Simulink para análise, simulação e projeto de sistemas de controle digital e filtros digitais.</span>
-<span>Opcionalmente uso do </span><strong><span>Octave on-line</span></strong><span>:  </span><a href='http://octave-online.net/' target='_blank' class='url'>http://octave-online.net/</a><span>.</span></p></li><li><p><span>Provável uso de Pyhon + Jupyter (projeto de filtros/controladores; simulações).</span></p><p><span>Bibliotecas Python: python-control, scipy.signal, lumpy, matplotlib, pyserial, jupyter/notebook.</span>
-<span>(Instalação recomendada usando Miniconda)</span>
-<span>Para baixar o Python: </span><a href='https://wiki.python.org/moin/BeginnersGuide/Download' target='_blank' class='url'>https://wiki.python.org/moin/BeginnersGuide/Download</a><span>;</span>
-<span>Para instalar o Jupyter (&quot;Python interativo&quot;): </span><a href='https://jupyter.org/install.html' target='_blank' class='url'>https://jupyter.org/install.html</a>
-<span>ou instale:</span>
-<span>Miniconda: </span><a href='https://docs.anaconda.com/free/miniconda/index.html' target='_blank' class='url'>https://docs.anaconda.com/free/miniconda/index.html</a><span> (menor)</span>
-<a href='https://www.anaconda.com'><span>Anaconda</span></a><span>: </span><a href='https://www.anaconda.com/download' target='_blank' class='url'>https://www.anaconda.com/download</a><span> (pode exigir 4.8 Gbytes - mas se você pretende com IA... </span>😄<span> ).</span></p></li><li><p><span>Uso de ambiente de desenvolvimento integrado (IDE) para microcontroladores, como o Arduino IDE 2.x (uso intensivo do Serial Plotter nativo) e VSCode com extensão PlatformIO (programação de sistemas microcontroladosO, para programação de microcontroladores em C/C++.</span></p></li></ul><hr /><h2 id='bibliogafia-sugerida'><span>Bibliogafia Sugerida</span></h2><ul><li><strong><span>NISE, Norman S. </span><em><span>Engenharia de Sistemas de Controle</span></em><span>. 7. ed. Rio de Janeiro: LTC, 2017.</span></strong></li><li><strong><span>ÅSTRÖM, Karl J.; WITTENMARK, Björn. </span><em><span>Computer-Controlled Systems: Theory and Design</span></em><span>. 3. ed. Dover Publications, 2011.</span></strong></li><li><strong><span>CHARBIT, Maurice. </span><em><span>Digital Signal Processing (DSP) with Python Programming</span></em><span>. Hoboken: Wiley-ISTE, 2017.</span></strong></li><li><strong><span>DOWNEY, Allen B. </span><em><span>Think DSP: Digital Signal Processing in Python</span></em><span>. Green Tea Press / O&#39;Reilly, 2016.</span></strong></li><li><span>Steven W. Smith, </span><strong><span>The Scientist and Engineer&#39;s Guide to Digital Signal Processing</span></strong></li><li><span>Orfanidis,  </span><strong><span>Introduction to Signal Processing</span></strong></li></ul><hr /><p><a id="detalhes"></a></p><h2 id='detalhes-da-disciplina'><span>Detalhes da disciplina</span></h2><ul><li><span>Parte teórica: 1 semestre com 17 encontros de 3 horas e 15 minutos com intervalo central de 15 minutos.</span></li><li><span>Parte prática: encontros de 1,5 horas divididos em 2 seções de 1h30min.</span></li><li><span>Atividades discentes: 15 horas parte teórica + 15 horas parte prática.</span></li><li><a href='pre_requisitos.html'><span>Pré-requisitos sugeridos</span></a><span>.</span></li></ul><hr /><p><font size="1"><span>[T. Dark Graphite]</span></font></p><script language="JavaScript">
-<!-- Hide JavaScript...
-var LastUpdated = document.lastModified;
-document.writeln ("🌊 Fernando Passold, página criada em 03/08/2026, atualizada em " + LastUpdated); // End Hiding -->
-</script><p>&nbsp;</p><p>&nbsp;</p></div></div>
+<div id='write'  class=''><p><img src="jerry-zhang-HfPFSqwnkhw-unsplash.jpg" referrerpolicy="no-referrer" alt="jerry-zhang-HfPFSqwnkhw-unsplash"></p><h1 id='laboratório-20262'><span>Laboratório 2026/2</span></h1><p>&nbsp;</p><h2 id='recursos-disponíveis'><span>Recursos disponíveis</span></h2><ul><li><p><span>Placa compatível com: ESP32-WROOM-32.</span></p></li><li><p><span>Provavelmente será usada a placa  👉 </span><a href='https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html#start-application-development'><strong><span>ESP32-DevKitC V4</span></strong></a><span>, que contêm o chip ESP32-D0WD, compatível com </span><a href='https://documentation.espressif.com/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf'><span>ESP32-WROOM-32UE</span></a><span> Esta placa possui um conector para antena externa WiFi e possui dois canais DAC de 8 bits (GPIO25/GPIO26). Possui 19 pinos de cada lado.</span></p></li><li><p><span>Ou identificar placa iniciando em </span><a href='https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/index.html'><span>ESP32-DevKitC</span></a><span> ou </span><a href='https://products.espressif.com/en/product-selector'><span>Seletor de Produtos ESP</span></a><span>.</span></p><ul><li><p><span>Datasheeet do chip </span><a href='https://documentation.espressif.com/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf'><span>ESP32-WROOM-32E/-32UE</span></a><span>/-32UE.</span></p><ul><li><span>Na variação 32UE, existe um conector para antenas externas de WiFi, mas placa já conta com Bluetooth.</span></li></ul></li><li><p><a href='https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html#overview'><strong><span>Informações da placa ESP32-DevKitC V4</span></strong></a><span> (barramento I/O, botões).</span></p></li></ul><p>&nbsp;</p></li></ul><h2 id='instruções-iniciais-sobre-instalação-de-software'><span>Instruções iniciais sobre instalação de software:</span></h2><ul><li><p><a href='instalacao_software_ESP32.html'><span>Iniciando com_ESP32</span></a><span> .</span></p></li><li><p><span>Ver </span><a href='instalacao_soft_ESP32.html'><span>Instalação Software para ESP32</span></a><span> (atualizado em Sept/2026).</span></p><ul><li><span>Exemplo de </span><a href='instalacao_macOS.html'><span>Instalação no macOS</span></a><span> .</span></li></ul></li><li><p><a href='https://fpassold.github.io/Process_Sinais_Controle_ECP/lab/ESP32_Dev_Kit.html'><span>Instruções para placa ESP32 DEV KIT V1</span></a><span> (de 2024/1; exemplificando instalação);</span></p></li></ul><p>&nbsp;</p><h2 id='ides-para-programação'><span>IDEs para programação?</span></h2><ul><li><span>A Espressif recomenda instalar sua adaptação para o </span><strong><span>Eclipse CDT</span></strong><span>, ou </span><a href='https://docs.espressif.com/projects/espressif-ide/en/latest/installation.html#esp-idf-installation'><strong><span>Espressif-IDE</span></strong></a><span> (ver opções de </span><a href='https://docs.espressif.com/projects/espressif-ide/en/latest/downloads.html#downloads'><span>Download</span></a><span>, conforme seu sistema operacional);</span>
+<span>Note que depois ainda se faz necessário </span><a href='https://docs.espressif.com/projects/espressif-ide/en/latest/installation.html#esp-idf-tools-installation'><span>instalar ferramentas extras</span></a><span>.</span></li><li><span>Mas você pode optar pelo 👉 </span><a href='https://docs.espressif.com/projects/arduino-esp32/en/latest/'><strong><span>Arduino IDE</span></strong></a><span>, que parece ser a forma mais simples e imediata de começar a trabalhar com esta placa. Recomenda-se seguir as instruções de: </span><a href='https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html#installing-using-arduino-ide'><span>Installing using Arduino IDE</span></a><span>;</span></li><li><span>Você pode usar o </span><strong><span>VS Code</span></strong><span> instalando (e configurando) a extensão: </span><a href='https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/index.html'><span>ESP-IDF Extension for VS Code</span></a><span> e eventualmente mais a extensão </span><a href='https://docs.platformio.org/en/latest/integration/ide/vscode.html'><span>PlatformIO IDE</span></a><span>. Ver </span><a href='https://fpassold.github.io/Process_Sinais_Controle_ECP/lab/ESP32_VSCode.html'><span>exemplo</span></a><span> para versão de 2024. A configuração pode resultar bastante complexa e complicada…</span></li><li><span>Ou usar apenas o terminal + editor de textos comum.</span></li></ul><p>&nbsp;</p><h2 id='programação'><span>Programação</span></h2><ul><li><p><a href='compilar_ESP-IDF_puro.html'><span>Compilando código usando ESP-IDF “Puro”</span></a><span> (macOS/Linux).</span></p><ul><li><a href='Criando_CMakeLists-txt.html'><span>Criação de Arquivos </span><code>CMakeLists.txt</code></a><span>.</span></li><li><a href='Usando_Sublime_Text.html'><span>Exemplo Usando_Sublime_Text + Terminal (macOS)</span></a><span>.</span></li></ul></li><li><p><a href='atalhos_win_ESP-IDF.html'><span>Usanto Terminal no Windows</span></a><span>. </span></p></li></ul><ul><li><a href='instalacao_via_arduino_ide.html'><span>Usando Arduino-IDE com ESP32</span></a><span>.</span></li><li><a href='Usando_CLion.html'><span>Usando_CLion com ESP32</span></a><span>.</span></li><li><a href='lab/ESP32_VSCode.html'><span>Usando ESP32 no VSCode</span></a><span>. (requer quantidade substancial de configurações).</span></li></ul><p>&nbsp;</p><h2 id='detectando-placa-esp32'><span>Detectando placa ESP32</span></h2><ul><li><span>Ver  </span><a href='descobrindo_ESP32.html'><span>Descobrindo porta da ESP32</span></a><span>. </span></li></ul><p>&nbsp;</p><h2 id='atividades-práticas'><span>Atividades Práticas</span></h2><ul><li><strong><span>Primeiro Teste</span></strong>
+<span>Testar uma placa ESP32 devkit, embarcando um simples programa: conforme se pressiona o botão “Boot” da placa ESP32, alternar entre piscar (à 2 Hz) ou manter apagado o led (eventualmente) presente na placa, além de exibir mensagens no terminal serial. Logo após o início da execução (seção </span><code>setup()</code><span> no Arduino IDE) deve ser impressa a mensagem &quot;Alo, estou aqui&quot;. Depois (na seção </span><code>loop()</code><span> no Arduino IDE), a cada segundo fazer aparecer no terminal serial a mensagem &quot;Placa ativa à XX segundos&quot;, onde XX equivalente ao tempo que a placa já está ligada e plugada no terminal serial. A idéia é usar rescursos já disponíveis na placa e tasks do FreeRTOS.</span></li></ul><ul><li><span>Programação usando Arduino-IDE;</span></li><li><span>Programação usando Editor de Textos + Terminal (ESP-IDF “Puro”)</span></li></ul><ul><li><p><strong><span>Outros Experimentos Previstos</span></strong></p><ul><li><span>Onda Quadrada de 10 KHz;</span></li><li><span>Onda Senoidal usando </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.435ex" height="2.059ex" role="img" focusable="false" viewBox="0 -705 1960.4 910" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.464ex;"><defs><path id="MJX-2-TEX-I-1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path id="MJX-2-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-2-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D453" xlink:href="#MJX-2-TEX-I-1D453"></use></g><g data-mml-node="mi" transform="translate(523,-150) scale(0.707)"><use data-c="1D460" xlink:href="#MJX-2-TEX-I-1D460"></use></g></g><g data-mml-node="mo" transform="translate(1182.4,0)"><use data-c="3D" xlink:href="#MJX-2-TEX-N-3D"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>f</mi><mi>s</mi></msub><mo>=</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">f_s=</script><span> 10 KHz;</span></li><li><span>Filtragem de Sinal usando Média Móvel;</span></li><li><span>Filtragem de Sinal usando Filtro Passo Baixas Butterworth.</span></li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><hr /><p><span>Fernando Passold, Set/2026.</span></p><p>&nbsp;</p></div></div>
 </body>
 </html>
