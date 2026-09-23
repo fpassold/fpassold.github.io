@@ -1,0 +1,113 @@
+>> R=4700;
+>> C=100E-9;
+>> % filtro passa-alta
+>> fc=1/(2*pi*R*C)
+fc = 338.63
+>> C=10E-9;
+>> fc=1/(2*pi*R*C)
+fc = 3386.3
+>> C=1/(2*pi*R*2E3)
+C = 1.6931e-08
+>> C=22E-9;
+>> format shortg
+>> fc=1/(2*pi*R*C)
+fc = 1539.2
+>> H=td([1 0],[R*C 1])
+error: 'td' undefined near line 1, column 3
+>> H=tf([1 0],[R*C 1])
+
+Transfer function 'H' from input 'u1' to output ...
+
+             s       
+ y1:  ---------------
+      0.0001034 s + 1
+
+Continuous-time model.
+>> zero(H)
+ans =     0
+>> pole(H)
+ans = -9671.2
+>> dcgain(H)
+ans =     0
+>> step(H)
+>> close all
+>> step (3*H)
+>> xlim([1 1e-3])
+error: xlim: axis limits must be increasing
+error: called from
+    __axis_limits__ at line 72 column 9
+    xlim at line 89 column 8
+>> xlim([0 1e-3])
+>> legend off
+>> print("step_passa_alta.png", "-dpng", "-r150");  % salva figura com resulução melhor
+>> close all
+>> step(3*H)
+>> close all
+>> step(H)
+>> 
+>> R=2700;
+>> C=0.1E-6;
+>> fc=1/(2*pi*R*C)
+fc = 589.46
+>> 
+>> % Sçlide 20 de 45 de Aula8-FiltrosAtivosPt1.pdf
+>> R1=20E3;
+>> r2=200E3;
+>> R2=200E3;
+>> C=0.1E-6;
+>> 
+>> % Slide 17:
+>> R1=10E3;
+>> R2=10E3;
+>> C=0.1E-6;
+>> w=1/(R1*C)
+w =  1000
+>> fc=w/(2*pi)
+fc = 159.15
+>> H=tf([1 0],[1 1/(R1*C)])
+
+Transfer function 'H' from input 'u1' to output ...
+
+         s    
+ y1:  --------
+      s + 1000
+
+Continuous-time model.
+>> H=tf(-[1 0],[1 1/(R1*C)])
+
+Transfer function 'H' from input 'u1' to output ...
+
+         -s   
+ y1:  --------
+      s + 1000
+
+Continuous-time model.
+>> step(H)
+>> step(3*H)
+>> step(1.5*H)
+>> legend off
+>> print("step_passa_alta.png", "-dpng", "-r150");  % salva figura com resulução melhor
+>> 
+>> % Simulando senoide na entrada deste circuito
+>> f=20;
+>> T=1/f; % período do sinal
+>> t_fim=1.5*T
+t_fim = 0.075
+>> t=0:T/100:t_fim;
+>> y=1*sin(2*pi*f*t);
+>> Vin=1*sin(2*pi*f*t);
+>> [Vout, t]=lsim(H, Vin, t);
+>> figure;
+>> 
+>> plot(t, Vin, 'LineWidth', 1.2);
+>> hold on
+>> plot(t, Vout, 'LineWidth', 1.2);
+>> xlim([0 t_fim]);
+>> grid on
+>> xlabel('Tempo (s)');
+>> ylabel('Tensão (V)');
+>> legend('V_{in}', 'V_{out}', "location", "southeast");
+>> title(['f = ', num2str(f), ' Hz']);
+>> 
+>> print("seno_20Hz_passa_alta.png", "-dpng", "-r150");  % salva figura com resulução melhor
+>> diary off
