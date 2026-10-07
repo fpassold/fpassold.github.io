@@ -13,6 +13,7 @@ Author: Fernando Passold
 <font size="2">(Where there is artistic excellence, there is human dignity)</br>
 Maori proverb</font>
 </center>
+
 # Cursos/Disciplinas ministradas:
 
 | [Eletrônica Digital Combinacional](Digitais_1/index.html)</br><font size="2">(Antes: Circuitos Digitais I - Eng. Elétrica)</font> | [Laboratório de Circuitos Combinacionais](Digitais_1/lab_dig1.html)</br><font size="2">(Eng. Elétrica/Eletrônica Digital I)</font> |
