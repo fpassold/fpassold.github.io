@@ -7,14 +7,15 @@ Author: Fernando Passold
 
 ![initial_image.jpg](initial_image.jpg)
 
-<font size="2"> Dr. Eng. Fernando Passold ([Academia.edu](https://marcianazambillo.academia.edu/FernandoPassold), [Publons/Web of Science](https://www.webofscience.com/wos/author/rid/J-3070-2015), [Research Gate](https://www.researchgate.net/profile/Fernando\_Passold/info), [ORCID](https://orcid.org/0000-0002-9599-5914), [Slideshare](http://pt.slideshare.net/fpassold), [Google Scholar](https://scholar.google.com/citations?user=lvvFQ5YAAAAJ&hl=en), [LinkedIn](https://www.linkedin.com/in/fernando-passold-7a553b22/), [Personal YouTube](https://www.youtube.com/user/fpassold/videos), [Institutional YouTube](https://www.youtube.com/channel/UCF8lEIDVbtjLWNu1zXlJMVA/videos) ) - Prof. [Eng. Elétrica](https://www.upf.br/fear/curso/engenharia-eletrica/laboratorios) - [Universidade de Passo Fundo](https://www.upf.br/) </font>
+<font size="2"> Dr. Eng. Fernando Passold
+([Academia.edu](https://marcianazambillo.academia.edu/FernandoPassold), [Publons/Web of Science](https://www.webofscience.com/wos/author/rid/J-3070-2015), [Research Gate](https://www.researchgate.net/profile/Fernando\_Passold/info), [ORCID](https://orcid.org/0000-0002-9599-5914), [Slideshare](http://pt.slideshare.net/fpassold), [Google Scholar](https://scholar.google.com/citations?user=lvvFQ5YAAAAJ&hl=en), [LinkedIn](https://www.linkedin.com/in/fernando-passold-7a553b22/), [Personal YouTube](https://www.youtube.com/user/fpassold/videos), [Institutional YouTube](https://www.youtube.com/channel/UCF8lEIDVbtjLWNu1zXlJMVA/videos) )
+Prof. [Eng. Elétrica](https://www.upf.br/fear/curso/engenharia-eletrica/laboratorios) |[Universidade de Passo Fundo](https://www.upf.br/) </font>
 
 <center><font color="#00CEFF">"He toi whakairo, he mana tangata.''</font></br>
 <font size="2">(Where there is artistic excellence, there is human dignity)</br>
 Maori proverb</font>
 </center>
-
-# Cursos/Disciplinas ministradas:
+## Cursos/Disciplinas ministradas:
 
 | [Eletrônica Digital Combinacional](Digitais_1/index.html)</br><font size="2">(Antes: Circuitos Digitais I - Eng. Elétrica)</font> | [Laboratório de Circuitos Combinacionais](Digitais_1/lab_dig1.html)</br><font size="2">(Eng. Elétrica/Eletrônica Digital I)</font> |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -29,13 +30,14 @@ Maori proverb</font>
 
 &nbsp;
 
-# Outras Informações
+## Outras Informações
 
+| [Uso de **Markdown**](https://fpassold.github.io/Controle_2/sugestao_uso_matlab_em_controle.html) para agilizar <br />produção de documentos na engenharia |  |  |
+| :--- | :---- | :--- |
 | [Instalação recomendada do **Matlab**](Matlab/instalacao_matlab.html)<br/><font size="2">(áreas de: Controle e Sinais & Sistemas)</font> | [Tutorial rápido sobre Matlab](Matlab/tutorial.html)         | **[Matlab\_guide.pdf](Matlab/Matlab_guide.pdf)**<br/><font size="2">(tutorial mais longo, PDF de 44 páginas; 13.4 MBytes)</font> |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | **Octave on-line** <br />→ http://octave-online.net/         | [Tutorial do **Octave**](Octave/octave_inicio.html)<br/><font size="2">(Áreas de Controle e Sinais & Sistemas).</font> |                                                              |
-| [Introdução à **Python**](RNs/intro_python.html);            | [Uso do **Jupyter**](RNs/uso_Jupyter.html);                  | [Atalhos de **Teclado Jupyter**](RNs/atalhos_jupyter.html)   |
-| [Uso do **VS Code**](RNs/Uso_VS_Code.html)                   | [Atalhos de **Teclado<br/>do VS Code**](RNs/Uso_VS_Code.html) | [Object Calisthenics & Code Clean](Python/Object_Calisthenics.html). |
+| [Algo sobre **Python**](RNs/intro_python.html);  | [Uso do **Jupyter**](RNs/uso_Jupyter.html);                  | [Atalhos de **Teclado Jupyter**](RNs/atalhos_jupyter.html)   |
+| [Uso do **VS Code**](RNs/Uso_VS_Code.html)<br />(com perfis e extensões sugeridas) | [Atalhos de **Teclado do VS Code**](RNs/Uso_VS_Code.html) | Você gosta de Python (ou de programar)?<br />👉 [Object Calisthenics & **Code Clean**](Python/Object_Calisthenics.html). |
 | [Dicas para **estudantes de TCC**](TCC_Latex/index.html)<br/>(inclui dicas para escrita e<br/>dicas sobre ==$\LaTeX$==). | [Intro **Redes Neurais**](RNs/index.html)  <img src="Fique-de-olho.gif" alt="Fique-de-olho.gif" style="zoom: 33%;" /> | <font size="2">[Usando uma IA<br/>para resolvendo este "enigma":](Limite/limite.html)</font><br/>![Cursor_e_Caixas_de_Entrada](Limite/Cursor_e_Caixas_de_Entrada.png) |
 
 ----
