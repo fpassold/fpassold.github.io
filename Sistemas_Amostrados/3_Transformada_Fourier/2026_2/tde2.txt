@@ -1,0 +1,85 @@
+
+% Síntese de onda composta por 3 sinais
+f1=60;
+f2=120;
+f3=250;
+% Freq. de amostragem, fs = 1 KHz.
+fs=1E3;
+N=100; % número de amostras
+T=1/fs
+T =
+        0.001
+t=0:T:(N=1)*T;
+ t=0:T:(N=1)*T;
+         
+{Error: Incorrect use of '=' operator. To assign a value to a variable,
+use '='. To compare values for equality, use '=='.
+} 
+t=0:T:(N-1)*T;
+size(t)
+ans =
+     1   100
+y1=1.5*sin(2*pi*f1*t);
+y2=0.8*sin(2*pi*f2*t);
+y3=0.5*sin(2*pi*f3*t);
+figure;
+subplot(411); plot(t,y1)
+grid
+t_fim=(N-1)*T
+t_fim =
+        0.099
+xlim([0 t_fim])
+ylabel('y_1 (60 Hz)')
+subplot(412); plot(t,y2)
+grid
+xlim([0 t_fim])
+ylabel('y_2 (120 Hz)')
+subplot(413); plot(t,y3)
+xlim([0 t_fim])
+grid
+ylabel('y_2 (250 Hz)')
+1000/250 % qtdade de pts amostrados da onda de 250 Hz
+ans =
+     4
+y=y1+y2+y3;
+subplot(414); plot(t,y)
+grid
+xlim([0 t_fim])
+ylabel('y(t) (\Sum)')
+[Warning: Error updating Text.
+
+ String scalar or character vector must have valid interpreter
+ syntax:
+y(t) (\Sum)
+] 
+xlabel('tempo (s)')
+figure; plot(t,y3,'o-')
+xlim([0 0.01])
+grid
+ylabel('y_3(t) (250 Hz)')
+xlabel('tempo (s)')
+1E3/250
+ans =
+     4
+
+fs=10*250
+fs =
+        2500
+N=100 % mantidas 100 amostras deste sinal
+N =
+   100
+T=1/fs
+T =
+       0.0004
+t_fim=N*T
+t_fim =
+         0.04
+t=0:T:N*T;
+y3=0.5*sin(2*pi*f3*t);
+figure; plot(t,y3,'o-')
+xlim([0 0.01])
+grid
+xlabel('tempo (s)')
+ylabel('y_3(t) (250 Hz)')
+save tde2
+diary off
