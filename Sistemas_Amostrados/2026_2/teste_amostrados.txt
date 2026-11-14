@@ -1,0 +1,48 @@
+>> f=1E3;
+>> Toriginal=1/f
+Toriginal = 0.001
+>> fs=250;
+>> Ts=1/fs
+Ts = 0.004
+>> N=10; % ciclos do sinal original desejado
+>> t=0:Toriginal/100:N*Torignal;
+error: 'Torignal' undefined near line 1, column 21
+>> t=0:Toriginal/100:N*Toriginal;
+>> size(t)
+ans =
+
+            1         1001
+
+>> x=2*sin(2*pi*f*t);
+>> size(x)
+ans =
+
+            1         1001
+
+>> figure; plot(t,x)
+>> 
+>> % Simulando amostragem
+>> t_fim=t(end)
+t_fim =  0.01
+>> t1=0:1/250:t_fim;
+>> size(t1)
+ans =
+
+            1            3
+
+>> x1=2*sin(2*pi*f*t1);
+>> hold on
+>> plot(t1,x1,'ms')
+>> 
+>> x_atrasado=2*sin(2*pi*f*t+deg2rad(60));
+>> figure; plot(t,x_atrasado)
+>> x1_atrasado=2*sin(2*pi*f*t1+deg2rad(60));
+>> hold on;
+>> plot(t1,x1_atrasado,'ms')
+>> save teste_amostrados
+>> diary off
+>> figure(1)
+>> print("sin1Khz_fs250Hz.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> figure(2)
+>> print("sin_atrasado1Khz_fs250Hz.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> diary off

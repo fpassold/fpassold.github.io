@@ -1,0 +1,217 @@
+>> f1=60;
+>> f2=120;
+>> f3=250;
+>> fs=1000; % freq. de amostragem
+>> T=1/fs
+T = 1.0000e-03
+>> t=0:T:100*T;
+>> size(t)
+ans =
+
+     1   101
+
+>> y1=1.5*sin(2*pi*f1*t);
+>> y2=0.8*sin(2*pi*f2*t);
+>> y3=0.5*sin(2*pi*f3*t);
+>> plot(t,y3,'s-')
+>> 
+>> xlim([0 0.02])
+>> grid
+>> print("fig1.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> 
+>> % ![fig1.png](fig1.png)
+>> 
+>> fs=10*250; % freq. de amostragem
+>> fs
+fs = 2500
+>> T=1/fs
+T = 4.0000e-04
+>> t=0:T:100*T;
+>> y3=0.5*sin(2*pi*f3*t);
+>> figure; plot(t,y3,'s-')
+>> xlim([0 0.02])
+>> grid
+>> print("fig2.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> 
+>> % vou subir para 20 pts/ciclo em 250Hz
+>> fs=20*250 % freq. de amostragem
+fs = 5000
+>> T=1/fs
+T = 2.0000e-04
+>> t=0:T:100*T;
+>> size(t)
+ans =
+
+     1   101
+
+>> y3=0.5*sin(2*pi*f3*t);
+>> figure; plot(t,y3,'ms-')
+>> grid
+>> print("fig3.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> y1=1.5*sin(2*pi*f1*t);
+>> y2=0.8*sin(2*pi*f2*t);
+>> y=y1+y2+y3; % compondo o sinal
+>> figure; plot(t,y)
+>> grid
+>> 
+>> T*100
+ans = 0.020000
+>> size(t)
+ans =
+
+     1   101
+
+>> 
+>> clear all
+>> fs=5E3;
+>> T=1/fs
+T = 2.0000e-04
+>> t=0:T:100*T;
+>> size(t)
+ans =
+
+     1   101
+
+>> y1=1.5*sin(2*pi*60*t);
+>> y2=0.8*sin(2*pi*120*t);
+>> y3=0.5*sin(2*pi*250*t);
+>> y=y1+y2+y3; % compondo o sinal
+>> figure; plot(t,y)
+>> print("y_100pts.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> 
+>> % 100 amostras é pouco
+>> t=0:T:500*T;
+>> y1=1.5*sin(2*pi*60*t);
+>> y2=0.8*sin(2*pi*120*t);
+>> y3=0.5*sin(2*pi*250*t);
+>> y=y1+y2+y3; % compondo o sinal
+>> figure; plot(t,y)
+>> print("y_500pts.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> 
+>> % rodando a fft
+>> Y=fft(y);
+>> size(y)
+ans =
+
+     1   501
+
+>> size(Y)
+ans =
+
+     1   501
+
+>> Y(1:5)' % primeiros 5 valores
+ans =
+
+   0.0000 -      0i
+   0.0022 + 0.3432i
+   0.0092 + 0.7372i
+   0.0239 + 1.2688i
+   0.0544 + 2.1693i
+
+>> Ymag=abs(Y);
+>> N=length(Ymag)
+N = 501
+>> f=(0:N-1)*fs/N;
+>> [f(1:5)' Ymag(1:5)']
+ans =
+
+         0    0.0000
+    9.9800    0.3432
+   19.9601    0.7373
+   29.9401    1.2690
+   39.9202    2.1700
+
+>> % Resolução frequencial
+>> % Freq_Nyquist/Num_pts
+>> (5000/2)/501
+ans = 4.9900
+>> figure; stem(f,Ymag)
+>> grid
+>> f(1)
+ans = 0
+>> f(2)
+ans = 9.9800
+>> xlim([0 5000/2])
+>> print("fft_unilateral.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> Ymag=Ymag/N; % re-escalone amplitudes
+>> Ymag(2:end-1)=2*Ymag(2:end-1);
+>> N/2
+ans = 250.50
+>> f(250)
+ans = 2485.0
+>> f(251)
+ans = 2495.0
+>> f(252)
+ans = 2505.0
+>> figure; stem(f(1:251),Ymag(1:251))
+>> grid
+>> 250/9.98
+ans = 25.050
+>> f(25)
+ans = 239.52
+>> f(26)
+ans = 249.50
+>> f(27)
+ans = 259.48
+>> 120/9.98
+ans = 12.024
+>> f(12)
+ans = 109.78
+>> f(13)
+ans = 119.76
+>> f(14)
+ans = 129.74
+>> 60/9.98
+ans = 6.0120
+>> f(6)
+ans = 49.900
+>> f(7)
+ans = 59.880
+>> f(8)
+ans = 69.860
+>> 
+>> aux=[7 8 13 14 26 27];
+>> [f(aux)' Ymag(aux)']
+ans =
+
+   5.9880e+01   1.5008e+00
+   6.9860e+01   1.6191e-02
+   1.1976e+02   7.9567e-01
+   1.2974e+02   2.2541e-02
+   2.4950e+02   4.9390e-01
+   2.5948e+02   3.0056e-02
+
+>> format shortg
+>> [f(aux)' Ymag(aux)']
+ans =
+
+        59.88       1.5008
+        69.86     0.016191
+       119.76      0.79567
+       129.74     0.022541
+        249.5       0.4939
+       259.48     0.030056
+
+>> Yfase=angle(Y);
+>> Yfase=rad2deg(Yfase);
+>> Yfase=Yfase/90; % compensar o bilateral
+>> figure; stem(f(1:251),Yfase(1:251))
+>> figure(4)
+>> print("espectro_fase.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> figure(3)
+>> print("espectro_magnitude.png", "-dpng", "-r150");  % salva figura com resolução melhor
+>> 
+>> % Mostrar uma tabela valores relevantes
+>> [f(aux)' Ymag(aux)' Yfase(aux)']
+ans =
+
+        59.88       1.5008     -0.97605
+        69.86     0.016191       1.0279
+       119.76      0.79567      -0.9521
+       129.74     0.022541       1.0519
+        249.5       0.4939      -0.9002
+       259.48     0.030056       1.1038
+
+>> save aula_11nov2026
+>> diary off
