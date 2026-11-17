@@ -1,0 +1,361 @@
+% # Aula de 16/11/2026
+
+% Filtro Notch para remover ruído de sinal audio
+
+% Mudar para pasta de trabalho com arquivo wave: 
+% https://fpassold.github.io/Process_Sinais_Controle_ECP/2026_2/snap_with_noise.wav
+
+ls *.wav    % verificar presença do arquivo wave
+snap_with_noise.wav
+
+[y, Fs] = audioread('snap_with_noise.wav');   % lê o arquivo wave
+size(y)     % verificando tamanho... algo grande... muitas amostras
+ans =
+     1168792           1
+Fs          % verificando freq. de amostragem do arquivo original
+Fs =
+       44100
+
+% Levantando espectro deste sinal
+
+% Usando function disponibilizada pelo professor em:
+% https://fpassold.github.io/Process_Sinais_Controle_ECP/2026_2/espectro.m
+
+$ Executando a function
+
+[f, Ymag, Y_fase]=espectro(y, Fs);
+> Vetor de entrada x com 1168792 pontos
+> Realizando FFT de N = 1168792 pontos
+> Freq. de Nyquist = 22050 (Hz)
+> Número de bins válidos (unilateral) = 584397
+> Freq. Máxima do Espectro = 22050 (Hz) em f(584397)
+> Resolução frequencial = 0.0377313 (Hz)
+
+Magnitude usada como referência = 0.0454081 (Volts) em f(1092)=41.2025 (Hz)
+Magnitude usada como limiar <= 6.64606e-05 (mean)
+Encontradas 120835 frequências dominantes
+Serão mostradas apenas as 20 maiores contribuições
+|     # |    Freq  |  |X(w)|  |    %    |    dB  |   Fase  |
+|  1092 |    41.20 |  0.04541 | 100.000 |   0.00 |   53.16 | <-- Valor base (referência)
+| 26503 |   999.99 |  0.03704 |  81.577 |  -1.77 |  -16.05 |
+|  1090 |    41.13 |  0.03560 |  78.389 |  -2.11 |   18.80 |
+|  1093 |    41.24 |  0.03346 |  73.691 |  -2.65 |  -53.82 |
+|  1094 |    41.28 |  0.02877 |  63.368 |  -3.96 |  -27.02 |
+|  1091 |    41.16 |  0.02496 |  54.960 |  -5.20 |   32.66 |
+|  1095 |    41.32 |  0.02403 |  52.916 |  -5.53 |  -23.83 |
+|  1374 |    51.84 |  0.01988 |  43.785 |  -7.17 |   27.99 |
+|  1372 |    51.77 |  0.01947 |  42.884 |  -7.35 |   37.91 |
+|  1376 |    51.92 |  0.01925 |  42.387 |  -7.46 |   19.03 |
+|  1370 |    51.69 |  0.01800 |  39.640 |  -8.04 |   46.86 |
+|  1378 |    51.99 |  0.01783 |  39.267 |  -8.12 |    8.89 |
+|  1380 |    52.07 |  0.01567 |  34.501 |  -9.24 |   -0.81 |
+|  1368 |    51.62 |  0.01529 |  33.677 |  -9.45 |   56.02 |
+|  1382 |    52.14 |  0.01400 |  30.835 | -10.22 |  -10.35 |
+|  1086 |    40.98 |  0.01346 |  29.648 | -10.56 |   30.01 |
+|  1088 |    41.05 |  0.01305 |  28.734 | -10.83 |  -25.59 |
+|  1366 |    51.54 |  0.01287 |  28.344 | -10.95 |  -46.91 |
+|  1098 |    41.43 |  0.01262 |  27.790 | -11.12 |  -25.23 |
+|  1104 |    41.66 |  0.01261 |  27.769 | -11.13 |    5.74 |
+
+% Limitar banda de frequências mostradas (de 0 à 5 KHz)
+xlim([0 5000]) % concentrar em baixas frequencias
+
+% ![espectro_sinal_com_ruido.png](espectro_sinal_com_ruido.png)
+
+% Conclusão: temos um ruído (pico) concentrado em 1 KHz
+
+% Projetando o filtro
+
+% Calculando a frequência normalizada, possui relação com a frequência de amostragem sendo usada.
+fc=1000;    % freq. de corte do filtro Notch
+omega=(fc*180)/(Fs/2)   % omega = freq. normalizada no mundo digital/discreto
+omega =
+       8.1633
+% resposta em graus (faixa de 0 à 180 graus)
+omega_graus=rad2deg(omega)
+omega_graus =
+       467.72
+omega_graus=omega_graus-360
+omega_graus =
+       107.72
+
+% Ops... omega já está em graus!!!
+omega_rad = deg2rad(omega)
+omega_rad =
+      0.14248
+
+% Calculando pólos e zeros do filtro (só temos o ângulo dos mesmos até o momento)
+
+Re = 1*cos(omega_rad)
+Re =
+      0.98987
+Im = 1*sin(omega_rad)
+Im =
+      0.14199
+ze = [Re+i*Im   Re-i*Im]     % cria vetor/polinômio contendo os 2 zeros conjugados
+ze =
+      0.98987 +    0.14199i      0.98987 -    0.14199i
+
+% Construindo a função transferência do filtro...
+
+H=tf(poly(ze), 1, 1/Fs)
+
+H =
+ 
+  z^2 - 1.98 z + 1
+ 
+Sample time: 2.2676e-05 seconds
+Discrete-time transfer function.
+
+% mostrando no plano-z (a região ROC do filtro)
+
+figure; pzmap(H)
+axis equal
+
+% ![pzmap_filtro_1.png](pzmap_filtro_1.png)
+
+% Continuando projeto deste filtro, faltam seus pólos.
+% Supondo inicialmente 2 pólos na origem do plano-z
+% (2 pólos == mesma ordem/grau do numerador de H(w)
+
+H=tf(poly(ze),[1 0 0],T)
+Unrecognized function or variable 'T'.
+
+T = 1/Fs
+T =
+   2.2676e-05
+
+H=tf(poly(ze),[1 0 0],T)
+
+H =
+ 
+  z^2 - 1.98 z + 1
+  ----------------
+        z^2
+ 
+Sample time: 2.2676e-05 seconds
+Discrete-time transfer function.
+
+% Novo diagrama no plano-z:
+
+figure; pzmap(H)
+axis equal
+
+% ![pzmap_filtro_2.png](pzmap_filtro_2.png)
+
+% Levantando o Diagrama de Bode "Digital" deste filtro até o momento
+% Mostra o comportamento do filtro.
+
+figure; handler=bodeplot(H);
+setoptions(handler,'FreqUnits','Hz')
+
+% ![bode_filtro_1.png](bode_filtro_1.png)
+
+% Perceba o "afundamento" pronunciado na frequênica de 1 KHz. 
+% Com uma grande redução na amplitudade do sinal de entrada em 1 KHz e frequencias
+% muito próximas.
+% lembrar que: $G|_{dB} = 20 \log_{10}(G)
+% Então -177 dB --> "ganho" de: $G=10^{-177/20}=$ 1.4125e-09 ou 
+% atenuação de 707.9458e+006 vezes
+
+% Testando o filtro usando a fução filter()
+
+[num,den]=tfdata(H,'v')
+num =
+            1      -1.9797            1
+den =
+     1     0     0
+a=den;
+b=num;
+
+% Mas posso ouvir o sinal ANTES de aplicar o filtro
+sound(y, Fs);   % Obs.: Matlab espera y na faixa de valores [-1, +1]
+
+y_filtrado = filter(b,a,y);     % Aplicando o filtro
+
+% Ouvindo Como ficou o sinal filtrado
+
+sound(y_filtrado, Fs);
+
+% Gravando o sinal filtrado num arquivo
+
+audiowrite('sinal_filtrado_1.wav', y_filtrado, Fs);
+
+% Levantando o espectro do sinal filtrado, para perceber a diferença
+
+[f2, Yfiltrado_mag, Yfiltrado_fase]=espectro(y_filtrado, Fs);
+> Vetor de entrada x com 1168792 pontos
+> Realizando FFT de N = 1168792 pontos
+> Freq. de Nyquist = 22050 (Hz)
+> Número de bins válidos (unilateral) = 584397
+> Freq. Máxima do Espectro = 22050 (Hz) em f(584397)
+> Resolução frequencial = 0.0377313 (Hz)
+
+Magnitude usada como referência = 0.000918706 (Volts) em f(1092)=41.2025 (Hz)
+Magnitude usada como limiar <= 2.77378e-05 (mean)
+Encontradas 235457 frequências dominantes
+Serão mostradas apenas as 20 maiores contribuições
+|     # |    Freq  |  |X(w)|  |    %    |    dB  |   Fase  |
+|  1092 |    41.20 |  0.00092 | 100.000 |   0.00 |   53.06 | <-- Valor base (referência)
+|  1090 |    41.13 |  0.00072 |  78.379 |  -2.12 |   18.70 |
+|  1093 |    41.24 |  0.00068 |  73.693 |  -2.65 |  -53.93 |
+|  1094 |    41.28 |  0.00058 |  63.361 |  -3.96 |  -27.13 |
+|  1091 |    41.16 |  0.00050 |  54.958 |  -5.20 |   32.55 |
+|  1095 |    41.32 |  0.00049 |  52.909 |  -5.53 |  -23.94 |
+|  1374 |    51.84 |  0.00040 |  43.738 |  -7.18 |   27.86 |
+|  1372 |    51.77 |  0.00039 |  42.842 |  -7.36 |   37.77 |
+|  1376 |    51.92 |  0.00039 |  42.337 |  -7.47 |   18.90 |
+|  1370 |    51.69 |  0.00036 |  39.605 |  -8.04 |   46.72 |
+|  1378 |    51.99 |  0.00036 |  39.217 |  -8.13 |    8.75 |
+|  1380 |    52.07 |  0.00032 |  34.455 |  -9.25 |   -0.94 |
+| 253918 |  9580.65 |  0.00031 |  33.923 |  -9.39 |   17.15 |
+|  1368 |    51.62 |  0.00031 |  33.650 |  -9.46 |   55.88 |
+| 351503 | 13262.65 |  0.00030 |  32.481 |  -9.77 |    5.17 |
+| 279273 | 10537.32 |  0.00030 |  32.161 |  -9.85 |   12.12 |
+| 278283 | 10499.97 |  0.00028 |  30.947 | -10.19 |   -1.41 |
+|  1382 |    52.14 |  0.00028 |  30.794 | -10.23 |  -10.49 |
+| 244890 |  9240.01 |  0.00028 |  30.658 | -10.27 |   46.35 |
+| 259730 |  9799.94 |  0.00028 |  30.594 | -10.29 |   28.96 |
+xlim([0 5000]) % comcentrar em baixas frequencias
+
+% ![espectro_sinal_filtrado_1.png](espectro_sinal_filtrado_1.png)
+
+% Note que o ruído (pico) concentrado em 1 KHz, "desapareceu". 
+% Mas frequências muito próximas dele também foram atenuadas.
+
+% Sintetizando a segunda versão do filtro Notch
+
+% Na primeira versão, deve ter sido notado no diagrama de Bode que componentes em
+% frequências abaixo de 1 KHz seriam atenuados (ganho negativo: $\approx$ -37 dB,
+% Equivale a diminuir as amplitudes destes sinais $1/(10^{-37/20})=$ 70.795 vezes.
+% Você deve ter percebido que mau escuta a música original porque justamente esta
+% faixa de frequências foi fortemente reduzida. A frequência de 1 KHz, é óbvio
+% que recebeu uma atenuação ainda mais forte. E a primeira versão deste filtro,
+% rever diagrama de Bode, aumenta gradualmente o ganho para componentes em
+% frequências acima de 1 KHz. Ou seja, os agudos serão ressaltados e os graves e
+% médios serão infelizmente penalizados. Motivo para a segunda versão deste
+% filtro.
+
+% Os pólos saem da origem do plano-z
+
+% Localizamos os pólos na mesma frequência normalizada (ângulo) dos zeros, porém com
+% amplitude < 1. Sugere-se usar 0.9
+
+[Re_p Im_p]=pol2cart(omega_graus, 0.9)
+Re_p =
+      0.55486
+Im_p =
+      0.70862
+[Re_p Im_p]=pol2cart(omega_rad, 0.9)
+Re_p =
+      0.89088
+Im_p =
+      0.12779
+po = [Re_p+i*Im_p   Re_p-i*Im_p]
+po =
+  Column 1
+      0.89088 +    0.12779i
+  Column 2
+      0.89088 -    0.12779i
+H2=tf(poly(ze), poly(po), T)
+
+H2 =
+ 
+    z^2 - 1.98 z + 1
+  --------------------
+  z^2 - 1.782 z + 0.81
+ 
+Sample time: 2.2676e-05 seconds
+Discrete-time transfer function.
+
+% Traçando o plano-z deste filtro (região "ROC" do filtro):
+
+figure; pzmap(H2)
+axis equal
+
+% Notar no gráfico que os pólos estão "emparelhados" no mesmo ângulo radual em relação
+% a origem do plano-z, com os zeros calculados originalmente. Isto vao modificar
+% consideravelmente o comportamente deste filtro (Notch).
+
+% ![pzmap_fitlro2.png](pzmap_fitlro2.png)
+
+% Levando o diagrama de Bode deste novo filtro
+
+h=bodeplot(H, H2);
+legend('H(\Omega)=1o-filtro Notch', 'H_2(\Omega)=2a-versão do Notch')
+
+% ![bode_filtro2.png](bode_filtro2.png)
+
+% Você dever ter percebido que agora tanto os componentes frequenciais abaixo de
+% 1 KHz, quanto os acima de 1 Khz, praticamente não foram atenuados. Ganho = 1 = 0 dB.
+% Você poderá constatar que este filtro gera um resultado substancialmente melhor.
+
+% Aplicando o novo filtro
+
+[num2,den2]=tfdata(H2,'v')
+num2 =
+            1      -1.9797            1
+den2 =
+            1      -1.7818         0.81
+a2=den2;
+b2=num2;
+y_filtrado_2 = filter(b2,a2, y);
+
+% Escutando o sinal filtrado
+
+sound(y_filtrado_2, Fs);
+
+% Gravando o sinal filtrado
+
+audiowrite('sinal_filtrado_2.wav', y_filtrado, Fs);
+
+% Salvando os dados desta aula:
+
+save aula_16112026
+
+% Note que nesta aula consumimos uma quantidade de RAM razoável só com o Matlab:
+
+whos
+  Name                      Size                  Bytes  Class                Attributes
+
+  Fs                        1x1                       8  double                         
+  H                         1x1                    1337  tf                             
+  H2                        1x1                    1337  tf                             
+  Im                        1x1                       8  double                         
+  Im_p                      1x1                       8  double                         
+  Re                        1x1                       8  double                         
+  Re_p                      1x1                       8  double                         
+  T                         1x1                       8  double                         
+  Y_fase               584397x1                 4675176  double                         
+  Yfiltrado_fase       584397x1                 4675176  double                         
+  Yfiltrado_mag        584397x1                 4675176  double                         
+  Ymag                 584397x1                 4675176  double                         
+  a                         1x3                      24  double                         
+  a2                        1x3                      24  double                         
+  ans                       1x1                       8  double                         
+  b                         1x3                      24  double                         
+  b2                        1x3                      24  double                         
+  den                       1x3                      24  double                         
+  den2                      1x3                      24  double                         
+  f                         1x584397            4675176  double                         
+  f2                        1x584397            4675176  double                         
+  fc                        1x1                       8  double                         
+  h                         1x1                          resppack.bodeplot              
+  handler                   1x1                          resppack.bodeplot              
+  num                       1x3                      24  double                         
+  num2                      1x3                      24  double                         
+  omega                     1x1                       8  double                         
+  omega_graus               1x1                       8  double                         
+  omega_rad                 1x1                       8  double                         
+  po                        1x2                      32  double               complex   
+  y                   1168792x1                 9350336  double                         
+  y_filtrado          1168792x1                 9350336  double                         
+  y_filtrado_2        1168792x1                 9350336  double                         
+  ze                        1x2                      32  double               complex   
+
+diary off
+
+---
+
+Fernando Passold, em 16/11/2026
+
